@@ -6,7 +6,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Cursor from "@/components/Cursor";
-import Loader from "@/components/Loader";
+import Intro from "@/components/Intro";
+import InquiryModal from "@/components/InquiryModal";
+import { InquiryContext } from "@/context/Inquiry";
 
 import Home from "@/pages/Home";
 import About from "@/pages/About";
@@ -66,25 +68,40 @@ const AnimatedRoutes = () => {
   );
 };
 
+// Global Inquiry modal — see @/context/Inquiry for the consumer hook.
+
 function App() {
-  const [loaded, setLoaded] = useState(false);
+  const [introDone, setIntroDone] = useState(() => {
+    try {
+      return sessionStorage.getItem("gim-intro-seen") === "1";
+    } catch (e) {
+      return false;
+    }
+  });
+  const [inquiryOpen, setInquiryOpen] = useState(false);
 
   useEffect(() => {
     document.documentElement.classList.add("cursor-custom");
-    const t = setTimeout(() => setLoaded(true), 850);
-    return () => clearTimeout(t);
   }, []);
 
+  const openInquiry = () => setInquiryOpen(true);
+  const closeInquiry = () => setInquiryOpen(false);
+
   return (
-    <div className="App grain" data-testid="app-root">
-      <Cursor />
-      <AnimatePresence>{!loaded && <Loader key="loader" />}</AnimatePresence>
-      <BrowserRouter>
-        <Nav />
-        <AnimatedRoutes />
-        <Footer />
-      </BrowserRouter>
-    </div>
+    <InquiryContext.Provider value={{ open: inquiryOpen, openInquiry, closeInquiry }}>
+      <div className="App grain" data-testid="app-root">
+        <Cursor />
+        <AnimatePresence>
+          {!introDone && <Intro key="intro" onDone={() => setIntroDone(true)} />}
+        </AnimatePresence>
+        <BrowserRouter>
+          <Nav />
+          <AnimatedRoutes />
+          <Footer />
+        </BrowserRouter>
+        <InquiryModal open={inquiryOpen} onClose={closeInquiry} />
+      </div>
+    </InquiryContext.Provider>
   );
 }
 

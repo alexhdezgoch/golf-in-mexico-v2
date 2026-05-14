@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Parallax from "@/components/Parallax";
 import FoundersSlider from "@/components/FoundersSlider";
+import { useInquiry } from "@/context/Inquiry";
 
 const HERO_VIDEO =
   "https://assets.mixkit.co/videos/preview/mixkit-overhead-view-of-a-rocky-coast-and-waves-crashing-51502-large.mp4";
@@ -24,6 +26,7 @@ const fade = {
 const Home = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const { openInquiry } = useInquiry();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -130,6 +133,145 @@ const Home = () => {
             className="block w-px h-10 bg-cream/50"
           />
         </motion.div>
+      </section>
+
+      {/* PHASE 1 APERTURE — two ways to begin (no trip sales yet) */}
+      <section
+        data-testid="aperture-section"
+        className="relative bg-cream border-b hairline py-24 md:py-32"
+      >
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-12 gap-8 mb-14 md:mb-20">
+            <div className="col-span-12 md:col-span-3">
+              <motion.span
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted"
+              >
+                Two ways to begin
+              </motion.span>
+            </div>
+            <div className="col-span-12 md:col-span-9">
+              <motion.h2
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                className="font-display font-light text-ink text-4xl md:text-6xl leading-[1.05] tracking-tight max-w-3xl"
+              >
+                We are not booking trips yet —{" "}
+                <span className="italic">we are starting conversations.</span>
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                className="mt-8 font-body font-light text-ink/70 text-base md:text-lg max-w-xl leading-relaxed"
+              >
+                Choose how you'd like to meet us. Either way, Pablo or José
+                reads what you send.
+              </motion.p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-12 gap-8 md:gap-10">
+            {/* Card 1 — Submit an Inquiry (primary CTA) */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              data-testid="aperture-card-inquiry"
+              className="col-span-12 md:col-span-7 group"
+            >
+              <button
+                onClick={openInquiry}
+                data-testid="aperture-cta-inquiry"
+                className="block text-left w-full"
+              >
+                <div className="relative aspect-[16/11] w-full overflow-hidden bg-ink">
+                  <img
+                    src="https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=1800&q=80"
+                    alt="A coastal fairway in México at golden hour"
+                    className="w-full h-full object-cover editorial-img transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/55 via-ink/10 to-transparent" />
+                  <span className="absolute top-5 left-5 font-mono text-[10px] uppercase tracking-wide-editorial text-cream/85 inline-flex items-center gap-2">
+                    <span className="block w-3 h-px bg-cream/85" />
+                    Primary · By name
+                  </span>
+                </div>
+                <div className="mt-7 flex items-start justify-between gap-6 border-t border-ink/15 pt-6">
+                  <div>
+                    <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
+                      01 · Conversation
+                    </span>
+                    <h3 className="mt-3 font-display text-3xl md:text-5xl font-light text-ink leading-[1.02] tracking-tight max-w-md">
+                      Submit an inquiry.
+                    </h3>
+                    <p className="mt-5 font-body font-light text-ink/75 text-base md:text-lg leading-[1.65] max-w-lg">
+                      Tell us what you are imagining — a region, a window, a
+                      group. We reply within twenty-four hours, by name.
+                      Nothing else.
+                    </p>
+                  </div>
+                  <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-ink shrink-0 pt-1 transition-transform duration-500 group-hover:translate-x-1">
+                    Open the form →
+                  </span>
+                </div>
+              </button>
+            </motion.div>
+
+            {/* Card 2 — Read the Journal (secondary CTA) */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              data-testid="aperture-card-journal"
+              className="col-span-12 md:col-span-5 group"
+            >
+              <Link
+                to="/journal/los-cabos"
+                data-testid="aperture-cta-journal"
+                className="block"
+              >
+                <div className="relative aspect-[16/11] w-full overflow-hidden bg-ink">
+                  <img
+                    src="https://images.unsplash.com/photo-1605144156546-91acf5e4cffd?auto=format&fit=crop&w=1600&q=80"
+                    alt="Los Cabos golf course from above"
+                    className="w-full h-full object-cover editorial-img transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/55 via-ink/10 to-transparent" />
+                  <span className="absolute top-5 left-5 font-mono text-[10px] uppercase tracking-wide-editorial text-cream/85 inline-flex items-center gap-2">
+                    <span className="block w-3 h-px bg-cream/85" />
+                    Hub N° 01 · Region
+                  </span>
+                </div>
+                <div className="mt-7 flex items-start justify-between gap-6 border-t border-ink/15 pt-6">
+                  <div>
+                    <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
+                      02 · Editorial
+                    </span>
+                    <h3 className="mt-3 font-display text-3xl md:text-5xl font-light text-ink leading-[1.02] tracking-tight max-w-sm">
+                      Read the journal.
+                    </h3>
+                    <p className="mt-5 font-body font-light text-ink/75 text-base md:text-lg leading-[1.65]">
+                      Start with the long-form guide to Los Cabos — eight
+                      courses, four architects, one peninsula.
+                    </p>
+                  </div>
+                  <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-ink shrink-0 pt-1 transition-transform duration-500 group-hover:translate-x-1">
+                    Read →
+                  </span>
+                </div>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* INTRO / EMAIL CAPTURE */}
