@@ -53,20 +53,6 @@ const Home = () => {
         <div className="absolute inset-0 bg-ink/45" />
         <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-transparent to-ink/55" />
 
-        {/* Top corner label */}
-        <div className="absolute top-24 md:top-28 left-6 md:left-12 z-10 flex items-center gap-3 text-cream/70">
-          <span className="block w-6 h-px bg-cream/50" />
-          <span className="font-mono text-[10px] uppercase tracking-wide-editorial">
-            Storytellers of golf in México
-          </span>
-        </div>
-
-        <div className="absolute top-24 md:top-28 right-6 md:right-12 z-10 text-cream/70 text-right">
-          <span className="font-mono text-[10px] uppercase tracking-wide-editorial">
-            19°25′N · 99°08′W
-          </span>
-        </div>
-
         {/* Center content */}
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
           <motion.div

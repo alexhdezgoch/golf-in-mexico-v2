@@ -134,29 +134,24 @@ const FoundersSlider = () => {
             >
               {/* Photo column */}
               <div className="col-span-12 md:col-span-6 relative">
-                <div className="absolute -top-4 left-0 z-10">
-                  <span
-                    className="font-mono text-[10px] uppercase tracking-wide-editorial"
-                    style={{ color: accent }}
-                  >
-                    {current.role} · {current.role_en}
-                  </span>
-                </div>
                 <div className="relative aspect-[4/5] md:aspect-[3/4] w-full overflow-hidden">
                   <img
                     src={current.photo}
                     alt={`${current.name} portrait`}
                     className="w-full h-full object-cover editorial-img"
                   />
-                  {/* Roman numeral big mark */}
+                </div>
+                {/* Caption under the photo */}
+                <div className="mt-4 flex items-center justify-between">
                   <span
-                    className="absolute -left-2 -bottom-6 md:-bottom-10 font-display font-light leading-none pointer-events-none select-none"
-                    style={{
-                      color: accent,
-                      fontSize: "clamp(8rem, 18vw, 16rem)",
-                      mixBlendMode: "multiply",
-                      opacity: 0.92,
-                    }}
+                    className="font-mono text-[10px] uppercase tracking-wide-editorial"
+                    style={{ color: accent }}
+                  >
+                    {current.role} · {current.role_en}
+                  </span>
+                  <span
+                    className="font-display font-light leading-none"
+                    style={{ color: accent, fontSize: "2rem", opacity: 0.85 }}
                   >
                     {current.roman}
                   </span>
@@ -164,14 +159,14 @@ const FoundersSlider = () => {
               </div>
 
               {/* Content column */}
-              <div className="col-span-12 md:col-span-6 md:pl-4">
+              <div className="col-span-12 md:col-span-6 md:pl-4 md:pt-2">
                 <span
                   className="font-mono text-[10px] uppercase tracking-wide-editorial"
                   style={{ color: accent }}
                 >
                   Founder · {current.roman}
                 </span>
-                <h3 className="mt-4 font-display text-5xl md:text-7xl font-light tracking-tight text-ink leading-[0.95]">
+                <h3 className="mt-4 font-display text-4xl md:text-6xl font-light tracking-tight text-ink leading-[1]">
                   {current.name}
                 </h3>
 
