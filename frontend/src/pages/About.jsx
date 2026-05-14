@@ -197,6 +197,82 @@ const About = () => {
 
       <div className="border-t hairline" />
 
+      {/* THE GIM PROMISE — counterpositioning, named-human trust */}
+      <section
+        data-testid="gim-promise"
+        className="relative bg-ink text-cream py-28 md:py-40"
+      >
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-8">
+          <div className="col-span-12 md:col-span-3">
+            <motion.span
+              {...fade}
+              className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/60"
+            >
+              The GIM Promise
+            </motion.span>
+          </div>
+          <div className="col-span-12 md:col-span-9">
+            <motion.h2
+              {...fade}
+              className="font-display font-light text-cream text-4xl md:text-6xl leading-[1.05] tracking-tight max-w-3xl"
+            >
+              Two names, <span className="italic">one</span> phone, zero
+              outsourcing.
+            </motion.h2>
+
+            <motion.p
+              {...fade}
+              transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-10 font-body font-light text-cream/80 text-lg md:text-xl leading-[1.7] max-w-2xl"
+            >
+              Every trip we arrange is touched, walked, and confirmed by Pablo
+              or José personally. No marketplace, no call-center, no
+              sub-affiliate handing you off at check-in. If something is wrong
+              at the tee, the person who answers the phone is the person who
+              booked it.
+            </motion.p>
+
+            <ul className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-10">
+              {[
+                {
+                  k: "01",
+                  t: "Walked before written",
+                  d: "We do not write about a course we have not played.",
+                },
+                {
+                  k: "02",
+                  t: "By name, not by booking",
+                  d: "Pablo or José replies within 24 hours, in your time zone.",
+                },
+                {
+                  k: "03",
+                  t: "Transparent pricing",
+                  d: "Trips are priced like a private dinner — quoted once, in full.",
+                },
+              ].map((p) => (
+                <li
+                  key={p.k}
+                  data-testid={`promise-${p.k}`}
+                  className="border-t border-cream/15 pt-5"
+                >
+                  <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
+                    {p.k}
+                  </span>
+                  <h3 className="mt-3 font-display text-2xl md:text-3xl font-light text-cream leading-tight">
+                    {p.t}
+                  </h3>
+                  <p className="mt-3 font-body font-light text-cream/70 text-base leading-[1.6]">
+                    {p.d}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <div className="border-t hairline" />
+
       {/* Closing */}
       <section className="py-24 md:py-32">
         <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-8">

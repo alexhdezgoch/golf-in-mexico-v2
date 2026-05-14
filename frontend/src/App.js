@@ -7,6 +7,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Cursor from "@/components/Cursor";
 import Loader from "@/components/Loader";
+import WhatsApp from "@/components/WhatsApp";
 
 import Home from "@/pages/Home";
 import About from "@/pages/About";
@@ -74,6 +75,7 @@ function App() {
         <Nav />
         <AnimatedRoutes />
         <Footer />
+        <WhatsApp />
       </BrowserRouter>
     </div>
   );

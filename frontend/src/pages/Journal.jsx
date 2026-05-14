@@ -4,30 +4,30 @@ const GRID = [
   {
     url:
       "https://images.unsplash.com/photo-1605144156546-91acf5e4cffd?auto=format&fit=crop&w=1600&q=80",
-    label: "Diamante, Los Cabos",
-    issue: "N° 001 · Field Notes",
-    title: "On the morning wind at Cabo del Sol",
-  },
-  {
-    url:
-      "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=1600&q=80",
-    label: "El Camaleón, Mayakoba",
-    issue: "N° 001 · Course",
-    title: "Eighteen holes of jungle and cenote",
-  },
-  {
-    url:
-      "https://images.unsplash.com/photo-1514480573427-1f96cbed6a27?auto=format&fit=crop&w=1600&q=80",
-    label: "Vidanta, Vallarta",
-    issue: "N° 001 · Tournament",
-    title: "Notes from Mexico Open week",
+    label: "Los Cabos · Baja California Sur",
+    issue: "Hub N° 01 · Region",
+    title: "Where to play in Los Cabos, hole by hole.",
   },
   {
     url:
       "https://images.unsplash.com/photo-1543105177-748ceda71741?auto=format&fit=crop&w=1600&q=80",
-    label: "Punta Mita, Nayarit",
-    issue: "N° 001 · Travel",
-    title: "Three days, two courses, one tail of wind",
+    label: "Puerto Vallarta · Jalisco",
+    issue: "Hub N° 02 · Region",
+    title: "Puerto Vallarta & Punta Mita — the long brief.",
+  },
+  {
+    url:
+      "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=1600&q=80",
+    label: "Riviera Maya · Quintana Roo",
+    issue: "Hub N° 03 · Region",
+    title: "Riviera Maya: jungle, cenotes, and El Camaleón.",
+  },
+  {
+    url:
+      "https://images.unsplash.com/photo-1514480573427-1f96cbed6a27?auto=format&fit=crop&w=1600&q=80",
+    label: "Field Notes",
+    issue: "Field Notes · The Caddie Report",
+    title: "Notes the tee-sheet will not tell you.",
   },
 ];
 

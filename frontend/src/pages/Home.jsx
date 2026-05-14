@@ -142,7 +142,7 @@ const Home = () => {
               {...fade}
               className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted"
             >
-              N° 01 — Stay in the know
+              N° 01 — The Caddie Report
             </motion.span>
           </div>
 
@@ -151,8 +151,9 @@ const Home = () => {
               {...fade}
               className="font-display font-light text-ink text-4xl md:text-6xl leading-[1.05] tracking-tight max-w-3xl"
             >
-              An <span className="italic">unhurried</span> dispatch from the
-              fairways and coastlines of México.
+              The notes <span className="italic">no</span> tee-sheet,{" "}
+              <span className="italic">no</span> concierge, and{" "}
+              <span className="italic">no</span> review site will tell you.
             </motion.h2>
 
             <motion.p
@@ -160,8 +161,11 @@ const Home = () => {
               transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="mt-10 font-body text-base md:text-lg text-ink/70 max-w-xl leading-relaxed"
             >
-              Editorial stories, new courses, and curated experiences. Sent
-              rarely. Only what is worth your time.
+              Written by José Islas from memory and a fairway notebook. The
+              private brief we send to the people whose trips we arrange — the
+              wind on hole 7, the caddie who reads Punta Mita the way most
+              people read a menu, the table to ask for after the round. Free.
+              No spam. One dispatch.
             </motion.p>
 
             <motion.form
@@ -193,7 +197,7 @@ const Home = () => {
                   data-testid="email-submit"
                   className="font-mono text-[11px] uppercase tracking-wide-editorial text-ink pb-1 group inline-flex items-center gap-2"
                 >
-                  Send
+                  Request the report
                   <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">
                     →
                   </span>
@@ -207,7 +211,7 @@ const Home = () => {
                     data-testid="email-confirmation"
                     className="font-mono text-[10px] uppercase tracking-wide-editorial text-forest"
                   >
-                    Noted. The first dispatch will find you.
+                    Noted. The Caddie Report is on its way.
                   </motion.span>
                 )}
               </div>
