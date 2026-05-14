@@ -1,0 +1,44 @@
+{
+  "summary": "Frontend-only E2E testing of Golf in Mexico° landing site. All 11 review requirements pass functionally — hero video (autoplay/muted/loop), wordmark/headline/subline, email capture visual confirmation, founder images load, nav navigation across /, /about, /journal, nav condenses on scroll (bg-cream/85 + backdrop-blur added after >40px scroll), about page with two founder sections, journal grid + Coming Soon overlay (visible on top), footer on every page, mobile drawer with 3 links, cursor-dot present on desktop. No console/runtime errors on any route. Page transitions are clean (no white flash). One minor UI issue: 22px horizontal overflow on Home at mobile 390px due to email-capture form row.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "Home — email-capture-form",
+        "issue": "Form row (label + input + Send button with gap-6) overflows viewport by 22px on 390px mobile, causing horizontal scroll on Home page only (doc scrollWidth=412 vs win=390). Offending element: button[data-testid='email-submit'] right=412. /about and /journal have no horizontal scroll at 390px.",
+        "selector": "[data-testid=\"email-capture-form\"] .relative.flex.items-end.gap-6",
+        "priority": "MEDIUM"
+      },
+      {
+        "component": "Cursor",
+        "issue": "Cursor dot becomes visible under Playwright mobile emulation because @media(hover:hover) and (pointer:fine) evaluates true in the emulated context. On a real touch device this should be hidden — the existing matchMedia guard works there, so this is likely emulation-only and acceptable. Flagging for awareness.",
+        "selector": "[data-testid=\"cursor-dot\"]",
+        "priority": "LOW"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Fix mobile overflow on the email-capture form: e.g., make the row `flex-wrap` or stack on mobile (flex-col sm:flex-row), or reduce gap-6 to gap-3 on small screens, so the row fits within 390px and Home no longer scrolls horizontally."
+  ],
+  "critical_code_review_comments": [
+    "Home.jsx: email submit branch only sets submitted=true if email length>3 but the <input type='email' required> already gates submit; the extra trim check is redundant — minor.",
+    "Cursor.jsx: visibility decided only once on mount via matchMedia; resizing/orientation change won’t re-evaluate. Acceptable for this landing build.",
+    "App.js: Loader is conditionally rendered inside an AnimatePresence sibling to BrowserRouter — fine, but the cursor-custom class is added unconditionally even on touch devices; consider gating it behind the same hover/pointer media query for consistency.",
+    "Journal.jsx: overlay uses pointerEvents:'auto' with backdrop-blur covering the grid — works as designed (deliberate pause). Grid below is correctly marked aria-hidden.",
+    "No <html lang> / page <title> updates per route — minor accessibility/SEO nit, not in scope."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped per request)", "frontend": "~95% (10.5/11 requirements; only mobile horizontal scroll on Home failing)"},
+  "test_credentials": "N/A",
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Backend not tested — review_request was frontend-only and backend has no endpoints for this landing page. All data-testids defined in the request exist and work. Only follow-up needed is verifying the email-form mobile fix on /. Use REACT_APP_BACKEND_URL host directly to view the React app.",
+  "rca of the issue": "On Home at 390px, the form row inside [data-testid=email-capture-form] uses `flex items-end gap-6` with Label + flex-1 input + Send button. The label (~50px) + button (~65px) + 2*24px gaps plus the input's intrinsic minimum width pushes the row to ~412px. Since the row sits inside `px-6` (24px padding each side) the inner content area is 342px, so the row overflows by ~22px, which propagates to <html> scrollWidth (412). Fix: allow the row to wrap or stack vertically on mobile (e.g., `flex-col sm:flex-row` or `flex-wrap`) or reduce gap to `gap-3` on mobile."
+}
