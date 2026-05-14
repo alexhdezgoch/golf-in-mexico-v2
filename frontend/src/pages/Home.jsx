@@ -73,11 +73,13 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-10"
+            className="mb-10 md:mb-14 flex items-center gap-3 text-cream/70"
           >
-            <span className="font-mono text-[10px] md:text-xs uppercase tracking-wide-editorial text-cream/70">
-              Two players. Every region. One journal.
+            <span className="block w-6 h-px bg-cream/50" />
+            <span className="font-mono text-[10px] md:text-xs uppercase tracking-wide-editorial text-cream/75">
+              Shaped by years inside tour environments
             </span>
+            <span className="block w-6 h-px bg-cream/50" />
           </motion.div>
 
           <motion.h1
@@ -85,32 +87,24 @@ const Home = () => {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.4, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display font-light text-cream leading-[0.95] tracking-tight text-[14vw] md:text-[10vw] lg:text-[9rem]"
+            className="font-display font-light text-cream leading-[0.96] tracking-tight text-[10.5vw] md:text-[7.5vw] lg:text-[7rem] max-w-[16ch] mx-auto"
           >
-            Golf <span className="italic font-light">in</span> Mexico
-            <span className="text-gold align-top text-[0.4em] ml-1">°</span>
+            The golf in México <br />
+            <span className="italic">you haven't read about.</span>
           </motion.h1>
 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.9 }}
-            className="mt-14 md:mt-16 max-w-3xl"
+            className="mt-12 md:mt-14 max-w-2xl"
           >
             <p
-              data-testid="hero-headline"
-              className="font-display italic font-light text-cream text-2xl md:text-4xl leading-[1.15] tracking-tight"
-            >
-              Every region. Every course worth the flight.{" "}
-              <span className="not-italic">Every story.</span>
-            </p>
-            <p
               data-testid="hero-subline"
-              className="mt-8 font-body font-light text-cream/80 text-sm md:text-base leading-relaxed max-w-2xl mx-auto"
+              className="font-body font-light text-cream/85 text-base md:text-lg leading-relaxed max-w-xl mx-auto"
             >
-              The only journal written by the two players who've actually walked
-              them — Los Cabos, Punta Mita, Riviera Nayarit, CDMX. The stories
-              no marketplace, no concierge, no review site will tell you.
+              Field notes, course reviews, and interviews — written from the
+              courses themselves.
             </p>
           </motion.div>
         </div>
