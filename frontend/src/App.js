@@ -7,11 +7,11 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Cursor from "@/components/Cursor";
 import Loader from "@/components/Loader";
-import WhatsApp from "@/components/WhatsApp";
 
 import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Journal from "@/pages/Journal";
+import LosCabos from "@/pages/LosCabos";
 
 const pageVariants = {
   initial: { opacity: 0, y: 16 },
@@ -53,6 +53,14 @@ const AnimatedRoutes = () => {
             </motion.div>
           }
         />
+        <Route
+          path="/journal/los-cabos"
+          element={
+            <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+              <LosCabos />
+            </motion.div>
+          }
+        />
       </Routes>
     </AnimatePresence>
   );
@@ -75,7 +83,6 @@ function App() {
         <Nav />
         <AnimatedRoutes />
         <Footer />
-        <WhatsApp />
       </BrowserRouter>
     </div>
   );

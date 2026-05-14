@@ -1,33 +1,33 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-const GRID = [
+const HUBS = [
   {
+    slug: "los-cabos",
     url:
       "https://images.unsplash.com/photo-1605144156546-91acf5e4cffd?auto=format&fit=crop&w=1600&q=80",
     label: "Los Cabos · Baja California Sur",
     issue: "Hub N° 01 · Region",
     title: "Where to play in Los Cabos, hole by hole.",
+    live: true,
   },
   {
+    slug: "puerto-vallarta",
     url:
       "https://images.unsplash.com/photo-1543105177-748ceda71741?auto=format&fit=crop&w=1600&q=80",
     label: "Puerto Vallarta · Jalisco",
     issue: "Hub N° 02 · Region",
     title: "Puerto Vallarta & Punta Mita — the long brief.",
+    live: false,
   },
   {
+    slug: "riviera-maya",
     url:
       "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=1600&q=80",
     label: "Riviera Maya · Quintana Roo",
     issue: "Hub N° 03 · Region",
     title: "Riviera Maya: jungle, cenotes, and El Camaleón.",
-  },
-  {
-    url:
-      "https://images.unsplash.com/photo-1514480573427-1f96cbed6a27?auto=format&fit=crop&w=1600&q=80",
-    label: "Field Notes",
-    issue: "Field Notes · The Caddie Report",
-    title: "Notes the tee-sheet will not tell you.",
+    live: false,
   },
 ];
 
@@ -42,7 +42,7 @@ const Journal = () => {
   return (
     <main data-testid="page-journal" className="relative bg-cream">
       {/* Header */}
-      <section className="pt-44 md:pt-52 pb-16 md:pb-20">
+      <section className="pt-44 md:pt-52 pb-16 md:pb-24">
         <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-8">
           <div className="col-span-12 md:col-span-3">
             <motion.span
@@ -64,130 +64,113 @@ const Journal = () => {
               transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="mt-10 max-w-xl font-body font-light text-ink/70 text-base md:text-lg leading-relaxed"
             >
-              Long-form essays, photo studies, and quiet dispatches from courses
-              along both coasts. Released four times a year, in print and here.
+              Long-form region hubs and field notes from courses along both
+              coasts. We are publishing slowly — one region at a time, walked
+              before written.
             </motion.p>
           </div>
         </div>
       </section>
 
-      {/* Article grid (behind overlay) */}
+      <div className="border-t hairline" />
+
+      {/* Region hubs grid */}
       <section
         data-testid="journal-grid"
-        className="relative pb-32 md:pb-44"
-        aria-hidden="true"
+        className="relative py-20 md:py-28"
       >
         <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-8 md:gap-12">
-          {GRID.map((a, i) => {
-            const colSpan = i % 3 === 0 ? "md:col-span-8" : "md:col-span-4";
-            const offset = i === 1 ? "md:mt-24" : i === 3 ? "md:mt-12" : "";
+          {HUBS.map((a, i) => {
+            const colSpan =
+              i === 0 ? "md:col-span-8" : "md:col-span-4";
+            const offset = i === 2 ? "md:mt-24" : "";
+            const Wrapper = a.live ? Link : "div";
+            const wrapperProps = a.live
+              ? {
+                  to: `/journal/${a.slug}`,
+                  "data-testid": `journal-card-${i + 1}-link`,
+                }
+              : { "data-testid": `journal-card-${i + 1}-locked` };
+
             return (
-              <article
-                key={i}
+              <motion.article
+                key={a.slug}
+                {...fade}
+                transition={{
+                  duration: 1,
+                  delay: 0.08 * i,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
                 data-testid={`journal-card-${i + 1}`}
-                className={`col-span-12 ${colSpan} ${offset}`}
+                className={`col-span-12 ${colSpan} ${offset} group`}
               >
-                <div className="aspect-[4/5] w-full overflow-hidden">
-                  <img
-                    src={a.url}
-                    alt={a.label}
-                    className="w-full h-full object-cover editorial-img"
-                  />
-                </div>
-                <div className="mt-6 flex items-start justify-between gap-6">
-                  <div>
-                    <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
-                      {a.issue}
-                    </span>
-                    <h3 className="mt-2 font-display text-2xl md:text-3xl font-light text-ink leading-tight max-w-md">
-                      {a.title}
-                    </h3>
+                <Wrapper {...wrapperProps} className="block">
+                  <div className="relative aspect-[4/5] w-full overflow-hidden">
+                    <img
+                      src={a.url}
+                      alt={a.label}
+                      className={`w-full h-full object-cover editorial-img transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                        a.live ? "group-hover:scale-[1.03]" : ""
+                      }`}
+                    />
+                    {!a.live && (
+                      <div className="absolute inset-0 bg-cream/55 backdrop-blur-[3px] flex items-center justify-center">
+                        <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-ink/80 border border-ink/30 px-3 py-1.5">
+                          In Preparation
+                        </span>
+                      </div>
+                    )}
                   </div>
-                  <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted shrink-0 pt-1">
-                    {String(i + 1).padStart(2, "0")} / 04
-                  </span>
-                </div>
-                <p className="mt-3 font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
-                  {a.label}
-                </p>
-              </article>
+                  <div className="mt-6 flex items-start justify-between gap-6">
+                    <div>
+                      <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
+                        {a.issue}
+                      </span>
+                      <h3
+                        className={`mt-2 font-display text-2xl md:text-3xl font-light leading-tight max-w-md ${
+                          a.live ? "text-ink" : "text-ink/55"
+                        }`}
+                      >
+                        {a.title}
+                      </h3>
+                    </div>
+                    <span
+                      className={`font-mono text-[10px] uppercase tracking-wide-editorial shrink-0 pt-1 transition-transform duration-500 ${
+                        a.live
+                          ? "text-ink group-hover:translate-x-1"
+                          : "text-muted"
+                      }`}
+                    >
+                      {a.live ? "Read →" : "Soon"}
+                    </span>
+                  </div>
+                  <p className="mt-3 font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
+                    {a.label}
+                  </p>
+                </Wrapper>
+              </motion.article>
             );
           })}
         </div>
       </section>
 
-      {/* Coming Soon overlay — deliberate editorial pause */}
-      <motion.div
-        data-testid="coming-soon-overlay"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed inset-0 z-[80] flex items-center justify-center backdrop-blur-[14px] bg-cream/72"
-        style={{ pointerEvents: "auto" }}
-      >
-        <div className="max-w-[1440px] w-full mx-auto px-6 md:px-12 grid grid-cols-12 gap-8">
-          <div className="col-span-12 md:col-span-2 hidden md:flex items-end">
-            <span className="vertical-rl font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
-              Issue N° 001 · In Preparation
-            </span>
-          </div>
-
-          <div className="col-span-12 md:col-span-8 text-center">
-            <motion.span
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.2 }}
-              className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold"
-            >
-              — A deliberate pause —
-            </motion.span>
-
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              data-testid="coming-soon-title"
-              className="mt-8 font-display font-light text-ink text-6xl md:text-8xl lg:text-9xl leading-[0.95] tracking-tight"
-            >
-              The journal <br />
-              <span className="italic">is coming.</span>
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.7 }}
-              className="mt-10 font-body font-light text-ink/75 text-base md:text-lg leading-relaxed max-w-xl mx-auto"
-            >
-              We are writing it the way the courses deserve to be written about
-              — slowly. The first issue arrives this season. Until then, this
-              page will wait, beautifully, in its absence.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 1 }}
-              className="mt-14 flex flex-col items-center gap-5"
-            >
-              <span className="block w-px h-12 bg-ink/30" />
-              <a
-                href="/"
-                data-testid="coming-soon-home-link"
-                className="editorial-link font-mono text-[11px] uppercase tracking-wide-editorial text-ink"
-              >
-                Return to the cover
-              </a>
-            </motion.div>
-          </div>
-
-          <div className="col-span-12 md:col-span-2 hidden md:flex items-end justify-end">
+      {/* Field notes / future */}
+      <section className="py-20 md:py-28 border-t hairline">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-8">
+          <div className="col-span-12 md:col-span-3">
             <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
-              MMXXV
+              On the desk
             </span>
+          </div>
+          <div className="col-span-12 md:col-span-9">
+            <p className="font-display italic font-light text-ink text-2xl md:text-4xl leading-[1.2] tracking-tight max-w-3xl">
+              Puerto Vallarta arrives next, the Riviera Maya after that. Field
+              notes, course reviews, and interviews — written from the courses
+              themselves.
+            </p>
           </div>
         </div>
-      </motion.div>
+      </section>
     </main>
   );
 };
