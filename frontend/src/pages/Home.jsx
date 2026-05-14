@@ -230,9 +230,15 @@ const Home = () => {
             </div>
             <div className="col-span-12 md:col-span-9">
               <h2 className="font-display font-light text-ink text-3xl md:text-5xl leading-[1.05] tracking-tight max-w-3xl">
-                Two men, <span className="italic">thirty courses</span>, and a
-                country full of light.
+                Two players, two voices — and the only three pillars{" "}
+                <span className="italic">that matter.</span>
               </h2>
+              <p className="mt-8 font-body font-light text-ink/70 text-base md:text-lg max-w-xl leading-relaxed">
+                Pablo and José have spent the better part of two decades inside
+                the game in México — as agent, as competitor, as friend of the
+                house. Together they cover the only three things worth covering:
+                <span className="text-ink"> golf, people, cultura.</span>
+              </p>
             </div>
           </div>
 
@@ -366,8 +372,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {/* PILLARS — What we cover */}
       <section
-        data-testid="destinations-section"
+        data-testid="pillars-section"
         className="relative bg-cream border-t hairline pt-24 md:pt-36 pb-32 md:pb-44"
       >
         <div className="max-w-[1440px] mx-auto px-6 md:px-12">
@@ -377,7 +384,7 @@ const Home = () => {
                 {...fade}
                 className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted"
               >
-                N° 04 — Where we play
+                N° 04 — What we cover
               </motion.span>
             </div>
             <div className="col-span-12 md:col-span-9">
@@ -385,74 +392,77 @@ const Home = () => {
                 {...fade}
                 className="font-display font-light text-ink text-4xl md:text-6xl leading-[1.05] tracking-tight max-w-3xl"
               >
-                Two coasts, <span className="italic">five regions</span>, one
-                long answer to the question.
+                Three pillars. <br className="hidden md:block" />
+                Nothing else <span className="italic">distracts us.</span>
               </motion.h2>
+              <motion.p
+                {...fade}
+                transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                className="mt-8 font-body font-light text-ink/70 text-base md:text-lg max-w-xl leading-relaxed"
+              >
+                Everything we write, photograph, and arrange falls inside one of
+                these three. The rest is somebody else's job.
+              </motion.p>
             </div>
           </div>
 
-          <ul className="grid grid-cols-12 gap-x-8 md:gap-x-12 gap-y-12">
+          <ul className="grid grid-cols-12 gap-x-8 md:gap-x-12 gap-y-16 md:gap-y-20">
             {[
               {
-                num: "01",
-                name: "Los Cabos",
-                state: "Baja California Sur",
-                line: "Where the desert ends and the Pacific begins.",
+                num: "I",
+                name: "Golf",
+                tag: "The Course",
+                img: "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=1400&q=80",
+                line: "Courses, architecture, the lines a great hole draws on the land. We walk every fairway before we write about it.",
               },
               {
-                num: "02",
-                name: "Riviera Maya",
-                state: "Quintana Roo",
-                line: "Cenotes, jungle, and the Caribbean at the green.",
+                num: "II",
+                name: "People",
+                tag: "Las Personas",
+                img: "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1400&q=80",
+                line: "Caddies, members, head pros, designers, friends of the house. Golf in México is played by hand, and remembered by name.",
               },
               {
-                num: "03",
-                name: "Punta Mita",
-                state: "Nayarit",
-                line: "A peninsula of greens between two oceans.",
+                num: "III",
+                name: "Cultura",
+                tag: "The Country",
+                img: "https://images.unsplash.com/photo-1688845465690-e5ea24774fd5?auto=format&fit=crop&w=1400&q=80",
+                line: "Food, mezcal, music, the hour before dinner. The country that surrounds the eighteen holes — and the reason the flight is worth it.",
               },
-              {
-                num: "04",
-                name: "Puerto Vallarta",
-                state: "Jalisco",
-                line: "Mountain courses above the Bay of Banderas.",
-              },
-              {
-                num: "05",
-                name: "Ciudad de México",
-                state: "Distrito Federal",
-                line: "Members-only at altitude, in eternal spring.",
-              },
-            ].map((d, i) => (
+            ].map((p, i) => (
               <motion.li
-                key={d.num}
+                key={p.num}
                 {...fade}
                 transition={{
                   duration: 1,
-                  delay: 0.05 * i,
+                  delay: 0.1 * i,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                data-testid={`destination-${d.num}`}
-                className="col-span-12 md:col-span-6 lg:col-span-4 group border-t hairline pt-6"
+                data-testid={`pillar-${p.name.toLowerCase()}`}
+                className="col-span-12 md:col-span-4 group"
               >
-                <div className="flex items-start justify-between gap-6">
+                <div className="aspect-[3/4] w-full overflow-hidden mb-8">
+                  <img
+                    src={p.img}
+                    alt={p.name}
+                    className="w-full h-full object-cover editorial-img transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+                  />
+                </div>
+                <div className="flex items-start justify-between gap-6 border-t hairline pt-6">
                   <div>
                     <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
-                      {d.num}
+                      Pillar · {p.num}
                     </span>
-                    <h3 className="mt-4 font-display text-3xl md:text-4xl font-light tracking-tight text-ink leading-[1.05]">
-                      {d.name}
+                    <h3 className="mt-4 font-display text-4xl md:text-5xl font-light tracking-tight text-ink leading-[1]">
+                      {p.name}
                     </h3>
                     <p className="mt-3 font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
-                      {d.state}
+                      {p.tag}
                     </p>
                   </div>
-                  <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted pt-1 transition-transform duration-500 group-hover:translate-x-1">
-                    →
-                  </span>
                 </div>
-                <p className="mt-8 font-body font-light text-ink/75 text-base md:text-lg leading-[1.7] max-w-md">
-                  {d.line}
+                <p className="mt-6 font-body font-light text-ink/80 text-base md:text-lg leading-[1.7]">
+                  {p.line}
                 </p>
               </motion.li>
             ))}
