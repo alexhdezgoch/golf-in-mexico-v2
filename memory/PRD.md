@@ -1,39 +1,50 @@
 # Golf in Mexico° — PRD
 
 ## Original Problem Statement
-Build a multi-page editorial landing page for "Golf in Mexico°" — a premium editorial golf brand. Award-winning level (Awwwards target). Minimalist, editorial, cinematic. The Golfer's Journal × Kinfolk aesthetic. Cream + ink + gold + forest palette. Cormorant Garamond / Outfit / JetBrains Mono. Three pages: Home (active), About (active), Journal (locked/Coming Soon).
+Build a multi-page editorial landing page for "Golf in Mexico°" — premium editorial brand at golf-in-mexico.com. Reinforce with the GIM Digital Strategy v2: premium agency selling $10K curated trips, NOT a tee-time marketplace; "discipline of the no"; English-first; US 45-65 ICP; primary regions Los Cabos, Riviera Maya, Punta Mita, Puerto Vallarta, CDMX.
 
-## User Choices (resolved)
-- Hero: autoplay muted loop background video (Mixkit coastal-cinematic, with cinematic golf-course poster as fallback).
-- Email capture: design-only, no backend submit logic.
-- Founders: generic editorial portraits (Unsplash).
-- Logos strip: removed entirely.
+## User Choices
+- Hero: autoplay muted loop background video (Mixkit coastal placeholder).
+- Email capture: design-only.
+- Founders: generic editorial portraits.
+- Logos strip: removed.
 - Language: English only.
+- Logo: official wordmark `GOLF° IN MEXICO°` provided as PNG, stored at `/app/frontend/public/logo-wordmark.png`. Used in nav, footer (giant editorial mark), favicon, OG image.
+- Domain: golf-in-mexico.com — referenced in footer, OG meta, support email `hello@golf-in-mexico.com`.
 
 ## Architecture
 - Frontend: React 19 + react-router-dom 7 + Tailwind + framer-motion.
-- Backend: untouched FastAPI starter (no endpoints used by this site).
-- No third-party integrations; no DB writes.
+- Backend: untouched FastAPI starter.
 
-## What's Implemented (2025-12)
-- Global system: custom dot cursor (framer-motion spring) that grows + turns gold on interactive elements; minimal sub-1s loader; grain overlay; print-style hairline dividers; smooth fade/slide page transitions via AnimatePresence.
-- Typography stack: Cormorant Garamond Light/Italic (display), Outfit Light (body), JetBrains Mono (labels).
-- Color tokens: cream `#F5F2EB`, ink `#1A1A18`, gold `#C4A24E`, forest `#2C4A2C`, muted `#5C5C56`.
-- Sticky nav: transparent on hero, condenses with backdrop-blur + cream/85 + hairline on scroll. Mobile drawer with full display-type links.
-- Home: fullscreen 100svh hero with autoplay muted loop video + ink overlay, centered "Golf in Mexico°" wordmark, headline, subline, corner editorial labels, scroll cue. Email capture (visual). Editorial founders intro (photo / story alternation) with parallax.
-- About: large editorial header, two long-form founder stories with drop caps, parallax full-bleed portraits, closing pull-quote.
-- Journal: full article grid (4 cards, magazine offset rhythm) + fixed Coming Soon overlay (backdrop-blur, cream/72, vertical-rl side label, big Cormorant headline, return-to-cover link).
-- Footer: index, correspondence, origin, issue mark, year.
-- All interactive elements carry `data-testid` (kebab-case).
+## What's Implemented
+### 2025-12 — Initial build
+- 3-page editorial site (Home / About / Journal) on exact cream/ink/gold/forest palette.
+- Cormorant Garamond + Outfit + JetBrains Mono typography stack.
+- Sticky condensing nav, custom dot cursor, sub-1s loader, smooth fade page transitions, parallax full-bleed imagery.
+- Home: hero video + wordmark + headline + email capture + parallax founders.
+- About: long-form editorial founder stories.
+- Journal: article grid + Coming Soon overlay.
+- All interactive elements carry kebab-case data-testid.
+
+### 2025-12 — Strategy reinforcement + brand mark
+- Real wordmark PNG installed (nav, footer giant mark, favicon, OG).
+- Nav logo & links auto-invert: light over dark hero, dark over cream (scrolled or non-home routes).
+- Hero subline refined to "Issued from Los Cabos to the Riviera Maya — by invitation only" (premium-agency positioning).
+- New Home section: **N° 03 — Where we play** — five regions (Los Cabos, Riviera Maya, Punta Mita, Puerto Vallarta, Ciudad de México) as editorial typographic cards.
+- Closing pull-quote on Destinations: "We do not sell tee times. We arrange the four mornings that will decide what you think of México for the rest of your life."
+- New Home section: **N° 04 — Manifesto / The discipline of the no** — dark ink background, two-column "This is / This is not" reinforcing premium-editorial-not-marketplace positioning.
+- Domain rolled out: `hello@golf-in-mexico.com`, footer attribution, OG URL `https://golf-in-mexico.com`.
+- SEO: og:title, og:description, og:image, twitter card meta added.
 
 ## Prioritized Backlog
-- P1: real founder portraits + cinematic golf-relevant hero video once provided.
-- P2: bilingual EN/ES toggle.
-- P2: real backend on `/api/subscribers` once newsletter strategy decided (Resend / ConvertKit / Mongo).
-- P2: Journal CMS — when first issue is ready, swap the overlay for live articles.
-- P3: print/wallpaper download for Issue N° 001 launch teaser.
+- P1: Real cinematic golf hero video URL.
+- P1: Real founder portraits.
+- P2: Plan-your-trip / inquiry form (the $10K-trip QL capture — clarify destination + dates + invitation source) when ready to wire backend.
+- P2: Editorial SEO articles (long-form hubs per region) → Journal CMS.
+- P2: EN/ES toggle when CDMX content is ready.
+- P3: Press / "as seen in" strip when applicable.
 
 ## Next Tasks
-- Hook up email capture to a backend route + email provider when ready.
-- Replace stock portraits with real Pablo / José photography.
-- Provide a final hero video (golf-centric, slow-cinematic) — current placeholder is a Mixkit coastal aerial.
+- Replace Mixkit coastal placeholder with golf-relevant cinematic video.
+- Wire inquiry form to backend + email provider (Resend recommended).
+- Build first 3 SEO long-form articles to swap in once Journal launches.

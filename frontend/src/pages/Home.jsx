@@ -107,7 +107,8 @@ const Home = () => {
               className="mt-8 font-body font-light text-cream/80 text-sm md:text-base leading-relaxed max-w-xl mx-auto"
             >
               A journal about the courses, the people, and the trips that make it
-              worth the flight.
+              worth the flight. Issued from Los Cabos to the Riviera Maya — by
+              invitation only.
             </p>
           </motion.div>
         </div>
@@ -298,6 +299,166 @@ const Home = () => {
               </Parallax>
             </div>
           </article>
+        </div>
+      </section>
+
+      {/* DESTINATIONS — Where we play */}
+      <section
+        data-testid="destinations-section"
+        className="relative bg-cream border-t hairline pt-24 md:pt-36 pb-32 md:pb-44"
+      >
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-12 gap-8 mb-16 md:mb-24">
+            <div className="col-span-12 md:col-span-3">
+              <motion.span
+                {...fade}
+                className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted"
+              >
+                N° 03 — Where we play
+              </motion.span>
+            </div>
+            <div className="col-span-12 md:col-span-9">
+              <motion.h2
+                {...fade}
+                className="font-display font-light text-ink text-4xl md:text-6xl leading-[1.05] tracking-tight max-w-3xl"
+              >
+                Two coasts, <span className="italic">five regions</span>, one
+                long answer to the question.
+              </motion.h2>
+            </div>
+          </div>
+
+          <ul className="grid grid-cols-12 gap-x-8 md:gap-x-12 gap-y-12">
+            {[
+              {
+                num: "01",
+                name: "Los Cabos",
+                state: "Baja California Sur",
+                line: "Where the desert ends and the Pacific begins.",
+              },
+              {
+                num: "02",
+                name: "Riviera Maya",
+                state: "Quintana Roo",
+                line: "Cenotes, jungle, and the Caribbean at the green.",
+              },
+              {
+                num: "03",
+                name: "Punta Mita",
+                state: "Nayarit",
+                line: "A peninsula of greens between two oceans.",
+              },
+              {
+                num: "04",
+                name: "Puerto Vallarta",
+                state: "Jalisco",
+                line: "Mountain courses above the Bay of Banderas.",
+              },
+              {
+                num: "05",
+                name: "Ciudad de México",
+                state: "Distrito Federal",
+                line: "Members-only at altitude, in eternal spring.",
+              },
+            ].map((d, i) => (
+              <motion.li
+                key={d.num}
+                {...fade}
+                transition={{
+                  duration: 1,
+                  delay: 0.05 * i,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                data-testid={`destination-${d.num}`}
+                className="col-span-12 md:col-span-6 lg:col-span-4 group border-t hairline pt-6"
+              >
+                <div className="flex items-start justify-between gap-6">
+                  <div>
+                    <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
+                      {d.num}
+                    </span>
+                    <h3 className="mt-4 font-display text-3xl md:text-4xl font-light tracking-tight text-ink leading-[1.05]">
+                      {d.name}
+                    </h3>
+                    <p className="mt-3 font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
+                      {d.state}
+                    </p>
+                  </div>
+                  <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted pt-1 transition-transform duration-500 group-hover:translate-x-1">
+                    →
+                  </span>
+                </div>
+                <p className="mt-8 font-body font-light text-ink/75 text-base md:text-lg leading-[1.7] max-w-md">
+                  {d.line}
+                </p>
+              </motion.li>
+            ))}
+          </ul>
+
+          <motion.p
+            {...fade}
+            transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-20 md:mt-28 font-display italic font-light text-ink text-2xl md:text-4xl leading-[1.2] tracking-tight max-w-3xl"
+          >
+            “We do not sell tee times. We arrange the four mornings that will
+            decide what you think of México for the rest of your life.”
+          </motion.p>
+        </div>
+      </section>
+
+      {/* PHILOSOPHY — what this is, what it isn't */}
+      <section
+        data-testid="philosophy-section"
+        className="relative bg-ink text-cream py-32 md:py-44 overflow-hidden"
+      >
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-8">
+          <div className="col-span-12 md:col-span-3">
+            <motion.span
+              {...fade}
+              className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/60"
+            >
+              N° 04 — Manifesto
+            </motion.span>
+          </div>
+          <div className="col-span-12 md:col-span-9">
+            <motion.h2
+              {...fade}
+              className="font-display font-light text-cream text-4xl md:text-6xl leading-[1.05] tracking-tight max-w-3xl"
+            >
+              The discipline of the <span className="italic">no.</span>
+            </motion.h2>
+
+            <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
+              <motion.div
+                {...fade}
+                transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
+                  This is
+                </span>
+                <ul className="mt-6 space-y-4 font-body font-light text-cream/85 text-lg leading-[1.6]">
+                  <li>An editorial journal, four issues a year.</li>
+                  <li>A short list of trips, arranged by hand.</li>
+                  <li>A field guide to courses worth the flight.</li>
+                  <li>A standing invitation, by name.</li>
+                </ul>
+              </motion.div>
+              <motion.div
+                {...fade}
+                transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/50">
+                  This is not
+                </span>
+                <ul className="mt-6 space-y-4 font-body font-light text-cream/55 text-lg leading-[1.6]">
+                  <li>A tee-time marketplace.</li>
+                  <li>A travel agency.</li>
+                  <li>A newsletter.</li>
+                  <li>A list of every course in México.</li>
+                </ul>
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
     </main>

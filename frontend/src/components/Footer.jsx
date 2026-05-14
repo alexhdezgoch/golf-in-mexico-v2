@@ -46,11 +46,11 @@ const Footer = () => {
             Correspondence
           </span>
           <a
-            href="mailto:hello@golfinmexico.co"
+            href="mailto:hello@golf-in-mexico.com"
             data-testid="footer-link-email"
             className="font-body text-base text-ink editorial-link self-start"
           >
-            hello@golfinmexico.co
+            hello@golf-in-mexico.com
           </a>
           <a
             href="#"
@@ -72,9 +72,21 @@ const Footer = () => {
       </div>
 
       <div className="border-t hairline">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-12 md:py-16">
+          <img
+            src="/logo-wordmark.png"
+            alt="Golf in Mexico°"
+            data-testid="footer-wordmark"
+            className="w-full h-auto invert"
+            style={{ mixBlendMode: "multiply" }}
+          />
+        </div>
+      </div>
+
+      <div className="border-t hairline">
         <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
           <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
-            © {year} Golf in Mexico°
+            © {year} Golf in Mexico° · golf-in-mexico.com
           </span>
           <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
             Issue N° 001 — In Preparation

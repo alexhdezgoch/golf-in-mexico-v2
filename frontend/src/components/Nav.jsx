@@ -11,6 +11,8 @@ const Nav = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const isHome = location.pathname === "/";
+  const onDarkHero = isHome && !scrolled;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -36,10 +38,16 @@ const Nav = () => {
         <Link
           to="/"
           data-testid="nav-logo"
-          className="font-display text-xl md:text-2xl tracking-tight text-ink leading-none"
+          className="flex items-center leading-none"
         >
-          Golf in Mexico
-          <span className="text-gold align-top text-[0.6em] ml-[1px]">°</span>
+          <img
+            src="/logo-wordmark.png"
+            alt="Golf in Mexico°"
+            className={`h-3.5 md:h-4 w-auto transition-[filter] duration-500 ${
+              onDarkHero ? "" : "invert"
+            }`}
+            style={{ mixBlendMode: onDarkHero ? "screen" : "multiply" }}
+          />
         </Link>
 
         {/* Desktop nav */}
@@ -51,7 +59,13 @@ const Nav = () => {
               data-testid={`nav-link-${l.label.toLowerCase()}`}
               className={({ isActive }) =>
                 `editorial-link font-mono text-[11px] uppercase tracking-wide-editorial transition-colors ${
-                  isActive ? "text-ink" : "text-muted hover:text-ink"
+                  onDarkHero
+                    ? isActive
+                      ? "text-cream"
+                      : "text-cream/60 hover:text-cream"
+                    : isActive
+                      ? "text-ink"
+                      : "text-muted hover:text-ink"
                 }`
               }
               end={l.to === "/"}
@@ -59,7 +73,11 @@ const Nav = () => {
               {l.label}
             </NavLink>
           ))}
-          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted/70 pl-6 border-l hairline">
+          <span
+            className={`font-mono text-[10px] uppercase tracking-wide-editorial pl-6 border-l hairline ${
+              onDarkHero ? "text-cream/45 border-cream/20" : "text-muted/70"
+            }`}
+          >
             MX · EST. 2025
           </span>
         </nav>
@@ -68,7 +86,9 @@ const Nav = () => {
         <button
           data-testid="nav-mobile-toggle"
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden font-mono text-[11px] uppercase tracking-wide-editorial text-ink"
+          className={`md:hidden font-mono text-[11px] uppercase tracking-wide-editorial ${
+            onDarkHero ? "text-cream" : "text-ink"
+          }`}
           aria-label="Toggle menu"
         >
           {open ? "Close" : "Menu"}
