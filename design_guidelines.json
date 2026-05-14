@@ -1,0 +1,136 @@
+{
+  "theme": "light",
+  "archetype": "1 (Organic & Earthy) - Modified for Premium Editorial (High Contrast)",
+  "global_rules": {
+    "design_philosophy": "The Golfer's Journal meets Kinfolk. Minimalist, editorial, cinematic, typography-forward. The photography does the selling.",
+    "whitespace": "Generous. Use Tailwind scale generously (py-24, py-32, gap-16) to create 'museum-worthy' breathing room.",
+    "animations": "Smooth page transitions (fade/slide), custom dot cursor, minimal load animation (<1s), subtle parallax on full-bleed images.",
+    "responsiveness": "Fully responsive, vertical scroll only. No carousels."
+  },
+  "colors": {
+    "background": "#F5F2EB",
+    "ink": "#1A1A18",
+    "gold_accent": "#C4A24E",
+    "forest_green": "#2C4A2C",
+    "muted": "#5C5C56"
+  },
+  "typography": {
+    "fonts": {
+      "display": "Cormorant Garamond",
+      "body": "Outfit",
+      "mono": "JetBrains Mono"
+    },
+    "scale": {
+      "h1": "text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-ink",
+      "h2": "text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-ink",
+      "h3": "text-xl md:text-2xl font-light text-ink",
+      "body": "text-base md:text-lg font-light leading-relaxed text-ink/80",
+      "labels": "text-xs md:text-sm uppercase tracking-[0.2em] font-mono text-muted"
+    },
+    "implementation_notes": "Use 'font-light' for Cormorant Garamond and Outfit. Headlines are large and slow. Use 'italic' selectively for emphasis in headings to match print editorial styles."
+  },
+  "layout_and_spacing": {
+    "container": "max-w-7xl mx-auto px-6 md:px-12",
+    "sections": "py-24 md:py-32",
+    "grid": "grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16",
+    "borders": "1px solid #5C5C56 (opacity-20 for subtle separators)"
+  },
+  "components": {
+    "navigation": {
+      "style": "Sticky minimal nav, logo left, links right. No hamburger on desktop. Condenses on scroll (reduce padding, add backdrop-blur-md and bg-[#F5F2EB]/80).",
+      "links": "font-mono uppercase text-xs tracking-[0.2em] text-ink hover:text-gold_accent transition-colors"
+    },
+    "custom_cursor": {
+      "style": "Small gold (#C4A24E) or ink (#1A1A18) dot that follows mouse pointer using framer-motion. Hides default cursor on desktop."
+    },
+    "email_capture": {
+      "style": "Minimalist, visual-only. Single input field with bottom border only (border-ink), no background, placeholder in JetBrains Mono. Submit button is a simple text link or minimal arrow icon, aligning with the baseline.",
+      "focus": "outline-none border-gold_accent"
+    }
+  },
+  "pages": {
+    "home": {
+      "sections": [
+        {
+          "name": "Hero",
+          "layout": "Fullscreen (h-screen) relative container.",
+          "background": "Autoplay muted loop video (object-cover absolute inset-0 w-full h-full). Black/40 overlay to ensure text readability.",
+          "content": "Centered. Logo 'Golf in Mexico°' (Cormorant Garamond). Main line 'The best golf in the world is in Mexico.' (h1). Subline 'A journal about the courses, the people, and the trips that make it worth the flight.' (body text but slightly larger). Minimal email capture at bottom."
+        },
+        {
+          "name": "Founders Intro",
+          "layout": "Two editorial cards stacked or side-by-side grid. Photo left (col-span-5), Text right (col-span-7).",
+          "content": "Generous whitespace. Introduce the brand via the founders. Very minimal."
+        }
+      ]
+    },
+    "about": {
+      "sections": [
+        {
+          "name": "Header",
+          "layout": "py-32 text-center",
+          "content": "Large display title 'The Founders' or 'Behind the Journal'."
+        },
+        {
+          "name": "Founders Stories",
+          "layout": "Grid-based editorial layout. Alternating or consistent photo/text blocks. No standard bios—focus on the story of Pablo De La Mora (PGA Tour Agent, 30+ courses) and José Islas (2023 US Amateur QF).",
+          "styling": "Full-bleed imagery on one side, deep padding on text side. Use drop caps or pull quotes if it fits the magazine vibe."
+        }
+      ]
+    },
+    "journal": {
+      "sections": [
+        {
+          "name": "Article Grid (Locked)",
+          "layout": "Bento or masonry grid of full-bleed images.",
+          "behavior": "A deliberate editorial pause. The images are visible in the background, but the entire page/grid is covered by an elegant 'Coming Soon' overlay.",
+          "overlay_style": "backdrop-blur-md bg-[#F5F2EB]/60 fixed inset-0 z-40 flex flex-col items-center justify-center. Features a refined message in Cormorant Garamond."
+        }
+      ]
+    }
+  },
+  "media": {
+    "video_urls": {
+      "hero_background": "https://assets.mixkit.co/videos/preview/mixkit-overhead-view-of-a-rocky-coast-and-waves-crashing-51502-large.mp4"
+    },
+    "image_urls": {
+      "founder_pablo": {
+        "url": "https://images.unsplash.com/photo-1601442705509-c6d748675f7f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHwyfHxtZXhpY2FuJTIwbWFuJTIwZWRpdG9yaWFsJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzc4NzcxNjU3fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Editorial portrait for Pablo De La Mora"
+      },
+      "founder_jose": {
+        "url": "https://images.unsplash.com/photo-1613096108660-104d7e8b132a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHwxfHxtZXhpY2FuJTIwbWFuJTIwZWRpdG9yaWFsJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzc4NzcxNjU3fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Editorial portrait for José Islas"
+      },
+      "journal_grid": [
+        {
+          "url": "https://images.unsplash.com/photo-1605144156546-91acf5e4cffd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHw0fHxjaW5lbWF0aWMlMjBjb2FzdGFsJTIwZ29sZiUyMGNvdXJzZXxlbnwwfHx8fDE3Nzg3NzE2NTd8MA&ixlib=rb-4.1.0&q=85",
+          "description": "Journal article background 1"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwxfHxjaW5lbWF0aWMlMjBjb2FzdGFsJTIwZ29sZiUyMGNvdXJzZXxlbnwwfHx8fDE3Nzg3NzE2NTd8MA&ixlib=rb-4.1.0&q=85",
+          "description": "Journal article background 2"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1514480573427-1f96cbed6a27?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwyfHxjaW5lbWF0aWMlMjBjb2FzdGFsJTIwZ29sZiUyMGNvdXJzZXxlbnwwfHx8fDE3Nzg3NzE2NTd8MA&ixlib=rb-4.1.0&q=85",
+          "description": "Journal article background 3"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1543105177-748ceda71741?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwzfHxjaW5lbWF0aWMlMjBjb2FzdGFsJTIwZ29sZiUyMGNvdXJzZXxlbnwwfHx8fDE3Nzg3NzE2NTd8MA&ixlib=rb-4.1.0&q=85",
+          "description": "Journal article background 4"
+        }
+      ]
+    }
+  },
+  "instructions_to_main_agent": [
+    "You MUST strictly use the 5 exact hex codes provided in 'colors'. Do not deviate.",
+    "Import Google Fonts: Cormorant Garamond, Outfit, and JetBrains Mono. Configure Tailwind theme to use them properly.",
+    "Do NOT use typical SaaS Shadcn components (like Card or bordered containers) for this. This is an editorial, print-magazine-style layout. Build with raw HTML/Tailwind divs for complete control over whitespace and alignment.",
+    "Ensure the custom dot cursor is implemented globally using framer-motion.",
+    "The Hero section MUST use the video URL provided as an autoplaying, muted, looping background.",
+    "For the Journal page, render the article grid with images, but ensure an elegant full-page 'Coming Soon' overlay completely covers it (with backdrop blur).",
+    "All interactive elements MUST have a data-testid attribute in kebab-case format.",
+    "No hamburger menu on desktop; use a minimalist sticky nav that condenses gracefully on scroll.",
+    "Implement smooth page transitions and subtle image parallax using framer-motion."
+  ]
+}
