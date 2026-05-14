@@ -106,9 +106,9 @@ const Home = () => {
               data-testid="hero-subline"
               className="mt-8 font-body font-light text-cream/80 text-sm md:text-base leading-relaxed max-w-xl mx-auto"
             >
-              A journal about the courses, the people, and the trips that make it
-              worth the flight. Issued from Los Cabos to the Riviera Maya — by
-              invitation only.
+              Field notes, course reviews, and the trips that make it worth the
+              flight — written from the courses themselves. From Los Cabos to
+              the Riviera Maya, by invitation.
             </p>
           </motion.div>
         </div>
@@ -142,7 +142,7 @@ const Home = () => {
               {...fade}
               className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted"
             >
-              N° 01 — Subscribe
+              N° 01 — Stay in the know
             </motion.span>
           </div>
 
@@ -160,8 +160,8 @@ const Home = () => {
               transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="mt-10 font-body text-base md:text-lg text-ink/70 max-w-xl leading-relaxed"
             >
-              Four times a year. A field journal, never a newsletter. No banners,
-              no schedules — only the work of looking closer.
+              Editorial stories, new courses, and curated experiences. Sent
+              rarely. Only what is worth your time.
             </motion.p>
 
             <motion.form
@@ -302,7 +302,70 @@ const Home = () => {
         </div>
       </section>
 
-      {/* DESTINATIONS — Where we play */}
+      {/* EDITORIAL STATEMENT — A land of contrasts */}
+      <section
+        data-testid="statement-section"
+        className="relative bg-cream border-t hairline py-28 md:py-40"
+      >
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-8">
+          <div className="col-span-12 md:col-span-3">
+            <motion.span
+              {...fade}
+              className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted"
+            >
+              N° 03 — A statement
+            </motion.span>
+          </div>
+          <div className="col-span-12 md:col-span-9">
+            <motion.h2
+              {...fade}
+              className="font-display font-light text-ink text-4xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight max-w-4xl"
+            >
+              México is not just a golf <br className="hidden md:block" />
+              destination. It is a{" "}
+              <span className="italic">statement.</span>
+            </motion.h2>
+
+            <motion.p
+              {...fade}
+              transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-14 font-body font-light text-ink/80 text-lg md:text-xl leading-[1.7] max-w-2xl"
+            >
+              Every course is carved into a geography that defies imagination —
+              between volcanoes overlooking the highlands, coasts where the
+              Pacific crashes against volcanic rock, and deserts that bloom with
+              impossible vegetation.
+            </motion.p>
+
+            <motion.p
+              {...fade}
+              transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-8 font-body font-light text-ink/80 text-lg md:text-xl leading-[1.7] max-w-2xl"
+            >
+              Here, the fairway isn't turf on dirt. It is a dialogue between the
+              architect and the landscape. In Los Cabos, the courses embrace the
+              Sonoran desert. In the Riviera Maya, the greens carve their way
+              through cenotes and jungle. This is a land of contrasts —
+              played slowly.
+            </motion.p>
+
+            <motion.blockquote
+              {...fade}
+              transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-16 md:mt-20 max-w-3xl"
+            >
+              <span className="font-display italic text-gold text-5xl md:text-7xl leading-none block">
+                “
+              </span>
+              <p className="mt-2 font-display italic font-light text-ink text-2xl md:text-4xl leading-[1.2] tracking-tight">
+                Golf in México is not tourism. It is immersion — the
+                understanding that a culture can elevate the game into something
+                you will not find anywhere else in the world.
+              </p>
+            </motion.blockquote>
+          </div>
+        </div>
+      </section>
       <section
         data-testid="destinations-section"
         className="relative bg-cream border-t hairline pt-24 md:pt-36 pb-32 md:pb-44"
@@ -314,7 +377,7 @@ const Home = () => {
                 {...fade}
                 className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted"
               >
-                N° 03 — Where we play
+                N° 04 — Where we play
               </motion.span>
             </div>
             <div className="col-span-12 md:col-span-9">
@@ -417,7 +480,7 @@ const Home = () => {
               {...fade}
               className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/60"
             >
-              N° 04 — Manifesto
+              N° 05 — Manifesto
             </motion.span>
           </div>
           <div className="col-span-12 md:col-span-9">
@@ -437,7 +500,7 @@ const Home = () => {
                   This is
                 </span>
                 <ul className="mt-6 space-y-4 font-body font-light text-cream/85 text-lg leading-[1.6]">
-                  <li>An editorial journal, four issues a year.</li>
+                  <li>An editorial journal, written from the courses themselves.</li>
                   <li>A short list of trips, arranged by hand.</li>
                   <li>A field guide to courses worth the flight.</li>
                   <li>A standing invitation, by name.</li>
