@@ -353,7 +353,7 @@ const LosCabos = () => {
               data-testid="link-back-journal"
               className="font-display italic font-light text-ink text-3xl md:text-5xl leading-[1.1] tracking-tight editorial-link"
             >
-              Puerto Vallarta &amp; Punta Mita — in preparation.
+              Riviera Nayarit &amp; Punta Mita — in preparation.
             </Link>
           </div>
           <div className="col-span-12 md:col-span-3 md:text-right">

@@ -12,21 +12,21 @@ const HUBS = [
     live: true,
   },
   {
-    slug: "puerto-vallarta",
+    slug: "riviera-nayarit",
     url:
       "https://images.unsplash.com/photo-1543105177-748ceda71741?auto=format&fit=crop&w=1600&q=80",
-    label: "Puerto Vallarta · Jalisco",
+    label: "Riviera Nayarit · Punta Mita",
     issue: "Hub N° 02 · Region",
-    title: "Puerto Vallarta & Punta Mita — the long brief.",
+    title: "Punta Mita & the Riviera Nayarit — the long brief.",
     live: false,
   },
   {
-    slug: "riviera-maya",
+    slug: "cdmx",
     url:
-      "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=1600&q=80",
-    label: "Riviera Maya · Quintana Roo",
+      "https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?auto=format&fit=crop&w=1600&q=80",
+    label: "Ciudad de México · Distrito Federal",
     issue: "Hub N° 03 · Region",
-    title: "Riviera Maya: jungle, cenotes, and El Camaleón.",
+    title: "Golf in CDMX — members-only at altitude.",
     live: false,
   },
 ];
@@ -164,9 +164,9 @@ const Journal = () => {
           </div>
           <div className="col-span-12 md:col-span-9">
             <p className="font-display italic font-light text-ink text-2xl md:text-4xl leading-[1.2] tracking-tight max-w-3xl">
-              Puerto Vallarta arrives next, the Riviera Maya after that. Field
-              notes, course reviews, and interviews — written from the courses
-              themselves.
+              The Riviera Nayarit arrives next, the highlands of CDMX after
+              that. Field notes, course reviews, and interviews — written
+              from the courses themselves.
             </p>
           </div>
         </div>

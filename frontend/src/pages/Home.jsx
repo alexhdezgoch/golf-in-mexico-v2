@@ -108,7 +108,7 @@ const Home = () => {
             >
               Field notes, course reviews, and the trips that make it worth the
               flight — written from the courses themselves. From Los Cabos to
-              the Riviera Maya, by invitation.
+              Punta Mita to the highlands of CDMX, by invitation.
             </p>
           </motion.div>
         </div>
@@ -160,9 +160,9 @@ const Home = () => {
               transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="mt-10 font-body text-base md:text-lg text-ink/70 max-w-xl leading-relaxed"
             >
-              Los Cabos · Puerto Vallarta & Punta Mita · Riviera Maya. Three
-              long-form briefs we wrote ourselves — every course, every wind,
-              every table to ask for after the round. Free. No spam.
+              Los Cabos · Riviera Nayarit & Punta Mita · Ciudad de México.
+              Three long-form briefs we wrote ourselves — every course, every
+              wind, every table to ask for after the round. Free. No spam.
             </motion.p>
 
             <motion.form
@@ -340,8 +340,8 @@ const Home = () => {
             >
               Every course is carved into a geography that defies imagination —
               between volcanoes overlooking the highlands, coasts where the
-              Pacific crashes against volcanic rock, and deserts that bloom with
-              impossible vegetation.
+              Pacific crashes against volcanic rock, and deserts that bloom
+              with impossible vegetation.
             </motion.p>
 
             <motion.p
@@ -349,11 +349,11 @@ const Home = () => {
               transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
               className="mt-8 font-body font-light text-ink/80 text-lg md:text-xl leading-[1.7] max-w-2xl"
             >
-              Here, the fairway isn't turf on dirt. It is a dialogue between the
-              architect and the landscape. In Los Cabos, the courses embrace the
-              Sonoran desert. In the Riviera Maya, the greens carve their way
-              through cenotes and jungle. This is a land of contrasts —
-              played slowly.
+              Here, the fairway isn't turf on dirt. It is a dialogue between
+              the architect and the landscape. In Los Cabos, the courses
+              embrace the Sonoran desert. In Punta Mita, the greens reach
+              into the Pacific. In the highlands of CDMX, you play at altitude,
+              in eternal spring. This is a land of contrasts — played slowly.
             </motion.p>
 
             <motion.blockquote
