@@ -7,9 +7,9 @@ import { motion } from "framer-motion";
  * onto the hero. Shown once per session.
  */
 const LINES = [
-  { text: "Encounter", italic: false },
-  { text: "México", italic: true },
-  { text: "in the unhurried.", italic: false },
+  { text: "The best golf trip", italic: false },
+  { text: "in the world", italic: false },
+  { text: "is in México.", italic: true },
 ];
 
 const Intro = ({ onDone }) => {
