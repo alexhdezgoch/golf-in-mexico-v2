@@ -170,7 +170,7 @@ const Home = () => {
               data-testid="email-capture-form"
               className="mt-16 max-w-xl"
             >
-              <div className="relative flex items-end gap-6 border-b border-ink/40 pb-3 focus-within:border-gold transition-colors">
+              <div className="relative flex flex-wrap items-end gap-3 sm:gap-6 border-b border-ink/40 pb-3 focus-within:border-gold transition-colors">
                 <label
                   htmlFor="email"
                   className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted pb-1"
@@ -185,7 +185,7 @@ const Home = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@elsewhere.com"
-                  className="flex-1 bg-transparent border-0 outline-none font-body text-base md:text-lg text-ink placeholder:text-ink/30 py-1"
+                  className="flex-1 min-w-0 bg-transparent border-0 outline-none font-body text-base md:text-lg text-ink placeholder:text-ink/30 py-1"
                 />
                 <button
                   type="submit"
