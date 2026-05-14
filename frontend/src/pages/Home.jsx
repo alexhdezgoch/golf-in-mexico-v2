@@ -57,7 +57,7 @@ const Home = () => {
         <div className="absolute top-24 md:top-28 left-6 md:left-12 z-10 flex items-center gap-3 text-cream/70">
           <span className="block w-6 h-px bg-cream/50" />
           <span className="font-mono text-[10px] uppercase tracking-wide-editorial">
-            An editorial brand, by invitation
+            Storytellers of golf in México
           </span>
         </div>
 
@@ -76,7 +76,7 @@ const Home = () => {
             className="mb-10"
           >
             <span className="font-mono text-[10px] md:text-xs uppercase tracking-wide-editorial text-cream/70">
-              An editorial journal
+              Two players. Every region. One journal.
             </span>
           </motion.div>
 
@@ -95,21 +95,22 @@ const Home = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.9 }}
-            className="mt-14 md:mt-16 max-w-2xl"
+            className="mt-14 md:mt-16 max-w-3xl"
           >
             <p
               data-testid="hero-headline"
               className="font-display italic font-light text-cream text-2xl md:text-4xl leading-[1.15] tracking-tight"
             >
-              “The best golf in the world is in Mexico.”
+              Every region. Every course worth the flight.{" "}
+              <span className="not-italic">Every story.</span>
             </p>
             <p
               data-testid="hero-subline"
-              className="mt-8 font-body font-light text-cream/80 text-sm md:text-base leading-relaxed max-w-xl mx-auto"
+              className="mt-8 font-body font-light text-cream/80 text-sm md:text-base leading-relaxed max-w-2xl mx-auto"
             >
-              Field notes, course reviews, and the trips that make it worth the
-              flight — written from the courses themselves. From Los Cabos to
-              Punta Mita to the highlands of CDMX, by invitation.
+              The only journal written by the two players who've actually walked
+              them — Los Cabos, Punta Mita, Riviera Nayarit, CDMX. The stories
+              no marketplace, no concierge, no review site will tell you.
             </p>
           </motion.div>
         </div>
