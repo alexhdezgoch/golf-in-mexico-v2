@@ -89,7 +89,7 @@ const Footer = () => {
             © {year} Golf in Mexico° · golf-in-mexico.com
           </span>
           <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
-            Issue N° 001 — In Preparation
+            Pablo De La Mora · José Islas
           </span>
         </div>
       </div>

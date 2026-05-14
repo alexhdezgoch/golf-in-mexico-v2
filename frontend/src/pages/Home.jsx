@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Parallax from "@/components/Parallax";
+import FoundersSlider from "@/components/FoundersSlider";
 
 const HERO_VIDEO =
   "https://assets.mixkit.co/videos/preview/mixkit-overhead-view-of-a-rocky-coast-and-waves-crashing-51502-large.mp4";
@@ -56,7 +57,7 @@ const Home = () => {
         <div className="absolute top-24 md:top-28 left-6 md:left-12 z-10 flex items-center gap-3 text-cream/70">
           <span className="block w-6 h-px bg-cream/50" />
           <span className="font-mono text-[10px] uppercase tracking-wide-editorial">
-            Issue N° 001 · Coming Soon
+            An editorial brand, by invitation
           </span>
         </div>
 
@@ -142,7 +143,7 @@ const Home = () => {
               {...fade}
               className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted"
             >
-              N° 01 — The Full Guides
+              N° 01 — Plan your trip
             </motion.span>
           </div>
 
@@ -151,8 +152,8 @@ const Home = () => {
               {...fade}
               className="font-display font-light text-ink text-4xl md:text-6xl leading-[1.05] tracking-tight max-w-3xl"
             >
-              The full guides to the three best{" "}
-              <span className="italic">golf regions</span> in México.
+              Visiting México, or <span className="italic">planning a round</span>?
+              Talk to us first.
             </motion.h2>
 
             <motion.p
@@ -160,9 +161,10 @@ const Home = () => {
               transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="mt-10 font-body text-base md:text-lg text-ink/70 max-w-xl leading-relaxed"
             >
-              Los Cabos · Riviera Nayarit & Punta Mita · Ciudad de México.
-              Three long-form briefs we wrote ourselves — every course, every
-              wind, every table to ask for after the round. Free. No spam.
+              Whether you are coming for a week or building a round into a
+              longer trip, leave us your email. We'll send the details by
+              hand — courses worth the flight, the tables to book, the wind
+              on each tee — in our newsletter.
             </motion.p>
 
             <motion.form
@@ -194,7 +196,7 @@ const Home = () => {
                   data-testid="email-submit"
                   className="font-mono text-[11px] uppercase tracking-wide-editorial text-ink pb-1 group inline-flex items-center gap-2"
                 >
-                  Send me the guides
+                  Connect with us
                   <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">
                     →
                   </span>
@@ -208,7 +210,7 @@ const Home = () => {
                     data-testid="email-confirmation"
                     className="font-mono text-[10px] uppercase tracking-wide-editorial text-forest"
                   >
-                    Noted. The three guides are on their way.
+                    Noted. Pablo or José will be in touch.
                   </motion.span>
                 )}
               </div>
@@ -217,97 +219,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* FOUNDERS — editorial cards */}
-      <section
-        data-testid="founders-section"
-        className="relative bg-cream pb-32 md:pb-48"
-      >
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-12 gap-8 mb-20 md:mb-28">
-            <div className="col-span-12 md:col-span-3">
-              <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
-                N° 02 — The Founders
-              </span>
-            </div>
-            <div className="col-span-12 md:col-span-9">
-              <h2 className="font-display font-light text-ink text-3xl md:text-5xl leading-[1.05] tracking-tight max-w-3xl">
-                Two players, two voices — and the only three pillars{" "}
-                <span className="italic">that matter.</span>
-              </h2>
-              <p className="mt-8 font-body font-light text-ink/70 text-base md:text-lg max-w-xl leading-relaxed">
-                Pablo and José have spent the better part of two decades inside
-                the game in México — as agent, as competitor, as friend of the
-                house. Together they cover the only three things worth covering:
-                <span className="text-ink"> golf, people, cultura.</span>
-              </p>
-            </div>
-          </div>
-
-          {/* Founder Pablo */}
-          <article
-            data-testid="founder-pablo"
-            className="grid grid-cols-12 gap-8 md:gap-16 items-center mb-28 md:mb-40"
-          >
-            <div className="col-span-12 md:col-span-5">
-              <Parallax distance={40} className="aspect-[4/5] w-full">
-                <img
-                  src={FOUNDER_PABLO}
-                  alt="Pablo De La Mora portrait"
-                  className="w-full h-full object-cover editorial-img"
-                />
-              </Parallax>
-            </div>
-            <div className="col-span-12 md:col-span-7 md:pl-8">
-              <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
-                Founder · I
-              </span>
-              <h3 className="mt-4 font-display text-4xl md:text-5xl font-light tracking-tight text-ink">
-                Pablo De La Mora
-              </h3>
-              <p className="mt-6 font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
-                PGA Tour Agent · 30+ courses across México
-              </p>
-              <p className="mt-10 font-body font-light text-ink/80 text-base md:text-lg leading-[1.7] max-w-xl">
-                He has walked every fairway worth walking from Los Cabos to the
-                Riviera Maya. Pablo knows the courses by their wind and their
-                hour, and the people who keep them by their first name.
-              </p>
-            </div>
-          </article>
-
-          {/* Founder José — reversed */}
-          <article
-            data-testid="founder-jose"
-            className="grid grid-cols-12 gap-8 md:gap-16 items-center"
-          >
-            <div className="col-span-12 md:col-span-7 md:order-1 order-2 md:pr-8">
-              <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
-                Founder · II
-              </span>
-              <h3 className="mt-4 font-display text-4xl md:text-5xl font-light tracking-tight text-ink">
-                José Islas
-              </h3>
-              <p className="mt-6 font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
-                US Amateur QF, 2023 · WWT Championship · Mexico Open at Vidanta
-              </p>
-              <p className="mt-10 font-body font-light text-ink/80 text-base md:text-lg leading-[1.7] max-w-xl">
-                A player first, a host second. José competes where the rest of us
-                only travel — and brings back the kind of stories you can only
-                hear over a quiet dinner after eighteen holes.
-              </p>
-            </div>
-            <div className="col-span-12 md:col-span-5 md:order-2 order-1">
-              <Parallax distance={40} className="aspect-[4/5] w-full">
-                <img
-                  src={FOUNDER_JOSE}
-                  alt="José Islas portrait"
-                  className="w-full h-full object-cover editorial-img"
-                />
-              </Parallax>
-            </div>
-          </article>
-        </div>
-      </section>
+      {/* FOUNDERS — slider */}
+      <FoundersSlider />
 
       {/* EDITORIAL STATEMENT — A land of contrasts */}
       <section
@@ -477,62 +390,6 @@ const Home = () => {
             “We do not sell tee times. We arrange the four mornings that will
             decide what you think of México for the rest of your life.”
           </motion.p>
-        </div>
-      </section>
-
-      {/* PHILOSOPHY — what this is, what it isn't */}
-      <section
-        data-testid="philosophy-section"
-        className="relative bg-ink text-cream py-32 md:py-44 overflow-hidden"
-      >
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-8">
-          <div className="col-span-12 md:col-span-3">
-            <motion.span
-              {...fade}
-              className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/60"
-            >
-              N° 05 — Manifesto
-            </motion.span>
-          </div>
-          <div className="col-span-12 md:col-span-9">
-            <motion.h2
-              {...fade}
-              className="font-display font-light text-cream text-4xl md:text-6xl leading-[1.05] tracking-tight max-w-3xl"
-            >
-              The discipline of the <span className="italic">no.</span>
-            </motion.h2>
-
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
-              <motion.div
-                {...fade}
-                transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
-                  This is
-                </span>
-                <ul className="mt-6 space-y-4 font-body font-light text-cream/85 text-lg leading-[1.6]">
-                  <li>An editorial journal, written from the courses themselves.</li>
-                  <li>A short list of trips, arranged by hand.</li>
-                  <li>A field guide to courses worth the flight.</li>
-                  <li>A standing invitation, by name.</li>
-                </ul>
-              </motion.div>
-              <motion.div
-                {...fade}
-                transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/50">
-                  This is not
-                </span>
-                <ul className="mt-6 space-y-4 font-body font-light text-cream/55 text-lg leading-[1.6]">
-                  <li>A tee-time marketplace.</li>
-                  <li>A travel agency.</li>
-                  <li>A newsletter.</li>
-                  <li>A list of every course in México.</li>
-                </ul>
-              </motion.div>
-            </div>
-          </div>
         </div>
       </section>
     </main>
