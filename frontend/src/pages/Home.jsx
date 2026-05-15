@@ -55,27 +55,14 @@ const Home = () => {
 
         {/* Center content */}
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-10 md:mb-14 flex items-center gap-3 text-cream/70"
-          >
-            <span className="block w-6 h-px bg-cream/50" />
-            <span className="font-mono text-[10px] md:text-xs uppercase tracking-wide-editorial text-cream/75">
-              Shaped by years inside tour environments
-            </span>
-            <span className="block w-6 h-px bg-cream/50" />
-          </motion.div>
-
           <motion.h1
             data-testid="hero-wordmark"
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.4, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display font-light text-cream leading-[0.96] tracking-tight text-[10.5vw] md:text-[7.5vw] lg:text-[7rem] max-w-[16ch] mx-auto"
+            className="font-display font-light text-cream leading-[0.96] tracking-tight text-[10vw] md:text-[7vw] lg:text-[6.5rem] max-w-[18ch] mx-auto"
           >
-            The golf in México <br />
+            We cover the golf in México{" "}
             <span className="italic">you haven't read about.</span>
           </motion.h1>
 
@@ -87,10 +74,10 @@ const Home = () => {
           >
             <p
               data-testid="hero-subline"
-              className="font-body font-light text-cream/85 text-base md:text-lg leading-relaxed max-w-xl mx-auto"
+              className="font-body font-light text-cream/85 text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
             >
-              Field notes, course reviews, and interviews — written from the
-              courses themselves.
+              Shaped by years inside Tour environments, we developed destination
+              guides, course reviews, travel tips, and many more.
             </p>
           </motion.div>
         </div>
@@ -114,9 +101,9 @@ const Home = () => {
       </section>
 
 
-      {/* INTRO / EMAIL CAPTURE */}
+      {/* EDITORIAL STATEMENT — A land of contrasts */}
       <section
-        data-testid="intro-section"
+        data-testid="statement-section"
         className="relative bg-cream py-28 md:py-40"
       >
         <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-8">
@@ -125,7 +112,75 @@ const Home = () => {
               {...fade}
               className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted"
             >
-              N° 01 — Plan your trip
+              N° 01 — A statement
+            </motion.span>
+          </div>
+          <div className="col-span-12 md:col-span-9">
+            <motion.h2
+              {...fade}
+              className="font-display font-light text-ink text-4xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight max-w-4xl"
+            >
+              México is not just a golf <br className="hidden md:block" />
+              destination. It is a{" "}
+              <span className="italic">statement.</span>
+            </motion.h2>
+
+            <motion.p
+              {...fade}
+              transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-14 font-body font-light text-ink/80 text-lg md:text-xl leading-[1.7] max-w-2xl"
+            >
+              Every course is carved into a geography that defies imagination —
+              between volcanoes overlooking the highlands, coasts where the
+              Pacific crashes against volcanic rock, and deserts that bloom
+              with impossible vegetation.
+            </motion.p>
+
+            <motion.p
+              {...fade}
+              transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-8 font-body font-light text-ink/80 text-lg md:text-xl leading-[1.7] max-w-2xl"
+            >
+              Here, the fairway isn't turf on dirt. It is a dialogue between
+              the architect and the landscape. In Los Cabos, the courses
+              embrace the Sonoran desert. In Punta Mita, the greens reach
+              into the Pacific. In the highlands of CDMX, you play at altitude,
+              in eternal spring. This is a land of contrasts — played slowly.
+            </motion.p>
+
+            <motion.blockquote
+              {...fade}
+              transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-16 md:mt-20 max-w-3xl"
+            >
+              <span className="font-display italic text-gold text-5xl md:text-7xl leading-none block">
+                “
+              </span>
+              <p className="mt-2 font-display italic font-light text-ink text-2xl md:text-4xl leading-[1.2] tracking-tight">
+                Golf in México is not tourism. It is immersion — the
+                understanding that a culture can elevate the game into something
+                you will not find anywhere else in the world.
+              </p>
+            </motion.blockquote>
+          </div>
+        </div>
+      </section>
+
+      {/* FOUNDERS — slider */}
+      <FoundersSlider />
+
+      {/* CONNECT WITH US — email capture */}
+      <section
+        data-testid="intro-section"
+        className="relative bg-cream border-t hairline py-28 md:py-40"
+      >
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-8">
+          <div className="col-span-12 md:col-span-3">
+            <motion.span
+              {...fade}
+              className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted"
+            >
+              N° 03 — Connect with us
             </motion.span>
           </div>
 
@@ -143,10 +198,9 @@ const Home = () => {
               transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="mt-10 font-body text-base md:text-lg text-ink/70 max-w-xl leading-relaxed"
             >
-              Whether you are coming for a week or building a round into a
-              longer trip, leave us your email. We'll send the details by
-              hand — courses worth the flight, the tables to book, the wind
-              on each tee — in our newsletter.
+              Leave us your email. Pablo or José will reply by hand — courses
+              worth the flight, the tables to book, the wind on each tee — in
+              our newsletter.
             </motion.p>
 
             <motion.form
@@ -197,74 +251,6 @@ const Home = () => {
                 )}
               </div>
             </motion.form>
-          </div>
-        </div>
-      </section>
-
-      {/* FOUNDERS — slider */}
-      <FoundersSlider />
-
-      {/* EDITORIAL STATEMENT — A land of contrasts */}
-      <section
-        data-testid="statement-section"
-        className="relative bg-cream border-t hairline py-28 md:py-40"
-      >
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-8">
-          <div className="col-span-12 md:col-span-3">
-            <motion.span
-              {...fade}
-              className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted"
-            >
-              N° 03 — A statement
-            </motion.span>
-          </div>
-          <div className="col-span-12 md:col-span-9">
-            <motion.h2
-              {...fade}
-              className="font-display font-light text-ink text-4xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight max-w-4xl"
-            >
-              México is not just a golf <br className="hidden md:block" />
-              destination. It is a{" "}
-              <span className="italic">statement.</span>
-            </motion.h2>
-
-            <motion.p
-              {...fade}
-              transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-14 font-body font-light text-ink/80 text-lg md:text-xl leading-[1.7] max-w-2xl"
-            >
-              Every course is carved into a geography that defies imagination —
-              between volcanoes overlooking the highlands, coasts where the
-              Pacific crashes against volcanic rock, and deserts that bloom
-              with impossible vegetation.
-            </motion.p>
-
-            <motion.p
-              {...fade}
-              transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-8 font-body font-light text-ink/80 text-lg md:text-xl leading-[1.7] max-w-2xl"
-            >
-              Here, the fairway isn't turf on dirt. It is a dialogue between
-              the architect and the landscape. In Los Cabos, the courses
-              embrace the Sonoran desert. In Punta Mita, the greens reach
-              into the Pacific. In the highlands of CDMX, you play at altitude,
-              in eternal spring. This is a land of contrasts — played slowly.
-            </motion.p>
-
-            <motion.blockquote
-              {...fade}
-              transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-16 md:mt-20 max-w-3xl"
-            >
-              <span className="font-display italic text-gold text-5xl md:text-7xl leading-none block">
-                “
-              </span>
-              <p className="mt-2 font-display italic font-light text-ink text-2xl md:text-4xl leading-[1.2] tracking-tight">
-                Golf in México is not tourism. It is immersion — the
-                understanding that a culture can elevate the game into something
-                you will not find anywhere else in the world.
-              </p>
-            </motion.blockquote>
           </div>
         </div>
       </section>
