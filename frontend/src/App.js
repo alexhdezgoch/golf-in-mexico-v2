@@ -11,7 +11,6 @@ import InquiryModal from "@/components/InquiryModal";
 import { InquiryContext } from "@/context/Inquiry";
 
 import Home from "@/pages/Home";
-import About from "@/pages/About";
 import Journal from "@/pages/Journal";
 import LosCabos from "@/pages/LosCabos";
 
@@ -36,14 +35,6 @@ const AnimatedRoutes = () => {
           element={
             <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
               <Home />
-            </motion.div>
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
-              <About />
             </motion.div>
           }
         />

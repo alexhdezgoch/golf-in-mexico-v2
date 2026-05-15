@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useInquiry } from "@/context/Inquiry";
 
 const HERO =
   "https://images.unsplash.com/photo-1605144156546-91acf5e4cffd?auto=format&fit=crop&w=2400&q=85";
@@ -17,6 +18,7 @@ const fade = {
 };
 
 const LosCabos = () => {
+  const { openInquiry } = useInquiry();
   useEffect(() => {
     const prevTitle = document.title;
     const prevDesc = document
@@ -327,14 +329,15 @@ const LosCabos = () => {
             </p>
           </div>
           <div className="col-span-12 md:col-span-4 md:text-right">
-            <Link
-              to="/about"
+            <button
+              type="button"
+              onClick={openInquiry}
               data-testid="cta-plan-trip"
               className="inline-flex items-center gap-3 border-b border-gold/60 pb-1 font-mono text-[11px] uppercase tracking-wide-editorial text-cream hover:text-gold transition-colors"
             >
               Request a curated trip
               <span>→</span>
-            </Link>
+            </button>
           </div>
         </div>
       </section>

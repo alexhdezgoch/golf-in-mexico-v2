@@ -15,6 +15,12 @@ const MANIFESTO_VIDEO =
 const MANIFESTO_POSTER =
   "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=2000&q=80";
 
+const MANIFESTO_TILE_VIDEO =
+  "https://assets.mixkit.co/videos/preview/mixkit-aerial-shot-of-a-tropical-resort-pool-and-beach-1422-large.mp4";
+
+const MANIFESTO_TILE_POSTER =
+  "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=1600&q=80";
+
 const MANIFESTO_WORDS = [
   { word: "Golf.", italic: false },
   { word: "Hospitality.", italic: false },
@@ -117,11 +123,11 @@ const Home = () => {
           preload="metadata"
         />
         {/* Overlays for contrast */}
-        <div className="absolute inset-0 bg-ink/55" />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/20 to-ink/75" />
+        <div className="absolute inset-0 bg-ink/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/45 via-ink/25 to-ink/80" />
 
         {/* Content */}
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-12 py-24 md:py-28 flex flex-col justify-between gap-16 md:gap-20">
+        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-12 py-24 md:py-28 flex flex-col justify-between gap-12 md:gap-16">
           {/* Top kicker */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -139,28 +145,60 @@ const Home = () => {
             </span>
           </motion.div>
 
-          {/* Center: sequential words */}
-          <h2
-            data-testid="manifesto-words"
-            className="font-display font-light text-cream leading-[0.98] tracking-tight text-[14vw] md:text-[9vw] lg:text-[8.5rem] max-w-[14ch]"
-          >
-            {MANIFESTO_WORDS.map((w, i) => (
-              <motion.span
-                key={w.word}
-                initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
-                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                viewport={{ once: true, margin: "-10%" }}
-                transition={{
-                  duration: 1.1,
-                  delay: 0.4 + i * 0.55,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className={`block ${w.italic ? "italic text-gold" : ""}`}
-              >
-                {w.word}
-              </motion.span>
-            ))}
-          </h2>
+          {/* Middle: words (left) + parallel video tile (right) */}
+          <div className="grid grid-cols-12 gap-8 md:gap-12 items-center">
+            <h2
+              data-testid="manifesto-words"
+              className="col-span-12 md:col-span-7 font-display font-light text-cream leading-[0.98] tracking-tight text-[14vw] md:text-[7.5vw] lg:text-[7rem] max-w-[14ch]"
+            >
+              {MANIFESTO_WORDS.map((w, i) => (
+                <motion.span
+                  key={w.word}
+                  initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
+                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{
+                    duration: 1.1,
+                    delay: 0.4 + i * 0.55,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  className={`block ${w.italic ? "italic text-gold" : ""}`}
+                >
+                  {w.word}
+                </motion.span>
+              ))}
+            </h2>
+
+            {/* Parallel video tile */}
+            <motion.div
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 1.2, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              data-testid="manifesto-tile"
+              className="col-span-12 md:col-span-5 relative aspect-[4/5] w-full overflow-hidden border border-cream/15"
+            >
+              <video
+                className="absolute inset-0 w-full h-full object-cover editorial-img"
+                src={MANIFESTO_TILE_VIDEO}
+                poster={MANIFESTO_TILE_POSTER}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
+              <div className="absolute inset-0 p-5 md:p-6 flex flex-col justify-between">
+                <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/90 border border-cream/40 px-2.5 py-1 self-start">
+                  In motion
+                </span>
+                <span className="font-display italic font-light text-cream text-xl md:text-2xl leading-[1.2] tracking-tight max-w-[18ch]">
+                  Where the round actually happens.
+                </span>
+              </div>
+            </motion.div>
+          </div>
 
           {/* Bottom: subtitle + CTAs */}
           <motion.div
@@ -190,16 +228,21 @@ const Home = () => {
                 </span>
               </Link>
 
-              <Link
-                to="/about"
+              <button
+                type="button"
+                onClick={() =>
+                  document
+                    .querySelector('[data-testid="team-editorial-section"]')
+                    ?.scrollIntoView({ behavior: "smooth", block: "start" })
+                }
                 data-testid="statement-cta-founders"
                 className="group font-mono text-[11px] uppercase tracking-wide-editorial text-cream/85 hover:text-cream editorial-link inline-flex items-center gap-2 self-start sm:self-auto"
               >
-                Read about the founders
+                Meet the editors
                 <span className="font-mono text-[11px] transition-transform duration-500 group-hover:translate-x-0.5">
-                  →
+                  ↓
                 </span>
-              </Link>
+              </button>
             </div>
           </motion.div>
         </div>

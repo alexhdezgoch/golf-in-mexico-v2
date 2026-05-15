@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import { Linkedin, Instagram } from "lucide-react";
 
 const AUTHORS = [
   {
@@ -21,6 +22,10 @@ const AUTHORS = [
       "My job is to remove every line between you and the round you came here for.",
     signature: "Pablo De La Mora · Los Cabos.",
     cta: "Read Pablo in the Journal",
+    socials: [
+      { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/pablodelamora/", testid: "social-pablo-linkedin" },
+      { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/pablodelamora/", testid: "social-pablo-instagram" },
+    ],
   },
   {
     id: "jose",
@@ -40,6 +45,9 @@ const AUTHORS = [
       "A good round is not played against the course. It is played with it.",
     signature: "José Islas · Inside the ropes.",
     cta: "Read José in the Journal",
+    socials: [
+      { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/joseislasgolf/", testid: "social-jose-instagram" },
+    ],
   },
 ];
 
@@ -217,9 +225,38 @@ const TeamEditorial = () => {
                     </blockquote>
 
                     <div className="mt-8 md:mt-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-ink/15 pt-5">
-                      <span className="font-display italic font-light text-ink/65 text-sm md:text-base">
-                        — {active.signature}
-                      </span>
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
+                        <span className="font-display italic font-light text-ink/65 text-sm md:text-base">
+                          — {active.signature}
+                        </span>
+                        {active.socials && active.socials.length > 0 && (
+                          <div
+                            data-testid={`socials-${active.id}`}
+                            className="flex items-center gap-2"
+                          >
+                            {active.socials.map((s) => {
+                              const Icon = s.icon;
+                              return (
+                                <a
+                                  key={s.label}
+                                  href={s.href}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  aria-label={`${active.short} on ${s.label}`}
+                                  data-testid={s.testid}
+                                  className="group inline-flex items-center justify-center w-9 h-9 border border-ink/25 hover:border-ink transition-colors duration-300"
+                                  style={{ borderColor: `${active.accent}40` }}
+                                >
+                                  <Icon
+                                    className="w-4 h-4 text-ink/65 group-hover:text-ink transition-colors"
+                                    strokeWidth={1.4}
+                                  />
+                                </a>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
                       <Link
                         to="/journal"
                         data-testid={`manifesto-cta-${active.id}`}
