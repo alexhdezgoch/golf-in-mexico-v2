@@ -26,8 +26,8 @@ const Footer = () => {
             style={{ mixBlendMode: "screen" }}
           />
           <p className="mt-20 md:mt-28 font-body font-light text-cream/55 text-base leading-[1.75] max-w-sm">
-            An editorial dedicated to golf, culture and the experience of
-            playing at the finest courses in México.
+            An editorial dedicated to golf, culture, and the experience of
+            playing México's finest courses.
           </p>
         </div>
 

@@ -88,7 +88,7 @@ const About = () => {
               transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="mt-8 font-mono text-[10px] uppercase tracking-wide-editorial text-muted"
             >
-              PGA Tour Agent · 30+ courses across México
+              Professional Sports Agent · PGA Tour · LPGA · WTA · PGA Tour Americas
             </motion.p>
 
             <motion.p
@@ -99,13 +99,11 @@ const About = () => {
               <span className="font-display italic text-3xl md:text-4xl text-ink float-left mr-3 leading-[0.85] mt-1">
                 P
               </span>
-              ablo grew up between the cypress lines of Valle de Bravo and the
-              dust of the Sonoran links, and he has spent the rest of his life
-              somewhere in between. He represents tour professionals as a
-              vocation, and walks fairways as a habit — thirty-plus courses, by
-              his own count, each remembered the way other people remember
-              meals: by the company, the weather, and the way the light fell
-              on the fifteenth.
+              ablo represents tour professionals as a vocation, and walks
+              fairways as a habit. Five years inside the management of
+              professional athletes have taken him from the Masters to TPC
+              Sawgrass, from Roland Garros to Qatar 2022 — and to most of the
+              regions in México worth knowing in between.
             </motion.p>
 
             <motion.p
@@ -163,7 +161,7 @@ const About = () => {
               transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="mt-8 font-mono text-[10px] uppercase tracking-wide-editorial text-muted"
             >
-              US Amateur QF, 2023 · WWT Championship · Mexico Open at Vidanta
+              4× winner Mexican Tour · US Amateur QF, 2023 · 3 PGA Tour starts
             </motion.p>
 
             <motion.p
@@ -174,12 +172,12 @@ const About = () => {
               <span className="font-display italic text-3xl md:text-4xl text-ink float-left mr-3 leading-[0.85] mt-1">
                 J
               </span>
-              osé came of age inside the ropes. The quarterfinals at Cherry
-              Hills in 2023 — eighteen years old, on television, two over par
-              in a Texas heatwave. He came home and played the WWT in Mayakoba
-              that November, and the Mexico Open at Vidanta the following
-              spring, and in between he learned that the country he had been
-              representing was a country he had barely seen.
+              osé came of age inside the ropes. The quarterfinals at the US
+              Amateur in 2023 — eighteen years old, on television, two over
+              par. He came home, played the WWT in Mayakoba that November and
+              the Mexico Open at Vidanta the following spring, and in between
+              he understood that the country he had been representing was a
+              country he had barely seen.
             </motion.p>
 
             <motion.p
@@ -226,10 +224,9 @@ const About = () => {
               className="mt-10 font-body font-light text-cream/80 text-lg md:text-xl leading-[1.7] max-w-2xl"
             >
               Every trip we arrange is touched, walked, and confirmed by Pablo
-              or José personally. No marketplace, no call-center, no
-              sub-affiliate handing you off at check-in. If something is wrong
-              at the tee, the person who answers the phone is the person who
-              booked it.
+              or José in person. No marketplace, no call centre, no
+              sub-affiliate at check-in. If something is wrong at the tee, the
+              person who answers the phone is the person who booked it.
             </motion.p>
 
             <ul className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-10">
@@ -242,12 +239,12 @@ const About = () => {
                 {
                   k: "02",
                   t: "By name, not by booking",
-                  d: "Pablo or José replies within 24 hours, in your time zone.",
+                  d: "Pablo or José replies within twenty-four hours, in your time zone.",
                 },
                 {
                   k: "03",
                   t: "Transparent pricing",
-                  d: "Trips are priced like a private dinner — quoted once, in full.",
+                  d: "Quoted once, in full — the way a private dinner is.",
                 },
               ].map((p) => (
                 <li

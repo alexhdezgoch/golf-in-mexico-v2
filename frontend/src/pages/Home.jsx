@@ -62,8 +62,8 @@ const Home = () => {
             transition={{ duration: 1.4, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
             className="font-display font-light text-cream leading-[0.96] tracking-tight text-[10vw] md:text-[7vw] lg:text-[6.5rem] max-w-[18ch] mx-auto"
           >
-            We cover the golf in México{" "}
-            <span className="italic">you haven't read about.</span>
+            The golf in México{" "}
+            <span className="italic">you have not read about.</span>
           </motion.h1>
 
           <motion.div
@@ -76,8 +76,8 @@ const Home = () => {
               data-testid="hero-subline"
               className="font-body font-light text-cream/85 text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
             >
-              Shaped by years inside Tour environments, we developed destination
-              guides, course reviews, travel tips, and many more.
+              Shaped by years inside Tour environments. Destination guides,
+              course reviews, and the field notes only insiders carry.
             </p>
           </motion.div>
         </div>
@@ -130,10 +130,9 @@ const Home = () => {
               transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="mt-14 font-body font-light text-ink/80 text-lg md:text-xl leading-[1.7] max-w-2xl"
             >
-              Every course is carved into a geography that defies imagination —
-              between volcanoes overlooking the highlands, coasts where the
-              Pacific crashes against volcanic rock, and deserts that bloom
-              with impossible vegetation.
+              Every course is carved into a geography of its own — volcanoes
+              above the highlands, the Pacific against volcanic rock, deserts
+              that bloom against the odds.
             </motion.p>
 
             <motion.p
@@ -141,11 +140,10 @@ const Home = () => {
               transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
               className="mt-8 font-body font-light text-ink/80 text-lg md:text-xl leading-[1.7] max-w-2xl"
             >
-              Here, the fairway isn't turf on dirt. It is a dialogue between
-              the architect and the landscape. In Los Cabos, the courses
-              embrace the Sonoran desert. In Punta Mita, the greens reach
-              into the Pacific. In the highlands of CDMX, you play at altitude,
-              in eternal spring. This is a land of contrasts — played slowly.
+              The fairway is a dialogue between architect and landscape. In Los
+              Cabos, with the Sonoran desert. In Punta Mita, with the Pacific.
+              In CDMX, at altitude, in eternal spring. A country of contrasts —
+              played slowly.
             </motion.p>
 
             <motion.blockquote
@@ -157,9 +155,8 @@ const Home = () => {
                 “
               </span>
               <p className="mt-2 font-display italic font-light text-ink text-2xl md:text-4xl leading-[1.2] tracking-tight">
-                Golf in México is not tourism. It is immersion — the
-                understanding that a culture can elevate the game into something
-                you will not find anywhere else in the world.
+                Golf in México is not tourism. It is immersion — the moment a
+                culture takes the game and makes it its own.
               </p>
             </motion.blockquote>
           </div>
@@ -189,8 +186,8 @@ const Home = () => {
               {...fade}
               className="font-display font-light text-ink text-4xl md:text-6xl leading-[1.05] tracking-tight max-w-3xl"
             >
-              Visiting México, or <span className="italic">planning a round</span>?
-              Talk to us first.
+              Coming to México, or planning a round?{" "}
+              <span className="italic">Begin here.</span>
             </motion.h2>
 
             <motion.p
@@ -198,9 +195,9 @@ const Home = () => {
               transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="mt-10 font-body text-base md:text-lg text-ink/70 max-w-xl leading-relaxed"
             >
-              Leave us your email. Pablo or José will reply by hand — courses
-              worth the flight, the tables to book, the wind on each tee — in
-              our newsletter.
+              Leave your email. The newsletter is written by Pablo and José —
+              the courses worth the flight, the tables worth keeping, the wind
+              on each tee.
             </motion.p>
 
             <motion.form
@@ -246,7 +243,7 @@ const Home = () => {
                     data-testid="email-confirmation"
                     className="font-mono text-[10px] uppercase tracking-wide-editorial text-forest"
                   >
-                    Noted. Pablo or José will be in touch.
+                    Noted. The newsletter will find you.
                   </motion.span>
                 )}
               </div>
@@ -275,15 +272,15 @@ const Home = () => {
                 className="font-display font-light text-ink text-4xl md:text-6xl leading-[1.05] tracking-tight max-w-3xl"
               >
                 Three pillars. <br className="hidden md:block" />
-                Nothing else <span className="italic">distracts us.</span>
+                <span className="italic">Nothing else distracts us.</span>
               </motion.h2>
               <motion.p
                 {...fade}
                 transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
                 className="mt-8 font-body font-light text-ink/70 text-base md:text-lg max-w-xl leading-relaxed"
               >
-                Everything we write, photograph, and arrange falls inside one of
-                these three. The rest is somebody else's job.
+                Everything we write, photograph, and arrange lives inside one
+                of these three. The rest belongs to someone else.
               </motion.p>
             </div>
           </div>

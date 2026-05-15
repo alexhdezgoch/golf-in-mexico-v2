@@ -8,8 +8,8 @@ import { motion } from "framer-motion";
  */
 const LINES = [
   { text: "The best golf trip", italic: false },
-  { text: "in the world", italic: false },
-  { text: "is in México.", italic: true },
+  { text: "is in", italic: false },
+  { text: "México.", italic: true },
 ];
 
 const Intro = ({ onDone }) => {

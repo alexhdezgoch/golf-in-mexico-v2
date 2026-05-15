@@ -10,18 +10,18 @@ const FOUNDERS = [
     role_en: "The Insider",
     title: "Professional Sports Agent",
     creds: [
-      "5 yrs managing pro golfers & tennis players",
-      "PGA Tour · LPGA · WTA · PGA Tour Americas · Mex. Tour",
-      "Magnolia Lane · TPC Sawgrass · Roland Garros · Qatar 2022",
-      "10+ PGA / KFT / PGA Americas events worked",
+      "Five years managing professional golfers and tennis players",
+      "PGA Tour · LPGA · WTA · PGA Tour Americas · Mexican Tour",
+      "The Masters · TPC Sawgrass · Roland Garros · Qatar 2022",
+      "Ten-plus PGA / Korn Ferry / PGA Tour Americas events worked",
     ],
     accent: "forest",
     photo:
       "https://images.unsplash.com/photo-1601442705509-c6d748675f7f?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=1600",
     pull:
-      "I've developed travel for professional golfers, their families and sponsors — always frugal, always experiencing the best travel possible.",
+      "I have arranged travel for professional golfers, their families, and their sponsors — disciplined budgets, considered choices, the best experience possible.",
     body:
-      "Pablo represents tour professionals and has walked fairways outside the ropes for years. Each professional event opened doors — and, more than that, the opportunity to travel Mexican destinations, to connect with the right property management and course pros, and to learn what a trip is supposed to feel like when it's arranged by someone who has been there first.",
+      "Pablo represents tour professionals and has walked fairways outside the ropes for the better part of a decade. Each event opened a door — to a region, to a property, to the course pros who quietly run the place. He learned what a trip is supposed to feel like when it is arranged by someone who has been there first.",
   },
   {
     id: "jose",
@@ -31,18 +31,18 @@ const FOUNDERS = [
     role_en: "The Player",
     title: "Professional Golfer",
     creds: [
-      "4× Winner · Mexican Tour",
-      "3× PGA Tour · 1× Korn Ferry · 5+ PGA Tour Americas",
-      "Record holder · US Amateur from México · 2023 QF",
-      "18 years playing in México",
+      "Four-time winner · Mexican Tour",
+      "Three PGA Tour starts · One Korn Ferry · Five-plus PGA Tour Americas",
+      "Record holder · US Amateur from México · 2023 Quarterfinals",
+      "Eighteen years inside México's golf",
     ],
     accent: "gold",
     photo:
       "https://images.unsplash.com/photo-1613096108660-104d7e8b132a?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=1600",
     pull:
-      "I've been playing golf in México almost eighteen years. I know the grass, the industry, and how to play the best round of golf for the person who shows up.",
+      "I have played golf in México for eighteen years. I know the grass, the industry, and the round each visitor is actually here for.",
     body:
-      "José came of age inside the ropes. He has been one of the most standout players in México through every stage — Junior, Amateur, Pro. He is seeking full status; in the meantime he helped develop the base of this project, and we will absolutely be around supporting him for the years ahead.",
+      "José came of age inside the ropes. He has been among México's most consistent players at every stage — Junior, Amateur, Pro — and is still chasing full status on Tour. In the meantime, he laid the foundations of this project. We will be alongside him for what comes next.",
   },
 ];
 
@@ -103,16 +103,15 @@ const FoundersSlider = () => {
           </div>
           <div className="col-span-12 md:col-span-9">
             <h2 className="font-display font-light text-ink text-3xl md:text-5xl leading-[1.05] tracking-tight max-w-3xl">
-              A team that has played PGA Tour events, traveled through every
-              Latin American Amateur, and built the best network across México's{" "}
+              A team that has played PGA Tour events, traveled the Latin
+              American Amateur circuit, and built a network across México's{" "}
               <span className="italic">finest regions.</span>
             </h2>
             <p className="mt-8 font-body font-light text-ink/75 text-base md:text-lg max-w-2xl leading-relaxed">
               Pablo and José are colleagues in professional golf. They started
-              this journal to diversify and amplify what they have learned —
-              to serve as the insiders and locals who can give internationals
-              the kind of feedback that turns a trip into the best round of
-              their life.
+              this journal to share what they have learned inside the game — to
+              be the local voice that turns an international visitor's round
+              into something properly considered.
             </p>
           </div>
         </div>
