@@ -11,7 +11,7 @@ const AUTHORS = [
     differentiator:
       "An agent's view from inside the ropes — strategy, logistics, and the texture of travel done right.",
     photo: "/pablo.jpg",
-    photoPosition: "12% center",
+    photoPosition: "center 22%",
     accent: "#2C4A2C",
     articles: [
       {
@@ -44,9 +44,8 @@ const AUTHORS = [
     role: "Professional Golfer · The Player",
     differentiator:
       "A player's notes from inside the ropes — grass, lines, and the round each course actually wants you to play.",
-    photo:
-      "https://images.unsplash.com/photo-1613096108660-104d7e8b132a?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=1600",
-    photoPosition: "center center",
+    photo: "/jose.jpg",
+    photoPosition: "center 22%",
     accent: "#C4A24E",
     articles: [
       {

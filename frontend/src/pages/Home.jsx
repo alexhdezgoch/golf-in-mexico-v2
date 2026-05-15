@@ -8,11 +8,6 @@ const HERO_VIDEO =
 const HERO_POSTER =
   "https://images.unsplash.com/photo-1605144156546-91acf5e4cffd?auto=format&fit=crop&w=2000&q=80";
 
-const FOUNDER_PABLO =
-  "https://images.unsplash.com/photo-1601442705509-c6d748675f7f?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=1400";
-const FOUNDER_JOSE =
-  "https://images.unsplash.com/photo-1613096108660-104d7e8b132a?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=1400";
-
 const fade = {
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },

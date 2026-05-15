@@ -17,7 +17,7 @@ const FOUNDERS = [
     ],
     accent: "forest",
     photo: "/pablo.jpg",
-    photoPosition: "12% center",
+    photoPosition: "center 22%",
     pull:
       "I have arranged travel for professional golfers, their families, and their sponsors — disciplined budgets, considered choices, the best experience possible.",
     body:
@@ -37,8 +37,8 @@ const FOUNDERS = [
       "Eighteen years inside México's golf",
     ],
     accent: "gold",
-    photo:
-      "https://images.unsplash.com/photo-1613096108660-104d7e8b132a?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=1600",
+    photo: "/jose.jpg",
+    photoPosition: "center 22%",
     pull:
       "I have played golf in México for eighteen years. I know the grass, the industry, and the round each visitor is actually here for.",
     body:
