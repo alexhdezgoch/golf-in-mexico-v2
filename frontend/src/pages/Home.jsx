@@ -16,37 +16,19 @@ const MANIFESTO_VIDEO =
 const MANIFESTO_POSTER =
   "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=2000&q=80";
 
-const MANIFESTO_WORDS = [
-  { word: "Golf.", italic: false },
-  { word: "Hospitality.", italic: false },
-  { word: "Culture.", italic: false },
-  { word: "One round.", italic: true },
+const MANIFESTO_LINES = [
+  { text: "México is not just", italic: false, color: "cream" },
+  { text: "a golf destination.", italic: false, color: "cream" },
+  { text: "It's a statement.", italic: true, color: "gold" },
 ];
 
-const WORD_HOLD_MS = 1700;
-
-const fade = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-10%" },
-  transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
-};
-
 const ManifestoCycle = () => {
-  const [idx, setIdx] = useState(0);
   const [showOutro, setShowOutro] = useState(false);
-  const isLast = idx === MANIFESTO_WORDS.length - 1;
 
   useEffect(() => {
-    if (!isLast) {
-      const t = setTimeout(() => setIdx((i) => i + 1), WORD_HOLD_MS);
-      return () => clearTimeout(t);
-    }
-    const t = setTimeout(() => setShowOutro(true), WORD_HOLD_MS - 100);
+    const t = setTimeout(() => setShowOutro(true), 2600);
     return () => clearTimeout(t);
-  }, [idx, isLast]);
-
-  const current = MANIFESTO_WORDS[idx];
+  }, []);
 
   return (
     <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-12 py-24 md:py-28 min-h-[100svh] flex flex-col items-center justify-between text-center">
@@ -67,39 +49,48 @@ const ManifestoCycle = () => {
         <span className="block w-6 h-px bg-gold" />
       </motion.div>
 
-      {/* Cycling word — centered, dominant */}
-      <div className="flex-1 flex items-center justify-center w-full min-h-[40vh]">
-        <AnimatePresence mode="wait">
-          <motion.h2
-            key={current.word}
-            initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: -16, filter: "blur(10px)" }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            data-testid={`manifesto-word-${idx}`}
-            className={`font-display font-light leading-[0.96] tracking-tight text-[18vw] md:text-[12vw] lg:text-[11rem] ${
-              current.italic ? "italic text-gold" : "text-cream"
-            }`}
-          >
-            {current.word}
-          </motion.h2>
-        </AnimatePresence>
+      {/* Headline — full statement with stagger */}
+      <div className="flex-1 flex items-center justify-center w-full">
+        <h2
+          data-testid="manifesto-headline"
+          className="font-display font-light leading-[0.98] tracking-tight text-[10vw] md:text-[6.5vw] lg:text-[6.25rem] max-w-[16ch]"
+        >
+          {MANIFESTO_LINES.map((line, i) => (
+            <motion.span
+              key={line.text}
+              initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{
+                duration: 1.2,
+                delay: 0.5 + i * 0.45,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className={`block ${
+                line.italic ? "italic" : ""
+              } ${line.color === "gold" ? "text-gold" : "text-cream"}`}
+            >
+              {line.text}
+            </motion.span>
+          ))}
+        </h2>
       </div>
 
-      {/* Outro — CTAs + tagline */}
-      <div className="w-full min-h-[120px] md:min-h-[140px] flex items-end justify-center">
+      {/* Outro — subtitle + CTAs */}
+      <div className="w-full min-h-[140px] md:min-h-[160px] flex items-end justify-center">
         <AnimatePresence>
           {showOutro && (
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
               className="flex flex-col items-center gap-8 md:gap-10"
               data-testid="manifesto-outro"
             >
               <p className="font-body font-light text-cream/80 text-base md:text-lg leading-relaxed max-w-xl">
-                Half a million golfers a year ask about México.{" "}
-                <span className="text-cream">We write for every one of them.</span>
+                For anyone who wants to know{" "}
+                <span className="text-cream">golf in México</span> — the
+                courses, the people, the trips. Written from the inside, by the
+                editors who live it.
               </p>
               <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-10">
                 <Link
