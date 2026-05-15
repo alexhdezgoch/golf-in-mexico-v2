@@ -75,35 +75,41 @@ const AUTHORS = [
     id: "gim",
     name: "Golf in Mexico°",
     short: "GIM",
-    role: "The Editorial",
+    role: "Our Values",
     differentiator:
-      "The brand's launch dispatches — the long-form pieces we are publishing as the journal opens.",
+      "Three principles that shape every conversation, every guide, and every trip we touch.",
     photo: "/logo-wordmark.png",
     photoPosition: "center",
     accent: "#1A1A18",
     isMark: true,
+    isValues: true,
     articles: [
       {
-        title: "Why México is the next great golf destination.",
-        tag: "Issue · Opening Letter",
-        category: "Letter",
+        title: "Professional Management",
+        tag: "How we work",
+        category: "Value · I",
+        img:
+          "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1200&q=80",
+        body:
+          "We have worked around elite golfers and high-level Tour environments. The approach is simple: understand what you value, then design and execute every detail with structure — not improvisation.",
+      },
+      {
+        title: "Destination Intelligence",
+        tag: "What we know",
+        category: "Value · II",
         img:
           "https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?auto=format&fit=crop&w=1200&q=80",
+        body:
+          "Six years traveling México's finest golf destinations have built trusted relationships across hospitality, golf, and logistics. We cut through generic packages and curate the right mix — course, stay, and flow — for each trip.",
       },
       {
-        title: "Los Cabos — the complete editorial guide.",
-        tag: "Hub N° 01 · Los Cabos",
-        category: "Region Hub",
+        title: "Long-Term Relationships",
+        tag: "Why we exist",
+        category: "Value · III",
         img:
-          "https://images.unsplash.com/photo-1605144156546-91acf5e4cffd?auto=format&fit=crop&w=1200&q=80",
-        href: "/journal/los-cabos",
-      },
-      {
-        title: "Golf, People, Cultura — what this journal is about.",
-        tag: "Manifesto",
-        category: "Manifesto",
-        img:
-          "https://images.unsplash.com/photo-1688845465690-e5ea24774fd5?auto=format&fit=crop&w=1200&q=80",
+          "https://images.unsplash.com/photo-1543105177-748ceda71741?auto=format&fit=crop&w=1200&q=80",
+        body:
+          "This is not a booking platform. It is a relationship-driven practice. We work closely with every client so each trip builds trust — not just a transaction.",
       },
     ],
   },
