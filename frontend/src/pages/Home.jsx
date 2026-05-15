@@ -9,6 +9,19 @@ const HERO_VIDEO =
 const HERO_POSTER =
   "https://images.unsplash.com/photo-1605144156546-91acf5e4cffd?auto=format&fit=crop&w=2000&q=80";
 
+const MANIFESTO_VIDEO =
+  "https://assets.mixkit.co/videos/preview/mixkit-aerial-shot-of-a-cliff-with-trees-and-the-ocean-49635-large.mp4";
+
+const MANIFESTO_POSTER =
+  "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=2000&q=80";
+
+const MANIFESTO_WORDS = [
+  { word: "Golf.", italic: false },
+  { word: "Hospitality.", italic: false },
+  { word: "Culture.", italic: false },
+  { word: "One round.", italic: true },
+];
+
 const fade = {
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
@@ -87,84 +100,87 @@ const Home = () => {
       </section>
 
 
-      {/* EDITORIAL STATEMENT — Value proposition / 545,000 */}
+      {/* EDITORIAL STATEMENT — N° 01 The Premise (video manifesto) */}
       <section
         data-testid="statement-section"
-        className="relative bg-cream py-28 md:py-40"
+        className="relative w-full overflow-hidden bg-ink min-h-[100svh] flex"
       >
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-8">
-          <div className="col-span-12 md:col-span-3">
-            <motion.span
-              {...fade}
-              className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted"
+        <video
+          data-testid="statement-video"
+          className="absolute inset-0 w-full h-full object-cover editorial-img"
+          src={MANIFESTO_VIDEO}
+          poster={MANIFESTO_POSTER}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+        />
+        {/* Overlays for contrast */}
+        <div className="absolute inset-0 bg-ink/55" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/20 to-ink/75" />
+
+        {/* Content */}
+        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-12 py-24 md:py-28 flex flex-col justify-between gap-16 md:gap-20">
+          {/* Top kicker */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="flex items-center gap-3"
+          >
+            <span className="block w-6 h-px bg-gold" />
+            <span
+              data-testid="statement-kicker"
+              className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold"
             >
               N° 01 — The Premise
-            </motion.span>
-          </div>
-          <div className="col-span-12 md:col-span-9">
-            <motion.span
-              {...fade}
-              className="block font-mono text-[10px] uppercase tracking-wide-editorial text-gold"
-              data-testid="statement-kicker"
-            >
-              545,000 golfers a year · One editorial
-            </motion.span>
+            </span>
+          </motion.div>
 
-            <motion.h2
-              {...fade}
-              transition={{ duration: 1, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-6 font-display font-light text-ink text-4xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight max-w-5xl"
-            >
+          {/* Center: sequential words */}
+          <h2
+            data-testid="manifesto-words"
+            className="font-display font-light text-cream leading-[0.98] tracking-tight text-[14vw] md:text-[9vw] lg:text-[8.5rem] max-w-[14ch]"
+          >
+            {MANIFESTO_WORDS.map((w, i) => (
+              <motion.span
+                key={w.word}
+                initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{
+                  duration: 1.1,
+                  delay: 0.4 + i * 0.55,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className={`block ${w.italic ? "italic text-gold" : ""}`}
+              >
+                {w.word}
+              </motion.span>
+            ))}
+          </h2>
+
+          {/* Bottom: subtitle + CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 1, delay: 0.4 + MANIFESTO_WORDS.length * 0.55, ease: [0.22, 1, 0.36, 1] }}
+            className="grid grid-cols-12 gap-6 md:gap-12 items-end"
+          >
+            <p className="col-span-12 md:col-span-7 font-body font-light text-cream/85 text-base md:text-lg leading-relaxed max-w-xl">
               Half a million golfers a year ask about México.{" "}
-              <span className="italic">
-                We write for every one of them.
-              </span>
-            </motion.h2>
+              <span className="text-cream">We write for every one of them</span>{" "}
+              — from the course, to the table, to the country.
+            </p>
 
-            <motion.p
-              {...fade}
-              transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-14 font-body font-light text-ink/80 text-lg md:text-xl leading-[1.7] max-w-2xl"
-            >
-              From the single-handicap flying in for one tee time at Diamante,
-              to the family weighing a week in Punta Mita, to the agent moving
-              clients through Cabo — the question is the same. What is the
-              round actually like, once you are here? This editorial answers
-              it.
-            </motion.p>
-
-            <motion.p
-              {...fade}
-              transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-8 font-body font-light text-ink/80 text-lg md:text-xl leading-[1.7] max-w-2xl"
-            >
-              Because in México, golf does not exist in isolation. It lives
-              beside world-class hospitality and a culture that shapes how
-              every round is played, eaten, and remembered. We have spent
-              years inside all three — the course, the table, the country. One
-              editorial. One round.
-            </motion.p>
-
-            <motion.blockquote
-              {...fade}
-              transition={{ duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-16 md:mt-20 max-w-3xl border-l-2 border-gold pl-6"
-            >
-              <p className="font-display italic font-light text-ink text-2xl md:text-4xl leading-[1.2] tracking-tight">
-                Golf. Hospitality. Culture. In México they are not three
-                industries — they are one round.
-              </p>
-            </motion.blockquote>
-
-            <motion.div
-              {...fade}
-              transition={{ duration: 1, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-14 md:mt-16 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10"
-            >
+            <div className="col-span-12 md:col-span-5 flex flex-col sm:flex-row sm:items-center sm:justify-end gap-5 sm:gap-8">
               <Link
                 to="/journal"
                 data-testid="statement-cta-journal"
-                className="group inline-flex items-center gap-4 bg-ink text-cream px-7 md:px-9 py-5 md:py-6 hover:bg-forest transition-colors duration-500 self-start"
+                className="group inline-flex items-center gap-4 bg-cream text-ink px-7 md:px-9 py-5 md:py-6 hover:bg-gold hover:text-ink transition-colors duration-500 self-start"
               >
                 <span className="font-mono text-[11px] uppercase tracking-wide-editorial">
                   Enter the Journal
@@ -177,15 +193,15 @@ const Home = () => {
               <Link
                 to="/about"
                 data-testid="statement-cta-founders"
-                className="group font-mono text-[11px] uppercase tracking-wide-editorial text-ink editorial-link inline-flex items-center gap-2 self-start sm:self-auto"
+                className="group font-mono text-[11px] uppercase tracking-wide-editorial text-cream/85 hover:text-cream editorial-link inline-flex items-center gap-2 self-start sm:self-auto"
               >
                 Read about the founders
                 <span className="font-mono text-[11px] transition-transform duration-500 group-hover:translate-x-0.5">
                   →
                 </span>
               </Link>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
