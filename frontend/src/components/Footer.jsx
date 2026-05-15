@@ -4,9 +4,8 @@ import { motion } from "framer-motion";
 
 const NAV_LINKS = [
   { label: "Home", to: "/" },
-  { label: "Editorial Pieces", to: "/journal" },
-  { label: "Destinations", to: "/journal" },
   { label: "About", to: "/about" },
+  { label: "Journal", to: "/journal" },
 ];
 
 const Footer = () => {
