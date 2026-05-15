@@ -16,8 +16,8 @@ const FOUNDERS = [
       "Ten-plus PGA / Korn Ferry / PGA Tour Americas events worked",
     ],
     accent: "forest",
-    photo:
-      "https://images.unsplash.com/photo-1601442705509-c6d748675f7f?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=1600",
+    photo: "/pablo.jpg",
+    photoPosition: "12% center",
     pull:
       "I have arranged travel for professional golfers, their families, and their sponsors — disciplined budgets, considered choices, the best experience possible.",
     body:
@@ -139,6 +139,7 @@ const FoundersSlider = () => {
                   <img
                     src={current.photo}
                     alt={`${current.name} portrait`}
+                    style={{ objectPosition: current.photoPosition || "center" }}
                     className="w-full h-full object-cover editorial-img"
                   />
                 </div>

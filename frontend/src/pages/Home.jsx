@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Parallax from "@/components/Parallax";
-import FoundersSlider from "@/components/FoundersSlider";
 
 const HERO_VIDEO =
   "https://assets.mixkit.co/videos/preview/mixkit-overhead-view-of-a-rocky-coast-and-waves-crashing-51502-large.mp4";
@@ -163,8 +163,58 @@ const Home = () => {
         </div>
       </section>
 
-      {/* FOUNDERS — slider */}
-      <FoundersSlider />
+      {/* FOUNDERS — teaser (full detail lives in /about) */}
+      <section
+        data-testid="founders-teaser"
+        className="relative bg-cream border-t hairline py-28 md:py-36"
+      >
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-8 items-end">
+          <div className="col-span-12 md:col-span-3">
+            <motion.span
+              {...fade}
+              className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted"
+            >
+              N° 02 — The Team
+            </motion.span>
+          </div>
+          <div className="col-span-12 md:col-span-7">
+            <motion.h2
+              {...fade}
+              className="font-display font-light text-ink text-3xl md:text-5xl leading-[1.05] tracking-tight max-w-3xl"
+            >
+              Two professionals of the Tour writing about{" "}
+              <span className="italic">the country they grew up playing.</span>
+            </motion.h2>
+            <motion.p
+              {...fade}
+              transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-8 font-body font-light text-ink/70 text-base md:text-lg max-w-xl leading-relaxed"
+            >
+              An agent and a competitor — built on the inside of professional
+              golf, now turning that access into a journal you can read.
+            </motion.p>
+          </div>
+          <div className="col-span-12 md:col-span-2 md:text-right">
+            <motion.div
+              {...fade}
+              transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Link
+                to="/about"
+                data-testid="founders-teaser-cta"
+                className="group inline-flex items-center gap-3 border border-ink/40 px-5 py-3 hover:bg-ink hover:text-cream transition-colors duration-500"
+              >
+                <span className="font-mono text-[10px] uppercase tracking-wide-editorial">
+                  Our story
+                </span>
+                <span className="font-mono text-[10px] transition-transform duration-500 group-hover:translate-x-0.5">
+                  ↗
+                </span>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       {/* CONNECT WITH US — email capture */}
       <section

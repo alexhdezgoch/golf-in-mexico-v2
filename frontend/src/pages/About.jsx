@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import Parallax from "@/components/Parallax";
 
-const FOUNDER_PABLO =
-  "https://images.unsplash.com/photo-1601442705509-c6d748675f7f?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=1600";
+const FOUNDER_PABLO = "/pablo.jpg";
+const FOUNDER_PABLO_POSITION = "12% center";
 const FOUNDER_JOSE =
   "https://images.unsplash.com/photo-1613096108660-104d7e8b132a?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=1600";
 
@@ -60,6 +60,7 @@ const About = () => {
               <img
                 src={FOUNDER_PABLO}
                 alt="Pablo De La Mora"
+                style={{ objectPosition: FOUNDER_PABLO_POSITION }}
                 className="w-full h-full object-cover editorial-img"
               />
             </Parallax>
@@ -290,6 +291,58 @@ const About = () => {
               happens to offer the occasional trip.”
             </motion.p>
           </div>
+        </div>
+      </section>
+
+      {/* GET IN TOUCH — dark CTA block */}
+      <section
+        data-testid="get-in-touch"
+        className="relative bg-forest text-cream py-32 md:py-48"
+      >
+        <div className="max-w-[1100px] mx-auto px-6 md:px-12 text-center">
+          <motion.span
+            {...fade}
+            className="font-mono text-[10px] md:text-xs uppercase tracking-wide-editorial text-gold"
+          >
+            Get in touch
+          </motion.span>
+
+          <motion.h2
+            {...fade}
+            transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-12 md:mt-16 font-display font-light text-cream leading-[1.05] tracking-tight text-4xl md:text-6xl lg:text-7xl"
+          >
+            Want to collaborate, share a story,{" "}
+            <span className="italic text-gold">or just talk golf?</span>
+          </motion.h2>
+
+          <motion.p
+            {...fade}
+            transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-12 md:mt-16 font-body font-light text-cream/70 text-base md:text-lg leading-[1.9] max-w-xl mx-auto"
+          >
+            We are always looking for new courses to cover, people to interview,
+            and stories worth telling.
+          </motion.p>
+
+          <motion.div
+            {...fade}
+            transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-16 md:mt-24"
+          >
+            <a
+              href="mailto:hello@golf-in-mexico.com"
+              data-testid="get-in-touch-cta"
+              className="group inline-flex items-center gap-4 border border-cream/40 px-10 py-6 hover:bg-cream hover:text-ink transition-colors duration-500"
+            >
+              <span className="font-mono text-[11px] uppercase tracking-wide-editorial">
+                Connect with us
+              </span>
+              <span className="font-mono text-[11px] transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                ↗
+              </span>
+            </a>
+          </motion.div>
         </div>
       </section>
     </main>
