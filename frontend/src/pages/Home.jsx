@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import Parallax from "@/components/Parallax";
 import TeamEditorial from "@/components/TeamEditorial";
 
@@ -86,7 +87,7 @@ const Home = () => {
       </section>
 
 
-      {/* EDITORIAL STATEMENT — A land of contrasts */}
+      {/* EDITORIAL STATEMENT — Value proposition / 545,000 */}
       <section
         data-testid="statement-section"
         className="relative bg-cream py-28 md:py-40"
@@ -97,17 +98,27 @@ const Home = () => {
               {...fade}
               className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted"
             >
-              N° 01 — A statement
+              N° 01 — The Premise
             </motion.span>
           </div>
           <div className="col-span-12 md:col-span-9">
+            <motion.span
+              {...fade}
+              className="block font-mono text-[10px] uppercase tracking-wide-editorial text-gold"
+              data-testid="statement-kicker"
+            >
+              545,000 searches a year · One editorial
+            </motion.span>
+
             <motion.h2
               {...fade}
-              className="font-display font-light text-ink text-4xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight max-w-4xl"
+              transition={{ duration: 1, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-6 font-display font-light text-ink text-4xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight max-w-5xl"
             >
-              México is not just a golf <br className="hidden md:block" />
-              destination. It is a{" "}
-              <span className="italic">statement.</span>
+              Golf in México is searched half a million times a year.{" "}
+              <span className="italic">
+                Almost none of those answers come from inside the ropes.
+              </span>
             </motion.h2>
 
             <motion.p
@@ -115,9 +126,10 @@ const Home = () => {
               transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="mt-14 font-body font-light text-ink/80 text-lg md:text-xl leading-[1.7] max-w-2xl"
             >
-              Every course is carved into a geography of its own — volcanoes
-              above the highlands, the Pacific against volcanic rock, deserts
-              that bloom against the odds.
+              Most of what gets written about golf here is sold by people who
+              do not play it, in places they have not stayed, on courses they
+              have not walked. We write the opposite — from the practice, not
+              the brochure.
             </motion.p>
 
             <motion.p
@@ -125,25 +137,54 @@ const Home = () => {
               transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
               className="mt-8 font-body font-light text-ink/80 text-lg md:text-xl leading-[1.7] max-w-2xl"
             >
-              The fairway is a dialogue between architect and landscape. In Los
-              Cabos, with the Sonoran desert. In Punta Mita, with the Pacific.
-              In CDMX, at altitude, in eternal spring. A country of contrasts —
-              played slowly.
+              No other country compresses elite golf, world-class hospitality,
+              and a living culture into the same eighteen holes. The game
+              played at altitude in CDMX is not the game played against the
+              Pacific in Punta Mita. The hotel that elevates Cabo is not the
+              one that fits the Riviera Maya. We know — because we have spent
+              years inside all three.
             </motion.p>
 
             <motion.blockquote
               {...fade}
-              transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-16 md:mt-20 max-w-3xl"
+              transition={{ duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-16 md:mt-20 max-w-3xl border-l-2 border-gold pl-6"
             >
-              <span className="font-display italic text-gold text-5xl md:text-7xl leading-none block">
-                “
-              </span>
-              <p className="mt-2 font-display italic font-light text-ink text-2xl md:text-4xl leading-[1.2] tracking-tight">
-                Golf in México is not tourism. It is immersion — the moment a
-                culture takes the game and makes it its own.
+              <p className="font-display italic font-light text-ink text-2xl md:text-4xl leading-[1.2] tracking-tight">
+                Golf. Hospitality. Culture. In México they are not three
+                industries — they are one round.
               </p>
             </motion.blockquote>
+
+            <motion.div
+              {...fade}
+              transition={{ duration: 1, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-14 md:mt-16 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10"
+            >
+              <Link
+                to="/journal"
+                data-testid="statement-cta-journal"
+                className="group inline-flex items-center gap-4 bg-ink text-cream px-7 md:px-9 py-5 md:py-6 hover:bg-forest transition-colors duration-500 self-start"
+              >
+                <span className="font-mono text-[11px] uppercase tracking-wide-editorial">
+                  Enter the Journal
+                </span>
+                <span className="font-mono text-base transition-transform duration-500 group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
+
+              <Link
+                to="/about"
+                data-testid="statement-cta-founders"
+                className="group font-mono text-[11px] uppercase tracking-wide-editorial text-ink editorial-link inline-flex items-center gap-2 self-start sm:self-auto"
+              >
+                Read about the founders
+                <span className="font-mono text-[11px] transition-transform duration-500 group-hover:translate-x-0.5">
+                  →
+                </span>
+              </Link>
+            </motion.div>
           </div>
         </div>
       </section>
