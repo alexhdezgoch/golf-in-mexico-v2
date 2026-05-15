@@ -107,7 +107,7 @@ const Home = () => {
               className="block font-mono text-[10px] uppercase tracking-wide-editorial text-gold"
               data-testid="statement-kicker"
             >
-              545,000 searches a year · One editorial
+              545,000 golfers a year · One editorial
             </motion.span>
 
             <motion.h2
@@ -115,9 +115,9 @@ const Home = () => {
               transition={{ duration: 1, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
               className="mt-6 font-display font-light text-ink text-4xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight max-w-5xl"
             >
-              Golf in México is searched half a million times a year.{" "}
+              Half a million golfers a year ask about México.{" "}
               <span className="italic">
-                Almost none of those answers come from inside the ropes.
+                We write for every one of them.
               </span>
             </motion.h2>
 
@@ -126,10 +126,11 @@ const Home = () => {
               transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="mt-14 font-body font-light text-ink/80 text-lg md:text-xl leading-[1.7] max-w-2xl"
             >
-              Most of what gets written about golf here is sold by people who
-              do not play it, in places they have not stayed, on courses they
-              have not walked. We write the opposite — from the practice, not
-              the brochure.
+              From the single-handicap flying in for one tee time at Diamante,
+              to the family weighing a week in Punta Mita, to the agent moving
+              clients through Cabo — the question is the same. What is the
+              round actually like, once you are here? This editorial answers
+              it.
             </motion.p>
 
             <motion.p
@@ -137,12 +138,11 @@ const Home = () => {
               transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
               className="mt-8 font-body font-light text-ink/80 text-lg md:text-xl leading-[1.7] max-w-2xl"
             >
-              No other country compresses elite golf, world-class hospitality,
-              and a living culture into the same eighteen holes. The game
-              played at altitude in CDMX is not the game played against the
-              Pacific in Punta Mita. The hotel that elevates Cabo is not the
-              one that fits the Riviera Maya. We know — because we have spent
-              years inside all three.
+              Because in México, golf does not exist in isolation. It lives
+              beside world-class hospitality and a culture that shapes how
+              every round is played, eaten, and remembered. We have spent
+              years inside all three — the course, the table, the country. One
+              editorial. One round.
             </motion.p>
 
             <motion.blockquote
