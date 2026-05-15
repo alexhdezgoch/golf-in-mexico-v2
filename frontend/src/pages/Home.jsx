@@ -1,7 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Parallax from "@/components/Parallax";
+import TeamEditorial from "@/components/TeamEditorial";
 
 const HERO_VIDEO =
   "https://assets.mixkit.co/videos/preview/mixkit-overhead-view-of-a-rocky-coast-and-waves-crashing-51502-large.mp4";
@@ -22,15 +21,6 @@ const fade = {
 };
 
 const Home = () => {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    // Visual-only per user request; brief confirmation.
-    if (email.trim().length > 3) setSubmitted(true);
-  };
-
   return (
     <main data-testid="page-home" className="relative">
       {/* HERO */}
@@ -163,144 +153,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* FOUNDERS — teaser (full detail lives in /about) */}
-      <section
-        data-testid="founders-teaser"
-        className="relative bg-cream border-t hairline py-28 md:py-36"
-      >
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-8 items-end">
-          <div className="col-span-12 md:col-span-3">
-            <motion.span
-              {...fade}
-              className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted"
-            >
-              N° 02 — The Team
-            </motion.span>
-          </div>
-          <div className="col-span-12 md:col-span-7">
-            <motion.h2
-              {...fade}
-              className="font-display font-light text-ink text-3xl md:text-5xl leading-[1.05] tracking-tight max-w-3xl"
-            >
-              Two professionals of the Tour writing about{" "}
-              <span className="italic">the country they grew up playing.</span>
-            </motion.h2>
-            <motion.p
-              {...fade}
-              transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-8 font-body font-light text-ink/70 text-base md:text-lg max-w-xl leading-relaxed"
-            >
-              An agent and a competitor — built on the inside of professional
-              golf, now turning that access into a journal you can read.
-            </motion.p>
-          </div>
-          <div className="col-span-12 md:col-span-2 md:text-right">
-            <motion.div
-              {...fade}
-              transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <Link
-                to="/about"
-                data-testid="founders-teaser-cta"
-                className="group inline-flex items-center gap-3 border border-ink/40 px-5 py-3 hover:bg-ink hover:text-cream transition-colors duration-500"
-              >
-                <span className="font-mono text-[10px] uppercase tracking-wide-editorial">
-                  Our story
-                </span>
-                <span className="font-mono text-[10px] transition-transform duration-500 group-hover:translate-x-0.5">
-                  ↗
-                </span>
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* CONNECT WITH US — email capture */}
-      <section
-        data-testid="intro-section"
-        className="relative bg-cream border-t hairline py-28 md:py-40"
-      >
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-8">
-          <div className="col-span-12 md:col-span-3">
-            <motion.span
-              {...fade}
-              className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted"
-            >
-              N° 03 — Connect with us
-            </motion.span>
-          </div>
-
-          <div className="col-span-12 md:col-span-9">
-            <motion.h2
-              {...fade}
-              className="font-display font-light text-ink text-4xl md:text-6xl leading-[1.05] tracking-tight max-w-3xl"
-            >
-              Coming to México, or planning a round?{" "}
-              <span className="italic">Begin here.</span>
-            </motion.h2>
-
-            <motion.p
-              {...fade}
-              transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-10 font-body text-base md:text-lg text-ink/70 max-w-xl leading-relaxed"
-            >
-              Leave your email. The newsletter is written by Pablo and José —
-              the courses worth the flight, the tables worth keeping, the wind
-              on each tee.
-            </motion.p>
-
-            <motion.form
-              {...fade}
-              transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              onSubmit={onSubmit}
-              data-testid="email-capture-form"
-              className="mt-16 max-w-xl"
-            >
-              <div className="relative flex flex-wrap items-end gap-3 sm:gap-6 border-b border-ink/40 pb-3 focus-within:border-gold transition-colors">
-                <label
-                  htmlFor="email"
-                  className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted pb-1"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  required
-                  data-testid="email-input"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="you@elsewhere.com"
-                  className="flex-1 min-w-0 bg-transparent border-0 outline-none font-body text-base md:text-lg text-ink placeholder:text-ink/30 py-1"
-                />
-                <button
-                  type="submit"
-                  data-testid="email-submit"
-                  className="font-mono text-[11px] uppercase tracking-wide-editorial text-ink pb-1 group inline-flex items-center gap-2"
-                >
-                  Connect with us
-                  <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">
-                    →
-                  </span>
-                </button>
-              </div>
-              <div className="mt-4 h-5">
-                {submitted && (
-                  <motion.span
-                    initial={{ opacity: 0, y: 4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    data-testid="email-confirmation"
-                    className="font-mono text-[10px] uppercase tracking-wide-editorial text-forest"
-                  >
-                    Noted. The newsletter will find you.
-                  </motion.span>
-                )}
-              </div>
-            </motion.form>
-          </div>
-        </div>
-      </section>
+      {/* N° 02 — Team & Editorial tabs */}
+      <TeamEditorial />
     </main>
   );
 };
