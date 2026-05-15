@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Linkedin, Instagram } from "lucide-react";
@@ -6,153 +6,49 @@ import { useInquiry } from "@/context/Inquiry";
 
 /* ------------------------------ DATA ------------------------------ */
 
-const CATEGORIES = [
-  "All",
-  "Region Hubs",
-  "Destinations",
-  "Field Notes",
-  "Essays",
-  "Player Diary",
-  "Guides",
-  "Films",
-  "Interviews",
-];
-
-const HEROES = [
+const REGIONS = [
   {
-    id: "cover-cabo",
-    kicker: "Los Cabos · Region Hub",
-    title: "Where to play in Los Cabos, hole by hole.",
-    cta: "Read",
+    slug: "los-cabos",
+    name: "Los Cabos",
+    region: "Baja California Sur",
+    tagline: "Where the desert meets the sea.",
+    summary:
+      "Latin America's undisputed golf capital. Nicklaus, Tiger, and Davis Love III carved between the Sonoran Desert and the Sea of Cortez.",
+    courses: "12+ Championship Courses",
+    greenFees: "USD 250–450",
+    season: "Oct — May",
     image:
-      "https://images.unsplash.com/photo-1605144156546-91acf5e4cffd?auto=format&fit=crop&w=1400&q=85",
-    href: "/journal/los-cabos",
+      "https://images.unsplash.com/photo-1672825952732-ecef34882416?auto=format&fit=crop&w=1600&q=85",
     live: true,
   },
   {
-    id: "editors",
-    kicker: "The Masthead",
-    title: "Two editors. One byline, signed.",
-    cta: "Meet",
+    slug: "punta-mita",
+    name: "Punta Mita",
+    region: "Riviera Nayarit",
+    tagline: "Tropical golf meets surf culture.",
+    summary:
+      "Nicklaus's 'Tail of the Whale' island green, Norman's oceanfront Litibú, and a Pacific that drafts how every round is paced.",
+    courses: "7+ Championship Courses",
+    greenFees: "USD 150–350",
+    season: "Nov — April",
     image:
-      "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1400&q=85",
-    href: null,
-    anchor: "editors-section",
-    live: true,
-  },
-  {
-    id: "issue",
-    kicker: "Vol. I · No. 01",
-    title: "The inaugural issue.",
-    cta: "Features",
-    image:
-      "https://images.unsplash.com/photo-1672825952732-ecef34882416?auto=format&fit=crop&w=1400&q=85",
-    href: null,
-    anchor: "features-section",
-    live: true,
-  },
-];
-
-const FEATURES = [
-  {
-    slug: "los-cabos-four-mornings",
-    kicker: "Los Cabos",
-    title: "Where to play in Los Cabos, hole by hole.",
-    excerpt:
-      "Diamante's Dunes at dawn, Quivira at the cliff, El Camaleón at the marina, Cabo del Sol at sunset.",
-    image:
-      "https://images.unsplash.com/photo-1605144156546-91acf5e4cffd?auto=format&fit=crop&w=1200&q=85",
-    cat: "Region Hubs",
-    live: true,
-    href: "/journal/los-cabos",
-  },
-  {
-    slug: "paspalum-notes",
-    kicker: "Agronomy",
-    title: "Notes on Grass",
-    excerpt:
-      "Paspalum holds the ball where bermuda releases it. A short piece on what your wedge actually has to do in México.",
-    image:
-      "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=1200&q=85",
-    cat: "Essays",
+      "https://images.unsplash.com/photo-1592965046687-1acdbcdb5642?auto=format&fit=crop&w=1600&q=85",
     live: false,
   },
   {
-    slug: "agent-playbook",
-    kicker: "Travel · México",
-    title: "The Agent's Playbook",
-    excerpt:
-      "Booking premium golf in México. What you actually need: introductions, not allotments.",
+    slug: "cdmx",
+    name: "Ciudad de México",
+    region: "Valle de México",
+    tagline: "Golf at seven thousand feet.",
+    summary:
+      "Historic private clubs at altitude, where the ball flies 15% farther and a Michelin-starred dinner is always twenty minutes away.",
+    courses: "8+ Championship Courses",
+    greenFees: "USD 80–250",
+    season: "Year-round",
     image:
-      "https://images.unsplash.com/photo-1543105177-748ceda71741?auto=format&fit=crop&w=1200&q=85",
-    cat: "Guides",
+      "https://images.unsplash.com/photo-1717388835452-c9c8cda0002e?auto=format&fit=crop&w=1600&q=85",
     live: false,
   },
-  {
-    slug: "us-amateur-2023",
-    kicker: "U.S. Amateur · Cherry Hills",
-    title: "Stranger at Cherry Hills",
-    excerpt:
-      "The 2023 U.S. Amateur quarterfinal, from a Mexican kid's perspective. What it takes — and what it costs.",
-    image:
-      "https://images.unsplash.com/photo-1514480573427-1f96cbed6a27?auto=format&fit=crop&w=1200&q=85",
-    cat: "Player Diary",
-    live: false,
-  },
-];
-
-const FEATURES_ROW_2 = [
-  {
-    slug: "mayakoba-wwt",
-    kicker: "Riviera Maya",
-    title: "Inside Mayakoba",
-    excerpt:
-      "A player's diary from the only PGA Tour event in México — what the broadcast does not show.",
-    image:
-      "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=1200&q=85",
-    cat: "Player Diary",
-    live: false,
-  },
-  {
-    slug: "punta-mita-tail",
-    kicker: "Punta Mita",
-    title: "Tail of the Whale",
-    excerpt:
-      "Nicklaus's island green, the Pacific against the rocks, and the round that puts everything else in scale.",
-    image:
-      "https://images.unsplash.com/photo-1592965046687-1acdbcdb5642?auto=format&fit=crop&w=1200&q=85",
-    cat: "Destinations",
-    live: false,
-  },
-  {
-    slug: "cdmx-altitude",
-    kicker: "Ciudad de México",
-    title: "Altitude, Eternal Spring",
-    excerpt:
-      "Historic private clubs at 7,350 feet. The ball flies fifteen percent farther — and the city plays louder.",
-    image:
-      "https://images.unsplash.com/photo-1717388835452-c9c8cda0002e?auto=format&fit=crop&w=1200&q=85",
-    cat: "Destinations",
-    live: false,
-  },
-  {
-    slug: "caddie-letter",
-    kicker: "Open Letter",
-    title: "A Letter to the Caddies",
-    excerpt:
-      "On the men and women who read the line before you do, and what we owe them past the eighteenth.",
-    image:
-      "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1200&q=85",
-    cat: "Essays",
-    live: false,
-  },
-];
-
-const ISSUES = [
-  { name: "Los Cabos", region: "Baja California Sur", image: "https://images.unsplash.com/photo-1672825952732-ecef34882416?auto=format&fit=crop&w=900&q=85", slug: "los-cabos", live: true },
-  { name: "Punta Mita", region: "Riviera Nayarit", image: "https://images.unsplash.com/photo-1592965046687-1acdbcdb5642?auto=format&fit=crop&w=900&q=85", slug: "punta-mita", live: false },
-  { name: "Ciudad de México", region: "Valle de México", image: "https://images.unsplash.com/photo-1717388835452-c9c8cda0002e?auto=format&fit=crop&w=900&q=85", slug: "cdmx", live: false },
-  { name: "Riviera Maya", region: "Quintana Roo", image: "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=900&q=85", slug: "riviera-maya", live: false },
 ];
 
 const EDITORS = [
@@ -161,7 +57,6 @@ const EDITORS = [
     name: "Pablo De La Mora",
     role: "Founding Editor · Sports Agent",
     bio: "Strategy and logistics from inside Tour environments.",
-    bylines: 14,
     photo: "/pablo.jpg",
     photoPosition: "center 22%",
     accent: "#2C4A2C",
@@ -174,8 +69,7 @@ const EDITORS = [
     id: "jose",
     name: "José Islas",
     role: "Player Correspondent · Pro Golfer",
-    bio: "Files the player's notes from inside the ropes — junior to professional.",
-    bylines: 9,
+    bio: "Files the player's notes from inside the ropes.",
     photo: "/jose.jpg",
     photoPosition: "center 22%",
     accent: "#C4A24E",
@@ -185,6 +79,115 @@ const EDITORS = [
   },
 ];
 
+const ARTICLES = [
+  {
+    slug: "los-cabos-four-mornings",
+    title: "Where to play in Los Cabos, hole by hole.",
+    excerpt:
+      "Four mornings, four courses. Diamante's Dunes at dawn, Quivira at the cliff, El Camaleón at the marina, Cabo del Sol at sunset.",
+    image:
+      "https://images.unsplash.com/photo-1605144156546-91acf5e4cffd?auto=format&fit=crop&w=1200&q=85",
+    category: "Region Hubs",
+    author: "pablo",
+    live: true,
+    read: "12 min",
+    href: "/journal/los-cabos",
+  },
+  {
+    slug: "agent-playbook",
+    title: "The Agent's Playbook.",
+    excerpt:
+      "Booking premium golf in México — what you actually need: introductions, not allotments.",
+    image:
+      "https://images.unsplash.com/photo-1543105177-748ceda71741?auto=format&fit=crop&w=1200&q=85",
+    category: "Guides",
+    author: "pablo",
+    live: false,
+    read: "7 min",
+  },
+  {
+    slug: "cdmx-altitude",
+    title: "Altitude, Eternal Spring.",
+    excerpt:
+      "Historic private clubs at 7,350 feet — the ball flies fifteen percent farther and the city plays louder.",
+    image:
+      "https://images.unsplash.com/photo-1717388835452-c9c8cda0002e?auto=format&fit=crop&w=1200&q=85",
+    category: "Destinations",
+    author: "pablo",
+    live: false,
+    read: "9 min",
+  },
+  {
+    slug: "paspalum-notes",
+    title: "Notes on Grass.",
+    excerpt:
+      "Paspalum holds the ball where bermuda releases it. What your wedge actually has to do in México.",
+    image:
+      "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=1200&q=85",
+    category: "Essays",
+    author: "jose",
+    live: false,
+    read: "6 min",
+  },
+  {
+    slug: "us-amateur-2023",
+    title: "Stranger at Cherry Hills.",
+    excerpt:
+      "The 2023 U.S. Amateur quarterfinal, from a Mexican kid's perspective. What it takes — and what it costs.",
+    image:
+      "https://images.unsplash.com/photo-1514480573427-1f96cbed6a27?auto=format&fit=crop&w=1200&q=85",
+    category: "Player Diary",
+    author: "jose",
+    live: false,
+    read: "9 min",
+  },
+  {
+    slug: "mayakoba-wwt",
+    title: "Inside Mayakoba.",
+    excerpt:
+      "A player's diary from the only PGA Tour event in México — what the broadcast does not show.",
+    image:
+      "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=1200&q=85",
+    category: "Player Diary",
+    author: "jose",
+    live: false,
+    read: "11 min",
+  },
+  {
+    slug: "punta-mita-tail",
+    title: "Tail of the Whale.",
+    excerpt:
+      "Nicklaus's island green, the Pacific against the rocks, and the round that puts everything in scale.",
+    image:
+      "https://images.unsplash.com/photo-1592965046687-1acdbcdb5642?auto=format&fit=crop&w=1200&q=85",
+    category: "Destinations",
+    author: "pablo",
+    live: false,
+    read: "8 min",
+  },
+  {
+    slug: "caddie-letter",
+    title: "A Letter to the Caddies.",
+    excerpt:
+      "On the men and women who read the line before you do — and what we owe them past the eighteenth.",
+    image:
+      "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1200&q=85",
+    category: "Essays",
+    author: "jose",
+    live: false,
+    read: "5 min",
+  },
+];
+
+const CATEGORIES = [
+  "All",
+  "Region Hubs",
+  "Destinations",
+  "Essays",
+  "Player Diary",
+  "Guides",
+];
+
 const fade = {
   initial: { opacity: 0, y: 14 },
   whileInView: { opacity: 1, y: 0 },
@@ -192,44 +195,63 @@ const fade = {
   transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
 };
 
-/* ----------------------------- CARDS ----------------------------- */
+/* ------------------------------ CARDS ------------------------------ */
 
-const HeroTile = ({ tile, i }) => {
-  const handleClick = (e) => {
-    if (!tile.href && tile.anchor) {
-      e.preventDefault();
-      document.getElementById(tile.anchor)?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-  const Tag = tile.href ? Link : "a";
-  const props = tile.href ? { to: tile.href } : { href: "#", onClick: handleClick };
-
+const RegionTile = ({ r, i }) => {
+  const Tag = r.live ? Link : "div";
+  const props = r.live ? { to: `/journal/${r.slug}` } : {};
   return (
     <motion.li
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-10%" }}
-      transition={{ duration: 1, delay: 0.06 * i, ease: [0.22, 1, 0.36, 1] }}
-      data-testid={`hero-tile-${tile.id}`}
+      transition={{ duration: 0.9, delay: 0.06 * i, ease: [0.22, 1, 0.36, 1] }}
+      data-testid={`region-${r.slug}`}
       className="col-span-12 md:col-span-4 group"
     >
       <Tag {...props} className="block">
         <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink">
           <img
-            src={tile.image}
-            alt={tile.title}
-            className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+            src={r.image}
+            alt={r.name}
+            className={`absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              r.live ? "group-hover:scale-[1.04]" : ""
+            }`}
           />
+          {!r.live && (
+            <div className="absolute top-4 left-4">
+              <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-ink/80 bg-cream/85 px-3 py-1.5">
+                Coming Soon
+              </span>
+            </div>
+          )}
         </div>
-        <div className="mt-5">
+        <div className="mt-6">
           <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
-            {tile.kicker}
+            {r.region}
           </span>
-          <h3 className="mt-2 font-display font-light text-ink text-2xl md:text-3xl lg:text-4xl leading-[1.05] tracking-tight max-w-[18ch]">
-            {tile.title}
+          <h3 className="mt-2 font-display font-light text-ink text-3xl md:text-4xl leading-[1.05] tracking-tight">
+            {r.name}
           </h3>
-          <span className="mt-4 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-wide-editorial text-ink editorial-link">
-            {tile.cta}
+          <p className="mt-3 font-display italic font-light text-ink/70 text-base md:text-lg leading-[1.35] tracking-tight max-w-[26ch]">
+            {r.tagline}
+          </p>
+          <dl className="mt-6 grid grid-cols-3 gap-3 border-t hairline pt-4">
+            <div>
+              <dt className="font-mono text-[9px] uppercase tracking-wide-editorial text-muted">Courses</dt>
+              <dd className="mt-1 font-mono text-[10px] uppercase tracking-wide-editorial text-ink">{r.courses.replace(" Championship Courses", "+")}</dd>
+            </div>
+            <div>
+              <dt className="font-mono text-[9px] uppercase tracking-wide-editorial text-muted">Fees</dt>
+              <dd className="mt-1 font-mono text-[10px] uppercase tracking-wide-editorial text-ink">{r.greenFees}</dd>
+            </div>
+            <div>
+              <dt className="font-mono text-[9px] uppercase tracking-wide-editorial text-muted">Season</dt>
+              <dd className="mt-1 font-mono text-[10px] uppercase tracking-wide-editorial text-ink">{r.season}</dd>
+            </div>
+          </dl>
+          <span className="mt-5 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-wide-editorial text-ink editorial-link">
+            {r.live ? "Explore the hub" : "Subscribe to be first"}
             <span className="transition-transform duration-500 group-hover:translate-x-0.5">→</span>
           </span>
         </div>
@@ -238,426 +260,348 @@ const HeroTile = ({ tile, i }) => {
   );
 };
 
-const FeatureCard = ({ f, i }) => {
-  const Tag = f.live && f.href ? Link : "div";
-  const props = f.live && f.href ? { to: f.href } : {};
+const ArticleCard = ({ a, i, size = "md" }) => {
+  const Tag = a.live && a.href ? Link : "div";
+  const props = a.live && a.href ? { to: a.href } : {};
+  const aspect = size === "lg" ? "aspect-[3/2]" : "aspect-[4/5]";
+  const titleSize = size === "lg" ? "text-2xl md:text-3xl" : "text-xl md:text-2xl";
   return (
     <motion.li
       initial={{ opacity: 0, y: 14 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-10%" }}
       transition={{ duration: 0.9, delay: 0.05 * i, ease: [0.22, 1, 0.36, 1] }}
-      data-testid={`feature-${f.slug}`}
-      className="col-span-12 sm:col-span-6 lg:col-span-3 group"
+      data-testid={`article-${a.slug}`}
+      className="col-span-12 sm:col-span-6 lg:col-span-4 group"
     >
       <Tag {...props} className="block">
-        <div className="relative aspect-square w-full overflow-hidden bg-ink">
+        <div className={`relative ${aspect} w-full overflow-hidden bg-ink`}>
           <img
-            src={f.image}
-            alt={f.title}
+            src={a.image}
+            alt={a.title}
             className={`absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-              f.live ? "group-hover:scale-[1.04]" : ""
+              a.live ? "group-hover:scale-[1.04]" : ""
             }`}
           />
-          {!f.live && (
-            <div className="absolute inset-0 bg-cream/55 backdrop-blur-[2px] flex items-center justify-center">
-              <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-ink/80 border border-ink/30 px-3 py-1.5 bg-cream/70">
-                In Preparation
-              </span>
-            </div>
+          <span className="absolute top-4 left-4 font-mono text-[10px] uppercase tracking-wide-editorial text-ink/80 bg-cream/85 px-2.5 py-1">
+            {a.category}
+          </span>
+          {!a.live && (
+            <span className="absolute top-4 right-4 font-mono text-[10px] uppercase tracking-wide-editorial text-ink/80 bg-cream/85 px-2.5 py-1">
+              Soon
+            </span>
           )}
         </div>
         <div className="mt-5">
-          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
-            {f.kicker}
-          </span>
           <h3
-            className={`mt-2 font-display font-light text-2xl md:text-3xl leading-[1.05] tracking-tight max-w-[18ch] ${
-              f.live ? "text-ink" : "text-ink/65"
+            className={`font-display font-light leading-[1.1] tracking-tight max-w-[20ch] ${titleSize} ${
+              a.live ? "text-ink" : "text-ink/75"
             }`}
           >
-            {f.title}
+            {a.title}
           </h3>
-          <p className="mt-3 font-body font-light text-ink/65 text-sm leading-[1.65] max-w-md">
-            {f.excerpt}
+          <p className="mt-3 font-body font-light text-ink/65 text-sm md:text-[15px] leading-[1.7] max-w-md">
+            {a.excerpt}
           </p>
+          <div className="mt-4 pt-3 border-t hairline flex items-center justify-between gap-3">
+            <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
+              By {a.author === "pablo" ? "Pablo De La Mora" : "José Islas"}
+            </span>
+            <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
+              {a.read}
+            </span>
+          </div>
         </div>
       </Tag>
     </motion.li>
   );
 };
 
-const BannerStrip = ({ image, kicker, title, cta, href, anchor, testid }) => {
-  const handleClick = (e) => {
-    if (!href && anchor) {
-      e.preventDefault();
-      document.getElementById(anchor)?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-  const Tag = href ? Link : "a";
-  const props = href ? { to: href } : { href: "#", onClick: handleClick };
+/* ----------------------------- SECTIONS ----------------------------- */
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-10%" }}
-      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-      data-testid={testid}
-      className="col-span-12 group"
-    >
-      <Tag {...props} className="block">
-        <div className="relative aspect-[16/8] md:aspect-[21/8] w-full overflow-hidden bg-ink">
-          <img
-            src={image}
-            alt={title}
-            className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1500ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
-          />
-          <div className="absolute inset-0 bg-ink/35" />
-          <div className="absolute inset-0 px-6 md:px-12 flex items-center">
-            <div className="max-w-2xl">
-              <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/80">
-                {kicker}
-              </span>
-              <h3 className="mt-3 font-display font-light text-cream text-3xl md:text-5xl lg:text-6xl leading-[1.02] tracking-tight">
-                {title}
-              </h3>
-              <span className="mt-6 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-wide-editorial text-cream editorial-link">
-                {cta}
-                <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </Tag>
-    </motion.div>
-  );
-};
-
-/* --------------------------- SECTIONS --------------------------- */
-
-const HeaderBar = ({ active, onChange }) => (
+const Header = () => (
   <section
     data-testid="journal-header"
-    className="bg-cream pt-44 md:pt-52 pb-10 md:pb-14"
+    className="bg-cream pt-44 md:pt-52 pb-16 md:pb-24"
+  >
+    <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-8">
+      <div className="col-span-12 md:col-span-3">
+        <motion.span
+          {...fade}
+          className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted"
+        >
+          Journal · Vol. I
+        </motion.span>
+      </div>
+      <div className="col-span-12 md:col-span-9">
+        <motion.h1
+          {...fade}
+          className="font-display font-light text-ink leading-[0.96] tracking-tight text-5xl md:text-7xl lg:text-[7.5rem]"
+        >
+          The <span className="italic">field</span> journal.
+        </motion.h1>
+        <motion.p
+          {...fade}
+          transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-8 font-body font-light text-ink/70 text-base md:text-lg max-w-xl leading-relaxed"
+        >
+          Region hubs, field essays, and player diaries — written from the
+          courses themselves, by the editors who walk them.
+        </motion.p>
+      </div>
+    </div>
+  </section>
+);
+
+const RegionsSection = () => (
+  <section
+    data-testid="regions-section"
+    className="bg-cream pb-20 md:pb-28 border-t hairline pt-20 md:pt-28"
   >
     <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-      <motion.h1
-        {...fade}
-        className="font-display font-light text-ink leading-[0.96] tracking-tight text-5xl md:text-7xl lg:text-[8rem]"
-      >
-        Features.
-      </motion.h1>
-
-      <motion.div
-        {...fade}
-        transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-        className="mt-12 md:mt-16 flex items-center gap-x-6 gap-y-3 flex-wrap border-b hairline pb-5"
-      >
-        <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-ink/45">
-          —
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
+        <div>
+          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
+            Destinations
+          </span>
+          <motion.h2
+            {...fade}
+            className="mt-5 font-display font-light text-ink text-4xl md:text-6xl leading-[1.02] tracking-tight max-w-3xl"
+          >
+            Discover Golf Regions.
+          </motion.h2>
+          <motion.p
+            {...fade}
+            transition={{ duration: 1, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-6 font-body font-light text-ink/70 text-base md:text-lg max-w-xl leading-relaxed"
+          >
+            Comprehensive, editorially-crafted guides to México's premier
+            golf regions. Courses, costs, access rules, and the culture that
+            makes each destination unique.
+          </motion.p>
+        </div>
+        <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
+          {REGIONS.length} regions · México
         </span>
-        {CATEGORIES.map((c) => {
-          const isActive = c === active;
-          return (
+      </div>
+      <ul className="grid grid-cols-12 gap-8 md:gap-10">
+        {REGIONS.map((r, i) => (
+          <RegionTile key={r.slug} r={r} i={i} />
+        ))}
+      </ul>
+    </div>
+  </section>
+);
+
+const SuggestedBy = ({ editor, articles }) => (
+  <section
+    data-testid={`suggested-${editor.id}`}
+    className="bg-cream pb-20 md:pb-28 border-t hairline pt-20 md:pt-28"
+  >
+    <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12 md:mb-16">
+        <div className="flex items-center gap-5">
+          <span
+            className="relative inline-flex w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden shrink-0"
+            style={{ outline: `1px solid ${editor.accent}`, outlineOffset: 3 }}
+          >
+            <img
+              src={editor.photo}
+              alt={editor.name}
+              className="w-full h-full object-cover"
+              style={{ objectPosition: editor.photoPosition }}
+            />
+          </span>
+          <div>
+            <span
+              className="font-mono text-[10px] uppercase tracking-wide-editorial"
+              style={{ color: editor.accent }}
+            >
+              Suggested by · {editor.role.split(" · ")[1]}
+            </span>
+            <h2 className="mt-2 font-display font-light text-ink text-3xl md:text-5xl leading-[1.05] tracking-tight">
+              {editor.name}'s picks.
+            </h2>
+            <p className="mt-2 font-display italic font-light text-ink/65 text-sm md:text-base leading-[1.4]">
+              {editor.bio}
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-3 md:flex-col md:items-end md:gap-1">
+          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
+            {articles.length} pieces curated
+          </span>
+          <div className="flex items-center gap-2">
+            {editor.socials.map((s) => {
+              const Icon = s.icon;
+              return (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${editor.name} on ${s.label}`}
+                  data-testid={`suggested-${editor.id}-${s.label.toLowerCase()}`}
+                  className="group inline-flex items-center justify-center w-8 h-8 border border-ink/25 hover:border-ink transition-colors"
+                >
+                  <Icon className="w-3.5 h-3.5 text-ink/65 group-hover:text-ink transition-colors" strokeWidth={1.4} />
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+      <ul className="grid grid-cols-12 gap-8 md:gap-10">
+        {articles.map((a, i) => (
+          <ArticleCard key={a.slug} a={a} i={i} />
+        ))}
+      </ul>
+    </div>
+  </section>
+);
+
+const AllArticles = () => {
+  const [activeCat, setActiveCat] = useState("All");
+  const [activeAuthor, setActiveAuthor] = useState("all");
+
+  const filtered = useMemo(() => {
+    return ARTICLES.filter((a) => {
+      const catOk = activeCat === "All" || a.category === activeCat;
+      const authorOk = activeAuthor === "all" || a.author === activeAuthor;
+      return catOk && authorOk;
+    });
+  }, [activeCat, activeAuthor]);
+
+  return (
+    <section
+      data-testid="all-articles"
+      className="bg-cream pb-24 md:pb-32 border-t hairline pt-20 md:pt-28"
+    >
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-12">
+          <div>
+            <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
+              The Archive
+            </span>
+            <motion.h2
+              {...fade}
+              className="mt-5 font-display font-light text-ink text-4xl md:text-6xl leading-[1.02] tracking-tight"
+            >
+              Full articles.
+            </motion.h2>
+          </div>
+          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
+            {filtered.length} of {ARTICLES.length} shown
+          </span>
+        </div>
+
+        {/* Filter bar */}
+        <div className="border-t hairline pt-5 mb-12 md:mb-14 flex flex-col gap-5">
+          {/* Category chips */}
+          <div className="flex items-center gap-x-3 gap-y-3 flex-wrap">
+            <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted shrink-0">
+              Category
+            </span>
+            {CATEGORIES.map((c) => {
+              const isActive = c === activeCat;
+              return (
+                <button
+                  type="button"
+                  key={c}
+                  onClick={() => setActiveCat(c)}
+                  data-testid={`filter-cat-${c.toLowerCase().replace(/\s+/g, "-")}`}
+                  className={`px-3.5 py-1.5 border font-mono text-[10px] uppercase tracking-wide-editorial transition-colors duration-300 ${
+                    isActive
+                      ? "bg-ink text-cream border-ink"
+                      : "bg-transparent text-ink/70 border-ink/25 hover:border-ink hover:text-ink"
+                  }`}
+                >
+                  {c}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Author photo filter */}
+          <div className="flex items-center gap-3 flex-wrap">
+            <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted shrink-0">
+              By editor
+            </span>
             <button
               type="button"
-              key={c}
-              onClick={() => onChange(c)}
-              data-testid={`cat-${c.toLowerCase().replace(/[\s·]+/g, "-")}`}
-              className={`font-mono text-[10px] md:text-[11px] uppercase tracking-wide-editorial transition-colors duration-300 ${
-                isActive
-                  ? "text-ink"
-                  : "text-muted hover:text-ink"
+              onClick={() => setActiveAuthor("all")}
+              data-testid="filter-author-all"
+              className={`px-3.5 py-1.5 border font-mono text-[10px] uppercase tracking-wide-editorial transition-colors duration-300 ${
+                activeAuthor === "all"
+                  ? "bg-ink text-cream border-ink"
+                  : "bg-transparent text-ink/70 border-ink/25 hover:border-ink hover:text-ink"
               }`}
             >
-              {c}
+              All
             </button>
-          );
-        })}
-      </motion.div>
-    </div>
-  </section>
-);
-
-const HeroRow = () => (
-  <section className="bg-cream pb-16 md:pb-20">
-    <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-      <ul className="grid grid-cols-12 gap-8 md:gap-10">
-        {HEROES.map((tile, i) => (
-          <HeroTile key={tile.id} tile={tile} i={i} />
-        ))}
-      </ul>
-    </div>
-  </section>
-);
-
-const FeaturesGrid = ({ items, testid }) => (
-  <section className="bg-cream pb-16 md:pb-20" data-testid={testid}>
-    <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-      <ul className="grid grid-cols-12 gap-8 md:gap-10">
-        {items.map((f, i) => (
-          <FeatureCard key={f.slug} f={f} i={i} />
-        ))}
-      </ul>
-    </div>
-  </section>
-);
-
-const Banners = () => (
-  <section className="bg-cream pb-16 md:pb-20">
-    <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-10 md:gap-12">
-      <BannerStrip
-        testid="banner-departments"
-        kicker="Departments · México region by region"
-        title="What's new — the destination hubs."
-        cta="Browse hubs"
-        anchor="issues-section"
-        image="https://images.unsplash.com/photo-1543105177-748ceda71741?auto=format&fit=crop&w=2400&q=85"
-      />
-      <BannerStrip
-        testid="banner-films"
-        kicker="Films · Coming soon"
-        title="Field reels. Stories that move."
-        cta="See the reels"
-        anchor="films-section"
-        image="https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=2400&q=85"
-      />
-    </div>
-  </section>
-);
-
-const FilmsSection = () => (
-  <section
-    id="films-section"
-    data-testid="films-section"
-    className="bg-cream pb-16 md:pb-20"
-  >
-    <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-      <div className="flex items-end justify-between gap-6 mb-10 md:mb-14 border-b hairline pb-5">
-        <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-wide-editorial text-ink">
-          — Films
-        </span>
-        <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
-          03 forthcoming · 2026
-        </span>
-      </div>
-      <ul className="grid grid-cols-12 gap-8 md:gap-10">
-        {[
-          { id: "cabo", kicker: "Los Cabos · BCS", title: "Dawn over Diamante.", duration: "0:18" },
-          { id: "mita", kicker: "Punta Mita · Nayarit", title: "Tail of the Whale.", duration: "0:24" },
-          { id: "cdmx", kicker: "Ciudad de México · DF", title: "Altitude, eternal spring.", duration: "0:20" },
-        ].map((r, i) => (
-          <motion.li
-            key={r.id}
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 0.9, delay: 0.05 * i, ease: [0.22, 1, 0.36, 1] }}
-            data-testid={`reel-${r.id}`}
-            className="col-span-12 md:col-span-4"
-          >
-            <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink">
-              <div className="absolute inset-0 bg-gradient-to-br from-forest/40 via-ink to-ink" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(196,162,78,0.16),transparent_55%)]" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="inline-flex items-center justify-center w-14 h-14 rounded-full border border-cream/25 text-cream/75">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                    <path d="M8 5v14l11-7z" fill="currentColor" />
-                  </svg>
-                </span>
-              </div>
-              <div className="absolute inset-0 p-5 md:p-6 flex flex-col justify-between">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/90 border border-cream/40 px-2.5 py-1">
-                    Reel · Coming soon
-                  </span>
-                  <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/55">
-                    {r.duration}
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className="mt-5">
-              <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
-                {r.kicker}
-              </span>
-              <h3 className="mt-2 font-display font-light text-ink text-2xl md:text-3xl leading-[1.05] tracking-tight">
-                {r.title}
-              </h3>
-            </div>
-          </motion.li>
-        ))}
-      </ul>
-    </div>
-  </section>
-);
-
-const IssuesGrid = () => (
-  <section
-    id="issues-section"
-    data-testid="issues-section"
-    className="bg-cream pb-16 md:pb-20"
-  >
-    <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-      <div className="flex items-end justify-between gap-6 mb-10 md:mb-14 border-b hairline pb-5">
-        <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-wide-editorial text-ink">
-          — Destinations
-        </span>
-        <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
-          {ISSUES.length} regions · México
-        </span>
-      </div>
-      <ul className="grid grid-cols-12 gap-8 md:gap-10">
-        {ISSUES.map((iss, i) => {
-          const Tag = iss.live ? Link : "div";
-          const props = iss.live ? { to: `/journal/${iss.slug}` } : {};
-          return (
-            <motion.li
-              key={iss.slug}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 0.9, delay: 0.05 * i, ease: [0.22, 1, 0.36, 1] }}
-              data-testid={`issue-${iss.slug}`}
-              className="col-span-6 md:col-span-3 group"
-            >
-              <Tag {...props} className="block">
-                <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink">
-                  <img
-                    src={iss.image}
-                    alt={iss.name}
-                    className={`absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                      iss.live ? "group-hover:scale-[1.04]" : ""
-                    }`}
-                  />
-                  {!iss.live && (
-                    <div className="absolute inset-0 bg-cream/55 backdrop-blur-[2px] flex items-center justify-center">
-                      <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-ink/80 border border-ink/30 px-3 py-1.5 bg-cream/70">
-                        Soon
-                      </span>
-                    </div>
-                  )}
-                </div>
-                <div className="mt-4 flex items-baseline justify-between gap-3">
-                  <span className="font-display font-light text-ink text-xl md:text-2xl leading-tight tracking-tight">
-                    {iss.name}
-                  </span>
-                  <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
-                    {iss.live ? "Read" : "Preview"}
-                  </span>
-                </div>
-                <span className="block mt-1 font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
-                  {iss.region}
-                </span>
-              </Tag>
-            </motion.li>
-          );
-        })}
-      </ul>
-    </div>
-  </section>
-);
-
-const EditorsSection = () => (
-  <section
-    id="editors-section"
-    data-testid="editors-section"
-    className="bg-cream pb-20 md:pb-28"
-  >
-    <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-      <div className="flex items-end justify-between gap-6 mb-10 md:mb-14 border-b hairline pb-5">
-        <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-wide-editorial text-ink">
-          — The Masthead
-        </span>
-        <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
-          Editors · 2
-        </span>
-      </div>
-
-      <ul className="grid grid-cols-12 gap-10 md:gap-16">
-        {EDITORS.map((e, i) => (
-          <motion.li
-            key={e.id}
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 0.9, delay: 0.06 * i, ease: [0.22, 1, 0.36, 1] }}
-            data-testid={`editor-${e.id}`}
-            className="col-span-12 md:col-span-6"
-          >
-            <div className="grid grid-cols-12 gap-5 md:gap-8">
-              <div className="col-span-5 md:col-span-4 relative aspect-[4/5] overflow-hidden bg-ink">
-                <img
-                  src={e.photo}
-                  alt={e.name}
-                  className="absolute inset-0 w-full h-full object-cover"
-                  style={{ objectPosition: e.photoPosition }}
-                />
-              </div>
-              <div className="col-span-7 md:col-span-8">
-                <span
-                  className="font-mono text-[10px] uppercase tracking-wide-editorial"
-                  style={{ color: e.accent }}
+            {EDITORS.map((e) => {
+              const isActive = e.id === activeAuthor;
+              return (
+                <button
+                  type="button"
+                  key={e.id}
+                  onClick={() => setActiveAuthor(e.id)}
+                  data-testid={`filter-author-${e.id}`}
+                  className={`inline-flex items-center gap-2.5 pl-1.5 pr-3.5 py-1 border font-mono text-[10px] uppercase tracking-wide-editorial transition-colors duration-300 ${
+                    isActive
+                      ? "bg-ink text-cream border-ink"
+                      : "bg-transparent text-ink/70 border-ink/25 hover:border-ink hover:text-ink"
+                  }`}
                 >
-                  {e.role}
-                </span>
-                <h3 className="mt-2 font-display font-light text-ink text-2xl md:text-4xl leading-[1.05] tracking-tight">
-                  {e.name}
-                </h3>
-                <p className="mt-4 font-body font-light text-ink/70 text-sm md:text-base leading-[1.7] max-w-md">
-                  {e.bio}
-                </p>
-                <div className="mt-6 flex items-center justify-between border-t hairline pt-4">
-                  <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
-                    {e.bylines} bylines
+                  <span
+                    className="relative inline-flex w-6 h-6 rounded-full overflow-hidden shrink-0"
+                    style={{ outline: `1px solid ${e.accent}`, outlineOffset: 1 }}
+                  >
+                    <img
+                      src={e.photo}
+                      alt={e.name}
+                      className="w-full h-full object-cover"
+                      style={{ objectPosition: e.photoPosition }}
+                    />
                   </span>
-                  <div className="flex items-center gap-2">
-                    {e.socials.map((s) => {
-                      const Icon = s.icon;
-                      return (
-                        <a
-                          key={s.label}
-                          href={s.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`${e.name} on ${s.label}`}
-                          data-testid={`editor-${e.id}-${s.label.toLowerCase()}`}
-                          className="group inline-flex items-center justify-center w-8 h-8 border border-ink/25 hover:border-ink transition-colors"
-                        >
-                          <Icon
-                            className="w-3.5 h-3.5 text-ink/65 group-hover:text-ink transition-colors"
-                            strokeWidth={1.4}
-                          />
-                        </a>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.li>
-        ))}
-      </ul>
-    </div>
-  </section>
-);
+                  {e.name.split(" ")[0]}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {filtered.length > 0 ? (
+          <ul className="grid grid-cols-12 gap-8 md:gap-10">
+            {filtered.map((a, i) => (
+              <ArticleCard key={a.slug} a={a} i={i} />
+            ))}
+          </ul>
+        ) : (
+          <p className="py-20 text-center font-display italic font-light text-ink/55 text-xl md:text-2xl">
+            Nothing here yet — try another filter.
+          </p>
+        )}
+      </div>
+    </section>
+  );
+};
 
 const Colophon = () => {
   const { openInquiry } = useInquiry();
   return (
     <section
       data-testid="plan-section"
-      className="bg-cream pb-24 md:pb-32"
+      className="bg-cream py-20 md:py-28 border-t hairline"
     >
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-8 md:gap-12 items-end border-t hairline pt-16 md:pt-20">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-8 md:gap-12 items-end">
         <div className="col-span-12 md:col-span-8">
-          <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-wide-editorial text-ink">
-            — Plan a Round
+          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
+            Plan a Round
           </span>
           <motion.h2
             {...fade}
-            className="mt-6 font-display font-light text-ink text-4xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight max-w-3xl"
+            className="mt-5 font-display font-light text-ink text-4xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight max-w-3xl"
           >
             The journal is read.{" "}
             <span className="italic">The round is arranged.</span>
@@ -698,27 +642,16 @@ const Colophon = () => {
 /* ----------------------------- PAGE ----------------------------- */
 
 const Journal = () => {
-  const [active, setActive] = useState("All");
-
-  const filtered =
-    active === "All"
-      ? FEATURES
-      : FEATURES.filter((f) => f.cat === active);
-  const filtered2 =
-    active === "All"
-      ? FEATURES_ROW_2
-      : FEATURES_ROW_2.filter((f) => f.cat === active);
+  const pabloArticles = ARTICLES.filter((a) => a.author === "pablo").slice(0, 3);
+  const joseArticles = ARTICLES.filter((a) => a.author === "jose").slice(0, 3);
 
   return (
     <main data-testid="page-journal" className="relative bg-cream">
-      <HeaderBar active={active} onChange={setActive} />
-      <HeroRow />
-      <FeaturesGrid items={filtered} testid="features-section" />
-      <Banners />
-      <FeaturesGrid items={filtered2} testid="features-section-2" />
-      <FilmsSection />
-      <IssuesGrid />
-      <EditorsSection />
+      <Header />
+      <RegionsSection />
+      <SuggestedBy editor={EDITORS[0]} articles={pabloArticles} />
+      <SuggestedBy editor={EDITORS[1]} articles={joseArticles} />
+      <AllArticles />
       <Colophon />
     </main>
   );
