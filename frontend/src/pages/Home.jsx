@@ -1,6 +1,5 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import Parallax from "@/components/Parallax";
 import TeamEditorial from "@/components/TeamEditorial";
 
@@ -23,109 +22,157 @@ const MANIFESTO_LINES = [
 ];
 
 const ManifestoCycle = () => {
-  const [showOutro, setShowOutro] = useState(false);
-
-  useEffect(() => {
-    const t = setTimeout(() => setShowOutro(true), 2600);
-    return () => clearTimeout(t);
-  }, []);
-
   return (
-    <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-12 py-24 md:py-28 min-h-[100svh] flex flex-col items-center justify-between text-center">
-      {/* Kicker */}
-      <motion.div
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        className="flex items-center gap-3"
-      >
-        <span className="block w-6 h-px bg-gold" />
-        <span
-          data-testid="statement-kicker"
-          className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold"
-        >
-          N° 01 — The Premise
-        </span>
-        <span className="block w-6 h-px bg-gold" />
-      </motion.div>
-
-      {/* Headline — full statement with stagger */}
-      <div className="flex-1 flex items-center justify-center w-full">
-        <h2
-          data-testid="manifesto-headline"
-          className="font-display font-light leading-[0.98] tracking-tight text-[10vw] md:text-[6.5vw] lg:text-[6.25rem] max-w-[16ch]"
-        >
-          {MANIFESTO_LINES.map((line, i) => (
-            <motion.span
-              key={line.text}
-              initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{
-                duration: 1.2,
-                delay: 0.5 + i * 0.45,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className={`block ${
-                line.italic ? "italic" : ""
-              } ${line.color === "gold" ? "text-gold" : "text-cream"}`}
-            >
-              {line.text}
-            </motion.span>
-          ))}
-        </h2>
-      </div>
-
-      {/* Outro — subtitle + CTAs */}
-      <div className="w-full min-h-[140px] md:min-h-[160px] flex items-end justify-center">
-        <AnimatePresence>
-          {showOutro && (
+    <section
+      data-testid="statement-section"
+      className="relative bg-cream py-24 md:py-32 lg:py-40"
+    >
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+        <div className="grid grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-center">
+          {/* LEFT — editorial copy */}
+          <div className="col-span-12 md:col-span-6 lg:col-span-7">
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col items-center gap-8 md:gap-10"
-              data-testid="manifesto-outro"
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center gap-3"
             >
-              <p className="font-body font-light text-cream/80 text-base md:text-lg leading-relaxed max-w-xl">
-                For anyone who wants to know{" "}
-                <span className="text-cream">golf in México</span> — the
-                courses, the people, the trips. Written from the inside, by the
-                editors who live it.
-              </p>
-              <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-10">
-                <Link
-                  to="/journal"
-                  data-testid="statement-cta-journal"
-                  className="group inline-flex items-center gap-4 bg-cream text-ink px-8 md:px-10 py-5 md:py-6 hover:bg-gold transition-colors duration-500"
-                >
-                  <span className="font-mono text-[11px] uppercase tracking-wide-editorial">
-                    Enter the Journal
-                  </span>
-                  <span className="font-mono text-base transition-transform duration-500 group-hover:translate-x-1">
-                    →
-                  </span>
-                </Link>
-                <button
-                  type="button"
-                  onClick={() =>
-                    document
-                      .querySelector('[data-testid="team-editorial-section"]')
-                      ?.scrollIntoView({ behavior: "smooth", block: "start" })
-                  }
-                  data-testid="statement-cta-founders"
-                  className="group font-mono text-[11px] uppercase tracking-wide-editorial text-cream/85 hover:text-cream editorial-link inline-flex items-center gap-2"
-                >
-                  Meet the editors
-                  <span className="font-mono text-[11px] transition-transform duration-500 group-hover:translate-x-0.5">
-                    ↓
-                  </span>
-                </button>
-              </div>
+              <span className="block w-6 h-px bg-gold" />
+              <span
+                data-testid="statement-kicker"
+                className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold"
+              >
+                N° 01 — The Premise
+              </span>
             </motion.div>
-          )}
-        </AnimatePresence>
+
+            <h2
+              data-testid="manifesto-headline"
+              className="mt-10 md:mt-14 font-display font-light text-ink leading-[0.98] tracking-tight text-5xl md:text-6xl lg:text-[5.5rem] max-w-[15ch]"
+            >
+              {MANIFESTO_LINES.map((line, i) => (
+                <motion.span
+                  key={line.text}
+                  initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
+                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{
+                    duration: 1.2,
+                    delay: 0.3 + i * 0.4,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  className={`block ${line.italic ? "italic" : ""} ${
+                    line.color === "gold" ? "text-gold" : "text-ink"
+                  }`}
+                >
+                  {line.text}
+                </motion.span>
+              ))}
+            </h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 1.2, delay: 1.4, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-12 md:mt-14 font-body font-light text-ink/75 text-base md:text-lg leading-[1.7] max-w-xl"
+            >
+              For anyone who wants to know{" "}
+              <span className="text-ink">golf in México</span> — the courses,
+              the people, the trips. Written from the inside, by the editors
+              who live it.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 1.2, delay: 1.6, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-12 md:mt-14 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-10"
+            >
+              <Link
+                to="/journal"
+                data-testid="statement-cta-journal"
+                className="group inline-flex items-center gap-4 bg-ink text-cream px-7 md:px-9 py-5 md:py-6 hover:bg-forest transition-colors duration-500 self-start"
+              >
+                <span className="font-mono text-[11px] uppercase tracking-wide-editorial">
+                  Enter the Journal
+                </span>
+                <span className="font-mono text-base transition-transform duration-500 group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
+              <button
+                type="button"
+                onClick={() =>
+                  document
+                    .querySelector('[data-testid="team-editorial-section"]')
+                    ?.scrollIntoView({ behavior: "smooth", block: "start" })
+                }
+                data-testid="statement-cta-founders"
+                className="group font-mono text-[11px] uppercase tracking-wide-editorial text-ink editorial-link inline-flex items-center gap-2 self-start sm:self-auto"
+              >
+                Meet the editors
+                <span className="font-mono text-[11px] transition-transform duration-500 group-hover:translate-x-0.5">
+                  ↓
+                </span>
+              </button>
+            </motion.div>
+          </div>
+
+          {/* RIGHT — Video box */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 1.3, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            data-testid="statement-video-box"
+            className="col-span-12 md:col-span-6 lg:col-span-5"
+          >
+            <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink border border-ink/15 shadow-[0_30px_80px_-30px_rgba(26,26,24,0.4)]">
+              <video
+                data-testid="statement-video"
+                className="absolute inset-0 w-full h-full object-cover editorial-img"
+                src={MANIFESTO_VIDEO}
+                poster={MANIFESTO_POSTER}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/20 to-ink/40" />
+
+              {/* Frame chrome */}
+              <div className="absolute inset-0 p-5 md:p-6 flex flex-col justify-between">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/90 border border-cream/40 px-2.5 py-1">
+                    In motion
+                  </span>
+                  <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wide-editorial text-cream/70">
+                    <span className="block w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+                    Live loop
+                  </span>
+                </div>
+
+                <div>
+                  <span className="block font-mono text-[10px] uppercase tracking-wide-editorial text-cream/65">
+                    Field reel · N° 01
+                  </span>
+                  <p className="mt-2 font-display italic font-light text-cream text-2xl md:text-3xl leading-[1.15] tracking-tight max-w-[20ch]">
+                    Where the round actually happens.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <span className="block mt-3 font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
+              Reel · México · 00:00 / 00:18
+            </span>
+          </motion.div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
@@ -200,29 +247,8 @@ const Home = () => {
       </section>
 
 
-      {/* EDITORIAL STATEMENT — N° 01 The Premise (video manifesto) */}
-      <section
-        data-testid="statement-section"
-        className="relative w-full overflow-hidden bg-ink min-h-[100svh] flex"
-      >
-        <video
-          data-testid="statement-video"
-          className="absolute inset-0 w-full h-full object-cover editorial-img"
-          src={MANIFESTO_VIDEO}
-          poster={MANIFESTO_POSTER}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-        />
-        {/* Overlays for contrast */}
-        <div className="absolute inset-0 bg-ink/65" />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/30 to-ink/80" />
-
-        {/* Cycling manifesto */}
-        <ManifestoCycle />
-      </section>
+      {/* EDITORIAL STATEMENT — N° 01 The Premise (with video box) */}
+      <ManifestoCycle />
 
       {/* N° 02 — Team & Editorial tabs */}
       <TeamEditorial />
