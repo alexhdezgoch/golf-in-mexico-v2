@@ -7,6 +7,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Cursor from "@/components/Cursor";
 import Intro from "@/components/Intro";
+import ReadingProgress from "@/components/ReadingProgress";
 import InquiryModal from "@/components/InquiryModal";
 import { InquiryContext } from "@/context/Inquiry";
 
@@ -87,6 +88,7 @@ function App() {
         </AnimatePresence>
         <BrowserRouter>
           <Nav />
+          <ReadingProgress />
           <AnimatedRoutes />
           <Footer />
         </BrowserRouter>

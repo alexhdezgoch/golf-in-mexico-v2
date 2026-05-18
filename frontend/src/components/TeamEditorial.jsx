@@ -1,92 +1,85 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Linkedin, Instagram } from "lucide-react";
 
-const AUTHORS = [
-  {
-    id: "pablo",
-    name: "Pablo De La Mora",
-    short: "Pablo",
-    role: "Sports Agent",
-    label: "The Agent",
-    number: "N° 02",
-    photo: "/pablo.jpg",
-    photoPosition: "center 22%",
-    accent: "#2C4A2C",
-    headline: ["Most golf trips fail", "before they begin."],
-    italicWord: "before they begin.",
-    body:
-      "They are sold, not designed. The right tee time. The room two minutes from where you actually want to be. The car that does not wait. Done well, a golf trip stops being a logistics problem — and becomes the reason you book the next one.",
-    quote:
-      "My job is to remove every line between you and the round you came here for.",
-    signature: "Pablo De La Mora · Los Cabos.",
-    cta: "Read Pablo in the Journal",
-    socials: [
-      { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/pablodelamora/", testid: "social-pablo-linkedin" },
-      { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/pablodelamora/", testid: "social-pablo-instagram" },
-    ],
-  },
-  {
-    id: "jose",
-    name: "José Islas",
-    short: "José",
-    role: "Professional Golfer",
-    label: "The Player",
-    number: "N° 03",
-    photo: "/jose.jpg",
-    photoPosition: "center 22%",
-    accent: "#C4A24E",
-    headline: ["Every course tells you what", "round it wants you to play."],
-    italicWord: "round it wants you to play.",
-    body:
-      "Mexican courses speak a particular dialect. Paspalum that holds the ball. Greens that read the ocean. Altitudes that lie about distance. My role here is to translate — so you walk the first tee already knowing what the course is asking.",
-    quote:
-      "A good round is not played against the course. It is played with it.",
-    signature: "José Islas · Inside the ropes.",
-    cta: "Read José in the Journal",
-    socials: [
-      { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/joseislasgolf/", testid: "social-jose-instagram" },
-    ],
-  },
-];
+const PABLO = {
+  id: "pablo",
+  number: "N° 01",
+  label: "The Agent",
+  name: "Pablo De La Mora",
+  short: "Pablo",
+  role: "PGA Tour · LPGA Tour · WTA Sports Agent",
+  photo: "/pablo.jpg",
+  photoPosition: "center 22%",
+  accent: "#2C4A2C",
+  headline: ["Mexico Golf competes worldwide,", "just not many people know about it."],
+  body: [
+    "I've been to four PGA Tour events, three LIV Golf, one LPGA, and two ATP and WTA. Every locker room conversation has been similar: the courses are world-class, and the hospitality is top-notch. México offers an elite destination for an all-around trip.",
+    "My experience over several years has led me to share my insights, connect people, and always create opportunities. This company is dedicated to promoting what I've enjoyed for the past decade — with insider knowledge and professional management.",
+  ],
+  signature: "Pablo De La Mora · CDMX",
+  socials: [
+    { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/pablodlm/", testid: "social-pablo-linkedin" },
+    { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/pablodlmc/", testid: "social-pablo-instagram" },
+  ],
+};
+
+const JOSE = {
+  id: "jose",
+  number: "N° 02",
+  label: "The Player",
+  name: "José Islas",
+  short: "José",
+  role: "Professional Golfer",
+  photo: "/jose.jpg",
+  photoPosition: "center 22%",
+  accent: "#C4A24E",
+  headline: ["Every course tells you", "what round it wants you to play."],
+  body: [
+    "Mexican courses speak a particular dialect. Paspalum that holds the ball. Greens that read the ocean. Altitudes that lie about distance. My role here is to translate — so you walk the first tee already knowing what the course is asking.",
+    "A good round is not played against the course. It is played with it.",
+  ],
+  signature: "José Islas · Inside the ropes",
+  socials: [
+    { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/joseislasgolf/", testid: "social-jose-instagram" },
+  ],
+};
 
 const VALUES = [
   {
-    roman: "I",
-    title: "Professional Management",
+    mark: "/",
+    title: "Attention to detail & professionalism",
     body:
-      "Built around elite golfers and Tour-level environments. Structure over improvisation.",
+      "Values shaped by years of working, training, and approaching everything in tour environments.",
   },
   {
-    roman: "II",
+    mark: "//",
     title: "Destination Intelligence",
     body:
       "Six years across México's finest courses. Trusted relationships, never generic packages.",
   },
   {
-    roman: "III",
+    mark: "///",
     title: "Long-Term Relationships",
     body:
-      "Not a booking platform. A practice. Every trip is the start of the next one.",
+      "We prioritize the well-being of our people and value assertive communication.",
   },
 ];
 
 const GIM = {
   id: "gim",
+  number: "N° 03",
+  label: "The Media",
   name: "Golf in Mexico°",
   short: "GIM",
   role: "Our Values",
-  label: "The Practice",
-  number: "N° 04",
   photo: "/logo-wordmark.png",
   isMark: true,
   accent: "#1A1A18",
   headline: ["Three principles.", "Every trip, every story."],
-  italicWord: "Every trip, every story.",
 };
 
-const TABS = [...AUTHORS, GIM];
+const TABS = [PABLO, JOSE, GIM];
 
 const fadeUp = {
   initial: { opacity: 0, y: 14 },
@@ -106,7 +99,7 @@ const TeamEditorial = () => {
       className="relative bg-cream border-t hairline"
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-24">
-        {/* Header row — tabs */}
+        {/* Tabs */}
         <div
           data-testid="author-tabs"
           role="tablist"
@@ -122,9 +115,7 @@ const TeamEditorial = () => {
                 onClick={() => setActiveId(t.id)}
                 data-testid={`author-tab-${t.id}`}
                 className="group text-left flex items-center gap-2 md:gap-4 pt-3 border-t-2 transition-colors duration-500"
-                style={{
-                  borderColor: isActive ? t.accent : "transparent",
-                }}
+                style={{ borderColor: isActive ? t.accent : "transparent" }}
               >
                 <span
                   className={`relative inline-flex shrink-0 w-9 h-9 md:w-12 md:h-12 rounded-full overflow-hidden ${
@@ -136,36 +127,17 @@ const TeamEditorial = () => {
                   }}
                 >
                   {t.isMark ? (
-                    <img
-                      src={t.photo}
-                      alt={t.name}
-                      className="w-full h-full object-contain"
-                      style={{ mixBlendMode: "screen" }}
-                    />
+                    <img src={t.photo} alt={t.name} className="w-full h-full object-contain" style={{ mixBlendMode: "screen" }} />
                   ) : (
-                    <img
-                      src={t.photo}
-                      alt={t.name}
-                      className="w-full h-full object-cover"
-                      style={{ objectPosition: t.photoPosition }}
-                    />
+                    <img src={t.photo} alt={t.name} className="w-full h-full object-cover" style={{ objectPosition: t.photoPosition }} />
                   )}
                 </span>
                 <span className="flex flex-col leading-tight min-w-0">
-                  <span
-                    className={`font-display text-sm md:text-xl font-light tracking-tight truncate ${
-                      isActive ? "text-ink" : "text-muted group-hover:text-ink"
-                    } transition-colors`}
-                  >
-                    {t.short}
+                  <span className={`font-mono text-[8px] md:text-[10px] uppercase tracking-wide-editorial ${isActive ? "" : "text-muted"}`} style={isActive ? { color: t.accent } : {}}>
+                    {t.number} · {t.label}
                   </span>
-                  <span
-                    className="mt-0.5 md:mt-1 font-mono text-[8px] md:text-[10px] uppercase tracking-wide-editorial hidden sm:block"
-                    style={{
-                      color: isActive ? t.accent : undefined,
-                    }}
-                  >
-                    {t.label}
+                  <span className={`mt-0.5 md:mt-1 font-display text-sm md:text-xl font-light tracking-tight truncate ${isActive ? "text-ink" : "text-muted group-hover:text-ink"} transition-colors`}>
+                    {t.short}
                   </span>
                 </span>
               </button>
@@ -176,25 +148,16 @@ const TeamEditorial = () => {
         {/* Panel */}
         <div className="mt-8 md:mt-12 min-h-[480px] md:min-h-[520px]">
           <AnimatePresence mode="wait">
-            <motion.div
-              key={active.id}
-              {...fadeUp}
-              className="grid grid-cols-12 gap-6 md:gap-10"
-            >
+            <motion.div key={active.id} {...fadeUp} className="grid grid-cols-12 gap-6 md:gap-10">
               {/* Left meta */}
               <div className="col-span-12 md:col-span-3">
                 <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
                   {active.number} — {active.label}
                 </span>
-                <div className="mt-3 md:mt-5 flex items-center gap-3">
-                  <span className="font-display text-lg md:text-2xl font-light text-ink tracking-tight">
-                    {active.name}
-                  </span>
-                </div>
-                <span
-                  className="block mt-1 font-mono text-[10px] uppercase tracking-wide-editorial"
-                  style={{ color: active.accent }}
-                >
+                <h3 className="mt-3 font-display text-xl md:text-2xl font-light text-ink tracking-tight">
+                  {active.name}
+                </h3>
+                <span className="block mt-1 font-mono text-[10px] uppercase tracking-wide-editorial" style={{ color: active.accent }}>
                   {active.role}
                 </span>
               </div>
@@ -211,18 +174,14 @@ const TeamEditorial = () => {
 
                 {!isGIM && (
                   <>
-                    <p className="mt-6 md:mt-8 font-body font-light text-ink/80 text-base md:text-lg leading-[1.7] max-w-2xl">
-                      {active.body}
-                    </p>
-
-                    <blockquote
-                      className="mt-6 md:mt-8 max-w-2xl pl-4 md:pl-5"
-                      style={{ borderLeft: `2px solid ${active.accent}` }}
-                    >
-                      <p className="font-display italic font-light text-ink text-lg md:text-2xl leading-[1.3] tracking-tight">
-                        {active.quote}
+                    {active.body.map((p, i) => (
+                      <p
+                        key={i}
+                        className={`${i === 0 ? "mt-6 md:mt-8" : "mt-4 md:mt-5"} font-body font-light text-ink/80 text-base md:text-lg leading-[1.7] max-w-2xl`}
+                      >
+                        {p}
                       </p>
-                    </blockquote>
+                    ))}
 
                     <div className="mt-8 md:mt-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-ink/15 pt-5">
                       <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
@@ -230,10 +189,7 @@ const TeamEditorial = () => {
                           — {active.signature}
                         </span>
                         {active.socials && active.socials.length > 0 && (
-                          <div
-                            data-testid={`socials-${active.id}`}
-                            className="flex items-center gap-2"
-                          >
+                          <div data-testid={`socials-${active.id}`} className="flex items-center gap-2">
                             {active.socials.map((s) => {
                               const Icon = s.icon;
                               return (
@@ -244,82 +200,43 @@ const TeamEditorial = () => {
                                   rel="noopener noreferrer"
                                   aria-label={`${active.short} on ${s.label}`}
                                   data-testid={s.testid}
-                                  className="group inline-flex items-center justify-center w-9 h-9 border border-ink/25 hover:border-ink transition-colors duration-300"
+                                  className="group inline-flex items-center justify-center w-9 h-9 border transition-colors duration-300"
                                   style={{ borderColor: `${active.accent}40` }}
                                 >
-                                  <Icon
-                                    className="w-4 h-4 text-ink/65 group-hover:text-ink transition-colors"
-                                    strokeWidth={1.4}
-                                  />
+                                  <Icon className="w-4 h-4 text-ink/65 group-hover:text-ink transition-colors" strokeWidth={1.4} />
                                 </a>
                               );
                             })}
                           </div>
                         )}
                       </div>
-                      <Link
-                        to="/journal"
-                        data-testid={`manifesto-cta-${active.id}`}
-                        className="group inline-flex items-center gap-3 border border-ink/40 px-5 py-3 hover:bg-ink hover:text-cream transition-colors duration-500 self-start sm:self-auto"
-                      >
-                        <span className="font-mono text-[10px] uppercase tracking-wide-editorial">
-                          {active.cta}
-                        </span>
-                        <span className="font-mono text-[10px] transition-transform duration-500 group-hover:translate-x-0.5">
-                          ↗
-                        </span>
-                      </Link>
                     </div>
                   </>
                 )}
 
                 {isGIM && (
-                  <>
-                    <ul className="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-3 gap-px bg-ink/10 border-t border-b border-ink/10">
-                      {VALUES.map((v, i) => (
-                        <motion.li
-                          key={v.roman}
-                          initial={{ opacity: 0, y: 12 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{
-                            duration: 0.7,
-                            delay: 0.08 * i,
-                            ease: [0.22, 1, 0.36, 1],
-                          }}
-                          data-testid={`gim-value-${i + 1}`}
-                          className="bg-cream p-5 md:p-6 flex flex-col gap-3"
-                        >
-                          <span className="font-display italic font-light text-gold text-3xl md:text-4xl leading-none">
-                            {v.roman}
-                          </span>
-                          <h4 className="font-display font-light text-ink text-lg md:text-xl leading-[1.15] tracking-tight">
-                            {v.title}
-                          </h4>
-                          <p className="font-body font-light text-ink/70 text-sm md:text-[15px] leading-[1.6]">
-                            {v.body}
-                          </p>
-                        </motion.li>
-                      ))}
-                    </ul>
-
-                    <div className="mt-8 md:mt-10 flex flex-col sm:flex-row sm:items-center justify-between gap-5 border-t border-ink/15 pt-5">
-                      <p className="font-display italic font-light text-ink/80 text-base md:text-lg leading-[1.35] tracking-tight max-w-md">
-                        The full editorial lives in one place.
-                      </p>
-                      <Link
-                        to="/journal"
-                        data-testid="manifesto-cta-gim-journal"
-                        className="group inline-flex items-center gap-3 bg-ink text-cream px-6 md:px-7 py-4 hover:bg-forest transition-colors duration-500 self-start sm:self-auto"
+                  <ul className="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-3 gap-px bg-ink/10 border-t border-b border-ink/10">
+                    {VALUES.map((v, i) => (
+                      <motion.li
+                        key={v.mark}
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.7, delay: 0.08 * i, ease: [0.22, 1, 0.36, 1] }}
+                        data-testid={`gim-value-${i + 1}`}
+                        className="bg-cream p-5 md:p-6 flex flex-col gap-3"
                       >
-                        <span className="font-mono text-[11px] uppercase tracking-wide-editorial">
-                          Enter the Journal
+                        <span className="font-display font-light text-gold text-3xl md:text-4xl leading-none tracking-tight">
+                          {v.mark}
                         </span>
-                        <span className="font-mono text-sm transition-transform duration-500 group-hover:translate-x-1">
-                          →
-                        </span>
-                      </Link>
-                    </div>
-                  </>
+                        <h4 className="font-display font-light text-ink text-lg md:text-xl leading-[1.15] tracking-tight">
+                          {v.title}
+                        </h4>
+                        <p className="font-body font-light text-ink/70 text-sm md:text-[15px] leading-[1.6]">
+                          {v.body}
+                        </p>
+                      </motion.li>
+                    ))}
+                  </ul>
                 )}
               </div>
             </motion.div>

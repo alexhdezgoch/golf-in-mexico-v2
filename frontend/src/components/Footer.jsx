@@ -27,11 +27,11 @@ const Footer = () => {
         data-testid="footer-newsletter"
         className="border-b border-cream/10"
       >
-        <div className="max-w-[1100px] mx-auto px-6 md:px-12 py-24 md:py-36">
+        <div className="max-w-[1100px] mx-auto px-6 md:px-12 py-24 md:py-32">
           <div className="flex items-center gap-3 mb-8 md:mb-10">
             <span className="block w-6 h-px bg-gold" />
             <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
-              The Newsletter
+              Newsletter
             </span>
           </div>
 
@@ -42,8 +42,7 @@ const Footer = () => {
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             className="font-display font-light text-cream text-4xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight max-w-4xl"
           >
-            Coming to México, or planning a round?{" "}
-            <span className="italic text-cream/80">Begin here.</span>
+            Stay <span className="italic text-cream/80">in the know.</span>
           </motion.h2>
 
           <motion.p
@@ -53,14 +52,14 @@ const Footer = () => {
             transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="mt-10 md:mt-12 font-body font-light text-cream/60 text-base md:text-lg leading-relaxed max-w-xl"
           >
-            Editorial dispatches, course reviews, and travel notes — written by
-            Pablo and José.
+            Editorial stories, new courses, and curated experiences. No spam.
+            Only content worth your time.
           </motion.p>
 
           <form
             onSubmit={onSubmit}
             data-testid="email-capture-form"
-            className="mt-12 md:mt-16 max-w-2xl"
+            className="mt-12 md:mt-14 max-w-2xl"
           >
             <div className="relative flex flex-wrap items-end gap-3 sm:gap-6 border-b border-cream/30 pb-3 focus-within:border-gold transition-colors">
               <label
@@ -76,7 +75,7 @@ const Footer = () => {
                 data-testid="email-input"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@elsewhere.com"
+                placeholder="you@email.com"
                 className="flex-1 min-w-0 bg-transparent border-0 outline-none font-body text-base md:text-lg text-cream placeholder:text-cream/30 py-1"
               />
               <button
@@ -84,7 +83,7 @@ const Footer = () => {
                 data-testid="email-submit"
                 className="font-mono text-[11px] uppercase tracking-wide-editorial text-cream pb-1 group inline-flex items-center gap-2 hover:text-gold transition-colors"
               >
-                Connect
+                Subscribe
                 <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">
                   →
                 </span>
@@ -119,8 +118,9 @@ const Footer = () => {
               style={{ mixBlendMode: "screen" }}
             />
             <p className="mt-6 font-body font-light text-cream/55 text-sm leading-[1.7]">
-              An editorial dedicated to golf, culture, and the experience of
-              playing México's finest courses.
+              Golf in Mexico is not tourism. It's immersion. It's understanding
+              that Mexican culture elevates the game into something you won't
+              find anywhere else in the world.
             </p>
           </div>
 

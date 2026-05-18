@@ -89,26 +89,14 @@ const ManifestoCycle = () => {
           />
         </motion.div>
 
-        {/* CTAs */}
+        {/* CTA — Meet the Founders */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-10%" }}
           transition={{ duration: 1.2, delay: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-12 md:mt-16 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8"
+          className="mt-12 md:mt-16"
         >
-          <Link
-            to="/journal"
-            data-testid="statement-cta-journal"
-            className="group inline-flex items-center gap-4 bg-ink text-cream px-7 md:px-9 py-5 md:py-6 hover:bg-forest transition-colors duration-500 self-start"
-          >
-            <span className="font-mono text-[11px] uppercase tracking-wide-editorial">
-              Enter the Journal
-            </span>
-            <span className="font-mono text-base transition-transform duration-500 group-hover:translate-x-1">
-              →
-            </span>
-          </Link>
           <button
             type="button"
             onClick={() =>
@@ -117,7 +105,7 @@ const ManifestoCycle = () => {
                 ?.scrollIntoView({ behavior: "smooth", block: "start" })
             }
             data-testid="statement-cta-founders"
-            className="group inline-flex items-center gap-4 border border-ink/30 text-ink px-7 md:px-9 py-5 md:py-6 hover:border-ink hover:bg-ink hover:text-cream transition-colors duration-500 self-start"
+            className="group inline-flex items-center gap-4 bg-ink text-cream px-7 md:px-9 py-5 md:py-6 hover:bg-forest transition-colors duration-500"
           >
             <span className="font-mono text-[11px] uppercase tracking-wide-editorial">
               Meet the Founders

@@ -46,13 +46,13 @@ const Cursor = () => {
           translateY: "-50%",
         }}
         animate={{
-          width: hovering ? 44 : 8,
-          height: hovering ? 44 : 8,
-          backgroundColor: hovering ? "rgba(196, 162, 78, 0.18)" : "#1A1A18",
-          borderColor: hovering ? "#C4A24E" : "transparent",
+          width: hovering ? 44 : 10,
+          height: hovering ? 44 : 10,
+          backgroundColor: hovering ? "rgba(196, 162, 78, 0.22)" : "#C4A24E",
+          borderColor: hovering ? "#C4A24E" : "rgba(196, 162, 78, 0.55)",
         }}
         transition={{ type: "spring", stiffness: 320, damping: 28 }}
-        className="pointer-events-none fixed left-0 top-0 z-[9998] rounded-full border mix-blend-normal"
+        className="pointer-events-none fixed left-0 top-0 z-[9998] rounded-full border-2 shadow-[0_0_0_1px_rgba(26,26,24,0.15)]"
       />
     </>
   );
