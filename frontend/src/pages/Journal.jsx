@@ -5,9 +5,6 @@ import NotifyModal from "@/components/NotifyModal";
 
 /* ------------------------------ DATA ------------------------------ */
 
-const HERO_IMG =
-  "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=2400&q=85";
-
 const REGIONS = [
   {
     slug: "los-cabos",
@@ -65,27 +62,6 @@ const REGIONS = [
     courses: "8+",
     image: "https://images.unsplash.com/photo-1543105177-748ceda71741?auto=format&fit=crop&w=900&q=85",
     live: false,
-  },
-];
-
-const PILLARS = [
-  {
-    slug: "golf-nature",
-    title: "Golf & Nature",
-    body: "Paspalum, ocean spray, altitude, jungle.",
-    image: "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    slug: "mexican-uniqueness",
-    title: "Mexican Uniqueness",
-    body: "Hospitality, table, and culture in one round.",
-    image: "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    slug: "people-behind-game",
-    title: "People Behind the Game",
-    body: "Caddies, architects, agronomists, friends.",
-    image: "https://images.unsplash.com/photo-1514480573427-1f96cbed6a27?auto=format&fit=crop&w=1200&q=85",
   },
 ];
 
@@ -187,272 +163,6 @@ const TagPill = ({ children, variant = "default" }) => {
   );
 };
 
-/* ------------------------------- HERO ------------------------------- */
-
-const Hero = ({ featured, onSelectSection }) => (
-  <section
-    data-testid="journal-hero"
-    className="relative h-[92vh] min-h-[680px] w-full overflow-hidden bg-ink text-cream"
-  >
-    {/* Background image */}
-    <div className="absolute inset-0">
-      <img
-        src={HERO_IMG}
-        alt="Aerial golf course in México"
-        className="w-full h-full object-cover scale-105 editorial-img"
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/45 to-ink" />
-      <div className="absolute inset-0 bg-gradient-to-r from-ink/65 via-ink/15 to-transparent" />
-    </div>
-
-    {/* Content */}
-    <div className="relative z-10 h-full max-w-[1440px] mx-auto px-6 md:px-12 flex flex-col justify-between pt-28 md:pt-32 pb-8 md:pb-10">
-      {/* Top row */}
-      <div className="flex items-center justify-between border-b border-cream/15 pb-3">
-        <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/70">
-          — The Journal · Hub
-        </span>
-        <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/70">
-          Vol. 01 · Editorial
-        </span>
-      </div>
-
-      {/* Headline */}
-      <motion.div
-        initial={{ opacity: 0, y: 18 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-        className="max-w-5xl"
-      >
-        <span className="font-mono text-[11px] uppercase tracking-wide-editorial text-gold">
-          Welcome to
-        </span>
-        <h1 className="mt-5 headline-nrg text-cream text-[3.6rem] sm:text-7xl md:text-[7rem] lg:text-[9.5rem]">
-          Golf in{" "}
-          <span className="font-display italic font-light normal-case tracking-tight text-cream">
-            México°
-          </span>
-        </h1>
-        <p className="mt-7 font-body font-light text-cream/80 text-base md:text-lg max-w-2xl leading-relaxed">
-          Golf in México is not tourism. It's immersion — a culture that
-          elevates the game into something you won't find anywhere else in the
-          world.
-        </p>
-      </motion.div>
-
-      {/* Bottom row: floating preview + section pills */}
-      <div className="flex items-end justify-between gap-6">
-        {/* Floating preview card */}
-        <motion.button
-          type="button"
-          onClick={() => {
-            const el = document.getElementById("featured-story");
-            el?.scrollIntoView({ behavior: "smooth", block: "start" });
-          }}
-          data-testid="hero-featured-preview"
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="hidden md:flex group items-stretch gap-3 text-left"
-          aria-label="Read featured story"
-        >
-          <div className="w-[120px] h-[80px] rounded-2xl overflow-hidden border border-cream/20 shadow-2xl">
-            <img
-              src={featured.image}
-              alt={featured.title}
-              className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
-            />
-          </div>
-          <div className="flex flex-col justify-between py-1">
-            <span className="font-mono text-[9px] uppercase tracking-wide-editorial text-gold">
-              Editor's pick · {featured.read}
-            </span>
-            <span className="font-display italic font-light text-cream text-sm leading-tight max-w-[180px] group-hover:text-gold transition-colors">
-              {featured.title}
-            </span>
-          </div>
-        </motion.button>
-
-        {/* Section pills */}
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="ml-auto"
-        >
-          <span className="block mb-3 text-right font-mono text-[10px] uppercase tracking-wide-editorial text-cream/65">
-            Select Section
-          </span>
-          <div className="flex flex-wrap justify-end gap-2.5">
-            {[
-              { id: "featured-story", label: "Feature" },
-              { id: "pillars-reels", label: "Pillars" },
-              { id: "regions-section", label: "Regions" },
-              { id: "must-reads", label: "Stories" },
-            ].map((s) => (
-              <button
-                key={s.id}
-                type="button"
-                onClick={() => onSelectSection(s.id)}
-                data-testid={`hero-pill-${s.id}`}
-                className="glass-pill"
-              >
-                <span className="pill-dot" />
-                {s.label}
-              </button>
-            ))}
-          </div>
-        </motion.div>
-      </div>
-    </div>
-  </section>
-);
-
-/* ---------------------- FEATURED STORY ---------------------- */
-
-const FeaturedStory = () => {
-  const a = MUST_READS.find((m) => m.featured) || MUST_READS[0];
-  return (
-    <section
-      id="featured-story"
-      data-testid="featured-story"
-      className="bg-cream pt-16 md:pt-24 pb-16 md:pb-24"
-    >
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-        <div className="flex items-end justify-between gap-6 border-b hairline pb-3 mb-6 md:mb-8">
-          <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-wide-editorial text-ink">
-            — Feature · N°01
-          </span>
-          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
-            Editor's pick
-          </span>
-        </div>
-
-        <motion.div
-          {...fade}
-          className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-stretch"
-        >
-          {/* Image */}
-          <div className="md:col-span-7 relative aspect-[16/10] md:aspect-[3/2] overflow-hidden rounded-2xl bg-ink">
-            <img
-              src={a.image}
-              alt={a.title}
-              className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.04]"
-            />
-            <div className="absolute top-3 left-3 flex gap-2">
-              <TagPill variant="gold">Feature</TagPill>
-              <TagPill variant="ink">{a.pillar}</TagPill>
-            </div>
-          </div>
-
-          {/* Text */}
-          <div className="md:col-span-5 flex flex-col justify-between bg-ink text-cream p-6 md:p-10 rounded-2xl">
-            <div>
-              <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
-                Founders' Note
-              </span>
-              <h2 className="mt-4 font-display font-light leading-[1.02] tracking-tight text-3xl md:text-4xl lg:text-5xl">
-                {a.title}
-              </h2>
-              <p className="mt-5 font-body font-light text-cream/75 text-sm md:text-base leading-relaxed max-w-md">
-                {a.excerpt}
-              </p>
-            </div>
-
-            <div className="mt-8 pt-5 border-t border-cream/15 flex items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/70">
-                  By
-                </span>
-                <span className="font-display italic font-light text-cream text-sm md:text-base">
-                  {a.author}
-                </span>
-              </div>
-              <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/70">
-                {a.read} read
-              </span>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
-
-/* ---------------------- PILLARS (dark band) ---------------------- */
-
-const PillarReels = () => (
-  <section
-    id="pillars-reels"
-    data-testid="pillars-reels"
-    className="bg-ink text-cream py-16 md:py-24"
-  >
-    <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-      <div className="flex items-end justify-between gap-6 mb-8 md:mb-10 border-b border-cream/15 pb-3">
-        <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-wide-editorial text-gold">
-          — Editorial Pillars · Reels
-        </span>
-        <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/55">
-          3 forthcoming
-        </span>
-      </div>
-
-      <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-        {PILLARS.map((p, i) => (
-          <motion.li
-            key={p.slug}
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 0.8, delay: 0.05 * i, ease: [0.22, 1, 0.36, 1] }}
-            data-testid={`pillar-reel-${p.slug}`}
-            className="group cursor-pointer"
-          >
-            <div className="relative aspect-[3/2] w-full overflow-hidden rounded-2xl bg-cream/5">
-              <img
-                src={p.image}
-                alt={p.title}
-                className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-transparent" />
-
-              {/* Top tag pills */}
-              <div className="absolute top-3 left-3 flex gap-2">
-                <TagPill variant="gold">Reel</TagPill>
-                <TagPill>{p.title.split(" ")[0]}</TagPill>
-              </div>
-
-              {/* Play icon */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full border border-cream/40 bg-ink/30 backdrop-blur-sm text-cream group-hover:bg-gold group-hover:border-gold group-hover:text-ink transition-colors duration-500">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </span>
-              </div>
-            </div>
-
-            {/* Below-image */}
-            <div className="mt-4 flex items-start justify-between gap-4 pb-3 border-b border-cream/12">
-              <div>
-                <h3 className="font-display font-light text-cream text-xl md:text-2xl leading-[1.05] tracking-tight">
-                  {p.title}
-                </h3>
-                <p className="mt-1.5 font-body font-light text-cream/65 text-xs md:text-sm leading-[1.5] max-w-sm">
-                  {p.body}
-                </p>
-              </div>
-              <span className="font-mono text-[9px] uppercase tracking-wide-editorial text-gold whitespace-nowrap pt-1">
-                N°0{i + 1}
-              </span>
-            </div>
-          </motion.li>
-        ))}
-      </ul>
-    </div>
-  </section>
-);
-
 /* ----------------------------- REGIONS ----------------------------- */
 
 const RegionsRow = () => {
@@ -463,12 +173,12 @@ const RegionsRow = () => {
       <section
         id="regions-section"
         data-testid="regions-section"
-        className="bg-cream pb-16 md:pb-24 pt-14 md:pt-20"
+        className="bg-cream pt-40 md:pt-48 pb-16 md:pb-24"
       >
         <div className="max-w-[1440px] mx-auto px-6 md:px-12">
           <div className="flex items-end justify-between gap-6 mb-8 md:mb-10 border-b hairline pb-3">
             <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-wide-editorial text-ink">
-              — Destination Cards
+              — Destination Hubs
             </span>
             <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
               {REGIONS.length} destinations
@@ -611,9 +321,8 @@ const MustReads = () => {
   const [authorOpen, setAuthorOpen] = useState(false);
 
   const filtered = useMemo(() => {
-    const base = MUST_READS.filter((a) => !a.featured);
-    const pinned = base.filter((a) => a.pinned);
-    const rest = base.filter((a) => !a.pinned);
+    const pinned = MUST_READS.filter((a) => a.pinned);
+    const rest = MUST_READS.filter((a) => !a.pinned);
     let pool = [...pinned, ...rest];
     if (pillar !== "All") pool = pool.filter((a) => a.pillar === pillar);
     if (author !== "All") pool = pool.filter((a) => a.author === author);
@@ -636,7 +345,7 @@ const MustReads = () => {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8 md:mb-12 border-b hairline pb-4">
           <div>
             <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-wide-editorial text-ink">
-              — Latest · Editor's desk
+              — Articles
             </span>
             <motion.h2
               {...fade}
@@ -760,18 +469,8 @@ const MustReads = () => {
 /* ----------------------------- PAGE ----------------------------- */
 
 const Journal = () => {
-  const featured = MUST_READS.find((m) => m.featured) || MUST_READS[0];
-
-  const onSelectSection = (id) => {
-    const el = document.getElementById(id);
-    el?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
   return (
     <main data-testid="page-journal" className="relative bg-cream">
-      <Hero featured={featured} onSelectSection={onSelectSection} />
-      <FeaturedStory />
-      <PillarReels />
       <RegionsRow />
       <MustReads />
     </main>
