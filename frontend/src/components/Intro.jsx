@@ -54,9 +54,9 @@ const Intro = ({ onDone }) => {
           initial={{ opacity: 0, y: -4 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted hidden md:block max-w-[42ch] text-right leading-relaxed"
+          className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted hidden md:block"
         >
-          An editorial dedicated to golf, culture, and the experience of playing México's finest courses. Shaped by founders with years in tour environments.
+          MX · Vol. I
         </motion.span>
       </div>
 
