@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import TeamEditorial from "@/components/TeamEditorial";
+import StatsBar from "@/components/StatsBar";
 
 const HERO_VIDEO =
   "https://assets.mixkit.co/videos/preview/mixkit-overhead-view-of-a-rocky-coast-and-waves-crashing-51502-large.mp4";
@@ -218,6 +219,9 @@ const Home = () => {
 
       {/* EDITORIAL STATEMENT — N° 01 The Premise (with video box) */}
       <ManifestoCycle />
+
+      {/* STATS BAR — instant credibility */}
+      <StatsBar />
 
       {/* CINEMATIC DIVIDER — Interlude with parallax */}
       <HomeDivider />
