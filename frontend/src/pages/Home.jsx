@@ -166,8 +166,9 @@ const Home = () => {
               data-testid="hero-subline"
               className="font-body font-light text-cream/85 text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
             >
-              Shaped by years inside Tour environments. Destination guides,
-              course reviews, and the field notes only insiders carry.
+              Golf in Mexico is not tourism. It's immersion. It's understanding
+              that Mexican culture elevates the game into something you won't
+              find anywhere else in the world.
             </p>
           </motion.div>
         </div>

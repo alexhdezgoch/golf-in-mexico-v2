@@ -99,21 +99,56 @@ const PILLAR_FILTERS = [
   "Region Guides",
 ];
 
-const AUTHORS = ["All", "Pablo De La Mora", "José Islas"];
+const AUTHORS = ["All", "Pablo De La Mora", "José Islas", "Golf In Mexico"];
 
 const MUST_READS = [
-  { slug: "way-we-started", title: "The way we started this journal.", excerpt: "An origin note from the founders — why México, why now, and why we'd rather write than sell.", image: "https://images.unsplash.com/photo-1605144156546-91acf5e4cffd?auto=format&fit=crop&w=1600&q=85", pillar: "Authors Journal", author: "Pablo De La Mora", read: "5 min", pinned: true, featured: true },
-  { slug: "professional-experience", title: "Our professional experience in Golf in México.", excerpt: "A decade across tour environments.", image: "https://images.unsplash.com/photo-1543105177-748ceda71741?auto=format&fit=crop&w=1200&q=85", pillar: "Authors Journal", author: "Pablo De La Mora", read: "8 min", pinned: true },
-  { slug: "curated-network", title: "Our curated network of properties.", excerpt: "Why we don't sell from a catalogue.", image: "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=1200&q=85", pillar: "Hospitality", author: "Pablo De La Mora", read: "9 min", pinned: true },
-  { slug: "how-to-plan-a-golf-trip-to-mexico", title: "How to plan a golf trip to México.", excerpt: "The playbook for a frictionless week.", image: "https://images.unsplash.com/photo-1672825952732-ecef34882416?auto=format&fit=crop&w=1200&q=85", pillar: "Region Guides", author: "Pablo De La Mora", read: "12 min", pinned: true },
-  { slug: "luxury-golf-vacation-mexico", title: "Luxury golf vacations in México.", excerpt: "What 'luxury' actually buys you here.", image: "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=1200&q=85", pillar: "Hospitality", author: "Pablo De La Mora", read: "10 min", pinned: true },
-  { slug: "los-cabos-four-mornings", title: "Where to play in Los Cabos, hole by hole.", excerpt: "Four mornings, four courses.", image: "https://images.unsplash.com/photo-1605144156546-91acf5e4cffd?auto=format&fit=crop&w=1200&q=85", pillar: "Region Guides", author: "Pablo De La Mora", read: "12 min", live: true, href: "/journal/los-cabos" },
-  { slug: "paspalum-notes", title: "Notes on grass.", excerpt: "Paspalum vs. bermuda — what your wedge does.", image: "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=1200&q=85", pillar: "Golf & Nature", author: "José Islas", read: "6 min" },
-  { slug: "us-amateur-2023", title: "Stranger at Cherry Hills.", excerpt: "The 2023 U.S. Amateur, from a Mexican kid.", image: "https://images.unsplash.com/photo-1514480573427-1f96cbed6a27?auto=format&fit=crop&w=1200&q=85", pillar: "Authors Journal", author: "José Islas", read: "9 min" },
-  { slug: "mayakoba-wwt", title: "Inside Mayakoba.", excerpt: "Only PGA Tour event in México.", image: "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=1200&q=85", pillar: "Architecture", author: "José Islas", read: "11 min" },
-  { slug: "best-table-cdmx", title: "The best table after eighteen in CDMX.", excerpt: "Where the round ends, the city begins.", image: "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1200&q=85", pillar: "Best Food", author: "Pablo De La Mora", read: "6 min" },
-  { slug: "agent-playbook", title: "The agent's playbook.", excerpt: "Introductions, not allotments.", image: "https://images.unsplash.com/photo-1543105177-748ceda71741?auto=format&fit=crop&w=1200&q=85", pillar: "Region Guides", author: "Pablo De La Mora", read: "7 min" },
-  { slug: "punta-mita-tail", title: "Tail of the Whale.", excerpt: "Nicklaus's island green, Pacific rocks.", image: "https://images.unsplash.com/photo-1592965046687-1acdbcdb5642?auto=format&fit=crop&w=1200&q=85", pillar: "Architecture", author: "José Islas", read: "8 min" },
+  {
+    slug: "why-pablo-started-this",
+    title: "Why Pablo started this.",
+    excerpt:
+      "México is not a destination — it is an immersion. A founder's note on why we'd rather write than sell, and why every round here is a chapter.",
+    image:
+      "https://images.unsplash.com/photo-1605144156546-91acf5e4cffd?auto=format&fit=crop&w=1600&q=85",
+    pillar: "Authors Journal",
+    author: "Pablo De La Mora",
+    read: "5 min",
+    pinned: true,
+    featured: true,
+  },
+  {
+    slug: "why-jose-started-this",
+    title: "Why José started this.",
+    excerpt:
+      "From the U.S. Amateur to the bunkers of Mayakoba — a player's note on the México that shaped his eye for the game.",
+    image:
+      "https://images.unsplash.com/photo-1514480573427-1f96cbed6a27?auto=format&fit=crop&w=1600&q=85",
+    pillar: "Authors Journal",
+    author: "José Islas",
+    read: "6 min",
+    pinned: true,
+  },
+  {
+    slug: "how-to-plan-a-golf-trip-to-mexico",
+    title: "How to plan a golf trip to México.",
+    excerpt: "The playbook for a frictionless week — courses, table, hotel, transit.",
+    image:
+      "https://images.unsplash.com/photo-1672825952732-ecef34882416?auto=format&fit=crop&w=1200&q=85",
+    pillar: "Region Guides",
+    author: "Golf In Mexico",
+    read: "12 min",
+    pinned: true,
+  },
+  {
+    slug: "luxury-golf-vacation-mexico",
+    title: "Luxury golf vacations in México.",
+    excerpt: "What 'luxury' actually buys you here — and what it doesn't.",
+    image:
+      "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=1200&q=85",
+    pillar: "Hospitality",
+    author: "Golf In Mexico",
+    read: "10 min",
+    pinned: true,
+  },
 ];
 
 const PAGE_SIZE = 8;
@@ -198,9 +233,10 @@ const Hero = ({ featured, onSelectSection }) => (
             México°
           </span>
         </h1>
-        <p className="mt-7 font-body font-light text-cream/75 text-base md:text-lg max-w-2xl leading-relaxed">
-          From Pacific cliffs to limestone fairways — over fifty championship
-          courses, editorial guides written from the courses themselves.
+        <p className="mt-7 font-body font-light text-cream/80 text-base md:text-lg max-w-2xl leading-relaxed">
+          Golf in México is not tourism. It's immersion — a culture that
+          elevates the game into something you won't find anywhere else in the
+          world.
         </p>
       </motion.div>
 
@@ -432,10 +468,10 @@ const RegionsRow = () => {
         <div className="max-w-[1440px] mx-auto px-6 md:px-12">
           <div className="flex items-end justify-between gap-6 mb-8 md:mb-10 border-b hairline pb-3">
             <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-wide-editorial text-ink">
-              — Regions · Five
+              — Destination Cards
             </span>
             <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
-              {REGIONS.length} regions
+              {REGIONS.length} destinations
             </span>
           </div>
           <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-5">

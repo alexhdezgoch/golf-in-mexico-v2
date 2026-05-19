@@ -118,9 +118,8 @@ const Footer = () => {
               style={{ mixBlendMode: "screen" }}
             />
             <p className="mt-6 font-body font-light text-cream/55 text-sm leading-[1.7]">
-              Golf in Mexico is not tourism. It's immersion. It's understanding
-              that Mexican culture elevates the game into something you won't
-              find anywhere else in the world.
+              An editorial brand chronicling golf, culture, and hospitality
+              across México — written from the courses themselves.
             </p>
           </div>
 
