@@ -7,6 +7,15 @@ const links = [
   { to: "/journal", label: "Journal" },
 ];
 
+const DESTINATIONS = [
+  { slug: "los-cabos", name: "Los Cabos", region: "Baja California Sur", live: true, href: "/journal/los-cabos" },
+  { slug: "punta-mita", name: "Punta Mita", region: "Riviera Nayarit", live: true, href: "/destinations" },
+  { slug: "cdmx", name: "Mexico City", region: "Valle de México", live: true, href: "/destinations" },
+  { slug: "puerto-vallarta", name: "Puerto Vallarta", region: "Bahía de Banderas", live: false, href: "/destinations" },
+  { slug: "riviera-maya", name: "Cancún · Riviera Maya", region: "Quintana Roo", live: false, href: "/destinations" },
+  { slug: "unique", name: "Unique Destinations", region: "Across México", live: false, href: "/destinations" },
+];
+
 const SOCIALS = [
   { href: "https://www.facebook.com/", label: "Facebook", path: "M22 12a10 10 0 1 0-11.6 9.87v-6.98H8v-2.89h2.4V9.41c0-2.38 1.42-3.69 3.58-3.69 1.04 0 2.12.19 2.12.19v2.34h-1.2c-1.18 0-1.55.73-1.55 1.49v1.78h2.63l-.42 2.89H13.4v6.98A10 10 0 0 0 22 12Z" },
   { href: "https://www.instagram.com/", label: "Instagram", path: "M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.26.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.26.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.72 3.72 0 0 1-1.38-.9 3.72 3.72 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 1.8c-3.14 0-3.51.01-4.75.07-1.07.05-1.65.22-2.04.37-.51.2-.88.44-1.27.83-.39.39-.63.76-.83 1.27-.15.39-.32.97-.37 2.04-.06 1.24-.07 1.61-.07 4.75s.01 3.51.07 4.75c.05 1.07.22 1.65.37 2.04.2.51.44.88.83 1.27.39.39.76.63 1.27.83.39.15.97.32 2.04.37 1.24.06 1.61.07 4.75.07s3.51-.01 4.75-.07c1.07-.05 1.65-.22 2.04-.37.51-.2.88-.44 1.27-.83.39-.39.63-.76.83-1.27.15-.39.32-.97.37-2.04.06-1.24.07-1.61.07-4.75s-.01-3.51-.07-4.75c-.05-1.07-.22-1.65-.37-2.04a3.41 3.41 0 0 0-.83-1.27 3.41 3.41 0 0 0-1.27-.83c-.39-.15-.97-.32-2.04-.37-1.24-.06-1.61-.07-4.75-.07Zm0 3.06a4.98 4.98 0 1 1 0 9.96 4.98 4.98 0 0 1 0-9.96Zm0 8.21a3.23 3.23 0 1 0 0-6.46 3.23 3.23 0 0 0 0 6.46Zm6.34-8.4a1.16 1.16 0 1 1-2.32 0 1.16 1.16 0 0 1 2.32 0Z" },
@@ -16,6 +25,7 @@ const SOCIALS = [
 const Nav = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [destOpen, setDestOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === "/";
   const onDarkHero = isHome && !scrolled;
@@ -80,6 +90,69 @@ const Nav = () => {
               {l.label}
             </NavLink>
           ))}
+
+          {/* Destinations dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setDestOpen(true)}
+            onMouseLeave={() => setDestOpen(false)}
+          >
+            <NavLink
+              to="/destinations"
+              data-testid="nav-link-destinations"
+              className={({ isActive }) =>
+                `nav-link-modern font-mono text-[11px] uppercase tracking-wide-editorial transition-colors duration-300 inline-flex items-center gap-1.5 ${
+                  onDarkHero
+                    ? isActive || destOpen
+                      ? "text-cream is-active"
+                      : "text-cream/65 hover:text-cream"
+                    : isActive || destOpen
+                      ? "text-ink is-active"
+                      : "text-muted hover:text-ink"
+                }`
+              }
+            >
+              Destinations
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transition-transform duration-300 ${destOpen ? "rotate-180" : ""}`}>
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </NavLink>
+
+            {destOpen && (
+              <div
+                data-testid="nav-destinations-dropdown"
+                className="absolute right-0 top-full pt-3"
+              >
+                <ul className="min-w-[280px] bg-cream border border-ink/10 shadow-2xl rounded-2xl overflow-hidden p-2">
+                  {DESTINATIONS.map((d) => (
+                    <li key={d.slug}>
+                      <Link
+                        to={d.href}
+                        data-testid={`nav-destination-${d.slug}`}
+                        className="group flex items-center justify-between gap-3 px-4 py-3 rounded-xl hover:bg-ink/5 transition-colors"
+                      >
+                        <div className="flex flex-col">
+                          <span className="font-display text-base text-ink leading-tight">
+                            {d.name}
+                          </span>
+                          <span className="font-mono text-[9px] uppercase tracking-wide-editorial text-muted mt-0.5">
+                            {d.region}
+                          </span>
+                        </div>
+                        <span
+                          className={`font-mono text-[9px] uppercase tracking-wide-editorial ${
+                            d.live ? "text-forest" : "text-gold"
+                          }`}
+                        >
+                          {d.live ? "Live" : "Soon"}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
 
           {/* Inquire CTA — premium magnetic-style button */}
           <button
@@ -168,6 +241,18 @@ const Nav = () => {
               )}
             </NavLink>
           ))}
+          <NavLink
+            to="/destinations"
+            data-testid="nav-mobile-link-destinations"
+            className={({ isActive }) =>
+              `font-display text-4xl tracking-tight leading-none ${
+                isActive ? "text-ink" : "text-muted"
+              }`
+            }
+          >
+            Destinations
+            <span className="font-display italic text-gold">°</span>
+          </NavLink>
           <button
             type="button"
             onClick={() => {

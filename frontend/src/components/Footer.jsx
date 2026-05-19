@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 const NAV_LINKS = [
   { label: "Home", to: "/" },
   { label: "Journal", to: "/journal" },
+  { label: "Destinations", to: "/destinations" },
 ];
 
 const Footer = () => {
