@@ -99,7 +99,7 @@ const PILLAR_FILTERS = [
 const AUTHORS = ["All", "Pablo De La Mora", "José Islas"];
 
 const MUST_READS = [
-  { slug: "way-we-started", title: "The way we started this journal.", excerpt: "An origin note from the founders.", image: "https://images.unsplash.com/photo-1605144156546-91acf5e4cffd?auto=format&fit=crop&w=1200&q=85", pillar: "Authors Journal", author: "Pablo De La Mora", read: "5 min", pinned: true },
+  { slug: "way-we-started", title: "The way we started this journal.", excerpt: "An origin note from the founders — why México, why now, and why we'd rather write than sell.", image: "https://images.unsplash.com/photo-1605144156546-91acf5e4cffd?auto=format&fit=crop&w=1600&q=85", pillar: "Authors Journal", author: "Pablo De La Mora", read: "5 min", pinned: true, featured: true },
   { slug: "professional-experience", title: "Our professional experience in Golf in México.", excerpt: "A decade across tour environments.", image: "https://images.unsplash.com/photo-1543105177-748ceda71741?auto=format&fit=crop&w=1200&q=85", pillar: "Authors Journal", author: "Pablo De La Mora", read: "8 min", pinned: true },
   { slug: "curated-network", title: "Our curated network of properties.", excerpt: "Why we don't sell from a catalogue.", image: "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=1200&q=85", pillar: "Hospitality", author: "Pablo De La Mora", read: "9 min", pinned: true },
   { slug: "how-to-plan-a-golf-trip-to-mexico", title: "How to plan a golf trip to México.", excerpt: "The playbook for a frictionless week.", image: "https://images.unsplash.com/photo-1672825952732-ecef34882416?auto=format&fit=crop&w=1200&q=85", pillar: "Region Guides", author: "Pablo De La Mora", read: "12 min", pinned: true },
@@ -127,19 +127,24 @@ const fade = {
 const Hero = () => (
   <section
     data-testid="journal-hero"
-    className="bg-cream pt-44 md:pt-52 pb-12 md:pb-16"
+    className="bg-cream pt-40 md:pt-48 pb-10 md:pb-14"
   >
-    <div className="max-w-[1280px] mx-auto px-6 md:px-12">
-      <motion.span
-        {...fade}
-        className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted"
-      >
-        The Journal · Hub
-      </motion.span>
+    <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+      <div className="flex items-center justify-between border-b hairline pb-3 mb-8">
+        <motion.span
+          {...fade}
+          className="font-mono text-[10px] uppercase tracking-wide-editorial text-ink"
+        >
+          The Journal · Hub
+        </motion.span>
+        <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
+          Vol. 01 · Editorial
+        </span>
+      </div>
       <motion.h1
         {...fade}
         transition={{ duration: 0.9, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-        className="mt-5 font-display font-light text-ink leading-[0.98] tracking-tight text-4xl md:text-6xl lg:text-7xl max-w-4xl"
+        className="font-display font-light text-ink leading-[0.98] tracking-tight text-4xl md:text-6xl lg:text-7xl max-w-4xl"
       >
         Golf in México,{" "}
         <span className="italic">from Pacific cliffs to limestone fairways.</span>
@@ -147,30 +152,104 @@ const Hero = () => (
       <motion.p
         {...fade}
         transition={{ duration: 0.9, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-        className="mt-8 font-body font-light text-ink/70 text-base md:text-lg leading-relaxed max-w-2xl"
+        className="mt-6 font-body font-light text-ink/70 text-base md:text-lg leading-relaxed max-w-2xl"
       >
-        Over fifty championship courses across five regions — Nicklaus,
-        Norman, Woods, Love III. Editorial guides written from the courses
-        themselves.
+        Over fifty championship courses across five regions — Nicklaus, Norman,
+        Woods, Love III. Editorial guides written from the courses themselves.
       </motion.p>
     </div>
   </section>
 );
 
+/* ---------------------- FEATURED STORY (TGJ-style) ---------------------- */
+
+const FeaturedStory = () => {
+  const a = MUST_READS.find((m) => m.featured) || MUST_READS[0];
+  return (
+    <section
+      data-testid="featured-story"
+      className="bg-cream pb-16 md:pb-24"
+    >
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+        <div className="flex items-end justify-between gap-6 border-b hairline pb-3 mb-6 md:mb-8">
+          <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-wide-editorial text-ink">
+            — Feature · N°01
+          </span>
+          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
+            Editor's pick
+          </span>
+        </div>
+
+        <motion.div
+          {...fade}
+          className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-stretch"
+        >
+          {/* Image */}
+          <div className="md:col-span-7 relative aspect-[16/10] md:aspect-[3/2] overflow-hidden bg-ink">
+            <img
+              src={a.image}
+              alt={a.title}
+              className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03]"
+            />
+            <span className="absolute top-3 left-3 font-mono text-[9px] uppercase tracking-wide-editorial text-ink bg-gold px-2 py-1">
+              Feature
+            </span>
+            <span className="absolute bottom-3 left-3 font-mono text-[9px] uppercase tracking-wide-editorial text-cream bg-ink/55 backdrop-blur-sm px-2 py-1">
+              {a.pillar}
+            </span>
+          </div>
+
+          {/* Text */}
+          <div className="md:col-span-5 flex flex-col justify-between bg-ink text-cream p-6 md:p-10">
+            <div>
+              <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
+                Founders' Note
+              </span>
+              <h2 className="mt-4 font-display font-light leading-[1.02] tracking-tight text-3xl md:text-4xl lg:text-5xl">
+                {a.title}
+              </h2>
+              <p className="mt-5 font-body font-light text-cream/75 text-sm md:text-base leading-relaxed max-w-md">
+                {a.excerpt}
+              </p>
+            </div>
+
+            <div className="mt-8 pt-5 border-t border-cream/15 flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/70">
+                  By
+                </span>
+                <span className="font-display italic font-light text-cream text-sm md:text-base">
+                  {a.author}
+                </span>
+              </div>
+              <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/70">
+                {a.read} read
+              </span>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+/* ---------------------- PILLARS (dark contrast band) ---------------------- */
+
 const PillarReels = () => (
   <section
     data-testid="pillars-reels"
-    className="bg-cream pb-16 md:pb-24"
+    className="bg-ink text-cream py-16 md:py-24"
   >
     <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-      <div className="flex items-end justify-between gap-6 mb-8 md:mb-10">
-        <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-wide-editorial text-ink">
+      <div className="flex items-end justify-between gap-6 mb-8 md:mb-10 border-b border-cream/15 pb-3">
+        <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-wide-editorial text-gold">
           — Editorial Pillars · Reels
         </span>
-        <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
+        <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/55">
           3 forthcoming
         </span>
       </div>
+
       <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
         {PILLARS.map((p, i) => (
           <motion.li
@@ -180,39 +259,44 @@ const PillarReels = () => (
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.8, delay: 0.05 * i, ease: [0.22, 1, 0.36, 1] }}
             data-testid={`pillar-reel-${p.slug}`}
-            className="group cursor-pointer editorial-card"
+            className="group cursor-pointer"
           >
-            <div className="relative aspect-[16/10] md:aspect-[4/5] w-full overflow-hidden bg-ink">
+            <div className="relative aspect-[3/2] w-full overflow-hidden bg-cream/5">
               <img
                 src={p.image}
                 alt={p.title}
                 className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/15 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/30 to-transparent" />
 
               {/* Play icon */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full border border-cream/40 bg-ink/30 backdrop-blur-sm text-cream group-hover:bg-gold group-hover:border-gold group-hover:text-ink transition-colors duration-500">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <span className="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full border border-cream/40 bg-ink/30 backdrop-blur-sm text-cream group-hover:bg-gold group-hover:border-gold group-hover:text-ink transition-colors duration-500">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M8 5v14l11-7z" />
                   </svg>
                 </span>
               </div>
 
               {/* Top label */}
-              <span className="absolute top-3 left-3 font-mono text-[9px] uppercase tracking-wide-editorial text-cream bg-ink/45 backdrop-blur-sm px-2 py-1">
-                Reel · Coming soon
+              <span className="absolute top-3 left-3 font-mono text-[9px] uppercase tracking-wide-editorial text-ink bg-gold px-2 py-0.5">
+                Reel · Soon
               </span>
+            </div>
 
-              {/* Bottom content */}
-              <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-                <h3 className="font-display font-light text-cream text-2xl md:text-3xl leading-[1.05] tracking-tight">
+            {/* Below-image text (more info, more compact) */}
+            <div className="mt-4 flex items-start justify-between gap-4 pb-3 border-b border-cream/12">
+              <div>
+                <h3 className="font-display font-light text-cream text-xl md:text-2xl leading-[1.05] tracking-tight">
                   {p.title}
                 </h3>
-                <p className="mt-2 font-body font-light text-cream/80 text-sm leading-[1.5] max-w-md">
+                <p className="mt-1.5 font-body font-light text-cream/65 text-xs md:text-sm leading-[1.5] max-w-sm">
                   {p.body}
                 </p>
               </div>
+              <span className="font-mono text-[9px] uppercase tracking-wide-editorial text-gold whitespace-nowrap pt-1">
+                N°0{i + 1}
+              </span>
             </div>
           </motion.li>
         ))}
@@ -221,19 +305,21 @@ const PillarReels = () => (
   </section>
 );
 
+/* ----------------------------- REGIONS ----------------------------- */
+
 const RegionsRow = () => {
-  const [notify, setNotify] = useState(null); // region name
+  const [notify, setNotify] = useState(null);
 
   return (
     <>
       <section
         data-testid="regions-section"
-        className="bg-cream pb-16 md:pb-24 border-t hairline pt-14 md:pt-20"
+        className="bg-cream pb-16 md:pb-24 pt-14 md:pt-20"
       >
         <div className="max-w-[1440px] mx-auto px-6 md:px-12">
-          <div className="flex items-end justify-between gap-6 mb-8 md:mb-12 border-b hairline pb-4">
+          <div className="flex items-end justify-between gap-6 mb-8 md:mb-10 border-b hairline pb-3">
             <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-wide-editorial text-ink">
-              — Regions
+              — Regions · Five
             </span>
             <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
               {REGIONS.length} regions
@@ -243,14 +329,14 @@ const RegionsRow = () => {
             {REGIONS.map((r, i) => {
               const inner = (
                 <>
-                  <div className="relative aspect-[3/4] w-full overflow-hidden bg-ink">
+                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink">
                     <img
                       src={r.image}
                       alt={r.name}
                       className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
                     />
                     {!r.live && (
-                      <span className="absolute top-2 left-2 font-mono text-[9px] uppercase tracking-wide-editorial text-ink/80 bg-cream/90 px-2 py-0.5">
+                      <span className="absolute top-2 left-2 font-mono text-[9px] uppercase tracking-wide-editorial text-ink bg-gold px-2 py-0.5">
                         Soon
                       </span>
                     )}
@@ -259,21 +345,21 @@ const RegionsRow = () => {
                         Live
                       </span>
                     )}
-                    <span className="absolute top-2 right-2 font-mono text-[9px] uppercase tracking-wide-editorial text-cream bg-ink/55 backdrop-blur-sm px-2 py-0.5">
+                    <span className="absolute top-2 right-2 font-mono text-[9px] uppercase tracking-wide-editorial text-cream bg-ink/65 backdrop-blur-sm px-2 py-0.5">
                       {r.courses}
                     </span>
                   </div>
-                  <div className="mt-3">
+                  <div className="mt-3 pb-2 border-b hairline">
                     <h3 className="font-display font-light text-ink text-base leading-[1.1] tracking-tight read-cta">
                       {r.name}
                     </h3>
                     <span className="mt-0.5 block font-mono text-[9px] uppercase tracking-wide-editorial text-muted">
                       {r.region}
                     </span>
-                    <p className="mt-1 font-display italic font-light text-ink/60 text-xs leading-[1.3] hidden md:block">
-                      {r.tagline}
-                    </p>
                   </div>
+                  <p className="mt-2 font-display italic font-light text-ink/65 text-xs leading-[1.35] hidden md:block">
+                    {r.tagline}
+                  </p>
                 </>
               );
 
@@ -321,6 +407,8 @@ const RegionsRow = () => {
   );
 };
 
+/* ----------------------------- MUST READS ----------------------------- */
+
 const MustReadCard = ({ a, i }) => {
   const Tag = a.live && a.href ? Link : "div";
   const props = a.live && a.href ? { to: a.href } : {};
@@ -329,12 +417,12 @@ const MustReadCard = ({ a, i }) => {
       initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-10%" }}
-      transition={{ duration: 0.75, delay: 0.04 * i, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.75, delay: 0.03 * i, ease: [0.22, 1, 0.36, 1] }}
       data-testid={`article-${a.slug}`}
       className="group"
     >
       <Tag {...props} className="block editorial-card">
-        <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink">
+        <div className="relative aspect-square w-full overflow-hidden bg-ink">
           <img
             src={a.image}
             alt={a.title}
@@ -342,39 +430,41 @@ const MustReadCard = ({ a, i }) => {
               a.live ? "group-hover:scale-[1.04]" : ""
             }`}
           />
-          <span className="absolute top-2 left-2 font-mono text-[9px] uppercase tracking-wide-editorial text-ink/80 bg-cream/90 px-2 py-0.5">
+          <span className="absolute top-2 left-2 font-mono text-[9px] uppercase tracking-wide-editorial text-ink bg-gold px-2 py-0.5">
             {a.pillar}
           </span>
           {a.pinned && (
-            <span className="absolute top-2 right-2 font-mono text-[9px] uppercase tracking-wide-editorial text-cream bg-gold px-2 py-0.5">
+            <span className="absolute top-2 right-2 font-mono text-[9px] uppercase tracking-wide-editorial text-cream bg-ink px-2 py-0.5">
               Must
             </span>
           )}
           {!a.live && !a.pinned && (
-            <span className="absolute top-2 right-2 font-mono text-[9px] uppercase tracking-wide-editorial text-ink/80 bg-cream/90 px-2 py-0.5">
+            <span className="absolute top-2 right-2 font-mono text-[9px] uppercase tracking-wide-editorial text-cream bg-ink/65 backdrop-blur-sm px-2 py-0.5">
               Soon
             </span>
           )}
+          {a.live && (
+            <span className="absolute bottom-2 right-2 font-mono text-[9px] uppercase tracking-wide-editorial text-cream bg-forest px-2 py-0.5">
+              Live
+            </span>
+          )}
         </div>
-        <div className="mt-3">
+        <div className="mt-3 pb-2 border-b hairline">
           <h3
-            className={`font-display font-light leading-[1.15] tracking-tight text-base md:text-lg read-cta ${
-              a.live ? "text-ink" : "text-ink/80"
+            className={`font-display font-light leading-[1.15] tracking-tight text-[15px] md:text-base read-cta ${
+              a.live ? "text-ink" : "text-ink/85"
             }`}
           >
             {a.title}
           </h3>
-          <p className="mt-1.5 font-body font-light text-ink/60 text-xs md:text-sm leading-[1.5] hidden md:block">
-            {a.excerpt}
-          </p>
-          <div className="mt-2.5 pt-2 border-t hairline flex items-center justify-between">
-            <span className="font-mono text-[9px] uppercase tracking-wide-editorial text-muted truncate">
-              {a.author.split(" ")[0]}
-            </span>
-            <span className="font-mono text-[9px] uppercase tracking-wide-editorial text-muted">
-              {a.read}
-            </span>
-          </div>
+        </div>
+        <div className="mt-2 flex items-center justify-between">
+          <span className="font-mono text-[9px] uppercase tracking-wide-editorial text-ink/70 truncate">
+            {a.author}
+          </span>
+          <span className="font-mono text-[9px] uppercase tracking-wide-editorial text-muted">
+            {a.read}
+          </span>
         </div>
       </Tag>
     </motion.li>
@@ -389,8 +479,10 @@ const MustReads = () => {
   const [authorOpen, setAuthorOpen] = useState(false);
 
   const filtered = useMemo(() => {
-    const pinned = MUST_READS.filter((a) => a.pinned);
-    const rest = MUST_READS.filter((a) => !a.pinned);
+    // Exclude the featured story (used in FeaturedStory) from the grid
+    const base = MUST_READS.filter((a) => !a.featured);
+    const pinned = base.filter((a) => a.pinned);
+    const rest = base.filter((a) => !a.pinned);
     let pool = [...pinned, ...rest];
     if (pillar !== "All") pool = pool.filter((a) => a.pillar === pillar);
     if (author !== "All") pool = pool.filter((a) => a.author === author);
@@ -412,13 +504,13 @@ const MustReads = () => {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8 md:mb-12 border-b hairline pb-4">
           <div>
             <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-wide-editorial text-ink">
-              — Must Reads
+              — Latest · Editor's desk
             </span>
             <motion.h2
               {...fade}
               className="mt-3 font-display font-light text-ink text-3xl md:text-4xl leading-[1.05] tracking-tight"
             >
-              Editor's desk.
+              Stories from the field.
             </motion.h2>
           </div>
           <div className="flex flex-wrap items-center gap-3">
@@ -467,7 +559,7 @@ const MustReads = () => {
         </div>
 
         {visible.length > 0 ? (
-          <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+          <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
             {visible.map((a, i) => (<MustReadCard key={a.slug} a={a} i={i} />))}
           </ul>
         ) : (
@@ -495,6 +587,7 @@ const Journal = () => {
   return (
     <main data-testid="page-journal" className="relative bg-cream">
       <Hero />
+      <FeaturedStory />
       <PillarReels />
       <RegionsRow />
       <MustReads />
