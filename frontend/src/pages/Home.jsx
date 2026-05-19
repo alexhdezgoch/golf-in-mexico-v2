@@ -1,6 +1,5 @@
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import Parallax from "@/components/Parallax";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import TeamEditorial from "@/components/TeamEditorial";
 
 const HERO_VIDEO =
@@ -14,6 +13,9 @@ const MANIFESTO_VIDEO =
 
 const MANIFESTO_POSTER =
   "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=2000&q=80";
+
+const HOME_DIVIDER_IMG =
+  "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=2400&q=85";
 
 const MANIFESTO_LINES = [
   { text: "México is not just", italic: false },
@@ -120,6 +122,61 @@ const ManifestoCycle = () => {
   );
 };
 
+const HomeDivider = () => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
+  return (
+    <section
+      ref={ref}
+      data-testid="home-divider"
+      className="relative h-[80vh] min-h-[520px] w-full overflow-hidden bg-ink text-cream"
+    >
+      <motion.div style={{ y }} className="absolute inset-0 -top-20 -bottom-20">
+        <img
+          src={HOME_DIVIDER_IMG}
+          alt="Cinematic México golf landscape"
+          className="w-full h-full object-cover scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/25 to-ink/85" />
+      </motion.div>
+
+      <div className="relative z-10 h-full max-w-[1440px] mx-auto px-6 md:px-12 flex flex-col justify-between py-12 md:py-16">
+        <div className="flex items-center justify-between border-b border-cream/15 pb-3">
+          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
+            — Interlude · N°02
+          </span>
+          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/70">
+            The Team Behind
+          </span>
+        </div>
+
+        <motion.blockquote
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-20%" }}
+          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-5xl font-display font-light text-cream leading-[1.02] tracking-tight text-3xl md:text-5xl lg:text-6xl"
+        >
+          <span className="text-gold">&ldquo;</span>
+          We don&apos;t sell trips. We make introductions — to courses, to
+          caddies, to tables that turn a round into a chapter.
+          <span className="text-gold">&rdquo;</span>
+        </motion.blockquote>
+
+        <div className="flex items-center justify-between border-t border-cream/15 pt-3">
+          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/65">
+            Founders&apos; Note
+          </span>
+          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/65">
+            ✦ Pablo &amp; José
+          </span>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Home = () => {
   return (
     <main data-testid="page-home" className="relative">
@@ -194,6 +251,9 @@ const Home = () => {
 
       {/* EDITORIAL STATEMENT — N° 01 The Premise (with video box) */}
       <ManifestoCycle />
+
+      {/* CINEMATIC DIVIDER — Interlude with parallax */}
+      <HomeDivider />
 
       {/* N° 02 — Team & Editorial tabs */}
       <TeamEditorial />
