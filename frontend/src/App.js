@@ -14,6 +14,7 @@ import { InquiryContext } from "@/context/Inquiry";
 
 import Home from "@/pages/Home";
 import Journal from "@/pages/Journal";
+import Article from "@/pages/Article";
 import Destinations from "@/pages/Destinations";
 import LosCabos from "@/pages/LosCabos";
 
@@ -72,6 +73,14 @@ const AnimatedRoutes = () => {
           element={
             <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
               <LosCabos />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/journal/:slug"
+          element={
+            <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+              <Article />
             </motion.div>
           }
         />
