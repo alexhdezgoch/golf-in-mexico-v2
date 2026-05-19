@@ -130,7 +130,7 @@ const HomeDivider = () => {
     <section
       ref={ref}
       data-testid="home-divider"
-      className="relative h-[80vh] min-h-[520px] w-full overflow-hidden bg-ink text-cream"
+      className="relative h-[80vh] min-h-[520px] w-full overflow-hidden bg-ink"
     >
       <motion.div style={{ y }} className="absolute inset-0 -top-20 -bottom-20">
         <img
@@ -138,41 +138,8 @@ const HomeDivider = () => {
           alt="Cinematic México golf landscape"
           className="w-full h-full object-cover scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/25 to-ink/85" />
+        <div className="absolute inset-0 bg-ink/15" />
       </motion.div>
-
-      <div className="relative z-10 h-full max-w-[1440px] mx-auto px-6 md:px-12 flex flex-col justify-between py-12 md:py-16">
-        <div className="flex items-center justify-between border-b border-cream/15 pb-3">
-          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
-            — Interlude · N°02
-          </span>
-          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/70">
-            The Team Behind
-          </span>
-        </div>
-
-        <motion.blockquote
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-20%" }}
-          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-5xl font-display font-light text-cream leading-[1.02] tracking-tight text-3xl md:text-5xl lg:text-6xl"
-        >
-          <span className="text-gold">&ldquo;</span>
-          We don&apos;t sell trips. We make introductions — to courses, to
-          caddies, to tables that turn a round into a chapter.
-          <span className="text-gold">&rdquo;</span>
-        </motion.blockquote>
-
-        <div className="flex items-center justify-between border-t border-cream/15 pt-3">
-          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/65">
-            Founders&apos; Note
-          </span>
-          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/65">
-            ✦ Pablo &amp; José
-          </span>
-        </div>
-      </div>
     </section>
   );
 };

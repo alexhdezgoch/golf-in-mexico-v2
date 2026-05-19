@@ -102,8 +102,9 @@ const TeamEditorial = () => {
 
   return (
     <section
+      id="founders"
       data-testid="team-editorial-section"
-      className="relative bg-cream border-t hairline"
+      className="relative bg-cream border-t hairline scroll-mt-24"
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-24">
         {/* Tabs */}

@@ -56,7 +56,7 @@ const Intro = ({ onDone }) => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted hidden md:block"
         >
-          MX · Vol. I
+          &nbsp;
         </motion.span>
       </div>
 

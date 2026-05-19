@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useInquiry } from "@/context/Inquiry";
 
 const links = [
@@ -27,9 +27,32 @@ const Nav = () => {
   const [open, setOpen] = useState(false);
   const [destOpen, setDestOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const isHome = location.pathname === "/";
   const onDarkHero = isHome && !scrolled;
   const { openInquiry } = useInquiry();
+
+  const scrollToFounders = () => {
+    const el = document.getElementById("founders");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const handleAboutClick = (e) => {
+    e.preventDefault();
+    setOpen(false);
+    if (isHome) {
+      scrollToFounders();
+    } else {
+      navigate("/#founders");
+    }
+  };
+
+  useEffect(() => {
+    if (isHome && location.hash === "#founders") {
+      // Wait briefly for layout
+      setTimeout(scrollToFounders, 200);
+    }
+  }, [isHome, location.hash, location.key]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -90,6 +113,18 @@ const Nav = () => {
               {l.label}
             </NavLink>
           ))}
+
+          {/* About link — scrolls to founders */}
+          <a
+            href="/#founders"
+            onClick={handleAboutClick}
+            data-testid="nav-link-about"
+            className={`nav-link-modern font-mono text-[11px] uppercase tracking-wide-editorial transition-colors duration-300 ${
+              onDarkHero ? "text-cream/65 hover:text-cream" : "text-muted hover:text-ink"
+            }`}
+          >
+            About
+          </a>
 
           {/* Destinations dropdown */}
           <div
@@ -253,6 +288,14 @@ const Nav = () => {
             Destinations
             <span className="font-display italic text-gold">°</span>
           </NavLink>
+          <a
+            href="/#founders"
+            onClick={handleAboutClick}
+            data-testid="nav-mobile-link-about"
+            className="font-display text-4xl tracking-tight leading-none text-muted"
+          >
+            About
+          </a>
           <button
             type="button"
             onClick={() => {
