@@ -1,136 +1,126 @@
 {
-  "theme": "light",
-  "archetype": "1 (Organic & Earthy) - Modified for Premium Editorial (High Contrast)",
-  "global_rules": {
-    "design_philosophy": "The Golfer's Journal meets Kinfolk. Minimalist, editorial, cinematic, typography-forward. The photography does the selling.",
-    "whitespace": "Generous. Use Tailwind scale generously (py-24, py-32, gap-16) to create 'museum-worthy' breathing room.",
-    "animations": "Smooth page transitions (fade/slide), custom dot cursor, minimal load animation (<1s), subtle parallax on full-bleed images.",
-    "responsiveness": "Fully responsive, vertical scroll only. No carousels."
+  "theme": {
+    "name": "Cinematic Editorial",
+    "mode": "light",
+    "archetype": "5 (Jewel & Luxury) x 1 (Organic & Earthy)",
+    "description": "A sophisticated, high-contrast, editorial design emphasizing dramatic photography, wide typography, generous negative space, and smooth cinematic transitions. Think high-end art gallery meets luxury travel."
   },
   "colors": {
-    "background": "#F5F2EB",
-    "ink": "#1A1A18",
-    "gold_accent": "#C4A24E",
-    "forest_green": "#2C4A2C",
-    "muted": "#5C5C56"
+    "background": {
+      "default": "#F5F2EB",
+      "inverse": "#1A1A18",
+      "overlay": "rgba(26, 26, 24, 0.4)"
+    },
+    "text": {
+      "primary": "#1A1A18",
+      "inverse": "#F5F2EB",
+      "muted": "#1A1A1880",
+      "inverse_muted": "#F5F2EB80"
+    },
+    "accent": {
+      "gold": "#C4A24E",
+      "forest": "#2C4A2C"
+    },
+    "ui": {
+      "border": "rgba(26, 26, 24, 0.15)",
+      "border_inverse": "rgba(245, 242, 235, 0.15)",
+      "hover_bg": "rgba(26, 26, 24, 0.05)"
+    }
   },
   "typography": {
     "fonts": {
-      "display": "Cormorant Garamond",
-      "body": "Outfit",
-      "mono": "JetBrains Mono"
+      "heading": "Cormorant Garamond, serif",
+      "body": "Outfit, sans-serif",
+      "mono": "JetBrains Mono, monospace"
     },
-    "scale": {
-      "h1": "text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-ink",
-      "h2": "text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-ink",
-      "h3": "text-xl md:text-2xl font-light text-ink",
-      "body": "text-base md:text-lg font-light leading-relaxed text-ink/80",
-      "labels": "text-xs md:text-sm uppercase tracking-[0.2em] font-mono text-muted"
-    },
-    "implementation_notes": "Use 'font-light' for Cormorant Garamond and Outfit. Headlines are large and slow. Use 'italic' selectively for emphasis in headings to match print editorial styles."
-  },
-  "layout_and_spacing": {
-    "container": "max-w-7xl mx-auto px-6 md:px-12",
-    "sections": "py-24 md:py-32",
-    "grid": "grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16",
-    "borders": "1px solid #5C5C56 (opacity-20 for subtle separators)"
-  },
-  "components": {
-    "navigation": {
-      "style": "Sticky minimal nav, logo left, links right. No hamburger on desktop. Condenses on scroll (reduce padding, add backdrop-blur-md and bg-[#F5F2EB]/80).",
-      "links": "font-mono uppercase text-xs tracking-[0.2em] text-ink hover:text-gold_accent transition-colors"
-    },
-    "custom_cursor": {
-      "style": "Small gold (#C4A24E) or ink (#1A1A18) dot that follows mouse pointer using framer-motion. Hides default cursor on desktop."
-    },
-    "email_capture": {
-      "style": "Minimalist, visual-only. Single input field with bottom border only (border-ink), no background, placeholder in JetBrains Mono. Submit button is a simple text link or minimal arrow icon, aligning with the baseline.",
-      "focus": "outline-none border-gold_accent"
+    "styles": {
+      "h1": "font-serif text-4xl md:text-5xl lg:text-6xl font-light tracking-tighter leading-none text-primary",
+      "h2": "font-serif text-3xl md:text-4xl lg:text-5xl font-light tracking-tight leading-tight text-primary",
+      "h3": "font-sans text-xl md:text-2xl font-normal tracking-tight text-primary",
+      "body": "font-sans text-base md:text-lg leading-relaxed text-primary/80",
+      "label": "font-mono text-xs uppercase tracking-[0.2em] text-primary/60",
+      "accent_italic": "font-serif italic text-gold"
     }
   },
-  "pages": {
-    "home": {
-      "sections": [
-        {
-          "name": "Hero",
-          "layout": "Fullscreen (h-screen) relative container.",
-          "background": "Autoplay muted loop video (object-cover absolute inset-0 w-full h-full). Black/40 overlay to ensure text readability.",
-          "content": "Centered. Logo 'Golf in Mexico°' (Cormorant Garamond). Main line 'The best golf in the world is in Mexico.' (h1). Subline 'A journal about the courses, the people, and the trips that make it worth the flight.' (body text but slightly larger). Minimal email capture at bottom."
-        },
-        {
-          "name": "Founders Intro",
-          "layout": "Two editorial cards stacked or side-by-side grid. Photo left (col-span-5), Text right (col-span-7).",
-          "content": "Generous whitespace. Introduce the brand via the founders. Very minimal."
-        }
-      ]
+  "spacing_and_layout": {
+    "container": "w-full max-w-[1600px] mx-auto px-6 md:px-12 lg:px-24",
+    "section_padding": "py-24 md:py-32 lg:py-40",
+    "bento_grid_marketing": "grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12",
+    "dividers": "border-t border-black/15",
+    "radius": "rounded-none",
+    "alignment": "Left-align dense text and labels; avoid centering text blocks unless strictly necessary for a focal hero moment."
+  },
+  "motion_and_interactions": {
+    "philosophy": "Momentum and weight. Do not use fast spring animations. Use slow, ease-out transitions to simulate heavy, physical editorial pages.",
+    "page_transition": {
+      "wrapper": "AnimatePresence (mode='wait')",
+      "variants": {
+        "initial": { "opacity": 0, "y": 10, "filter": "blur(4px)" },
+        "animate": { "opacity": 1, "y": 0, "filter": "blur(0px)", "transition": { "duration": 0.8, "ease": [0.22, 1, 0.36, 1] } },
+        "exit": { "opacity": 0, "y": -10, "filter": "blur(4px)", "transition": { "duration": 0.5, "ease": [0.22, 1, 0.36, 1] } }
+      }
     },
-    "about": {
-      "sections": [
-        {
-          "name": "Header",
-          "layout": "py-32 text-center",
-          "content": "Large display title 'The Founders' or 'Behind the Journal'."
-        },
-        {
-          "name": "Founders Stories",
-          "layout": "Grid-based editorial layout. Alternating or consistent photo/text blocks. No standard bios—focus on the story of Pablo De La Mora (PGA Tour Agent, 30+ courses) and José Islas (2023 US Amateur QF).",
-          "styling": "Full-bleed imagery on one side, deep padding on text side. Use drop caps or pull quotes if it fits the magazine vibe."
-        }
-      ]
+    "scroll_reveal": {
+      "initial": { "opacity": 0, "y": 30 },
+      "whileInView": { "opacity": 1, "y": 0 },
+      "viewport": { "once": true, "margin": "-100px" },
+      "transition": { "duration": 0.9, "ease": [0.16, 1, 0.3, 1] }
     },
-    "journal": {
-      "sections": [
-        {
-          "name": "Article Grid (Locked)",
-          "layout": "Bento or masonry grid of full-bleed images.",
-          "behavior": "A deliberate editorial pause. The images are visible in the background, but the entire page/grid is covered by an elegant 'Coming Soon' overlay.",
-          "overlay_style": "backdrop-blur-md bg-[#F5F2EB]/60 fixed inset-0 z-40 flex flex-col items-center justify-center. Features a refined message in Cormorant Garamond."
-        }
-      ]
+    "image_hover": "overflow-hidden hover:scale-105 transition-transform duration-[1.2s] ease-[0.16,1,0.3,1]",
+    "custom_cursor": "fixed top-0 left-0 w-3 h-3 rounded-full bg-gold pointer-events-none z-[100] mix-blend-difference transition-transform duration-100 ease-out"
+  },
+  "component_upgrades": {
+    "App": {
+      "status": "upgrade",
+      "instructions": "Wrap the app in Lenis (for smooth momentum scrolling) and Framer Motion's AnimatePresence to orchestrate page transitions. Add global Custom Cursor and ReadingProgress (fixed top-0 h-1 bg-gold z-50)."
+    },
+    "Nav": {
+      "status": "upgrade",
+      "instructions": "Transform into a premium glassmorphic nav. Use `backdrop-blur-xl bg-[#F5F2EB]/70` with a 1px bottom border (`border-[#1A1A18]/10`). Keep logo left, centered nav items, and magnetic 'Inquire' CTA button on right. Provide mobile full-screen drawer nav with massive serif typography."
+    },
+    "Home": {
+      "status": "upgrade",
+      "instructions": "Make hero full-bleed (`h-screen`) with cinematic image, dark gradient overlay (`bg-gradient-to-t from-black/80 via-black/30 to-transparent`). Use Framer Motion to split-text reveal the quote. TeamEditorial section should use pure HTML/Tailwind custom Tabs (bento-grid layout, no default Shadcn tabs look) with smooth crossfade of team members."
+    },
+    "Journal": {
+      "status": "upgrade",
+      "instructions": "Modernize Destination Hubs bento grid. Make cards sharp-edged (`rounded-none`). Tag pills (+ live/soon) in top right corner of image container using Forest green and Gold. Image hover states scale up slowly. Add a horizontal scrolling editorial ribbon (Marquee) separating Destination and Articles."
+    },
+    "LosCabos": {
+      "status": "upgrade",
+      "instructions": "Treat as a deep-dive editorial spread. Pin (sticky) the courses image on the left side of the bento grid while the dense logistics/courses text scrolls on the right side. Include bold, high-contrast typography for costs."
+    },
+    "Modals_Forms": {
+      "status": "upgrade",
+      "instructions": "Redesign InquiryModal and NotifyModal to not look like typical web modals. Use `backdrop-blur-2xl bg-[#F5F2EB]/95`, full-height slide-in panel from the right, or massive centered overlay. Inputs should be bottom-border only (`border-b border-[#1A1A18]/30`), no background, tall spacing."
+    },
+    "Footer": {
+      "status": "upgrade",
+      "instructions": "High contrast inverse section (`bg-[#1A1A18] text-[#F5F2EB]`). Make the brand name 'GOLF IN MEXICO°' stretch 100% of the container width (`text-[12vw]` fluid type). Newsletter input uses ultra-minimalist single line with a gold arrow."
     }
   },
-  "media": {
-    "video_urls": {
-      "hero_background": "https://assets.mixkit.co/videos/preview/mixkit-overhead-view-of-a-rocky-coast-and-waves-crashing-51502-large.mp4"
-    },
-    "image_urls": {
-      "founder_pablo": {
-        "url": "https://images.unsplash.com/photo-1601442705509-c6d748675f7f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHwyfHxtZXhpY2FuJTIwbWFuJTIwZWRpdG9yaWFsJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzc4NzcxNjU3fDA&ixlib=rb-4.1.0&q=85",
-        "description": "Editorial portrait for Pablo De La Mora"
-      },
-      "founder_jose": {
-        "url": "https://images.unsplash.com/photo-1613096108660-104d7e8b132a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHwxfHxtZXhpY2FuJTIwbWFuJTIwZWRpdG9yaWFsJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzc4NzcxNjU3fDA&ixlib=rb-4.1.0&q=85",
-        "description": "Editorial portrait for José Islas"
-      },
-      "journal_grid": [
-        {
-          "url": "https://images.unsplash.com/photo-1605144156546-91acf5e4cffd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHw0fHxjaW5lbWF0aWMlMjBjb2FzdGFsJTIwZ29sZiUyMGNvdXJzZXxlbnwwfHx8fDE3Nzg3NzE2NTd8MA&ixlib=rb-4.1.0&q=85",
-          "description": "Journal article background 1"
-        },
-        {
-          "url": "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwxfHxjaW5lbWF0aWMlMjBjb2FzdGFsJTIwZ29sZiUyMGNvdXJzZXxlbnwwfHx8fDE3Nzg3NzE2NTd8MA&ixlib=rb-4.1.0&q=85",
-          "description": "Journal article background 2"
-        },
-        {
-          "url": "https://images.unsplash.com/photo-1514480573427-1f96cbed6a27?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwyfHxjaW5lbWF0aWMlMjBjb2FzdGFsJTIwZ29sZiUyMGNvdXJzZXxlbnwwfHx8fDE3Nzg3NzE2NTd8MA&ixlib=rb-4.1.0&q=85",
-          "description": "Journal article background 3"
-        },
-        {
-          "url": "https://images.unsplash.com/photo-1543105177-748ceda71741?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwzfHxjaW5lbWF0aWMlMjBjb2FzdGFsJTIwZ29sZiUyMGNvdXJzZXxlbnwwfHx8fDE3Nzg3NzE2NTd8MA&ixlib=rb-4.1.0&q=85",
-          "description": "Journal article background 4"
-        }
-      ]
-    }
+  "media_urls": {
+    "home_hero": "https://images.pexels.com/photos/35918456/pexels-photo-35918456.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "loscabos_hero": "https://images.pexels.com/photos/36739253/pexels-photo-36739253.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "dest_loscabos": "https://images.unsplash.com/photo-1724243846239-fe61d1499713?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwzfHxjaW5lbWF0aWMlMjBnb2xmJTIwY291cnNlJTIwb2NlYW58ZW58MHx8fHwxNzc5MTYxMTIxfDA&ixlib=rb-4.1.0&q=85",
+    "dest_puntamita": "https://images.pexels.com/photos/16116489/pexels-photo-16116489.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "dest_rivieramaya": "https://images.unsplash.com/photo-1622695712230-1408d054c9c9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHw0fHxjaW5lbWF0aWMlMjBnb2xmJTIwY291cnNlJTIwb2NlYW58ZW58MHx8fHwxNzc5MTYxMTIxfDA&ixlib=rb-4.1.0&q=85",
+    "dest_mexicocity": "https://images.unsplash.com/photo-1666198045509-1917e86f61a4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxtZXhpY28lMjBkZXNlcnQlMjBsYW5kc2NhcGUlMjBnb2xmfGVufDB8fHx8MTc3OTE2MTEyMXww&ixlib=rb-4.1.0&q=85",
+    "team_pablo": "https://images.pexels.com/photos/6256832/pexels-photo-6256832.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "team_jose": "https://images.unsplash.com/photo-1509586721451-a990371f8243?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2ODl8MHwxfHNlYXJjaHwzfHxwcm9mZXNzaW9uYWwlMjBnb2xmZXIlMjBwb3J0cmFpdHxlbnwwfHx8fDE3NzkxNjExMjF8MA&ixlib=rb-4.1.0&q=85",
+    "article_1": "https://images.unsplash.com/photo-1617409078779-b336c7b0720b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzR8MHwxfHNlYXJjaHw0fHxsdXh1cnklMjByZXNvcnQlMjBtZXhpY298ZW58MHx8fHwxNzc5MTYxMTIxfDA&ixlib=rb-4.1.0&q=85",
+    "article_2": "https://images.pexels.com/photos/12951795/pexels-photo-12951795.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
   },
-  "instructions_to_main_agent": [
-    "You MUST strictly use the 5 exact hex codes provided in 'colors'. Do not deviate.",
-    "Import Google Fonts: Cormorant Garamond, Outfit, and JetBrains Mono. Configure Tailwind theme to use them properly.",
-    "Do NOT use typical SaaS Shadcn components (like Card or bordered containers) for this. This is an editorial, print-magazine-style layout. Build with raw HTML/Tailwind divs for complete control over whitespace and alignment.",
-    "Ensure the custom dot cursor is implemented globally using framer-motion.",
-    "The Hero section MUST use the video URL provided as an autoplaying, muted, looping background.",
-    "For the Journal page, render the article grid with images, but ensure an elegant full-page 'Coming Soon' overlay completely covers it (with backdrop blur).",
-    "All interactive elements MUST have a data-testid attribute in kebab-case format.",
-    "No hamburger menu on desktop; use a minimalist sticky nav that condenses gracefully on scroll.",
-    "Implement smooth page transitions and subtle image parallax using framer-motion."
+  "data_testid_conventions": {
+    "instructions": "All interactive and key informational elements MUST include a data-testid attribute.",
+    "format": "kebab-case, role-based. e.g., data-testid='nav-journal-link', data-testid='inquiry-modal-submit-button', data-testid='newsletter-input'."
+  },
+  "dependencies_to_add": [
+    "framer-motion",
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@studio-freight/lenis",
+    "react-router-dom"
   ]
 }
