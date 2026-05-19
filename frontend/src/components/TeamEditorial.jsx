@@ -8,7 +8,14 @@ const PABLO = {
   label: "The Agent",
   name: "Pablo De La Mora",
   short: "Pablo",
-  role: "PGA Tour · LPGA Tour · WTA Sports Agent",
+  roleParts: [
+    { text: "PGA Tour", gold: true },
+    { text: " · " },
+    { text: "LPGA Tour", gold: true },
+    { text: " · " },
+    { text: "WTA", gold: true },
+    { text: " Sports Agent" },
+  ],
   photo: "/pablo.jpg",
   photoPosition: "center 22%",
   accent: "#2C4A2C",
@@ -30,7 +37,7 @@ const JOSE = {
   label: "The Player",
   name: "José Islas",
   short: "José",
-  role: "Professional Golfer",
+  roleParts: [{ text: "Professional Golfer" }],
   photo: "/jose.jpg",
   photoPosition: "center 22%",
   accent: "#C4A24E",
@@ -56,7 +63,7 @@ const VALUES = [
     mark: "//",
     title: "Destination Intelligence",
     body:
-      "Six years across México's finest courses. Trusted relationships, never generic packages.",
+      "Over a decade traveling across México's finest destinations. Local gems and key relationships.",
   },
   {
     mark: "///",
@@ -72,11 +79,11 @@ const GIM = {
   label: "The Media",
   name: "Golf in Mexico°",
   short: "GIM",
-  role: "Our Values",
+  roleParts: [{ text: "Our Values" }],
   photo: "/logo-wordmark.png",
   isMark: true,
   accent: "#1A1A18",
-  headline: ["Three principles.", "Every trip, every story."],
+  headline: ["Three principles."],
 };
 
 const TABS = [PABLO, JOSE, GIM];
@@ -158,7 +165,11 @@ const TeamEditorial = () => {
                   {active.name}
                 </h3>
                 <span className="block mt-1 font-mono text-[10px] uppercase tracking-wide-editorial" style={{ color: active.accent }}>
-                  {active.role}
+                  {active.roleParts.map((p, idx) => (
+                    <span key={idx} className={p.gold ? "text-gold" : ""}>
+                      {p.text}
+                    </span>
+                  ))}
                 </span>
               </div>
 
@@ -168,8 +179,13 @@ const TeamEditorial = () => {
                   data-testid={`manifesto-headline-${active.id}`}
                   className="font-display font-light text-ink text-3xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight max-w-4xl"
                 >
-                  {active.headline[0]}{" "}
-                  <span className="italic">{active.headline[1]}</span>
+                  {active.headline[0]}
+                  {active.headline[1] && (
+                    <>
+                      {" "}
+                      <span className="italic">{active.headline[1]}</span>
+                    </>
+                  )}
                 </h3>
 
                 {!isGIM && (

@@ -198,94 +198,45 @@ const Hero = () => {
           alt="Cinematic golf course in México"
           className="w-full h-full object-cover scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-ink/35 to-ink" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/25 to-ink/80" />
       </motion.div>
 
-      <motion.div style={{ opacity }} className="relative z-10 h-full max-w-[1440px] mx-auto px-6 md:px-12 flex flex-col justify-between pt-28 md:pt-36 pb-12 md:pb-16">
-        {/* Top */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
+      <motion.div
+        style={{ opacity }}
+        className="relative z-10 h-full max-w-[1440px] mx-auto px-6 md:px-12 flex flex-col items-center justify-center text-center"
+      >
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="flex items-center justify-between border-b border-cream/15 pb-4"
+          transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="font-display font-light text-cream leading-[0.92] tracking-tight text-[4rem] sm:text-8xl md:text-[8.5rem] lg:text-[11rem]"
         >
-          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/70">
-            — The Journal · N°01
-          </span>
-          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/70">
-            México · 2026
-          </span>
-        </motion.div>
+          Destinations<span className="text-gold">°</span>
+        </motion.h1>
 
-        {/* Headline */}
-        <div className="max-w-6xl">
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-mono text-[11px] uppercase tracking-wide-editorial text-gold"
-          >
-            ◦ An editorial brand
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 font-display font-light text-cream leading-[0.92] tracking-tight text-[3.4rem] sm:text-7xl md:text-[7.5rem] lg:text-[10rem]"
-          >
-            Golf <span className="italic text-gold">in</span>
-            <br />
-            México<span className="text-gold">°</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-8 md:mt-10 font-body font-light text-cream/85 text-base md:text-xl max-w-2xl leading-relaxed"
-          >
-            Not tourism. <span className="font-display italic text-gold">Immersion.</span> A
-            culture that elevates the game into something you won&apos;t find anywhere else
-            in the world.
-          </motion.p>
-        </div>
-
-        {/* Bottom: scroll cue + meta strip */}
-        <motion.div
+        <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="flex items-end justify-between gap-6 border-t border-cream/15 pt-5"
+          transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-6 font-display italic font-light text-cream/80 text-lg md:text-2xl max-w-2xl"
         >
-          <div className="flex items-center gap-3 text-cream/70">
-            <span className="font-mono text-[10px] uppercase tracking-wide-editorial">Scroll</span>
-            <motion.span
-              animate={{ y: [0, 6, 0] }}
-              transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-              className="block w-px h-8 bg-cream/40"
-            />
-          </div>
-          <div className="hidden md:flex items-center gap-8">
-            <div>
-              <span className="block font-mono text-[9px] uppercase tracking-wide-editorial text-cream/55">
-                Destinations
-              </span>
-              <span className="font-display text-3xl text-cream">06</span>
-            </div>
-            <div>
-              <span className="block font-mono text-[9px] uppercase tracking-wide-editorial text-cream/55">
-                Articles
-              </span>
-              <span className="font-display text-3xl text-cream">04</span>
-            </div>
-            <div>
-              <span className="block font-mono text-[9px] uppercase tracking-wide-editorial text-cream/55">
-                Authors
-              </span>
-              <span className="font-display text-3xl text-cream">03</span>
-            </div>
-          </div>
-        </motion.div>
+          Descubre experiencias únicas en cada región.
+        </motion.p>
+      </motion.div>
+
+      {/* Scroll cue */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3 text-cream/70"
+      >
+        <span className="font-mono text-[10px] uppercase tracking-wide-editorial">Scroll</span>
+        <motion.span
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+          className="block w-px h-10 bg-cream/50"
+        />
       </motion.div>
     </section>
   );
@@ -380,7 +331,7 @@ const Hubs = ({ onNotify }) => {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-14 border-b hairline pb-4">
           <div>
             <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-wide-editorial text-ink">
-              — Destination Hubs
+              — Explora nuestras regiones
             </span>
             <motion.h2
               {...fade}
@@ -452,58 +403,126 @@ const Hubs = ({ onNotify }) => {
 const SectionDivider = () => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
 
   return (
     <section
       ref={ref}
       data-testid="journal-divider"
-      className="relative h-[70vh] min-h-[460px] w-full overflow-hidden bg-ink text-cream"
+      className="relative h-[70vh] min-h-[460px] w-full overflow-hidden bg-ink"
     >
-      <motion.div style={{ y }} className="absolute inset-0 -top-20 -bottom-20">
+      <motion.div style={{ y }} className="absolute inset-0 -top-16 -bottom-16">
         <img
           src={DIVIDER_IMG}
           alt="México golf landscape"
           className="w-full h-full object-cover scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/30 to-ink/85" />
+        <div className="absolute inset-0 bg-ink/15" />
+      </motion.div>
+    </section>
+  );
+};
+
+/* ----------------------- DESTINATIONS SCROLL HUB ----------------------- */
+
+const THEMES = [
+  {
+    id: "golf",
+    label: "01 — Golf",
+    title: "Golf",
+    body: "Campos icónicos donde confluyen tradición y diseño.",
+    image: "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=2400&q=85",
+  },
+  {
+    id: "naturaleza",
+    label: "02 — Naturaleza",
+    title: "Naturaleza",
+    body: "Espacios vírgenes donde la naturaleza es protagonista.",
+    image: "https://images.unsplash.com/photo-1502163140606-888448ae8cfe?auto=format&fit=crop&w=2400&q=85",
+  },
+  {
+    id: "hospitalidad",
+    label: "03 — Hospitalidad",
+    title: "Hospitalidad",
+    body: "Atención excepcional en cada detalle de tu estancia.",
+    image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=2400&q=85",
+  },
+  {
+    id: "gastronomia",
+    label: "04 — Gastronomía",
+    title: "Gastronomía",
+    body: "Sabores que cuentan historias de cada territorio.",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2400&q=85",
+  },
+  {
+    id: "arquitectura",
+    label: "05 — Arquitectura",
+    title: "Arquitectura",
+    body: "Espacios diseñados como obra de arte, on & off course.",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=85",
+  },
+  {
+    id: "people",
+    label: "06 — People",
+    title: "People",
+    body: "Los protagonistas que hacen única cada experiencia.",
+    image: "https://images.unsplash.com/photo-1514480573427-1f96cbed6a27?auto=format&fit=crop&w=2400&q=85",
+  },
+];
+
+const ThemeSection = ({ t, index }) => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
+  const align = index % 2 === 0 ? "items-start text-left" : "items-end text-right";
+
+  return (
+    <section
+      ref={ref}
+      data-testid={`theme-${t.id}`}
+      className="relative h-[100vh] min-h-[640px] w-full overflow-hidden bg-ink text-cream"
+    >
+      <motion.div style={{ y }} className="absolute inset-0 -top-16 -bottom-16">
+        <img
+          src={t.image}
+          alt={t.title}
+          className="w-full h-full object-cover scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/20 to-ink/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/45 via-transparent to-ink/45" />
       </motion.div>
 
-      <div className="relative z-10 h-full max-w-[1440px] mx-auto px-6 md:px-12 flex flex-col justify-between py-12 md:py-16">
-        <div className="flex items-center justify-between border-b border-cream/15 pb-3">
-          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
-            — Interlude
-          </span>
-          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/70">
-            From the field
-          </span>
-        </div>
-
-        <motion.blockquote
-          initial={{ opacity: 0, y: 24 }}
+      <div className={`relative z-10 h-full max-w-[1440px] mx-auto px-6 md:px-16 flex flex-col justify-end pb-16 md:pb-24 ${align}`}>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-20%" }}
-          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-5xl font-display font-light text-cream leading-[1.02] tracking-tight text-3xl md:text-5xl lg:text-6xl"
+          viewport={{ once: true, margin: "-25%" }}
+          transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          className={`max-w-2xl flex flex-col gap-5 ${index % 2 === 0 ? "" : "items-end"}`}
         >
-          <span className="text-gold">&ldquo;</span>
-          The course is a chapter. The country is the book. Every round here
-          opens a page you didn&apos;t know you needed to read.
-          <span className="text-gold">&rdquo;</span>
-        </motion.blockquote>
-
-        <div className="flex items-center justify-between border-t border-cream/15 pt-3">
-          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/65">
-            Field Notes
+          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
+            {t.label}
           </span>
-          <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/65">
-            ✦ Editorial
-          </span>
-        </div>
+          <h2 className="font-display font-light text-cream leading-[0.95] tracking-tight text-6xl md:text-8xl lg:text-9xl">
+            {t.title}
+            <span className="text-gold">.</span>
+          </h2>
+          <p className="font-display italic font-light text-cream/85 text-xl md:text-2xl lg:text-3xl leading-snug max-w-xl">
+            {t.body}
+          </p>
+        </motion.div>
       </div>
     </section>
   );
 };
+
+const DestinationsScroll = () => (
+  <div data-testid="destinations-scroll">
+    {THEMES.map((t, i) => (
+      <ThemeSection key={t.id} t={t} index={i} />
+    ))}
+  </div>
+);
 
 /* ----------------------------- MARQUEE RIBBON ----------------------------- */
 
@@ -804,8 +823,9 @@ const Journal = () => {
   return (
     <main data-testid="page-journal" className="relative bg-cream">
       <Hero />
-      <Hubs onNotify={(name) => setNotify(name)} />
+      <DestinationsScroll />
       <SectionDivider />
+      <Hubs onNotify={(name) => setNotify(name)} />
       <MarqueeRibbon />
       <Articles />
       <NotifyModal open={!!notify} onClose={() => setNotify(null)} region={notify || ""} />
