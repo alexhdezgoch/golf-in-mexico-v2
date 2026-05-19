@@ -466,12 +466,50 @@ const MustReads = () => {
   );
 };
 
+/* ----------------------------- MARQUEE RIBBON ----------------------------- */
+
+const RIBBON_ITEMS = [
+  "Editorial",
+  "México°",
+  "Field Notes",
+  "Authors Journal",
+  "Region Guides",
+  "Hospitality",
+  "Best Food",
+  "Architecture",
+  "Golf & Nature",
+];
+
+const MarqueeRibbon = () => {
+  const items = [...RIBBON_ITEMS, ...RIBBON_ITEMS];
+  return (
+    <section
+      data-testid="journal-ribbon"
+      className="relative bg-ink text-cream overflow-hidden py-6 md:py-7 border-y border-cream/10 marquee-pause"
+      aria-hidden="true"
+    >
+      <div className="marquee">
+        {items.map((t, i) => (
+          <span
+            key={`${t}-${i}`}
+            className="flex items-center gap-6 md:gap-10 px-6 md:px-10 font-display italic font-light text-3xl md:text-5xl whitespace-nowrap"
+          >
+            {t}
+            <span className="text-gold not-italic font-mono text-base md:text-lg">✦</span>
+          </span>
+        ))}
+      </div>
+    </section>
+  );
+};
+
 /* ----------------------------- PAGE ----------------------------- */
 
 const Journal = () => {
   return (
     <main data-testid="page-journal" className="relative bg-cream">
       <RegionsRow />
+      <MarqueeRibbon />
       <MustReads />
     </main>
   );

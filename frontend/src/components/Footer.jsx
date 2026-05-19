@@ -105,6 +105,25 @@ const Footer = () => {
         </div>
       </div>
 
+      {/* Massive wordmark — fluid type spanning full container */}
+      <div
+        data-testid="footer-wordmark-massive"
+        className="border-b border-cream/10 overflow-hidden"
+      >
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-10 md:py-16">
+          <h2
+            className="headline-nrg text-cream/95 leading-[0.85] whitespace-nowrap select-none"
+            style={{ fontSize: "clamp(3.2rem, 13vw, 16rem)" }}
+          >
+            GOLF IN{" "}
+            <span className="font-display italic font-light normal-case tracking-tight text-cream/80">
+              México
+            </span>
+            <span className="text-gold">°</span>
+          </h2>
+        </div>
+      </div>
+
       {/* Brand + Nav + Contact — clean horizontal row */}
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-12 md:py-16">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-12 md:gap-8">

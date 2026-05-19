@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "@/App.css";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import Lenis from "lenis";
 
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -16,9 +17,19 @@ import Journal from "@/pages/Journal";
 import LosCabos from "@/pages/LosCabos";
 
 const pageVariants = {
-  initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
-  exit: { opacity: 0, y: -8, transition: { duration: 0.5, ease: [0.65, 0, 0.35, 1] } },
+  initial: { opacity: 0, y: 18, filter: "blur(8px)" },
+  animate: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] },
+  },
+  exit: {
+    opacity: 0,
+    y: -10,
+    filter: "blur(6px)",
+    transition: { duration: 0.45, ease: [0.65, 0, 0.35, 1] },
+  },
 };
 
 const AnimatedRoutes = () => {
@@ -60,8 +71,6 @@ const AnimatedRoutes = () => {
   );
 };
 
-// Global Inquiry modal — see @/context/Inquiry for the consumer hook.
-
 function App() {
   const [introDone, setIntroDone] = useState(() => {
     try {
@@ -74,6 +83,32 @@ function App() {
 
   useEffect(() => {
     document.documentElement.classList.add("cursor-custom");
+  }, []);
+
+  // Lenis momentum smooth scroll (skip on touch devices to preserve native scroll)
+  useEffect(() => {
+    const isTouch = window.matchMedia("(hover: none)").matches;
+    if (isTouch) return undefined;
+
+    const lenis = new Lenis({
+      duration: 1.15,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 1.4,
+    });
+
+    let rafId;
+    const raf = (time) => {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    };
+    rafId = requestAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+    };
   }, []);
 
   const openInquiry = () => setInquiryOpen(true);

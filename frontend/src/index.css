@@ -227,6 +227,66 @@ body {
     line-height: 0.9;
 }
 
+/* Modern nav link with animated gold underline */
+.nav-link-modern {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 4px;
+}
+
+.nav-link-modern::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--gold);
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link-modern:hover::after,
+.nav-link-modern.is-active::after {
+    transform: scaleX(1);
+    transform-origin: left center;
+}
+
+/* Smooth scroll wrapper (Lenis) */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+/* Marquee ribbon */
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 38s linear infinite;
+}
+
+.marquee-pause:hover .marquee {
+    animation-play-state: paused;
+}
+
 @layer base {
     [data-debug-wrapper="true"] {
         display: contents !important;
