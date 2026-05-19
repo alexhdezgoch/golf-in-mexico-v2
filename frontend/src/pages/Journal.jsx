@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import NotifyModal from "@/components/NotifyModal";
@@ -438,7 +438,7 @@ const THEMES = [
     label: "02 — Naturaleza",
     title: "Naturaleza",
     body: "Espacios vírgenes donde la naturaleza es protagonista.",
-    image: "https://images.unsplash.com/photo-1502163140606-888448ae8cfe?auto=format&fit=crop&w=2400&q=85",
+    image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=2400&q=85",
   },
   {
     id: "hospitalidad",
@@ -470,35 +470,23 @@ const THEMES = [
   },
 ];
 
-const ThemeSection = ({ t, index }) => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
+const ThemeSection = ({ t, index, registerRef }) => {
   const align = index % 2 === 0 ? "items-start text-left" : "items-end text-right";
 
   return (
     <section
-      ref={ref}
+      ref={(el) => registerRef(el, index)}
+      data-index={index}
       data-testid={`theme-${t.id}`}
-      className="relative h-[100vh] min-h-[640px] w-full overflow-hidden bg-ink text-cream"
+      className="relative h-[100vh] min-h-[640px] w-full flex flex-col justify-end pb-16 md:pb-24 pointer-events-none"
     >
-      <motion.div style={{ y }} className="absolute inset-0 -top-16 -bottom-16">
-        <img
-          src={t.image}
-          alt={t.title}
-          className="w-full h-full object-cover scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/20 to-ink/70" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/45 via-transparent to-ink/45" />
-      </motion.div>
-
-      <div className={`relative z-10 h-full max-w-[1440px] mx-auto px-6 md:px-16 flex flex-col justify-end pb-16 md:pb-24 ${align}`}>
+      <div className={`max-w-[1440px] mx-auto px-6 md:px-16 w-full flex flex-col ${align}`}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-25%" }}
+          viewport={{ once: false, margin: "-30%" }}
           transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className={`max-w-2xl flex flex-col gap-5 ${index % 2 === 0 ? "" : "items-end"}`}
+          className={`max-w-2xl flex flex-col gap-5 pointer-events-auto ${index % 2 === 0 ? "" : "items-end"}`}
         >
           <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
             {t.label}
@@ -507,7 +495,7 @@ const ThemeSection = ({ t, index }) => {
             {t.title}
             <span className="text-gold">.</span>
           </h2>
-          <p className="font-display italic font-light text-cream/85 text-xl md:text-2xl lg:text-3xl leading-snug max-w-xl">
+          <p className="font-display italic font-light text-cream/90 text-xl md:text-2xl lg:text-3xl leading-snug max-w-xl">
             {t.body}
           </p>
         </motion.div>
@@ -516,13 +504,112 @@ const ThemeSection = ({ t, index }) => {
   );
 };
 
-const DestinationsScroll = () => (
-  <div data-testid="destinations-scroll">
-    {THEMES.map((t, i) => (
-      <ThemeSection key={t.id} t={t} index={i} />
-    ))}
-  </div>
-);
+const DestinationsScroll = () => {
+  const [activeIdx, setActiveIdx] = useState(0);
+  const sectionsRef = useRef([]);
+
+  const registerRef = (el, idx) => {
+    if (el) sectionsRef.current[idx] = el;
+  };
+
+  // Preload all theme images once on mount
+  useEffect(() => {
+    THEMES.forEach((t) => {
+      const img = new Image();
+      img.src = t.image;
+    });
+  }, []);
+
+  // Intersection Observer — change background when a section reaches center of viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Find the entry with the highest intersection ratio
+        let best = null;
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            if (!best || e.intersectionRatio > best.intersectionRatio) best = e;
+          }
+        });
+        if (best) {
+          const idx = Number(best.target.dataset.index);
+          setActiveIdx(idx);
+        }
+      },
+      {
+        // Trigger when ~50% of a section is in view
+        threshold: [0.35, 0.5, 0.65],
+        rootMargin: "-15% 0px -15% 0px",
+      }
+    );
+    sectionsRef.current.forEach((el) => el && observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      data-testid="destinations-scroll"
+      className="relative bg-ink text-cream"
+    >
+      {/* Sticky fixed background — crossfade between theme images */}
+      <div className="sticky top-0 h-[100vh] w-full overflow-hidden z-0">
+        <div className="absolute inset-0">
+          {THEMES.map((t, i) => (
+            <div
+              key={t.id}
+              aria-hidden="true"
+              className="absolute inset-0 transition-opacity duration-[800ms]"
+              style={{
+                opacity: activeIdx === i ? 1 : 0,
+                transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+              }}
+            >
+              <img
+                src={t.image}
+                alt=""
+                className="w-full h-full object-cover scale-105"
+                loading={i === 0 ? "eager" : "lazy"}
+              />
+            </div>
+          ))}
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-ink/45" />
+          <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-transparent to-ink/55" />
+        </div>
+
+        {/* Progress indicator (vertical dots, right side) */}
+        <div className="hidden md:flex absolute right-8 lg:right-12 top-1/2 -translate-y-1/2 flex-col items-center gap-3 z-20 pointer-events-none">
+          {THEMES.map((t, i) => (
+            <div key={t.id} className="flex items-center gap-3">
+              <span
+                className={`font-mono text-[9px] uppercase tracking-wide-editorial transition-all duration-500 ${
+                  activeIdx === i ? "text-cream opacity-100" : "text-cream/40 opacity-60"
+                }`}
+                style={{ minWidth: 56 }}
+              >
+                {String(i + 1).padStart(2, "0")} · {t.title}
+              </span>
+              <span
+                className={`block rounded-full transition-all duration-500 ${
+                  activeIdx === i
+                    ? "w-2.5 h-2.5 bg-gold"
+                    : "w-1.5 h-1.5 bg-cream/40"
+                }`}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Sections layered on top of sticky background (negative margin trick) */}
+      <div className="relative z-10 -mt-[100vh]">
+        {THEMES.map((t, i) => (
+          <ThemeSection key={t.id} t={t} index={i} registerRef={registerRef} />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 /* ----------------------------- MARQUEE RIBBON ----------------------------- */
 
