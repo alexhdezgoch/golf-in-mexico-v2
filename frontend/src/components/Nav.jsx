@@ -8,9 +8,9 @@ const links = [
 ];
 
 const DESTINATIONS = [
-  { slug: "los-cabos", name: "Los Cabos", region: "Baja California Sur", live: true, href: "/journal/los-cabos" },
-  { slug: "punta-mita", name: "Punta Mita", region: "Riviera Nayarit", live: true, href: "/destinations" },
-  { slug: "cdmx", name: "Mexico City", region: "Valle de México", live: true, href: "/destinations" },
+  { slug: "los-cabos", name: "Los Cabos", region: "Baja California Sur", live: true, href: "/destinations/los-cabos" },
+  { slug: "punta-mita", name: "Punta Mita", region: "Riviera Nayarit", live: true, href: "/destinations/punta-mita" },
+  { slug: "mexico-city", name: "Mexico City", region: "Valle de México", live: true, href: "/destinations/mexico-city" },
   { slug: "puerto-vallarta", name: "Puerto Vallarta", region: "Bahía de Banderas", live: false, href: "/destinations" },
   { slug: "riviera-maya", name: "Cancún · Riviera Maya", region: "Quintana Roo", live: false, href: "/destinations" },
   { slug: "unique", name: "Unique Destinations", region: "Across México", live: false, href: "/destinations" },

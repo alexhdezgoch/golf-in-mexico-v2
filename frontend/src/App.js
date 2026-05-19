@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Lenis from "lenis";
 
@@ -16,7 +16,7 @@ import Home from "@/pages/Home";
 import Journal from "@/pages/Journal";
 import Article from "@/pages/Article";
 import Destinations from "@/pages/Destinations";
-import LosCabos from "@/pages/LosCabos";
+import DestinationHub from "@/pages/DestinationHub";
 
 const pageVariants = {
   initial: { opacity: 0, y: 18, filter: "blur(8px)" },
@@ -69,12 +69,16 @@ const AnimatedRoutes = () => {
           }
         />
         <Route
-          path="/journal/los-cabos"
+          path="/destinations/:slug"
           element={
             <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
-              <LosCabos />
+              <DestinationHub />
             </motion.div>
           }
+        />
+        <Route
+          path="/journal/los-cabos"
+          element={<Navigate to="/destinations/los-cabos" replace />}
         />
         <Route
           path="/journal/:slug"
