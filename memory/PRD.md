@@ -101,7 +101,8 @@ Premium editorial golf brand for México. Awwwards-level minimalist, editorial, 
 ---
 
 ## Changelog
-- **Feb 2026 · v2 redesign** — Applied full editorial-luxury redesign system across the app: fonts (Libre Baskerville + Outfit + Space Mono replacing Cormorant + Outfit + JetBrains Mono), colour palette (deep-green `#0f2419` + warmer gold `#c8a96e` + warm off-white `#f8f6f1`), new spacing/motion tokens. Added `StatsBar` component on Home (4-stat editorial credibility row). All existing components inherit the new tokens via CSS variables + Tailwind aliases — no breakage.
+- **Feb 2026 · v2.1 Journal simplification** — Rediseñé `/journal` con la estética minimalista de auwa.life: hero sparse + intro editorial · secciones numeradas "01 / Los Cabos." · grid 4:5 con label + título + hook (sin filtros, badges, read-time, sticky email bar) · pull quote central · closing CTA a Destinations. Reducción dramática de densidad visual.
+- **Feb 2026 · v2 redesign** — Applied full editorial-luxury redesign system across the app: fonts (Libre Baskerville + Outfit + Space Mono replacing Cormorant + Outfit + JetBrains Mono), colour palette (deep-green `#0f2419` + warmer gold `#c8a96e` + warm off-white `#f8f5f0`), new spacing/motion tokens. Added `StatsBar` component on Home (4-stat editorial credibility row). All existing components inherit the new tokens via CSS variables + Tailwind aliases — no breakage.
 - **Feb 2026** — Wired `/destinations/:slug` with the 13-section `DestinationHub.jsx` template for Los Cabos, Punta Mita, Mexico City. Nav dropdown + Destinations region cards updated. `/journal/los-cabos` 301 → `/destinations/los-cabos`. `LosCabos.jsx` deprecated (still in repo).
 - **Earlier Feb 2026** — Built `/data/destinations.js` (3 destinations × 13 sections).
 - **Earlier** — Journal redesign (TGJ aesthetic), Destinations immersive scroll, Article editorial template, Footer 3-col overhaul, Lenis global, AnimatePresence transitions.
