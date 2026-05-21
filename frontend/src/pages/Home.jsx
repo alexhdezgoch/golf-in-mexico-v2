@@ -1,7 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import TeamEditorial from "@/components/TeamEditorial";
-import StatsBar from "@/components/StatsBar";
 
 const HERO_VIDEO =
   "https://assets.mixkit.co/videos/preview/mixkit-overhead-view-of-a-rocky-coast-and-waves-crashing-51502-large.mp4";
@@ -9,119 +8,59 @@ const HERO_VIDEO =
 const HERO_POSTER =
   "https://images.unsplash.com/photo-1605144156546-91acf5e4cffd?auto=format&fit=crop&w=2000&q=80";
 
-const MANIFESTO_VIDEO =
-  "https://assets.mixkit.co/videos/preview/mixkit-aerial-shot-of-a-cliff-with-trees-and-the-ocean-49635-large.mp4";
-
-const MANIFESTO_POSTER =
-  "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=2000&q=80";
-
 const HOME_DIVIDER_IMG =
   "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=2400&q=85";
 
-const MANIFESTO_LINES = [
-  { text: "México is not just", italic: false },
-  { text: "a golf destination.", italic: false },
-];
+// ↓↓↓  Reemplaza este ID con el de tu video de YouTube  ↓↓↓
+const YOUTUBE_ID = "LXb3EKWsInQ";
 
-const ManifestoCycle = () => {
-  return (
-    <section
-      data-testid="statement-section"
-      className="relative bg-cream py-24 md:py-32 lg:py-40"
-    >
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
-        {/* Kicker */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-10%" }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="flex items-center gap-3"
-        >
-          <span className="block w-6 h-px bg-gold" />
-          <span
-            data-testid="statement-kicker"
-            className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold"
-          >
-            N° 01 — The Premise
-          </span>
-        </motion.div>
+/* ─────────────── VIDEO BOX (YouTube embed, auwa-style) ─────────────── */
 
-        {/* Headline */}
-        <h2
-          data-testid="manifesto-headline"
-          className="mt-10 md:mt-14 font-display font-light text-ink leading-[0.98] tracking-tight text-5xl md:text-7xl lg:text-[6.25rem] max-w-[16ch]"
-        >
-          {MANIFESTO_LINES.map((line, i) => (
-            <motion.span
-              key={line.text}
-              initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{
-                duration: 1.2,
-                delay: 0.3 + i * 0.4,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className={`block ${line.italic ? "italic text-gold" : "text-ink"}`}
-            >
-              {line.text}
-            </motion.span>
-          ))}
+const VideoBox = () => (
+  <section
+    data-testid="home-video-box"
+    className="bg-[var(--c-off-white)] py-28 md:py-40"
+  >
+    <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        className="text-center mb-14 md:mb-20"
+      >
+        <h2 className="font-display font-normal text-[var(--c-text)] leading-[1.1] tracking-tight text-3xl md:text-5xl lg:text-6xl">
+          The art of <em className="italic text-[var(--c-gold)]">México°</em>, in motion.
         </h2>
+        <p className="mt-6 font-body text-[var(--c-text-mid)] text-base md:text-lg max-w-xl mx-auto leading-[1.7]">
+          A moving portrait of the courses, the light, and the country that
+          makes the round worth the flight.
+        </p>
+      </motion.div>
 
-        {/* Video box — horizontal 16:9 */}
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-10%" }}
-          transition={{ duration: 1.3, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          data-testid="statement-video-box"
-          className="mt-16 md:mt-20 relative aspect-[16/9] w-full overflow-hidden bg-ink border border-ink/15 shadow-[0_40px_100px_-40px_rgba(26,26,24,0.45)]"
-        >
-          <video
-            data-testid="statement-video"
-            className="absolute inset-0 w-full h-full object-cover editorial-img"
-            src={MANIFESTO_VIDEO}
-            poster={MANIFESTO_POSTER}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-          />
-        </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 32 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 1.2, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+        data-testid="home-video-frame"
+        className="relative aspect-[16/9] w-full overflow-hidden bg-[var(--c-green-deep)] rounded-sm shadow-[0_40px_100px_-40px_rgba(15,36,25,0.5)]"
+      >
+        <iframe
+          data-testid="home-youtube"
+          src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_ID}?rel=0&modestbranding=1&playsinline=1`}
+          title="Golf in Mexico — Film"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+          className="absolute inset-0 w-full h-full"
+        />
+      </motion.div>
+    </div>
+  </section>
+);
 
-        {/* CTA — Meet the Founders */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-10%" }}
-          transition={{ duration: 1.2, delay: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-12 md:mt-16"
-        >
-          <button
-            type="button"
-            onClick={() =>
-              document
-                .querySelector('[data-testid="team-editorial-section"]')
-                ?.scrollIntoView({ behavior: "smooth", block: "start" })
-            }
-            data-testid="statement-cta-founders"
-            className="group inline-flex items-center gap-4 bg-ink text-cream px-7 md:px-9 py-5 md:py-6 hover:bg-forest transition-colors duration-500"
-          >
-            <span className="font-mono text-[11px] uppercase tracking-wide-editorial">
-              Meet the Founders
-            </span>
-            <span className="font-mono text-base transition-transform duration-500 group-hover:translate-x-1">
-              ↓
-            </span>
-          </button>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
+/* ─────────────── CINEMATIC DIVIDER ─────────────── */
 
 const HomeDivider = () => {
   const ref = useRef(null);
@@ -131,7 +70,7 @@ const HomeDivider = () => {
     <section
       ref={ref}
       data-testid="home-divider"
-      className="relative h-[80vh] min-h-[520px] w-full overflow-hidden bg-ink"
+      className="relative h-[80vh] min-h-[520px] w-full overflow-hidden bg-[var(--c-green-deep)]"
     >
       <motion.div style={{ y }} className="absolute inset-0 -top-20 -bottom-20">
         <img
@@ -139,11 +78,13 @@ const HomeDivider = () => {
           alt="Cinematic México golf landscape"
           className="w-full h-full object-cover scale-110"
         />
-        <div className="absolute inset-0 bg-ink/15" />
+        <div className="absolute inset-0 bg-[rgba(15,36,25,0.18)]" />
       </motion.div>
     </section>
   );
 };
+
+/* ─────────────── PAGE ─────────────── */
 
 const Home = () => {
   return (
@@ -151,7 +92,7 @@ const Home = () => {
       {/* HERO */}
       <section
         data-testid="hero-section"
-        className="relative h-[100svh] w-full overflow-hidden bg-ink"
+        className="relative h-[100svh] w-full overflow-hidden bg-[var(--c-green-deep)]"
       >
         <video
           data-testid="hero-video"
@@ -164,21 +105,19 @@ const Home = () => {
           playsInline
           preload="metadata"
         />
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-ink/45" />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-transparent to-ink/55" />
+        <div className="absolute inset-0 bg-[rgba(15,36,25,0.45)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[rgba(15,36,25,0.3)] via-transparent to-[rgba(15,36,25,0.55)]" />
 
-        {/* Center content */}
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
           <motion.h1
             data-testid="hero-wordmark"
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.4, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display font-light text-cream leading-[0.96] tracking-tight text-[10vw] md:text-[7vw] lg:text-[6.5rem] max-w-[18ch] mx-auto"
+            className="font-display font-normal text-white leading-[0.96] tracking-tight text-[10vw] md:text-[7vw] lg:text-[6.5rem] max-w-[18ch] mx-auto"
           >
             The golf in México{" "}
-            <span className="italic">you have not read about.</span>
+            <span className="italic text-[var(--c-gold)]">you have not read about.</span>
           </motion.h1>
 
           <motion.div
@@ -189,7 +128,7 @@ const Home = () => {
           >
             <p
               data-testid="hero-subline"
-              className="font-body font-light text-cream/85 text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
+              className="font-body font-light text-white/85 text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
             >
               Golf in Mexico is not tourism. It's immersion. It's understanding
               that Mexican culture elevates the game into something you won't
@@ -198,35 +137,30 @@ const Home = () => {
           </motion.div>
         </div>
 
-        {/* Scroll cue */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.4 }}
-          className="absolute bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3 text-cream/70"
+          className="absolute bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3 text-white/70"
         >
-          <span className="font-mono text-[10px] uppercase tracking-wide-editorial">
+          <span className="font-mono text-[10px] uppercase tracking-[0.18em]">
             Scroll
           </span>
           <motion.span
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-            className="block w-px h-10 bg-cream/50"
+            className="block w-px h-10 bg-white/50"
           />
         </motion.div>
       </section>
 
+      {/* CLEAN SPACE + VIDEO BOX */}
+      <VideoBox />
 
-      {/* EDITORIAL STATEMENT — N° 01 The Premise (with video box) */}
-      <ManifestoCycle />
-
-      {/* STATS BAR — instant credibility */}
-      <StatsBar />
-
-      {/* CINEMATIC DIVIDER — Interlude with parallax */}
+      {/* CINEMATIC DIVIDER */}
       <HomeDivider />
 
-      {/* N° 02 — Team & Editorial tabs */}
+      {/* TEAM EDITORIAL */}
       <TeamEditorial />
     </main>
   );
