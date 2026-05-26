@@ -113,14 +113,6 @@ const JournalHeader = ({ activePillar, setActivePillar, setCategory }) => {
               professional golfer. A growing collective of industry leaders,
               colleagues, and creators who see the game differently.
             </p>
-            <Link
-              to="/trip-builder"
-              data-testid="journal-intro-cta"
-              className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-green-mid)] hover:text-[var(--c-gold)] transition-colors duration-500"
-            >
-              <span className="transition-transform duration-500 group-hover:translate-x-1.5">→</span>
-              Build your trip with GIM
-            </Link>
           </div>
         </motion.div>
 
