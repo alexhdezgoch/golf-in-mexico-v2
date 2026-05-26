@@ -108,14 +108,9 @@ const JournalHeader = ({ activePillar, setActivePillar, setCategory }) => {
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 mb-12 md:mb-16"
         >
-          <h1 className="md:col-span-7 font-display font-normal text-[var(--c-text)] leading-[1.1] tracking-tight text-2xl md:text-3xl lg:text-4xl">
-            Traveling México through a <em className="italic text-[var(--c-gold)]">golfer&apos;s lens.</em>
+          <h1 className="md:col-span-12 font-display font-normal text-[var(--c-text)] leading-[1.1] tracking-tight text-2xl md:text-3xl lg:text-4xl max-w-[28ch]">
+            Four editorial pillars guide <em className="italic text-[var(--c-gold)]">everything we publish.</em>
           </h1>
-          <div className="md:col-span-5 flex flex-col gap-4 md:pt-1">
-            <p className="font-body font-light text-[var(--c-text-mid)] text-sm md:text-[15px] leading-[1.7]">
-              Four editorial pillars guide everything we publish — <em className="not-italic font-normal text-[var(--c-text)]">Golf</em>, <em className="not-italic font-normal text-[var(--c-text)]">Beyond the Course</em>, <em className="not-italic font-normal text-[var(--c-text)]">Travel Concierge</em>, and <em className="not-italic font-normal text-[var(--c-text)]">The Collective</em> — written by a tour agent, a professional golfer, and a growing roster of industry insiders who see the game differently.
-            </p>
-          </div>
         </motion.div>
 
         {/* Pillar tabs — top (founders style) */}
