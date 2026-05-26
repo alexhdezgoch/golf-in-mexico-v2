@@ -1,11 +1,11 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 /* ═══════════════════════════════════════════════════════════════════
    About · /about
-   Minimal EEAT-focused founder presentation: contextual intro + a
-   single portrait per founder. No bio walls, no sliders, no quotes —
-   the photo is the proof of presence.
+   Founder presentation with multi-photo gallery slider per founder.
+   Counter "01 / 04" replaces the location badge.
    ═══════════════════════════════════════════════════════════════════ */
 
 const FOUNDERS = [
@@ -13,21 +13,100 @@ const FOUNDERS = [
     slug: "pablo",
     name: "Pablo De La Mora",
     role: "The Agent",
-    location: "Querétaro, MX",
-    portrait:
+    photos: [
       "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=1400&q=85",
-    portraitAlt: "Pablo De La Mora at a Mexican championship course",
+      "https://images.unsplash.com/photo-1592965046687-1acdbcdb5642?auto=format&fit=crop&w=1400&q=85",
+      "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=1400&q=85",
+      "https://images.unsplash.com/photo-1717388835452-c9c8cda0002e?auto=format&fit=crop&w=1400&q=85",
+    ],
   },
   {
     slug: "jose",
     name: "José Islas",
     role: "The Pro Player",
-    location: "Los Cabos, MX",
-    portrait:
+    photos: [
       "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1400&q=85",
-    portraitAlt: "José Islas during PGA Tour Latinoamérica qualifying",
+      "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=1400&q=85",
+      "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=1400&q=85",
+      "https://images.unsplash.com/photo-1592965046687-1acdbcdb5642?auto=format&fit=crop&w=1400&q=85",
+    ],
   },
 ];
+
+const StillSlider = ({ photos, name, testid }) => {
+  const [idx, setIdx] = useState(0);
+  const prev = () => setIdx((i) => (i === 0 ? photos.length - 1 : i - 1));
+  const next = () => setIdx((i) => (i === photos.length - 1 ? 0 : i + 1));
+
+  return (
+    <div data-testid={testid}>
+      <div className="relative aspect-[3/4] overflow-hidden rounded-sm bg-[var(--c-green-deep)]">
+        <motion.img
+          key={idx}
+          src={photos[idx]}
+          alt={`${name} — photo ${idx + 1} of ${photos.length}`}
+          initial={{ opacity: 0, scale: 1.015 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover editorial-img"
+        />
+
+        {/* Counter badge — replaces location */}
+        <span
+          data-testid={`${testid}-counter`}
+          className="absolute top-4 left-4 font-mono text-[10px] uppercase tracking-[0.18em] text-white/95 bg-black/35 backdrop-blur-sm px-2.5 py-1 rounded-sm"
+        >
+          {String(idx + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}
+        </span>
+
+        {/* Arrows — only show when more than 1 photo */}
+        {photos.length > 1 && (
+          <>
+            <button
+              type="button"
+              onClick={prev}
+              aria-label="Previous photo"
+              data-testid={`${testid}-prev`}
+              className="absolute top-1/2 -translate-y-1/2 left-3 w-9 h-9 rounded-full bg-black/40 hover:bg-black/65 text-white flex items-center justify-center backdrop-blur-sm transition-colors"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <path d="M15 6l-6 6 6 6" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={next}
+              aria-label="Next photo"
+              data-testid={`${testid}-next`}
+              className="absolute top-1/2 -translate-y-1/2 right-3 w-9 h-9 rounded-full bg-black/40 hover:bg-black/65 text-white flex items-center justify-center backdrop-blur-sm transition-colors"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <path d="M9 6l6 6-6 6" />
+              </svg>
+            </button>
+          </>
+        )}
+      </div>
+
+      {/* Dots */}
+      {photos.length > 1 && (
+        <div className="mt-4 flex items-center gap-2">
+          {photos.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setIdx(i)}
+              aria-label={`Go to photo ${i + 1}`}
+              data-testid={`${testid}-dot-${i}`}
+              className={`h-[2px] transition-all duration-300 ${i === idx ? "w-8 bg-[var(--c-gold)]" : "w-4 bg-[var(--c-border)] hover:bg-[var(--c-text-muted)]"}`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 const About = () => (
   <main data-testid="page-about" className="bg-[var(--c-off-white)]">
@@ -59,7 +138,7 @@ const About = () => (
       </div>
     </header>
 
-    {/* ── FOUNDER PORTRAITS ── */}
+    {/* ── FOUNDER GALLERIES ── */}
     <section className="py-20 md:py-32">
       <div className="max-w-[1240px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-20">
         {FOUNDERS.map((f, i) => (
@@ -74,20 +153,13 @@ const About = () => (
             itemScope
             itemType="https://schema.org/Person"
           >
-            <div className="relative aspect-[3/4] overflow-hidden rounded-sm bg-[var(--c-green-deep)] mb-6">
-              <img
-                src={f.portrait}
-                alt={f.portraitAlt}
-                itemProp="image"
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover editorial-img"
-              />
-              <span className="absolute top-4 left-4 font-mono text-[10px] uppercase tracking-[0.18em] text-white/90 bg-black/30 backdrop-blur-sm px-2.5 py-1 rounded-sm">
-                {String(i + 1).padStart(2, "0")} · {f.location}
-              </span>
-            </div>
+            <StillSlider
+              photos={f.photos}
+              name={f.name}
+              testid={`slider-${f.slug}`}
+            />
             <h2
-              className="font-display font-light text-[var(--c-text)] text-2xl md:text-3xl tracking-tight mb-1"
+              className="mt-6 font-display font-light text-[var(--c-text)] text-2xl md:text-3xl tracking-tight mb-1"
               itemProp="name"
             >
               {f.name}
