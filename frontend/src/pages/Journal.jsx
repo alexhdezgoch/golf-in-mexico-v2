@@ -19,19 +19,7 @@ const CATEGORY_MAP = {
   ],
   "beyond-the-course": ["luxury-golf-vacation-mexico"],
   "the-concierge": ["how-to-plan-a-golf-trip-to-mexico", "mexico-city-planning"],
-  "gim-property": ["solmar-golf-links", "mandarina-golf-course", "amanali-golf-club"],
-  destinations: [
-    "golf-courses-cabo-san-lucas",
-    "solmar-golf-links",
-    "los-cabos-luxury-packages",
-    "los-cabos-cabo-real-vs-cabo-del-sol",
-    "golf-courses-punta-mita",
-    "mandarina-golf-course",
-    "punta-mita-packages",
-    "golf-courses-mexico-city",
-    "amanali-golf-club",
-    "mexico-city-planning",
-  ],
+  "founders-journal": [],
 };
 
 const articleHasCategory = (article, category) => {
@@ -44,8 +32,7 @@ const CATEGORIES = [
   { key: "golf", label: "Golf" },
   { key: "beyond-the-course", label: "Beyond the Course" },
   { key: "the-concierge", label: "The Concierge" },
-  { key: "gim-property", label: "GIM Property" },
-  { key: "destinations", label: "Destinations" },
+  { key: "founders-journal", label: "Founders Journal" },
 ];
 
 /* ───────────────── PILLARS ───────────────── */
