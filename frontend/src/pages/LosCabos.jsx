@@ -156,31 +156,21 @@ const QUICK_FACTS = [
 ];
 
 const COURSES = [
-  { tier: "resort",  fee: "$395 – $450", name: "Quivira Golf Club",            photoLabel: "Quivira Golf Club",         photo: null, article: null, specs: "Jack Nicklaus · Par 72 · Championship",          note: "The crown jewel of the corridor. Quivira plays along the Pacific cliffs above Cabo San Lucas — every hole delivers an ocean view, climbing out of desert canyons to finish with one of the most photographed closing stretches in North America.",   standout: "#5 — Cliffside par 3, 178 yards hanging directly over the roaring Pacific." },
-  { tier: "public",  fee: "$350 – $395", name: "Cabo del Sol — Ocean Course",   photoLabel: "Cabo del Sol — Ocean",       photo: null, article: null, specs: "Jack Nicklaus · Par 72 · Championship",          note: "The legendary layout that put Los Cabos golf on the global map. The back nine runs along the Sea of Cortez, with three holes playing directly on the water's edge.",                                                                                  standout: "#17 — A dramatic signature par 3 beside the crashing surf." },
-  { tier: "private", fee: "$300 – $375", name: "Diamante — Dunes Course",       photoLabel: "Diamante — Dunes",          photo: null, article: null, specs: "Davis Love III · Par 72 · Championship",         note: "A true links experience framed by massive white sand dunes on the Pacific side of Cabo San Lucas. Walks and plays like a classic British course — with 340 days of sunshine.",                                                                       standout: "#14 — Links-style par 4 cutting through towering natural sand structures." },
+  { tier: "resort",  fee: "$395 – $450", name: "Quivira Golf Club",            photoLabel: "Quivira Golf Club",         photo: null, article: null, difficulty: "4/5", bestFor: "Cliffside ocean holes",         specs: "Jack Nicklaus · Par 72 · Championship",          note: "The crown jewel of the corridor. Quivira plays along the Pacific cliffs above Cabo San Lucas — every hole delivers an ocean view, climbing out of desert canyons to finish with one of the most photographed closing stretches in North America.",   standout: "#5 — Cliffside par 3, 178 yards hanging directly over the roaring Pacific." },
+  { tier: "public",  fee: "$350 – $395", name: "Cabo del Sol — Ocean Course",   photoLabel: "Cabo del Sol — Ocean",       photo: null, article: null, difficulty: "4/5", bestFor: "Iconic back nine, sea views",   specs: "Jack Nicklaus · Par 72 · Championship",          note: "The legendary layout that put Los Cabos golf on the global map. The back nine runs along the Sea of Cortez, with three holes playing directly on the water's edge.",                                                                                  standout: "#17 — A dramatic signature par 3 beside the crashing surf." },
+  { tier: "private", fee: "$300 – $375", name: "Diamante — Dunes Course",       photoLabel: "Diamante — Dunes",          photo: null, article: null, difficulty: "3/5", bestFor: "Links experience, dunes",       specs: "Davis Love III · Par 72 · Championship",         note: "A true links experience framed by massive white sand dunes on the Pacific side of Cabo San Lucas. Walks and plays like a classic British course — with 340 days of sunshine.",                                                                       standout: "#14 — Links-style par 4 cutting through towering natural sand structures." },
   { tier: "private", fee: "$275 – $350", name: "El Cardonal at Diamante",       photoLabel: "El Cardonal at Diamante",   photo: null, article: null, specs: "Tiger Woods · Par 72 · Resort-Friendly",          note: "Tiger Woods' first solo design outside the United States. Wide, forgiving fairways through desert arroyos — highly playable for mixed-handicap groups, with panoramic Pacific views throughout.",                                                  standout: "#6 — Sweeping downhill par 5 with a complete Pacific Ocean backdrop." },
-  { tier: "public",  fee: "$250 – $310", name: "Palmilla Golf Club",            photoLabel: "Palmilla Golf Club",        photo: null, article: null, specs: "Jack Nicklaus · Par 72 · Resort-Friendly",         note: "The course that started the modern corridor in 1992 — the first Nicklaus design in Latin America. Three interchangeable nines (Mountain, Arroyo, Ocean) showcasing the native topography.",                                                       standout: "Mountain #4 — Elevated tee shot, deep mountain shadows, distant sea view." },
-  { tier: "public",  fee: "$250 – $300", name: "Puerto Los Cabos",              photoLabel: "Puerto Los Cabos",          photo: null, article: null, specs: "Jack Nicklaus + Greg Norman · Par 72 · Moderate", note: "The only routing in Mexico where two legends collaborated. Nicklaus shaped the front nine through desert foothills; Norman designed the coastal back nine.",                                                                                       standout: "#18 — Norman's finishing hole running parallel to the marina and coastline." },
-  { tier: "public",  fee: "$200 – $260", name: "Club Campestre San José",       photoLabel: "Club Campestre San José",   photo: null, article: null, specs: "Nicklaus Design · Par 72 · Moderate",            note: "Best value on the corridor. Weaves through rugged desert arroyos with the Sierra de la Laguna mountains framing every shot. The truest sense of Baja's inland topography.",                                                                       standout: "#7 — Demanding approach over a deep arroyo crossing." },
-  { tier: "private", fee: "$350 – $400", name: "Twin Dolphin Golf Club",        photoLabel: "Twin Dolphin Golf Club",     photo: null, article: null, specs: "Todd Eckenrode + Fred Couples · Par 72 · Championship", note: "Built on the historic grounds of the original Twin Dolphin Hotel. Incredible elevation changes and tournament-level greens — the Sea of Cortez visible from almost every tee.",                                                          standout: "#3 — Par 3 playing directly across a jagged canyon." },
+  { tier: "public",  fee: "$250 – $310", name: "Palmilla Golf Club",            photoLabel: "Palmilla Golf Club",        photo: null, article: null, difficulty: "3/5", bestFor: "Three nines, historic",         specs: "Jack Nicklaus · Par 72 · Resort-Friendly",         note: "The course that started the modern corridor in 1992 — the first Nicklaus design in Latin America. Three interchangeable nines (Mountain, Arroyo, Ocean) showcasing the native topography.",                                                       standout: "Mountain #4 — Elevated tee shot, deep mountain shadows, distant sea view." },
+  { tier: "public",  fee: "$250 – $300", name: "Puerto Los Cabos",              photoLabel: "Puerto Los Cabos",          photo: null, article: null, difficulty: "2/5", bestFor: "Two-legend collaboration",      specs: "Jack Nicklaus + Greg Norman · Par 72 · Moderate", note: "The only routing in Mexico where two legends collaborated. Nicklaus shaped the front nine through desert foothills; Norman designed the coastal back nine.",                                                                                       standout: "#18 — Norman's finishing hole running parallel to the marina and coastline." },
+  { tier: "public",  fee: "$200 – $260", name: "Club Campestre San José",       photoLabel: "Club Campestre San José",   photo: null, article: null, difficulty: "2/5", bestFor: "Best value on corridor",         specs: "Nicklaus Design · Par 72 · Moderate",            note: "Best value on the corridor. Weaves through rugged desert arroyos with the Sierra de la Laguna mountains framing every shot. The truest sense of Baja's inland topography.",                                                                       standout: "#7 — Demanding approach over a deep arroyo crossing." },
+  { tier: "private", fee: "$350 – $400", name: "Twin Dolphin Golf Club",        photoLabel: "Twin Dolphin Golf Club",     photo: null, article: null, difficulty: "4/5", bestFor: "Tournament greens, canyon",     specs: "Todd Eckenrode + Fred Couples · Par 72 · Championship", note: "Built on the historic grounds of the original Twin Dolphin Hotel. Incredible elevation changes and tournament-level greens — the Sea of Cortez visible from almost every tee.",                                                          standout: "#3 — Par 3 playing directly across a jagged canyon." },
+  { tier: "resort",  fee: "$300 – $360", name: "Solmar Golf Links",              photoLabel: "Solmar Golf Links",          photo: null, article: null, difficulty: "3/5", bestFor: "Pacific links, underrated gem", specs: "Greg Norman · Par 72 · Resort-Friendly",                 note: "An underrated true links experience on the Pacific. Several holes play right on the ocean — parts of the movie Troy were filmed in the surrounding cliffs. Top-notch amenities and smaller crowds than it deserves.",                                              standout: "Pacific stretch — links holes hanging directly over the Pacific Ocean." },
 ];
 
 const PHOTO_STRIP = [
   { label: "Quivira Golf Club · Pacific Cliffs" },
   { label: "The Corridor · Cabo San Lucas" },
   { label: "Diamante · Dunes Course" },
-];
-
-const COMPARISON = [
-  ["Quivira Golf Club",         "Jack Nicklaus",     "$395–$450", "resort",  "4/5", "Cliffside ocean holes"],
-  ["Cabo del Sol Ocean",        "Jack Nicklaus",     "$350–$395", "public",  "4/5", "Iconic back nine, sea views"],
-  ["Diamante Dunes",            "Davis Love III",    "$300–$375", "private", "3/5", "Links experience, dunes"],
-  ["El Cardonal at Diamante",   "Tiger Woods",       "$275–$350", "private", "3/5", "Mixed groups, desert design"],
-  ["Palmilla Golf Club",        "Jack Nicklaus",     "$250–$310", "public*", "3/5", "Three nines, historic"],
-  ["Puerto Los Cabos",          "Nicklaus + Norman", "$250–$300", "public",  "2/5", "Two-legend collaboration"],
-  ["Club Campestre San José",   "Nicklaus Design",   "$200–$260", "public",  "2/5", "Best value on corridor"],
-  ["Twin Dolphin",              "Eckenrode+Couples", "$350–$400", "private", "4/5", "Tournament greens, canyon"],
 ];
 
 const COSTS = [
@@ -302,28 +292,19 @@ const PlaybookCTA = ({ variant = "full", testid }) => {
     <div data-testid={testid} className="bg-[var(--c-green-deep)] text-white p-8 md:p-12 rounded-md border-l-[3px] border-[var(--c-gold)]">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         <div className="lg:col-span-7">
-          <Label onDark>The 2026 Cabo Golf Playbook</Label>
+          <Label onDark>From GIM</Label>
           <h3 className="font-display font-light text-white leading-[1.15] tracking-tight text-2xl md:text-4xl mb-5">
-            Everything we know about playing Cabo — <em className="italic text-[var(--c-gold)]">in one free guide.</em>
+            Cabo, distilled — <em className="italic text-[var(--c-gold)]">free.</em>
           </h3>
-          <p className="font-body font-light text-white/65 text-sm md:text-base leading-[1.7] max-w-xl">
-            Course-by-course notes, access codes, caddie tips, and a sample 4-day itinerary. Built from 5+ years inside the corridor.
+          <p className="font-body font-light text-white/65 text-sm md:text-base leading-[1.7] max-w-lg">
+            Our 2026 Playbook. Course notes, access codes, a 4-day itinerary. Built inside the corridor.
           </p>
         </div>
 
         <div className="lg:col-span-5">
-          <span className="block font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-4">What&apos;s inside</span>
-          <ul className="space-y-2.5 mb-7">
-            {inside.map((i) => (
-              <li key={i} className="flex items-center gap-3 text-white/85 text-sm">
-                <span className="text-[var(--c-gold)] font-mono">✓</span>
-                {i}
-              </li>
-            ))}
-          </ul>
           {!open && !sent && (
-            <button type="button" onClick={() => setOpen(true)} data-testid={`${testid}-open`} className="group w-full inline-flex items-center justify-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-6 py-3.5 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors">
-              Download the Free Playbook
+            <button type="button" onClick={() => setOpen(true)} data-testid={`${testid}-open`} className="group w-full inline-flex items-center justify-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-6 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors">
+              Download the Playbook
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </button>
           )}
@@ -337,12 +318,9 @@ const PlaybookCTA = ({ variant = "full", testid }) => {
           )}
           {sent && (
             <p data-testid={`${testid}-success`} className="font-display italic text-[var(--c-gold)] text-lg text-center">
-              Check your inbox — your Playbook is on its way.
+              Check your inbox.
             </p>
           )}
-          <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-white/30 text-center">
-            Enter your email. We send it immediately.
-          </p>
         </div>
       </div>
     </div>
@@ -527,36 +505,15 @@ const LosCabos = () => {
           <Label>At a glance</Label>
           <H2 className="mb-14">Everything you need to know <em className="italic text-[var(--c-gold)]">before you book.</em></H2>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-            {/* Facts */}
-            <div className="lg:col-span-7">
-              <div className="divide-y divide-[var(--c-border)]">
-                {QUICK_FACTS.map((f) => (
-                  <div key={f.label + f.value} className="grid grid-cols-[28px_160px_1fr] gap-3 items-start py-4">
-                    <div className="text-[var(--c-gold)] pt-0.5"><Icon name={f.icon} /></div>
-                    <div className="font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--c-text-muted)] pt-0.5">{f.label}</div>
-                    <div className="text-[15px] text-[var(--c-text)] leading-[1.5]">{f.value}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Access legend */}
-            <div className="lg:col-span-5">
-              <h3 className="font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--c-text-muted)] mb-4">Access types</h3>
-              <div className="space-y-2">
-                {[
-                  { tier: "public",  border: "border-[#2d6a4f]",       bg: "bg-[rgba(45,106,79,0.08)]",      title: "Public Access",        titleColor: "text-[#2d6a4f]", body: "Book directly. No room key.", courses: "Cabo del Sol · Puerto LC · Club Campestre" },
-                  { tier: "resort",  border: "border-[var(--c-gold)]",  bg: "bg-[rgba(200,169,110,0.10)]",   title: "Resort Access",         titleColor: "text-[#8a6a2e]", body: "Room key required.",          courses: "Quivira · Twin Dolphin · Palmilla" },
-                  { tier: "private", border: "border-[#8b2020]",       bg: "bg-[rgba(139,32,32,0.06)]",      title: "Private / Restricted",  titleColor: "text-[#8b2020]", body: "Invitation or membership.",   courses: "Diamante Dunes · El Cardonal" },
-                ].map((b) => (
-                  <div key={b.title} className={`${b.bg} border-l-[3px] ${b.border} px-5 py-4 rounded-sm`}>
-                    <div className={`font-mono text-[10px] uppercase tracking-[0.12em] font-bold mb-1.5 ${b.titleColor}`}>{b.title}</div>
-                    <div className="text-[13px] text-[var(--c-text)] mb-1">{b.body}</div>
-                    <div className="text-[13px] text-[var(--c-text-muted)] leading-[1.5]">{b.courses}</div>
-                  </div>
-                ))}
-              </div>
+          <div className="max-w-[820px]">
+            <div className="divide-y divide-[var(--c-border)]">
+              {QUICK_FACTS.map((f) => (
+                <div key={f.label + f.value} className="grid grid-cols-[28px_160px_1fr] gap-3 items-start py-4">
+                  <div className="text-[var(--c-gold)] pt-0.5"><Icon name={f.icon} /></div>
+                  <div className="font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--c-text-muted)] pt-0.5">{f.label}</div>
+                  <div className="text-[15px] text-[var(--c-text)] leading-[1.5]">{f.value}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -618,125 +575,81 @@ const LosCabos = () => {
         </div>
       </section>
 
-      {/* ═════════ 5. COURSE ROSTER — DARK ═════════ */}
+      {/* ═════════ S5. COURSE ROSTER — DARK · EDITORIAL LIST ═════════ */}
       <section data-testid="lc-courses" className="bg-[var(--c-green-deep)] text-white py-24 md:py-32">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <Label onDark>The courses</Label>
-          <H2 onDark className="mb-5">Eight courses <em className="italic text-[var(--c-gold)]">worth your round.</em></H2>
+          <H2 onDark className="mb-5">Nine courses <em className="italic text-[var(--c-gold)]">worth your round.</em></H2>
           <p className="font-body font-light text-white/65 text-base md:text-lg max-w-2xl mb-16 leading-[1.7]">
-            From Nicklaus to Tiger Woods — the complete field guide to the best golf in Cabo San Lucas.
+            From Nicklaus to Tiger Woods — the complete field guide to the best golf in Cabo San Lucas, with our editorial difficulty rating and access notes.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-            {COURSES.map((c) => (
+          {/* List */}
+          <div className="border-t border-white/10">
+            {COURSES.map((c, idx) => (
               <motion.article
                 key={c.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-10%" }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="group bg-[var(--c-off-white)] rounded-sm overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_48px_-8px_rgba(0,0,0,0.35)]"
+                data-testid={`lc-course-${idx}`}
+                className="group border-b border-white/10 py-8 md:py-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start"
               >
-                {/* Photo at top — 16:9 */}
-                <PhotoSlot
-                  label={c.photoLabel}
-                  src={c.photo}
-                  className="photo-slot--16x9 photo-slot--zoom-parent"
-                />
+                {/* Index */}
+                <div className="lg:col-span-1 font-display font-light text-[var(--c-gold)] text-2xl md:text-3xl leading-none">
+                  {String(idx + 1).padStart(2, "0")}
+                </div>
 
-                <div className="p-6 md:p-7 flex flex-col gap-4 flex-1">
-                  <div className="flex items-center justify-between">
+                {/* Name + specs */}
+                <div className="lg:col-span-4">
+                  <h3 className="course-name uppercase text-white text-xl md:text-2xl leading-tight tracking-wide mb-2">{c.name}</h3>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--c-gold)]/85">{c.specs}</p>
+                </div>
+
+                {/* Note + standout */}
+                <div className="lg:col-span-5">
+                  <p className="text-[14px] md:text-[15px] text-white/75 leading-[1.7] mb-4">{c.note}</p>
+                  <p className="text-[13px] italic text-white/60 leading-[1.55] border-l-2 border-[var(--c-gold)] pl-3">
+                    <span className="font-mono not-italic text-[10px] uppercase tracking-[0.1em] text-[var(--c-gold)] mr-2">Standout</span>
+                    {c.standout}
+                  </p>
+                </div>
+
+                {/* Right rail: access · fee · difficulty · best for */}
+                <div className="lg:col-span-2 grid grid-cols-2 lg:grid-cols-1 gap-y-3 lg:gap-y-4">
+                  <div>
+                    <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1">Access</span>
                     <AccessPill tier={c.tier} />
-                    <span className="font-mono text-[13px] font-bold text-[var(--c-gold)] tracking-tight">{c.fee}</span>
                   </div>
                   <div>
-                    <h3 className="course-name uppercase text-[var(--c-green-deep)] text-xl md:text-[22px] leading-tight tracking-wide">{c.name}</h3>
-                    <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.1em] text-[var(--c-text-muted)]">{c.specs}</p>
+                    <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1">Fee</span>
+                    <span className="font-mono text-[13px] font-bold text-[var(--c-gold)]">{c.fee}</span>
                   </div>
-                  <div className="h-px bg-[var(--c-border)]" />
-                  <p className="text-[14px] text-[var(--c-text-mid)] leading-[1.65]">{c.note}</p>
-                  <div className="h-px bg-[var(--c-border)]" />
-                  <div className="border-l-2 border-[var(--c-gold)] pl-4 ml-1">
-                    <span className="block font-mono text-[10px] uppercase tracking-[0.1em] text-[var(--c-gold)] mb-1">Standout Hole</span>
-                    <p className="text-[13px] italic text-[var(--c-text-mid)] leading-[1.5]">{c.standout}</p>
+                  <div>
+                    <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1">Difficulty</span>
+                    <span className="font-mono text-[13px] text-white/90">{c.difficulty}</span>
                   </div>
-
-                  {/* Article link — live or coming soon */}
-                  <div className="mt-auto pt-3 border-t border-[var(--c-border)]">
-                    {c.article ? (
-                      <Link
-                        to={c.article}
-                        className="live-link"
-                        data-testid={`lc-course-article-${c.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
-                      >
-                        Read Pablo&apos;s field notes
-                        <span>→</span>
-                      </Link>
-                    ) : (
-                      <span className="coming-soon-link">
-                        Field notes coming — subscribe
-                      </span>
-                    )}
+                  <div>
+                    <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1">Best for</span>
+                    <span className="text-[12px] text-white/70 leading-[1.4]">{c.bestFor}</span>
                   </div>
                 </div>
               </motion.article>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* ═════════ 6. COMPARISON — PAPER ═════════ */}
-      <section data-testid="lc-compare" className="bg-[var(--c-off-white)] py-24 md:py-32">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-          <Label>Side by side</Label>
-          <H2 className="mb-12">Compare before you book.</H2>
-          <div className="overflow-x-auto border border-[var(--c-border)] rounded-sm">
-            <table className="w-full text-sm min-w-[860px]">
-              <thead>
-                <tr className="bg-[var(--c-green-deep)]">
-                  {["Course", "Designer", "Fee Range", "Access", "Difficulty", "Best For"].map((h, i) => (
-                    <th key={h} className={`text-left font-mono text-[10px] uppercase tracking-[0.12em] font-normal py-3.5 px-4 ${i === 0 ? "text-[var(--c-gold)]" : "text-white/65"}`}>{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {COMPARISON.map((row) => (
-                  <tr key={row[0]} className="border-b border-[var(--c-border)] last:border-0 hover:bg-[var(--c-surface)] transition-colors">
-                    <td className="py-3.5 px-4 align-top font-display text-[15px] text-[var(--c-text)]">{row[0]}</td>
-                    <td className="py-3.5 px-4 align-top text-[var(--c-text-mid)]">{row[1]}</td>
-                    <td className="py-3.5 px-4 align-top font-mono text-[var(--c-text)]">{row[2]}</td>
-                    <td className="py-3.5 px-4 align-top text-[var(--c-text-mid)] capitalize">{row[3]}</td>
-                    <td className="py-3.5 px-4 align-top font-mono text-[var(--c-gold)] font-bold">{row[4]}</td>
-                    <td className="py-3.5 px-4 align-top text-[var(--c-text-mid)]">{row[5]}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="mt-5 flex flex-wrap gap-4 font-mono text-[10px] uppercase tracking-[0.14em]">
+          {/* Legend */}
+          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em] text-white/55">
             <span className="inline-flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#2d6a4f]" /> Public — book directly</span>
-            <span className="inline-flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[var(--c-gold)]" /> Resort — room key required <span className="text-[var(--c-text-muted)] normal-case ml-1">* priority but open when available</span></span>
+            <span className="inline-flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[var(--c-gold)]" /> Resort — room key required</span>
             <span className="inline-flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#8b2020]" /> Private — invitation only</span>
-            <span className="text-[var(--c-text-muted)] basis-full normal-case">Difficulty: 1 Beginner → 5 Tournament · GIM editorial rating</span>
+            <span className="basis-full text-white/35 normal-case">Difficulty: 1 Beginner → 5 Tournament · GIM editorial rating</span>
           </div>
         </div>
       </section>
 
-      {/* ═════════ 7. PULL QUOTE — DARK ═════════ */}
-      <section data-testid="lc-pullquote" className="bg-[var(--c-green-deep)] py-24 md:py-32">
-        <div className="max-w-[900px] mx-auto px-6 md:px-12">
-          <blockquote className="border-l-[3px] border-[var(--c-gold)] pl-7 md:pl-10 max-w-[700px] mx-auto">
-            <p className="font-display italic font-normal text-white text-2xl md:text-4xl leading-[1.4]">
-              &ldquo;Cabo is a true golf paradise. Whether you&apos;re a member of an exclusive club, a local with 30 years here, an expat, or a pro golfer — the feeling is the same.&rdquo;
-            </p>
-            <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-gold)]">
-              — Golf in México Field Notes
-            </p>
-          </blockquote>
-        </div>
-      </section>
-
-      {/* ═════════ 8. COST — PAPER ═════════ */}
+      {/* ═════════ S6. COST — PAPER ═════════ */}
       <section data-testid="lc-costs" className="bg-[var(--c-off-white)] py-24 md:py-32">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12">
           <Label>The math</Label>
@@ -790,71 +703,7 @@ const LosCabos = () => {
         </div>
       </section>
 
-      {/* ═════════ 9. ACCESS RULES — DARK ═════════ */}
-      <section data-testid="lc-access" className="bg-[var(--c-green-deep)] text-white py-24 md:py-32">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-          <Label onDark>The gates</Label>
-          <H2 onDark className="mb-14">Who can play where — <em className="italic text-[var(--c-gold)]">and how.</em></H2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
-            {[
-              { icon: "unlock", title: "Open to All (Public)",     items: ["Cabo del Sol Ocean Course — advance reservation required", "Puerto Los Cabos — open to the public", "Club Campestre San José — best value on the corridor (60–90 day advance window in high season; 2-week window off-season)"] },
-              { icon: "key",    title: "Resort Guest Access",      items: ["Quivira → confirmed room at any Pueblo Bonito property", "Twin Dolphin → Montage Los Cabos room key required", "Palmilla → priority for One&Only guests; open to all when availability allows"] },
-              { icon: "shield", title: "Private / Restricted",     items: ["Diamante Dunes → member-guest or resort access", "El Cardonal at Diamante → private, restricted"] },
-              { icon: "person", title: "The Caddie Culture",       paragraph: "Caddies are mandatory at elite tier layouts and highly recommended elsewhere. They read the tricky ocean breaks and protect your pace of play. Budget $40–$60 USD per bag as the standard tip. These veterans are part of the experience." },
-              { icon: "shirt",  title: "Dress Code",                paragraph: "Collared shirts, tailored golf shorts or trousers, soft-spike shoes. No denim. GIM standard rules apply corridor-wide." },
-            ].map((b) => (
-              <div key={b.title}>
-                <div className="flex items-center gap-3 mb-5">
-                  <span className="text-[var(--c-gold)]"><Icon name={b.icon} className="w-6 h-6" /></span>
-                  <h3 className="font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--c-gold)] font-bold">{b.title}</h3>
-                </div>
-                {b.items && (
-                  <ul className="space-y-2.5">
-                    {b.items.map((i) => (
-                      <li key={i} className="flex gap-3 text-sm md:text-[15px] text-white/75 leading-[1.65]">
-                        <span className="text-[var(--c-gold)] mt-1.5 text-[10px]">▸</span>
-                        <span>{i}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                {b.paragraph && (
-                  <p className="text-sm md:text-[15px] text-white/75 leading-[1.7]">{b.paragraph}</p>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-16 border-2 border-[var(--c-gold)] bg-white/[0.03] rounded-sm p-8 md:p-10 max-w-[820px]">
-            <p className="font-display italic font-light text-white text-lg md:text-2xl leading-[1.5] mb-6">
-              &ldquo;Many top courses are strictly private — but with the right relationships, you can play several of them. We are those relationships.&rdquo;
-            </p>
-            <Link
-              to="/trip-builder"
-              data-testid="lc-access-cta"
-              className="group inline-flex items-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-7 py-3.5 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors"
-            >
-              Get Course Access
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </Link>
-          </div>
-
-          {/* ── Atmospheric photo ── */}
-          <div className="mt-12 md:mt-16">
-            <PhotoSlot
-              label="The Corridor · Baja California Sur"
-              testid="lc-atmo-photo"
-              className="photo-slot--atmo photo-slot--zoom-parent"
-            />
-            <p className="atmo-caption" style={{ color: "rgba(248,245,240,0.55)" }}>
-              The Corridor · Baja California Sur
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ═════════ S8. LOGISTICS — PAPER ═════════ */}
+      {/* ═════════ S7. LOGISTICS — PAPER ═════════ */}
       <section data-testid="lc-logistics" className="bg-[var(--c-off-white)] py-24 md:py-32">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <Label>On the ground</Label>
@@ -898,85 +747,62 @@ const LosCabos = () => {
         </div>
       </section>
 
-      {/* ═════════ 13. FIELD NOTES — PAPER ═════════ */}
+      {/* ═════════ S9. FIELD NOTES — PAPER · ARTICLE BOXES ═════════ */}
       <section data-testid="lc-field-notes" className="bg-[var(--c-off-white)] py-24 md:py-32">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <Label>From the founders</Label>
-          <H2 className="mb-10">The things <em className="italic text-[var(--c-gold)]">we tell our friends.</em></H2>
+          <H2 className="mb-6">The things <em className="italic text-[var(--c-gold)]">we tell our friends.</em></H2>
+          <p className="max-w-[640px] font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] mb-12">
+            Four field reports from Pablo &amp; José — the answers we give privately when friends ask us about Cabo.
+          </p>
 
-          {/* Credential strip — subtle proof above the notes */}
+          {/* Credential strip */}
           <CredentialStrip variant="light" testid="lc-credentials" />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-            {/* Founder photo */}
-            <div className="lg:col-span-4">
-              <PhotoSlot
-                label="Pablo De La Mora · Los Cabos"
-                testid="lc-founder-photo"
-                className="photo-slot--3x4 photo-slot--zoom-parent rounded-[4px]"
-              />
-            </div>
-
-            {/* Notes */}
-            <div className="lg:col-span-8">
-              {FIELD_NOTES.map((n, i) => (
-                <div key={n.title} className="grid grid-cols-[48px_1fr] md:grid-cols-[72px_1fr] gap-5 md:gap-8 py-6 md:py-7 border-b border-[var(--c-border)] last:border-0 items-start">
-                  <span className="font-display font-light text-[var(--c-gold)] text-3xl md:text-5xl leading-none pt-1 tracking-tight">
+          {/* Article-style boxes */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+            {FIELD_NOTES.map((n, i) => (
+              <motion.article
+                key={n.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: i * 0.05 }}
+                data-testid={`lc-field-note-${i}`}
+                className="group bg-white border border-[var(--c-border)] rounded-sm p-7 md:p-9 flex flex-col gap-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_42px_-12px_rgba(15,36,25,0.18)] hover:border-[var(--c-gold)]/40"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <span className="font-display font-light text-[var(--c-gold)] text-4xl md:text-5xl leading-none tracking-tight">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <div>
-                    <div className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.14em] text-[var(--c-text-muted)] mb-3">{n.title}</div>
-                    <p className="text-[15px] md:text-base text-[var(--c-text-mid)] leading-[1.75]">{n.body}</p>
-                  </div>
+                  <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--c-text-muted)] px-2.5 py-1 border border-[var(--c-border)] rounded-full">
+                    Field Note
+                  </span>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═════════ S11. ALL ARTICLES & GUIDES — SURFACE ═════════ */}
-      <section data-testid="lc-articles" className="bg-[var(--c-surface)] py-24 md:py-32">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-          <Label>All guides</Label>
-          <H2 className="mb-14">Every guide for <em className="italic text-[var(--c-gold)]">Los Cabos.</em></H2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-            {[
-              { status: "live",        title: "Los Cabos Golf — The Complete Guide",   desc: "This page — every course, cost, and access rule." },
-              { status: "coming-soon", title: "Public Golf Courses in Cabo",            desc: "Which courses are open without a resort stay — and how to book them directly." },
-              { status: "coming-soon", title: "All-Inclusive Golf Resorts in Los Cabos", desc: "What's actually included in the room rate — and what costs extra." },
-              { status: "coming-soon", title: "Quivira Golf Club: Field Notes",         desc: "Hole-by-hole — Pablo's firsthand account." },
-              { status: "coming-soon", title: "Cabo del Sol — Ocean Course: Field Notes", desc: "Hole-by-hole — Pablo's firsthand account." },
-              { status: "coming-soon", title: "Diamante Golf Cabo: Field Notes",         desc: "Hole-by-hole — Pablo's firsthand account." },
-            ].map((a) => (
-              <article
-                key={a.title}
-                data-testid={`lc-article-${a.status}`}
-                className="bg-white rounded-sm border border-[var(--c-border)] p-6 md:p-7 flex flex-col gap-3 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_-12px_rgba(0,0,0,0.18)]"
-              >
-                <span
-                  className={`inline-flex self-start items-center font-mono text-[9px] uppercase tracking-[0.16em] px-2.5 py-1 rounded-full ${
-                    a.status === "live"
-                      ? "bg-[rgba(31,92,58,0.12)] text-[var(--c-live)]"
-                      : "bg-black/5 text-[var(--c-text-muted)]"
-                  }`}
-                >
-                  {a.status === "live" ? "● Live" : "Coming Soon"}
-                </span>
-                <h3 className="font-display font-light text-[var(--c-text)] text-lg md:text-xl leading-tight tracking-tight">{a.title}</h3>
-                <p className="text-sm text-[var(--c-text-mid)] leading-[1.65]">{a.desc}</p>
-              </article>
+                <div className="flex-1">
+                  <h3 className="font-display font-light text-[var(--c-text)] text-xl md:text-2xl leading-[1.25] tracking-tight mb-4">
+                    {n.title}
+                  </h3>
+                  <p className="text-[14px] md:text-[15px] text-[var(--c-text-mid)] leading-[1.75]">
+                    {n.body}
+                  </p>
+                </div>
+                <div className="pt-4 border-t border-[var(--c-border)] flex items-center justify-between">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--c-text-muted)]">
+                    By Pablo &amp; José
+                  </span>
+                  <span className="font-mono text-[11px] text-[var(--c-gold)] inline-flex items-center gap-2 transition-all duration-300 group-hover:gap-3">
+                    Read more
+                    <span>→</span>
+                  </span>
+                </div>
+              </motion.article>
             ))}
           </div>
-
-          <p className="article-count article-count--light mt-10" data-testid="lc-article-count-bottom">
-            3 field reports published · Los Cabos
-          </p>
         </div>
       </section>
 
-      {/* ═════════ S12. NEWSLETTER — DARK ═════════ */}
+      {/* ═════════ S10. NEWSLETTER — DARK ═════════ */}
       <section data-testid="lc-newsletter-cta" className="bg-[var(--c-green-deep)] text-white py-24 md:py-32">
         <div className="max-w-[640px] mx-auto px-6 md:px-12 text-center">
           <Label onDark>Field Notes</Label>
