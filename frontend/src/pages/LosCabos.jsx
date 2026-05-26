@@ -419,17 +419,37 @@ const LosCabos = () => {
 
   return (
     <main data-testid="page-los-cabos" className="hub-page relative bg-[var(--c-off-white)]">
-      {/* ═════════ S1. HERO — CSS GRADIENT (no image dependency) ═════════ */}
+      {/* ═════════ S1. HERO — FULL-BLEED PHOTO + CINEMATIC GRADIENT ═════════ */}
       <header
         data-testid="lc-header"
-        className="relative text-white overflow-hidden"
-        style={{ background: "linear-gradient(160deg, #0f2419 0%, #0a1510 100%)" }}
+        className="relative text-white overflow-hidden bg-[#0a1510]"
       >
-        {/* subtle diagonal texture for depth */}
+        {/* Hero photograph */}
+        <img
+          src="https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/0wyp4brb_CABO%20PHOTO.png"
+          alt="Diamante Dunes Course — Cabo San Lucas, Baja California Sur"
+          loading="eager"
+          fetchpriority="high"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          style={{ filter: "brightness(0.92) saturate(1.02)" }}
+        />
+
+        {/* Contrast gradient — heavier bottom-left for text legibility */}
         <div
-          className="pointer-events-none absolute inset-0 opacity-[0.04]"
+          aria-hidden
+          className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: "repeating-linear-gradient(-45deg, rgba(200,169,110,1) 0px, rgba(200,169,110,1) 1px, transparent 1px, transparent 16px)",
+            background:
+              "linear-gradient(115deg, rgba(10,21,16,0.88) 0%, rgba(10,21,16,0.72) 35%, rgba(10,21,16,0.32) 65%, rgba(10,21,16,0.18) 100%)",
+          }}
+        />
+        {/* Soft top fade for navbar legibility */}
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 h-40 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(10,21,16,0.6) 0%, rgba(10,21,16,0) 100%)",
           }}
         />
 
@@ -439,7 +459,7 @@ const LosCabos = () => {
           aria-label="Breadcrumb"
           className="relative z-10 pt-32 md:pt-36 max-w-[1200px] mx-auto px-6 md:px-12 pb-6"
         >
-          <ol className="flex flex-wrap items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-white/65">
+          <ol className="flex flex-wrap items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-white/70">
             <li><Link to="/" className="hover:text-[var(--c-gold)] transition-colors">Home</Link></li>
             <li aria-hidden>›</li>
             <li><Link to="/destinations" className="hover:text-[var(--c-gold)] transition-colors">Destinations</Link></li>
@@ -448,7 +468,7 @@ const LosCabos = () => {
           </ol>
         </nav>
 
-        <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-12 pt-10 md:pt-16 pb-20 md:pb-28 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 min-h-[68vh] md:min-h-[72vh] items-end">
+        <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-12 pb-20 md:pb-28 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 min-h-[72vh] md:min-h-[78vh] items-end">
           <div className="lg:col-span-7">
             <Label onDark>Destination Guide · Los Cabos</Label>
             <motion.h1
@@ -456,6 +476,7 @@ const LosCabos = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className="hub-h1 font-display text-white text-5xl md:text-7xl lg:text-[5.25rem]"
+              style={{ textShadow: "0 2px 24px rgba(10,21,16,0.45)" }}
             >
               Golf in <em className="italic text-[var(--c-gold)]">Cabo San Lucas.</em>
             </motion.h1>
@@ -463,31 +484,42 @@ const LosCabos = () => {
               GIM Editorial · Field research by Pablo De La Mora<br className="hidden md:block" />
               <span className="md:hidden"> </span>&amp; José Islas · Updated May 2026
             </p>
-            <blockquote className="mt-10 border-l-2 border-[var(--c-gold)] pl-6 md:pl-8 max-w-[640px]">
-              <p className="font-display italic font-light text-white/85 text-lg md:text-2xl leading-[1.5]">
-                Los Cabos features 23 active championship golf courses and 5 more currently under construction along a dramatic 20-mile stretch where the Sonoran Desert meets the Sea of Cortez. Green fees range from $200 to $500 USD per round, with peak conditions running from October through May. Navigating this premium corridor requires an insider&apos;s map to overcome resort-exclusive access restrictions.
-              </p>
-            </blockquote>
           </div>
 
-          {/* 2x2 stat grid */}
-          <div className="lg:col-span-5 lg:pb-6">
-            <div className="grid grid-cols-2 border border-white/15 rounded-sm overflow-hidden bg-white/[0.04] backdrop-blur-sm">
+          {/* Minimal stat row — 4 inline, no borders */}
+          <div className="lg:col-span-5 lg:pb-4">
+            <div className="grid grid-cols-2 gap-x-8 gap-y-6 md:gap-y-8">
               {[
                 { num: "23",        label: "Courses" },
                 { num: "20 mi",     label: "Corridor" },
                 { num: "$200–$500", label: "Green fees" },
                 { num: "Oct – May", label: "Best months" },
-              ].map((s, i) => (
-                <div key={s.label} className={`p-6 md:p-8 ${i % 2 === 0 ? "border-r border-white/15" : ""} ${i < 2 ? "border-b border-white/15" : ""}`}>
-                  <div className="font-display font-light text-white text-2xl md:text-4xl leading-none mb-2 tracking-tight">{s.num}</div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-gold)]">{s.label}</div>
+              ].map((s) => (
+                <div key={s.label} className="border-l border-[var(--c-gold)]/40 pl-4">
+                  <div
+                    className="font-display font-light text-white text-2xl md:text-3xl leading-none mb-2 tracking-tight"
+                    style={{ textShadow: "0 1px 12px rgba(10,21,16,0.5)" }}
+                  >
+                    {s.num}
+                  </div>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-gold)]/85">{s.label}</div>
                 </div>
               ))}
             </div>
           </div>
         </div>
       </header>
+
+      {/* Hero answer block — sits on light surface, full-width readability */}
+      <section data-testid="lc-hero-answer" className="bg-[var(--c-off-white)] py-14 md:py-20 border-b border-[var(--c-border)]">
+        <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+          <blockquote className="border-l-2 border-[var(--c-gold)] pl-6 md:pl-10 max-w-[820px]">
+            <p className="font-display italic font-light text-[var(--c-text)] text-xl md:text-3xl leading-[1.45]">
+              Los Cabos features 23 active championship golf courses and 5 more currently under construction along a dramatic 20-mile stretch where the Sonoran Desert meets the Sea of Cortez. Green fees range from $200 to $500 USD per round, with peak conditions running from October through May.
+            </p>
+          </blockquote>
+        </div>
+      </section>
 
       {/* ═════════ 2. QUICK FACTS — SURFACE ═════════ */}
       <section data-testid="lc-quickfacts" className="bg-[var(--c-surface)] py-20 md:py-28">
