@@ -9,15 +9,11 @@ const PABLO = {
   label: "The Agent",
   name: "Pablo De La Mora",
   short: "Pablo",
-  roleParts: [
-    { text: "PGA Tour", gold: true },
-    { text: " · " },
-    { text: "LPGA Tour", gold: true },
-    { text: " · " },
-    { text: "WTA", gold: true },
-    { text: " · " },
-    { text: "LIV Golf", gold: true },
-    { text: " · Sports Agent" },
+  credentials: [
+    "PGA",
+    "LPGA",
+    "WTA",
+    "Sports Agent +5 years",
   ],
   photo: "/pablo.jpg",
   photoPosition: "center 22%",
@@ -45,7 +41,14 @@ const JOSE = {
   label: "The Player",
   name: "José Islas",
   short: "José",
-  roleParts: [{ text: "Professional Golfer" }],
+  credentials: [
+    "4 Wins · Mexican Tour",
+    "3 PGA Tour starts",
+    "1 KFT start",
+    "2× World Amateur Team Championship",
+    "2× Latin American Amateur",
+    "2× US Amateur (R16 & R32)",
+  ],
   photo: "/jose.jpg",
   photoPosition: "center 22%",
   accent: "#C4A24E",
@@ -110,7 +113,7 @@ const InsidersCTA = () => (
     data-testid="founders-cta-insiders"
     className="group mt-8 md:mt-10 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-green-mid)] hover:text-[var(--c-gold)] transition-colors duration-500 border-t border-[var(--c-border)] pt-6"
   >
-    Meet the Insiders
+    Meet the Founders
     <span className="transition-transform duration-500 group-hover:translate-x-1.5">→</span>
   </Link>
 );
@@ -207,13 +210,30 @@ const TeamEditorial = () => {
                 <h3 className="mt-3 font-display text-xl md:text-2xl font-normal text-[var(--c-text)] tracking-tight">
                   {active.name}
                 </h3>
-                <span className="block mt-1 font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: active.accent }}>
-                  {active.roleParts.map((p, idx) => (
-                    <span key={idx} className={p.gold ? "text-[var(--c-gold)]" : ""}>
-                      {p.text}
-                    </span>
-                  ))}
-                </span>
+                {active.credentials && (
+                  <ul
+                    data-testid={`credentials-${active.id}`}
+                    className="mt-4 space-y-1.5"
+                  >
+                    {active.credentials.map((c) => (
+                      <li
+                        key={c}
+                        className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--c-gold)] leading-[1.6]"
+                      >
+                        {c}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {active.roleParts && (
+                  <span className="block mt-1 font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: active.accent }}>
+                    {active.roleParts.map((p, idx) => (
+                      <span key={idx} className={p.gold ? "text-[var(--c-gold)]" : ""}>
+                        {p.text}
+                      </span>
+                    ))}
+                  </span>
+                )}
               </div>
 
               {/* Right content */}

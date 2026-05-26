@@ -9,90 +9,90 @@ export const REGIONS = [
     name: "Los Cabos",
     region: "Baja California Sur",
     courses: "12+ Championship Courses",
-    tagline: "Where the Desert Meets the Sea.",
+    tagline: "The Championship Corridor.",
     description:
-      "Latin America's undisputed golf capital. Desert dunes drop straight into the Sea of Cortez — landscape no other destination in the world can offer.",
+      "The absolute best golf in Latin America. Massive desert dunes meeting the Sea of Cortez—a landscape that comes with a premium price tag, but is worth every single penny.",
     greenFees: "$250 – $450",
     image: "https://images.unsplash.com/photo-1672825952732-ecef34882416?auto=format&fit=crop&w=2000&q=85",
     live: true,
     href: "/destinations/los-cabos",
     blackbook: "/blackbook/los-cabos.pdf",
-    blackbookLabel: "Download the 2026 Cabo Blackbook",
+    blackbookLabel: "Download the 2026 Cabo Travel Brief",
   },
   {
     slug: "punta-mita",
     name: "Punta Mita",
     region: "Riviera Nayarit",
     courses: "7+ Championship Courses",
-    tagline: "Where the Jungle Meets the Pacific.",
+    tagline: "Soft Luxury & Restricted Enclaves.",
     description:
-      "A private peninsula where tropical jungle meets the Pacific. Resort-club hospitality at the highest level, and routings shaped entirely by the coastline.",
+      "Where the Sierra Madre jungle meets the Pacific. Five-star hospitality, exclusive gated communities, and some of the best oceanfront holes on the coast.",
     greenFees: "$280 – $420",
     image: "https://images.unsplash.com/photo-1592965046687-1acdbcdb5642?auto=format&fit=crop&w=2000&q=85",
     live: true,
     href: "/destinations/punta-mita",
     blackbook: "/blackbook/punta-mita.pdf",
-    blackbookLabel: "Download the 2026 Punta Mita Blackbook",
+    blackbookLabel: "Download the 2026 Nayarit Travel Brief",
   },
   {
     slug: "mexico-city",
     name: "Mexico City",
     region: "Valle de México",
     courses: "8+ Historic Clubs",
-    tagline: "Where Heritage Meets Altitude.",
+    tagline: "Heritage & Altitude.",
     description:
-      "Private heritage clubs at 7,350 feet — where the ball flies further and the game is older than the modern resort era by half a century.",
+      "Historic, private clubs at 7,350 feet. The ball flies 10% further here, and the golf culture goes back decades before the beach resorts even existed. You just need the right connection to play.",
     greenFees: "Members & guests",
     image: "https://images.unsplash.com/photo-1717388835452-c9c8cda0002e?auto=format&fit=crop&w=2000&q=85",
     live: true,
     href: "/destinations/mexico-city",
     blackbook: "/blackbook/mexico-city.pdf",
-    blackbookLabel: "Download the 2026 CDMX Blackbook",
+    blackbookLabel: "Download the 2026 Mexico City Travel Brief",
   },
   {
     slug: "puerto-vallarta",
     name: "Puerto Vallarta",
     region: "Bahía de Banderas",
     courses: "6+ Courses",
-    tagline: "Jungle Fairways, Mountain Greens.",
+    tagline: "Jungle Topography & Elevation.",
     description:
-      "Where the Sierra Madre drops into the Pacific. Routings carved through dense jungle and along coastal bluffs — the most dramatic elevation in Mexican golf.",
+      "Where the mountains drop into Banderas Bay. Fun, technical courses carved through the tropical jungle, offering some of the best elevation changes you'll ever play.",
     greenFees: "$180 – $320",
     image: "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=2000&q=85",
     live: true,
     href: "/destinations/puerto-vallarta",
     blackbook: "/blackbook/puerto-vallarta.pdf",
-    blackbookLabel: "Download the 2026 PV Blackbook",
+    blackbookLabel: "Download the 2026 PV Travel Brief",
   },
   {
     slug: "cancun-riviera-maya",
     name: "Cancún · Riviera Maya",
     region: "Quintana Roo",
     courses: "10+ Resort Courses",
-    tagline: "Limestone Fairways, Caribbean Light.",
+    tagline: "Limestone Fairways & Caribbean Trade Winds.",
     description:
-      "Limestone fairways carved through Yucatán jungle, alongside the world's second-longest coral reef. The largest concentration of resort golf in México.",
+      "Courses carved straight through the Yucatán mangroves. This region has the largest concentration of resort golf in the country, right next to the Caribbean Sea.",
     greenFees: "$220 – $380",
     image: "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=2000&q=85",
     live: true,
     href: "/destinations/cancun-riviera-maya",
     blackbook: "/blackbook/cancun-riviera-maya.pdf",
-    blackbookLabel: "Download the 2026 Riviera Maya Blackbook",
+    blackbookLabel: "Download the 2026 Riviera Maya Travel Brief",
   },
   {
     slug: "unique-destinations",
     name: "Unique Destinations",
     region: "Across México",
     courses: "8+ Hidden Routings",
-    tagline: "The routings nobody talks about.",
+    tagline: "The Uncharted Routings.",
     description:
-      "Hidden routings across colonial highlands, Pacific coves, and Caribbean limestone. For the golfer who has played the obvious places and wants what comes next.",
+      "Real info on the country's lesser-known courses. From colonial towns to quiet Pacific bays. Perfect if you've already played the major spots and want something different for your next trip.",
     greenFees: "Varies by region",
     image: "https://images.unsplash.com/photo-1543105177-748ceda71741?auto=format&fit=crop&w=2000&q=85",
     live: true,
     href: "/destinations/unique-destinations",
     blackbook: "/blackbook/unique-destinations.pdf",
-    blackbookLabel: "Download the 2026 Hidden Routings Blackbook",
+    blackbookLabel: "Download the 2026 Hidden Routings Travel Brief",
   },
 ];
 
@@ -104,16 +104,13 @@ const DestinationsHeader = () => (
     className="bg-[var(--c-green-deep)] text-white pt-40 md:pt-48 pb-20 md:pb-24"
   >
     <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-      <span className="block font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--c-gold)] mb-8 md:mb-10">
-        Where to go
-      </span>
       <motion.h1
         initial={{ opacity: 0, y: 22 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        className="font-display font-normal text-white leading-[0.96] tracking-tight text-5xl md:text-7xl lg:text-[5.5rem] max-w-[14ch]"
+        className="font-display font-normal text-white leading-[0.96] tracking-tight text-5xl md:text-7xl lg:text-[5.5rem] max-w-[16ch]"
       >
-        Destinations<span className="text-[var(--c-gold)]">.</span>
+        Where to go<span className="text-[var(--c-gold)]">.</span>
       </motion.h1>
       <motion.p
         initial={{ opacity: 0, y: 14 }}
