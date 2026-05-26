@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
 import { useInquiry } from "@/context/Inquiry";
 
 const NAV_LINKS = [
@@ -56,104 +55,70 @@ const Footer = () => {
       data-testid="site-footer"
       className="relative z-10 bg-[#0a0a0a] text-white"
     >
-      {/* ─────────── NEWSLETTER ─────────── */}
-      <div
-        data-testid="footer-newsletter"
-        className="border-b border-white/8"
-      >
-        <div className="max-w-[1240px] mx-auto px-6 md:px-12 py-24 md:py-32">
-          <span className="block font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--c-gold)] mb-10 md:mb-14">
-            The Newsletter°
-          </span>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display font-normal text-white text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight max-w-4xl"
-          >
-            Stay <span className="italic text-[var(--c-gold)]">inside</span> the ropes.
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-8 md:mt-10 font-body font-light text-white/55 text-base md:text-lg max-w-xl leading-[1.7]"
-          >
-            Tour-level insights, hidden gems, and the culture of Mexican golf
-            delivered straight to your inbox. No generic spam. Just pure signal.
-          </motion.p>
-
-          {!submitted ? (
-            <form
-              data-testid="newsletter-form"
-              onSubmit={onSubmit}
-              className="mt-10 md:mt-12 flex flex-col sm:flex-row gap-3 max-w-2xl"
-            >
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
-                data-testid="newsletter-email-input"
-                className="flex-1 bg-white/[0.04] border border-white/15 focus:border-[var(--c-gold)] transition-colors duration-300 text-white placeholder:text-white/35 font-body text-base px-5 py-4 rounded-sm focus:outline-none"
-              />
-              <button
-                type="submit"
-                data-testid="newsletter-submit-button"
-                className="group inline-flex items-center justify-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-8 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] transition-colors duration-300 whitespace-nowrap"
-              >
-                Subscribe
-                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
-                  →
-                </span>
-              </button>
-            </form>
-          ) : (
-            <p
-              data-testid="newsletter-success"
-              className="mt-10 font-display italic font-normal text-[var(--c-gold)] text-2xl md:text-3xl"
-            >
-              You&apos;re on the list. Welcome to the room.
-            </p>
-          )}
-
-          <p className="mt-6 font-body font-light text-white/30 text-sm">
-            Join 4,200+ golfers who read Pablo&apos;s weekly field notes.
-          </p>
-        </div>
-      </div>
-
       {/* ─────────── 3-COLUMN GRID ─────────── */}
       <div data-testid="footer-grid" className="border-b border-white/8">
         <div className="max-w-[1240px] mx-auto px-6 md:px-12 py-20 md:py-24 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
-          {/* Col 1 — Brand */}
-          <div data-testid="footer-col-brand" className="flex flex-col gap-6">
-            <h3 className="font-display font-normal text-white text-3xl md:text-4xl leading-tight tracking-tight">
-              Golf in México<span className="text-[var(--c-gold)]">°</span>
+          {/* ── Col 1 — Newsletter + Brand ── */}
+          <div data-testid="footer-col-newsletter" className="flex flex-col gap-5 md:gap-6">
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-gold)]">
+              The Newsletter°
+            </span>
+
+            <h3
+              data-testid="footer-newsletter-headline"
+              className="font-display font-normal text-white text-lg md:text-xl leading-[1.2] tracking-tight"
+            >
+              Stay <em className="italic text-[var(--c-gold)]">inside</em> the ropes.
             </h3>
-            <p className="font-body font-light text-white/55 text-sm md:text-[15px] leading-[1.7] max-w-sm">
-              Curating the culture behind the course. An editorial ecosystem
-              dedicated to the hospitality, the people, and the sheer privilege
-              of playing our country&apos;s finest fairways.
+
+            <p className="font-body font-light text-white/55 text-xs md:text-[13px] leading-[1.65] max-w-sm">
+              Tour-level insights, hidden gems, and the culture of Mexican golf
+              — delivered straight to your inbox. No spam. Just signal.
             </p>
-            <div className="mt-2 flex flex-col gap-1.5">
-              <a
-                href="mailto:hello@golf-in-mexico.com"
-                data-testid="footer-email"
-                className="font-body text-white/75 text-sm md:text-base hover:text-[var(--c-gold)] transition-colors duration-300"
+
+            {!submitted ? (
+              <form
+                data-testid="newsletter-form"
+                onSubmit={onSubmit}
+                className="flex flex-col gap-2 max-w-sm"
               >
-                hello@golf-in-mexico.com
-              </a>
-              <span className="font-body font-light text-white/40 text-sm">
-                Mexico City · Los Cabos · México
-              </span>
-            </div>
-            <div className="mt-2 flex items-center gap-3">
+                <div className="flex">
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="your@email.com"
+                    data-testid="newsletter-email-input"
+                    className="flex-1 min-w-0 bg-white/[0.04] border border-white/15 focus:border-[var(--c-gold)] transition-colors duration-300 text-white placeholder:text-white/35 font-body text-sm px-3.5 py-2.5 rounded-sm focus:outline-none"
+                  />
+                  <button
+                    type="submit"
+                    data-testid="newsletter-submit-button"
+                    aria-label="Subscribe"
+                    className="group inline-flex items-center justify-center bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-4 ml-2 rounded-sm font-mono text-[10px] uppercase tracking-[0.16em] transition-colors duration-300 whitespace-nowrap"
+                  >
+                    Subscribe
+                    <span className="ml-2 inline-block transition-transform duration-300 group-hover:translate-x-0.5">
+                      →
+                    </span>
+                  </button>
+                </div>
+                <p className="font-body font-light text-white/30 text-xs">
+                  Join 4,200+ golfers who read Pablo&apos;s weekly field notes.
+                </p>
+              </form>
+            ) : (
+              <p
+                data-testid="newsletter-success"
+                className="font-display italic font-normal text-[var(--c-gold)] text-base"
+              >
+                On its way. Welcome to the room.
+              </p>
+            )}
+
+            {/* Socials only */}
+            <div className="mt-8 pt-8 border-t border-white/10 flex items-center gap-2.5">
               {SOCIALS.map((s) => (
                 <a
                   key={s.label}
@@ -162,9 +127,9 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   aria-label={s.label}
                   data-testid={`footer-social-${s.label.toLowerCase()}`}
-                  className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-white/15 text-white/70 hover:bg-[var(--c-gold)] hover:border-[var(--c-gold)] hover:text-[var(--c-green-deep)] transition-all duration-300"
+                  className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-white/15 text-white/65 hover:bg-[var(--c-gold)] hover:border-[var(--c-gold)] hover:text-[var(--c-green-deep)] transition-all duration-300"
                 >
-                  <svg viewBox="0 0 24 24" className="w-[13px] h-[13px]" fill="currentColor" aria-hidden>
+                  <svg viewBox="0 0 24 24" className="w-[12px] h-[12px]" fill="currentColor" aria-hidden>
                     <path d={s.path} />
                   </svg>
                 </a>
@@ -172,9 +137,9 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Col 2 — Destinations */}
+          {/* ── Col 2 — Destinations ── */}
           <div data-testid="footer-col-destinations" className="flex flex-col gap-5">
-            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--c-gold)]">
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-gold)]">
               Destinations
             </span>
             <ul className="flex flex-col gap-3">
@@ -199,9 +164,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Col 3 — Navigate */}
+          {/* ── Col 3 — Navigate ── */}
           <div data-testid="footer-col-nav" className="flex flex-col gap-5">
-            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--c-gold)]">
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-gold)]">
               Navigate
             </span>
             <ul className="flex flex-col gap-3">
