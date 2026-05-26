@@ -51,9 +51,9 @@ const LOS_CABOS = {
     { num: "20 mi",   label: "Corridor" },
   ],
 
-  playbookH3Pre: "Cabo, distilled —",
-  playbookH3Em: "free.",
-  playbookBody: "Our 2026 Playbook. Course notes, access codes, a 4-day itinerary. Built inside the corridor.",
+  playbookH3Pre: "Your free",
+  playbookH3Em: "2026 Cabo Travel Brief.",
+  playbookBody: "Get the full Cabo guide as a PDF. Course notes, real prices, a 4-day sample plan, and how to book the private rounds. Sent to your inbox in 60 seconds.",
 
   photoStrip: [
     { label: "Quivira Golf Club · Pacific Cliffs" },
@@ -116,14 +116,13 @@ const LOS_CABOS = {
   ],
 
   faqs: [
-    { q: "What is the best time of year to play golf in Los Cabos?",   a: "Peak season runs November through April — dry, warm (72–82°F), almost no rain. For the best balance of weather and value, late October and May are the sharpest shoulder months: great conditions, fewer crowds, better rates." },
-    { q: "How much does a golf trip to Los Cabos cost?",                a: "A realistic trip (4 nights, 3 rounds) runs roughly $2,200 on the budget end to $5,500+ at the luxury end. The main variables are hotel tier and which courses you choose. Green fees alone range from $200 to $450 per round." },
-    { q: "Which is the best course in Los Cabos?",                       a: "Quivira, Cabo del Sol Ocean, and Diamante Dunes are on the same tier. The 'best' depends on what you're after — links, desert, or coastal golf. Play all three and you'll have an opinion." },
-    { q: "Do I need to bring my own golf clubs?",                        a: "Not necessarily. Most courses offer premium rentals for $50–$75 per round. Airlines typically charge $35–$50 each way for a golf bag." },
-    { q: "Are the courses walkable?",                                    a: "Most are cart-mandatory or strongly cart-recommended. Desert terrain, elevation changes, and distances make walking impractical. Cliffside layouts are not walkable." },
-    { q: "Is it safe to travel to Los Cabos?",                           a: "Yes. Los Cabos is one of the safest tourist destinations in Mexico. The resort corridor and courses have excellent infrastructure and security." },
-    { q: "Why do so many golfers choose Los Cabos?",                     a: "Championship courses from Nicklaus, Woods, Norman, Love III. 340 days of sunshine. Dramatic terrain. Direct flights from 30+ US cities. The flight from LAX is shorter than the one to Palm Springs." },
-    { q: "Do I need to tip caddies?",                                    a: "Yes — expected and important to their income. Standard: $30–$60 USD per bag per round. Tip accordingly." },
+    { q: "When is the best time to play golf in Los Cabos?",   a: "November through April. Warm days (72–82°F), almost no rain, and full course conditions. Late October and May are the smart shoulder months: same weather, fewer crowds, better rates." },
+    { q: "How much does a Cabo golf trip really cost?",                a: "For 4 nights and 3 rounds, expect $2,200 on the value end up to $5,500+ for luxury. The big swings are your hotel tier and which courses you choose. Green fees run $200 to $450." },
+    { q: "Which Cabo course is the best?",                       a: "Quivira, Cabo del Sol Ocean, and Diamante Dunes are the top three — each different. Play all three if you can: links, desert, and coastal styles. You'll pick a favorite by the end of the trip." },
+    { q: "Do I need to bring my own clubs?",                        a: "Not really. Most clubhouses rent premium sets for $50–$75 per round. Airlines charge $35–$50 each way for a golf bag, so the math often favors renting." },
+    { q: "Can I walk the courses?",                                    a: "No. Cabo's desert layouts and elevation changes make walking impractical. Carts are mandatory or strongly required at every course." },
+    { q: "Is Los Cabos safe?",                           a: "Yes. The resort corridor is one of the safest tourist areas in México. Good infrastructure, clear roads, and security at every property." },
+    { q: "Do caddies expect a tip?",                                    a: "Yes. Tipping is a real part of their income. Standard is $30–$60 USD per bag, per round." },
   ],
 
   credentials,
@@ -176,9 +175,9 @@ const PUNTA_MITA = {
     { num: "45 min",  label: "From PVR" },
   ],
 
-  playbookH3Pre: "Punta Mita, distilled —",
-  playbookH3Em: "free.",
-  playbookBody: "Our 2026 Playbook. How to get on Pacifico, Bahia, and Mandarina — plus the room key that unlocks them.",
+  playbookH3Pre: "Your free",
+  playbookH3Em: "2026 Nayarit Travel Brief.",
+  playbookBody: "The full Punta Mita guide as a PDF. How to get inside the gate, which course suits your game, where to stay, and what each day really costs. Sent to your inbox in 60 seconds.",
 
   photoStrip: [
     { label: "Pacifico · Tail of the Whale" },
@@ -235,12 +234,12 @@ const PUNTA_MITA = {
   ],
 
   faqs: [
-    { q: "How many golf courses are in Punta Mita?",                       a: "Two on the peninsula itself — Pacifico and Bahia, both Jack Nicklaus designs — and Greg Norman's Mandarina 40 minutes north, accessed via One&Only or Rosewood Mandarina." },
-    { q: "Can non-Four Seasons guests play golf in Punta Mita?",            a: "Yes, by booking the St. Regis or a private residence with golf rights. There is no public day-pass — the peninsula is closed to outside play." },
-    { q: "What is the difference between Pacifico and Bahia?",              a: "Pacifico runs eight holes on the Pacific and includes the Tail of the Whale island green. Bahia plays inland through jungle and finishes with the only ocean-carry par 5 in Mexico." },
-    { q: "What does a Punta Mita golf trip cost all-in?",                   a: "Approximately $4,200 – $8,700 per person for 4 nights and 3 rounds, depending on resort tier. The peninsula's pricing is driven by the room rate, not the green fee." },
-    { q: "How far is Punta Mita from Puerto Vallarta airport?",             a: "Forty-five minutes via the Punta de Mita coastal road. Resort transfers are the simplest option; rental cars are unnecessary inside the peninsula." },
-    { q: "Is the Tail of the Whale always playable?",                       a: "No — only at low tide. Ask the pro shop the night before for the tide window. If your tee time misses it, you play the standard 3A green and miss the island entirely." },
+    { q: "How many courses are in Punta Mita?",                       a: "Three. Pacifico and Bahia on the peninsula itself (both Jack Nicklaus), plus Greg Norman's Mandarina about 40 minutes north." },
+    { q: "Can I play if I'm not staying at the Four Seasons?",            a: "Yes — staying at the St. Regis or a private peninsula residence with golf rights also gets you on. There is no public day-pass; the peninsula is closed to outside play." },
+    { q: "What's the difference between Pacifico and Bahia?",              a: "Pacifico has eight Pacific-ocean holes and the famous Tail of the Whale island green. Bahia plays inland through the jungle and ends with the only ocean-carry par 5 in México." },
+    { q: "What does a Punta Mita golf trip really cost?",                   a: "About $4,200 to $8,700 per person for 4 nights and 3 rounds. The big variable is the hotel rate, not the green fee — the peninsula is priced through the room." },
+    { q: "How far is Punta Mita from the Puerto Vallarta airport?",             a: "Forty-five minutes by car. Resort transfers are the easiest. You won't need a rental once inside the peninsula." },
+    { q: "Can I always play the Tail of the Whale island green?",                       a: "No — only at low tide. Ask the pro shop the night before for the tide window. If you miss it, you play the standard alternate green and skip the island." },
   ],
 
   credentials,
@@ -293,9 +292,9 @@ const MEXICO_CITY = {
     { num: "10+",      label: "Metro courses" },
   ],
 
-  playbookH3Pre: "CDMX, distilled —",
-  playbookH3Em: "free.",
-  playbookBody: "Our 2026 Playbook. Which clubs accept member-guest invitations, where to eat after the round, and how to read the altitude.",
+  playbookH3Pre: "Your free",
+  playbookH3Em: "2026 Mexico City Travel Brief.",
+  playbookBody: "The full CDMX guide as a PDF. Which private clubs we can get you into, how altitude changes your distances, and where to go after the round. Sent to your inbox in 60 seconds.",
 
   photoStrip: [
     { label: "Club de Golf Chapultepec · WGC era" },
@@ -357,13 +356,13 @@ const MEXICO_CITY = {
   ],
 
   faqs: [
-    { q: "What golf courses are in Mexico City?",                      a: "Approximately ten metropolitan courses, including Coral Golf Club (public), Club de Golf México, Chapultepec, Bosques, Lomas Quebradas, Bosque Real, Pedregal, and Amanali. Tabachines in Cuernavaca is a 90-minute day trip." },
-    { q: "Which Mexico City golf courses are open to the public?",      a: "Coral Golf Club is the primary public option inside the city. Tabachines in Cuernavaca is public via day-trip. All other CDMX clubs are private member-guest only." },
-    { q: "What does it cost to play golf in Mexico City?",              a: "Green fees range $80 – $250 USD. Coral runs under $150 all-in. Private clubs require a member host; expect $200–$300 all-in with green fee, caddie tip, and clubhouse lunch." },
-    { q: "Is Club de Golf Chapultepec open to visitors?",               a: "Only by member-guest invitation arranged through the club secretary. Walk-up play is not permitted. The club hosted the WGC-Mexico Championship 2017–2020." },
-    { q: "What is the best golf course in Mexico City?",                a: "It depends on access. For tournament pedigree: Chapultepec. For history: Club de Golf México (1958 World Cup). For accessibility: Coral. For modern design: Bosque Real (Tom Doak)." },
-    { q: "Can I day-trip to Tabachines from Mexico City for golf?",     a: "Yes. Tabachines is 90 minutes south via the México–Acapulco highway. Tee off at 8 a.m., lunch in the clubhouse, back in the city by 4 p.m. The single best golf day trip from CDMX." },
-    { q: "How does the altitude affect play in Mexico City?",           a: "At 7,350 feet, the ball flies 8–12% farther than at sea level. Subtract a club on most approaches. Plan a range hour on day one to recalibrate distances." },
+    { q: "Which golf courses are in Mexico City?",                      a: "About ten in the metro area. Coral Golf Club is public; the rest are private — Club de Golf México, Chapultepec, Bosques, Lomas Quebradas, Bosque Real, Pedregal, and Amanali. Tabachines in Cuernavaca is a 90-minute day trip." },
+    { q: "Which courses can I play without a member?",      a: "Coral Golf Club inside the city is open to the public. Tabachines in Cuernavaca is also open via day trip. Every other club in CDMX is member-guest only." },
+    { q: "What does golf cost in Mexico City?",              a: "Green fees run $80–$250 USD. Coral is under $150 all-in. At a private club expect $200–$300 with green fee, caddie tip, and lunch — but you'll need a member to bring you in." },
+    { q: "Can I play Chapultepec?",               a: "Only by a member-guest invitation through the club secretary. There's no walk-up play. This is the club that hosted the WGC-Mexico Championship from 2017 to 2020." },
+    { q: "What's the best course in Mexico City?",                a: "Depends on what you want. For tournament pedigree: Chapultepec. For history: Club de Golf México. For accessibility: Coral. For modern design: Bosque Real (Tom Doak)." },
+    { q: "Can I day-trip to Tabachines from Mexico City?",     a: "Yes. About 90 minutes south by car. Tee off at 8 a.m., lunch at the club, back in CDMX by 4 p.m. It's the best one-day golf trip from the city." },
+    { q: "How does the altitude change my game?",           a: "At 7,350 feet, the ball flies 8–12% farther than at sea level. Subtract a club on most approaches. Spend your first hour on the range to recalibrate." },
   ],
 
   credentials,
@@ -416,9 +415,9 @@ const CANCUN = {
     { num: "PGA Tour", label: "Hosted at Mayakoba" },
   ],
 
-  playbookH3Pre: "Riviera Maya, distilled —",
-  playbookH3Em: "free.",
-  playbookBody: "Our 2026 Playbook. Where Mayakoba's PGA Tour stop actually plays, which resorts bundle golf into the rate, and the courses worth flying for.",
+  playbookH3Pre: "Your free",
+  playbookH3Em: "2026 Riviera Maya Travel Brief.",
+  playbookBody: "The full Cancún & Riviera Maya guide as a PDF. Best Caribbean-side resorts that bundle golf, real cost of each round, and the courses worth your time. Sent to your inbox in 60 seconds.",
 
   photoStrip: [
     { label: "El Camaleón · Mayakoba" },
@@ -478,12 +477,12 @@ const CANCUN = {
   ],
 
   faqs: [
-    { q: "How many golf courses are in Cancún and the Riviera Maya?",   a: "Twelve-plus courses span the 80-mile corridor from Cancún to Tulum. Mayakoba alone holds three. The full count includes resort, public, and private routings." },
-    { q: "Which is the best course in the Riviera Maya?",                a: "El Camaleón at Mayakoba — host of the PGA Tour's Mayakoba Golf Classic from 2007 to 2022. Greg Norman's mangrove-jungle-beach routing is the editorial centerpiece of Mexico's Caribbean coast." },
-    { q: "Is golf included in all-inclusive resorts here?",              a: "Often, yes. Hard Rock, Bahía Príncipe, Iberostar, and others bundle unlimited golf into the room rate. The arbitrage works best at 4+ rounds — verify with the property before booking." },
-    { q: "What is the best time of year to play golf in Cancún?",        a: "December through April. Low humidity, almost no rain, peak course conditions. Christmas through Easter is the most-booked window — reserve 4+ months in advance." },
-    { q: "Should I worry about hurricanes?",                              a: "August through October is the statistical peak. Travel insurance with hurricane coverage is the standard for any trip booked in this window. Outside that window, weather is reliably playable." },
-    { q: "How long is the drive from the airport to Mayakoba?",          a: "Approximately 50 minutes from Cancún International (CUN) via Highway 307. Tulum International (TQO) reduces the drive to under 30 minutes for south-corridor properties." },
+    { q: "How many courses are in Cancún and the Riviera Maya?",   a: "More than 12 along the 80-mile stretch from Cancún to Tulum. Mayakoba alone has three. The count covers resort, public, and private courses." },
+    { q: "What's the best course on the Riviera Maya?",                a: "El Camaleón at Mayakoba. It hosted the PGA Tour's Mayakoba Golf Classic from 2007 to 2022. Greg Norman's design runs through mangroves, jungle, and beach — it's the headline course of the Caribbean coast." },
+    { q: "Do all-inclusive resorts include golf?",              a: "A lot of them do. Hard Rock, Bahía Príncipe, Iberostar, and others bundle unlimited golf into the room rate. The math really pays off if you'll play 4+ rounds — confirm with the property before booking." },
+    { q: "When is the best time of year to play here?",        a: "December through April. Low humidity, almost no rain, courses in peak shape. Christmas through Easter books up fastest — reserve at least 4 months ahead." },
+    { q: "Do I need to worry about hurricanes?",                              a: "August through October is hurricane peak. If you're booking in that window, get travel insurance with hurricane coverage. Outside that window, the weather is reliable." },
+    { q: "How far is the airport from Mayakoba?",          a: "About 50 minutes from Cancún (CUN) on Highway 307. From Tulum International (TQO) it's under 30 minutes if you're staying further south." },
   ],
 
   credentials,
@@ -536,9 +535,9 @@ const PUERTO_VALLARTA = {
     { num: "20+",      label: "US direct flights" },
   ],
 
-  playbookH3Pre: "Vallarta, distilled —",
-  playbookH3Em: "free.",
-  playbookBody: "Our 2026 Playbook. Where the underrated rounds actually live, how to combine Vallarta with Punta Mita, and which restaurants make the trip.",
+  playbookH3Pre: "Your free",
+  playbookH3Em: "2026 PV Travel Brief.",
+  playbookBody: "The full Puerto Vallarta guide as a PDF. Jungle-and-mountain courses worth the trip, how to pair PV with Punta Mita, and the restaurants worth a reservation. Sent to your inbox in 60 seconds.",
 
   photoStrip: [
     { label: "Vista Vallarta · Nicklaus / Weiskopf" },
@@ -598,12 +597,12 @@ const PUERTO_VALLARTA = {
   ],
 
   faqs: [
-    { q: "How many golf courses are in Puerto Vallarta?",                 a: "Eight courses ring the Banderas Bay region — four on the south arm (Vallarta proper) and four on the north arm (Riviera Nayarit). All accessible within a 45-minute drive of PVR." },
-    { q: "Which is the best course in Puerto Vallarta?",                   a: "Vista Vallarta — Nicklaus. The hillside Nicklaus design above the city is the most dramatic round in the region. The Weiskopf sister course shares the property and plays more forgiving for mixed groups." },
-    { q: "Is Puerto Vallarta cheaper than Cabo for golf?",                 a: "Yes — comparable Nicklaus and Norman pedigrees run 30–40% below Los Cabos or Punta Mita. The value tier of Mexican championship golf lives here." },
-    { q: "Can you combine Puerto Vallarta and Punta Mita golf?",            a: "Yes. The geographies share PVR airport and run a 45-minute drive apart. A common trip: 3 days Vallarta city + 3 days Punta Mita peninsula. The Playbook covers the combined itinerary in detail." },
-    { q: "What is the best time of year to golf in Puerto Vallarta?",      a: "November through April — dry, warm, low humidity. April delivers the best balance of conditions and demand. Late October is the sharpest value play as the hurricane window closes." },
-    { q: "How walkable is Puerto Vallarta the city?",                      a: "Old-town Zona Romántica is highly walkable; the Malecón runs along the bay for 12 blocks. This is the only Mexican golf destination where the city itself is a primary trip reason." },
+    { q: "How many golf courses are in Puerto Vallarta?",                 a: "Eight courses around Banderas Bay. Four on the south side (Vallarta proper) and four on the north side (Riviera Nayarit). All within a 45-minute drive of the PVR airport." },
+    { q: "What's the best course in Puerto Vallarta?",                   a: "Vista Vallarta — the Nicklaus course. It's the most dramatic round in the region. The Weiskopf course shares the property and plays a bit easier for mixed groups." },
+    { q: "Is Puerto Vallarta cheaper than Cabo for golf?",                 a: "Yes. You'll find similar Nicklaus and Norman pedigree courses at 30–40% less than Cabo or Punta Mita. PV is the best value tier of México championship golf." },
+    { q: "Can I combine PV and Punta Mita on one trip?",            a: "Yes. Both share the PVR airport and are 45 minutes apart by car. A typical itinerary is 3 nights PV + 3 nights Punta Mita. The Travel Brief walks you through the combined plan." },
+    { q: "When's the best time to play in Puerto Vallarta?",      a: "November through April. Dry, warm, low humidity. April is the sweet spot for both conditions and crowd levels. Late October is the smartest value window once hurricane season ends." },
+    { q: "Is the city of Puerto Vallarta walkable?",                      a: "Yes — Zona Romántica and the Malecón are very walkable for 12 blocks along the bay. It's the only México golf destination where the city itself is a real reason to come." },
   ],
 
   credentials,
@@ -656,9 +655,9 @@ const UNIQUE = {
     { num: "Local",    label: "Knowledge required" },
   ],
 
-  playbookH3Pre: "The hidden rounds —",
-  playbookH3Em: "free.",
-  playbookBody: "Our 2026 Playbook. The six destinations only locals talk about, plus the relationships that get you on the course.",
+  playbookH3Pre: "Your free",
+  playbookH3Em: "2026 Hidden Routings Travel Brief.",
+  playbookBody: "The full Unique Destinations guide as a PDF. Six lesser-known México courses worth flying for, why they're worth the detour, and how to actually book the round. Sent to your inbox in 60 seconds.",
 
   photoStrip: [
     { label: "Valle de Bravo · Lakeside Nicklaus" },
@@ -718,12 +717,12 @@ const UNIQUE = {
   ],
 
   faqs: [
-    { q: "What are the unique golf destinations in Mexico?",          a: "Beyond the headline corridors, six regional destinations carry serious championship golf: Valle de Bravo (lakeside Nicklaus), Querétaro (highland Bajío trio), San Miguel de Allende (Faldo hillside), Acapulco (Tres Vidas), Mazatlán (Estrella del Mar), and Loreto (Rees Jones on the Sea of Cortez)." },
-    { q: "Which unique destination is best for a first visit?",        a: "San Miguel de Allende. The colonial city carries the trip on its own merit, the golf at Ventanas is excellent without being demanding, and the BJX airport adds an extra hour to Mexico City connections — making it the smoothest unique-destination introduction." },
-    { q: "Is Loreto worth the extra flight time?",                     a: "Yes, if you've already played Cabo. Loreto is the Cabo of 30 years ago — dramatic Sea of Cortez terrain, almost no crowds, direct LAX flights. The Rees Jones routing at Loreto Bay is the most remote championship round in Mexico." },
-    { q: "How do I book these courses?",                                a: "Member-guest invitations, friend-of-the-property reservations, advance secretarial correspondence. Most are not bookable through standard channels. The Playbook covers the access channel for each destination." },
-    { q: "Can I chain multiple unique destinations in one trip?",       a: "We recommend against it. Each region has a particular pace and requires 3 days minimum to register what makes it different. Multi-region itineraries usually destroy the experience. Pick one per trip; return for the next." },
-    { q: "What is the best season for highland Mexican golf?",          a: "October through April. February is the peak — clear, dry, cool mornings, mild afternoons. Avoid June through September (afternoon storms). At 6,000+ feet, every course plays a half-club shorter; recalibrate distances on day one." },
+    { q: "Which courses count as México's hidden destinations?",          a: "Six regions worth the detour: Valle de Bravo (lakeside Nicklaus), Querétaro (highland Bajío trio), San Miguel de Allende (Faldo hillside), Acapulco (Tres Vidas), Mazatlán (Estrella del Mar), and Loreto (Rees Jones on the Sea of Cortez)." },
+    { q: "Which one is best for a first visit?",        a: "San Miguel de Allende. The colonial city alone is worth the trip, the golf at Ventanas is excellent without being brutal, and the BJX airport is just over an hour from Mexico City." },
+    { q: "Is Loreto worth the longer flight?",                     a: "Yes, especially if you've already done Cabo. Loreto feels like Cabo 30 years ago — dramatic Sea of Cortez terrain, very few crowds, direct LAX flights. Loreto Bay (Rees Jones) is the most remote championship round in México." },
+    { q: "How do I book these courses?",                                a: "Most aren't on standard booking channels. It's member-guest invitations, friend-of-the-property bookings, and direct emails. The Travel Brief covers the access channel for each destination." },
+    { q: "Can I combine several of these on one trip?",       a: "We recommend against it. Each region has its own pace and needs at least 3 days to get a real feel. Hopping between them usually ruins the experience. Pick one per trip — come back for the next." },
+    { q: "When's the best time to play highland golf in México?",          a: "October through April. February is the sweet spot — clear, dry, cool mornings, mild afternoons. Avoid June through September (afternoon storms). Above 6,000 feet, every course plays half a club shorter — recalibrate on day one." },
   ],
 
   credentials,

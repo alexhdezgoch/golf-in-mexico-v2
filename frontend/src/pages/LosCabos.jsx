@@ -576,7 +576,13 @@ const LosCabos = ({ slug = "los-cabos" }) => {
 
           {/* Inline Playbook CTA — dark, gold-bordered box */}
           <div className="mt-14 md:mt-16">
-            <PlaybookCTA variant="full" testid="lc-playbook-1" />
+            <PlaybookCTA
+              variant="full"
+              testid="lc-playbook-1"
+              h3Pre={data.playbookH3Pre}
+              h3Em={data.playbookH3Em}
+              body={data.playbookBody}
+            />
           </div>
         </div>
       </section>
