@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Linkedin, Instagram } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const PABLO = {
   id: "pablo",
@@ -14,17 +15,22 @@ const PABLO = {
     { text: "LPGA Tour", gold: true },
     { text: " · " },
     { text: "WTA", gold: true },
-    { text: " Sports Agent" },
+    { text: " · " },
+    { text: "LIV Golf", gold: true },
+    { text: " · Sports Agent" },
   ],
   photo: "/pablo.jpg",
   photoPosition: "center 22%",
   accent: "#2C4A2C",
-  headline: ["Mexico Golf competes worldwide,", "just not many people know about it."],
-  body: [
-    "I've been to four PGA Tour events, three LIV Golf, one LPGA, and two ATP and WTA. Every locker room conversation has been similar: the courses are world-class, and the hospitality is top-notch. México offers an elite destination for an all-around trip.",
-    "My experience over several years has led me to share my insights, connect people, and always create opportunities. This company is dedicated to promoting what I've enjoyed for the past decade — with insider knowledge and professional management.",
+  quote: [
+    "Millions of people plan a golf vacation every year.",
+    "But I guarantee you will not find a destination that",
+    "matches the quality and value that México offers.",
   ],
-  signature: "Pablo De La Mora · CDMX",
+  body: [
+    "Over five years inside the player-only areas of the PGA Tour, LIV Golf, and WTA events, I heard the same thing repeated in every locker room: Mexican hospitality is world-class.",
+    "Add 50+ designer courses shaped by their region's landscape — and no country on earth offers this exact blend. That is why I founded Golf in México.",
+  ],
   socials: [
     { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/pablodlm/", testid: "social-pablo-linkedin" },
     { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/pablodlmc/", testid: "social-pablo-instagram" },
@@ -41,12 +47,11 @@ const JOSE = {
   photo: "/jose.jpg",
   photoPosition: "center 22%",
   accent: "#C4A24E",
-  headline: ["Every course tells you", "what round it wants you to play."],
   body: [
-    "Mexican courses speak a particular dialect. Paspalum that holds the ball. Greens that read the ocean. Altitudes that lie about distance. My role here is to translate — so you walk the first tee already knowing what the course is asking.",
-    "A good round is not played against the course. It is played with it.",
+    "The game found me at four. It took me through junior ranks, amateur fields, and professional tours — across twenty countries.",
+    "PGA Tour at Vidanta and Los Cabos. TPC Sawgrass for the AJGA. Two World Amateur Team Championships. The Junior World Cup in Japan. Two US Amateurs at Oakmont and Cherry Hills.",
+    "After all of that global exposure, one thing became certain: in México, the game is played differently. For a true golfer, this country is not a stop on the itinerary — it is the destination itself.",
   ],
-  signature: "José Islas · Inside the ropes",
   socials: [
     { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/joseislasgolf/", testid: "social-jose-instagram" },
   ],
@@ -55,21 +60,21 @@ const JOSE = {
 const VALUES = [
   {
     mark: "/",
-    title: "Attention to detail & professionalism",
+    title: "Tour-Level Precision",
     body:
-      "Values shaped by years of working, training, and approaching everything in tour environments.",
+      "Our standards were forged on professional tours. From the first tee time to the final itinerary, we approach every detail with the rigor expected by the world's best players.",
   },
   {
     mark: "//",
     title: "Destination Intelligence",
     body:
-      "Over a decade traveling across México's finest destinations. Local gems and key relationships.",
+      "Over a decade scouting México's most exclusive regions. Genuine boots-on-the-ground relationships that bypass tourist noise and unlock the country's true hidden gems.",
   },
   {
     mark: "///",
     title: "Long-Term Relationships",
     body:
-      "We prioritize the well-being of our people and value assertive communication.",
+      "Tourism is transactional. Real access is relational. We build lasting bonds with local caddies, course directors, and club managers — because insider experiences are built on decades of trust.",
   },
 ];
 
@@ -95,23 +100,47 @@ const fadeUp = {
   transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
 };
 
+const InsidersCTA = () => (
+  <Link
+    to="/about"
+    data-testid="founders-cta-insiders"
+    className="group mt-8 md:mt-10 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-green-mid)] hover:text-[var(--c-gold)] transition-colors duration-500 border-t border-[var(--c-border)] pt-6"
+  >
+    Meet the Insiders
+    <span className="transition-transform duration-500 group-hover:translate-x-1.5">→</span>
+  </Link>
+);
+
 const TeamEditorial = () => {
   const [activeId, setActiveId] = useState("pablo");
   const active = TABS.find((t) => t.id === activeId);
   const isGIM = active.id === "gim";
+  const isPablo = active.id === "pablo";
 
   return (
     <section
       id="founders"
       data-testid="team-editorial-section"
-      className="relative bg-cream border-t hairline scroll-mt-24"
+      className="relative bg-[var(--c-off-white)] border-t border-[var(--c-border)] scroll-mt-24"
     >
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-24">
+      <div className="max-w-[1100px] mx-auto px-6 md:px-12 py-20 md:py-28">
+        {/* Section headline */}
+        <motion.h2
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          data-testid="founders-headline"
+          className="font-display font-normal text-[var(--c-text)] leading-[1.1] tracking-tight text-3xl md:text-5xl lg:text-6xl max-w-[22ch] mb-14 md:mb-20"
+        >
+          Built by the people <em className="italic text-[var(--c-gold)]">inside the ropes.</em>
+        </motion.h2>
+
         {/* Tabs */}
         <div
           data-testid="author-tabs"
           role="tablist"
-          className="grid grid-cols-3 gap-2 md:gap-6 border-b border-ink/15 pb-5 md:pb-6"
+          className="grid grid-cols-3 gap-2 md:gap-6 border-b border-[var(--c-border)] pb-5 md:pb-6"
         >
           {TABS.map((t) => {
             const isActive = t.id === activeId;
@@ -127,7 +156,7 @@ const TeamEditorial = () => {
               >
                 <span
                   className={`relative inline-flex shrink-0 w-9 h-9 md:w-12 md:h-12 rounded-full overflow-hidden ${
-                    t.isMark ? "bg-ink p-1.5 md:p-2 flex items-center justify-center" : ""
+                    t.isMark ? "bg-[var(--c-green-deep)] p-1.5 md:p-2 flex items-center justify-center" : ""
                   }`}
                   style={{
                     outline: isActive ? `1px solid ${t.accent}` : "none",
@@ -141,10 +170,19 @@ const TeamEditorial = () => {
                   )}
                 </span>
                 <span className="flex flex-col leading-tight min-w-0">
-                  <span className={`font-mono text-[8px] md:text-[10px] uppercase tracking-wide-editorial ${isActive ? "" : "text-muted"}`} style={isActive ? { color: t.accent } : {}}>
+                  <span
+                    className={`font-mono text-[8px] md:text-[10px] uppercase tracking-[0.16em] ${
+                      isActive ? "" : "text-[var(--c-text-muted)]"
+                    }`}
+                    style={isActive ? { color: t.accent } : {}}
+                  >
                     {t.number} · {t.label}
                   </span>
-                  <span className={`mt-0.5 md:mt-1 font-display text-sm md:text-xl font-light tracking-tight truncate ${isActive ? "text-ink" : "text-muted group-hover:text-ink"} transition-colors`}>
+                  <span
+                    className={`mt-0.5 md:mt-1 font-display text-sm md:text-xl font-normal tracking-tight truncate ${
+                      isActive ? "text-[var(--c-text)]" : "text-[var(--c-text-muted)] group-hover:text-[var(--c-text)]"
+                    } transition-colors`}
+                  >
                     {t.short}
                   </span>
                 </span>
@@ -154,20 +192,20 @@ const TeamEditorial = () => {
         </div>
 
         {/* Panel */}
-        <div className="mt-8 md:mt-12 min-h-[480px] md:min-h-[520px]">
+        <div className="mt-10 md:mt-14 min-h-[480px] md:min-h-[520px]">
           <AnimatePresence mode="wait">
             <motion.div key={active.id} {...fadeUp} className="grid grid-cols-12 gap-6 md:gap-10">
               {/* Left meta */}
               <div className="col-span-12 md:col-span-3">
-                <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
+                <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-text-muted)]">
                   {active.number} — {active.label}
                 </span>
-                <h3 className="mt-3 font-display text-xl md:text-2xl font-light text-ink tracking-tight">
+                <h3 className="mt-3 font-display text-xl md:text-2xl font-normal text-[var(--c-text)] tracking-tight">
                   {active.name}
                 </h3>
-                <span className="block mt-1 font-mono text-[10px] uppercase tracking-wide-editorial" style={{ color: active.accent }}>
+                <span className="block mt-1 font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: active.accent }}>
                   {active.roleParts.map((p, idx) => (
-                    <span key={idx} className={p.gold ? "text-gold" : ""}>
+                    <span key={idx} className={p.gold ? "text-[var(--c-gold)]" : ""}>
                       {p.text}
                     </span>
                   ))}
@@ -176,63 +214,73 @@ const TeamEditorial = () => {
 
               {/* Right content */}
               <div className="col-span-12 md:col-span-9">
-                <h3
-                  data-testid={`manifesto-headline-${active.id}`}
-                  className="font-display font-light text-ink text-3xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight max-w-4xl"
-                >
-                  {active.headline[0]}
-                  {active.headline[1] && (
-                    <>
-                      {" "}
-                      <span className="italic">{active.headline[1]}</span>
-                    </>
-                  )}
-                </h3>
+                {/* Pablo's pull quote */}
+                {isPablo && (
+                  <blockquote
+                    data-testid="pablo-quote"
+                    className="border-l-2 border-[var(--c-gold)] pl-6 md:pl-8 font-display italic font-normal text-[var(--c-text)] text-2xl md:text-4xl leading-[1.3] max-w-3xl"
+                  >
+                    &ldquo;{active.quote.join(" ")}&rdquo;
+                  </blockquote>
+                )}
+
+                {/* José headline (no quote) */}
+                {!isPablo && !isGIM && (
+                  <h3
+                    data-testid={`manifesto-headline-${active.id}`}
+                    className="font-display font-normal text-[var(--c-text)] text-2xl md:text-4xl leading-[1.2] tracking-tight max-w-3xl"
+                  >
+                    The game is played <em className="italic text-[var(--c-gold)]">differently here.</em>
+                  </h3>
+                )}
+
+                {isGIM && (
+                  <h3
+                    className="font-display font-normal text-[var(--c-text)] text-2xl md:text-4xl leading-[1.2] tracking-tight max-w-3xl"
+                  >
+                    Three <em className="italic text-[var(--c-gold)]">principles.</em>
+                  </h3>
+                )}
 
                 {!isGIM && (
                   <>
                     {active.body.map((p, i) => (
                       <p
                         key={i}
-                        className={`${i === 0 ? "mt-6 md:mt-8" : "mt-4 md:mt-5"} font-body font-light text-ink/80 text-base md:text-lg leading-[1.7] max-w-2xl`}
+                        className={`${i === 0 ? "mt-7 md:mt-9" : "mt-4 md:mt-5"} font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] max-w-2xl`}
                       >
                         {p}
                       </p>
                     ))}
 
-                    <div className="mt-8 md:mt-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-ink/15 pt-5">
-                      <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
-                        <span className="font-display italic font-light text-ink/65 text-sm md:text-base">
-                          — {active.signature}
-                        </span>
-                        {active.socials && active.socials.length > 0 && (
-                          <div data-testid={`socials-${active.id}`} className="flex items-center gap-2">
-                            {active.socials.map((s) => {
-                              const Icon = s.icon;
-                              return (
-                                <a
-                                  key={s.label}
-                                  href={s.href}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  aria-label={`${active.short} on ${s.label}`}
-                                  data-testid={s.testid}
-                                  className="group inline-flex items-center justify-center w-9 h-9 border transition-colors duration-300"
-                                  style={{ borderColor: `${active.accent}40` }}
-                                >
-                                  <Icon className="w-4 h-4 text-ink/65 group-hover:text-ink transition-colors" strokeWidth={1.4} />
-                                </a>
-                              );
-                            })}
-                          </div>
-                        )}
+                    {active.socials && active.socials.length > 0 && (
+                      <div data-testid={`socials-${active.id}`} className="mt-8 md:mt-10 flex items-center gap-2">
+                        {active.socials.map((s) => {
+                          const Icon = s.icon;
+                          return (
+                            <a
+                              key={s.label}
+                              href={s.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`${active.short} on ${s.label}`}
+                              data-testid={s.testid}
+                              className="group inline-flex items-center justify-center w-9 h-9 border transition-colors duration-300"
+                              style={{ borderColor: `${active.accent}40` }}
+                            >
+                              <Icon className="w-4 h-4 text-[var(--c-text-mid)] group-hover:text-[var(--c-text)] transition-colors" strokeWidth={1.4} />
+                            </a>
+                          );
+                        })}
                       </div>
-                    </div>
+                    )}
+
+                    <InsidersCTA />
                   </>
                 )}
 
                 {isGIM && (
-                  <ul className="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-3 gap-px bg-ink/10 border-t border-b border-ink/10">
+                  <ul className="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-3 gap-px bg-[var(--c-border)] border-t border-b border-[var(--c-border)]">
                     {VALUES.map((v, i) => (
                       <motion.li
                         key={v.mark}
@@ -240,15 +288,15 @@ const TeamEditorial = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, delay: 0.08 * i, ease: [0.22, 1, 0.36, 1] }}
                         data-testid={`gim-value-${i + 1}`}
-                        className="bg-cream p-5 md:p-6 flex flex-col gap-3"
+                        className="bg-[var(--c-off-white)] p-6 md:p-7 flex flex-col gap-3"
                       >
-                        <span className="font-display font-light text-gold text-3xl md:text-4xl leading-none tracking-tight">
+                        <span className="font-display font-normal text-[var(--c-gold)] text-3xl md:text-4xl leading-none tracking-tight">
                           {v.mark}
                         </span>
-                        <h4 className="font-display font-light text-ink text-lg md:text-xl leading-[1.15] tracking-tight">
+                        <h4 className="font-display font-normal text-[var(--c-text)] text-lg md:text-xl leading-[1.2] tracking-tight">
                           {v.title}
                         </h4>
-                        <p className="font-body font-light text-ink/70 text-sm md:text-[15px] leading-[1.6]">
+                        <p className="font-body font-light text-[var(--c-text-muted)] text-sm md:text-[15px] leading-[1.65]">
                           {v.body}
                         </p>
                       </motion.li>

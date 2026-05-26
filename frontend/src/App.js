@@ -69,6 +69,10 @@ const AnimatedRoutes = () => {
           }
         />
         <Route
+          path="/about"
+          element={<Navigate to="/#founders" replace />}
+        />
+        <Route
           path="/destinations/:slug"
           element={
             <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">

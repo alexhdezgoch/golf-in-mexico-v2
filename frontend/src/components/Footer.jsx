@@ -59,9 +59,9 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display font-light text-cream text-4xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight max-w-4xl"
+            className="font-display font-normal text-cream text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight max-w-4xl"
           >
-            Stay <span className="italic text-cream/80">in the know.</span>
+            Stay <span className="italic text-[var(--c-gold)]">inside the ropes.</span>
           </motion.h2>
 
           <motion.p
