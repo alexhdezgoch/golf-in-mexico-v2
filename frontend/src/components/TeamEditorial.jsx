@@ -28,9 +28,11 @@ const PABLO = {
     "matches the quality and value that México offers.",
   ],
   body: [
-    "Over five years inside the player-only areas of the PGA Tour, LIV Golf, and WTA events, I heard the same thing repeated in every locker room: Mexican hospitality is world-class.",
-    "Add 50+ designer courses shaped by their region's landscape — and no country on earth offers this exact blend. That is why I founded Golf in México.",
+    "Over the past 5 years, my career has taken me inside the player-only areas of the PGA Tour, LIV Golf, and WTA events. But this isn't just a locker room conversation. Listen to almost any post-round interview, and the players will tell you the exact same thing: the people driving Mexican hospitality are world-class.",
+    "Now, add to the equation over 50+ renowned designer golf courses, each shaped by its region's unique landscape. No other country in the world offers this exact blend.",
+    "That is why I founded Golf in México. I want to give you the exact experience I've enjoyed for the past 5 years. No generic itineraries or opaque pricing. Just honest opinions, genuine hidden gems, professional delivery, and the keys to bespoke experiences you simply won't find online.",
   ],
+  signature: "— Pablo",
   socials: [
     { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/pablodlm/", testid: "social-pablo-linkedin" },
     { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/pablodlmc/", testid: "social-pablo-instagram" },
@@ -49,9 +51,11 @@ const JOSE = {
   accent: "#C4A24E",
   body: [
     "The game found me at four. It took me through junior ranks, amateur fields, and professional tours — across twenty countries.",
-    "PGA Tour at Vidanta and Los Cabos. TPC Sawgrass for the AJGA. Two World Amateur Team Championships. The Junior World Cup in Japan. Two US Amateurs at Oakmont and Cherry Hills.",
-    "After all of that global exposure, one thing became certain: in México, the game is played differently. For a true golfer, this country is not a stop on the itinerary — it is the destination itself.",
+    "I've teed it up on the PGA Tour at Vidanta and Los Cabos, competed at TPC Sawgrass for the AJGA, and played two World Amateur Team Championships in France and Qatar, the Junior World Cup in Japan, as well as two US Amateurs at Oakmont Country Club and Cherry Hills. I've walked dozens of the world's most demanding fairways.",
+    "But after all of that global exposure, the journey taught me one thing with absolute certainty: in México, the game is played differently. After traveling the world, this was the only place that felt like arriving somewhere real.",
+    "For a true golfer, our country is not just a stop on the itinerary. It is the destination itself. I'm here to show you exactly why.",
   ],
+  signature: "— José",
   socials: [
     { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/joseislasgolf/", testid: "social-jose-instagram" },
   ],
@@ -62,29 +66,29 @@ const VALUES = [
     mark: "/",
     title: "Tour-Level Precision",
     body:
-      "Our standards were forged on professional tours. From the first tee time to the final itinerary, we approach every detail with the rigor expected by the world's best players.",
+      "Our standards were forged on professional tours. From the first tee time to the final itinerary, we approach every single detail with the exact rigor and professionalism expected by the world's best players.",
   },
   {
     mark: "//",
     title: "Destination Intelligence",
     body:
-      "Over a decade scouting México's most exclusive regions. Genuine boots-on-the-ground relationships that bypass tourist noise and unlock the country's true hidden gems.",
+      "Over a decade spent scouting México's most exclusive regions. We rely on genuine, boots-on-the-ground relationships to bypass the tourist noise and unlock the country's true hidden gems.",
   },
   {
     mark: "///",
     title: "Long-Term Relationships",
     body:
-      "Tourism is transactional. Real access is relational. We build lasting bonds with local caddies, course directors, and club managers — because insider experiences are built on decades of trust.",
+      "Tourism is transactional; real access is relational. We don't do one-off deals. We build lasting bonds and fiercely take care of the people we work with. From local caddies to course directors, we prioritize radical honesty and mutual respect — because true insider experiences are built on decades of trust.",
   },
 ];
 
 const GIM = {
   id: "gim",
   number: "N° 03",
-  label: "The Media",
+  label: "The Collective",
   name: "Golf in Mexico°",
   short: "GIM",
-  roleParts: [{ text: "Our Values" }],
+  roleParts: [{ text: "Three principles" }],
   photo: "/logo-wordmark.png",
   isMark: true,
   accent: "#1A1A18",
@@ -252,6 +256,15 @@ const TeamEditorial = () => {
                         {p}
                       </p>
                     ))}
+
+                    {active.signature && (
+                      <p
+                        data-testid={`signature-${active.id}`}
+                        className="mt-6 md:mt-8 font-display italic font-normal text-[var(--c-text)] text-lg md:text-xl"
+                      >
+                        {active.signature}
+                      </p>
+                    )}
 
                     {active.socials && active.socials.length > 0 && (
                       <div data-testid={`socials-${active.id}`} className="mt-8 md:mt-10 flex items-center gap-2">
