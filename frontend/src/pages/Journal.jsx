@@ -19,6 +19,7 @@ const CATEGORY_MAP = {
   ],
   "beyond-the-course": ["luxury-golf-vacation-mexico"],
   "the-concierge": ["how-to-plan-a-golf-trip-to-mexico", "mexico-city-planning"],
+  "the-collective": [],
   "founders-journal": [],
 };
 
@@ -32,6 +33,7 @@ const CATEGORIES = [
   { key: "golf", label: "Golf" },
   { key: "beyond-the-course", label: "Beyond the Course" },
   { key: "the-concierge", label: "The Concierge" },
+  { key: "the-collective", label: "The Collective" },
   { key: "founders-journal", label: "Founders Journal" },
 ];
 
@@ -40,7 +42,7 @@ const CATEGORIES = [
 const PILLARS = [
   {
     id: "golf",
-    number: "01 / 03",
+    number: "01 / 04",
     short: "Golf",
     title: "Golf",
     sub: "Radical honesty meets tour-level precision.",
@@ -52,7 +54,7 @@ const PILLARS = [
   },
   {
     id: "beyond-the-course",
-    number: "02 / 03",
+    number: "02 / 04",
     short: "Beyond the Course",
     title: "Beyond the Course",
     sub: "Defining Mexican uniqueness.",
@@ -64,7 +66,7 @@ const PILLARS = [
   },
   {
     id: "the-concierge",
-    number: "03 / 03",
+    number: "03 / 04",
     short: "The Concierge",
     title: "The Concierge",
     sub: "Zero friction, complete access.",
@@ -73,6 +75,18 @@ const PILLARS = [
     ctaLabel: "Read The Concierge",
     ctaCategory: "the-concierge",
     image: "https://images.unsplash.com/photo-1717388835452-c9c8cda0002e?auto=format&fit=crop&w=2000&q=85",
+  },
+  {
+    id: "the-collective",
+    number: "04 / 04",
+    short: "The Collective",
+    title: "The Collective",
+    sub: "Industry insiders, in their own words.",
+    body:
+      "A growing roster of voices from inside the game — caddies, course directors, designers, chefs, and the operators who shape every world-class round in México. Their stories, their craft, their perspective.",
+    ctaLabel: "Read The Collective",
+    ctaCategory: "the-collective",
+    image: "https://images.unsplash.com/photo-1592965046687-1acdbcdb5642?auto=format&fit=crop&w=2000&q=85",
   },
 ];
 
@@ -109,7 +123,7 @@ const JournalHeader = ({ activePillar, setActivePillar, setCategory }) => {
           </h1>
           <div className="md:col-span-5 flex flex-col gap-4 md:pt-1">
             <p className="font-body font-light text-[var(--c-text-mid)] text-sm md:text-[15px] leading-[1.7]">
-              Three editorial pillars guide everything we publish — <em className="italic text-[var(--c-text)] not-italic font-normal">Golf</em>, <em className="italic text-[var(--c-text)] not-italic font-normal">Beyond the Course</em>, and <em className="italic text-[var(--c-text)] not-italic font-normal">The Concierge</em> — written by a tour agent, a professional golfer, and a growing collective of industry insiders who see the game differently.
+              Four editorial pillars guide everything we publish — <em className="not-italic font-normal text-[var(--c-text)]">Golf</em>, <em className="not-italic font-normal text-[var(--c-text)]">Beyond the Course</em>, <em className="not-italic font-normal text-[var(--c-text)]">The Concierge</em>, and <em className="not-italic font-normal text-[var(--c-text)]">The Collective</em> — written by a tour agent, a professional golfer, and a growing roster of industry insiders who see the game differently.
             </p>
           </div>
         </motion.div>
@@ -118,7 +132,7 @@ const JournalHeader = ({ activePillar, setActivePillar, setCategory }) => {
         <div
           data-testid="pillar-tabs"
           role="tablist"
-          className="grid grid-cols-3 gap-2 md:gap-6 border-b border-[var(--c-border)] pb-5 md:pb-6"
+          className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-6 border-b border-[var(--c-border)] pb-5 md:pb-6"
         >
           {PILLARS.map((p, i) => {
             const isActive = p.id === activePillar;
