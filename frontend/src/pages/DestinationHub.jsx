@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { getDestination, COMING_SOON } from "@/data/destinations";
+import DestinationPlaceholder, { isDestinationPlaceholder } from "@/pages/DestinationPlaceholder";
 
 const fmt = (n) => (n === 0 ? "Included" : `$${n.toLocaleString()}`);
 
@@ -456,7 +457,10 @@ const ComingSoonStrip = () => (
 const DestinationHub = () => {
   const { slug } = useParams();
   const d = getDestination(slug);
-  if (!d) return <Navigate to="/destinations" replace />;
+  if (!d) {
+    if (isDestinationPlaceholder(slug)) return <DestinationPlaceholder />;
+    return <Navigate to="/destinations" replace />;
+  }
 
   return (
     <main data-testid={`page-destination-${d.slug}`} className="relative bg-cream">
@@ -475,7 +479,6 @@ const DestinationHub = () => {
       <AllArticles d={d} />
       <NewsletterCTA d={d} />
       <FAQ d={d} />
-      <ComingSoonStrip />
     </main>
   );
 };

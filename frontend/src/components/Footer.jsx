@@ -14,13 +14,12 @@ const LIVE_DESTINATIONS = [
   { label: "Los Cabos", to: "/destinations/los-cabos" },
   { label: "Punta Mita", to: "/destinations/punta-mita" },
   { label: "Mexico City", to: "/destinations/mexico-city" },
+  { label: "Puerto Vallarta", to: "/destinations/puerto-vallarta" },
+  { label: "Cancún · Riviera Maya", to: "/destinations/cancun-riviera-maya" },
+  { label: "Unique Destinations", to: "/destinations/unique-destinations" },
 ];
 
-const SOON_DESTINATIONS = [
-  "Cancún · Riviera Maya",
-  "Puerto Vallarta",
-  "Unique Destinations",
-];
+const SOON_DESTINATIONS = [];
 
 const SOCIALS = [
   { href: "https://www.facebook.com/", label: "Facebook", path: "M22 12a10 10 0 1 0-11.6 9.87v-6.98H8v-2.89h2.4V9.41c0-2.38 1.42-3.69 3.58-3.69 1.04 0 2.12.19 2.12.19v2.34h-1.2c-1.18 0-1.55.73-1.55 1.49v1.78h2.63l-.42 2.89H13.4v6.98A10 10 0 0 0 22 12Z" },

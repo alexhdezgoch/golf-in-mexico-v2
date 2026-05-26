@@ -53,25 +53,28 @@ export const REGIONS = [
     tagline: "Jungle fairways, mountain greens.",
     courses: "6+",
     image: "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1600&q=85",
-    live: false,
+    live: true,
+    href: "/destinations/puerto-vallarta",
   },
   {
-    slug: "riviera-maya",
+    slug: "cancun-riviera-maya",
     name: "Cancún · Riviera Maya",
     region: "Quintana Roo",
     tagline: "Limestone fairways, Caribbean light.",
     courses: "10+",
     image: "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=1600&q=85",
-    live: false,
+    live: true,
+    href: "/destinations/cancun-riviera-maya",
   },
   {
-    slug: "unique",
+    slug: "unique-destinations",
     name: "Unique Destinations",
     region: "Across México",
     tagline: "Bajío, Huatulco, Mérida, and beyond.",
     courses: "8+",
     image: "https://images.unsplash.com/photo-1543105177-748ceda71741?auto=format&fit=crop&w=1600&q=85",
-    live: false,
+    live: true,
+    href: "/destinations/unique-destinations",
   },
 ];
 
@@ -197,7 +200,7 @@ const Intro = () => (
         transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         className="mt-8 font-body font-light text-cream/75 text-base md:text-lg max-w-2xl leading-relaxed"
       >
-        Browse our curated map of golf regions across México. Three are live — three more arriving with their own dedicated guides.
+        Browse our curated map of golf regions across México — each with its own dedicated guide.
       </motion.p>
     </div>
   </section>
