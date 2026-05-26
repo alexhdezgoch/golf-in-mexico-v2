@@ -415,6 +415,140 @@ const ScrollEmailCapture = ({ slug }) => {
 
 /* ------------------------------- PAGE ------------------------------- */
 
+/* ───────────────── RECOMMENDED READS — horizontal carousel ───────────────── */
+
+const RECOMMENDED = [
+  {
+    title: "The Greenskeepers",
+    excerpt: "Looking back on seasons spent happily in the mud.",
+    image: "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=1200&q=85",
+    href: "/journal",
+  },
+  {
+    title: "The Sober League",
+    excerpt: "Three members of Philadelphia's sober golf league discuss the game's role in their recovery.",
+    image: "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1200&q=85",
+    href: "/journal",
+  },
+  {
+    title: "Bill and Tom's Holiday Adventure",
+    excerpt: "Charleston to Old Barnwell, with Bill Murray in the passenger seat.",
+    image: "https://images.unsplash.com/photo-1592965046687-1acdbcdb5642?auto=format&fit=crop&w=1200&q=85",
+    href: "/journal",
+  },
+  {
+    title: "10 Years on the Range",
+    excerpt: "A lifelong amateur talks about the slow grind back to scratch.",
+    image: "https://images.unsplash.com/photo-1717388835452-c9c8cda0002e?auto=format&fit=crop&w=1200&q=85",
+    href: "/journal",
+  },
+  {
+    title: "After the Final Round",
+    excerpt: "Long-form interviews with players walking off the 18th for the last time.",
+    image: "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=1200&q=85",
+    href: "/journal",
+  },
+];
+
+const RecommendedReads = () => {
+  const scrollerRef = useRef(null);
+  const scrollBy = (dir) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const card = el.querySelector("[data-rr-card]");
+    const distance = card ? card.getBoundingClientRect().width + 24 : 360;
+    el.scrollBy({ left: dir * distance, behavior: "smooth" });
+  };
+
+  return (
+    <section
+      data-testid="recommended-reads"
+      aria-label="Recommended reads"
+      className="bg-cream py-24 md:py-32"
+    >
+      <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-12 lg:gap-16 items-start">
+        {/* Heading column */}
+        <div className="px-6 md:px-12 lg:pl-12 lg:pr-0">
+          <h2 className="font-display font-light text-ink text-3xl md:text-4xl lg:text-[2.5rem] leading-[1.1] tracking-tight mb-6">
+            Recommended Reads
+          </h2>
+          <p className="font-body font-light text-ink/70 text-sm md:text-base leading-[1.65] mb-8 max-w-[28ch]">
+            Recently published reads, listens and watches.
+          </p>
+          <Link
+            to="/journal"
+            data-testid="rr-view-all"
+            className="inline-flex items-center gap-2 bg-ink text-cream pl-6 pr-5 py-3 rounded-full font-mono text-[11px] uppercase tracking-[0.18em] hover:bg-gold hover:text-ink transition-colors"
+          >
+            View All
+          </Link>
+        </div>
+
+        {/* Carousel */}
+        <div className="relative">
+          <div
+            ref={scrollerRef}
+            data-testid="rr-scroller"
+            className="flex gap-6 overflow-x-auto pb-2 pr-6 md:pr-12 pl-6 lg:pl-0 snap-x snap-mandatory scrollbar-hide"
+            style={{ scrollbarWidth: "none" }}
+          >
+            {RECOMMENDED.map((r, i) => (
+              <Link
+                key={i}
+                to={r.href}
+                data-rr-card
+                data-testid={`rr-card-${i}`}
+                className="group flex-none w-[260px] sm:w-[300px] md:w-[340px] snap-start"
+              >
+                <div className="relative aspect-[3/5] overflow-hidden bg-ink mb-5 rounded-sm">
+                  <img
+                    src={r.image}
+                    alt={r.title}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
+                  />
+                </div>
+                <h3 className="font-display font-light text-ink text-xl md:text-2xl leading-[1.15] tracking-tight mb-3 group-hover:text-gold transition-colors">
+                  {r.title}
+                </h3>
+                <p className="font-body font-light text-ink/65 text-sm md:text-base leading-[1.55] max-w-[30ch]">
+                  {r.excerpt}
+                </p>
+              </Link>
+            ))}
+          </div>
+
+          {/* Right arrow */}
+          <button
+            type="button"
+            aria-label="Scroll right"
+            data-testid="rr-next"
+            onClick={() => scrollBy(1)}
+            className="hidden md:flex absolute right-4 top-[28%] -translate-y-1/2 w-12 h-12 rounded-full bg-ink text-cream items-center justify-center hover:bg-gold hover:text-ink transition-colors shadow-lg"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </button>
+          {/* Left arrow */}
+          <button
+            type="button"
+            aria-label="Scroll left"
+            data-testid="rr-prev"
+            onClick={() => scrollBy(-1)}
+            className="hidden md:flex absolute left-4 top-[28%] -translate-y-1/2 w-12 h-12 rounded-full bg-ink/85 text-cream items-center justify-center hover:bg-gold hover:text-ink transition-colors shadow-lg"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <path d="M15 6l-6 6 6 6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* ───────────────────────────── ARTICLE ───────────────────────────── */
 const Article = () => {
   const { slug } = useParams();
   const article = getArticleBySlug(slug);
@@ -509,18 +643,8 @@ const Article = () => {
         <Body blocks={article.body} destinationLabel={article.destinationLabel} />
       </section>
 
-      {/* FAQ (only if items) */}
-      <FAQ items={article.faqItems} />
-
-      {/* Continue reading */}
-      <ContinueReading
-        related={related}
-        hubLabel={article.destinationLabel}
-        hubSlug={article.destination}
-      />
-
-      {/* Footer CTA */}
-      <FooterCTA destinationLabel={article.destinationLabel} />
+      {/* Recommended Reads — horizontal scroll carousel */}
+      <RecommendedReads />
 
       {/* Scroll-triggered email capture */}
       <ScrollEmailCapture slug={article.slug} />

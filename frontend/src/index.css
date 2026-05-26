@@ -761,3 +761,6 @@ html.lenis, html.lenis body { height: auto; }
     .photo-strip-hide-on-mobile { display: none; }
 }
 
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
