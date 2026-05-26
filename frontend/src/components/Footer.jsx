@@ -1,12 +1,26 @@
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useInquiry } from "@/context/Inquiry";
 
 const NAV_LINKS = [
   { label: "Home", to: "/" },
   { label: "Journal", to: "/journal" },
   { label: "Destinations", to: "/destinations" },
   { label: "About", to: "/#founders" },
+  { label: "Contact", to: "mailto:hello@golf-in-mexico.com", external: true },
+];
+
+const LIVE_DESTINATIONS = [
+  { label: "Los Cabos", to: "/destinations/los-cabos" },
+  { label: "Punta Mita", to: "/destinations/punta-mita" },
+  { label: "Mexico City", to: "/destinations/mexico-city" },
+];
+
+const SOON_DESTINATIONS = [
+  "Cancún · Riviera Maya",
+  "Puerto Vallarta",
+  "Unique Destinations",
 ];
 
 const SOCIALS = [
@@ -21,6 +35,7 @@ const Footer = () => {
   const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const { openInquiry } = useInquiry();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -39,29 +54,26 @@ const Footer = () => {
   return (
     <footer
       data-testid="site-footer"
-      className="relative z-10 bg-ink text-cream"
+      className="relative z-10 bg-[#0a0a0a] text-white"
     >
-      {/* Newsletter — primary CTA, full width */}
+      {/* ─────────── NEWSLETTER ─────────── */}
       <div
         data-testid="footer-newsletter"
-        className="border-b border-cream/10"
+        className="border-b border-white/8"
       >
-        <div className="max-w-[1100px] mx-auto px-6 md:px-12 py-24 md:py-32">
-          <div className="flex items-center gap-3 mb-8 md:mb-10">
-            <span className="block w-6 h-px bg-gold" />
-            <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
-              Newsletter
-            </span>
-          </div>
+        <div className="max-w-[1240px] mx-auto px-6 md:px-12 py-24 md:py-32">
+          <span className="block font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--c-gold)] mb-10 md:mb-14">
+            The Newsletter°
+          </span>
 
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display font-normal text-cream text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight max-w-4xl"
+            className="font-display font-normal text-white text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight max-w-4xl"
           >
-            Stay <span className="italic text-[var(--c-gold)]">inside the ropes.</span>
+            Stay <span className="italic text-[var(--c-gold)]">inside</span> the ropes.
           </motion.h2>
 
           <motion.p
@@ -69,148 +81,194 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 md:mt-8 font-body font-light text-cream/65 text-base md:text-lg max-w-2xl leading-relaxed"
+            className="mt-8 md:mt-10 font-body font-light text-white/55 text-base md:text-lg max-w-xl leading-[1.7]"
           >
-            No spam. Only content worth your time.
+            Tour-level insights, hidden gems, and the culture of Mexican golf
+            delivered straight to your inbox. No generic spam. Just pure signal.
           </motion.p>
 
           {!submitted ? (
             <form
               data-testid="newsletter-form"
               onSubmit={onSubmit}
-              className="mt-10 md:mt-12 max-w-2xl"
+              className="mt-10 md:mt-12 flex flex-col sm:flex-row gap-3 max-w-2xl"
             >
-              <div className="relative flex items-center border-b border-cream/25 focus-within:border-gold transition-colors duration-300 pb-3">
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="your@email.com"
-                  data-testid="newsletter-email-input"
-                  className="flex-1 bg-transparent text-cream placeholder:text-cream/35 font-body font-light text-lg md:text-xl py-2 focus:outline-none"
-                />
-                <button
-                  type="submit"
-                  data-testid="newsletter-submit-button"
-                  className="group flex items-center gap-3 pl-6 font-mono text-[11px] uppercase tracking-wide-editorial text-cream hover:text-gold transition-colors duration-300"
-                >
-                  <span>Subscribe</span>
-                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
-                    →
-                  </span>
-                </button>
-              </div>
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="your@email.com"
+                data-testid="newsletter-email-input"
+                className="flex-1 bg-white/[0.04] border border-white/15 focus:border-[var(--c-gold)] transition-colors duration-300 text-white placeholder:text-white/35 font-body text-base px-5 py-4 rounded-sm focus:outline-none"
+              />
+              <button
+                type="submit"
+                data-testid="newsletter-submit-button"
+                className="group inline-flex items-center justify-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-8 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] transition-colors duration-300 whitespace-nowrap"
+              >
+                Subscribe
+                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </button>
             </form>
           ) : (
             <p
               data-testid="newsletter-success"
-              className="mt-10 font-display italic font-light text-gold text-2xl md:text-3xl"
+              className="mt-10 font-display italic font-normal text-[var(--c-gold)] text-2xl md:text-3xl"
             >
               You&apos;re on the list. Welcome to the room.
             </p>
           )}
+
+          <p className="mt-6 font-body font-light text-white/30 text-sm">
+            Join 4,200+ golfers who read Pablo&apos;s weekly field notes.
+          </p>
         </div>
       </div>
 
-      {/* 3-column grid: Brand / Navigation / Contact + Social */}
-      <div data-testid="footer-grid" className="border-b border-cream/10">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-16 md:py-20 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
-          {/* Column 1 — Brand */}
+      {/* ─────────── 3-COLUMN GRID ─────────── */}
+      <div data-testid="footer-grid" className="border-b border-white/8">
+        <div className="max-w-[1240px] mx-auto px-6 md:px-12 py-20 md:py-24 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+          {/* Col 1 — Brand */}
           <div data-testid="footer-col-brand" className="flex flex-col gap-6">
-            <Link to="/" data-testid="footer-logo" className="inline-flex leading-none">
-              <img src="/logo-wordmark.png" alt="Golf in Mexico°" className="h-6 w-auto invert opacity-90" style={{ mixBlendMode: "screen" }} />
-            </Link>
-            <p className="font-body font-light text-cream/60 text-sm leading-[1.7] max-w-sm">
-              An editorial dedicated to golf, culture and the experience of
-              playing at the finest courses in Mexico.
+            <h3 className="font-display font-normal text-white text-3xl md:text-4xl leading-tight tracking-tight">
+              Golf in México<span className="text-[var(--c-gold)]">°</span>
+            </h3>
+            <p className="font-body font-light text-white/55 text-sm md:text-[15px] leading-[1.7] max-w-sm">
+              Curating the culture behind the course. An editorial ecosystem
+              dedicated to the hospitality, the people, and the sheer privilege
+              of playing our country&apos;s finest fairways.
             </p>
+            <div className="mt-2 flex flex-col gap-1.5">
+              <a
+                href="mailto:hello@golf-in-mexico.com"
+                data-testid="footer-email"
+                className="font-body text-white/75 text-sm md:text-base hover:text-[var(--c-gold)] transition-colors duration-300"
+              >
+                hello@golf-in-mexico.com
+              </a>
+              <span className="font-body font-light text-white/40 text-sm">
+                Mexico City · Los Cabos · México
+              </span>
+            </div>
+            <div className="mt-2 flex items-center gap-3">
+              {SOCIALS.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  data-testid={`footer-social-${s.label.toLowerCase()}`}
+                  className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-white/15 text-white/70 hover:bg-[var(--c-gold)] hover:border-[var(--c-gold)] hover:text-[var(--c-green-deep)] transition-all duration-300"
+                >
+                  <svg viewBox="0 0 24 24" className="w-[13px] h-[13px]" fill="currentColor" aria-hidden>
+                    <path d={s.path} />
+                  </svg>
+                </a>
+              ))}
+            </div>
           </div>
 
-          {/* Column 2 — Navigation */}
-          <div data-testid="footer-col-nav" className="flex flex-col gap-4">
-            <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/40">
-              Navigation
+          {/* Col 2 — Destinations */}
+          <div data-testid="footer-col-destinations" className="flex flex-col gap-5">
+            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--c-gold)]">
+              Destinations
             </span>
             <ul className="flex flex-col gap-3">
-              {NAV_LINKS.map((l) => (
-                <li key={l.label}>
-                  {l.label === "About" ? (
-                    <a
-                      href="/#founders"
-                      onClick={handleAboutClick}
-                      data-testid="footer-link-about"
-                      className="font-display text-cream/85 hover:text-gold transition-colors duration-300 text-xl"
-                    >
-                      {l.label}
-                    </a>
-                  ) : (
-                    <Link
-                      to={l.to}
-                      data-testid={`footer-link-${l.label.toLowerCase()}`}
-                      className="font-display text-cream/85 hover:text-gold transition-colors duration-300 text-xl"
-                    >
-                      {l.label}
-                    </Link>
-                  )}
+              {LIVE_DESTINATIONS.map((d) => (
+                <li key={d.label}>
+                  <Link
+                    to={d.to}
+                    data-testid={`footer-dest-${d.label.toLowerCase().replace(/\s+/g, "-")}`}
+                    className="font-display text-white text-lg md:text-xl hover:text-[var(--c-gold)] transition-colors duration-300"
+                  >
+                    {d.label}
+                  </Link>
+                </li>
+              ))}
+              {SOON_DESTINATIONS.map((d) => (
+                <li key={d}>
+                  <span className="font-display text-white/30 text-base md:text-lg">
+                    {d} <em className="not-italic text-white/25 text-xs ml-1">— soon</em>
+                  </span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 3 — Contact + Social */}
-          <div data-testid="footer-col-contact" className="flex flex-col gap-6">
-            <div className="flex flex-col gap-4">
-              <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/40">
-                Contact
-              </span>
-              <a
-                href="mailto:hello@golfinmexico.com"
-                data-testid="footer-email"
-                className="font-display text-cream/85 hover:text-gold transition-colors duration-300 text-xl break-all"
-              >
-                hello@golfinmexico.com
-              </a>
-              <span className="font-body font-light text-cream/55 text-sm leading-relaxed">
-                Mexico City · Los Cabos
-                <br />
-                México
-              </span>
-            </div>
-
-            <div className="flex flex-col gap-3 mt-2">
-              <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/40">
-                Social Media
-              </span>
-              <div className="flex items-center gap-3">
-                {SOCIALS.map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={s.label}
-                    data-testid={`footer-social-${s.label.toLowerCase()}`}
-                    className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-cream/20 text-cream/80 hover:bg-gold hover:border-gold hover:text-ink transition-all duration-300"
-                  >
-                    <svg viewBox="0 0 24 24" className="w-[14px] h-[14px]" fill="currentColor" aria-hidden>
-                      <path d={s.path} />
-                    </svg>
-                  </a>
-                ))}
-              </div>
-            </div>
+          {/* Col 3 — Navigate */}
+          <div data-testid="footer-col-nav" className="flex flex-col gap-5">
+            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--c-gold)]">
+              Navigate
+            </span>
+            <ul className="flex flex-col gap-3">
+              {NAV_LINKS.map((l) => {
+                if (l.label === "About") {
+                  return (
+                    <li key={l.label}>
+                      <a
+                        href="/#founders"
+                        onClick={handleAboutClick}
+                        data-testid="footer-link-about"
+                        className="font-display text-white text-lg md:text-xl hover:text-[var(--c-gold)] transition-colors duration-300"
+                      >
+                        {l.label}
+                      </a>
+                    </li>
+                  );
+                }
+                if (l.external) {
+                  return (
+                    <li key={l.label}>
+                      <a
+                        href={l.to}
+                        data-testid={`footer-link-${l.label.toLowerCase()}`}
+                        className="font-display text-white text-lg md:text-xl hover:text-[var(--c-gold)] transition-colors duration-300"
+                      >
+                        {l.label}
+                      </a>
+                    </li>
+                  );
+                }
+                return (
+                  <li key={l.label}>
+                    <Link
+                      to={l.to}
+                      data-testid={`footer-link-${l.label.toLowerCase()}`}
+                      className="font-display text-white text-lg md:text-xl hover:text-[var(--c-gold)] transition-colors duration-300"
+                    >
+                      {l.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+            <button
+              type="button"
+              onClick={openInquiry}
+              data-testid="footer-plan-trip"
+              className="group mt-4 self-start inline-flex items-center gap-2 font-display italic font-normal text-[var(--c-gold)] text-lg md:text-xl hover:text-[var(--c-gold-light)] transition-colors duration-300"
+            >
+              Plan your trip
+              <span className="not-italic transition-transform duration-300 group-hover:translate-x-1.5">→</span>
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Bottom bar — copyright */}
-      <div data-testid="footer-copyright" className="max-w-[1440px] mx-auto px-6 md:px-12 py-6 md:py-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
-        <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/45">
-          © {year} Golf<span className="text-gold">°</span> in Mexico
-          <span className="text-gold">°</span>. All rights reserved.
+      {/* ─────────── BOTTOM BAR ─────────── */}
+      <div
+        data-testid="footer-copyright"
+        className="max-w-[1240px] mx-auto px-6 md:px-12 py-6 md:py-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-3"
+      >
+        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/30">
+          © {year} Golf<span className="text-[var(--c-gold)]">°</span> in Mexico
+          <span className="text-[var(--c-gold)]">°</span>. All rights reserved.
         </span>
-        <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-cream/45">
+        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/30">
           Crafted with care in México
         </span>
       </div>
