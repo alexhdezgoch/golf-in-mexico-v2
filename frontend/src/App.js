@@ -17,6 +17,7 @@ import Journal from "@/pages/Journal";
 import Article from "@/pages/Article";
 import Destinations from "@/pages/Destinations";
 import DestinationHub from "@/pages/DestinationHub";
+import LosCabos from "@/pages/LosCabos";
 
 const pageVariants = {
   initial: { opacity: 0, y: 18, filter: "blur(8px)" },
@@ -71,6 +72,14 @@ const AnimatedRoutes = () => {
         <Route
           path="/about"
           element={<Navigate to="/#founders" replace />}
+        />
+        <Route
+          path="/destinations/los-cabos"
+          element={
+            <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+              <LosCabos />
+            </motion.div>
+          }
         />
         <Route
           path="/destinations/:slug"
