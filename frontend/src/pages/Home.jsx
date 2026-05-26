@@ -9,7 +9,7 @@ const HERO_POSTER =
   "https://images.unsplash.com/photo-1605144156546-91acf5e4cffd?auto=format&fit=crop&w=2000&q=80";
 
 const HOME_DIVIDER_IMG =
-  "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=2400&q=85";
+  "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/nsvdb584_GOLFINMEXICO-014.jpg";
 
 // ↓↓↓  Reemplaza con el ID de YouTube cuando lo tengas listo  ↓↓↓
 const YOUTUBE_ID = "LXb3EKWsInQ";
