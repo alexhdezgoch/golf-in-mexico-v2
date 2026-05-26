@@ -14,11 +14,11 @@ const FOUNDERS = [
     name: "Pablo De La Mora",
     role: "The Agent",
     photos: [
-      "/founders/pablo/01.jpg",
-      "/founders/pablo/02.jpg",
-      "/founders/pablo/03.jpg",
-      "/founders/pablo/04.jpg",
-      "/founders/pablo/05.jpg",
+      { src: "/founders/pablo/01.jpg" },
+      { src: "/founders/pablo/02.jpg" },
+      { src: "/founders/pablo/03.jpg" },
+      { src: "/founders/pablo/04.jpg", position: "left center" },
+      { src: "/founders/pablo/05.jpg" },
     ],
   },
   {
@@ -26,16 +26,16 @@ const FOUNDERS = [
     name: "José Islas",
     role: "The Pro Player",
     photos: [
-      "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1400&q=85",
-      "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=1400&q=85",
-      "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=1400&q=85",
-      "https://images.unsplash.com/photo-1592965046687-1acdbcdb5642?auto=format&fit=crop&w=1400&q=85",
-      "https://images.unsplash.com/photo-1672825952732-ecef34882416?auto=format&fit=crop&w=1400&q=85",
-      "https://images.unsplash.com/photo-1717388835452-c9c8cda0002e?auto=format&fit=crop&w=1400&q=85",
-      "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=1400&q=85",
-      "https://images.unsplash.com/photo-1531594896955-305789152ddc?auto=format&fit=crop&w=1400&q=85",
-      "https://images.unsplash.com/photo-1605144156546-91acf5e4cffd?auto=format&fit=crop&w=1400&q=85",
-      "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=1400&q=85",
+      { src: "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1400&q=85" },
+      { src: "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=1400&q=85" },
+      { src: "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=1400&q=85" },
+      { src: "https://images.unsplash.com/photo-1592965046687-1acdbcdb5642?auto=format&fit=crop&w=1400&q=85" },
+      { src: "https://images.unsplash.com/photo-1672825952732-ecef34882416?auto=format&fit=crop&w=1400&q=85" },
+      { src: "https://images.unsplash.com/photo-1717388835452-c9c8cda0002e?auto=format&fit=crop&w=1400&q=85" },
+      { src: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=1400&q=85" },
+      { src: "https://images.unsplash.com/photo-1531594896955-305789152ddc?auto=format&fit=crop&w=1400&q=85" },
+      { src: "https://images.unsplash.com/photo-1605144156546-91acf5e4cffd?auto=format&fit=crop&w=1400&q=85" },
+      { src: "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=1400&q=85" },
     ],
   },
 ];
@@ -44,19 +44,21 @@ const StillSlider = ({ photos, name, testid }) => {
   const [idx, setIdx] = useState(0);
   const prev = () => setIdx((i) => (i === 0 ? photos.length - 1 : i - 1));
   const next = () => setIdx((i) => (i === photos.length - 1 ? 0 : i + 1));
+  const current = photos[idx];
 
   return (
     <div data-testid={testid}>
       <div className="relative aspect-[3/4] overflow-hidden rounded-sm bg-[var(--c-green-deep)]">
         <motion.img
           key={idx}
-          src={photos[idx]}
+          src={current.src}
           alt={`${name} — photo ${idx + 1} of ${photos.length}`}
           initial={{ opacity: 0, scale: 1.015 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
           loading="lazy"
           className="absolute inset-0 w-full h-full object-cover editorial-img"
+          style={{ objectPosition: current.position || "center center" }}
         />
 
         {/* Counter badge — replaces location */}
