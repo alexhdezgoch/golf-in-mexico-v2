@@ -395,7 +395,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
   const data = getHubData(slug) || getHubData("los-cabos");
   const heroPhoto = HERO_PHOTOS[data.slug] || HERO_PHOTOS["los-cabos"];
   const QUICK_FACTS = data.quickFacts;
-  const COURSES = data.courses;
+  const COURSES = data.courses || [];
   const PHOTO_STRIP = data.photoStrip;
   const COSTS = data.costs;
   const FAQS = data.faqs;
@@ -594,7 +594,37 @@ const LosCabos = ({ slug = "los-cabos" }) => {
             {data.coursesIntro}
           </p>
 
-          {/* List */}
+          {/* Destination list (Unique hub) — minimal editorial list, no specs */}
+          {data.isDestinationList && data.destinations ? (
+            <div className="border-t border-white/10">
+              {data.destinations.map((d, idx) => (
+                <motion.div
+                  key={d.name}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 0.55, delay: 0.03 * (idx % 6), ease: [0.16, 1, 0.3, 1] }}
+                  data-testid={`lc-destination-${idx}`}
+                  className="border-b border-white/10 py-6 md:py-7 grid grid-cols-[auto_1fr] items-baseline gap-x-6 md:gap-x-10"
+                >
+                  <span className="font-display font-light text-[var(--c-gold)] text-xl md:text-2xl leading-none">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                    <h3 className="course-name uppercase text-white text-lg md:text-2xl leading-tight tracking-wide">
+                      {d.name}
+                    </h3>
+                    <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.14em] text-white/55">
+                      {d.region}
+                    </span>
+                  </div>
+                </motion.div>
+              ))}
+              <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.14em] text-white/40">
+                + more added quarterly
+              </p>
+            </div>
+          ) : (
           <div className="border-t border-white/10">
             {COURSES.map((c, idx) => (
               <motion.article
@@ -648,14 +678,17 @@ const LosCabos = ({ slug = "los-cabos" }) => {
               </motion.article>
             ))}
           </div>
+          )}
 
-          {/* Legend */}
+          {/* Legend (hidden on destination-list hubs) */}
+          {!data.isDestinationList && (
           <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em] text-white/55">
             <span className="inline-flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#2d6a4f]" /> Public — book directly</span>
             <span className="inline-flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[var(--c-gold)]" /> Resort — room key required</span>
             <span className="inline-flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#8b2020]" /> Private — invitation only</span>
             <span className="basis-full text-white/35 normal-case">Difficulty: 1 Beginner → 5 Tournament · GIM editorial rating</span>
           </div>
+          )}
         </div>
       </section>
 
