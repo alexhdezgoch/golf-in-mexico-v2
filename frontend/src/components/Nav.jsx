@@ -2,10 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useInquiry } from "@/context/Inquiry";
 
-const links = [
-  { to: "/", label: "Home" },
-  { to: "/journal", label: "Journal" },
-];
+const links = [];
 
 const DESTINATIONS = [
   { slug: "los-cabos", name: "Los Cabos", region: "Baja California Sur", live: true, href: "/destinations/los-cabos" },
@@ -92,41 +89,7 @@ const Nav = () => {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-7">
-          {links.map((l) => (
-            <NavLink
-              key={l.to}
-              to={l.to}
-              data-testid={`nav-link-${l.label.toLowerCase()}`}
-              className={({ isActive }) =>
-                `nav-link-modern font-mono text-[11px] uppercase tracking-wide-editorial transition-colors duration-300 ${
-                  onDarkHero
-                    ? isActive
-                      ? "text-cream is-active"
-                      : "text-cream/65 hover:text-cream"
-                    : isActive
-                      ? "text-ink is-active"
-                      : "text-muted hover:text-ink"
-                }`
-              }
-              end={l.to === "/"}
-            >
-              {l.label}
-            </NavLink>
-          ))}
-
-          {/* About link — scrolls to founders */}
-          <a
-            href="/#founders"
-            onClick={handleAboutClick}
-            data-testid="nav-link-about"
-            className={`nav-link-modern font-mono text-[11px] uppercase tracking-wide-editorial transition-colors duration-300 ${
-              onDarkHero ? "text-cream/65 hover:text-cream" : "text-muted hover:text-ink"
-            }`}
-          >
-            About
-          </a>
-
-          {/* Destinations dropdown */}
+          {/* Destinations dropdown — first */}
           <div
             className="relative"
             onMouseEnter={() => setDestOpen(true)}
@@ -156,7 +119,7 @@ const Nav = () => {
             {destOpen && (
               <div
                 data-testid="nav-destinations-dropdown"
-                className="absolute right-0 top-full pt-3"
+                className="absolute left-0 top-full pt-3"
               >
                 <ul className="min-w-[280px] bg-cream border border-ink/10 shadow-2xl rounded-2xl overflow-hidden p-2">
                   {DESTINATIONS.map((d) => (
@@ -188,6 +151,48 @@ const Nav = () => {
               </div>
             )}
           </div>
+
+          {/* Journal */}
+          <NavLink
+            to="/journal"
+            data-testid="nav-link-journal"
+            className={({ isActive }) =>
+              `nav-link-modern font-mono text-[11px] uppercase tracking-wide-editorial transition-colors duration-300 ${
+                onDarkHero
+                  ? isActive
+                    ? "text-cream is-active"
+                    : "text-cream/65 hover:text-cream"
+                  : isActive
+                    ? "text-ink is-active"
+                    : "text-muted hover:text-ink"
+              }`
+            }
+          >
+            Journal
+          </NavLink>
+
+          {/* About — scrolls to founders */}
+          <a
+            href="/#founders"
+            onClick={handleAboutClick}
+            data-testid="nav-link-about"
+            className={`nav-link-modern font-mono text-[11px] uppercase tracking-wide-editorial transition-colors duration-300 ${
+              onDarkHero ? "text-cream/65 hover:text-cream" : "text-muted hover:text-ink"
+            }`}
+          >
+            About
+          </a>
+
+          {/* Contact — mailto */}
+          <a
+            href="mailto:hello@golf-in-mexico.com"
+            data-testid="nav-link-contact"
+            className={`nav-link-modern font-mono text-[11px] uppercase tracking-wide-editorial transition-colors duration-300 ${
+              onDarkHero ? "text-cream/65 hover:text-cream" : "text-muted hover:text-ink"
+            }`}
+          >
+            Contact
+          </a>
 
           {/* Inquire CTA — premium magnetic-style button */}
           <button
@@ -258,24 +263,6 @@ const Nav = () => {
         }`}
       >
         <nav className="px-6 pt-8 pb-12 flex flex-col gap-5 bg-cream/95 backdrop-blur-xl border-t hairline">
-          {links.map((l) => (
-            <NavLink
-              key={l.to}
-              to={l.to}
-              data-testid={`nav-mobile-link-${l.label.toLowerCase()}`}
-              className={({ isActive }) =>
-                `font-display text-4xl tracking-tight leading-none ${
-                  isActive ? "text-ink" : "text-muted"
-                }`
-              }
-              end={l.to === "/"}
-            >
-              {l.label}
-              {l.label === "Journal" && (
-                <span className="font-display italic text-gold"> °</span>
-              )}
-            </NavLink>
-          ))}
           <NavLink
             to="/destinations"
             data-testid="nav-mobile-link-destinations"
@@ -288,6 +275,18 @@ const Nav = () => {
             Destinations
             <span className="font-display italic text-gold">°</span>
           </NavLink>
+          <NavLink
+            to="/journal"
+            data-testid="nav-mobile-link-journal"
+            className={({ isActive }) =>
+              `font-display text-4xl tracking-tight leading-none ${
+                isActive ? "text-ink" : "text-muted"
+              }`
+            }
+          >
+            Journal
+            <span className="font-display italic text-gold"> °</span>
+          </NavLink>
           <a
             href="/#founders"
             onClick={handleAboutClick}
@@ -295,6 +294,13 @@ const Nav = () => {
             className="font-display text-4xl tracking-tight leading-none text-muted"
           >
             About
+          </a>
+          <a
+            href="mailto:hello@golf-in-mexico.com"
+            data-testid="nav-mobile-link-contact"
+            className="font-display text-4xl tracking-tight leading-none text-muted"
+          >
+            Contact
           </a>
           <button
             type="button"
