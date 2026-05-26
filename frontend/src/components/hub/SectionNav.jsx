@@ -20,6 +20,7 @@ const OFFSET = 132;
 
 const SectionNav = () => {
   const [active, setActive] = useState(LINKS[0].id);
+  const [userInteracted, setUserInteracted] = useState(false);
 
   useEffect(() => {
     const sections = LINKS
@@ -42,12 +43,17 @@ const SectionNav = () => {
   }, []);
 
   useEffect(() => {
+    // Only auto-center the active link in the nav AFTER the user has
+    // interacted with the page — otherwise the initial scrollIntoView
+    // would force the page to scroll to the nav on mount.
+    if (!userInteracted) return;
     const el = document.querySelector(`.section-nav-link[data-id='${active}']`);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-  }, [active]);
+  }, [active, userInteracted]);
 
   const handleClick = useCallback((e, id) => {
     e.preventDefault();
+    setUserInteracted(true);
     const target = document.getElementById(id);
     if (!target) return;
     const top = target.getBoundingClientRect().top + window.scrollY - OFFSET;

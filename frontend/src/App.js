@@ -46,7 +46,25 @@ const AnimatedRoutes = () => {
   const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
+    const snapToTop = () => {
+      if (window.__lenis) {
+        try {
+          window.__lenis.scrollTo(0, { immediate: true, force: true, lock: true });
+          window.__lenis.setScroll && window.__lenis.setScroll(0);
+        } catch (e) { /* ignore */ }
+      }
+      window.scrollTo(0, 0);
+      if (document.documentElement) document.documentElement.scrollTop = 0;
+      if (document.body) document.body.scrollTop = 0;
+    };
+    // Fire synchronously, then again next frame, then again after a tick
+    snapToTop();
+    const r1 = requestAnimationFrame(snapToTop);
+    const t1 = setTimeout(snapToTop, 60);
+    return () => {
+      cancelAnimationFrame(r1);
+      clearTimeout(t1);
+    };
   }, [location.pathname]);
 
   return (
@@ -152,6 +170,10 @@ function App() {
 
   useEffect(() => {
     document.documentElement.classList.add("cursor-custom");
+    // Disable browser scroll restoration so route changes always reset to top
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
   }, []);
 
   // Lenis momentum smooth scroll (skip on touch devices to preserve native scroll)
@@ -166,6 +188,7 @@ function App() {
       wheelMultiplier: 1,
       touchMultiplier: 1.4,
     });
+    window.__lenis = lenis;
 
     let rafId;
     const raf = (time) => {
@@ -177,6 +200,7 @@ function App() {
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
+      delete window.__lenis;
     };
   }, []);
 

@@ -390,8 +390,16 @@ const TripBuilder = () => {
                   </div>
                   {errors.months && <p className="text-[13px] text-[#8b2020] mb-5 font-mono">{errors.months}</p>}
 
+                  <div className="mt-10 flex items-center justify-between">
+                    <button type="button" onClick={() => setStep(1)} className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-text-muted)] hover:text-[var(--c-text)] transition-colors">← Back</button>
+                    <button type="button" onClick={next} data-testid="tb-next-2" className="group inline-flex items-center gap-3 bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-7 py-3.5 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors">
+                      Next: Your Trip
+                      <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                    </button>
+                  </div>
+
                   {months.length > 0 && (
-                    <div className="mb-8">
+                    <div className="mt-12 pt-10 border-t border-[var(--c-border)]">
                       <label className="block font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--c-text-muted)] mb-4">How long?</label>
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                         {LENGTHS.map((l) => (
@@ -409,14 +417,6 @@ const TripBuilder = () => {
                       {errors.length && <p className="mt-3 text-[13px] text-[#8b2020] font-mono">{errors.length}</p>}
                     </div>
                   )}
-
-                  <div className="mt-10 flex items-center justify-between">
-                    <button type="button" onClick={() => setStep(1)} className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-text-muted)] hover:text-[var(--c-text)] transition-colors">← Back</button>
-                    <button type="button" onClick={next} data-testid="tb-next-2" className="group inline-flex items-center gap-3 bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-7 py-3.5 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors">
-                      Next: Your Trip
-                      <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                    </button>
-                  </div>
                 </div>
               )}
 

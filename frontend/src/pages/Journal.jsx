@@ -6,19 +6,9 @@ import { ARTICLES } from "@/data/articles";
 /* ───────────────── CATEGORY TAGGING ───────────────── */
 
 const CATEGORY_MAP = {
-  golf: [
-    "solmar-golf-links",
-    "golf-courses-cabo-san-lucas",
-    "golf-courses-punta-mita",
-    "golf-courses-mexico-city",
-    "los-cabos-cabo-real-vs-cabo-del-sol",
-    "los-cabos-luxury-packages",
-    "punta-mita-packages",
-    "mandarina-golf-course",
-    "amanali-golf-club",
-  ],
-  "beyond-the-course": ["luxury-golf-vacation-mexico"],
-  "the-concierge": ["how-to-plan-a-golf-trip-to-mexico", "mexico-city-planning"],
+  golf: [],
+  "beyond-the-course": [],
+  "the-concierge": [],
   "the-collective": [],
   "founders-journal": ["the-bachelor-trip-cabo"],
 };
