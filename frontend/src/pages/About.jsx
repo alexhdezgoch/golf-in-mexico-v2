@@ -184,33 +184,30 @@ const About = () => (
       </div>
     </section>
 
-    {/* ── EDITORIAL PROMISE FOOTER ── */}
+    {/* ── GET IN TOUCH FOOTER ── */}
     <section className="bg-[var(--c-green-deep)] text-white py-20 md:py-28">
       <div className="max-w-[820px] mx-auto px-6 md:px-12 text-center">
         <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-6">
-          The editorial promise
+          Get in touch
         </span>
         <h2 className="font-display font-light text-white text-3xl md:text-5xl leading-[1.1] tracking-tight mb-8">
-          Written from inside México,{" "}
-          <em className="italic text-[var(--c-gold)]">not from a desk.</em>
+          Want to collaborate, share a story,{" "}
+          <em className="italic text-[var(--c-gold)]">or just talk golf?</em>
         </h2>
         <p className="font-body font-light text-white/75 text-base md:text-lg leading-[1.75] mb-10">
-          We don&apos;t republish press releases. We don&apos;t accept comp
-          rounds in exchange for coverage. If a course makes our roster, one of
-          us walked it. If a hotel is in our itinerary, one of us stayed there.
-          If a private club opens its gates to your group, the call came from
-          our personal cell — not a help desk.
+          We&apos;re always looking for new courses to cover, people to
+          interview, and stories worth telling.
         </p>
-        <Link
-          to="/trip-builder"
-          data-testid="about-trip-cta"
+        <a
+          href="mailto:hello@golf-in-mexico.com"
+          data-testid="about-contact-cta"
           className="group inline-flex items-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-8 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors"
         >
-          Start a Trip Proposal
+          Connect with us
           <span className="transition-transform duration-300 group-hover:translate-x-1">
             →
           </span>
-        </Link>
+        </a>
       </div>
     </section>
   </main>
