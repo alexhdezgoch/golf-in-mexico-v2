@@ -2,6 +2,17 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PhotoSlot from "../components/hub/PhotoSlot";
+import { getHubData, KEEP_EXPLORING_HUBS } from "../data/hubs";
+
+/* Hero photo per destination */
+const HERO_PHOTOS = {
+  "los-cabos":       "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/0wyp4brb_CABO%20PHOTO.png",
+  "punta-mita":      "https://images.unsplash.com/photo-1592965046687-1acdbcdb5642?auto=format&fit=crop&w=2400&q=85",
+  "mexico-city":     "https://images.unsplash.com/photo-1717388835452-c9c8cda0002e?auto=format&fit=crop&w=2400&q=85",
+  "cancun":          "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=2400&q=85",
+  "puerto-vallarta": "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=2400&q=85",
+  "unique-destinations": "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=2400&q=85",
+};
 
 /* ═══════════════════════════════════════════════════════════════════
    CREDENTIALS — identical across every destination hub
@@ -31,6 +42,20 @@ const Icon = ({ name, className = "w-5 h-5" }) => {
     flag: (
       <>
         <path d="M4 22V4M4 4h14l-3 5 3 5H4" />
+      </>
+    ),
+    pencil: (
+      <>
+        <path d="M12 19l7-7 3 3-7 7-3-3z" />
+        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+        <path d="M2 2l7.586 7.586" />
+        <circle cx="11" cy="11" r="2" />
+      </>
+    ),
+    alert: (
+      <>
+        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+        <path d="M12 9v4M12 17h.01" />
       </>
     ),
     pen: (
@@ -243,7 +268,7 @@ const AccessPill = ({ tier }) => {
    PLAYBOOK CTA
    ═══════════════════════════════════════════════════════════════════ */
 
-const PlaybookCTA = ({ variant = "full", testid }) => {
+const PlaybookCTA = ({ variant = "full", testid, h3Pre = "Cabo, distilled —", h3Em = "free.", body = "Our 2026 Playbook. Course notes, access codes, a 4-day itinerary. Built inside the corridor." }) => {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
@@ -294,10 +319,10 @@ const PlaybookCTA = ({ variant = "full", testid }) => {
         <div className="lg:col-span-7">
           <Label onDark>From GIM</Label>
           <h3 className="font-display font-light text-white leading-[1.15] tracking-tight text-2xl md:text-4xl mb-5">
-            Cabo, distilled — <em className="italic text-[var(--c-gold)]">free.</em>
+            {h3Pre} <em className="italic text-[var(--c-gold)]">{h3Em}</em>
           </h3>
           <p className="font-body font-light text-white/65 text-sm md:text-base leading-[1.7] max-w-lg">
-            Our 2026 Playbook. Course notes, access codes, a 4-day itinerary. Built inside the corridor.
+            {body}
           </p>
         </div>
 
@@ -365,7 +390,18 @@ const FAQ = () => {
    PAGE
    ═══════════════════════════════════════════════════════════════════ */
 
-const LosCabos = () => {
+const LosCabos = ({ slug = "los-cabos" }) => {
+  const data = getHubData(slug) || getHubData("los-cabos");
+  const heroPhoto = HERO_PHOTOS[data.slug] || HERO_PHOTOS["los-cabos"];
+  const QUICK_FACTS = data.quickFacts;
+  const COURSES = data.courses;
+  const PHOTO_STRIP = data.photoStrip;
+  const COSTS = data.costs;
+  const FAQS = data.faqs;
+  const KEEP_EXPLORING = KEEP_EXPLORING_HUBS(data.slug).map((h) => ({
+    ...h,
+    image: HERO_PHOTOS[h.slug] || "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=1600&q=85",
+  }));
   useEffect(() => {
     document.title = "Golf in Cabo San Lucas: Courses, Costs & Access (2026) | Golf in México";
     let meta = document.querySelector("meta[name='description']");
@@ -404,8 +440,8 @@ const LosCabos = () => {
       >
         {/* Hero photograph */}
         <img
-          src="https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/0wyp4brb_CABO%20PHOTO.png"
-          alt="Diamante Dunes Course — Cabo San Lucas, Baja California Sur"
+          src={heroPhoto}
+          alt={`${data.name} — destination guide`}
           loading="eager"
           fetchpriority="high"
           className="absolute inset-0 w-full h-full object-cover object-center"
@@ -442,13 +478,13 @@ const LosCabos = () => {
             <li aria-hidden>›</li>
             <li><Link to="/destinations" className="hover:text-[var(--c-gold)] transition-colors">Destinations</Link></li>
             <li aria-hidden>›</li>
-            <li className="text-[var(--c-gold)]">Los Cabos</li>
+            <li className="text-[var(--c-gold)]">{data.name}</li>
           </ol>
         </nav>
 
         <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-12 pb-20 md:pb-28 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 min-h-[72vh] md:min-h-[78vh] items-end">
           <div className="lg:col-span-7">
-            <Label onDark>Destination Guide · Los Cabos</Label>
+            <Label onDark>{data.heroLabel}</Label>
             <motion.h1
               initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
@@ -456,23 +492,22 @@ const LosCabos = () => {
               className="hub-h1 font-display text-white text-5xl md:text-7xl lg:text-[5.25rem]"
               style={{ textShadow: "0 2px 24px rgba(10,21,16,0.45)" }}
             >
-              Golf in <em className="italic text-[var(--c-gold)]">Cabo San Lucas.</em>
+              {data.h1Pre} <em className="italic text-[var(--c-gold)]">{data.h1Em}</em>
             </motion.h1>
             <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-gold)] leading-[1.7]">
-              GIM Editorial · Field research by Pablo De La Mora<br className="hidden md:block" />
-              <span className="md:hidden"> </span>&amp; José Islas · Updated May 2026
+              {data.byline.split(" · Updated").map((part, i, arr) => (
+                <span key={i}>
+                  {part}{i < arr.length - 1 ? <> · Updated</> : null}
+                  {i === 0 && arr.length > 1 && <br className="hidden md:block" />}
+                </span>
+              ))}
             </p>
           </div>
 
           {/* Minimal stat row — 4 inline, no borders */}
           <div className="lg:col-span-5 lg:pb-4">
             <div className="grid grid-cols-2 gap-x-8 gap-y-6 md:gap-y-8">
-              {[
-                { num: "23",        label: "Courses" },
-                { num: "20 mi",     label: "Corridor" },
-                { num: "$200–$500", label: "Green fees" },
-                { num: "Oct – May", label: "Best months" },
-              ].map((s) => (
+              {data.stats.map((s) => (
                 <div key={s.label} className="border-l border-[var(--c-gold)]/40 pl-4">
                   <div
                     className="font-display font-light text-white text-2xl md:text-3xl leading-none mb-2 tracking-tight"
@@ -493,7 +528,7 @@ const LosCabos = () => {
         <div className="max-w-[1100px] mx-auto px-6 md:px-12">
           <blockquote className="border-l-2 border-[var(--c-gold)] pl-6 md:pl-10 max-w-[820px]">
             <p className="font-display italic font-light text-[var(--c-text)] text-xl md:text-3xl leading-[1.45]">
-              Los Cabos features 23 active championship golf courses and 5 more currently under construction along a dramatic 20-mile stretch where the Sonoran Desert meets the Sea of Cortez. Green fees range from $200 to $500 USD per round, with peak conditions running from October through May.
+              {data.heroAnswer}
             </p>
           </blockquote>
         </div>
@@ -504,7 +539,6 @@ const LosCabos = () => {
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <Label>At a glance</Label>
           <H2 className="mb-14">Everything you need to know <em className="italic text-[var(--c-gold)]">before you book.</em></H2>
-
           <div className="max-w-[820px]">
             <div className="divide-y divide-[var(--c-border)]">
               {QUICK_FACTS.map((f) => (
@@ -522,22 +556,15 @@ const LosCabos = () => {
       {/* ═════════ S3. OVERVIEW + INLINE PLAYBOOK CTA — PAPER ═════════ */}
       <section data-testid="lc-overview" className="bg-[var(--c-off-white)] py-24 md:py-32">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-          <Label>The corridor</Label>
-          <H2 className="mb-12">Los Cabos golf — <em className="italic text-[var(--c-gold)]">what you need to understand first.</em></H2>
+          <Label>{data.overviewLabel}</Label>
+          <H2 className="mb-12">{data.overviewH2Pre} <em className="italic text-[var(--c-gold)]">{data.overviewH2Em}</em></H2>
           <div className="max-w-[680px] space-y-6 text-[var(--c-text-mid)] text-base md:text-lg leading-[1.8]" style={{ fontFamily: "var(--font-body)", fontWeight: 300 }}>
-            <p>Los Cabos is not just a destination; it is a high-demand, ultra-premium golf ecosystem located at the southern tip of the Baja California Peninsula. Where the mountains clash directly with the shoreline, signature architects have carved out a paradise that moved over 329,500 air passengers in January 2025 alone. The region commands incredible loyalty among luxury travelers, posting an elite 38% repeat-visitor rate.</p>
-            <p>The market splits into three distinct zones. San José del Cabo operates at a peaceful 63% hotel occupancy, offering a cultural backdrop. Cabo San Lucas runs hotter at 79% occupancy, centered around the marina and active nightlife. The real center of gravity for championship golf is The Tourist Corridor — this exclusive strip commands a luxury-segment ADR of $795 USD and hosts the vast majority of top-tier tracks.</p>
-            <p>Eight championship layouts from Nicklaus, Woods, Norman, and Love III anchor a corridor that stretches 20 miles between the two towns. The terrain is the differentiator: Pacific cliffside holes at Quivira, links-style dunes at Diamante, desert arroyos at Club Campestre, coastal finishes at Puerto Los Cabos. No other destination in Mexico puts this variety inside a 20-mile stretch.</p>
+            {data.overviewParagraphs.map((p, i) => (<p key={i}>{p}</p>))}
           </div>
 
           {/* Data strip */}
           <div className="mt-14 max-w-[860px] border-t border-[var(--c-gold)] pt-8 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {[
-              { num: "329,500", label: "Air passengers Jan 2025" },
-              { num: "38%",     label: "Repeat visitors" },
-              { num: "$795",    label: "Luxury ADR corridor" },
-              { num: "20 mi",   label: "Corridor" },
-            ].map((s) => (
+            {data.overviewStats.map((s) => (
               <div key={s.label}>
                 <div className="font-display font-light text-[var(--c-text)] text-3xl md:text-4xl leading-none mb-2 tracking-tight">{s.num}</div>
                 <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--c-text-muted)]">{s.label}</div>
@@ -555,7 +582,7 @@ const LosCabos = () => {
       {/* ═════════ 4.5 EDITORIAL PHOTO STRIP — between Overview and Course Roster ═════════ */}
       <section
         data-testid="lc-photo-strip"
-        aria-label="Field photography from Los Cabos"
+        aria-label={`Field photography from ${data.name}`}
         className="bg-[var(--c-off-white)] pb-16 md:pb-20"
       >
         <div className="max-w-[1440px] mx-auto px-0 md:px-0">
@@ -570,7 +597,7 @@ const LosCabos = () => {
             ))}
           </div>
           <p className="photo-strip-caption max-w-[1200px] mx-auto px-6 md:px-12">
-            Photography from GIM field research, Los Cabos corridor.
+            Photography from GIM field research, {data.name} corridor.
           </p>
         </div>
       </section>
@@ -578,10 +605,10 @@ const LosCabos = () => {
       {/* ═════════ S5. COURSE ROSTER — DARK · EDITORIAL LIST ═════════ */}
       <section data-testid="lc-courses" className="bg-[var(--c-green-deep)] text-white py-24 md:py-32">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-          <Label onDark>The courses</Label>
-          <H2 onDark className="mb-5">Nine courses <em className="italic text-[var(--c-gold)]">worth your round.</em></H2>
+          <Label onDark>{data.coursesLabel}</Label>
+          <H2 onDark className="mb-5">{data.coursesH2Pre} <em className="italic text-[var(--c-gold)]">{data.coursesH2Em}</em></H2>
           <p className="font-body font-light text-white/65 text-base md:text-lg max-w-2xl mb-16 leading-[1.7]">
-            From Nicklaus to Tiger Woods — the complete field guide to the best golf in Cabo San Lucas, with our editorial difficulty rating and access notes.
+            {data.coursesIntro}
           </p>
 
           {/* List */}
@@ -652,10 +679,10 @@ const LosCabos = () => {
       {/* ═════════ S6. COST — PAPER ═════════ */}
       <section data-testid="lc-costs" className="bg-[var(--c-off-white)] py-24 md:py-32">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-          <Label>The math</Label>
-          <H2 className="mb-8">Here is exactly <em className="italic text-[var(--c-gold)]">what you will spend.</em></H2>
+          <Label>{data.costsLabel}</Label>
+          <H2 className="mb-8">{data.costsH2Pre} <em className="italic text-[var(--c-gold)]">{data.costsH2Em}</em></H2>
           <p className="max-w-[680px] font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] mb-12">
-            Standard Cabo golf packages often cloud the true cost by hiding mandatory fees and customary incidentals. Here is what a realistic 4-night, 3-round golf trip looks like mid-season — no surprises.
+            {data.costsIntro}
           </p>
 
           <div className="overflow-x-auto border border-[var(--c-border)] rounded-sm">
@@ -687,18 +714,12 @@ const LosCabos = () => {
           </div>
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div className="bg-[var(--c-surface)] border-l-[3px] border-[var(--c-gold)] rounded-sm p-6">
-              <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--c-gold)] mb-3">💡 The luxury variable</div>
-              <p className="text-sm text-[var(--c-text-mid)] leading-[1.7]">
-                Your choice of base camp heavily dictates the financial footprint. While a hotel in Cabo San Lucas averages $319/night and San José averages $303, stepping into the gated Corridor properties moves your baseline to $795/night. However, premium courses like Quivira and Twin Dolphin completely change the value equation by bundling gourmet food and top-shelf liquor stations into the green fee.
-              </p>
-            </div>
-            <div className="bg-[var(--c-surface)] border-l-[3px] border-[var(--c-gold)] rounded-sm p-6">
-              <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--c-gold)] mb-3">🌅 The twilight advantage</div>
-              <p className="text-sm text-[var(--c-text-mid)] leading-[1.7]">
-                Afternoon booking windows (typically 1:00 or 2:00 PM) unlock 30–50% price reductions. During the spring shoulder months, an early afternoon tee time lets you finish all 18 holes before sunset while keeping budgets intact.
-              </p>
-            </div>
+            {data.callouts.map((c) => (
+              <div key={c.label} className="bg-[var(--c-surface)] border-l-[3px] border-[var(--c-gold)] rounded-sm p-6">
+                <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--c-gold)] mb-3">{c.icon} {c.label}</div>
+                <p className="text-sm text-[var(--c-text-mid)] leading-[1.7]">{c.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -706,15 +727,10 @@ const LosCabos = () => {
       {/* ═════════ S7. LOGISTICS — PAPER ═════════ */}
       <section data-testid="lc-logistics" className="bg-[var(--c-off-white)] py-24 md:py-32">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-          <Label>On the ground</Label>
-          <H2 className="mb-14">Getting there and between courses.</H2>
+          <Label>{data.logisticsLabel}</Label>
+          <H2 className="mb-14">{data.logisticsH2Pre} <em className="italic text-[var(--c-gold)]">{data.logisticsH2Em}</em></H2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 max-w-[1100px]">
-            {[
-              { icon: "plane",   title: "Airport + Arrivals",       body: "SJD International handles 82.9% of international traffic from the US — anchored by Los Angeles (12.5%), Dallas (10.7%), and Phoenix (10.5%). SJD handled 2,000+ private-jet operations in January 2025 with its own dedicated FBO terminal." },
-              { icon: "car",     title: "Getting to the Courses",   body: "Most courses sit 15–30 minutes from the airport along Highway 1. Pre-arranged private SUV transfers are the standard. Uber is legal but frequently blocked from entering the deep security gates of elite private clubs." },
-              { icon: "map",     title: "Between Courses",           body: "San José del Cabo ↔ Cabo San Lucas: 25–35 minutes on Highway 1. Build 45 minutes into your schedule for mid-day traffic. Courses toward each town require separate transfer planning for multi-course days." },
-              { icon: "dollar",  title: "Currency + Tipping",        body: "USD accepted everywhere on the golf corridor. Caddie tips in USD: $40–$60 per round. Restaurants: 15–20%. ATMs available for pesos if preferred." },
-            ].map((c) => (
+            {data.logistics.map((c) => (
               <div key={c.title} className="bg-[var(--c-surface)] rounded-sm p-6 md:p-7 flex flex-col gap-3">
                 <div className="text-[var(--c-gold)]"><Icon name={c.icon} className="w-6 h-6" /></div>
                 <h3 className="font-mono text-[11px] uppercase tracking-[0.14em] font-bold text-[var(--c-text)]">{c.title}</h3>
@@ -725,93 +741,36 @@ const LosCabos = () => {
         </div>
       </section>
 
-      {/* ═════════ 12. SEASON GUIDE — DARK ═════════ */}
+      {/* ═════════ S8. SEASON GUIDE — DARK ═════════ */}
       <section data-testid="lc-season" className="bg-[var(--c-green-deep)] text-white py-24 md:py-32">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-          <Label onDark>The calendar</Label>
-          <H2 onDark className="mb-14">When to play.</H2>
+          <Label onDark>{data.seasonLabel}</Label>
+          <H2 onDark className="mb-14">{data.seasonH2Pre} <em className="italic text-[var(--c-gold)]">{data.seasonH2Em}</em></H2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-[2px]">
-            {[
-              { name: "Peak Season",     months: "Nov – Apr", conditions: "72–82°F · High Crowds · $$$", body: "Clear skies, low humidity, manageable winds. Every course delivers its best conditions. Book flights first, tee times second. Advance window: 60–90 days for public slots.", border: "border-[var(--c-gold)]" },
-              { name: "Shoulder Season", months: "May – Jun", conditions: "82–90°F · Moderate Crowds · $$", body: "Warmer but playable with early tee times. Courses quieter; many resorts fold golf into the room rate. If you can take the heat, the math is hard to beat.", border: "border-[var(--c-gold)]/50" },
-              { name: "Off-Season",      months: "Jul – Oct", conditions: "85–95°F · Low Crowds · $",     body: "30–50% below peak pricing. Humidity, afternoon storms, occasional hurricane risk (August–September peak). Morning rounds still excellent. Flexibility required.", border: "border-[var(--c-gold)]/20" },
-            ].map((s) => (
-              <div key={s.name} className={`bg-white/[0.03] p-7 md:p-8 border-t-[3px] ${s.border}`}>
-                <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--c-gold)] mb-2">{s.name}</div>
-                <h3 className="font-display font-normal text-white text-2xl md:text-3xl mb-3">{s.months}</h3>
-                <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-white/45 mb-5">{s.conditions}</p>
-                <p className="text-sm text-white/70 leading-[1.7]">{s.body}</p>
-              </div>
-            ))}
+            {data.seasonBlocks.map((s, idx) => {
+              const borderClass = idx === 0 ? "border-[var(--c-gold)]" : idx === 1 ? "border-[var(--c-gold)]/50" : "border-[var(--c-gold)]/20";
+              return (
+                <div key={s.title} className={`bg-white/[0.03] p-7 md:p-8 border-t-[3px] ${borderClass}`}>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--c-gold)] mb-2">{s.title}</div>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-white/55 mb-5">{s.sub}</p>
+                  <p className="text-sm text-white/70 leading-[1.7]">{s.body}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* ═════════ S9. FIELD NOTES — PAPER · ARTICLE BOXES ═════════ */}
-      <section data-testid="lc-field-notes" className="bg-[var(--c-off-white)] py-24 md:py-32">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-          <Label>From the founders</Label>
-          <H2 className="mb-6">The things <em className="italic text-[var(--c-gold)]">we tell our friends.</em></H2>
-          <p className="max-w-[640px] font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] mb-12">
-            Four field reports from Pablo &amp; José — the answers we give privately when friends ask us about Cabo.
-          </p>
-
-          {/* Credential strip */}
-          <CredentialStrip variant="light" testid="lc-credentials" />
-
-          {/* Article-style boxes */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-            {FIELD_NOTES.map((n, i) => (
-              <motion.article
-                key={n.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-10%" }}
-                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: i * 0.05 }}
-                data-testid={`lc-field-note-${i}`}
-                className="group bg-white border border-[var(--c-border)] rounded-sm p-7 md:p-9 flex flex-col gap-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_42px_-12px_rgba(15,36,25,0.18)] hover:border-[var(--c-gold)]/40"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <span className="font-display font-light text-[var(--c-gold)] text-4xl md:text-5xl leading-none tracking-tight">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--c-text-muted)] px-2.5 py-1 border border-[var(--c-border)] rounded-full">
-                    Field Note
-                  </span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-display font-light text-[var(--c-text)] text-xl md:text-2xl leading-[1.25] tracking-tight mb-4">
-                    {n.title}
-                  </h3>
-                  <p className="text-[14px] md:text-[15px] text-[var(--c-text-mid)] leading-[1.75]">
-                    {n.body}
-                  </p>
-                </div>
-                <div className="pt-4 border-t border-[var(--c-border)] flex items-center justify-between">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--c-text-muted)]">
-                    By Pablo &amp; José
-                  </span>
-                  <span className="font-mono text-[11px] text-[var(--c-gold)] inline-flex items-center gap-2 transition-all duration-300 group-hover:gap-3">
-                    Read more
-                    <span>→</span>
-                  </span>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═════════ S10. NEWSLETTER — DARK ═════════ */}
+      {/* ═════════ S9. NEWSLETTER — DARK ═════════ */}
       <section data-testid="lc-newsletter-cta" className="bg-[var(--c-green-deep)] text-white py-24 md:py-32">
         <div className="max-w-[640px] mx-auto px-6 md:px-12 text-center">
           <Label onDark>Field Notes</Label>
-          <H2 onDark className="mb-6">Get Pablo&apos;s insider picks for <em className="italic text-[var(--c-gold)]">Los Cabos.</em></H2>
+          <H2 onDark className="mb-6">Get Pablo&apos;s insider picks for <em className="italic text-[var(--c-gold)]">{data.name}.</em></H2>
           <p className="font-body font-light text-white/70 text-base md:text-lg leading-[1.75] mb-5">
             Pablo&apos;s weekly Field Notes — which courses he&apos;d play this month, which caddie to request, and what a round actually costs. Written from inside México, not from a desk.
           </p>
           <p className="font-body font-light text-white/50 text-sm md:text-base mb-10">
-            Subscribe and get Los Cabos-specific Field Notes plus The Caddie Report.
+            Subscribe and get {data.name}-specific Field Notes plus The Caddie Report.
           </p>
           <NewsletterMiniForm testid="lc-newsletter-cta-form" />
           <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.14em] text-white/30">
@@ -827,12 +786,12 @@ const LosCabos = () => {
       <section data-testid="lc-playbook-end" className="bg-[var(--c-surface)] py-20 md:py-28">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center border-y border-[var(--c-border)] py-12 md:py-14">
           <div className="md:col-span-7">
-            <Label>The 2026 Cabo Golf Playbook</Label>
+            <Label>The 2026 {data.name} Playbook</Label>
             <h3 className="font-display font-light text-[var(--c-text)] text-2xl md:text-4xl leading-[1.15] tracking-tight mb-5">
-              The access codes, the insider notes, and a sample 4-day <em className="italic text-[var(--c-gold)]">itinerary — free.</em>
+              {data.playbookH3Pre} <em className="italic text-[var(--c-gold)]">{data.playbookH3Em}</em>
             </h3>
             <p className="font-body font-light text-[var(--c-text-mid)] text-sm md:text-base leading-[1.7] max-w-xl">
-              Built from 5+ years inside the corridor. Course notes, resort access by property, and the caddie tips most travelers never find.
+              {data.playbookBody}
             </p>
           </div>
           <div className="md:col-span-5">

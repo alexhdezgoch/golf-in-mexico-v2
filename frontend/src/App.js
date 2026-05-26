@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, useParams, Navigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Lenis from "lenis";
 
@@ -16,8 +16,13 @@ import Home from "@/pages/Home";
 import Journal from "@/pages/Journal";
 import Article from "@/pages/Article";
 import Destinations from "@/pages/Destinations";
-import DestinationHub from "@/pages/DestinationHub";
 import LosCabos from "@/pages/LosCabos";
+
+// Generic destination hub — routes /destinations/:slug through the LosCabos layout with the matching data
+const HubBySlug = () => {
+  const { slug } = useParams();
+  return <LosCabos slug={slug} />;
+};
 
 const pageVariants = {
   initial: { opacity: 0, y: 18, filter: "blur(8px)" },
@@ -77,7 +82,7 @@ const AnimatedRoutes = () => {
           path="/destinations/los-cabos"
           element={
             <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
-              <LosCabos />
+              <LosCabos slug="los-cabos" />
             </motion.div>
           }
         />
@@ -85,7 +90,7 @@ const AnimatedRoutes = () => {
           path="/destinations/:slug"
           element={
             <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
-              <DestinationHub />
+              <HubBySlug />
             </motion.div>
           }
         />
