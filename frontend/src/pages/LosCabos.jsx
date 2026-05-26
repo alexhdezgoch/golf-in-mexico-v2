@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PhotoSlot from "../components/hub/PhotoSlot";
+import SectionNav from "../components/hub/SectionNav";
 import { getHubData, KEEP_EXPLORING_HUBS } from "../data/hubs";
 
 /* Hero photo per destination */
@@ -359,7 +360,7 @@ const PlaybookCTA = ({ variant = "full", testid, h3Pre = "Cabo, distilled —", 
 const FAQ = () => {
   const [openIdx, setOpenIdx] = useState(0);
   return (
-    <section data-testid="lc-faq" className="bg-[var(--c-surface)] py-24 md:py-32">
+    <section data-testid="lc-faq" id="faq" className="bg-[var(--c-surface)] py-24 md:py-32">
       <div className="max-w-[1100px] mx-auto px-6 md:px-12">
         <Label>Frequently Asked</Label>
         <H2 className="mb-14">Your questions, <em className="italic text-[var(--c-gold)]">answered.</em></H2>
@@ -433,6 +434,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
 
   return (
     <main data-testid="page-los-cabos" className="hub-page relative bg-[var(--c-off-white)]">
+      <SectionNav />
       {/* ═════════ S1. HERO — FULL-BLEED PHOTO + CINEMATIC GRADIENT ═════════ */}
       <header
         data-testid="lc-header"
@@ -554,7 +556,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
       </section>
 
       {/* ═════════ S3. OVERVIEW + INLINE PLAYBOOK CTA — PAPER ═════════ */}
-      <section data-testid="lc-overview" className="bg-[var(--c-off-white)] py-24 md:py-32">
+      <section data-testid="lc-overview" id="overview" className="bg-[var(--c-off-white)] py-24 md:py-32">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12">
           <Label>{data.overviewLabel}</Label>
           <H2 className="mb-12">{data.overviewH2Pre} <em className="italic text-[var(--c-gold)]">{data.overviewH2Em}</em></H2>
@@ -603,7 +605,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
       </section>
 
       {/* ═════════ S5. COURSE ROSTER — DARK · EDITORIAL LIST ═════════ */}
-      <section data-testid="lc-courses" className="bg-[var(--c-green-deep)] text-white py-24 md:py-32">
+      <section data-testid="lc-courses" id="courses" className="bg-[var(--c-green-deep)] text-white py-24 md:py-32">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <Label onDark>{data.coursesLabel}</Label>
           <H2 onDark className="mb-5">{data.coursesH2Pre} <em className="italic text-[var(--c-gold)]">{data.coursesH2Em}</em></H2>
@@ -677,7 +679,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
       </section>
 
       {/* ═════════ S6. COST — PAPER ═════════ */}
-      <section data-testid="lc-costs" className="bg-[var(--c-off-white)] py-24 md:py-32">
+      <section data-testid="lc-costs" id="costs" className="bg-[var(--c-off-white)] py-24 md:py-32">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12">
           <Label>{data.costsLabel}</Label>
           <H2 className="mb-8">{data.costsH2Pre} <em className="italic text-[var(--c-gold)]">{data.costsH2Em}</em></H2>
@@ -730,7 +732,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
       </section>
 
       {/* ═════════ S7. LOGISTICS — PAPER ═════════ */}
-      <section data-testid="lc-logistics" className="bg-[var(--c-off-white)] py-24 md:py-32">
+      <section data-testid="lc-logistics" id="logistics" className="bg-[var(--c-off-white)] py-24 md:py-32">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <Label>{data.logisticsLabel}</Label>
           <H2 className="mb-14">{data.logisticsH2Pre} <em className="italic text-[var(--c-gold)]">{data.logisticsH2Em}</em></H2>
@@ -747,7 +749,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
       </section>
 
       {/* ═════════ S8. SEASON GUIDE — DARK ═════════ */}
-      <section data-testid="lc-season" className="bg-[var(--c-green-deep)] text-white py-24 md:py-32">
+      <section data-testid="lc-season" id="season" className="bg-[var(--c-green-deep)] text-white py-24 md:py-32">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <Label onDark>{data.seasonLabel}</Label>
           <H2 onDark className="mb-14">{data.seasonH2Pre} <em className="italic text-[var(--c-gold)]">{data.seasonH2Em}</em></H2>

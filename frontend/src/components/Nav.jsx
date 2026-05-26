@@ -37,11 +37,7 @@ const Nav = () => {
   const handleAboutClick = (e) => {
     e.preventDefault();
     setOpen(false);
-    if (isHome) {
-      scrollToFounders();
-    } else {
-      navigate("/#founders");
-    }
+    navigate("/about");
   };
 
   useEffect(() => {

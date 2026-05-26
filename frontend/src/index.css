@@ -678,8 +678,56 @@ html.lenis, html.lenis body { height: auto; }
 }
 .article-count--light { color: var(--c-text-muted); }
 
+/* ── Section nav (sticky sub-nav for destination hubs) ── */
+.section-nav {
+    position: sticky;
+    top: 72px;
+    z-index: 90;
+    background: var(--c-off-white);
+    border-bottom: 1px solid var(--c-border);
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+.section-nav::-webkit-scrollbar { display: none; }
+
+.section-nav-inner {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: clamp(20px, 5vw, 60px);
+    height: 44px;
+    white-space: nowrap;
+}
+
+.section-nav-link {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+    text-decoration: none;
+    padding: 0 16px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.section-nav-link:hover {
+    color: var(--c-text);
+}
+
+.section-nav-link.active {
+    color: var(--c-green-mid);
+    border-bottom-color: var(--c-gold);
+}
+
 /* ── Hub typography refinements ── */
-.hub-page h1,
 .hub-page .hub-h1 {
     font-weight: 300;
     letter-spacing: -0.03em;

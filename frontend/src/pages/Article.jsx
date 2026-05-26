@@ -119,6 +119,45 @@ const Body = ({ blocks, destinationLabel }) => {
             </h3>
           );
         }
+        if (block.type === "image") {
+          // Edge-to-edge editorial image (breaks the 680px column)
+          return (
+            <figure key={i} className="my-12 md:my-16 -mx-6 md:-mx-[calc((100vw-680px)/2-60px)] md:max-w-[1200px] md:mx-auto">
+              <div className="relative bg-forest overflow-hidden rounded-sm aspect-[16/10]">
+                <img
+                  src={block.src}
+                  alt={block.alt || block.caption || ""}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+              {block.caption && (
+                <figcaption className="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-ink/55 italic">
+                  {block.caption}
+                </figcaption>
+              )}
+            </figure>
+          );
+        }
+        if (block.type === "pullquote") {
+          return (
+            <blockquote key={i} className="my-12 md:my-16 border-l-2 border-gold pl-6 md:pl-8 max-w-[640px]">
+              <p className="font-display italic font-light text-ink text-2xl md:text-3xl leading-[1.4]">
+                {block.text}
+              </p>
+              {block.cite && (
+                <cite className="block mt-4 font-mono not-italic text-[10px] uppercase tracking-[0.16em] text-ink/55">
+                  — {block.cite}
+                </cite>
+              )}
+            </blockquote>
+          );
+        }
+        if (block.type === "divider") {
+          return (
+            <div key={i} className="my-14 md:my-20 text-center text-gold font-mono text-lg tracking-[0.5em]">◆ ◆ ◆</div>
+          );
+        }
         // paragraph
         const p = (
           <p key={i} className="mt-4 first:mt-0">

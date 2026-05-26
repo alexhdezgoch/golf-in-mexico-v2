@@ -15,6 +15,8 @@ import { InquiryContext } from "@/context/Inquiry";
 import Home from "@/pages/Home";
 import Journal from "@/pages/Journal";
 import Article from "@/pages/Article";
+import TripBuilder from "@/pages/TripBuilder";
+import About from "@/pages/About";
 import Destinations from "@/pages/Destinations";
 import LosCabos from "@/pages/LosCabos";
 
@@ -75,10 +77,6 @@ const AnimatedRoutes = () => {
           }
         />
         <Route
-          path="/about"
-          element={<Navigate to="/#founders" replace />}
-        />
-        <Route
           path="/destinations/los-cabos"
           element={
             <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
@@ -106,8 +104,35 @@ const AnimatedRoutes = () => {
             </motion.div>
           }
         />
+        <Route
+          path="/trip-builder"
+          element={<TripBuilder />}
+        />
+        <Route
+          path="/about"
+          element={
+            <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+              <About />
+            </motion.div>
+          }
+        />
       </Routes>
     </AnimatePresence>
+  );
+};
+
+// Hide global Nav + Footer on trip-builder (lead capture page)
+const ChromeLayout = ({ children }) => {
+  const location = useLocation();
+  const minimal = location.pathname.startsWith("/trip-builder");
+  if (minimal) return <>{children}</>;
+  return (
+    <>
+      <Nav />
+      <ReadingProgress />
+      {children}
+      <Footer />
+    </>
   );
 };
 
@@ -166,10 +191,9 @@ function App() {
           {!introDone && <Intro key="intro" onDone={() => setIntroDone(true)} />}
         </AnimatePresence>
         <BrowserRouter>
-          <Nav />
-          <ReadingProgress />
-          <AnimatedRoutes />
-          <Footer />
+          <ChromeLayout>
+            <AnimatedRoutes />
+          </ChromeLayout>
         </BrowserRouter>
         <InquiryModal open={inquiryOpen} onClose={closeInquiry} />
       </div>
