@@ -171,8 +171,13 @@ const TripBuilder = () => {
       {/* Minimal top bar */}
       <header className="border-b border-[var(--c-border)] bg-[var(--c-off-white)]">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12 py-5 flex items-center justify-between">
-          <Link to="/" className="font-display text-[var(--c-text)] text-lg tracking-tight" data-testid="tb-logo">
-            Golf<span className="italic text-[var(--c-gold)]">°</span> in México<span className="italic text-[var(--c-gold)]">°</span>
+          <Link to="/" className="flex items-center leading-none shrink-0" data-testid="tb-logo">
+            <img
+              src="/logo-wordmark.png"
+              alt="Golf in México°"
+              className="h-5 md:h-6 w-auto invert"
+              style={{ mixBlendMode: "multiply" }}
+            />
           </Link>
           <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-text-muted)] hidden sm:inline">Custom Trip Proposals</span>
         </div>
@@ -188,18 +193,25 @@ const TripBuilder = () => {
           <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] max-w-[680px] mx-auto mb-10">
             Built by real insiders — not AI. Tell us where you want to play and what matters most. We will hand-craft a named itinerary with confirmed course access, itemized down to the peso. No call required to get your proposal.
           </p>
-          <button
-            type="button"
-            onClick={scrollToForm}
-            data-testid="tb-hero-cta"
-            className="group inline-flex items-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-9 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.2em] font-bold transition-colors"
-          >
-            Get My 48-Hour Proposal
-            <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-          </button>
-          <div className="mt-6 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--c-text-muted)]">
-            <span className="w-2 h-2 rounded-full bg-[var(--c-gold)] animate-pulse" />
-            Q2 2026 Availability — One trip per week. Weeks fill as proposals are accepted.
+          <div className="flex flex-col items-center">
+            <button
+              type="button"
+              onClick={scrollToForm}
+              data-testid="tb-hero-cta"
+              className="group inline-flex items-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-9 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.2em] font-bold transition-colors"
+            >
+              Get My 48-Hour Proposal
+              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </button>
+
+            {/* Scarcity tag — under the CTA */}
+            <div
+              data-testid="tb-scarcity"
+              className="mt-5 inline-flex items-center gap-3 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.16em] text-[var(--c-text-muted)] border-t border-[var(--c-border)] pt-5 max-w-[460px] text-center"
+            >
+              <span className="w-2 h-2 rounded-full bg-[var(--c-gold)] animate-pulse shrink-0" />
+              <span>Q2 2026 Availability — One trip per week. Weeks fill as proposals are accepted.</span>
+            </div>
           </div>
         </div>
       </section>
