@@ -483,44 +483,19 @@ const LosCabos = ({ slug = "los-cabos" }) => {
           </ol>
         </nav>
 
-        <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-12 pb-20 md:pb-28 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 min-h-[72vh] md:min-h-[78vh] items-end">
-          <div className="lg:col-span-7">
-            <Label onDark>{data.heroLabel}</Label>
-            <motion.h1
-              initial={{ opacity: 0, y: 22 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="hub-h1 font-display text-white text-5xl md:text-7xl lg:text-[5.25rem]"
-              style={{ textShadow: "0 2px 24px rgba(10,21,16,0.45)" }}
-            >
-              {data.h1Pre} <em className="italic text-[var(--c-gold)]">{data.h1Em}</em>
-            </motion.h1>
-            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-gold)] leading-[1.7]">
-              {data.byline.split(" · Updated").map((part, i, arr) => (
-                <span key={i}>
-                  {part}{i < arr.length - 1 ? <> · Updated</> : null}
-                  {i === 0 && arr.length > 1 && <br className="hidden md:block" />}
-                </span>
-              ))}
-            </p>
-          </div>
-
-          {/* Minimal stat row — 4 inline, no borders */}
-          <div className="lg:col-span-5 lg:pb-4">
-            <div className="grid grid-cols-2 gap-x-8 gap-y-6 md:gap-y-8">
-              {data.stats.map((s) => (
-                <div key={s.label} className="border-l border-[var(--c-gold)]/40 pl-4">
-                  <div
-                    className="font-display font-light text-white text-2xl md:text-3xl leading-none mb-2 tracking-tight"
-                    style={{ textShadow: "0 1px 12px rgba(10,21,16,0.5)" }}
-                  >
-                    {s.num}
-                  </div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-gold)]/85">{s.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-12 pb-20 md:pb-28 min-h-[60vh] md:min-h-[68vh] flex flex-col justify-end">
+          <motion.h1
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="hub-h1 font-display text-white text-5xl md:text-7xl lg:text-[5.25rem] max-w-[18ch]"
+            style={{ textShadow: "0 2px 24px rgba(10,21,16,0.45)" }}
+          >
+            {data.h1Pre} <em className="italic text-[var(--c-gold)]">{data.h1Em}</em>
+          </motion.h1>
+          <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--c-gold)]">
+            Updated May 2026
+          </p>
         </div>
       </header>
 
