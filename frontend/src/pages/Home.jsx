@@ -27,13 +27,25 @@ const StatementAndVideo = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        data-testid="home-section-heading"
+        className="font-display font-normal text-[var(--c-text)] leading-[1.05] tracking-tight text-3xl md:text-5xl lg:text-6xl max-w-[20ch] mb-10 md:mb-14"
+      >
+        Everything you need to know <em className="italic text-[var(--c-gold)]">before you play México.</em>
+      </motion.h2>
+
+      <motion.p
+        initial={{ opacity: 0, y: 14 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.95, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         data-testid="home-statement"
-        className="font-display font-normal text-[var(--c-text)] leading-[1.25] tracking-tight text-xl md:text-2xl lg:text-[1.75rem] max-w-[52ch] mb-14 md:mb-20"
+        className="font-body font-light text-[var(--c-text-mid)] leading-[1.7] text-lg md:text-xl max-w-[52ch] mb-14 md:mb-20"
       >
         We are an editorial ecosystem covering Mexican golf nationwide —
         showcasing elite courses, designing bespoke experiences, and capturing
-        the <em className="italic text-[var(--c-gold)]">food, architecture, hospitality, and people</em> who make it all possible.
-      </motion.h2>
+        the food, architecture, hospitality, and people who make it all
+        possible.
+      </motion.p>
 
       <motion.div
         initial={{ opacity: 0, y: 32 }}
