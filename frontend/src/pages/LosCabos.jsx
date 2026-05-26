@@ -695,7 +695,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
                 </tr>
               </thead>
               <tbody>
-                {COSTS.map((row) => (
+                {COSTS.slice(0, -1).map((row) => (
                   <tr key={row[0]} className="border-b border-[var(--c-border)]">
                     <td className="py-3.5 px-4 align-top font-display text-[var(--c-text)]">{row[0]}</td>
                     <td className="py-3.5 px-4 align-top font-mono text-[#2d6a4f]">{row[1]}</td>
@@ -703,12 +703,17 @@ const LosCabos = ({ slug = "los-cabos" }) => {
                     <td className="py-3.5 px-4 align-top text-[var(--c-text-mid)] leading-[1.55]">{row[3]}</td>
                   </tr>
                 ))}
-                <tr className="bg-[var(--c-surface)] border-t-2 border-[var(--c-green-mid)]">
-                  <td className="py-4 px-4 font-display text-base font-bold text-[var(--c-text)]">Total all-in (per person)</td>
-                  <td className="py-4 px-4 font-mono font-bold text-[#2d6a4f] text-[15px]">$2,230</td>
-                  <td className="py-4 px-4 font-mono font-bold text-[var(--c-text)] text-[15px]">$5,580</td>
-                  <td className="py-4 px-4 italic text-[var(--c-text-mid)]">Mid-season estimate</td>
-                </tr>
+                {COSTS.length > 0 && (() => {
+                  const total = COSTS[COSTS.length - 1];
+                  return (
+                    <tr className="bg-[var(--c-surface)] border-t-2 border-[var(--c-green-mid)]">
+                      <td className="py-4 px-4 font-display text-base font-bold text-[var(--c-text)]">{total[0]}</td>
+                      <td className="py-4 px-4 font-mono font-bold text-[#2d6a4f] text-[15px]">{total[1]}</td>
+                      <td className="py-4 px-4 font-mono font-bold text-[var(--c-text)] text-[15px]">{total[2]}</td>
+                      <td className="py-4 px-4 italic text-[var(--c-text-mid)]">{total[3]}</td>
+                    </tr>
+                  );
+                })()}
               </tbody>
             </table>
           </div>
@@ -761,25 +766,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
         </div>
       </section>
 
-      {/* ═════════ S9. NEWSLETTER — DARK ═════════ */}
-      <section data-testid="lc-newsletter-cta" className="bg-[var(--c-green-deep)] text-white py-24 md:py-32">
-        <div className="max-w-[640px] mx-auto px-6 md:px-12 text-center">
-          <Label onDark>Field Notes</Label>
-          <H2 onDark className="mb-6">Get Pablo&apos;s insider picks for <em className="italic text-[var(--c-gold)]">{data.name}.</em></H2>
-          <p className="font-body font-light text-white/70 text-base md:text-lg leading-[1.75] mb-5">
-            Pablo&apos;s weekly Field Notes — which courses he&apos;d play this month, which caddie to request, and what a round actually costs. Written from inside México, not from a desk.
-          </p>
-          <p className="font-body font-light text-white/50 text-sm md:text-base mb-10">
-            Subscribe and get {data.name}-specific Field Notes plus The Caddie Report.
-          </p>
-          <NewsletterMiniForm testid="lc-newsletter-cta-form" />
-          <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.14em] text-white/30">
-            No spam. Unsubscribe anytime. Pablo writes these himself.
-          </p>
-        </div>
-      </section>
-
-      {/* ═════════ S13. FAQ — SURFACE ═════════ */}
+      {/* ═════════ FAQ — SURFACE ═════════ */}
       <FAQ />
 
       {/* ═════════ END PLAYBOOK CTA — SURFACE ═════════ */}

@@ -89,7 +89,7 @@ const LOS_CABOS = {
     ["Club rentals (optional)",  "$0",     "$200",    "Premium sets at all pro shops"],
     ["Ground transport",         "$80",    "$250",    "Shuttle vs. private SUV"],
     ["Food & beverage",          "$300",   "$800",    "Top properties: all-inclusive stations"],
-    ["TOTAL ALL-IN (per person)","$2,230", "$5,580",  "Mid-season estimate"],
+    ["Total all-in (per person)","$2,030", "$5,580",  "Mid-season estimate · 4 nights, 3 rounds"],
   ],
   callouts: [
     { icon: "💡", label: "The luxury variable",   body: "Your choice of base camp heavily dictates the financial footprint. While a hotel in Cabo San Lucas averages $319/night and San José averages $303, stepping into the gated Corridor properties moves your baseline to $795/night. However, premium courses like Quivira and Twin Dolphin completely change the value equation by bundling gourmet food and top-shelf liquor stations into the green fee." },
@@ -208,7 +208,7 @@ const PUNTA_MITA = {
     ["Club rentals (optional)",  "$0",     "$150",    "TaylorMade at the Punta Mita pro shop"],
     ["Ground transport",         "$120",   "$280",    "PVR transfer + peninsula gate"],
     ["Food & beverage",          "$450",   "$1,100",  "Clubhouse + resort dining"],
-    ["TOTAL ALL-IN (per person)","$4,175", "$8,675",  "Peak-season estimate"],
+    ["Total all-in (per person)","$4,175", "$8,675",  "Peak-season estimate · 4 nights, 3 rounds"],
   ],
   callouts: [
     { icon: "🔒", label: "The gate advantage",      body: "The peninsula's closed-gate policy is the entire pricing model. You are paying for the absence of crowds. Pacifico and Bahia routinely run at near-100% utilization at peak — but with only resort guests on the property, the round genuinely walks empty." },
@@ -330,7 +330,7 @@ const MEXICO_CITY = {
     ["Club rentals (optional)",  "$0",     "$120",    "Coral and major private clubs only"],
     ["Ground transport",         "$120",   "$280",    "Uber + Cuernavaca transfer"],
     ["Food & beverage",          "$400",   "$1,200",  "Pujol · Quintonil · Contramar · Rosetta"],
-    ["TOTAL ALL-IN (per person)","$1,575", "$5,185",  "Mid-season estimate"],
+    ["Total all-in (per person)","$1,575", "$5,185",  "Mid-season estimate · 4 nights, 3 rounds"],
   ],
   callouts: [
     { icon: "⛰️", label: "The altitude rule",     body: "At 7,350 feet, the ball flies 8–12% farther than at sea level. Subtract a club on every approach. Your driver carries the longest of the year here, and short irons play a half-club shorter than the yardage card. Take a practice range hour before the first round to recalibrate." },
@@ -451,7 +451,7 @@ const CANCUN = {
     ["Club rentals (optional)",  "$0",     "$120",    "Available at every major course"],
     ["Ground transport",         "$120",   "$340",    "Resort shuttle → private SUV"],
     ["Food & beverage",          "$200",   "$900",    "Often included in all-inclusive"],
-    ["TOTAL ALL-IN (per person)","$2,200", "$6,630",  "Mid-season estimate"],
+    ["Total all-in (per person)","$2,200", "$6,630",  "Mid-season estimate · 4 nights, 3 rounds"],
   ],
   callouts: [
     { icon: "🏨", label: "The all-inclusive arbitrage", body: "Hard Rock, Bahía Príncipe, Iberostar, and others bundle unlimited golf into the room rate. If you're playing 4+ rounds, the all-inclusive math beats a standalone Mayakoba stay by a wide margin. The trade-off is property quality — but the rounds are paid for the moment you check in." },
@@ -571,7 +571,7 @@ const PUERTO_VALLARTA = {
     ["Club rentals (optional)",  "$0",     "$120",    "Available at every major course"],
     ["Ground transport",         "$80",    "$220",    "Taxi corridor + bay crossing"],
     ["Food & beverage",          "$350",   "$1,100",  "City restaurants + clubhouse"],
-    ["TOTAL ALL-IN (per person)","$1,950", "$5,675",  "Mid-season estimate"],
+    ["Total all-in (per person)","$1,950", "$5,675",  "Mid-season estimate · 4 nights, 3 rounds"],
   ],
   callouts: [
     { icon: "🏡", label: "The city advantage",         body: "Vallarta is the only Mexican golf destination where the city itself rivals the golf for the trip. Old-town Zona Romántica, the Malecón, the bay restaurants, the Saturday market in Sayulita. Bring non-golfers — they won't notice they're at a golf destination." },
@@ -691,7 +691,7 @@ const UNIQUE = {
     ["Club rentals (optional)",  "$0",     "$120",    "Limited availability at smaller clubs"],
     ["Ground transport",         "$100",   "$280",    "Private SUV often required"],
     ["Food & beverage",          "$220",   "$680",    "Local cuisine + clubhouse"],
-    ["TOTAL ALL-IN (per person)","$1,290", "$4,370",  "Single-destination estimate"],
+    ["Total all-in (per person)","$1,290", "$4,370",  "Single-destination estimate · 3 nights, 2 rounds"],
   ],
   callouts: [
     { icon: "🤝", label: "The relationship rule",        body: "These rounds are not booked, they are arranged. Member-guest invitations, friend-of-the-property reservations, advance secretarial correspondence. The Playbook covers the access channel for each destination — the right relationship matters more than the right week." },
