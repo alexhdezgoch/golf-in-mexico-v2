@@ -115,7 +115,7 @@ const Nav = () => {
             {destOpen && (
               <div
                 data-testid="nav-destinations-dropdown"
-                className="absolute left-0 top-full pt-3"
+                className="absolute left-0 top-full pt-2"
               >
                 <ul className="min-w-[280px] bg-cream border border-ink/10 shadow-2xl rounded-2xl overflow-hidden p-2">
                   {DESTINATIONS.map((d) => (

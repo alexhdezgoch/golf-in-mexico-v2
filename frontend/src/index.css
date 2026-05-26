@@ -308,8 +308,12 @@ html { scroll-behavior: smooth; }
 
 .nav-link-modern {
     position: relative;
-    display: inline-block;
     padding-bottom: 4px;
+    /* No display rule — lets Tailwind utilities (inline-flex, inline) win.
+       Inline elements still support absolute-positioned ::after correctly. */
+}
+.nav-link-modern svg {
+    vertical-align: middle;
 }
 .nav-link-modern::after {
     content: "";
