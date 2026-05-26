@@ -11,7 +11,7 @@ export const REGIONS = [
     courses: "12+ Championship Courses",
     tagline: "Where the Desert Meets the Sea.",
     description:
-      "Latin America's undisputed golf capital. Jack Nicklaus, Tiger Woods, and Davis Love III designed courses carved between the Sonoran Desert and the Sea of Cortez.",
+      "Latin America's undisputed golf capital. Desert dunes drop straight into the Sea of Cortez — landscape no other destination in the world can offer.",
     greenFees: "$250 – $450",
     image: "https://images.unsplash.com/photo-1672825952732-ecef34882416?auto=format&fit=crop&w=2000&q=85",
     live: true,
@@ -26,7 +26,7 @@ export const REGIONS = [
     courses: "7+ Championship Courses",
     tagline: "Where the Jungle Meets the Pacific.",
     description:
-      "Two Jack Nicklaus signature courses on a private peninsula, including the only natural island green in the world — the Tail of the Whale at Pacífico.",
+      "A private peninsula where tropical jungle meets the Pacific. Resort-club hospitality at the highest level, and routings shaped entirely by the coastline.",
     greenFees: "$280 – $420",
     image: "https://images.unsplash.com/photo-1592965046687-1acdbcdb5642?auto=format&fit=crop&w=2000&q=85",
     live: true,
@@ -41,7 +41,7 @@ export const REGIONS = [
     courses: "8+ Historic Clubs",
     tagline: "Where Heritage Meets Altitude.",
     description:
-      "Historic clubs at 7,350 feet — Chapultepec, Bosques, Club de Golf México. Tradition that pre-dates the modern resort era by half a century.",
+      "Private heritage clubs at 7,350 feet — where the ball flies further and the game is older than the modern resort era by half a century.",
     greenFees: "Members & guests",
     image: "https://images.unsplash.com/photo-1717388835452-c9c8cda0002e?auto=format&fit=crop&w=2000&q=85",
     live: true,
@@ -56,7 +56,7 @@ export const REGIONS = [
     courses: "6+ Courses",
     tagline: "Jungle Fairways, Mountain Greens.",
     description:
-      "Greg Norman's Mandarina above the Pacific. Vista Vallarta hosting the WGC. Where the Sierra Madre drops into the sea.",
+      "Where the Sierra Madre drops into the Pacific. Routings carved through dense jungle and along coastal bluffs — the most dramatic elevation in Mexican golf.",
     greenFees: "$180 – $320",
     image: "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=2000&q=85",
     live: true,
@@ -71,7 +71,7 @@ export const REGIONS = [
     courses: "10+ Resort Courses",
     tagline: "Limestone Fairways, Caribbean Light.",
     description:
-      "Greg Norman's El Camaleón at Mayakoba — first PGA Tour stop in México. Twelve resort courses along the world's second-longest reef.",
+      "Limestone fairways carved through Yucatán jungle, alongside the world's second-longest coral reef. The largest concentration of resort golf in México.",
     greenFees: "$220 – $380",
     image: "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=2000&q=85",
     live: true,
@@ -84,9 +84,9 @@ export const REGIONS = [
     name: "Unique Destinations",
     region: "Across México",
     courses: "8+ Hidden Routings",
-    tagline: "Bajío, Huatulco, Mérida, and beyond.",
+    tagline: "The routings nobody talks about.",
     description:
-      "The routings most agents have never seen — colonial Bajío, Pacific Huatulco, Yucatán cenotes. For the golfer who has played the obvious places.",
+      "Hidden routings across colonial highlands, Pacific coves, and Caribbean limestone. For the golfer who has played the obvious places and wants what comes next.",
     greenFees: "Varies by region",
     image: "https://images.unsplash.com/photo-1543105177-748ceda71741?auto=format&fit=crop&w=2000&q=85",
     live: true,
