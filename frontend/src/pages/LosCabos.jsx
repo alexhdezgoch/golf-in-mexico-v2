@@ -434,7 +434,6 @@ const LosCabos = ({ slug = "los-cabos" }) => {
 
   return (
     <main data-testid="page-los-cabos" className="hub-page relative bg-[var(--c-off-white)]">
-      <SectionNav />
       {/* ═════════ S1. HERO — FULL-BLEED PHOTO + CINEMATIC GRADIENT ═════════ */}
       <header
         data-testid="lc-header"
@@ -556,6 +555,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
       </section>
 
       {/* ═════════ S3. OVERVIEW + INLINE PLAYBOOK CTA — PAPER ═════════ */}
+      <SectionNav />
       <section data-testid="lc-overview" id="overview" className="bg-[var(--c-off-white)] py-24 md:py-32">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12">
           <Label>{data.overviewLabel}</Label>
