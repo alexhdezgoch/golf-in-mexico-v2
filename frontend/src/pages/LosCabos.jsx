@@ -510,7 +510,8 @@ const LosCabos = ({ slug = "los-cabos" }) => {
         </div>
       </section>
 
-      {/* ═════════ 2. QUICK FACTS — SURFACE ═════════ */}
+      {/* ═════════ 2. QUICK FACTS — SURFACE (hidden on destination-list hubs) ═════════ */}
+      {!data.isDestinationList && (
       <section data-testid="lc-quickfacts" className="bg-[var(--c-surface)] py-20 md:py-28">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <Label>At a glance</Label>
@@ -528,9 +529,10 @@ const LosCabos = ({ slug = "los-cabos" }) => {
           </div>
         </div>
       </section>
+      )}
 
       {/* ═════════ S3. OVERVIEW + INLINE PLAYBOOK CTA — PAPER ═════════ */}
-      <SectionNav />
+      {!data.isDestinationList && <SectionNav />}
       <section data-testid="lc-overview" id="overview" className="bg-[var(--c-off-white)] py-24 md:py-32">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12">
           <Label>{data.overviewLabel}</Label>
@@ -562,7 +564,8 @@ const LosCabos = ({ slug = "los-cabos" }) => {
         </div>
       </section>
 
-      {/* ═════════ 4.5 EDITORIAL PHOTO STRIP — between Overview and Course Roster ═════════ */}
+      {/* ═════════ 4.5 EDITORIAL PHOTO STRIP (hidden on destination-list hubs) ═════════ */}
+      {!data.isDestinationList && (
       <section
         data-testid="lc-photo-strip"
         aria-label={`Field photography from ${data.name}`}
@@ -584,6 +587,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
           </p>
         </div>
       </section>
+      )}
 
       {/* ═════════ S5. COURSE ROSTER — DARK · EDITORIAL LIST ═════════ */}
       <section data-testid="lc-courses" id="courses" className="bg-[var(--c-green-deep)] text-white py-24 md:py-32">
@@ -621,7 +625,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
                 </motion.div>
               ))}
               <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.14em] text-white/40">
-                + more added quarterly
+                … and more, quarterly
               </p>
             </div>
           ) : (
@@ -692,7 +696,8 @@ const LosCabos = ({ slug = "los-cabos" }) => {
         </div>
       </section>
 
-      {/* ═════════ S6. COST — PAPER ═════════ */}
+      {/* ═════════ S6. COST — PAPER (hidden on destination-list hubs) ═════════ */}
+      {!data.isDestinationList && (
       <section data-testid="lc-costs" id="costs" className="bg-[var(--c-off-white)] py-24 md:py-32">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12">
           <Label>{data.costsLabel}</Label>
@@ -744,8 +749,10 @@ const LosCabos = ({ slug = "los-cabos" }) => {
           </div>
         </div>
       </section>
+      )}
 
-      {/* ═════════ S7. LOGISTICS — PAPER ═════════ */}
+      {/* ═════════ S7. LOGISTICS — PAPER (hidden on destination-list hubs) ═════════ */}
+      {!data.isDestinationList && (
       <section data-testid="lc-logistics" id="logistics" className="bg-[var(--c-off-white)] py-24 md:py-32">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <Label>{data.logisticsLabel}</Label>
@@ -761,8 +768,10 @@ const LosCabos = ({ slug = "los-cabos" }) => {
           </div>
         </div>
       </section>
+      )}
 
-      {/* ═════════ S8. SEASON GUIDE — DARK ═════════ */}
+      {/* ═════════ S8. SEASON GUIDE — DARK (hidden on destination-list hubs) ═════════ */}
+      {!data.isDestinationList && (
       <section data-testid="lc-season" id="season" className="bg-[var(--c-green-deep)] text-white py-24 md:py-32">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <Label onDark>{data.seasonLabel}</Label>
@@ -781,9 +790,10 @@ const LosCabos = ({ slug = "los-cabos" }) => {
           </div>
         </div>
       </section>
+      )}
 
-      {/* ═════════ FAQ — SURFACE ═════════ */}
-      <FAQ />
+      {/* ═════════ FAQ — SURFACE (hidden on destination-list hubs) ═════════ */}
+      {!data.isDestinationList && <FAQ />}
 
       {/* ═════════ END PLAYBOOK CTA — SURFACE ═════════ */}
       <section data-testid="lc-playbook-end" className="bg-[var(--c-surface)] py-20 md:py-28">
