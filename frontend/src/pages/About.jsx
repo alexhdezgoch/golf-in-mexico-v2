@@ -12,7 +12,7 @@ const FOUNDERS = [
   {
     slug: "pablo",
     name: "Pablo De La Mora",
-    role: "Co-Founder · Editorial & Trip Architect",
+    role: "The Agent",
     location: "Querétaro, MX",
     portrait:
       "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=1400&q=85",
@@ -21,7 +21,7 @@ const FOUNDERS = [
   {
     slug: "jose",
     name: "José Islas",
-    role: "Co-Founder · Tournament Director",
+    role: "The Pro Player",
     location: "Los Cabos, MX",
     portrait:
       "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1400&q=85",
@@ -51,16 +51,10 @@ const About = () => (
           <strong className="font-normal text-[var(--c-text)]">Pablo De La Mora</strong>{" "}
           and{" "}
           <strong className="font-normal text-[var(--c-text)]">José Islas</strong>{" "}
-          — a writer-architect and a competitive golfer who together hold the
+          — a sport agent and a professional golfer who together hold the
           relationships, the access, and the editorial voice that turn a
           México golf trip into something different from what a tourism board
-          would build. Everything you read on this site is written by one of
-          us. Every course we recommend, one of us has played. Every restaurant,
-          one of us has eaten at. Every contact we leverage to put you inside a
-          private club, we built ourselves over more than a decade inside
-          México's championship golf network — PGA Tour Mexico Open at Vidanta,
-          WGC-Mexico Championship at Chapultepec, WWT Championship at Mayakoba,
-          and the member-guest tournaments that never make the schedule.
+          would build.
         </p>
       </div>
     </header>

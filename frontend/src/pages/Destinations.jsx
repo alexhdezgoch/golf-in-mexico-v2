@@ -149,7 +149,7 @@ const DestinationCard = ({ d, index }) => {
         ease: [0.16, 1, 0.3, 1],
       }}
       data-testid={`region-card-${d.slug}`}
-      className="relative w-full overflow-hidden bg-[var(--c-green-deep)] aspect-[16/9] md:aspect-auto md:h-[640px]"
+      className="relative w-full overflow-hidden bg-[var(--c-green-deep)] min-h-[680px] sm:min-h-[640px] md:min-h-0 md:h-[640px]"
     >
       {/* Background image */}
       <Link
