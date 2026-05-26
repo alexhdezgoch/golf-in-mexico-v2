@@ -164,50 +164,41 @@ const DestinationCard = ({ d, index }) => {
           loading="lazy"
           className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--c-green-deep)]/95 via-[var(--c-green-deep)]/35 to-transparent" />
+        {/* Stronger contrast — base flat + heavy bottom gradient + corner vignette */}
+        <div className="absolute inset-0 bg-black/35" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[var(--c-green-deep)] via-[var(--c-green-deep)]/85 to-transparent" />
       </Link>
 
       {/* Content */}
       <div className="relative z-10 h-full w-full flex flex-col justify-end p-6 md:p-12 lg:p-16 pointer-events-none">
         <div className="max-w-[1100px] w-full mx-auto pointer-events-none">
           {/* Top meta */}
-          <div className="flex flex-wrap items-center gap-3 mb-4 md:mb-5 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.18em] text-[var(--c-gold)]">
-            <span>{d.region}</span>
-            <span className="text-white/30">|</span>
-            <span className="text-white/85">{d.courses}</span>
+          <div className="mb-4 md:mb-5 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.18em]">
+            <span className="text-[var(--c-gold)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">{d.region}</span>
           </div>
 
           {/* Name */}
-          <h2 className="font-display font-normal text-white leading-[1.02] tracking-tight text-4xl md:text-6xl lg:text-[4.5rem] max-w-[14ch]">
+          <h2 className="font-display font-normal text-white leading-[1.02] tracking-tight text-4xl md:text-6xl lg:text-[4.5rem] max-w-[14ch] drop-shadow-[0_4px_24px_rgba(0,0,0,0.55)]">
             {d.name}
           </h2>
 
           {/* Tagline */}
-          <p className="mt-3 md:mt-4 font-display italic font-normal text-[var(--c-gold)] text-lg md:text-2xl">
+          <p className="mt-3 md:mt-4 font-display italic font-normal text-[var(--c-gold)] text-lg md:text-2xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">
             {d.tagline}
           </p>
 
           {/* Description */}
-          <p className="mt-6 md:mt-7 font-body font-light text-white/65 text-sm md:text-[15px] leading-[1.7] max-w-2xl">
+          <p className="mt-6 md:mt-7 font-body font-light text-white/90 text-sm md:text-[15px] leading-[1.7] max-w-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)]">
             {d.description}
           </p>
 
-          {/* Green fees + CTAs */}
-          <div className="mt-8 md:mt-10 pt-6 md:pt-7 border-t border-white/10 flex flex-col md:flex-row md:items-center md:justify-between gap-6 pointer-events-auto">
-            <div className="flex items-baseline gap-3">
-              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/40">
-                Green Fees
-              </span>
-              <span className="font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-gold)]">
-                {d.greenFees}
-              </span>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+          {/* CTAs */}
+          <div className="mt-8 md:mt-10 pt-6 md:pt-7 border-t border-white/15 flex flex-col sm:flex-row gap-3 sm:gap-4 pointer-events-auto">
               <Link
                 to={d.href}
                 data-testid={`region-cta-explore-${d.slug}`}
-                className="group inline-flex items-center justify-center gap-3 border border-white/70 hover:border-white text-white hover:bg-white hover:text-[var(--c-green-deep)] px-6 md:px-8 py-3 md:py-[14px] rounded-sm font-mono text-[10px] md:text-[11px] uppercase tracking-[0.18em] transition-colors duration-500"
+                className="group inline-flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm border border-white text-white hover:bg-white hover:text-[var(--c-green-deep)] px-6 md:px-8 py-3 md:py-[14px] rounded-sm font-mono text-[10px] md:text-[11px] uppercase tracking-[0.18em] transition-colors duration-500"
               >
                 Explore
                 <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
@@ -217,11 +208,10 @@ const DestinationCard = ({ d, index }) => {
                 type="button"
                 onClick={onDownload}
                 data-testid={`region-cta-blackbook-${d.slug}`}
-                className="group inline-flex items-center justify-center gap-2 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-5 md:px-7 py-3 md:py-[14px] rounded-sm font-mono text-[10px] md:text-[11px] uppercase tracking-[0.16em] transition-colors duration-300 whitespace-nowrap"
+                className="group inline-flex items-center justify-center gap-2 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-5 md:px-7 py-3 md:py-[14px] rounded-sm font-mono text-[10px] md:text-[11px] uppercase tracking-[0.16em] font-bold transition-colors duration-300 whitespace-nowrap shadow-[0_8px_24px_rgba(0,0,0,0.35)]"
               >
                 <span>[ {d.blackbookLabel} ]</span>
               </button>
-            </div>
           </div>
         </div>
       </div>
