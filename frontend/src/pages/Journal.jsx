@@ -32,7 +32,7 @@ const CATEGORIES = [
   { key: "all", label: "All" },
   { key: "golf", label: "Golf" },
   { key: "beyond-the-course", label: "Beyond the Course" },
-  { key: "the-concierge", label: "The Concierge" },
+  { key: "the-concierge", label: "Travel Concierge" },
   { key: "the-collective", label: "The Collective" },
   { key: "founders-journal", label: "Founders Journal" },
 ];
@@ -67,12 +67,12 @@ const PILLARS = [
   {
     id: "the-concierge",
     number: "03 / 04",
-    short: "The Concierge",
-    title: "The Concierge",
+    short: "Travel Concierge",
+    title: "Travel Concierge",
     sub: "Zero friction, complete access.",
     body:
       "Obsessive attention to detail for the traveling golfer. Insider intelligence, travel logistics, and the exact information you need to navigate your trip like a professional.",
-    ctaLabel: "Read The Concierge",
+    ctaLabel: "Read Travel Concierge",
     ctaCategory: "the-concierge",
     image: "https://images.unsplash.com/photo-1717388835452-c9c8cda0002e?auto=format&fit=crop&w=2000&q=85",
   },
@@ -123,7 +123,7 @@ const JournalHeader = ({ activePillar, setActivePillar, setCategory }) => {
           </h1>
           <div className="md:col-span-5 flex flex-col gap-4 md:pt-1">
             <p className="font-body font-light text-[var(--c-text-mid)] text-sm md:text-[15px] leading-[1.7]">
-              Four editorial pillars guide everything we publish — <em className="not-italic font-normal text-[var(--c-text)]">Golf</em>, <em className="not-italic font-normal text-[var(--c-text)]">Beyond the Course</em>, <em className="not-italic font-normal text-[var(--c-text)]">The Concierge</em>, and <em className="not-italic font-normal text-[var(--c-text)]">The Collective</em> — written by a tour agent, a professional golfer, and a growing roster of industry insiders who see the game differently.
+              Four editorial pillars guide everything we publish — <em className="not-italic font-normal text-[var(--c-text)]">Golf</em>, <em className="not-italic font-normal text-[var(--c-text)]">Beyond the Course</em>, <em className="not-italic font-normal text-[var(--c-text)]">Travel Concierge</em>, and <em className="not-italic font-normal text-[var(--c-text)]">The Collective</em> — written by a tour agent, a professional golfer, and a growing roster of industry insiders who see the game differently.
             </p>
           </div>
         </motion.div>
