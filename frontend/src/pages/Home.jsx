@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import TeamEditorial from "@/components/TeamEditorial";
 
 const HERO_VIDEO =
@@ -130,17 +131,20 @@ const Home = () => {
             <span className="italic text-[var(--c-gold)]">you have not read about.</span>
           </motion.h1>
 
-          <motion.button
-            type="button"
-            data-testid="hero-cta-discover"
+          <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="group mt-10 md:mt-14 inline-flex items-center gap-3 border border-[var(--c-gold)] text-white px-7 md:px-9 py-4 md:py-[18px] rounded-sm font-mono text-[11px] md:text-[12px] uppercase tracking-[0.18em] hover:bg-[var(--c-gold)] hover:text-[var(--c-green-deep)] transition-colors duration-500"
           >
-            Discover your golf experience
-            <span className="transition-transform duration-500 group-hover:translate-x-1.5">→</span>
-          </motion.button>
+            <Link
+              to="/trip-builder"
+              data-testid="hero-cta-discover"
+              className="group mt-10 md:mt-14 inline-flex items-center gap-3 border border-[var(--c-gold)] text-white px-7 md:px-9 py-4 md:py-[18px] rounded-sm font-mono text-[11px] md:text-[12px] uppercase tracking-[0.18em] hover:bg-[var(--c-gold)] hover:text-[var(--c-green-deep)] transition-colors duration-500"
+            >
+              Discover your golf experience
+              <span className="transition-transform duration-500 group-hover:translate-x-1.5">→</span>
+            </Link>
+          </motion.div>
         </div>
       </section>
 

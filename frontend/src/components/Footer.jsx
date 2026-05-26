@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useInquiry } from "@/context/Inquiry";
 
 const NAV_LINKS = [
   { label: "Home", to: "/" },
@@ -33,7 +32,6 @@ const Footer = () => {
   const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const { openInquiry } = useInquiry();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -210,15 +208,14 @@ const Footer = () => {
                 );
               })}
             </ul>
-            <button
-              type="button"
-              onClick={openInquiry}
+            <Link
+              to="/trip-builder"
               data-testid="footer-plan-trip"
               className="group mt-4 self-start inline-flex items-center gap-2 font-display italic font-normal text-[var(--c-gold)] text-lg md:text-xl hover:text-[var(--c-gold-light)] transition-colors duration-300"
             >
               Plan your trip
               <span className="not-italic transition-transform duration-300 group-hover:translate-x-1.5">→</span>
-            </button>
+            </Link>
           </div>
         </div>
       </div>

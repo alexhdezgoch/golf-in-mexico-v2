@@ -20,7 +20,7 @@ const CATEGORY_MAP = {
   "beyond-the-course": ["luxury-golf-vacation-mexico"],
   "the-concierge": ["how-to-plan-a-golf-trip-to-mexico", "mexico-city-planning"],
   "the-collective": [],
-  "founders-journal": [],
+  "founders-journal": ["the-bachelor-trip-cabo"],
 };
 
 const articleHasCategory = (article, category) => {
@@ -321,6 +321,43 @@ const FilterBar = ({ category, setCategory, search, setSearch }) => {
   );
 };
 
+/* ───────────────── FEATURED HERO CARD ───────────────── */
+
+const FeaturedCard = ({ a }) => (
+  <article data-testid={`journal-featured-${a.slug}`} className="mb-16 md:mb-24">
+    <Link to={`/journal/${a.slug}`} className="group block">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-12 items-center">
+        <div className="lg:col-span-7 relative aspect-[4/5] sm:aspect-[16/10] lg:aspect-[4/3] overflow-hidden bg-[var(--c-green-deep)] rounded-sm">
+          <img
+            src={a.heroImage}
+            alt={a.title}
+            loading="eager"
+            className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+          />
+          <span className="absolute top-4 left-4 inline-flex items-center gap-2 bg-[var(--c-gold)] text-[var(--c-green-deep)] font-mono text-[10px] uppercase tracking-[0.18em] font-bold px-3 py-1.5 rounded-sm">
+            Featured · Founders Journal
+          </span>
+        </div>
+        <div className="lg:col-span-5">
+          <span className="block font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-text-muted)] mb-4">
+            {a.destinationLabel} · {a.readTimeMinutes} min read
+          </span>
+          <h2 className="font-display font-light text-[var(--c-text)] leading-[1.05] tracking-tight text-3xl md:text-5xl lg:text-[3.25rem] mb-5 group-hover:text-[var(--c-green-mid)] transition-colors duration-500">
+            {a.title}<span className="text-[var(--c-gold)]">.</span>
+          </h2>
+          <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.7] mb-7 max-w-[44ch]">
+            {a.excerpt}
+          </p>
+          <span className="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-green-deep)] group-hover:gap-4 transition-all">
+            Read the journal entry
+            <span className="transition-transform group-hover:translate-x-1">→</span>
+          </span>
+        </div>
+      </div>
+    </Link>
+  </article>
+);
+
 /* ───────────────── ARTICLE CARD ───────────────── */
 
 const Card = ({ a }) => (
@@ -357,9 +394,16 @@ const Journal = () => {
   const [search, setSearch] = useState("");
 
   const filtered = useMemo(() => {
-    // Empty grid — articles cleared until new content is provided
-    return [];
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const q = search.trim().toLowerCase();
+    return ARTICLES.filter((a) => {
+      if (!articleHasCategory(a, category)) return false;
+      if (!q) return true;
+      return (
+        a.title.toLowerCase().includes(q) ||
+        (a.excerpt || "").toLowerCase().includes(q) ||
+        (a.destinationLabel || "").toLowerCase().includes(q)
+      );
+    });
   }, [category, search]);
 
   return (
@@ -396,22 +440,31 @@ const Journal = () => {
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 md:gap-y-20">
-              {filtered.map((a, i) => (
-                <motion.div
-                  key={a.slug}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.7,
-                    delay: 0.06 * (i % 6),
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                >
-                  <Card a={a} />
-                </motion.div>
-              ))}
-            </div>
+            <>
+              {/* Featured Bachelor Trip article — only when 'all' is selected */}
+              {category === "all" && !search && filtered[0]?.slug === "the-bachelor-trip-cabo" && (
+                <FeaturedCard a={filtered[0]} />
+              )}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14 md:gap-y-20">
+                {(category === "all" && !search && filtered[0]?.slug === "the-bachelor-trip-cabo"
+                  ? filtered.slice(1)
+                  : filtered
+                ).map((a, i) => (
+                  <motion.div
+                    key={a.slug}
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.7,
+                      delay: 0.06 * (i % 6),
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                  >
+                    <Card a={a} />
+                  </motion.div>
+                ))}
+              </div>
+            </>
           )}
         </div>
       </section>

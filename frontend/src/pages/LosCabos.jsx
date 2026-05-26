@@ -544,10 +544,10 @@ const LosCabos = ({ slug = "los-cabos" }) => {
           <div className="max-w-[820px]">
             <div className="divide-y divide-[var(--c-border)]">
               {QUICK_FACTS.map((f) => (
-                <div key={f.label + f.value} className="grid grid-cols-[28px_160px_1fr] gap-3 items-start py-4">
+                <div key={f.label + f.value} className="grid grid-cols-[24px_1fr] md:grid-cols-[28px_180px_1fr] gap-x-3 gap-y-1 md:gap-3 items-start py-4">
                   <div className="text-[var(--c-gold)] pt-0.5"><Icon name={f.icon} /></div>
-                  <div className="font-mono text-[11px] uppercase tracking-[0.1em] text-[var(--c-text-muted)] pt-0.5">{f.label}</div>
-                  <div className="text-[15px] text-[var(--c-text)] leading-[1.5]">{f.value}</div>
+                  <div className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em] text-[var(--c-text-muted)] pt-0.5">{f.label}</div>
+                  <div className="col-start-2 md:col-start-3 text-[14px] md:text-[15px] text-[var(--c-text)] leading-[1.5]">{f.value}</div>
                 </div>
               ))}
             </div>
@@ -623,10 +623,10 @@ const LosCabos = ({ slug = "los-cabos" }) => {
                 viewport={{ once: true, margin: "-10%" }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 data-testid={`lc-course-${idx}`}
-                className="group border-b border-white/10 py-8 md:py-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start"
+                className="group border-b border-white/10 py-8 md:py-10 grid grid-cols-[auto_1fr] lg:grid-cols-12 gap-x-5 gap-y-5 lg:gap-x-10 lg:gap-y-0 items-start"
               >
                 {/* Index */}
-                <div className="lg:col-span-1 font-display font-light text-[var(--c-gold)] text-2xl md:text-3xl leading-none">
+                <div className="lg:col-span-1 font-display font-light text-[var(--c-gold)] text-2xl md:text-3xl leading-none pt-1">
                   {String(idx + 1).padStart(2, "0")}
                 </div>
 
@@ -637,7 +637,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
                 </div>
 
                 {/* Note + standout */}
-                <div className="lg:col-span-5">
+                <div className="col-span-2 lg:col-span-5 lg:col-start-auto">
                   <p className="text-[14px] md:text-[15px] text-white/75 leading-[1.7] mb-4">{c.note}</p>
                   <p className="text-[13px] italic text-white/60 leading-[1.55] border-l-2 border-[var(--c-gold)] pl-3">
                     <span className="font-mono not-italic text-[10px] uppercase tracking-[0.1em] text-[var(--c-gold)] mr-2">Standout</span>
@@ -646,21 +646,21 @@ const LosCabos = ({ slug = "los-cabos" }) => {
                 </div>
 
                 {/* Right rail: access · fee · difficulty · best for */}
-                <div className="lg:col-span-2 grid grid-cols-2 lg:grid-cols-1 gap-y-3 lg:gap-y-4">
+                <div className="col-span-2 lg:col-span-2 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-1 gap-x-4 gap-y-4 lg:gap-y-4 pt-2 lg:pt-0 border-t lg:border-t-0 border-white/10">
                   <div>
-                    <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1">Access</span>
+                    <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Access</span>
                     <AccessPill tier={c.tier} />
                   </div>
                   <div>
-                    <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1">Fee</span>
+                    <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Fee</span>
                     <span className="font-mono text-[13px] font-bold text-[var(--c-gold)]">{c.fee}</span>
                   </div>
                   <div>
-                    <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1">Difficulty</span>
+                    <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Difficulty</span>
                     <span className="font-mono text-[13px] text-white/90">{c.difficulty}</span>
                   </div>
                   <div>
-                    <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1">Best for</span>
+                    <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Best for</span>
                     <span className="text-[12px] text-white/70 leading-[1.4]">{c.bestFor}</span>
                   </div>
                 </div>

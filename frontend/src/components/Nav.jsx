@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useInquiry } from "@/context/Inquiry";
-
-const links = [];
 
 const DESTINATIONS = [
   { slug: "los-cabos", name: "Los Cabos", region: "Baja California Sur", live: true, href: "/destinations/los-cabos" },
@@ -27,7 +24,6 @@ const Nav = () => {
   const navigate = useNavigate();
   const isHome = location.pathname === "/";
   const onDarkHero = isHome && !scrolled;
-  const { openInquiry } = useInquiry();
 
   const scrollToFounders = () => {
     const el = document.getElementById("founders");
@@ -190,10 +186,9 @@ const Nav = () => {
             Contact
           </a>
 
-          {/* Inquire CTA — premium magnetic-style button */}
-          <button
-            type="button"
-            onClick={openInquiry}
+          {/* Inquire CTA — premium magnetic-style button → routes to Trip Builder */}
+          <Link
+            to="/trip-builder"
             data-testid="nav-inquire-cta"
             className={`group relative inline-flex items-center gap-2 rounded-full pl-4 pr-3.5 py-2 font-mono text-[11px] uppercase tracking-wide-editorial transition-all duration-500 ${
               onDarkHero
@@ -207,7 +202,7 @@ const Nav = () => {
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
             </span>
-          </button>
+          </Link>
 
           {/* Divider */}
           <span className={`h-3 w-px ${onDarkHero ? "bg-cream/20" : "bg-ink/15"}`} />
@@ -302,7 +297,7 @@ const Nav = () => {
             type="button"
             onClick={() => {
               setOpen(false);
-              openInquiry();
+              navigate("/trip-builder");
             }}
             data-testid="nav-mobile-inquire"
             className="mt-3 self-start inline-flex items-center gap-2 rounded-full bg-ink text-cream pl-5 pr-4 py-3 font-mono text-[11px] uppercase tracking-wide-editorial"

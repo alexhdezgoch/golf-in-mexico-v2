@@ -1,83 +1,73 @@
 # Golf in Mexico° (GIM) — Product Requirements
 
 ## Original Problem Statement
-Build a full multi-page Landing Page for "Golf in Mexico°" (GIM) — a premium editorial golf brand. The design must be award-winning level, targeting Awwwards recognition. Multi-page architecture (Home, Journal, Destinations, Destination Hubs). Typography: Libre Baskerville, Outfit, Space Mono. Color system: Off-white (#f8f5f0), Deep green (#0f2419), Gold (#c8a96e). Lenis smooth scrolling, custom cursors, editorial voice.
+Build a full multi-page Landing Page for "Golf in Mexico°" (GIM) — a premium editorial golf brand. Multi-page architecture (Home, Journal, Destinations, Destination Hubs, Trip Builder, About). Typography: Libre Baskerville, Outfit, Space Mono. Colors: Off-white (#f8f5f0), Deep green (#0f2419), Gold (#c8a96e). Lenis smooth scrolling, custom cursors, editorial voice.
 
 **Language:** Spanish (user communicates in Spanish — respond in Spanish)
 **Mode:** Look & Feel only — no backend integrations yet. Forms are mocked.
 
-## What's Implemented (as of May 26, 2026)
+## What's Implemented (as of Feb 2026)
 
 ### Pages
-- `/` Home — Editorial hero, YouTube embed placeholder, founders bio
-- `/journal` — 4 editorial pillars (Golf, Beyond the Course, Travel Concierge, The Collective) with filters, "Coming Soon" empty state
-- `/destinations` — 6 stacked editorial destination cards (all live)
-- `/destinations/los-cabos` — **MASTER HUB** with full 13-section AdMirror spec
-- `/destinations/{other}` — `DestinationPlaceholder.jsx` for Punta Mita, Mexico City, Cancún, Puerto Vallarta, Unique
-
-### Los Cabos Hub (matches sage-fairways reference design)
-1. Hero — CSS gradient (160deg #0f2419→#0a1510) + diagonal texture, H1 "Golf in *Cabo San Lucas.*", byline with founder field-research credit, 2×2 stat block
-2. At a Glance — Quick facts table + Access legend (Public/Resort/Private)
-3. Overview — 3 paragraphs + 4-stat strip + **inline dark Playbook CTA box** (gold-bordered, with email form)
-4. Photo strip — 3 styled placeholders with "°" mark + "Photography from GIM field research" caption
-5. Course Roster — 8 course cards (UPPERCASE names, photo placeholder, access pill, fee, specs, note, standout, "Field notes coming — subscribe")
-6. Comparison Table — 6 cols incl. **Difficulty (1-5/5)** + legend
-7. The Math — Cost table + 2 callout boxes (💡 Luxury Variable / 🌅 Twilight Advantage)
-8. Pull Quote — Field Notes attribution
-9. Access Rules — 4 sub-sections (🔓🔑🛡🚶) + Atmospheric photo + Concierge box CTA
-10. Logistics — 2×2 cards (✈🚗🗺💵)
-11. Season Guide — Peak / Shoulder / Off-Season blocks
-12. Field Notes — Credential pills (PGA TOUR · LIV GOLF · MEXICO OPEN · WWT CABO 2024) + founder photo placeholder + 4 numbered notes
-13. **S11 All Articles & Guides** — 6 cards with Live/Coming Soon badges
-14. **S12 Newsletter (Field Notes)** — centered narrow dark, gold button
-15. FAQ — 9 questions accordion
-16. End Playbook CTA — Short surface variant
-17. Keep Exploring — 4 destination cards
+- `/` Home — Editorial hero, YouTube embed placeholder, founders bio. **Hero CTA → /trip-builder**
+- `/journal` — 4 pillars + filter bar + search. **Bachelor Trip featured as hero card.** Filters return real ARTICLES (no longer hardcoded empty)
+- `/journal/:slug` — Editorial article page (hero, body, FAQ, scroll email capture, footer CTA)
+- `/destinations` — 6 stacked editorial destination cards
+- `/destinations/:slug` — MASTER HUB (LosCabos.jsx is reusable template fed by hubs.js for all 6 regions). Sticky section nav, mobile-responsive Quick Facts + Course Roster
+- `/trip-builder` — 4-step wizard (Where/Who → When → Package/Budget → Contact) with hero, GIM promises, deliverables, scarcity messaging. **No global nav.**
+- `/about` — Pablo + José founder bios with portrait, credentials, quote, photo slider per founder
 
 ### Reusable Components
-- `/components/hub/PhotoSlot.jsx` — Styled placeholder system (dark green + "°" gold mark + bottom-left mono label). Auto-swaps to real image when `src` provided.
+- `/components/hub/PhotoSlot.jsx`, `/components/hub/SectionNav.jsx`
+- `/components/Nav.jsx` — chevron fix (Destinations inline), Inquire → /trip-builder
+- `/components/Footer.jsx` — Plan your trip → /trip-builder
 
-### Design tokens (`index.css`)
-- `.photo-slot` + variants (`--hero`, `--16x9`, `--4x3`, `--3x4`, `--atmo`)
-- `.credential-pill` (light + dark variants, mobile-scroll)
-- `.hub-page` typography (font-light h1/h2)
-- `.article-count`, `.live-link`, `.coming-soon-link`
+### Design System
+- CSS variables in `/index.css`: `--c-green-deep`, `--c-gold`, `--c-off-white`, etc.
+- `.nav-link-modern` (no display: inline-block; allows inline-flex)
+- `.section-nav` sticky sub-nav for hub pages
+- `.hub-page` typography tokens
 
-### Intro skip
-- `?skipIntro=1` URL param bypasses the 4.4s intro animation (useful for screenshots/QA)
+## Recently Fixed (this session)
+- Nav chevron next to "Destinations" was dropping below text (CSS cascade conflict) — FIXED
+- Journal grid was hardcoded to `[]` — FIXED, now displays real articles
+- Bachelor Trip article surfaced as Featured hero card in Journal
+- Inquire (Nav desktop + mobile) and Home Hero CTA now route to /trip-builder
+- Footer "Plan your trip" also routes to /trip-builder
+- Quick Facts grid responsive on mobile (no more cramping)
+- Course Roster mobile layout reflow (index inline with name, stats in 2-col grid)
 
 ## Active Issues / Pending
-- `/trip-builder` route still returns 404 — Concierge CTA links to it (UI only, no page yet)
-- Punta Mita / Mexico City / Cancún / Puerto Vallarta hubs are still using `DestinationPlaceholder.jsx`
-- The Hub layout has not yet been componentized into `/components/hub/Hub*.jsx` for reuse across regions
+- None known. All pages render correctly on Desktop and Mobile.
 
 ## Roadmap
 
-### P0 (immediate)
-- [ ] User visual verification of Los Cabos hub (sage-fairways visual parity)
-
 ### P1 (next)
-- [ ] Create `/trip-builder` placeholder page OR inquiry modal
-- [ ] Componentize Hub sections (CourseCard, ComparisonTable, AccessLegend, FieldNote, etc.) into `/components/hub/`
-- [ ] Build Punta Mita hub (need intake doc from user)
-- [ ] Build Mexico City hub (need intake doc from user)
+- [ ] Rename `LosCabos.jsx` → `DestinationHub.jsx` (cleanup; works correctly but name is misleading)
+- [ ] Article.jsx "Twin Galleries" redesign — pending user paste of verbatim copy reference
+- [ ] InquiryModal is mounted but no longer triggered; consider removing if no future use
 
-### P2 (later)
-- [ ] Connect Playbook + Newsletter forms to MailerLite/Resend
-- [ ] Populate Journal with real article content
-- [ ] Per-region real photography upload (drop into PhotoSlot `src` prop)
-- [ ] Cancún + Puerto Vallarta hubs
+### P2 (later — out of "Look & Feel" scope)
+- [ ] Wire Trip Builder + Newsletter + Playbook forms to backend (FastAPI + Mongo or MailerLite/Resend)
+- [ ] Real photography per region
+- [ ] SEO meta tags (react-helmet)
+- [ ] Real YouTube video embed
 
 ## Tech Stack
-- React 18 + TailwindCSS + Framer Motion + Lenis (smooth scroll)
+- React 18 + TailwindCSS + Framer Motion + Lenis
 - Pure frontend — no backend wired yet
-- Mocked: Playbook download forms, Newsletter forms, YouTube embed
+- Mocked: all forms, YouTube embed
 
 ## Files of Reference
-- `/app/frontend/src/pages/LosCabos.jsx` — Master Hub (13 sections)
-- `/app/frontend/src/components/hub/PhotoSlot.jsx` — Placeholder system
-- `/app/frontend/src/index.css` — Hub design tokens
-- `/app/frontend/src/App.js` — `?skipIntro=1` URL gate
+- `/app/frontend/src/pages/LosCabos.jsx` — Master Hub template
+- `/app/frontend/src/data/hubs.js` — destination data
+- `/app/frontend/src/data/articles.js` — articles incl. Bachelor Trip
+- `/app/frontend/src/pages/Journal.jsx` — pillar tabs + filters + featured card + grid
+- `/app/frontend/src/pages/TripBuilder.jsx` — 4-step wizard
+- `/app/frontend/src/pages/About.jsx` — founders with slider
+- `/app/frontend/src/components/Nav.jsx` — global nav with dropdown
+- `/app/frontend/src/components/Footer.jsx`
+- `/app/frontend/src/index.css` — design tokens + section-nav
 
 ## Credentials
 None — no auth implemented.
