@@ -109,9 +109,7 @@ const JournalHeader = ({ activePillar, setActivePillar, setCategory }) => {
           </h1>
           <div className="md:col-span-5 flex flex-col gap-4 md:pt-1">
             <p className="font-body font-light text-[var(--c-text-mid)] text-sm md:text-[15px] leading-[1.7]">
-              Founded on our firsthand perspective as a tour agent and a
-              professional golfer. A growing collective of industry leaders,
-              colleagues, and creators who see the game differently.
+              Three editorial pillars guide everything we publish — <em className="italic text-[var(--c-text)] not-italic font-normal">Golf</em>, <em className="italic text-[var(--c-text)] not-italic font-normal">Beyond the Course</em>, and <em className="italic text-[var(--c-text)] not-italic font-normal">The Concierge</em> — written by a tour agent, a professional golfer, and a growing collective of industry insiders who see the game differently.
             </p>
           </div>
         </motion.div>
@@ -345,15 +343,9 @@ const Journal = () => {
   const [search, setSearch] = useState("");
 
   const filtered = useMemo(() => {
-    const q = search.trim().toLowerCase();
-    return ARTICLES.filter((a) => articleHasCategory(a, category)).filter((a) => {
-      if (!q) return true;
-      return (
-        a.title.toLowerCase().includes(q) ||
-        a.excerpt.toLowerCase().includes(q) ||
-        a.destinationLabel.toLowerCase().includes(q)
-      );
-    });
+    // Empty grid — articles cleared until new content is provided
+    return [];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category, search]);
 
   return (
@@ -372,14 +364,23 @@ const Journal = () => {
 
       {/* Article grid */}
       <section data-testid="journal-grid" className="pt-12 md:pt-16">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+        <div className="max-w-[1100px] mx-auto px-6 md:px-12">
           {filtered.length === 0 ? (
-            <p
+            <div
               data-testid="journal-empty"
-              className="py-24 text-center font-display italic font-normal text-[var(--c-text-muted)] text-xl md:text-2xl"
+              className="py-24 md:py-32 text-center max-w-xl mx-auto"
             >
-              Nothing matches — try another filter.
-            </p>
+              <span className="block font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-gold)] mb-6">
+                Coming soon
+              </span>
+              <h3 className="font-display italic font-normal text-[var(--c-text)] text-2xl md:text-3xl leading-[1.3] mb-4">
+                The first entries are being polished.
+              </h3>
+              <p className="font-body font-light text-[var(--c-text-muted)] text-sm md:text-base leading-[1.7]">
+                New articles publish weekly, written by Pablo, José, and our
+                collective. Subscribe below and you&apos;ll be the first to know.
+              </p>
+            </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 md:gap-y-20">
               {filtered.map((a, i) => (
