@@ -23,7 +23,11 @@ const Nav = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const isHome = location.pathname === "/";
-  const onDarkHero = isHome && !scrolled;
+  const isDarkHeroPage =
+    isHome ||
+    location.pathname === "/destinations" ||
+    location.pathname.startsWith("/destinations/");
+  const onDarkHero = isDarkHeroPage && !scrolled;
 
   const scrollToFounders = () => {
     const el = document.getElementById("founders");
