@@ -1,108 +1,83 @@
-# Golf in Mexico° — Product Requirements Document
+# Golf in Mexico° (GIM) — Product Requirements
 
 ## Original Problem Statement
-Premium editorial golf brand for México. Awwwards-level minimalist, editorial, cinematic. Multi-page (Home, Journal, Destinations + per-destination Hubs, Article template).
+Build a full multi-page Landing Page for "Golf in Mexico°" (GIM) — a premium editorial golf brand. The design must be award-winning level, targeting Awwwards recognition. Multi-page architecture (Home, Journal, Destinations, Destination Hubs). Typography: Libre Baskerville, Outfit, Space Mono. Color system: Off-white (#f8f5f0), Deep green (#0f2419), Gold (#c8a96e). Lenis smooth scrolling, custom cursors, editorial voice.
 
-**Audience:** Single-handicaps planning rounds, families weighing weeks, agents moving clients, plus broad Meta-traffic and SEO-driven golfers (~545k/yr).
+**Language:** Spanish (user communicates in Spanish — respond in Spanish)
+**Mode:** Look & Feel only — no backend integrations yet. Forms are mocked.
 
-**Voice:** Editorial, declarative, "from inside the ropes". Assertive but elegant — never salesy.
+## What's Implemented (as of May 26, 2026)
 
-**Design System:**
-- Colors: Cream `#F5F2EB`, Ink `#1A1A18`, Gold `#C4A24E`, Forest `#2C4A2C`
-- Typography: Cormorant Garamond (display), Outfit (body), JetBrains Mono (mono labels)
+### Pages
+- `/` Home — Editorial hero, YouTube embed placeholder, founders bio
+- `/journal` — 4 editorial pillars (Golf, Beyond the Course, Travel Concierge, The Collective) with filters, "Coming Soon" empty state
+- `/destinations` — 6 stacked editorial destination cards (all live)
+- `/destinations/los-cabos` — **MASTER HUB** with full 13-section AdMirror spec
+- `/destinations/{other}` — `DestinationPlaceholder.jsx` for Punta Mita, Mexico City, Cancún, Puerto Vallarta, Unique
 
-**Founders / editors:**
-- Pablo De La Mora — PGA Tour · LPGA Tour · WTA Sports Agent (CDMX)
-- José Islas — Professional Golfer
+### Los Cabos Hub (matches sage-fairways reference design)
+1. Hero — CSS gradient (160deg #0f2419→#0a1510) + diagonal texture, H1 "Golf in *Cabo San Lucas.*", byline with founder field-research credit, 2×2 stat block
+2. At a Glance — Quick facts table + Access legend (Public/Resort/Private)
+3. Overview — 3 paragraphs + 4-stat strip + **inline dark Playbook CTA box** (gold-bordered, with email form)
+4. Photo strip — 3 styled placeholders with "°" mark + "Photography from GIM field research" caption
+5. Course Roster — 8 course cards (UPPERCASE names, photo placeholder, access pill, fee, specs, note, standout, "Field notes coming — subscribe")
+6. Comparison Table — 6 cols incl. **Difficulty (1-5/5)** + legend
+7. The Math — Cost table + 2 callout boxes (💡 Luxury Variable / 🌅 Twilight Advantage)
+8. Pull Quote — Field Notes attribution
+9. Access Rules — 4 sub-sections (🔓🔑🛡🚶) + Atmospheric photo + Concierge box CTA
+10. Logistics — 2×2 cards (✈🚗🗺💵)
+11. Season Guide — Peak / Shoulder / Off-Season blocks
+12. Field Notes — Credential pills (PGA TOUR · LIV GOLF · MEXICO OPEN · WWT CABO 2024) + founder photo placeholder + 4 numbered notes
+13. **S11 All Articles & Guides** — 6 cards with Live/Coming Soon badges
+14. **S12 Newsletter (Field Notes)** — centered narrow dark, gold button
+15. FAQ — 9 questions accordion
+16. End Playbook CTA — Short surface variant
+17. Keep Exploring — 4 destination cards
 
----
+### Reusable Components
+- `/components/hub/PhotoSlot.jsx` — Styled placeholder system (dark green + "°" gold mark + bottom-left mono label). Auto-swaps to real image when `src` provided.
 
-## Sitemap (Active)
-- `/` — Home (Hero · Premise N°01 · Manifestos N°01–03)
-- `/journal` — Journal Hub (TGJ-style overview · Regions · Must Reads · Pillars)
-- `/journal/:slug` — Article editorial template
-- `/destinations` — Immersive destinations index (KRO-Travel style scroll)
-- `/destinations/:slug` — **Destination Hub (13 sections)** — `los-cabos`, `punta-mita`, `mexico-city`
-- `/journal/los-cabos` → 301 redirect to `/destinations/los-cabos`
+### Design tokens (`index.css`)
+- `.photo-slot` + variants (`--hero`, `--16x9`, `--4x3`, `--3x4`, `--atmo`)
+- `.credential-pill` (light + dark variants, mobile-scroll)
+- `.hub-page` typography (font-light h1/h2)
+- `.article-count`, `.live-link`, `.coming-soon-link`
 
----
+### Intro skip
+- `?skipIntro=1` URL param bypasses the 4.4s intro animation (useful for screenshots/QA)
 
-## Implemented
+## Active Issues / Pending
+- `/trip-builder` route still returns 404 — Concierge CTA links to it (UI only, no page yet)
+- Punta Mita / Mexico City / Cancún / Puerto Vallarta hubs are still using `DestinationPlaceholder.jsx`
+- The Hub layout has not yet been componentized into `/components/hub/Hub*.jsx` for reuse across regions
 
-### Global
-- Cinematic intro (skippable, once per session)
-- Lenis momentum smooth scroll
-- AnimatePresence page transitions (blur + y)
-- Sticky Nav (logo, Home, Journal, About, Destinations dropdown, Inquire CTA, FB/IG/LI)
-- Reading Progress bar (gold)
-- Custom cursor
-- Footer (3-column · newsletter · brand · coords · MOCKED submit)
-- InquiryModal (curated trip form, MOCKED)
+## Roadmap
 
-### Home `/`
-- Premise N°01 (16:9 video box · CTA)
-- Manifestos N°01–03 (Pablo · José · GIM°)
+### P0 (immediate)
+- [ ] User visual verification of Los Cabos hub (sage-fairways visual parity)
 
-### Journal `/journal` + `/journal/:slug`
-- TGJ-style overview, sticky filter bars, horizontal sliders
-- Article template w/ breadcrumb, inline CTAs, scroll-triggered email capture (UI only)
+### P1 (next)
+- [ ] Create `/trip-builder` placeholder page OR inquiry modal
+- [ ] Componentize Hub sections (CourseCard, ComparisonTable, AccessLegend, FieldNote, etc.) into `/components/hub/`
+- [ ] Build Punta Mita hub (need intake doc from user)
+- [ ] Build Mexico City hub (need intake doc from user)
 
-### Destinations `/destinations`
-- Immersive hero, parallax photo dividers, regions slider (6 cards: 3 live · 3 "Soon")
+### P2 (later)
+- [ ] Connect Playbook + Newsletter forms to MailerLite/Resend
+- [ ] Populate Journal with real article content
+- [ ] Per-region real photography upload (drop into PhotoSlot `src` prop)
+- [ ] Cancún + Puerto Vallarta hubs
 
-### Destination Hubs `/destinations/:slug` (Feb 2026) — Los Cabos · Punta Mita · Mexico City
-13 sections per hub:
-1. Cinematic Hero (parallax + breadcrumb)
-2. Hero Answer (editorial blockquote)
-3. Quick Facts (11-row table)
-4. Overview (4 sub-blocks: Geography · Climate · Distinct · Landscape)
-5. PhotoDivider (parallax)
-6. Course Roster (cards, GIM-property gold border)
-7. Course Comparison (table w/ difficulty rating)
-8. True Cost (table w/ totals)
-9. Access (Public · Resort · Cross · Private + email-Pablo CTA)
-10. Logistics (4 tiles)
-11. Season Guide (12-month table + note, on dark)
-12. Field Notes placeholder (Phase 2)
-13. All Articles grid + Newsletter CTA + FAQ accordion + Coming Soon strip
-
----
-
-## P1 — Pending
-- **Backend integrations** (paused per user instruction): Resend (newsletter + inquiry), HubSpot, Beehiiv
-- Real video assets for Home Hero (need public CDN URLs — Drive permissions blocked previous attempts)
-- GA4 events + JSON-LD schema across all templates
-
-## P2 — Backlog
-- Additional Destination Hubs (Puerto Vallarta, Riviera Maya, Unique) using same template
-- Phase 2 Field Notes content (Pablo's firsthand course write-ups)
-- Migrate hardcoded `/data/*.js` to MongoDB + FastAPI admin route
-- SSR / pre-rendering for SEO meta tags
-
----
+## Tech Stack
+- React 18 + TailwindCSS + Framer Motion + Lenis (smooth scroll)
+- Pure frontend — no backend wired yet
+- Mocked: Playbook download forms, Newsletter forms, YouTube embed
 
 ## Files of Reference
-- `/app/frontend/src/App.js` — Routes (Destinations + DestinationHub + Article + legacy redirect)
-- `/app/frontend/src/components/Nav.jsx` — Destinations dropdown (live: los-cabos · punta-mita · mexico-city)
-- `/app/frontend/src/components/Footer.jsx`, `Cursor.jsx`, `Intro.jsx`, `ReadingProgress.jsx`, `InquiryModal.jsx`
-- `/app/frontend/src/pages/Home.jsx`
-- `/app/frontend/src/pages/Journal.jsx` + `Article.jsx`
-- `/app/frontend/src/pages/Destinations.jsx` (index)
-- `/app/frontend/src/pages/DestinationHub.jsx` (13-section template)
-- `/app/frontend/src/pages/LosCabos.jsx` — **legacy MVP, kept but unreachable; safe to delete**
-- `/app/frontend/src/data/destinations.js` — Los Cabos · Punta Mita · Mexico City (full editorial data)
-- `/app/frontend/src/data/articles.js`
+- `/app/frontend/src/pages/LosCabos.jsx` — Master Hub (13 sections)
+- `/app/frontend/src/components/hub/PhotoSlot.jsx` — Placeholder system
+- `/app/frontend/src/index.css` — Hub design tokens
+- `/app/frontend/src/App.js` — `?skipIntro=1` URL gate
 
-## Tech
-- React + React Router + TailwindCSS + Framer Motion + Lenis + Lucide
-- Backend: FastAPI (not yet wired)
-- DB: MongoDB (not yet wired)
-
----
-
-## Changelog
-- **Feb 2026 · v2.1 Journal simplification** — Rediseñé `/journal` con la estética minimalista de auwa.life: hero sparse + intro editorial · secciones numeradas "01 / Los Cabos." · grid 4:5 con label + título + hook (sin filtros, badges, read-time, sticky email bar) · pull quote central · closing CTA a Destinations. Reducción dramática de densidad visual.
-- **Feb 2026 · v2 redesign** — Applied full editorial-luxury redesign system across the app: fonts (Libre Baskerville + Outfit + Space Mono replacing Cormorant + Outfit + JetBrains Mono), colour palette (deep-green `#0f2419` + warmer gold `#c8a96e` + warm off-white `#f8f5f0`), new spacing/motion tokens. Added `StatsBar` component on Home (4-stat editorial credibility row). All existing components inherit the new tokens via CSS variables + Tailwind aliases — no breakage.
-- **Feb 2026** — Wired `/destinations/:slug` with the 13-section `DestinationHub.jsx` template for Los Cabos, Punta Mita, Mexico City. Nav dropdown + Destinations region cards updated. `/journal/los-cabos` 301 → `/destinations/los-cabos`. `LosCabos.jsx` deprecated (still in repo).
-- **Earlier Feb 2026** — Built `/data/destinations.js` (3 destinations × 13 sections).
-- **Earlier** — Journal redesign (TGJ aesthetic), Destinations immersive scroll, Article editorial template, Footer 3-col overhaul, Lenis global, AnimatePresence transitions.
+## Credentials
+None — no auth implemented.

@@ -109,6 +109,10 @@ const AnimatedRoutes = () => {
 function App() {
   const [introDone, setIntroDone] = useState(() => {
     try {
+      // Allow ?skipIntro=1 query param + sessionStorage flag
+      if (typeof window !== "undefined" && /[?&]skipIntro=1/.test(window.location.search)) {
+        return true;
+      }
       return sessionStorage.getItem("gim-intro-seen") === "1";
     } catch (e) {
       return false;
