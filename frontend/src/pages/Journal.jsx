@@ -90,85 +90,124 @@ const JournalHeader = ({ activePillar, setActivePillar, setCategory }) => {
   };
 
   return (
-    <section data-testid="journal-header" className="pt-36 md:pt-44 pb-12 md:pb-16">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+    <section data-testid="journal-header" className="pt-32 md:pt-36 pb-10 md:pb-14">
+      <div className="max-w-[1100px] mx-auto px-6 md:px-12">
         {/* Top label */}
-        <span className="block font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-gold)] mb-10 md:mb-14">
+        <span className="block font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-gold)] mb-6 md:mb-8">
           The Journal
         </span>
 
-        {/* Intro block */}
+        {/* Compact intro */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-3xl mb-20 md:mb-28"
+          className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 mb-12 md:mb-16"
         >
-          <h1 className="font-display font-normal text-[var(--c-text)] leading-[1.1] tracking-tight text-3xl md:text-5xl lg:text-[3.5rem] mb-8">
+          <h1 className="md:col-span-7 font-display font-normal text-[var(--c-text)] leading-[1.1] tracking-tight text-2xl md:text-3xl lg:text-4xl">
             Traveling México through a <em className="italic text-[var(--c-gold)]">golfer&apos;s lens.</em>
           </h1>
-          <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] mb-8 max-w-2xl">
-            Founded on our firsthand perspective as a tour agent and a
-            professional golfer, this space captures the raw essence of the
-            country&apos;s landscape. A growing collective of industry leaders,
-            colleagues, and creators who see the game differently.
-          </p>
-          <Link
-            to="/trip-builder"
-            data-testid="journal-intro-cta"
-            className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-green-mid)] hover:text-[var(--c-gold)] transition-colors duration-500"
-          >
-            <span className="transition-transform duration-500 group-hover:translate-x-1.5">→</span>
-            Build your trip with GIM
-          </Link>
+          <div className="md:col-span-5 flex flex-col gap-4 md:pt-1">
+            <p className="font-body font-light text-[var(--c-text-mid)] text-sm md:text-[15px] leading-[1.7]">
+              Founded on our firsthand perspective as a tour agent and a
+              professional golfer. A growing collective of industry leaders,
+              colleagues, and creators who see the game differently.
+            </p>
+            <Link
+              to="/trip-builder"
+              data-testid="journal-intro-cta"
+              className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-green-mid)] hover:text-[var(--c-gold)] transition-colors duration-500"
+            >
+              <span className="transition-transform duration-500 group-hover:translate-x-1.5">→</span>
+              Build your trip with GIM
+            </Link>
+          </div>
         </motion.div>
 
-        {/* Pillar box — founders layout */}
-        <div data-testid="journal-pillars" className="border-t border-[var(--c-border)] pt-12 md:pt-16">
+        {/* Pillar tabs — top (founders style) */}
+        <div
+          data-testid="pillar-tabs"
+          role="tablist"
+          className="grid grid-cols-3 gap-2 md:gap-6 border-b border-[var(--c-border)] pb-5 md:pb-6"
+        >
+          {PILLARS.map((p, i) => {
+            const isActive = p.id === activePillar;
+            return (
+              <button
+                key={p.id}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => setActivePillar(p.id)}
+                data-testid={`pillar-tab-${p.id}`}
+                className={`text-left flex items-center gap-2 md:gap-3 pt-3 border-t-2 transition-colors duration-500 ${
+                  isActive ? "border-[var(--c-gold)]" : "border-transparent hover:border-[var(--c-border)]"
+                }`}
+              >
+                <span
+                  className={`font-mono text-[9px] md:text-[10px] uppercase tracking-[0.18em] ${
+                    isActive ? "text-[var(--c-gold)]" : "text-[var(--c-text-muted)]"
+                  }`}
+                >
+                  0{i + 1}
+                </span>
+                <span
+                  className={`font-display font-normal text-sm md:text-lg tracking-tight truncate ${
+                    isActive ? "text-[var(--c-text)]" : "text-[var(--c-text-muted)] group-hover:text-[var(--c-text)]"
+                  }`}
+                >
+                  {p.short}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Pillar panel — compact, founders-grid 3/9 */}
+        <div className="mt-8 md:mt-10 min-h-[280px] md:min-h-[320px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={pillar.id}
-              initial={{ opacity: 0, y: 14 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start"
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              className="grid grid-cols-12 gap-6 md:gap-10"
             >
-              {/* LEFT — image with number */}
-              <div className="md:col-span-5 relative aspect-[4/5] overflow-hidden bg-[var(--c-green-deep)] rounded-sm">
-                <img
-                  src={pillar.image}
-                  alt={pillar.title}
-                  className="absolute inset-0 w-full h-full object-cover editorial-img"
-                />
-                <div className="absolute inset-0 bg-gradient-to-br from-[var(--c-green-deep)]/15 via-transparent to-[var(--c-green-deep)]/40" />
-                <span className="absolute top-5 left-5 md:top-7 md:left-7 font-mono text-[10px] uppercase tracking-[0.2em] text-white/90">
-                  {pillar.number}
-                </span>
-                <span className="absolute bottom-5 right-5 md:bottom-7 md:right-7 font-display italic text-[var(--c-gold)] text-3xl md:text-4xl leading-none">
-                  °
+              {/* Left meta — small image + number + accent */}
+              <div className="col-span-12 md:col-span-3 flex flex-col gap-4">
+                <div className="relative aspect-[4/5] md:aspect-[3/4] w-full max-w-[180px] overflow-hidden bg-[var(--c-green-deep)] rounded-sm">
+                  <img
+                    src={pillar.image}
+                    alt={pillar.title}
+                    className="absolute inset-0 w-full h-full object-cover editorial-img"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-[var(--c-green-deep)]/15 via-transparent to-[var(--c-green-deep)]/40" />
+                  <span className="absolute top-3 left-3 font-mono text-[9px] uppercase tracking-[0.2em] text-white/90">
+                    {pillar.number}
+                  </span>
+                </div>
+                <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-text-muted)]">
+                  N° 0{PILLARS.findIndex((p) => p.id === pillar.id) + 1} — Pillar
                 </span>
               </div>
 
-              {/* RIGHT — content */}
-              <div className="md:col-span-7 md:pt-2">
-                <span className="block font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-text-muted)] mb-4">
-                  N° 0{PILLARS.findIndex((p) => p.id === pillar.id) + 1} — Pillar
-                </span>
-                <h2 className="font-display font-normal text-[var(--c-text)] leading-[1.1] tracking-tight text-3xl md:text-5xl mb-3">
+              {/* Right content */}
+              <div className="col-span-12 md:col-span-9">
+                <h2 className="font-display font-normal text-[var(--c-text)] leading-[1.1] tracking-tight text-2xl md:text-4xl">
                   {pillar.title}
                 </h2>
-                <p className="font-display italic font-normal text-[var(--c-gold)] text-lg md:text-xl mb-6">
+                <p className="mt-2 font-display italic font-normal text-[var(--c-gold)] text-base md:text-lg">
                   {pillar.sub}
                 </p>
-                <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] max-w-xl mb-10">
+                <p className="mt-5 md:mt-6 font-body font-light text-[var(--c-text-mid)] text-sm md:text-[15px] leading-[1.7] max-w-2xl">
                   {pillar.body}
                 </p>
                 <button
                   type="button"
                   onClick={onCTA}
                   data-testid={`pillar-cta-${pillar.id}`}
-                  className="group inline-flex items-center gap-3 border border-[var(--c-green-deep)] text-[var(--c-green-deep)] hover:bg-[var(--c-green-deep)] hover:text-[var(--c-off-white)] px-7 py-3.5 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] transition-colors duration-500"
+                  className="group mt-7 md:mt-8 inline-flex items-center gap-3 border border-[var(--c-green-deep)] text-[var(--c-green-deep)] hover:bg-[var(--c-green-deep)] hover:text-[var(--c-off-white)] px-6 py-3 rounded-sm font-mono text-[10px] md:text-[11px] uppercase tracking-[0.18em] transition-colors duration-500"
                 >
                   {pillar.ctaLabel}
                   <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
@@ -176,44 +215,6 @@ const JournalHeader = ({ activePillar, setActivePillar, setCategory }) => {
               </div>
             </motion.div>
           </AnimatePresence>
-
-          {/* Bottom tabs */}
-          <div
-            data-testid="pillar-tabs"
-            className="mt-12 md:mt-16 border-t border-[var(--c-border)] pt-5 grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6"
-          >
-            {PILLARS.map((p, i) => {
-              const isActive = p.id === activePillar;
-              return (
-                <button
-                  key={p.id}
-                  type="button"
-                  onClick={() => setActivePillar(p.id)}
-                  data-testid={`pillar-tab-${p.id}`}
-                  className={`text-left flex items-baseline gap-3 pt-4 border-t-2 transition-colors duration-500 ${
-                    isActive
-                      ? "border-[var(--c-gold)]"
-                      : "border-transparent hover:border-[var(--c-border)]"
-                  }`}
-                >
-                  <span
-                    className={`font-mono text-[10px] uppercase tracking-[0.2em] ${
-                      isActive ? "text-[var(--c-gold)]" : "text-[var(--c-text-muted)]"
-                    }`}
-                  >
-                    0{i + 1}
-                  </span>
-                  <span
-                    className={`font-mono text-[11px] uppercase tracking-[0.18em] ${
-                      isActive ? "text-[var(--c-text)]" : "text-[var(--c-text-muted)]"
-                    }`}
-                  >
-                    {p.short}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
         </div>
       </div>
     </section>
