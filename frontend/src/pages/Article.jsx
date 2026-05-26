@@ -432,60 +432,77 @@ const Article = () => {
 
   return (
     <main data-testid={`page-article-${article.slug}`} className="relative bg-cream pb-0">
-      {/* SEO meta — react-helmet not installed; left as a TODO for integration phase */}
+      {/* ═════════ HERO — Full-bleed photo + minimal type (matches Destinations) ═════════ */}
+      <header
+        data-testid="article-hero"
+        className="relative text-white overflow-hidden bg-[#0a1510]"
+      >
+        <img
+          src={article.heroImage}
+          alt={article.title}
+          loading="eager"
+          fetchpriority="high"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          style={{ filter: "brightness(0.92) saturate(1.02)" }}
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(115deg, rgba(10,21,16,0.88) 0%, rgba(10,21,16,0.72) 35%, rgba(10,21,16,0.32) 65%, rgba(10,21,16,0.18) 100%)",
+          }}
+        />
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 h-40 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(10,21,16,0.6) 0%, rgba(10,21,16,0) 100%)",
+          }}
+        />
 
-      {/* Top: breadcrumb */}
-      <section className="pt-32 md:pt-40 pb-6 md:pb-8 bg-cream border-b hairline">
-        <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-          <Breadcrumb
-            destination={article.destination}
-            destinationLabel={article.destinationLabel}
-            title={article.title}
-          />
-        </div>
-      </section>
+        {/* Breadcrumb */}
+        <nav
+          aria-label="Breadcrumb"
+          data-testid="article-breadcrumb"
+          className="relative z-10 pt-32 md:pt-36 max-w-[1200px] mx-auto px-6 md:px-12 pb-6"
+        >
+          <ol className="flex flex-wrap items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-white/70">
+            <li><Link to="/" className="hover:text-[var(--c-gold)] transition-colors">Home</Link></li>
+            <li aria-hidden>›</li>
+            <li><Link to="/journal" className="hover:text-[var(--c-gold)] transition-colors">Journal</Link></li>
+            <li aria-hidden>›</li>
+            <li className="text-[var(--c-gold)] truncate max-w-[260px] md:max-w-none">{article.destinationLabel}</li>
+          </ol>
+        </nav>
 
-      {/* Header */}
-      <section data-testid="article-header" className="bg-cream pt-10 md:pt-14 pb-8 md:pb-12">
-        <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-          <div className="flex items-center gap-2 mb-6">
-            <Badge variant="outline">{article.destinationLabel}</Badge>
-            {article.isGIMProperty ? (
-              <Badge variant="property">GIM Property</Badge>
-            ) : (
-              <Badge variant="ink">{article.articleType}</Badge>
-            )}
-          </div>
+        <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-12 pb-20 md:pb-28 min-h-[60vh] md:min-h-[68vh] flex flex-col justify-end">
           <motion.h1
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display font-light text-ink leading-[1.04] tracking-tight text-4xl md:text-6xl lg:text-[5rem] max-w-4xl"
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="font-display font-light text-white tracking-tight text-3xl md:text-5xl lg:text-[3.75rem] leading-[1.08] max-w-[22ch]"
+            style={{ textShadow: "0 2px 24px rgba(10,21,16,0.45)" }}
           >
             {article.h1}
           </motion.h1>
-          <p className="mt-6 font-body font-light text-ink/65 text-lg md:text-xl max-w-3xl leading-relaxed">
-            {article.excerpt}
+          {article.subtitle && (
+            <motion.p
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-6 md:mt-8 font-body font-light text-white/85 text-base md:text-xl leading-[1.6] max-w-[640px]"
+              style={{ textShadow: "0 1px 12px rgba(10,21,16,0.5)" }}
+            >
+              {article.subtitle}
+            </motion.p>
+          )}
+          <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--c-gold)]">
+            {article.readTimeMinutes} min read · Updated {article.updated}
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-3 font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
-            <span>{article.readTimeMinutes} min read</span>
-            <span className="block w-1 h-1 rounded-full bg-ink/30" />
-            <span>{article.searchVolume.toLocaleString()} searches/mo</span>
-            <span className="block w-1 h-1 rounded-full bg-ink/30" />
-            <span>Updated {article.updated}</span>
-          </div>
         </div>
-        {/* Hero image */}
-        <div className="mt-10 md:mt-14 max-w-[1440px] mx-auto px-6 md:px-12">
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl bg-ink">
-            <img
-              src={article.heroImage}
-              alt={article.title}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          </div>
-        </div>
-      </section>
+      </header>
 
       {/* Body */}
       <section data-testid="article-body" className="bg-cream py-12 md:py-16">
