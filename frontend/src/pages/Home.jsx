@@ -30,7 +30,7 @@ const StatementAndVideo = () => (
         data-testid="home-section-heading"
         className="font-display font-normal text-[var(--c-text)] leading-[1.05] tracking-tight text-3xl md:text-5xl lg:text-6xl max-w-[20ch] mb-10 md:mb-14"
       >
-        The result<span className="text-[var(--c-gold)]">.</span>
+        Everything you need to know <em className="italic text-[var(--c-gold)]">before you play México.</em>
       </motion.h2>
 
       <motion.p
@@ -39,14 +39,12 @@ const StatementAndVideo = () => (
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 0.95, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         data-testid="home-statement"
-        className="font-body font-light text-[var(--c-text-mid)] leading-[1.7] text-lg md:text-xl max-w-[58ch] mb-14 md:mb-20"
+        className="font-body font-light text-[var(--c-text-mid)] leading-[1.7] text-lg md:text-xl max-w-[52ch] mb-14 md:mb-20"
       >
-        We built this platform to amplify the voices of the ultimate insiders.
-        Caddies, course directors, designers, and the culinary minds shaping
-        every premium itinerary in México.{" "}
-        <em className="not-italic font-normal text-[var(--c-text)]">
-          Their stories. Their execution. Their perspective.
-        </em>
+        We are an editorial ecosystem covering Mexican golf nationwide —
+        showcasing elite courses, designing bespoke experiences, and capturing
+        the food, architecture, hospitality, and people who make it all
+        possible.
       </motion.p>
 
       <motion.div
@@ -105,6 +103,44 @@ const HomeDivider = () => {
     </section>
   );
 };
+
+/* ─────────────── THE RESULT ─────────────── */
+
+const TheResult = () => (
+  <section
+    data-testid="home-the-result"
+    className="bg-[var(--c-off-white)] border-t border-[var(--c-border)] py-24 md:py-32"
+  >
+    <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+      <motion.h2
+        initial={{ opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        data-testid="home-result-heading"
+        className="font-display font-normal text-[var(--c-text)] leading-[1.05] tracking-tight text-3xl md:text-5xl lg:text-6xl max-w-[20ch] mb-10 md:mb-14"
+      >
+        The result<span className="text-[var(--c-gold)]">.</span>
+      </motion.h2>
+
+      <motion.p
+        initial={{ opacity: 0, y: 14 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.95, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+        data-testid="home-result-body"
+        className="font-body font-light text-[var(--c-text-mid)] leading-[1.7] text-lg md:text-xl max-w-[58ch]"
+      >
+        We built this platform to amplify the voices of the ultimate insiders.
+        Caddies, course directors, designers, and the culinary minds shaping
+        every premium itinerary in México.{" "}
+        <em className="not-italic font-normal text-[var(--c-text)]">
+          Their stories. Their execution. Their perspective.
+        </em>
+      </motion.p>
+    </div>
+  </section>
+);
 
 /* ─────────────── PAGE ─────────────── */
 
@@ -168,6 +204,9 @@ const Home = () => {
 
       {/* FOUNDERS + VALUES */}
       <TeamEditorial />
+
+      {/* THE RESULT — closing statement */}
+      <TheResult />
     </main>
   );
 };
