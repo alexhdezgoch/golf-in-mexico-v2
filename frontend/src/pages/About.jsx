@@ -200,43 +200,37 @@ const About = () => (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 lg:gap-16">
           {[
             {
-              n: "01",
-              title: "Authentic Access",
-              sub: "Relationships, not algorithms.",
+              n: "/",
+              title: "Tour-Level Precision",
               body:
-                "Every course on our roster, one of us has walked. Every private gate that opens, opens through a call from our personal cell. Access is built — never bought.",
+                "Our standards were forged on professional tours. From the first tee time to the final itinerary, we approach every single detail with the exact rigor and professionalism expected by the world's best players.",
             },
             {
-              n: "02",
-              title: "Editorial Honesty",
-              sub: "Written from the inside.",
+              n: "//",
+              title: "Destination Intelligence",
               body:
-                "No paid placements, no comp rounds in exchange for coverage. If a destination makes our list, it earned the spot. If a course doesn't, it isn't on the page.",
+                "Over a decade spent scouting México's most exclusive regions. We rely on genuine, boots-on-the-ground relationships to bypass the tourist noise and unlock the country's true hidden gems.",
             },
             {
-              n: "03",
-              title: "Operational Precision",
-              sub: "A Tour-level standard, every time.",
+              n: "///",
+              title: "Long-Term Relationships",
               body:
-                "Every itinerary is built like a Tour event would be — named tee times, itemized costs, named contacts. A blueprint, not a brochure.",
+                "Tourism is transactional; real access is relational. We don't do one-off deals. We build lasting bonds and fiercely take care of the people we work with. From local caddies to course directors, we prioritize radical honesty and mutual respect — because true insider experiences are built on decades of trust.",
             },
           ].map((p, i) => (
             <motion.article
               key={p.n}
-              data-testid={`pillar-${p.n}`}
+              data-testid={`pillar-${i + 1}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-10%" }}
               transition={{ duration: 0.7, delay: 0.08 * i, ease: [0.16, 1, 0.3, 1] }}
               className="border-t border-[var(--c-gold)]/40 pt-6"
             >
-              <div className="font-display font-light text-[var(--c-gold)] text-3xl md:text-4xl mb-4">{p.n}</div>
-              <h3 className="font-display font-normal text-[var(--c-text)] text-xl md:text-2xl leading-[1.15] mb-2">
+              <div className="font-display font-light text-[var(--c-gold)] text-3xl md:text-4xl mb-5 leading-none">{p.n}</div>
+              <h3 className="font-display font-normal text-[var(--c-text)] text-xl md:text-2xl leading-[1.15] mb-5">
                 {p.title}
               </h3>
-              <p className="font-display italic font-normal text-[var(--c-gold)] text-base md:text-lg mb-5">
-                {p.sub}
-              </p>
               <p className="font-body font-light text-[var(--c-text-mid)] text-sm md:text-[15px] leading-[1.7]">
                 {p.body}
               </p>
