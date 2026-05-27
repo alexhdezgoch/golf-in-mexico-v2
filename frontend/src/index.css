@@ -764,3 +764,14 @@ html.lenis, html.lenis body { height: auto; }
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 
+/* Global display heading tracking — tightens Libre Baskerville for editorial feel.
+   Applies to anything that uses Tailwind .font-display. */
+.font-display {
+    letter-spacing: -0.025em;
+}
+.font-display em,
+.font-display i {
+    /* Italic Baskerville already looks tighter; nudge it slightly less. */
+    letter-spacing: -0.015em;
+}
+

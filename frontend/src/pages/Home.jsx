@@ -12,8 +12,7 @@ const HERO_POSTER =
 const HOME_DIVIDER_IMG =
   "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/nsvdb584_GOLFINMEXICO-014.jpg";
 
-// ↓↓↓  Reemplaza con el ID de YouTube cuando lo tengas listo  ↓↓↓
-const YOUTUBE_ID = "LXb3EKWsInQ";
+const HOME_VIDEO_SRC = "/video/home.mp4";
 
 /* ─────────────── EDITORIAL STATEMENT + VIDEO BOX ─────────────── */
 
@@ -56,14 +55,24 @@ const StatementAndVideo = () => (
         data-testid="home-video-frame"
         className="relative aspect-[16/9] w-full overflow-hidden bg-[var(--c-green-deep)] rounded-sm shadow-[0_40px_100px_-40px_rgba(15,36,25,0.5)]"
       >
-        <iframe
-          data-testid="home-youtube"
-          src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_ID}?rel=0&modestbranding=1&playsinline=1`}
-          title="Golf in Mexico — Film"
-          loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-          className="absolute inset-0 w-full h-full"
+        <video
+          data-testid="home-video"
+          src={HOME_VIDEO_SRC}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Subtle gradient frame so the video doesn't fight the cream background */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(120% 100% at 50% 50%, rgba(0,0,0,0) 60%, rgba(15,36,25,0.18) 100%)",
+          }}
         />
       </motion.div>
     </div>

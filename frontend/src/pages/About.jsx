@@ -184,6 +184,68 @@ const About = () => (
       </div>
     </section>
 
+    {/* ── THREE PILLARS · OUR VALUES ── */}
+    <section
+      data-testid="about-pillars"
+      className="bg-[var(--c-surface)] py-20 md:py-32"
+    >
+      <div className="max-w-[1240px] mx-auto px-6 md:px-12">
+        <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-6">
+          Three Pillars
+        </span>
+        <h2 className="font-display font-light text-[var(--c-text)] text-3xl md:text-5xl lg:text-[3.5rem] leading-[1.05] mb-12 md:mb-16 max-w-[22ch]">
+          Our values<span className="text-[var(--c-gold)]">.</span>
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 lg:gap-16">
+          {[
+            {
+              n: "01",
+              title: "Authentic Access",
+              sub: "Relationships, not algorithms.",
+              body:
+                "Every course on our roster, one of us has walked. Every private gate that opens, opens through a call from our personal cell. Access is built — never bought.",
+            },
+            {
+              n: "02",
+              title: "Editorial Honesty",
+              sub: "Written from the inside.",
+              body:
+                "No paid placements, no comp rounds in exchange for coverage. If a destination makes our list, it earned the spot. If a course doesn't, it isn't on the page.",
+            },
+            {
+              n: "03",
+              title: "Operational Precision",
+              sub: "A Tour-level standard, every time.",
+              body:
+                "Every itinerary is built like a Tour event would be — named tee times, itemized costs, named contacts. A blueprint, not a brochure.",
+            },
+          ].map((p, i) => (
+            <motion.article
+              key={p.n}
+              data-testid={`pillar-${p.n}`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 0.7, delay: 0.08 * i, ease: [0.16, 1, 0.3, 1] }}
+              className="border-t border-[var(--c-gold)]/40 pt-6"
+            >
+              <div className="font-display font-light text-[var(--c-gold)] text-3xl md:text-4xl mb-4">{p.n}</div>
+              <h3 className="font-display font-normal text-[var(--c-text)] text-xl md:text-2xl leading-[1.15] mb-2">
+                {p.title}
+              </h3>
+              <p className="font-display italic font-normal text-[var(--c-gold)] text-base md:text-lg mb-5">
+                {p.sub}
+              </p>
+              <p className="font-body font-light text-[var(--c-text-mid)] text-sm md:text-[15px] leading-[1.7]">
+                {p.body}
+              </p>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+
     {/* ── GET IN TOUCH FOOTER ── */}
     <section className="bg-[var(--c-green-deep)] text-white py-20 md:py-28">
       <div className="max-w-[820px] mx-auto px-6 md:px-12 text-center">
