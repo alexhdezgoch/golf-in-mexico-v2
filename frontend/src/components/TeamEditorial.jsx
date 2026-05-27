@@ -64,38 +64,17 @@ const JOSE = {
   ],
 };
 
-const VALUES = [
-  {
-    mark: "/",
-    title: "Tour-Level Precision",
-    body:
-      "Our standards were forged on professional tours. From the first tee time to the final itinerary, we approach every single detail with the exact rigor and professionalism expected by the world's best players.",
-  },
-  {
-    mark: "//",
-    title: "Destination Intelligence",
-    body:
-      "Over a decade spent scouting México's most exclusive regions. We rely on genuine, boots-on-the-ground relationships to bypass the tourist noise and unlock the country's true hidden gems.",
-  },
-  {
-    mark: "///",
-    title: "Long-Term Relationships",
-    body:
-      "Tourism is transactional; real access is relational. We don't do one-off deals. We build lasting bonds and fiercely take care of the people we work with. From local caddies to course directors, we prioritize radical honesty and mutual respect — because true insider experiences are built on decades of trust.",
-  },
-];
-
 const GIM = {
   id: "gim",
   number: "N° 03",
   label: "The Collective",
   name: "Golf in Mexico°",
   short: "GIM",
-  roleParts: [{ text: "Three principles" }],
+  roleParts: [{ text: "The result" }],
   photo: "/logo-wordmark.png",
   isMark: true,
   accent: "#1A1A18",
-  headline: ["Three principles."],
+  headline: ["The result."],
 };
 
 const TABS = [PABLO, JOSE, GIM];
@@ -260,9 +239,10 @@ const TeamEditorial = () => {
 
                 {isGIM && (
                   <h3
+                    data-testid="gim-result-heading"
                     className="font-display font-normal text-[var(--c-text)] text-2xl md:text-4xl leading-[1.2] tracking-tight max-w-3xl"
                   >
-                    Three <em className="italic text-[var(--c-gold)]">principles.</em>
+                    The <em className="italic text-[var(--c-gold)]">result.</em>
                   </h3>
                 )}
 
@@ -313,28 +293,14 @@ const TeamEditorial = () => {
                 )}
 
                 {isGIM && (
-                  <ul className="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-3 gap-px bg-[var(--c-border)] border-t border-b border-[var(--c-border)]">
-                    {VALUES.map((v, i) => (
-                      <motion.li
-                        key={v.mark}
-                        initial={{ opacity: 0, y: 12 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.7, delay: 0.08 * i, ease: [0.22, 1, 0.36, 1] }}
-                        data-testid={`gim-value-${i + 1}`}
-                        className="bg-[var(--c-off-white)] p-6 md:p-7 flex flex-col gap-3"
-                      >
-                        <span className="font-display font-normal text-[var(--c-gold)] text-3xl md:text-4xl leading-none tracking-tight">
-                          {v.mark}
-                        </span>
-                        <h4 className="font-display font-normal text-[var(--c-text)] text-lg md:text-xl leading-[1.2] tracking-tight">
-                          {v.title}
-                        </h4>
-                        <p className="font-body font-light text-[var(--c-text-muted)] text-sm md:text-[15px] leading-[1.65]">
-                          {v.body}
-                        </p>
-                      </motion.li>
-                    ))}
-                  </ul>
+                  <div data-testid="gim-result-body" className="mt-7 md:mt-9 max-w-2xl">
+                    <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75]">
+                      We built this platform to amplify the voices of the ultimate insiders. Caddies, course directors, designers, and the culinary minds shaping every premium itinerary in México.{" "}
+                      <em className="not-italic font-normal text-[var(--c-text)]">
+                        Their stories. Their execution. Their perspective.
+                      </em>
+                    </p>
+                  </div>
                 )}
               </div>
             </motion.div>
