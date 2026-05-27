@@ -139,8 +139,8 @@ const Home = () => {
             transition={{ duration: 1.4, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
             className="font-display font-normal text-white leading-[1.02] tracking-tight text-[9vw] md:text-[6.2vw] lg:text-[5.6rem] max-w-[18ch] mx-auto"
           >
-            The golf in México{" "}
-            <span className="italic text-[var(--c-gold)]">you have not read about.</span>
+            We uncover{" "}
+            <span className="italic text-[var(--c-gold)]">the best golf in México.</span>
           </motion.h1>
 
           <motion.div
