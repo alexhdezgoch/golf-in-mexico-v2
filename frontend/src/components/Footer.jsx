@@ -209,7 +209,7 @@ const Footer = () => {
               })}
             </ul>
             <Link
-              to="/trip-builder"
+              to="/experience"
               data-testid="footer-plan-trip"
               className="group mt-4 self-start inline-flex items-center gap-2 font-display italic font-normal text-[var(--c-gold)] text-lg md:text-xl hover:text-[var(--c-gold-light)] transition-colors duration-300"
             >

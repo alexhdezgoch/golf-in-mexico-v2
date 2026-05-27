@@ -149,7 +149,7 @@ const Home = () => {
             transition={{ duration: 1, delay: 1, ease: [0.22, 1, 0.36, 1] }}
           >
             <Link
-              to="/trip-builder"
+              to="/experience"
               data-testid="hero-cta-discover"
               className="group mt-10 md:mt-14 inline-flex items-center gap-3 border border-[var(--c-gold)] text-white px-7 md:px-9 py-4 md:py-[18px] rounded-sm font-mono text-[11px] md:text-[12px] uppercase tracking-[0.18em] hover:bg-[var(--c-gold)] hover:text-[var(--c-green-deep)] transition-colors duration-500"
             >

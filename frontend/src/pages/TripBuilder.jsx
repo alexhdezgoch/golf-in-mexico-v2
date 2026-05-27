@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -93,6 +93,15 @@ const TripBuilder = () => {
   const [step, setStep] = useState(1);
   const [destinations, setDestinations] = useState([]);
   const [tripType, setTripType] = useState(null);
+  const [searchParams] = useSearchParams();
+
+  // Pre-select trip type from ?type= query (from /experience cards)
+  useEffect(() => {
+    const t = searchParams.get("type");
+    if (t && TRIP_TYPES.some((x) => x.id === t)) {
+      setTripType(t);
+    }
+  }, [searchParams]);
   const [isDM, setIsDM] = useState(true);
   const [otherDM, setOtherDM] = useState("");
   const [year, setYear] = useState("2026");

@@ -19,6 +19,7 @@ import TripBuilder from "@/pages/TripBuilder";
 import About from "@/pages/About";
 import Destinations from "@/pages/Destinations";
 import LosCabos from "@/pages/LosCabos";
+import Experience from "@/pages/Experience";
 
 // Generic destination hub — routes /destinations/:slug through the LosCabos layout with the matching data
 const HubBySlug = () => {
@@ -125,6 +126,14 @@ const AnimatedRoutes = () => {
         <Route
           path="/trip-builder"
           element={<TripBuilder />}
+        />
+        <Route
+          path="/experience"
+          element={
+            <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+              <Experience />
+            </motion.div>
+          }
         />
         <Route
           path="/about"

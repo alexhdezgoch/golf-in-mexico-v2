@@ -190,9 +190,9 @@ const Nav = () => {
             Contact
           </a>
 
-          {/* Inquire CTA — premium magnetic-style button → routes to Trip Builder */}
+          {/* Inquire CTA — premium magnetic-style button → routes to Experience selector */}
           <Link
-            to="/trip-builder"
+            to="/experience"
             data-testid="nav-inquire-cta"
             className={`group relative inline-flex items-center gap-2 rounded-full pl-4 pr-3.5 py-2 font-mono text-[11px] uppercase tracking-wide-editorial transition-all duration-500 ${
               onDarkHero
@@ -301,7 +301,7 @@ const Nav = () => {
             type="button"
             onClick={() => {
               setOpen(false);
-              navigate("/trip-builder");
+              navigate("/experience");
             }}
             data-testid="nav-mobile-inquire"
             className="mt-3 self-start inline-flex items-center gap-2 rounded-full bg-ink text-cream pl-5 pr-4 py-3 font-mono text-[11px] uppercase tracking-wide-editorial"
