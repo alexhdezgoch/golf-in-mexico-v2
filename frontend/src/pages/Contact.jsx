@@ -6,8 +6,7 @@ import { motion } from "framer-motion";
    Two ways to reach GIM: email or schedule a call.
    ═══════════════════════════════════════════════════════════════════ */
 
-const CALENDAR_URL =
-  "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0-5yCStoiBQ6flTE4ehdqPBbM437JWGYn8zaHwxQiavGhjRLGDkXwsoP2Kbr2pFx2H8de_f8cE?gv=true";
+const CALENDAR_URL = "https://calendar.app.google/aMfKM3QfqJa966m68";
 
 const EMAIL_ADDRESS = "hello@golf-in-mexico.com";
 
