@@ -216,18 +216,6 @@ const FIELD_NOTES = [
   { title: "Is Cabo worth it?",                        body: "Absolutely. It offers the best versatility in pricing and unique, world-class experiences. From the seafood scene to high-end restaurants and local gems — your time and money are well spent on and off the course." },
 ];
 
-const FAQS = [
-  { q: "What is the best time of year to play golf in Los Cabos?",   a: "The peak season runs November through April — dry, warm (72\u201382°F), almost no rain. For the best balance of weather and value, late October and May are the sharpest shoulder months: great conditions, fewer crowds, better rates." },
-  { q: "How much does a golf trip to Los Cabos cost?",                a: "A realistic trip (4 nights, 3 rounds) runs roughly $2,200 on the budget end to $5,500+ at the luxury end. The main variables are hotel tier and course selection. Green fees alone range from $200 to $450 per round at championship courses." },
-  { q: "Which is the best course in Los Cabos?",                       a: "Quivira, Cabo del Sol Ocean, and Diamante Dunes are on the same tier. The \u201Cbest\u201D depends on what you\u2019re after — links, desert, or coastal golf. Play all three and you\u2019ll have an opinion." },
-  { q: "Do I need to bring my own golf clubs?",                        a: "Not necessarily. Most courses and resorts offer premium rentals for $50\u2013$75 per round. Serious golfers will prefer their own. Airlines typically charge $35\u2013$50 each way for a golf bag." },
-  { q: "Are the courses walkable?",                                    a: "Most are cart-mandatory or strongly cart-recommended. Desert terrain, elevation changes, and distances make walking impractical. Cliffside layouts are not walkable." },
-  { q: "Is it safe to travel to Los Cabos?",                           a: "Yes. Los Cabos is one of the safest tourist destinations in Mexico. The resort corridor and courses have excellent infrastructure and security." },
-  { q: "Why do so many golfers choose Los Cabos?",                     a: "Championship courses from Nicklaus, Woods, Norman, and Love III. 340 days of sunshine. Dramatic desert-meets-ocean terrain. Direct flights from 30+ US cities. The flight from LAX is shorter than the one to Palm Springs." },
-  { q: "Can beginners enjoy golf in Los Cabos?",                       a: "Absolutely. Several public-access corridor courses offer multiple tee boxes for every skill level. Most resorts have practice facilities and PGA-certified instructors on staff." },
-  { q: "Do I need to tip caddies?",                                    a: "Yes — it\u2019s expected and important to their income. Standard: $30\u2013$60 USD per bag per round. The caddies at top-tier courses are excellent. Tip accordingly." },
-];
-
 const KEEP_EXPLORING = [
   { slug: "punta-mita",           name: "Punta Mita",            region: "Riviera Nayarit",   image: "https://images.unsplash.com/photo-1592965046687-1acdbcdb5642?auto=format&fit=crop&w=1600&q=85" },
   { slug: "mexico-city",          name: "Mexico City",            region: "Valle de Mexico",   image: "https://images.unsplash.com/photo-1717388835452-c9c8cda0002e?auto=format&fit=crop&w=1600&q=85" },
@@ -357,7 +345,7 @@ const PlaybookCTA = ({ variant = "full", testid, h3Pre = "Cabo, distilled —", 
    FAQ
    ═══════════════════════════════════════════════════════════════════ */
 
-const FAQ = () => {
+const FAQ = ({ faqs = [] }) => {
   const [openIdx, setOpenIdx] = useState(0);
   return (
     <section data-testid="lc-faq" id="faq" className="bg-[var(--c-surface)] py-24 md:py-32">
@@ -365,7 +353,7 @@ const FAQ = () => {
         <Label>Frequently Asked</Label>
         <H2 className="mb-14">Your questions, <em className="italic text-[var(--c-gold)]">answered.</em></H2>
         <div className="max-w-[720px]">
-          {FAQS.map((f, i) => {
+          {faqs.map((f, i) => {
             const isOpen = openIdx === i;
             return (
               <div key={f.q} data-testid={`lc-faq-${i}`} className="border-b border-[var(--c-border)]">
@@ -793,7 +781,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
       )}
 
       {/* ═════════ FAQ — SURFACE (hidden on destination-list hubs) ═════════ */}
-      {!data.isDestinationList && <FAQ />}
+      {!data.isDestinationList && <FAQ faqs={FAQS} />}
 
       {/* ═════════ END PLAYBOOK CTA — SURFACE ═════════ */}
       <section data-testid="lc-playbook-end" className="bg-[var(--c-surface)] py-20 md:py-28">
