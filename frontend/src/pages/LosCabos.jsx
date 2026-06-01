@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PhotoSlot from "../components/hub/PhotoSlot";
@@ -250,6 +250,77 @@ const AccessPill = ({ tier }) => {
     <span className={`inline-flex items-center font-mono text-[9px] uppercase tracking-[0.1em] px-2.5 py-1 rounded-full ${s.bg} ${s.color}`}>
       {s.label}
     </span>
+  );
+};
+
+/* ═══════════════════════════════════════════════════════════════════
+   HERO SLIDER — horizontal scroller with arrow controls
+   ═══════════════════════════════════════════════════════════════════ */
+
+const HeroSlider = ({ name, slides }) => {
+  const scrollerRef = useRef(null);
+
+  const scrollByOne = (dir) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const card = el.querySelector(".photo-slot");
+    const step = card ? card.getBoundingClientRect().width + 12 : 540;
+    el.scrollBy({ left: dir * step, behavior: "smooth" });
+  };
+
+  return (
+    <section
+      data-testid="lc-hero-slider"
+      aria-label={`Field photography from ${name}`}
+      className="bg-[var(--c-off-white)] py-10 md:py-14 border-b border-[var(--c-border)]"
+    >
+      <div className="max-w-[1440px] mx-auto">
+        {/* Controls */}
+        <div className="px-6 md:px-12 mb-5 md:mb-6 flex items-center justify-between gap-4">
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-text-muted)]">
+            Field photography · {name}
+          </span>
+          <div className="flex items-center gap-2.5">
+            <button
+              type="button"
+              onClick={() => scrollByOne(-1)}
+              aria-label="Previous photo"
+              data-testid="hero-slider-prev"
+              className="w-10 h-10 md:w-11 md:h-11 inline-flex items-center justify-center border border-[var(--c-border)] hover:border-[var(--c-text)] hover:bg-[var(--c-text)] hover:text-[var(--c-off-white)] text-[var(--c-text)] transition-colors rounded-full"
+            >
+              ←
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollByOne(1)}
+              aria-label="Next photo"
+              data-testid="hero-slider-next"
+              className="w-10 h-10 md:w-11 md:h-11 inline-flex items-center justify-center border border-[var(--c-border)] hover:border-[var(--c-text)] hover:bg-[var(--c-text)] hover:text-[var(--c-off-white)] text-[var(--c-text)] transition-colors rounded-full"
+            >
+              →
+            </button>
+          </div>
+        </div>
+
+        <div
+          ref={scrollerRef}
+          className="flex gap-2 md:gap-3 overflow-x-auto snap-x snap-mandatory px-6 md:px-12 pb-2 scroll-smooth"
+          style={{ scrollbarWidth: "none" }}
+        >
+          {slides.map((src, i) => (
+            <PhotoSlot
+              key={`hero-slider-${i}`}
+              src={src || undefined}
+              alt={`${name} — view ${i + 1}`}
+              label={i === 0 ? name : null}
+              showLabel={i === 0}
+              testid={`lc-hero-slider-${i}`}
+              className="photo-slot--4x3 photo-slot--zoom-parent snap-start shrink-0 w-[78vw] sm:w-[60vw] md:w-[520px] rounded-sm overflow-hidden"
+            />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 
@@ -530,30 +601,14 @@ const LosCabos = ({ slug = "los-cabos" }) => {
 
       {/* ═════════ S2.5  HERO PHOTO SLIDER — Right after Quick Facts ═════════ */}
       {!data.isDestinationList && (
-        <section
-          data-testid="lc-hero-slider"
-          aria-label={`Field photography from ${data.name}`}
-          className="bg-[var(--c-off-white)] py-10 md:py-14 border-b border-[var(--c-border)]"
-        >
-          <div className="max-w-[1440px] mx-auto">
-            <div className="flex gap-2 md:gap-3 overflow-x-auto snap-x snap-mandatory px-6 md:px-12 pb-2" style={{ scrollbarWidth: "none" }}>
-              {(data.heroSlider && data.heroSlider.length > 0
-                ? data.heroSlider
-                : [null, null, null, null, null, null]
-              ).map((src, i) => (
-                <PhotoSlot
-                  key={`hero-slider-${i}`}
-                  src={src || undefined}
-                  alt={`${data.name} — view ${i + 1}`}
-                  label={i === 0 ? data.name : null}
-                  showLabel={i === 0}
-                  testid={`lc-hero-slider-${i}`}
-                  className="photo-slot--4x3 photo-slot--zoom-parent snap-start shrink-0 w-[78vw] sm:w-[60vw] md:w-[520px] rounded-sm overflow-hidden"
-                />
-              ))}
-            </div>
-          </div>
-        </section>
+        <HeroSlider
+          name={data.name}
+          slides={
+            data.heroSlider && data.heroSlider.length > 0
+              ? data.heroSlider
+              : [null, null, null, null, null, null]
+          }
+        />
       )}
 
       {/* ═════════ S3. OVERVIEW — PAPER ═════════ */}
