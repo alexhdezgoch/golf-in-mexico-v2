@@ -303,14 +303,21 @@ const PlaybookCTA = ({ variant = "full", testid, h3Pre = "Cabo, distilled —", 
   ];
 
   return (
-    <div data-testid={testid} className="bg-[var(--c-green-deep)] text-white p-8 md:p-12 rounded-md border-l-[3px] border-[var(--c-gold)]">
+    <div
+      data-testid={testid}
+      className={
+        variant === "standalone"
+          ? "text-white"
+          : "bg-[var(--c-green-deep)] text-white p-8 md:p-12 rounded-md border-l-[3px] border-[var(--c-gold)]"
+      }
+    >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         <div className="lg:col-span-7">
           <Label onDark>From GIM</Label>
-          <h3 className="font-display font-light text-white leading-[1.15] tracking-tight text-2xl md:text-4xl mb-5">
+          <h3 className={`font-display font-light text-white leading-[1.1] tracking-tight ${variant === "standalone" ? "text-3xl md:text-5xl lg:text-6xl" : "text-2xl md:text-4xl"} mb-5`}>
             {h3Pre} <em className="italic text-[var(--c-gold)]">{h3Em}</em>
           </h3>
-          <p className="font-body font-light text-white/65 text-sm md:text-base leading-[1.7] max-w-lg">
+          <p className={`font-body font-light text-white/80 leading-[1.75] max-w-lg ${variant === "standalone" ? "text-base md:text-lg" : "text-sm md:text-base"}`}>
             {body}
           </p>
         </div>
@@ -521,7 +528,35 @@ const LosCabos = ({ slug = "los-cabos" }) => {
       </section>
       )}
 
-      {/* ═════════ S3. OVERVIEW + INLINE PLAYBOOK CTA — PAPER ═════════ */}
+      {/* ═════════ S2.5  HERO PHOTO SLIDER — Right after Quick Facts ═════════ */}
+      {!data.isDestinationList && (
+        <section
+          data-testid="lc-hero-slider"
+          aria-label={`Field photography from ${data.name}`}
+          className="bg-[var(--c-off-white)] py-10 md:py-14 border-b border-[var(--c-border)]"
+        >
+          <div className="max-w-[1440px] mx-auto">
+            <div className="flex gap-2 md:gap-3 overflow-x-auto snap-x snap-mandatory px-6 md:px-12 pb-2" style={{ scrollbarWidth: "none" }}>
+              {(data.heroSlider && data.heroSlider.length > 0
+                ? data.heroSlider
+                : [null, null, null, null, null, null]
+              ).map((src, i) => (
+                <PhotoSlot
+                  key={`hero-slider-${i}`}
+                  src={src || undefined}
+                  alt={`${data.name} — view ${i + 1}`}
+                  label={i === 0 ? data.name : null}
+                  showLabel={i === 0}
+                  testid={`lc-hero-slider-${i}`}
+                  className="photo-slot--4x3 photo-slot--zoom-parent snap-start shrink-0 w-[78vw] sm:w-[60vw] md:w-[520px] rounded-sm overflow-hidden"
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ═════════ S3. OVERVIEW — PAPER ═════════ */}
       {!data.isDestinationList && <SectionNav />}
       <section data-testid="lc-overview" id="overview" className="bg-[var(--c-off-white)] py-24 md:py-32">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12">
@@ -540,43 +575,41 @@ const LosCabos = ({ slug = "los-cabos" }) => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Inline Playbook CTA — dark, gold-bordered box */}
-          <div className="mt-14 md:mt-16">
+      {/* ═════════ S3.5  FREE BRIEF — STANDALONE DIVIDER w/ PHOTO BG ═════════ */}
+      {!data.isDestinationList && (
+        <section
+          data-testid="lc-free-brief"
+          aria-label={`Download the ${data.name} Travel Brief`}
+          className="relative overflow-hidden text-white"
+        >
+          {/* Background photo */}
+          <img
+            src={heroPhoto}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            style={{ filter: "brightness(0.55) saturate(0.95)" }}
+          />
+          {/* Dark gradient for legibility */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a1510]/65 via-[#0a1510]/85 to-[#0a1510]/95" />
+          {/* Hairline top/bottom borders for divider feel */}
+          <div className="absolute top-0 left-0 right-0 h-px bg-[var(--c-gold)]/35" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-[var(--c-gold)]/35" />
+
+          <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-12 py-24 md:py-32">
             <PlaybookCTA
-              variant="full"
+              variant="standalone"
               testid="lc-playbook-1"
               h3Pre={data.playbookH3Pre}
               h3Em={data.playbookH3Em}
               body={data.playbookBody}
             />
           </div>
-        </div>
-      </section>
-
-      {/* ═════════ 4.5 EDITORIAL PHOTO STRIP (hidden on destination-list hubs) ═════════ */}
-      {!data.isDestinationList && (
-      <section
-        data-testid="lc-photo-strip"
-        aria-label={`Field photography from ${data.name}`}
-        className="bg-[var(--c-off-white)] pb-16 md:pb-20"
-      >
-        <div className="max-w-[1440px] mx-auto px-0 md:px-0">
-          <div className="grid grid-cols-3 gap-0">
-            {PHOTO_STRIP.map((p, idx) => (
-              <PhotoSlot
-                key={p.label}
-                label={p.label}
-                testid={`lc-photo-strip-${idx}`}
-                className={`photo-slot--4x3 photo-slot--zoom-parent ${idx === 2 ? "photo-strip-hide-on-mobile" : ""}`}
-              />
-            ))}
-          </div>
-          <p className="photo-strip-caption max-w-[1200px] mx-auto px-6 md:px-12">
-            Photography from GIM field research, {data.name} corridor.
-          </p>
-        </div>
-      </section>
+        </section>
       )}
 
       {/* ═════════ S5. COURSE ROSTER — DARK · EDITORIAL LIST ═════════ */}
@@ -632,45 +665,74 @@ const LosCabos = ({ slug = "los-cabos" }) => {
                   viewport={{ once: true, margin: "-10%" }}
                   transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                   data-testid={`lc-course-${c.verified ? "verified" : "honorable"}-${idx}`}
-                  className="group border-b border-white/10 py-8 md:py-10 grid grid-cols-[auto_1fr] lg:grid-cols-12 gap-x-5 gap-y-5 lg:gap-x-10 lg:gap-y-0 items-start"
+                  className={`group py-10 md:py-12 ${c.verified ? "" : "opacity-80"}`}
                 >
-                  {/* Index */}
-                  <div className="lg:col-span-1 font-display font-light text-[var(--c-gold)] text-2xl md:text-3xl leading-none pt-1">
-                    {String(idx + 1).padStart(2, "0")}
-                  </div>
-
-                  {/* Name + specs */}
-                  <div className="lg:col-span-4">
-                    <h3 className="course-name uppercase text-white text-xl md:text-2xl leading-tight tracking-wide mb-2">{c.name}</h3>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--c-gold)]/85">{c.specs}</p>
-                  </div>
-
-                  {/* Note + standout */}
-                  <div className="col-span-2 lg:col-span-5 lg:col-start-auto">
-                    <p className="text-[14px] md:text-[15px] text-white/75 leading-[1.7] mb-4">{c.note}</p>
-                    <p className="text-[13px] italic text-white/60 leading-[1.55] border-l-2 border-[var(--c-gold)] pl-3">
-                      <span className="font-mono not-italic text-[10px] uppercase tracking-[0.1em] text-[var(--c-gold)] mr-2">Standout</span>
-                      {c.standout}
-                    </p>
-                  </div>
-
-                  {/* Right rail */}
-                  <div className="col-span-2 lg:col-span-2 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-1 gap-x-4 gap-y-4 lg:gap-y-4 pt-2 lg:pt-0 border-t lg:border-t-0 border-white/10">
-                    <div>
-                      <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Access</span>
-                      <AccessPill tier={c.tier} />
+                  {/* Per-course photo slider (verified only) */}
+                  {c.verified && (
+                    <div
+                      data-testid={`lc-course-slider-${idx}`}
+                      className="mb-7 md:mb-9 -mx-6 md:mx-0"
+                    >
+                      <div className="flex gap-2 md:gap-3 overflow-x-auto snap-x snap-mandatory px-6 md:px-0 pb-1" style={{ scrollbarWidth: "none" }}>
+                        {(c.photos && c.photos.length > 0
+                          ? c.photos
+                          : [null, null, null, null]
+                        ).map((p, pi) => (
+                          <PhotoSlot
+                            key={`${c.name}-photo-${pi}`}
+                            src={p || undefined}
+                            alt={`${c.name} — frame ${pi + 1}`}
+                            label={pi === 0 ? c.name : null}
+                            showLabel={pi === 0}
+                            testid={`lc-course-${idx}-photo-${pi}`}
+                            className="photo-slot--4x3 photo-slot--zoom-parent snap-start shrink-0 w-[78vw] sm:w-[420px] md:w-[400px] rounded-sm overflow-hidden"
+                          />
+                        ))}
+                      </div>
                     </div>
-                    <div>
-                      <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Fee</span>
-                      <span className="font-mono text-[13px] font-bold text-[var(--c-gold)]">{c.fee}</span>
+                  )}
+
+                  <div className="border-b border-white/10 pb-10 md:pb-12 grid grid-cols-[auto_1fr] lg:grid-cols-12 gap-x-5 gap-y-5 lg:gap-x-10 lg:gap-y-0 items-start">
+                    {/* Index */}
+                    <div className="lg:col-span-1 font-display font-light text-[var(--c-gold)] text-2xl md:text-3xl leading-none pt-1">
+                      {String(idx + 1).padStart(2, "0")}
                     </div>
-                    <div>
-                      <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Difficulty</span>
-                      <span className="font-mono text-[13px] text-white/90">{c.difficulty}</span>
+
+                    {/* Name + specs */}
+                    <div className="lg:col-span-4">
+                      <h3 className={`course-name uppercase leading-tight tracking-wide mb-2 ${c.verified ? "text-white text-xl md:text-2xl" : "text-white/70 text-lg md:text-xl"}`}>
+                        {c.name}
+                      </h3>
+                      <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--c-gold)]/85">{c.specs}</p>
                     </div>
-                    <div>
-                      <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Best for</span>
-                      <span className="text-[12px] text-white/70 leading-[1.4]">{c.bestFor}</span>
+
+                    {/* Note + standout */}
+                    <div className="col-span-2 lg:col-span-5 lg:col-start-auto">
+                      <p className={`text-[14px] md:text-[15px] leading-[1.7] mb-4 ${c.verified ? "text-white/85" : "text-white/55"}`}>{c.note}</p>
+                      <p className={`text-[13px] italic leading-[1.55] border-l-2 border-[var(--c-gold)] pl-3 ${c.verified ? "text-white/65" : "text-white/45"}`}>
+                        <span className="font-mono not-italic text-[10px] uppercase tracking-[0.1em] text-[var(--c-gold)] mr-2">Standout</span>
+                        {c.standout}
+                      </p>
+                    </div>
+
+                    {/* Right rail */}
+                    <div className="col-span-2 lg:col-span-2 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-1 gap-x-4 gap-y-4 lg:gap-y-4 pt-2 lg:pt-0 border-t lg:border-t-0 border-white/10">
+                      <div>
+                        <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Access</span>
+                        <AccessPill tier={c.tier} />
+                      </div>
+                      <div>
+                        <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Fee</span>
+                        <span className="font-mono text-[13px] font-bold text-[var(--c-gold)]">{c.fee}</span>
+                      </div>
+                      <div>
+                        <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Difficulty</span>
+                        <span className="font-mono text-[13px] text-white/90">{c.difficulty}</span>
+                      </div>
+                      <div>
+                        <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Best for</span>
+                        <span className="text-[12px] text-white/70 leading-[1.4]">{c.bestFor}</span>
+                      </div>
                     </div>
                   </div>
                 </motion.article>
@@ -679,33 +741,38 @@ const LosCabos = ({ slug = "los-cabos" }) => {
               return (
                 <>
                   {verifiedCourses.length > 0 && (
-                    <div data-testid="lc-courses-verified" className="mb-16 md:mb-20">
-                      <div className="mb-8 md:mb-10 pb-6 border-b border-[var(--c-gold)]/40 flex items-center gap-4 flex-wrap">
-                        <span className="inline-flex items-center gap-3 bg-[var(--c-gold)] text-[var(--c-green-deep)] px-4 py-2 rounded-sm font-mono text-[11px] md:text-[12px] uppercase tracking-[0.18em] font-bold">
-                          <span className="w-2 h-2 rounded-full bg-[var(--c-green-deep)]" />
+                    <div data-testid="lc-courses-verified" className="mb-20 md:mb-28">
+                      {/* High-contrast gold banner */}
+                      <div className="mb-10 md:mb-12 -mx-6 md:-mx-12 bg-[var(--c-gold)] text-[var(--c-green-deep)] px-6 md:px-12 py-6 md:py-7 flex items-center gap-5 md:gap-7 flex-wrap shadow-[0_18px_45px_-22px_rgba(200,169,110,0.55)]">
+                        <span className="inline-flex items-center gap-3 font-mono text-xs md:text-sm uppercase tracking-[0.22em] font-bold">
+                          <span className="w-2.5 h-2.5 rounded-full bg-[var(--c-green-deep)] animate-pulse" />
                           GIM Verified
                         </span>
-                        <span className="text-white/65 text-sm md:text-base font-body font-light italic">
+                        <span className="hidden md:inline-block h-5 w-px bg-[var(--c-green-deep)]/35" />
+                        <span className="font-display italic text-base md:text-lg text-[var(--c-green-deep)]/85 leading-snug">
                           Courses we have played, walked, and verified ourselves.
                         </span>
                       </div>
-                      <div className="border-t border-white/10">
+                      <div>
                         {verifiedCourses.map((c, i) => renderCourse(c, i))}
                       </div>
                     </div>
                   )}
 
                   {honorableCourses.length > 0 && (
-                    <div data-testid="lc-courses-honorable">
-                      <div className="mb-8 md:mb-10 pb-6 border-b border-white/15 flex items-center gap-4 flex-wrap">
-                        <span className="inline-flex items-center gap-3 border border-white/40 text-white px-4 py-2 rounded-sm font-mono text-[11px] md:text-[12px] uppercase tracking-[0.18em]">
-                          Honorable mentions
+                    <div data-testid="lc-courses-honorable" className="relative">
+                      {/* Dim black-band divider for full contrast pivot */}
+                      <div className="mb-10 md:mb-12 -mx-6 md:-mx-12 bg-black/55 backdrop-blur-sm border-t border-b border-white/10 px-6 md:px-12 py-6 md:py-7 flex items-center gap-5 md:gap-7 flex-wrap">
+                        <span className="inline-flex items-center gap-3 font-mono text-xs md:text-sm uppercase tracking-[0.22em] text-white/85">
+                          <span className="w-2.5 h-2.5 rounded-full border border-white/55" />
+                          Honorable Mentions
                         </span>
-                        <span className="text-white/55 text-sm md:text-base font-body font-light italic">
+                        <span className="hidden md:inline-block h-5 w-px bg-white/15" />
+                        <span className="font-display italic text-sm md:text-base text-white/60 leading-snug">
                           Worth knowing — pending GIM verification. Want to play one? Let us coordinate.
                         </span>
                       </div>
-                      <div className="border-t border-white/10">
+                      <div>
                         {honorableCourses.map((c, i) => renderCourse(c, i))}
                       </div>
                     </div>
