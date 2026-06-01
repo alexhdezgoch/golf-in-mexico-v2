@@ -12,30 +12,27 @@ const EXPERIENCES = [
   {
     slug: "couples-golf",
     type: "couples",
-    label: "Two travelers",
     name: "Couples Golf",
-    tagline: "A trip for the two of you.",
+    tagline: "A trip for the two of you or other couple friends.",
     description:
-      "A complete itinerary for two travelers — tee times paired with spa days, intimate restaurants, and the rounds that play just as well at sunset as they do at sunrise.",
+      "A complete itinerary for two or more couple travelers — tee times paired with spa days, intimate restaurants, and the rounds that play just as well at sunset as they do at sunrise.",
     image:
       "https://images.unsplash.com/photo-1592965046687-1acdbcdb5642?auto=format&fit=crop&w=2000&q=85",
   },
   {
     slug: "bachelor-trip",
     type: "bachelor",
-    label: "8–14 players",
     name: "Bachelor Trip",
     tagline: "The bucket-list group event.",
     description:
-      "Tournament-format itineraries for a group of friends. Members-only courses, private homes, group transport, and a final dinner the loser pays for.",
+      "Tournament-format itineraries for a group of friends. Members-only courses, private homes, group transport, and off-course experiences.",
     image:
       "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=2000&q=85",
   },
   {
     slug: "family-friends",
     type: "family",
-    label: "Multi-gen or kids included",
-    name: "Family & Friends",
+    name: "Family or Friends",
     tagline: "Golf for the trip everybody enjoys.",
     description:
       "A trip built around the golfer without sacrificing what everyone else came for. Resorts, beach time, kid-friendly logistics, and routings that respect every handicap.",
@@ -45,7 +42,6 @@ const EXPERIENCES = [
   {
     slug: "corporate-retreat",
     type: "corporate",
-    label: "12+ players · executive logistics",
     name: "Corporate Retreat",
     tagline: "An offsite that closes deals.",
     description:
@@ -73,9 +69,6 @@ const ExperienceHero = () => (
       }}
     />
     <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-12">
-      <span className="block font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--c-gold)] mb-8 md:mb-10">
-        Step 1 of 2 · Who&apos;s coming
-      </span>
       <motion.h1
         initial={{ opacity: 0, y: 22 }}
         animate={{ opacity: 1, y: 0 }}
@@ -89,9 +82,9 @@ const ExperienceHero = () => (
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        className="mt-8 md:mt-10 font-body font-light text-white/65 text-base md:text-lg leading-[1.7] max-w-xl"
+        className="mt-8 md:mt-10 font-body font-light text-white/75 text-base md:text-lg leading-[1.7] max-w-xl"
       >
-        We build four kinds of México golf trips. Pick the one that fits — your
+        We build four kinds of Mexico golf trips. Pick the one that fits — your
         next step opens with the right itinerary already shaping up.
       </motion.p>
     </div>
@@ -132,17 +125,11 @@ const ExperienceCard = ({ e, index }) => (
 
     <div className="relative z-10 h-full w-full flex flex-col justify-end p-6 md:p-12 lg:p-16 pointer-events-none">
       <div className="max-w-[1100px] w-full mx-auto pointer-events-none">
-        <div className="mb-4 md:mb-5 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.18em]">
-          <span className="text-[var(--c-gold)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
-            {e.label}
-          </span>
-        </div>
-
         <h2 className="font-display font-normal text-white leading-[1.02] tracking-tight text-4xl md:text-6xl lg:text-[4.5rem] max-w-[14ch] drop-shadow-[0_4px_24px_rgba(0,0,0,0.55)]">
           {e.name}
         </h2>
 
-        <p className="mt-3 md:mt-4 font-display italic font-normal text-[var(--c-gold)] text-lg md:text-2xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">
+        <p className="mt-4 md:mt-5 font-display italic font-normal text-[var(--c-gold)] text-lg md:text-2xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">
           {e.tagline}
         </p>
 
@@ -185,16 +172,12 @@ const Experience = () => (
     {/* Outro */}
     <section className="bg-[var(--c-green-deep)] text-white py-20 md:py-28 border-t border-white/10">
       <div className="max-w-[820px] mx-auto px-6 md:px-12 text-center">
-        <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-6">
-          Not sure which fits?
-        </span>
         <h2 className="font-display font-light text-white text-3xl md:text-5xl leading-[1.1] mb-8">
-          Tell us anyway.{" "}
-          <em className="italic text-[var(--c-gold)]">We&apos;ll figure it out together.</em>
+          Not sure which fits?{" "}
+          <em className="italic text-[var(--c-gold)]">Tell us anyway.</em>
         </h2>
-        <p className="font-body font-light text-white/75 text-base md:text-lg leading-[1.75] mb-10">
-          Start a blank proposal and Pablo or José will reach out within the
-          first 24 hours to scope the trip with you.
+        <p className="font-body font-light text-white/80 text-base md:text-lg leading-[1.75] mb-10">
+          Start a blank proposal and Pablo will reach out within the first 48 hours to scope the trip with you.
         </p>
         <Link
           to="/trip-builder"

@@ -21,12 +21,12 @@ const PABLO = {
   quote: [
     "Millions of people plan a golf vacation every year.",
     "But I guarantee you will not find a destination that",
-    "matches the quality and value that México offers.",
+    "matches the quality and value that Mexico offers.",
   ],
   body: [
     "Over the past 5 years, my career has taken me inside the player-only areas of the PGA Tour, LIV Golf, and WTA events. But this isn't just a locker room conversation. Listen to almost any post-round interview, and the players will tell you the exact same thing: the people driving Mexican hospitality are world-class.",
     "Now, add to the equation over 50+ renowned designer golf courses, each shaped by its region's unique landscape. No other country in the world offers this exact blend.",
-    "That is why I founded Golf in México. I want to give you the exact experience I've enjoyed for the past 5 years. No generic itineraries or opaque pricing. Just honest opinions, genuine hidden gems, professional delivery, and the keys to bespoke experiences you simply won't find online.",
+    "That is why I founded Golf in Mexico. I want to give you the exact experience I've enjoyed for the past 5 years. No generic itineraries or opaque pricing. Just honest opinions, genuine hidden gems, professional delivery, and the keys to bespoke experiences you simply won't find online.",
   ],
   signature: "— Pablo",
   socials: [
@@ -55,7 +55,7 @@ const JOSE = {
   body: [
     "The game found me at four. It took me through junior ranks, amateur fields, and professional tours — across twenty countries.",
     "I've teed it up on the PGA Tour at Vidanta and Los Cabos, competed at TPC Sawgrass for the AJGA, and played two World Amateur Team Championships in France and Qatar, the Junior World Cup in Japan, as well as two US Amateurs at Oakmont Country Club and Cherry Hills. I've walked dozens of the world's most demanding fairways.",
-    "But after all of that global exposure, the journey taught me one thing with absolute certainty: in México, the game is played differently. After traveling the world, this was the only place that felt like arriving somewhere real.",
+    "But after all of that global exposure, the journey taught me one thing with absolute certainty: in Mexico, the game is played differently. After traveling the world, this was the only place that felt like arriving somewhere real.",
     "For a true golfer, our country is not just a stop on the itinerary. It is the destination itself. I'm here to show you exactly why.",
   ],
   signature: "— José",
@@ -295,7 +295,7 @@ const TeamEditorial = () => {
                 {isGIM && (
                   <div data-testid="gim-result-body" className="mt-7 md:mt-9 max-w-2xl">
                     <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75]">
-                      We built this platform to amplify the voices of the ultimate insiders. Caddies, course directors, designers, and the culinary minds shaping every premium itinerary in México.{" "}
+                      We built this platform to amplify the voices of the ultimate insiders. Caddies, course directors, designers, and the culinary minds shaping every premium itinerary in Mexico.{" "}
                       <em className="not-italic font-normal text-[var(--c-text)]">
                         Their stories. Their execution. Their perspective.
                       </em>

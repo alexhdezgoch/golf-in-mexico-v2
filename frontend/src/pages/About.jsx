@@ -123,7 +123,7 @@ const About = () => (
     <header className="relative bg-[var(--c-off-white)] pt-32 md:pt-40 pb-16 md:pb-24 border-b border-[var(--c-border)]">
       <div className="max-w-[1100px] mx-auto px-6 md:px-12">
         <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-6">
-          About Golf in México°
+          About Golf in Mexico°
         </span>
         <motion.h1
           initial={{ opacity: 0, y: 18 }}
@@ -135,13 +135,13 @@ const About = () => (
           <em className="italic text-[var(--c-gold)]">one editorial promise.</em>
         </motion.h1>
         <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] max-w-[680px]">
-          Golf in México° is{" "}
+          Golf in Mexico° is{" "}
           <strong className="font-normal text-[var(--c-text)]">Pablo De La Mora</strong>{" "}
           and{" "}
           <strong className="font-normal text-[var(--c-text)]">José Islas</strong>{" "}
           — a sport agent and a professional golfer who together hold the
           relationships, the access, and the editorial voice that turn a
-          México golf trip into something different from what a tourism board
+          Mexico golf trip into something different from what a tourism board
           would build.
         </p>
       </div>
@@ -209,7 +209,7 @@ const About = () => (
               n: "//",
               title: "Destination Intelligence",
               body:
-                "Over a decade spent scouting México's most exclusive regions. We rely on genuine, boots-on-the-ground relationships to bypass the tourist noise and unlock the country's true hidden gems.",
+                "Over a decade spent scouting Mexico's most exclusive regions. We rely on genuine, boots-on-the-ground relationships to bypass the tourist noise and unlock the country's true hidden gems.",
             },
             {
               n: "///",

@@ -2,7 +2,7 @@
 // LIVE: los-cabos, punta-mita, mexico-city  |  COMING SOON: 3 more (rendered as strip)
 
 export const COMING_SOON = [
-  "Cancún · Riviera Maya",
+  "Cancun · Riviera Maya",
   "Puerto Vallarta · Riviera Nayarit",
   "Unique Destinations",
 ];
@@ -47,11 +47,11 @@ const LOS_CABOS = {
     },
     {
       h3: "What makes Los Cabos distinct",
-      text: "Three things: ocean-front Pacific holes (Quivira, Cabo del Sol, Diamante), desert-arroyo routings (Palmilla, Cabo Real), and the highest concentration of signature architects in México. Tiger Woods' Diamante Oasis was his first completed design. Nicklaus designed three courses here. Greg Norman designed two. The 18th at Cabo del Sol Ocean was once called \"the finest finishing hole in all of golf\" by Nicklaus himself.",
+      text: "Three things: ocean-front Pacific holes (Quivira, Cabo del Sol, Diamante), desert-arroyo routings (Palmilla, Cabo Real), and the highest concentration of signature architects in Mexico. Tiger Woods' Diamante Oasis was his first completed design. Nicklaus designed three courses here. Greg Norman designed two. The 18th at Cabo del Sol Ocean was once called \"the finest finishing hole in all of golf\" by Nicklaus himself.",
     },
     {
       h3: "Course landscape",
-      text: "Of the 13 championship courses, 5 offer public booking (with a resort or without), 6 are resort-guest only, and 2 are private with member-guest access. Per GIM field research (Feb 2026), Los Cabos has more $300+ green fees than any other golf destination in México.",
+      text: "Of the 13 championship courses, 5 offer public booking (with a resort or without), 6 are resort-guest only, and 2 are private with member-guest access. Per GIM field research (Feb 2026), Los Cabos has more $300+ green fees than any other golf destination in Mexico.",
     },
   ],
 
@@ -126,7 +126,7 @@ const LOS_CABOS = {
       feeLow: 295,
       feeHigh: 395,
       access: "Diamante members & invited guests",
-      bestFor: "Pacific links — the 16th green sits below sea level, the only one in México.",
+      bestFor: "Pacific links — the 16th green sits below sea level, the only one in Mexico.",
       url: null,
     },
     {
@@ -334,7 +334,7 @@ const PUNTA_MITA = {
     },
     {
       h3: "What makes Punta Mita distinct",
-      text: "Two reasons: privacy and the Tail of the Whale. Punta Mita is the only peninsula in México where the gate is closed to non-guests — the round is genuinely uncrowded. Pacifico's 3B optional green sits on a natural island reachable only at low tide; you take a small boat across with your caddie. Bahia's 12th is the only par-5 in México with a forced carry across an ocean inlet.",
+      text: "Two reasons: privacy and the Tail of the Whale. Punta Mita is the only peninsula in Mexico where the gate is closed to non-guests — the round is genuinely uncrowded. Pacifico's 3B optional green sits on a natural island reachable only at low tide; you take a small boat across with your caddie. Bahia's 12th is the only par-5 in Mexico with a forced carry across an ocean inlet.",
     },
     {
       h3: "Course landscape",
@@ -364,7 +364,7 @@ const PUNTA_MITA = {
       feeLow: 325,
       feeHigh: 375,
       access: "Four Seasons / St. Regis Punta Mita guests",
-      bestFor: "The 12th — the only ocean-carry par-5 in México.",
+      bestFor: "The 12th — the only ocean-carry par-5 in Mexico.",
       isGIMProperty: false,
     },
     {
@@ -434,7 +434,7 @@ const PUNTA_MITA = {
 
   faq: [
     { q: "How many golf courses are in Punta Mita?", a: "Two on the peninsula itself — Pacifico and Bahia, both Jack Nicklaus designs. A third nearby option, Mandarina Golf Course (Greg Norman), sits 40 minutes north and is accessed via One&Only or Rosewood Mandarina." },
-    { q: "What is the difference between Pacifico and Bahia courses?", a: "Pacifico is the dramatic ocean routing — eight holes on the Pacific and the Tail of the Whale island green. Bahia is slightly inland, more forgiving off the tee, and finishes with the only ocean-carry par-5 in México." },
+    { q: "What is the difference between Pacifico and Bahia courses?", a: "Pacifico is the dramatic ocean routing — eight holes on the Pacific and the Tail of the Whale island green. Bahia is slightly inland, more forgiving off the tee, and finishes with the only ocean-carry par-5 in Mexico." },
     { q: "Can non-Four Seasons guests play golf in Punta Mita?", a: "Only by booking the St. Regis or by member-guest invitation. There is no public day-pass — the peninsula is closed to outside play." },
     { q: "What does golf in Punta Mita cost all-in?", a: "Approximately $425 – $525 per person per round at Pacifico, including caddie tip, range balls, and clubhouse refreshments. Bahia runs $20–40 less per round." },
     { q: "How far are Punta Mita courses from Puerto Vallarta airport?", a: "Forty-five minutes via the Punta de Mita coastal road. Resort transfers are the simplest option; rental cars are unnecessary inside the peninsula." },
@@ -473,7 +473,7 @@ const MEXICO_CITY = {
   overview: [
     {
       h3: "Geography",
-      text: "Mexico City sits at 7,350 feet of elevation in the Valley of México. Direct flights to MEX operate from every major US hub. The city's golf courses cluster in three areas: west (Bosques, Lomas Quebradas), south (Coral, Pedregal, Club de Golf México), and the day-trip corridor south to Cuernavaca and Valle de Bravo.",
+      text: "Mexico City sits at 7,350 feet of elevation in the Valley of Mexico. Direct flights to MEX operate from every major US hub. The city's golf courses cluster in three areas: west (Bosques, Lomas Quebradas), south (Coral, Pedregal, Club de Golf Mexico), and the day-trip corridor south to Cuernavaca and Valle de Bravo.",
     },
     {
       h3: "Climate & course conditions",
@@ -481,11 +481,11 @@ const MEXICO_CITY = {
     },
     {
       h3: "What makes CDMX distinct",
-      text: "Three things: history, altitude, and the table. Club de Golf México hosted the 1958 World Cup. Chapultepec hosted the WGC-Mexico Championship 2017–2020. Club de Golf Bosques sits inside a private forest west of the city. At 7,350 feet, every par-4 plays a half-club shorter than the card says. And the city's restaurants — Pujol, Quintonil, Contramar — are the real reason to extend the trip past the golf.",
+      text: "Three things: history, altitude, and the table. Club de Golf Mexico hosted the 1958 World Cup. Chapultepec hosted the WGC-Mexico Championship 2017–2020. Club de Golf Bosques sits inside a private forest west of the city. At 7,350 feet, every par-4 plays a half-club shorter than the card says. And the city's restaurants — Pujol, Quintonil, Contramar — are the real reason to extend the trip past the golf.",
     },
     {
       h3: "Course landscape",
-      text: "Of roughly ten metropolitan courses, only Coral Golf Club offers walk-up public booking. Most are private member-guest. The day-trip option — Tabachines in Cuernavaca — is 90 minutes south and one of México's great mid-century routings.",
+      text: "Of roughly ten metropolitan courses, only Coral Golf Club offers walk-up public booking. Most are private member-guest. The day-trip option — Tabachines in Cuernavaca — is 90 minutes south and one of Mexico's great mid-century routings.",
     },
   ],
 
@@ -503,7 +503,7 @@ const MEXICO_CITY = {
       isGIMProperty: false,
     },
     {
-      name: "Club de Golf México",
+      name: "Club de Golf Mexico",
       designer: "Percy Clifford",
       type: "Private / member-guest",
       holes: 18,
@@ -511,7 +511,7 @@ const MEXICO_CITY = {
       feeLow: 150,
       feeHigh: 250,
       access: "Member-guest only",
-      bestFor: "Hosted the 1958 World Cup — one of the great parkland walks in México.",
+      bestFor: "Hosted the 1958 World Cup — one of the great parkland walks in Mexico.",
       isGIMProperty: false,
     },
     {
@@ -535,7 +535,7 @@ const MEXICO_CITY = {
       feeLow: 150,
       feeHigh: 200,
       access: "Member-guest only",
-      bestFor: "Private forest routing — the closest thing to a parkland course in México.",
+      bestFor: "Private forest routing — the closest thing to a parkland course in Mexico.",
       isGIMProperty: false,
     },
     {
@@ -589,7 +589,7 @@ const MEXICO_CITY = {
   ],
 
   costNote:
-    "CDMX golf is the most affordable championship golf in México. Coral runs under $150 all-in. Private clubs require a member host but pricing remains reasonable by international standards. Tabachines day-trip in Cuernavaca runs $200 all-in with transport and lunch.",
+    "CDMX golf is the most affordable championship golf in Mexico. Coral runs under $150 all-in. Private clubs require a member host but pricing remains reasonable by international standards. Tabachines day-trip in Cuernavaca runs $200 all-in with transport and lunch.",
   costRows: [
     ["Green fee", 80, 250, "Per round"],
     ["Cart fee", 0, 35, "Included at private clubs; separate at Coral"],
@@ -610,7 +610,7 @@ const MEXICO_CITY = {
       "Most CDMX private clubs honour invitations from a member in good standing — pre-arranged through the secretary's office, never walk-up.",
     ],
     private: [
-      "Club de Golf México — member-guest only.",
+      "Club de Golf Mexico — member-guest only.",
       "Chapultepec — member-guest only.",
       "Bosques — member-guest only.",
       "Lomas Quebradas — member-guest only.",
@@ -620,7 +620,7 @@ const MEXICO_CITY = {
 
   logistics: {
     airport: "Benito Juárez (MEX) — primary, direct from every US hub. Toluca (TLC) for west-side courses. Felipe Ángeles (NLU) for north.",
-    toCourses: "MEX → south-side courses (Coral, México, Pedregal): 30–60 min depending on traffic. West-side (Bosques, Lomas): 45–75 min. Tabachines (Cuernavaca): 90 min via the Mexico–Acapulco highway.",
+    toCourses: "MEX → south-side courses (Coral, Mexico, Pedregal): 30–60 min depending on traffic. West-side (Bosques, Lomas): 45–75 min. Tabachines (Cuernavaca): 90 min via the Mexico–Acapulco highway.",
     betweenCourses: "Traffic is the limiting factor. Plan one course per day — never two in the same day in CDMX. Tee times between 7 and 8 a.m. avoid worst congestion.",
     practical: "Pesos preferred; USD accepted at major clubs only. Tip caddies $300–500 MXN per round. Uber is the simplest ground transport. Allow 90 min from hotel to first tee — the city is unforgiving.",
   },
@@ -643,12 +643,12 @@ const MEXICO_CITY = {
     "February is the standout — dry, mild, with predictably clear mornings. November is a close second, with the bonus of slightly fewer locals on weekends. June through September: golf in the morning, museums and tables in the afternoon. CDMX is a year-round city — just adjust the round around the rain.",
 
   faq: [
-    { q: "What golf courses are in Mexico City?", a: "Approximately ten metropolitan courses including Coral Golf Club (public), Club de Golf México, Chapultepec, Bosques, Lomas Quebradas, Bosque Real, and Pedregal. Tabachines in Cuernavaca is a 90-minute day trip." },
+    { q: "What golf courses are in Mexico City?", a: "Approximately ten metropolitan courses including Coral Golf Club (public), Club de Golf Mexico, Chapultepec, Bosques, Lomas Quebradas, Bosque Real, and Pedregal. Tabachines in Cuernavaca is a 90-minute day trip." },
     { q: "Which Mexico City golf courses are open to the public?", a: "Coral Golf Club is the primary public option inside the city. Tabachines in Cuernavaca is public via day-trip. All other CDMX clubs are private member-guest only." },
     { q: "What does it cost to play golf in Mexico City?", a: "Green fees range $80–$250 USD. Coral runs under $150 all-in. Private clubs require a member host; expect $200–300 all-in with green fee, caddie tip, and clubhouse lunch." },
     { q: "Is Club de Golf Chapultepec open to visitors?", a: "Only by member-guest invitation arranged through the club secretary. Walk-up play is not permitted. The club hosted the WGC-Mexico Championship 2017–2020." },
-    { q: "What is the best golf course in Mexico City?", a: "It depends on access. For tournament pedigree: Chapultepec. For history: Club de Golf México (1958 World Cup). For accessibility: Coral. For modern design: Bosque Real (Tom Doak)." },
-    { q: "Can I day-trip to Tabachines from Mexico City for golf?", a: "Yes. Tabachines is 90 minutes south via the México–Acapulco highway. Tee off at 8 a.m., lunch in the clubhouse, back in the city by 4 p.m." },
+    { q: "What is the best golf course in Mexico City?", a: "It depends on access. For tournament pedigree: Chapultepec. For history: Club de Golf Mexico (1958 World Cup). For accessibility: Coral. For modern design: Bosque Real (Tom Doak)." },
+    { q: "Can I day-trip to Tabachines from Mexico City for golf?", a: "Yes. Tabachines is 90 minutes south via the Mexico–Acapulco highway. Tee off at 8 a.m., lunch in the clubhouse, back in the city by 4 p.m." },
   ],
 
   journalTargets: ["Coral CDMX — the most accessible round", "Coral with Friends", "Tabachines Cuernavaca day-trip"],

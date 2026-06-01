@@ -230,8 +230,8 @@ const FAQS = [
 
 const KEEP_EXPLORING = [
   { slug: "punta-mita",           name: "Punta Mita",            region: "Riviera Nayarit",   image: "https://images.unsplash.com/photo-1592965046687-1acdbcdb5642?auto=format&fit=crop&w=1600&q=85" },
-  { slug: "mexico-city",          name: "Mexico City",            region: "Valle de México",   image: "https://images.unsplash.com/photo-1717388835452-c9c8cda0002e?auto=format&fit=crop&w=1600&q=85" },
-  { slug: "cancun-riviera-maya",  name: "Cancún · Riviera Maya",  region: "Quintana Roo",      image: "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=1600&q=85" },
+  { slug: "mexico-city",          name: "Mexico City",            region: "Valle de Mexico",   image: "https://images.unsplash.com/photo-1717388835452-c9c8cda0002e?auto=format&fit=crop&w=1600&q=85" },
+  { slug: "cancun-riviera-maya",  name: "Cancun · Riviera Maya",  region: "Quintana Roo",      image: "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=1600&q=85" },
   { slug: "puerto-vallarta",      name: "Puerto Vallarta",        region: "Bahía de Banderas", image: "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1600&q=85" },
 ];
 
@@ -404,7 +404,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
     image: HERO_PHOTOS[h.slug] || "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=1600&q=85",
   }));
   useEffect(() => {
-    document.title = "Golf in Cabo San Lucas: Courses, Costs & Access (2026) | Golf in México";
+    document.title = "Golf in Cabo San Lucas: Courses, Costs & Access (2026) | Golf in Mexico";
     let meta = document.querySelector("meta[name='description']");
     if (!meta) {
       meta = document.createElement("meta");
@@ -414,7 +414,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
     meta.content = "23 championship courses, green fees from $200–$500, and the insider access most travelers never find. The complete guide to golf in Cabo San Lucas and the Los Cabos corridor.";
 
     const schemas = [
-      { "@context": "https://schema.org", "@type": "Article", headline: "Golf in Cabo San Lucas: The Complete Course Guide", author: { "@type": "Organization", name: "Golf in México" }, publisher: { "@type": "Organization", name: "Golf in México", url: "https://golfin.mx" }, datePublished: "2026-05-01", dateModified: "2026-05-25" },
+      { "@context": "https://schema.org", "@type": "Article", headline: "Golf in Cabo San Lucas: The Complete Course Guide", author: { "@type": "Organization", name: "Golf in Mexico" }, publisher: { "@type": "Organization", name: "Golf in Mexico", url: "https://golfin.mx" }, datePublished: "2026-05-01", dateModified: "2026-05-25" },
       { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: "https://golfin.mx/" },
         { "@type": "ListItem", position: 2, name: "Destinations", item: "https://golfin.mx/destinations/" },
@@ -814,21 +814,20 @@ const LosCabos = ({ slug = "los-cabos" }) => {
       </section>
 
       {/* ═════════ KEEP EXPLORING — DARK ═════════ */}
-      <section data-testid="lc-keep-exploring" className="bg-[var(--c-green-deep)] text-white py-24 md:py-32">
+      <section data-testid="lc-keep-exploring" className="bg-[var(--c-green-deep)] text-white py-28 md:py-40">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           <Label onDark>Keep exploring</Label>
-          <H2 onDark className="mb-4">More golf in <em className="italic text-[var(--c-gold)]">México.</em></H2>
-          <p className="font-body font-light text-white/65 text-base md:text-lg max-w-xl mb-14 leading-[1.7]">
-            Cabo, Cancún, Vallarta, Punta Mita, CDMX — the rest of the country in one editorial directory.
+          <H2 onDark className="mb-4">More golf in <em className="italic text-[var(--c-gold)]">Mexico.</em></H2>
+          <p className="font-body font-light text-white/75 text-base md:text-lg max-w-xl mb-14 leading-[1.7]">
+            Cabo, Cancun, Vallarta, Punta Mita, CDMX, and the hidden routings — the rest of the country in one editorial directory.
           </p>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
             {KEEP_EXPLORING.map((d) => (
               <Link key={d.slug} to={`/destinations/${d.slug}`} data-testid={`lc-keep-${d.slug}`} className="group block">
                 <div className="relative aspect-[4/5] overflow-hidden bg-[var(--c-green-deep)] rounded-sm">
                   <img src={d.image} alt={d.name} loading="lazy" className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
-                    <span className="block font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--c-gold)] mb-1">{d.region}</span>
                     <h3 className="font-display text-white text-lg md:text-xl leading-tight">{d.name}</h3>
                   </div>
                 </div>

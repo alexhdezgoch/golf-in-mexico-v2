@@ -56,8 +56,15 @@ const SectionNav = () => {
     setUserInteracted(true);
     const target = document.getElementById(id);
     if (!target) return;
-    const top = target.getBoundingClientRect().top + window.scrollY - OFFSET;
-    window.scrollTo({ top, behavior: "smooth" });
+    // Try to scroll to the section's H2 heading so the title lands just below
+    // the sticky nav, rather than the section's top edge with padding above it.
+    const heading = target.querySelector("h2") || target;
+    const top = heading.getBoundingClientRect().top + window.scrollY - OFFSET;
+    if (window.__lenis && typeof window.__lenis.scrollTo === "function") {
+      window.__lenis.scrollTo(top, { duration: 1.0, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+    } else {
+      window.scrollTo({ top, behavior: "smooth" });
+    }
   }, []);
 
   return (

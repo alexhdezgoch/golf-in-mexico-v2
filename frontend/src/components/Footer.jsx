@@ -6,7 +6,7 @@ const NAV_LINKS = [
   { label: "Journal", to: "/journal" },
   { label: "Destinations", to: "/destinations" },
   { label: "About", to: "/#founders" },
-  { label: "Contact", to: "mailto:hello@golf-in-mexico.com", external: true },
+  { label: "Contact", to: "/contact" },
 ];
 
 const LIVE_DESTINATIONS = [
@@ -14,7 +14,7 @@ const LIVE_DESTINATIONS = [
   { label: "Punta Mita", to: "/destinations/punta-mita" },
   { label: "Mexico City", to: "/destinations/mexico-city" },
   { label: "Puerto Vallarta", to: "/destinations/puerto-vallarta" },
-  { label: "Cancún · Riviera Maya", to: "/destinations/cancun-riviera-maya" },
+  { label: "Cancun · Riviera Maya", to: "/destinations/cancun-riviera-maya" },
   { label: "Unique Destinations", to: "/destinations/unique-destinations" },
 ];
 
@@ -101,9 +101,6 @@ const Footer = () => {
                     </span>
                   </button>
                 </div>
-                <p className="font-body font-light text-white/30 text-xs">
-                  Join 4,200+ golfers who read Pablo&apos;s weekly field notes.
-                </p>
               </form>
             ) : (
               <p
@@ -115,7 +112,7 @@ const Footer = () => {
             )}
 
             {/* Socials only */}
-            <div className="mt-8 pt-8 border-t border-white/10 flex items-center gap-2.5">
+            <div className="mt-8 pt-8 border-t border-white/10 flex items-center gap-3">
               {SOCIALS.map((s) => (
                 <a
                   key={s.label}
@@ -124,9 +121,9 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   aria-label={s.label}
                   data-testid={`footer-social-${s.label.toLowerCase()}`}
-                  className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-white/15 text-white/65 hover:bg-[var(--c-gold)] hover:border-[var(--c-gold)] hover:text-[var(--c-green-deep)] transition-all duration-300"
+                  className="inline-flex items-center justify-center w-11 h-11 rounded-full border border-white/15 text-white/70 hover:bg-[var(--c-gold)] hover:border-[var(--c-gold)] hover:text-[var(--c-green-deep)] transition-all duration-300"
                 >
-                  <svg viewBox="0 0 24 24" className="w-[12px] h-[12px]" fill="currentColor" aria-hidden>
+                  <svg viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="currentColor" aria-hidden>
                     <path d={s.path} />
                   </svg>
                 </a>
@@ -230,7 +227,7 @@ const Footer = () => {
           <span className="text-[var(--c-gold)]">°</span>. All rights reserved.
         </span>
         <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/30">
-          Crafted with care in México
+          Crafted with care in Mexico
         </span>
       </div>
     </footer>

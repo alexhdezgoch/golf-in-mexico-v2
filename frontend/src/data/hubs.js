@@ -122,7 +122,7 @@ const LOS_CABOS = {
     { q: "Which Cabo course is the best?",                       a: "Quivira, Cabo del Sol Ocean, and Diamante Dunes are the top three — each different. Play all three if you can: links, desert, and coastal styles. You'll pick a favorite by the end of the trip." },
     { q: "Do I need to bring my own clubs?",                        a: "Not really. Most clubhouses rent premium sets for $50–$75 per round. Airlines charge $35–$50 each way for a golf bag, so the math often favors renting." },
     { q: "Can I walk the courses?",                                    a: "No. Cabo's desert layouts and elevation changes make walking impractical. Carts are mandatory or strongly required at every course." },
-    { q: "Is Los Cabos safe?",                           a: "Yes. The resort corridor is one of the safest tourist areas in México. Good infrastructure, clear roads, and security at every property." },
+    { q: "Is Los Cabos safe?",                           a: "Yes. The resort corridor is one of the safest tourist areas in Mexico. Good infrastructure, clear roads, and security at every property." },
     { q: "Do caddies expect a tip?",                                    a: "Yes. Tipping is a real part of their income. Standard is $30–$60 USD per bag, per round." },
   ],
 
@@ -237,7 +237,7 @@ const PUNTA_MITA = {
   faqs: [
     { q: "How many courses are in Punta Mita?",                       a: "Three. Pacifico and Bahia on the peninsula itself (both Jack Nicklaus), plus Greg Norman's Mandarina about 40 minutes north." },
     { q: "Can I play if I'm not staying at the Four Seasons?",            a: "Yes — staying at the St. Regis or a private peninsula residence with golf rights also gets you on. There is no public day-pass; the peninsula is closed to outside play." },
-    { q: "What's the difference between Pacifico and Bahia?",              a: "Pacifico has eight Pacific-ocean holes and the famous Tail of the Whale island green. Bahia plays inland through the jungle and ends with the only ocean-carry par 5 in México." },
+    { q: "What's the difference between Pacifico and Bahia?",              a: "Pacifico has eight Pacific-ocean holes and the famous Tail of the Whale island green. Bahia plays inland through the jungle and ends with the only ocean-carry par 5 in Mexico." },
     { q: "What does a Punta Mita golf trip really cost?",                   a: "About $4,200 to $8,700 per person for 4 nights and 3 rounds. The big variable is the hotel rate, not the green fee — the peninsula is priced through the room." },
     { q: "How far is Punta Mita from the Puerto Vallarta airport?",             a: "Forty-five minutes by car. Resort transfers are the easiest. You won't need a rental once inside the peninsula." },
     { q: "Can I always play the Tail of the Whale island green?",                       a: "No — only at low tide. Ask the pro shop the night before for the tide window. If you miss it, you play the standard alternate green and skip the island." },
@@ -251,7 +251,7 @@ const PUNTA_MITA = {
 const MEXICO_CITY = {
   slug: "mexico-city",
   name: "Mexico City",
-  region: "CDMX · Estado de México · Cuernavaca",
+  region: "CDMX · Estado de Mexico · Cuernavaca",
   heroPhoto: null,
   heroLabel: "Destination Guide · Mexico City",
   h1Pre: "Golf in",
@@ -282,13 +282,13 @@ const MEXICO_CITY = {
   overviewH2Pre: "Mexico City golf —",
   overviewH2Em: "altitude, history, and the table.",
   overviewParagraphs: [
-    "Mexico City sits at 7,350 feet of elevation in the Valley of México. Every par-4 plays a half-club shorter than the card says. The ball flies 8–12% farther. Wind is rare, dew is daily, and the morning light at the foothills of the Sierra Madre is among the most beautiful golf walks in the country.",
-    "The city's golf clusters in three areas. West (Bosques, Lomas Quebradas), south (Coral, Club de Golf México, Pedregal), and the day-trip corridor south to Cuernavaca and Valle de Bravo. Club de Golf México hosted the 1958 World Cup. Chapultepec hosted the WGC-Mexico Championship from 2017 to 2020. Almost every other serious round is member-guest only.",
+    "Mexico City sits at 7,350 feet of elevation in the Valley of Mexico. Every par-4 plays a half-club shorter than the card says. The ball flies 8–12% farther. Wind is rare, dew is daily, and the morning light at the foothills of the Sierra Madre is among the most beautiful golf walks in the country.",
+    "The city's golf clusters in three areas. West (Bosques, Lomas Quebradas), south (Coral, Club de Golf Mexico, Pedregal), and the day-trip corridor south to Cuernavaca and Valle de Bravo. Club de Golf Mexico hosted the 1958 World Cup. Chapultepec hosted the WGC-Mexico Championship from 2017 to 2020. Almost every other serious round is member-guest only.",
     "But the real reason to extend the trip past the golf is the table. Pujol, Quintonil, Contramar, Rosetta — Mexico City's restaurant scene is one of the best in the world. Tee off at 7 a.m., be off the course by noon, eat for three hours, and let the city handle the rest.",
   ],
   overviewStats: [
     { num: "7,350 ft", label: "Elevation" },
-    { num: "1958",     label: "World Cup at CG México" },
+    { num: "1958",     label: "World Cup at CG Mexico" },
     { num: "2017–20",  label: "WGC at Chapultepec" },
     { num: "10+",      label: "Metro courses" },
   ],
@@ -299,7 +299,7 @@ const MEXICO_CITY = {
 
   photoStrip: [
     { label: "Club de Golf Chapultepec · WGC era" },
-    { label: "CDMX · Valley of México" },
+    { label: "CDMX · Valley of Mexico" },
     { label: "Tabachines · Cuernavaca day-trip" },
   ],
 
@@ -309,7 +309,7 @@ const MEXICO_CITY = {
   coursesIntro: "From Coral's public walk-up to Chapultepec's WGC pedigree — the CDMX courses worth your time, plus the Cuernavaca day-trip every visiting golfer should know.",
   courses: [
     { tier: "public",  fee: "$80 – $145",  name: "Coral Golf Club",           difficulty: "2/5", bestFor: "Most accessible round in CDMX",  specs: "Larry Packard · Par 72 · Public",                       note: "The most accessible public round in Mexico City. Walk-up booking, mid-range green fees, and a routing the local golf community actually plays week-to-week. Soft and forgiving for visiting handicaps.",                                  standout: "#13 — Open par 5 with a clear approach window." },
-    { tier: "private", fee: "$150 – $250", name: "Club de Golf México",        difficulty: "3/5", bestFor: "Historic parkland walk",         specs: "Percy Clifford · Par 72 · Private",                     note: "Hosted the 1958 World Cup. One of the great mid-century parkland walks in Mexico — towering trees, tight corridors, and a member culture that runs deep. Member-guest only, arranged through the secretary.",                                standout: "#9 — Long uphill par 4 to a deeply guarded green." },
+    { tier: "private", fee: "$150 – $250", name: "Club de Golf Mexico",        difficulty: "3/5", bestFor: "Historic parkland walk",         specs: "Percy Clifford · Par 72 · Private",                     note: "Hosted the 1958 World Cup. One of the great mid-century parkland walks in Mexico — towering trees, tight corridors, and a member culture that runs deep. Member-guest only, arranged through the secretary.",                                standout: "#9 — Long uphill par 4 to a deeply guarded green." },
     { tier: "private", fee: "$175 – $250", name: "Club de Golf Chapultepec",   difficulty: "4/5", bestFor: "WGC tournament pedigree",        specs: "Willie Smith / Clifford renovation · Par 72 · Private", note: "Hosted the WGC-Mexico Championship 2017–2020. Tight, historic, inner-city. The course tour pros remember from the WGC era. Member-guest only, never walk-up.",                                                                              standout: "#10 — The par 3 every pro talked about during the WGC." },
     { tier: "private", fee: "$150 – $200", name: "Club de Golf Bosques",       difficulty: "3/5", bestFor: "Private forest routing",          specs: "Percy Clifford · Par 72 · Private",                     note: "A private forest routing west of the city — the closest thing to a parkland course in Mexico. Tall pines, narrow corridors, and a member culture that prefers quiet weekday play.",                                                          standout: "#7 — Sweeping par 5 through old-growth forest." },
     { tier: "private", fee: "$140 – $195", name: "Club de Golf Lomas Quebradas", difficulty: "3/5", bestFor: "Dramatic broken terrain",       specs: "Percy Clifford · Par 72 · Private",                     note: "Clifford's mid-century routing on broken, hilly terrain — the most dramatic shaping of any CDMX private club. Requires accurate iron play; the elevation changes amplify every approach.",                                              standout: "#4 — Steep downhill par 3 with a 30-foot drop." },
@@ -342,7 +342,7 @@ const MEXICO_CITY = {
   logisticsH2Em: "and through the traffic.",
   logistics: [
     { icon: "plane",  title: "Airport + arrivals",  body: "Benito Juárez (MEX) is the primary, with direct flights from every US hub. Toluca (TLC) serves west-side courses better. Felipe Ángeles (NLU) is the new north option but limited US service. Customs at MEX runs 30–60 min on first-time arrivals." },
-    { icon: "car",    title: "Getting to courses",  body: "MEX → south-side courses (Coral, México, Pedregal): 30–60 min depending on traffic. West-side (Bosques, Lomas): 45–75 min. Tabachines (Cuernavaca): 90 min via the Mexico–Acapulco highway. Plan tee times before 8 a.m. to beat the worst congestion." },
+    { icon: "car",    title: "Getting to courses",  body: "MEX → south-side courses (Coral, Mexico, Pedregal): 30–60 min depending on traffic. West-side (Bosques, Lomas): 45–75 min. Tabachines (Cuernavaca): 90 min via the Mexico–Acapulco highway. Plan tee times before 8 a.m. to beat the worst congestion." },
     { icon: "map",    title: "Between courses",    body: "Traffic is the limiting factor. Plan one course per day — never two in the same day in CDMX. The city's golf is best paired with the restaurant scene; build the trip around the afternoon table, not the second round." },
     { icon: "dollar", title: "Currency + tips",    body: "Pesos preferred; USD accepted at major clubs only. Tip caddies $300–$500 MXN per round. Uber is the simplest ground transport. Allow 90 min from hotel to first tee — the city is unforgiving on schedules." },
   ],
@@ -357,11 +357,11 @@ const MEXICO_CITY = {
   ],
 
   faqs: [
-    { q: "Which golf courses are in Mexico City?",                      a: "About ten in the metro area. Coral Golf Club is public; the rest are private — Club de Golf México, Chapultepec, Bosques, Lomas Quebradas, Bosque Real, Pedregal, and Amanali. Tabachines in Cuernavaca is a 90-minute day trip." },
+    { q: "Which golf courses are in Mexico City?",                      a: "About ten in the metro area. Coral Golf Club is public; the rest are private — Club de Golf Mexico, Chapultepec, Bosques, Lomas Quebradas, Bosque Real, Pedregal, and Amanali. Tabachines in Cuernavaca is a 90-minute day trip." },
     { q: "Which courses can I play without a member?",      a: "Coral Golf Club inside the city is open to the public. Tabachines in Cuernavaca is also open via day trip. Every other club in CDMX is member-guest only." },
     { q: "What does golf cost in Mexico City?",              a: "Green fees run $80–$250 USD. Coral is under $150 all-in. At a private club expect $200–$300 with green fee, caddie tip, and lunch — but you'll need a member to bring you in." },
     { q: "Can I play Chapultepec?",               a: "Only by a member-guest invitation through the club secretary. There's no walk-up play. This is the club that hosted the WGC-Mexico Championship from 2017 to 2020." },
-    { q: "What's the best course in Mexico City?",                a: "Depends on what you want. For tournament pedigree: Chapultepec. For history: Club de Golf México. For accessibility: Coral. For modern design: Bosque Real (Tom Doak)." },
+    { q: "What's the best course in Mexico City?",                a: "Depends on what you want. For tournament pedigree: Chapultepec. For history: Club de Golf Mexico. For accessibility: Coral. For modern design: Bosque Real (Tom Doak)." },
     { q: "Can I day-trip to Tabachines from Mexico City?",     a: "Yes. About 90 minutes south by car. Tee off at 8 a.m., lunch at the club, back in CDMX by 4 p.m. It's the best one-day golf trip from the city." },
     { q: "How does the altitude change my game?",           a: "At 7,350 feet, the ball flies 8–12% farther than at sea level. Subtract a club on most approaches. Spend your first hour on the range to recalibrate." },
   ],
@@ -373,7 +373,7 @@ const MEXICO_CITY = {
 
 const CANCUN = {
   slug: "cancun-riviera-maya",
-  name: "Cancún · Riviera Maya",
+  name: "Cancun · Riviera Maya",
   region: "Quintana Roo",
   heroPhoto: null,
   heroLabel: "Destination Guide · Riviera Maya",
@@ -387,7 +387,7 @@ const CANCUN = {
     { num: "Dec – Apr",  label: "Best months" },
   ],
   heroAnswer:
-    "Cancún and the Riviera Maya hold the densest concentration of resort golf in Mexico — over twelve courses stretched along 80 miles of Caribbean coastline. Green fees run $150 to $320 per round. Direct US flights make this the easiest golf destination to reach in the country. Greg Norman, Robert Trent Jones Jr., Jack Nicklaus, and Tom Fazio all hold designs along this corridor.",
+    "Cancun and the Riviera Maya hold the densest concentration of resort golf in Mexico — over twelve courses stretched along 80 miles of Caribbean coastline. Green fees run $150 to $320 per round. Direct US flights make this the easiest golf destination to reach in the country. Greg Norman, Robert Trent Jones Jr., Jack Nicklaus, and Tom Fazio all hold designs along this corridor.",
 
   quickFacts: [
     { icon: "flag",      label: "Courses",       value: "12+ along the Riviera Maya" },
@@ -395,7 +395,7 @@ const CANCUN = {
     { icon: "dollar",    label: "Green fees",    value: "$150 – $320 USD per round" },
     { icon: "calendar",  label: "Best months",   value: "December – April" },
     { icon: "alert",     label: "Avoid",         value: "August – October (hurricane peak)" },
-    { icon: "plane",     label: "Airport",       value: "Cancún International (CUN)" },
+    { icon: "plane",     label: "Airport",       value: "Cancun International (CUN)" },
     { icon: "globe",     label: "Languages",     value: "English & Spanish" },
     { icon: "person",    label: "Caddie",        value: "Optional at most resort courses" },
     { icon: "dollar",    label: "USD",           value: "Accepted everywhere" },
@@ -405,20 +405,20 @@ const CANCUN = {
   overviewH2Pre: "Riviera Maya golf —",
   overviewH2Em: "the easiest reach in Mexico.",
   overviewParagraphs: [
-    "Cancún International (CUN) is the most-served Mexican airport by US carriers — direct flights from 25+ US cities, customs that move efficiently, and a 1-hour drive to the heart of the Riviera Maya golf belt. For visiting golfers, this is the lowest-friction trip in the country.",
-    "The corridor stretches 80 miles south from Cancún to Tulum, with golf clustered in three nodes: Cancún proper (Iberostar, Pok-Ta-Pok), Playa del Carmen / Playacar (Hard Rock, Mayakoba's three courses), and the Tulum end (Bahía Príncipe Riviera Maya). The Mayakoba node — El Camaleón, Mayakoba's PGA Tour-hosting site — is the editorial centerpiece.",
+    "Cancun International (CUN) is the most-served Mexican airport by US carriers — direct flights from 25+ US cities, customs that move efficiently, and a 1-hour drive to the heart of the Riviera Maya golf belt. For visiting golfers, this is the lowest-friction trip in the country.",
+    "The corridor stretches 80 miles south from Cancun to Tulum, with golf clustered in three nodes: Cancun proper (Iberostar, Pok-Ta-Pok), Playa del Carmen / Playacar (Hard Rock, Mayakoba's three courses), and the Tulum end (Bahía Príncipe Riviera Maya). The Mayakoba node — El Camaleón, Mayakoba's PGA Tour-hosting site — is the editorial centerpiece.",
     "The terrain is jungle-edge resort golf: mangrove crossings, limestone cenote features, tropical fairways with shaded corridors. Wind is rarely the variable; humidity is. Plan early tee times and treat the round as part of the resort day, not the entirety of it.",
   ],
   overviewStats: [
     { num: "12+",      label: "Courses on the coast" },
-    { num: "80 mi",    label: "Cancún → Tulum" },
+    { num: "80 mi",    label: "Cancun → Tulum" },
     { num: "25+",      label: "US direct flights" },
     { num: "PGA Tour", label: "Hosted at Mayakoba" },
   ],
 
   playbookH3Pre: "Your free",
   playbookH3Em: "2026 Riviera Maya Travel Brief.",
-  playbookBody: "The full Cancún & Riviera Maya guide as a PDF. Best Caribbean-side resorts that bundle golf, real cost of each round, and the courses worth your time. Sent to your inbox in 60 seconds.",
+  playbookBody: "The full Cancun & Riviera Maya guide as a PDF. Best Caribbean-side resorts that bundle golf, real cost of each round, and the courses worth your time. Sent to your inbox in 60 seconds.",
 
   photoStrip: [
     { label: "El Camaleón · Mayakoba" },
@@ -433,10 +433,10 @@ const CANCUN = {
   courses: [
     { tier: "resort",  fee: "$285 – $320", name: "El Camaleón at Mayakoba",       difficulty: "4/5", bestFor: "PGA Tour pedigree",       specs: "Greg Norman · Par 72 · Championship",          note: "Hosted the PGA Tour's Mayakoba Golf Classic from 2007 to 2022. Norman's routing weaves through mangrove, jungle, and beach corridors with a famous cenote crossing on the par-3 7th. The editorial centerpiece of Mexico's Caribbean coast.",                  standout: "#7 — Par 3 over a natural cenote with limestone walls." },
     { tier: "resort",  fee: "$245 – $285", name: "El Manglar at Mayakoba",         difficulty: "3/5", bestFor: "Mangrove + lagoon golf",   specs: "Greg Norman · Par 72 · Resort",                note: "Mayakoba's second routing — a quieter, mangrove-edge experience that complements El Camaleón. Several par-3s play across lagoon water; the back nine is the most photogenic stretch.",                                                                       standout: "#16 — Par 3 across open lagoon to a defended green." },
-    { tier: "resort",  fee: "$215 – $265", name: "Iberostar Cancún Golf",          difficulty: "3/5", bestFor: "Lagoon + Nichupté views",   specs: "Isao Aoki · Par 72 · Resort",                  note: "The most central round in Cancún — Iberostar's lagoon course wraps Laguna Nichupté with views of the hotel zone skyline. Easy walking pace, family-resort-friendly, and the lowest-friction golf at Cancún proper.",                                       standout: "#14 — Open par 5 along the Nichupté lagoon." },
+    { tier: "resort",  fee: "$215 – $265", name: "Iberostar Cancun Golf",          difficulty: "3/5", bestFor: "Lagoon + Nichupté views",   specs: "Isao Aoki · Par 72 · Resort",                  note: "The most central round in Cancun — Iberostar's lagoon course wraps Laguna Nichupté with views of the hotel zone skyline. Easy walking pace, family-resort-friendly, and the lowest-friction golf at Cancun proper.",                                       standout: "#14 — Open par 5 along the Nichupté lagoon." },
     { tier: "resort",  fee: "$195 – $245", name: "Hard Rock Golf Club Riviera Maya", difficulty: "3/5", bestFor: "Bundled all-inclusive",    specs: "Jack Nicklaus · Par 72 · Resort",              note: "Bundled into the Hard Rock Riviera Maya all-inclusive — green fees included in the room rate for guests. Nicklaus's design plays through limestone karst and jungle corridors; a strong value play if you're already at the property.",                  standout: "#9 — Risk-reward par 4 around a sinkhole feature." },
     { tier: "resort",  fee: "$170 – $220", name: "Bahía Príncipe Riviera Maya",     difficulty: "2/5", bestFor: "Tulum-end resort golf",     specs: "Robert Trent Jones Jr. · Par 72 · Resort",     note: "The southern anchor of the corridor — RTJ Jr.'s routing on the Tulum end, accessed via the Bahía Príncipe Riviera Maya all-inclusive. Forgiving for visiting handicaps, jungle-edged, and the most affordable championship round in the region.",         standout: "#5 — Long par 5 with the Caribbean visible on the approach." },
-    { tier: "public",  fee: "$150 – $195", name: "Pok-Ta-Pok Golf Club",            difficulty: "2/5", bestFor: "Cancún's original public",   specs: "Robert Trent Jones Sr. · Par 72 · Public",     note: "Cancún's original golf course — RTJ Sr.'s 1976 routing on the hotel zone, surrounded by Mayan ruins and Laguna Bojórquez. Public booking, the most affordable round in the city, and the easiest tee time to secure last-minute.",                          standout: "Mayan ruin feature on #12." },
+    { tier: "public",  fee: "$150 – $195", name: "Pok-Ta-Pok Golf Club",            difficulty: "2/5", bestFor: "Cancun's original public",   specs: "Robert Trent Jones Sr. · Par 72 · Public",     note: "Cancun's original golf course — RTJ Sr.'s 1976 routing on the hotel zone, surrounded by Mayan ruins and Laguna Bojórquez. Public booking, the most affordable round in the city, and the easiest tee time to secure last-minute.",                          standout: "Mayan ruin feature on #12." },
   ],
 
   costsLabel: "The math",
@@ -462,9 +462,9 @@ const CANCUN = {
   logisticsH2Pre: "Getting there",
   logisticsH2Em: "and along the coast.",
   logistics: [
-    { icon: "plane",  title: "Airport + arrivals",  body: "Cancún International (CUN) is the most-served Mexican airport by US carriers — 25+ direct cities. Customs typically 20–45 min. Private aviation has multiple FBO options. Tulum International (TQO) opened in 2023 and serves the south end of the corridor." },
+    { icon: "plane",  title: "Airport + arrivals",  body: "Cancun International (CUN) is the most-served Mexican airport by US carriers — 25+ direct cities. Customs typically 20–45 min. Private aviation has multiple FBO options. Tulum International (TQO) opened in 2023 and serves the south end of the corridor." },
     { icon: "car",    title: "Getting to courses",  body: "Highway 307 runs the length of the Riviera Maya, well-maintained and signed in English. CUN → Mayakoba: 50 min. CUN → Tulum: 90 min. Resort shuttles handle most golf transfers; private SUV is the upgrade for multi-course days." },
-    { icon: "map",    title: "Between courses",    body: "Mayakoba's three courses share a single property — walking distance between clubhouses. Hard Rock and Bahía Príncipe sit 30–60 min apart. Pok-Ta-Pok is the only Cancún hotel zone course; everything else is south on Highway 307." },
+    { icon: "map",    title: "Between courses",    body: "Mayakoba's three courses share a single property — walking distance between clubhouses. Hard Rock and Bahía Príncipe sit 30–60 min apart. Pok-Ta-Pok is the only Cancun hotel zone course; everything else is south on Highway 307." },
     { icon: "dollar", title: "Currency + tips",    body: "USD accepted everywhere. Tip caddies $20–$40 per round. Most resort properties bundle gratuities into the all-inclusive rate — verify with the concierge on arrival. Highway tolls between CUN and Tulum run $8–$15 USD." },
   ],
 
@@ -478,12 +478,12 @@ const CANCUN = {
   ],
 
   faqs: [
-    { q: "How many courses are in Cancún and the Riviera Maya?",   a: "More than 12 along the 80-mile stretch from Cancún to Tulum. Mayakoba alone has three. The count covers resort, public, and private courses." },
+    { q: "How many courses are in Cancun and the Riviera Maya?",   a: "More than 12 along the 80-mile stretch from Cancun to Tulum. Mayakoba alone has three. The count covers resort, public, and private courses." },
     { q: "What's the best course on the Riviera Maya?",                a: "El Camaleón at Mayakoba. It hosted the PGA Tour's Mayakoba Golf Classic from 2007 to 2022. Greg Norman's design runs through mangroves, jungle, and beach — it's the headline course of the Caribbean coast." },
     { q: "Do all-inclusive resorts include golf?",              a: "A lot of them do. Hard Rock, Bahía Príncipe, Iberostar, and others bundle unlimited golf into the room rate. The math really pays off if you'll play 4+ rounds — confirm with the property before booking." },
     { q: "When is the best time of year to play here?",        a: "December through April. Low humidity, almost no rain, courses in peak shape. Christmas through Easter books up fastest — reserve at least 4 months ahead." },
     { q: "Do I need to worry about hurricanes?",                              a: "August through October is hurricane peak. If you're booking in that window, get travel insurance with hurricane coverage. Outside that window, the weather is reliable." },
-    { q: "How far is the airport from Mayakoba?",          a: "About 50 minutes from Cancún (CUN) on Highway 307. From Tulum International (TQO) it's under 30 minutes if you're staying further south." },
+    { q: "How far is the airport from Mayakoba?",          a: "About 50 minutes from Cancun (CUN) on Highway 307. From Tulum International (TQO) it's under 30 minutes if you're staying further south." },
   ],
 
   credentials,
@@ -600,10 +600,10 @@ const PUERTO_VALLARTA = {
   faqs: [
     { q: "How many golf courses are in Puerto Vallarta?",                 a: "Eight courses around Banderas Bay. Four on the south side (Vallarta proper) and four on the north side (Riviera Nayarit). All within a 45-minute drive of the PVR airport." },
     { q: "What's the best course in Puerto Vallarta?",                   a: "Vista Vallarta — the Nicklaus course. It's the most dramatic round in the region. The Weiskopf course shares the property and plays a bit easier for mixed groups." },
-    { q: "Is Puerto Vallarta cheaper than Cabo for golf?",                 a: "Yes. You'll find similar Nicklaus and Norman pedigree courses at 30–40% less than Cabo or Punta Mita. PV is the best value tier of México championship golf." },
+    { q: "Is Puerto Vallarta cheaper than Cabo for golf?",                 a: "Yes. You'll find similar Nicklaus and Norman pedigree courses at 30–40% less than Cabo or Punta Mita. PV is the best value tier of Mexico championship golf." },
     { q: "Can I combine PV and Punta Mita on one trip?",            a: "Yes. Both share the PVR airport and are 45 minutes apart by car. A typical itinerary is 3 nights PV + 3 nights Punta Mita. The Travel Brief walks you through the combined plan." },
     { q: "When's the best time to play in Puerto Vallarta?",      a: "November through April. Dry, warm, low humidity. April is the sweet spot for both conditions and crowd levels. Late October is the smartest value window once hurricane season ends." },
-    { q: "Is the city of Puerto Vallarta walkable?",                      a: "Yes — Zona Romántica and the Malecón are very walkable for 12 blocks along the bay. It's the only México golf destination where the city itself is a real reason to come." },
+    { q: "Is the city of Puerto Vallarta walkable?",                      a: "Yes — Zona Romántica and the Malecón are very walkable for 12 blocks along the bay. It's the only Mexico golf destination where the city itself is a real reason to come." },
   ],
 
   credentials,
@@ -618,7 +618,7 @@ const UNIQUE = {
   heroPhoto: null,
   heroLabel: "Destination Guide · Unique",
   h1Pre: "Hidden",
-  h1Em: "México.",
+  h1Em: "Mexico.",
   byline: "GIM Editorial · Field research by Pablo De La Mora & José Islas · Updated May 2026",
   stats: [
     { num: "12+",        label: "Hidden destinations" },
@@ -627,7 +627,7 @@ const UNIQUE = {
     { num: "Year-round", label: "Selective windows" },
   ],
   heroAnswer:
-    "Beyond the headline corridors, México hides another dozen destinations worth the detour — colonial towns, quiet Pacific bays, lakeside highlands, Caribbean limestone. Each one is a complete trip on its own. Each one is worth a week.",
+    "Beyond the headline corridors, Mexico hides another dozen destinations worth the detour — colonial towns, quiet Pacific bays, lakeside highlands, Caribbean limestone. Each one is a complete trip on its own. Each one is worth a week.",
 
   quickFacts: [
     { icon: "flag",      label: "Destinations",  value: "12+ hidden regional rounds" },
@@ -640,16 +640,16 @@ const UNIQUE = {
   ],
 
   overviewLabel: "Off the headlines",
-  overviewH2Pre: "México is bigger than",
+  overviewH2Pre: "Mexico is bigger than",
   overviewH2Em: "the five headline corridors.",
   overviewParagraphs: [
-    "Beyond the names you already know, México hides dozens of destinations worth flying for — colonial towns, quiet Pacific bays, lakeside highlands, Caribbean limestone. A few examples below. Full guides land quarterly.",
+    "Beyond the names you already know, Mexico hides dozens of destinations worth flying for — colonial towns, quiet Pacific bays, lakeside highlands, Caribbean limestone. A few examples below. Full guides land quarterly.",
   ],
   overviewStats: [],
 
   playbookH3Pre: "Your free",
   playbookH3Em: "2026 Hidden Routings Travel Brief.",
-  playbookBody: "The full Hidden México guide as a PDF. The lesser-known destinations worth flying for, what makes each one different, and how to actually book the round. Sent to your inbox in 60 seconds.",
+  playbookBody: "The full Hidden Mexico guide as a PDF. The lesser-known destinations worth flying for, what makes each one different, and how to actually book the round. Sent to your inbox in 60 seconds.",
 
   photoStrip: [],
 
@@ -663,7 +663,7 @@ const UNIQUE = {
     { name: "Mérida",                region: "Yucatán" },
     { name: "Loreto",                region: "Baja California Sur" },
     { name: "Ciudad del Carmen",     region: "Campeche" },
-    { name: "Valle de Bravo",        region: "Estado de México" },
+    { name: "Valle de Bravo",        region: "Estado de Mexico" },
     { name: "Mazatlán",              region: "Sinaloa" },
   ],
 
@@ -706,12 +706,12 @@ const UNIQUE = {
   ],
 
   faqs: [
-    { q: "Which courses count as México's hidden destinations?",          a: "Six regions worth the detour: Valle de Bravo (lakeside Nicklaus), Querétaro (highland Bajío trio), San Miguel de Allende (Faldo hillside), Acapulco (Tres Vidas), Mazatlán (Estrella del Mar), and Loreto (Rees Jones on the Sea of Cortez)." },
+    { q: "Which courses count as Mexico's hidden destinations?",          a: "Six regions worth the detour: Valle de Bravo (lakeside Nicklaus), Querétaro (highland Bajío trio), San Miguel de Allende (Faldo hillside), Acapulco (Tres Vidas), Mazatlán (Estrella del Mar), and Loreto (Rees Jones on the Sea of Cortez)." },
     { q: "Which one is best for a first visit?",        a: "San Miguel de Allende. The colonial city alone is worth the trip, the golf at Ventanas is excellent without being brutal, and the BJX airport is just over an hour from Mexico City." },
-    { q: "Is Loreto worth the longer flight?",                     a: "Yes, especially if you've already done Cabo. Loreto feels like Cabo 30 years ago — dramatic Sea of Cortez terrain, very few crowds, direct LAX flights. Loreto Bay (Rees Jones) is the most remote championship round in México." },
+    { q: "Is Loreto worth the longer flight?",                     a: "Yes, especially if you've already done Cabo. Loreto feels like Cabo 30 years ago — dramatic Sea of Cortez terrain, very few crowds, direct LAX flights. Loreto Bay (Rees Jones) is the most remote championship round in Mexico." },
     { q: "How do I book these courses?",                                a: "Most aren't on standard booking channels. It's member-guest invitations, friend-of-the-property bookings, and direct emails. The Travel Brief covers the access channel for each destination." },
     { q: "Can I combine several of these on one trip?",       a: "We recommend against it. Each region has its own pace and needs at least 3 days to get a real feel. Hopping between them usually ruins the experience. Pick one per trip — come back for the next." },
-    { q: "When's the best time to play highland golf in México?",          a: "October through April. February is the sweet spot — clear, dry, cool mornings, mild afternoons. Avoid June through September (afternoon storms). Above 6,000 feet, every course plays half a club shorter — recalibrate on day one." },
+    { q: "When's the best time to play highland golf in Mexico?",          a: "October through April. February is the sweet spot — clear, dry, cool mornings, mild afternoons. Avoid June through September (afternoon storms). Above 6,000 feet, every course plays half a club shorter — recalibrate on day one." },
   ],
 
   credentials,
@@ -724,7 +724,7 @@ export const getHubData = (slug) => ALL_HUBS.find((h) => h.slug === slug);
 export const KEEP_EXPLORING_HUBS = (currentSlug) =>
   ALL_HUBS
     .filter((h) => h.slug !== currentSlug)
-    .slice(0, 4)
+    .slice(0, 5)
     .map((h) => ({ slug: h.slug, name: h.name, region: h.region }));
 
 export default ALL_HUBS;

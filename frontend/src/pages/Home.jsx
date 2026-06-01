@@ -30,7 +30,7 @@ const StatementAndVideo = () => (
         data-testid="home-section-heading"
         className="font-display font-normal text-[var(--c-text)] leading-[1.05] tracking-tight text-3xl md:text-5xl lg:text-6xl max-w-[20ch] mb-10 md:mb-14"
       >
-        Everything you need to know <em className="italic text-[var(--c-gold)]">before you play México.</em>
+        Everything you need to know <em className="italic text-[var(--c-gold)]">before you play Mexico.</em>
       </motion.h2>
 
       <motion.p
@@ -94,7 +94,7 @@ const HomeDivider = () => {
       <motion.div style={{ y }} className="absolute inset-0 -top-20 -bottom-20">
         <img
           src={HOME_DIVIDER_IMG}
-          alt="Cinematic México golf landscape"
+          alt="Cinematic Mexico golf landscape"
           className="w-full h-full object-cover scale-110"
           style={{ objectPosition: "left center" }}
         />
@@ -138,7 +138,7 @@ const Home = () => {
             className="font-display font-normal text-white leading-[1.02] tracking-tight text-[9vw] md:text-[6.2vw] lg:text-[5.6rem] max-w-[18ch] mx-auto"
           >
             We uncover{" "}
-            <span className="italic text-[var(--c-gold)]">the best golf in México.</span>
+            <span className="italic text-[var(--c-gold)]">the best golf in Mexico.</span>
           </motion.h1>
 
           <motion.div

@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 const REGIONS = [
   "Los Cabos",
   "Riviera Nayarit & Punta Mita",
-  "Ciudad de México",
+  "Ciudad de Mexico",
   "Open to suggestion",
 ];
 

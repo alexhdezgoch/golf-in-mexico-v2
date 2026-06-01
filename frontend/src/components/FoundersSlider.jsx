@@ -33,16 +33,16 @@ const FOUNDERS = [
     creds: [
       "Four-time winner · Mexican Tour",
       "Three PGA Tour starts · One Korn Ferry · Five-plus PGA Tour Americas",
-      "Record holder · US Amateur from México · 2023 Quarterfinals",
-      "Eighteen years inside México's golf",
+      "Record holder · US Amateur from Mexico · 2023 Quarterfinals",
+      "Eighteen years inside Mexico's golf",
     ],
     accent: "gold",
     photo: "/jose.jpg",
     photoPosition: "center 22%",
     pull:
-      "I have played golf in México for eighteen years. I know the grass, the industry, and the round each visitor is actually here for.",
+      "I have played golf in Mexico for eighteen years. I know the grass, the industry, and the round each visitor is actually here for.",
     body:
-      "José came of age inside the ropes. He has been among México's most consistent players at every stage — Junior, Amateur, Pro — and is still chasing full status on Tour. In the meantime, he laid the foundations of this project. We will be alongside him for what comes next.",
+      "José came of age inside the ropes. He has been among Mexico's most consistent players at every stage — Junior, Amateur, Pro — and is still chasing full status on Tour. In the meantime, he laid the foundations of this project. We will be alongside him for what comes next.",
   },
 ];
 
@@ -104,7 +104,7 @@ const FoundersSlider = () => {
           <div className="col-span-12 md:col-span-9">
             <h2 className="font-display font-light text-ink text-3xl md:text-5xl leading-[1.05] tracking-tight max-w-3xl">
               A team that has played PGA Tour events, traveled the Latin
-              American Amateur circuit, and built a network across México's{" "}
+              American Amateur circuit, and built a network across Mexico's{" "}
               <span className="italic">finest regions.</span>
             </h2>
             <p className="mt-8 font-body font-light text-ink/75 text-base md:text-lg max-w-2xl leading-relaxed">

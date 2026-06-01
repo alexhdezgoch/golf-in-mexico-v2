@@ -37,7 +37,7 @@ export const REGIONS = [
   {
     slug: "mexico-city",
     name: "Mexico City",
-    region: "Valle de México",
+    region: "Valle de Mexico",
     courses: "8+ Historic Clubs",
     tagline: "Heritage & Altitude.",
     description:
@@ -66,7 +66,7 @@ export const REGIONS = [
   },
   {
     slug: "cancun-riviera-maya",
-    name: "Cancún · Riviera Maya",
+    name: "Cancun · Riviera Maya",
     region: "Quintana Roo",
     courses: "10+ Resort Courses",
     tagline: "Limestone Fairways & Caribbean Trade Winds.",
@@ -82,7 +82,7 @@ export const REGIONS = [
   {
     slug: "unique-destinations",
     name: "Unique Destinations",
-    region: "Across México",
+    region: "Across Mexico",
     courses: "8+ Hidden Routings",
     tagline: "The Uncharted Routings.",
     description:
@@ -118,7 +118,7 @@ const DestinationsHeader = () => (
         transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         className="mt-8 md:mt-10 font-body font-light text-white/65 text-base md:text-lg leading-[1.7] max-w-xl"
       >
-        Curated destination guides and fact-based intelligence for México&apos;s
+        Curated destination guides and fact-based intelligence for Mexico&apos;s
         premier golf regions.
       </motion.p>
     </div>

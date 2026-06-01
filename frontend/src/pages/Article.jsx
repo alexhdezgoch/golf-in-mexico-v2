@@ -383,7 +383,7 @@ const ScrollEmailCapture = ({ slug }) => {
                 Free guide
               </span>
               <h4 className="mt-2 font-display font-light text-ink text-xl md:text-2xl leading-tight tracking-tight">
-                The México golf <span className="italic">planning guide</span>.
+                The Mexico golf <span className="italic">planning guide</span>.
               </h4>
               <p className="mt-2 font-body font-light text-ink/65 text-sm">
                 No spam. Only content worth your time.

@@ -4,10 +4,10 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 const DESTINATIONS = [
   { slug: "los-cabos", name: "Los Cabos", region: "Baja California Sur", live: true, href: "/destinations/los-cabos" },
   { slug: "punta-mita", name: "Punta Mita", region: "Riviera Nayarit", live: true, href: "/destinations/punta-mita" },
-  { slug: "mexico-city", name: "Mexico City", region: "Valle de México", live: true, href: "/destinations/mexico-city" },
+  { slug: "mexico-city", name: "Mexico City", region: "Valle de Mexico", live: true, href: "/destinations/mexico-city" },
   { slug: "puerto-vallarta", name: "Puerto Vallarta", region: "Bahía de Banderas", live: true, href: "/destinations/puerto-vallarta" },
-  { slug: "cancun-riviera-maya", name: "Cancún · Riviera Maya", region: "Quintana Roo", live: true, href: "/destinations/cancun-riviera-maya" },
-  { slug: "unique-destinations", name: "Unique Destinations", region: "Across México", live: true, href: "/destinations/unique-destinations" },
+  { slug: "cancun-riviera-maya", name: "Cancun · Riviera Maya", region: "Quintana Roo", live: true, href: "/destinations/cancun-riviera-maya" },
+  { slug: "unique-destinations", name: "Unique Destinations", region: "Across Mexico", live: true, href: "/destinations/unique-destinations" },
 ];
 
 const SOCIALS = [
@@ -76,10 +76,9 @@ const Nav = () => {
           <img
             src="/logo-wordmark.png"
             alt="Golf in Mexico°"
-            className={`h-5 md:h-6 w-auto transition-[filter] duration-500 ${
+            className={`h-8 md:h-10 w-auto transition-[filter] duration-500 ${
               onDarkHero ? "" : "invert"
             }`}
-            style={{ mixBlendMode: onDarkHero ? "screen" : "multiply" }}
           />
         </Link>
 
@@ -179,16 +178,16 @@ const Nav = () => {
             About
           </a>
 
-          {/* Contact — mailto */}
-          <a
-            href="mailto:hello@golf-in-mexico.com"
+          {/* Contact — internal page */}
+          <Link
+            to="/contact"
             data-testid="nav-link-contact"
             className={`nav-link-modern font-mono text-[11px] uppercase tracking-wide-editorial transition-colors duration-300 ${
               onDarkHero ? "text-cream/65 hover:text-cream" : "text-muted hover:text-ink"
             }`}
           >
             Contact
-          </a>
+          </Link>
 
           {/* Inquire CTA — premium magnetic-style button → routes to Experience selector */}
           <Link
@@ -290,13 +289,14 @@ const Nav = () => {
           >
             About
           </a>
-          <a
-            href="mailto:hello@golf-in-mexico.com"
+          <Link
+            to="/contact"
+            onClick={() => setOpen(false)}
             data-testid="nav-mobile-link-contact"
             className="font-display text-4xl tracking-tight leading-none text-muted"
           >
             Contact
-          </a>
+          </Link>
           <button
             type="button"
             onClick={() => {

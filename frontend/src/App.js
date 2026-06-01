@@ -20,6 +20,7 @@ import About from "@/pages/About";
 import Destinations from "@/pages/Destinations";
 import LosCabos from "@/pages/LosCabos";
 import Experience from "@/pages/Experience";
+import Contact from "@/pages/Contact";
 
 // Generic destination hub — routes /destinations/:slug through the LosCabos layout with the matching data
 const HubBySlug = () => {
@@ -140,6 +141,14 @@ const AnimatedRoutes = () => {
           element={
             <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
               <About />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+              <Contact />
             </motion.div>
           }
         />

@@ -12,7 +12,7 @@ const PLACEHOLDERS = {
       "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=2400&q=85",
   },
   "cancun-riviera-maya": {
-    name: "Cancún · Riviera Maya",
+    name: "Cancun · Riviera Maya",
     region: "Quintana Roo",
     tagline: "Limestone fairways, Caribbean light.",
     heroImage:
@@ -20,7 +20,7 @@ const PLACEHOLDERS = {
   },
   "unique-destinations": {
     name: "Unique Destinations",
-    region: "Across México",
+    region: "Across Mexico",
     tagline: "Bajío, Huatulco, Mérida, and beyond.",
     heroImage:
       "https://images.unsplash.com/photo-1543105177-748ceda71741?auto=format&fit=crop&w=2400&q=85",

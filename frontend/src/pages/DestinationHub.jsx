@@ -382,7 +382,7 @@ const NewsletterCTA = ({ d }) => {
           Get Pablo&apos;s insider picks for <span className="italic text-gold">{d.name}</span>.
         </h2>
         <p className="mt-6 font-body font-light text-cream/70 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
-          Pablo&apos;s weekly Field Notes — which courses he&apos;d play this month, which caddie to request, and what a round actually costs. Written from inside México, not from a desk.
+          Pablo&apos;s weekly Field Notes — which courses he&apos;d play this month, which caddie to request, and what a round actually costs. Written from inside Mexico, not from a desk.
         </p>
         {!done ? (
           <form onSubmit={submit} className="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">

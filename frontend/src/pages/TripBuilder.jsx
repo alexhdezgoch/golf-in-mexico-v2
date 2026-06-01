@@ -8,10 +8,10 @@ import { motion, AnimatePresence } from "framer-motion";
    ═══════════════════════════════════════════════════════════════════ */
 
 const DESTINATIONS = [
-  { slug: "los-cabos",      name: "Los Cabos",           region: "Baja California Sur", desc: "13 courses · Pacific" },
-  { slug: "punta-mita",     name: "Punta Mita",          region: "Riviera Nayarit",     desc: "Private peninsula · Nicklaus" },
-  { slug: "mexico-city",    name: "Mexico City",         region: "Valle de México",     desc: "Historic clubs · altitude" },
-  { slug: "cancun",         name: "Cancún · Riviera Maya", region: "Quintana Roo",     desc: "El Camaleón · Caribbean" },
+  { slug: "los-cabos",      name: "Los Cabos",           region: "Baja California Sur", desc: "Most golf courses" },
+  { slug: "punta-mita",     name: "Punta Mita",          region: "Riviera Nayarit",     desc: "Soft luxury + relaxed vacations" },
+  { slug: "mexico-city",    name: "Mexico City",         region: "Valle de Mexico",     desc: "Historic clubs + off-course experiences" },
+  { slug: "cancun",         name: "Cancun · Riviera Maya", region: "Quintana Roo",     desc: "Easiest trip to book" },
 ];
 
 const TRIP_TYPES = [
@@ -52,12 +52,6 @@ const PACKAGES = [
     ],
   },
 ];
-
-const Label = ({ children, onDark = false }) => (
-  <span className={`block font-mono text-[11px] uppercase tracking-[0.18em] ${onDark ? "text-[var(--c-gold)]" : "text-[var(--c-gold)]"} mb-5`}>
-    {children}
-  </span>
-);
 
 const StepPill = ({ n, total = 4 }) => (
   <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-text-muted)] mb-6">
@@ -183,21 +177,18 @@ const TripBuilder = () => {
           <Link to="/" className="flex items-center leading-none shrink-0" data-testid="tb-logo">
             <img
               src="/logo-wordmark.png"
-              alt="Golf in México°"
-              className="h-5 md:h-6 w-auto invert"
-              style={{ mixBlendMode: "multiply" }}
+              alt="Golf in Mexico°"
+              className="h-8 md:h-10 w-auto invert"
             />
           </Link>
-          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-text-muted)] hidden sm:inline">Custom Trip Proposals</span>
         </div>
       </header>
 
       {/* HERO */}
       <section className="relative bg-[var(--c-off-white)] py-20 md:py-28">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12 text-center">
-          <Label>Custom Trip Proposals</Label>
           <h1 className="font-display font-light text-[var(--c-text)] text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight max-w-[900px] mx-auto mb-8">
-            A custom México golf itinerary in <em className="italic text-[var(--c-gold)]">48 hours. On us.</em>
+            A custom Mexico golf itinerary in <em className="italic text-[var(--c-gold)]">48 hours. On us.</em>
           </h1>
           <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] max-w-[680px] mx-auto mb-10">
             Built by real insiders — not AI. Tell us where you want to play and what matters most. We will hand-craft a named itinerary with confirmed course access, itemized down to the peso. No call required to get your proposal.
@@ -213,13 +204,13 @@ const TripBuilder = () => {
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </button>
 
-            {/* Scarcity tag — under the CTA */}
+            {/* Scarcity banner — high contrast */}
             <div
               data-testid="tb-scarcity"
-              className="mt-5 inline-flex items-center gap-3 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.16em] text-[var(--c-text-muted)] border-t border-[var(--c-border)] pt-5 max-w-[460px] text-center"
+              className="mt-10 inline-flex items-center gap-3 bg-[var(--c-green-deep)] text-white px-6 py-3.5 rounded-sm font-mono text-[11px] md:text-[12px] uppercase tracking-[0.2em] font-bold"
             >
               <span className="w-2 h-2 rounded-full bg-[var(--c-gold)] animate-pulse shrink-0" />
-              <span>Q2 2026 Availability — One trip per week. Weeks fill as proposals are accepted.</span>
+              <span>Availability — One trip per week. Weeks fill as proposals are accepted.</span>
             </div>
           </div>
         </div>
@@ -227,26 +218,20 @@ const TripBuilder = () => {
 
       {/* PROMISES */}
       <section className="bg-[var(--c-green-deep)] text-white py-20 md:py-28">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-          <Label>The GIM Promise</Label>
-          <h2 className="font-display font-light text-white text-3xl md:text-5xl leading-[1.1] tracking-tight max-w-3xl mb-14">
-            If we can&apos;t deliver on these three, <em className="italic text-[var(--c-gold)]">we don&apos;t deserve your money.</em>
+        <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+          <h2 className="font-display font-light text-white text-3xl md:text-5xl leading-[1.1] tracking-tight max-w-3xl mb-8">
+            The GIM Promise: <em className="italic text-[var(--c-gold)]">if we can&apos;t deliver, we don&apos;t deserve your money.</em>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mb-14">
-            {[
-              { n: "01", title: "The Tee-Time Guarantee",   body: "If a tee time falls through, we replace it with an equal-or-better option at no cost." },
-              { n: "02", title: "The Expectation Refund",   body: "If after your first 36 hours on the ground you decide the trip isn't exactly what we promised, we refund the GIM fee." },
-              { n: "03", title: "Named Contact. Always.",   body: "From booking to dinner reservation #12, you have Pablo's personal cell. Not a help desk. Not an assistant." },
-            ].map((p) => (
-              <div key={p.n} className="border-t border-[var(--c-gold)]/40 pt-6">
-                <div className="font-display font-light text-[var(--c-gold)] text-3xl md:text-4xl mb-3">{p.n}</div>
-                <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-gold)] mb-4">{p.title}</div>
-                <p className="text-sm md:text-[15px] text-white/75 leading-[1.7]">{p.body}</p>
-              </div>
-            ))}
+          <div className="border-t border-[var(--c-gold)]/40 pt-8 max-w-3xl mb-10">
+            <h3 className="font-display font-normal text-[var(--c-gold)] text-xl md:text-2xl leading-[1.25] mb-5">
+              Attention to clients &amp; the expectation refund.
+            </h3>
+            <p className="font-body font-light text-white/85 text-base md:text-lg leading-[1.75]">
+              If after your first 36 hours on the ground you decide the trip isn&apos;t exactly what we promised, or we didn&apos;t give you the personalized attention we committed to, we refund the GIM fee.
+            </p>
           </div>
-          <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--c-gold)]">
-            — Pablo De La Mora &amp; José Islas · Golf in México°
+          <p className="font-display italic font-normal text-[var(--c-gold)] text-base md:text-lg">
+            — Pablo De La Mora &amp; José Islas · Golf in Mexico°
           </p>
         </div>
       </section>
@@ -254,12 +239,11 @@ const TripBuilder = () => {
       {/* DELIVERABLES */}
       <section className="bg-[var(--c-off-white)] py-20 md:py-28">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-          <Label>What you get in 48 hours</Label>
-          <h2 className="font-display font-light text-[var(--c-text)] text-3xl md:text-5xl leading-[1.1] tracking-tight mb-5">
-            Your proposal includes <em className="italic text-[var(--c-gold)]">everything.</em>
+          <h2 className="font-display font-light text-[var(--c-text)] text-3xl md:text-5xl leading-[1.1] tracking-tight mb-6">
+            What you get in 48 hours: <em className="italic text-[var(--c-gold)]">everything.</em>
           </h2>
-          <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.7] max-w-[640px] mb-12">
-            Zero guesswork.
+          <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] max-w-[640px] mb-12">
+            Your proposal includes the full picture. Zero guesswork.
           </p>
           <ul className="space-y-3 max-w-[760px] mb-14">
             {[
@@ -270,7 +254,7 @@ const TripBuilder = () => {
               "Unlimited refinements until your itinerary is 100% perfect.",
               "Pablo's personal cell — yours for the duration of the trip.",
             ].map((d) => (
-              <li key={d} className="flex items-start gap-4 text-[var(--c-text-mid)] text-[15px] md:text-base leading-[1.7]">
+              <li key={d} className="flex items-start gap-4 text-[var(--c-text-mid)] text-base md:text-lg leading-[1.7]">
                 <span className="text-[var(--c-gold)] mt-1.5">▸</span>
                 <span>{d}</span>
               </li>
@@ -537,9 +521,9 @@ const TripBuilder = () => {
                   <p className="mt-4 text-[12px] text-[var(--c-text-muted)] text-center leading-[1.6]">
                     No commitment. No call required. We build the itinerary. You decide if you want to move forward.
                   </p>
-                  <div className="mt-6 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-text-muted)] w-full justify-center">
+                  <div className="mt-6 inline-flex items-center gap-2 bg-[var(--c-green-deep)] text-white font-mono text-[10px] md:text-[11px] uppercase tracking-[0.18em] font-bold w-full justify-center px-4 py-3 rounded-sm">
                     <span className="w-1.5 h-1.5 rounded-full bg-[var(--c-gold)]" />
-                    One trip per week. Currently accepting Q2 2026 proposals.
+                    Accepting one trip per week to deliver highest attention.
                   </div>
 
                   <div className="mt-10 flex items-center justify-start">
@@ -555,7 +539,7 @@ const TripBuilder = () => {
       {/* MINIMAL FOOTER */}
       <footer className="bg-[var(--c-off-white)] border-t border-[var(--c-border)] py-8">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-text-muted)]">© 2026 Golf in México°</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-text-muted)]">© 2026 Golf in Mexico°</p>
           <a href="mailto:hello@golf-in-mexico.com" className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-text-muted)] hover:text-[var(--c-gold)] transition-colors">hello@golf-in-mexico.com</a>
         </div>
       </footer>
