@@ -657,7 +657,9 @@ const LosCabos = ({ slug = "los-cabos" }) => {
               const verifiedCourses = COURSES.filter((c) => c.verified);
               const honorableCourses = COURSES.filter((c) => !c.verified);
 
-              const renderCourse = (c, idx) => (
+              const renderCourse = (c, idx) => {
+                const singlePhoto = c.photos && c.photos.length > 0 ? c.photos[0] : null;
+                return (
                 <motion.article
                   key={c.name}
                   initial={{ opacity: 0, y: 20 }}
@@ -665,49 +667,36 @@ const LosCabos = ({ slug = "los-cabos" }) => {
                   viewport={{ once: true, margin: "-10%" }}
                   transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                   data-testid={`lc-course-${c.verified ? "verified" : "honorable"}-${idx}`}
-                  className={`group py-10 md:py-12 ${c.verified ? "" : "opacity-80"}`}
+                  className={`group py-10 md:py-12 border-b border-white/10 ${c.verified ? "" : "opacity-80"}`}
                 >
-                  {/* Per-course photo slider (verified only) */}
-                  {c.verified && (
-                    <div
-                      data-testid={`lc-course-slider-${idx}`}
-                      className="mb-7 md:mb-9 -mx-6 md:mx-0"
-                    >
-                      <div className="flex gap-2 md:gap-3 overflow-x-auto snap-x snap-mandatory px-6 md:px-0 pb-1" style={{ scrollbarWidth: "none" }}>
-                        {(c.photos && c.photos.length > 0
-                          ? c.photos
-                          : [null, null, null, null]
-                        ).map((p, pi) => (
-                          <PhotoSlot
-                            key={`${c.name}-photo-${pi}`}
-                            src={p || undefined}
-                            alt={`${c.name} — frame ${pi + 1}`}
-                            label={pi === 0 ? c.name : null}
-                            showLabel={pi === 0}
-                            testid={`lc-course-${idx}-photo-${pi}`}
-                            className="photo-slot--4x3 photo-slot--zoom-parent snap-start shrink-0 w-[78vw] sm:w-[420px] md:w-[400px] rounded-sm overflow-hidden"
-                          />
-                        ))}
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-6 lg:gap-x-10 lg:gap-y-0 items-start">
+
+                    {/* LEFT — single photo (verified) */}
+                    {c.verified && (
+                      <div className="lg:col-span-4">
+                        <PhotoSlot
+                          src={singlePhoto || undefined}
+                          alt={c.name}
+                          label={c.name}
+                          showLabel={!singlePhoto}
+                          testid={`lc-course-${idx}-photo`}
+                          className="photo-slot--4x3 photo-slot--zoom-parent rounded-sm overflow-hidden"
+                        />
                       </div>
-                    </div>
-                  )}
+                    )}
 
-                  <div className="border-b border-white/10 pb-10 md:pb-12 grid grid-cols-[auto_1fr] lg:grid-cols-12 gap-x-5 gap-y-5 lg:gap-x-10 lg:gap-y-0 items-start">
-                    {/* Index */}
-                    <div className="lg:col-span-1 font-display font-light text-[var(--c-gold)] text-2xl md:text-3xl leading-none pt-1">
-                      {String(idx + 1).padStart(2, "0")}
-                    </div>
+                    {/* MIDDLE — index + name + specs + note + standout */}
+                    <div className={c.verified ? "lg:col-span-5" : "lg:col-span-8"}>
+                      <div className="flex items-baseline gap-4 mb-3">
+                        <span className="font-display font-light text-[var(--c-gold)] text-2xl md:text-3xl leading-none">
+                          {String(idx + 1).padStart(2, "0")}
+                        </span>
+                        <h3 className={`course-name uppercase leading-tight tracking-wide ${c.verified ? "text-white text-xl md:text-2xl" : "text-white/75 text-lg md:text-xl"}`}>
+                          {c.name}
+                        </h3>
+                      </div>
+                      <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--c-gold)]/85 mb-5">{c.specs}</p>
 
-                    {/* Name + specs */}
-                    <div className="lg:col-span-4">
-                      <h3 className={`course-name uppercase leading-tight tracking-wide mb-2 ${c.verified ? "text-white text-xl md:text-2xl" : "text-white/70 text-lg md:text-xl"}`}>
-                        {c.name}
-                      </h3>
-                      <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--c-gold)]/85">{c.specs}</p>
-                    </div>
-
-                    {/* Note + standout */}
-                    <div className="col-span-2 lg:col-span-5 lg:col-start-auto">
                       <p className={`text-[14px] md:text-[15px] leading-[1.7] mb-4 ${c.verified ? "text-white/85" : "text-white/55"}`}>{c.note}</p>
                       <p className={`text-[13px] italic leading-[1.55] border-l-2 border-[var(--c-gold)] pl-3 ${c.verified ? "text-white/65" : "text-white/45"}`}>
                         <span className="font-mono not-italic text-[10px] uppercase tracking-[0.1em] text-[var(--c-gold)] mr-2">Standout</span>
@@ -715,8 +704,8 @@ const LosCabos = ({ slug = "los-cabos" }) => {
                       </p>
                     </div>
 
-                    {/* Right rail */}
-                    <div className="col-span-2 lg:col-span-2 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-1 gap-x-4 gap-y-4 lg:gap-y-4 pt-2 lg:pt-0 border-t lg:border-t-0 border-white/10">
+                    {/* RIGHT rail */}
+                    <div className="lg:col-span-3 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-1 gap-x-4 gap-y-4 pt-4 lg:pt-0 border-t lg:border-t-0 border-white/10">
                       <div>
                         <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Access</span>
                         <AccessPill tier={c.tier} />
@@ -736,7 +725,8 @@ const LosCabos = ({ slug = "los-cabos" }) => {
                     </div>
                   </div>
                 </motion.article>
-              );
+                );
+              };
 
               return (
                 <>
