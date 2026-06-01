@@ -1,11 +1,12 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 /* ═══════════════════════════════════════════════════════════════════
    Contact · /contact
-   Two ways to reach GIM: email or schedule a call via Google Calendar.
+   Two ways to reach GIM: email or schedule a call.
    ═══════════════════════════════════════════════════════════════════ */
 
-const CALENDAR_EMBED_URL =
+const CALENDAR_URL =
   "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0-5yCStoiBQ6flTE4ehdqPBbM437JWGYn8zaHwxQiavGhjRLGDkXwsoP2Kbr2pFx2H8de_f8cE?gv=true";
 
 const EMAIL_ADDRESS = "hello@golf-in-mexico.com";
@@ -61,7 +62,7 @@ const Contact = () => (
           </div>
         </div>
 
-        {/* CALL */}
+        {/* SCHEDULE A CALL */}
         <div
           data-testid="contact-call-card"
           className="bg-[var(--c-green-deep)] text-white rounded-sm p-8 md:p-10 flex flex-col"
@@ -70,40 +71,32 @@ const Contact = () => (
             Schedule a <em className="italic text-[var(--c-gold)]">call.</em>
           </h2>
           <p className="font-body font-light text-white/80 text-base leading-[1.7] mb-8">
-            Thirty minutes with Pablo. Walk through your trip, your group, your dates. By the end of the call you&apos;ll know exactly what your itinerary looks like.
+            Planning a trip? Start a proposal first — Pablo builds it inside 48 hours, no call needed. If it&apos;s anything else, book a 30-minute call directly.
           </p>
-          <div className="mt-auto">
+
+          <div className="mt-auto flex flex-col gap-3">
+            {/* Primary — Trip Builder */}
+            <Link
+              to="/trip-builder"
+              data-testid="contact-trip-cta"
+              className="group inline-flex items-center justify-between gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-7 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.2em] font-bold transition-colors"
+            >
+              Start a trip proposal
+              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </Link>
+
+            {/* Secondary — Book a call */}
             <a
-              href={CALENDAR_EMBED_URL}
+              href={CALENDAR_URL}
               target="_blank"
               rel="noopener noreferrer"
-              data-testid="contact-call-link"
-              className="group inline-flex items-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-8 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.2em] font-bold transition-colors"
+              data-testid="contact-call-cta"
+              className="group inline-flex items-center justify-between gap-3 border border-white/30 hover:border-white text-white px-7 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.2em] transition-colors"
             >
-              Pick a time
+              Book a 30-min call
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    {/* CALENDAR EMBED */}
-    <section data-testid="contact-calendar-section" className="py-12 md:py-20">
-      <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-        <h2 className="font-display font-normal text-[var(--c-text)] text-2xl md:text-4xl leading-[1.15] tracking-tight mb-8 md:mb-10 max-w-[28ch]">
-          Or pick a time right here.
-        </h2>
-        <div className="relative w-full bg-white border border-[var(--c-border)] rounded-sm overflow-hidden">
-          <iframe
-            title="Schedule a call with Golf in Mexico"
-            src={CALENDAR_EMBED_URL}
-            data-testid="contact-calendar-iframe"
-            style={{ border: 0 }}
-            width="100%"
-            height="720"
-            frameBorder="0"
-          />
         </div>
       </div>
     </section>
