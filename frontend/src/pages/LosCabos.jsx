@@ -392,23 +392,25 @@ const LosCabos = ({ slug = "los-cabos" }) => {
     image: HERO_PHOTOS[h.slug] || "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=1600&q=85",
   }));
   useEffect(() => {
-    document.title = "Golf in Cabo San Lucas: Courses, Costs & Access (2026) | Golf in Mexico";
+    document.title = data.seoTitle || `${data.name} — Golf in Mexico°`;
     let meta = document.querySelector("meta[name='description']");
     if (!meta) {
       meta = document.createElement("meta");
       meta.name = "description";
       document.head.appendChild(meta);
     }
-    meta.content = "23 championship courses, green fees from $200–$500, and the insider access most travelers never find. The complete guide to golf in Cabo San Lucas and the Los Cabos corridor.";
+    meta.content = data.seoDescription || data.heroAnswer || "";
 
+    const breadcrumbName = data.name;
+    const slug = data.slug;
     const schemas = [
-      { "@context": "https://schema.org", "@type": "Article", headline: "Golf in Cabo San Lucas: The Complete Course Guide", author: { "@type": "Organization", name: "Golf in Mexico" }, publisher: { "@type": "Organization", name: "Golf in Mexico", url: "https://golfin.mx" }, datePublished: "2026-05-01", dateModified: "2026-05-25" },
+      { "@context": "https://schema.org", "@type": "Article", headline: data.seoTitle || `Golf in ${data.name}`, author: { "@type": "Organization", name: "Golf in Mexico" }, publisher: { "@type": "Organization", name: "Golf in Mexico", url: "https://golfin.mx" }, datePublished: "2026-05-01", dateModified: "2026-05-25" },
       { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: "https://golfin.mx/" },
         { "@type": "ListItem", position: 2, name: "Destinations", item: "https://golfin.mx/destinations/" },
-        { "@type": "ListItem", position: 3, name: "Los Cabos", item: "https://golfin.mx/destinations/los-cabos/" },
+        { "@type": "ListItem", position: 3, name: breadcrumbName, item: `https://golfin.mx/destinations/${slug}/` },
       ]},
-      { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQS.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) },
+      { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: (FAQS || []).map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) },
     ];
     const els = schemas.map((s) => {
       const el = document.createElement("script");
@@ -418,7 +420,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
       return el;
     });
     return () => els.forEach((el) => el.remove());
-  }, []);
+  }, [data, FAQS]);
 
   return (
     <main data-testid="page-los-cabos" className="hub-page relative bg-[var(--c-off-white)]">
@@ -617,58 +619,100 @@ const LosCabos = ({ slug = "los-cabos" }) => {
               </p>
             </div>
           ) : (
-          <div className="border-t border-white/10">
-            {COURSES.map((c, idx) => (
-              <motion.article
-                key={c.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-10%" }}
-                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                data-testid={`lc-course-${idx}`}
-                className="group border-b border-white/10 py-8 md:py-10 grid grid-cols-[auto_1fr] lg:grid-cols-12 gap-x-5 gap-y-5 lg:gap-x-10 lg:gap-y-0 items-start"
-              >
-                {/* Index */}
-                <div className="lg:col-span-1 font-display font-light text-[var(--c-gold)] text-2xl md:text-3xl leading-none pt-1">
-                  {String(idx + 1).padStart(2, "0")}
-                </div>
+          <div>
+            {(() => {
+              const verifiedCourses = COURSES.filter((c) => c.verified);
+              const honorableCourses = COURSES.filter((c) => !c.verified);
 
-                {/* Name + specs */}
-                <div className="lg:col-span-4">
-                  <h3 className="course-name uppercase text-white text-xl md:text-2xl leading-tight tracking-wide mb-2">{c.name}</h3>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--c-gold)]/85">{c.specs}</p>
-                </div>
+              const renderCourse = (c, idx) => (
+                <motion.article
+                  key={c.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                  data-testid={`lc-course-${c.verified ? "verified" : "honorable"}-${idx}`}
+                  className="group border-b border-white/10 py-8 md:py-10 grid grid-cols-[auto_1fr] lg:grid-cols-12 gap-x-5 gap-y-5 lg:gap-x-10 lg:gap-y-0 items-start"
+                >
+                  {/* Index */}
+                  <div className="lg:col-span-1 font-display font-light text-[var(--c-gold)] text-2xl md:text-3xl leading-none pt-1">
+                    {String(idx + 1).padStart(2, "0")}
+                  </div>
 
-                {/* Note + standout */}
-                <div className="col-span-2 lg:col-span-5 lg:col-start-auto">
-                  <p className="text-[14px] md:text-[15px] text-white/75 leading-[1.7] mb-4">{c.note}</p>
-                  <p className="text-[13px] italic text-white/60 leading-[1.55] border-l-2 border-[var(--c-gold)] pl-3">
-                    <span className="font-mono not-italic text-[10px] uppercase tracking-[0.1em] text-[var(--c-gold)] mr-2">Standout</span>
-                    {c.standout}
-                  </p>
-                </div>
+                  {/* Name + specs */}
+                  <div className="lg:col-span-4">
+                    <h3 className="course-name uppercase text-white text-xl md:text-2xl leading-tight tracking-wide mb-2">{c.name}</h3>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--c-gold)]/85">{c.specs}</p>
+                  </div>
 
-                {/* Right rail: access · fee · difficulty · best for */}
-                <div className="col-span-2 lg:col-span-2 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-1 gap-x-4 gap-y-4 lg:gap-y-4 pt-2 lg:pt-0 border-t lg:border-t-0 border-white/10">
-                  <div>
-                    <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Access</span>
-                    <AccessPill tier={c.tier} />
+                  {/* Note + standout */}
+                  <div className="col-span-2 lg:col-span-5 lg:col-start-auto">
+                    <p className="text-[14px] md:text-[15px] text-white/75 leading-[1.7] mb-4">{c.note}</p>
+                    <p className="text-[13px] italic text-white/60 leading-[1.55] border-l-2 border-[var(--c-gold)] pl-3">
+                      <span className="font-mono not-italic text-[10px] uppercase tracking-[0.1em] text-[var(--c-gold)] mr-2">Standout</span>
+                      {c.standout}
+                    </p>
                   </div>
-                  <div>
-                    <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Fee</span>
-                    <span className="font-mono text-[13px] font-bold text-[var(--c-gold)]">{c.fee}</span>
+
+                  {/* Right rail */}
+                  <div className="col-span-2 lg:col-span-2 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-1 gap-x-4 gap-y-4 lg:gap-y-4 pt-2 lg:pt-0 border-t lg:border-t-0 border-white/10">
+                    <div>
+                      <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Access</span>
+                      <AccessPill tier={c.tier} />
+                    </div>
+                    <div>
+                      <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Fee</span>
+                      <span className="font-mono text-[13px] font-bold text-[var(--c-gold)]">{c.fee}</span>
+                    </div>
+                    <div>
+                      <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Difficulty</span>
+                      <span className="font-mono text-[13px] text-white/90">{c.difficulty}</span>
+                    </div>
+                    <div>
+                      <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Best for</span>
+                      <span className="text-[12px] text-white/70 leading-[1.4]">{c.bestFor}</span>
+                    </div>
                   </div>
-                  <div>
-                    <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Difficulty</span>
-                    <span className="font-mono text-[13px] text-white/90">{c.difficulty}</span>
-                  </div>
-                  <div>
-                    <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Best for</span>
-                    <span className="text-[12px] text-white/70 leading-[1.4]">{c.bestFor}</span>
-                  </div>
-                </div>
-              </motion.article>
-            ))}
+                </motion.article>
+              );
+
+              return (
+                <>
+                  {verifiedCourses.length > 0 && (
+                    <div data-testid="lc-courses-verified" className="mb-16 md:mb-20">
+                      <div className="mb-8 md:mb-10 pb-6 border-b border-[var(--c-gold)]/40 flex items-center gap-4 flex-wrap">
+                        <span className="inline-flex items-center gap-3 bg-[var(--c-gold)] text-[var(--c-green-deep)] px-4 py-2 rounded-sm font-mono text-[11px] md:text-[12px] uppercase tracking-[0.18em] font-bold">
+                          <span className="w-2 h-2 rounded-full bg-[var(--c-green-deep)]" />
+                          GIM Verified
+                        </span>
+                        <span className="text-white/65 text-sm md:text-base font-body font-light italic">
+                          Courses we have played, walked, and verified ourselves.
+                        </span>
+                      </div>
+                      <div className="border-t border-white/10">
+                        {verifiedCourses.map((c, i) => renderCourse(c, i))}
+                      </div>
+                    </div>
+                  )}
+
+                  {honorableCourses.length > 0 && (
+                    <div data-testid="lc-courses-honorable">
+                      <div className="mb-8 md:mb-10 pb-6 border-b border-white/15 flex items-center gap-4 flex-wrap">
+                        <span className="inline-flex items-center gap-3 border border-white/40 text-white px-4 py-2 rounded-sm font-mono text-[11px] md:text-[12px] uppercase tracking-[0.18em]">
+                          Honorable mentions
+                        </span>
+                        <span className="text-white/55 text-sm md:text-base font-body font-light italic">
+                          Worth knowing — pending GIM verification. Want to play one? Let us coordinate.
+                        </span>
+                      </div>
+                      <div className="border-t border-white/10">
+                        {honorableCourses.map((c, i) => renderCourse(c, i))}
+                      </div>
+                    </div>
+                  )}
+                </>
+              );
+            })()}
           </div>
           )}
 
@@ -800,6 +844,29 @@ const LosCabos = ({ slug = "los-cabos" }) => {
           </div>
         </div>
       </section>
+
+      {/* ═════════ SOURCES (hidden on destination-list hubs) ═════════ */}
+      {!data.isDestinationList && Array.isArray(data.sources) && data.sources.length > 0 && (
+      <section data-testid="lc-sources" className="bg-[var(--c-off-white)] border-t border-[var(--c-border)] py-14 md:py-20">
+        <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-start">
+            <h4 className="md:col-span-3 font-display font-normal italic text-[var(--c-text-mid)] text-lg md:text-xl leading-[1.3]">
+              Sources &amp; notes
+            </h4>
+            <ul className="md:col-span-9 space-y-2.5">
+              {data.sources.map((s) => (
+                <li
+                  key={s}
+                  className="font-body font-light text-[var(--c-text-muted)] text-sm md:text-[15px] leading-[1.7]"
+                >
+                  · {s}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+      )}
 
       {/* ═════════ KEEP EXPLORING — DARK ═════════ */}
       <section data-testid="lc-keep-exploring" className="bg-[var(--c-green-deep)] text-white py-28 md:py-40">
