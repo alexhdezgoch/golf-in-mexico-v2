@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ARTICLES } from "@/data/articles";
@@ -27,231 +27,100 @@ const CATEGORIES = [
   { key: "founders-journal", label: "Founders Journal" },
 ];
 
-/* ───────────────── PILLARS ───────────────── */
+/* Brief context per category — shown when a filter is selected */
+const CATEGORY_CONTEXT = {
+  all:
+    "Course reviews, cultural deep-dives, travel logistics, and the voices of the people who shape Mexican golf. Everything we publish, in one feed.",
+  golf:
+    "Course reviews and insights from inside the ropes. The fairways, the design, the playability — documented with the same precision we use to scout a PGA Tour setup.",
+  "beyond-the-course":
+    "The true essence of the country beyond the 18th hole. World-class gastronomy, local hospitality, and cultural nuances you won't find on any other golf trip.",
+  "the-concierge":
+    "Obsessive attention to detail for the traveling golfer. Insider intelligence, travel logistics, and the information you need to navigate your trip like a professional.",
+  "the-collective":
+    "Voices from inside the game — caddies, course directors, designers, chefs, and the operators who shape every world-class round in Mexico. Their stories, their craft.",
+  "founders-journal":
+    "First-person field notes from Pablo and José — the trips, the people, and the decisions behind Golf in Mexico°.",
+};
 
-const PILLARS = [
-  {
-    id: "golf",
-    number: "01",
-    title: "Golf",
-    body:
-      "Course reviews and insights from inside the ropes. The fairways, the design, the playability — documented with the same precision we use to scout a PGA Tour setup.",
-    ctaCategory: "golf",
-    image: "https://images.unsplash.com/photo-1672825952732-ecef34882416?auto=format&fit=crop&w=1600&q=85",
-  },
-  {
-    id: "beyond-the-course",
-    number: "02",
-    title: "Beyond the Course",
-    body:
-      "The true essence of the country beyond the 18th hole. World-class gastronomy, local hospitality, and cultural nuances you won't find on any other golf trip.",
-    ctaCategory: "beyond-the-course",
-    image: "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=1600&q=85",
-  },
-  {
-    id: "the-concierge",
-    number: "03",
-    title: "Travel Concierge",
-    body:
-      "Obsessive attention to detail for the traveling golfer. Insider intelligence, travel logistics, and the information you need to navigate your trip like a professional.",
-    ctaCategory: "the-concierge",
-    image: "https://images.unsplash.com/photo-1717388835452-c9c8cda0002e?auto=format&fit=crop&w=1600&q=85",
-  },
-  {
-    id: "the-collective",
-    number: "04",
-    title: "The Collective",
-    body:
-      "Voices from inside the game — caddies, course directors, designers, chefs, and the operators who shape every world-class round in Mexico. Their stories, their craft.",
-    ctaCategory: "the-collective",
-    image: "https://images.unsplash.com/photo-1592965046687-1acdbcdb5642?auto=format&fit=crop&w=1600&q=85",
-  },
-];
+/* ───────────────── INTRO + FILTERS ───────────────── */
 
-/* ───────────────── FILTER BAR (TOP) ───────────────── */
-
-const FilterBar = ({ category, setCategory, search, setSearch }) => {
-  const [open, setOpen] = useState(true);
+const JournalIntro = ({ category, setCategory, search, setSearch }) => {
   const activeLabel = CATEGORIES.find((c) => c.key === category)?.label || "All";
+  const context = CATEGORY_CONTEXT[category] || CATEGORY_CONTEXT.all;
 
   return (
     <section
-      data-testid="journal-filter-bar"
-      className="bg-[var(--c-off-white)] border-b border-[var(--c-border)] pt-32 md:pt-36 pb-8 md:pb-10 sticky top-0 z-30 backdrop-blur-xl"
-      style={{ backgroundColor: "rgba(248,245,240,0.92)" }}
+      data-testid="journal-intro"
+      className="bg-[var(--c-off-white)] pt-32 md:pt-40 pb-12 md:pb-16 border-b border-[var(--c-border)]"
     >
       <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-        <div className="flex items-center justify-between mb-6">
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            data-testid="filter-toggle"
-            className="flex items-baseline gap-3 group"
-          >
-            <span className="font-display font-normal text-[var(--c-text)] text-xl md:text-2xl tracking-tight">
-              Category
-            </span>
-            <span className="font-display italic text-[var(--c-gold)] text-lg md:text-xl">
-              {activeLabel}
-            </span>
-            <span
-              className={`text-[var(--c-text-muted)] transition-transform duration-300 text-base ${
-                open ? "rotate-180" : ""
-              }`}
-            >
-              ⌄
-            </span>
-          </button>
-
-          <input
-            type="text"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search articles..."
-            data-testid="journal-search"
-            className="hidden md:block w-72 bg-transparent border-b border-[var(--c-border)] focus:border-[var(--c-gold)] transition-colors text-[var(--c-text)] placeholder:text-[var(--c-text-muted)] font-body text-base py-2 focus:outline-none"
-          />
-        </div>
-
-        <AnimatePresence initial={false}>
-          {open && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="overflow-hidden"
-            >
-              <div className="flex flex-wrap gap-2 md:gap-3 pb-1">
-                {CATEGORIES.map((c) => {
-                  const isActive = c.key === category;
-                  return (
-                    <button
-                      key={c.key}
-                      type="button"
-                      onClick={() => setCategory(c.key)}
-                      data-testid={`category-filter-${c.key}`}
-                      className={`inline-flex items-center font-body text-sm md:text-base px-5 py-2.5 rounded-sm border transition-all duration-300 ${
-                        isActive
-                          ? "bg-[var(--c-green-deep)] text-[var(--c-off-white)] border-[var(--c-green-deep)]"
-                          : "bg-transparent text-[var(--c-text-mid)] border-[var(--c-border)] hover:border-[var(--c-text)] hover:text-[var(--c-text)]"
-                      }`}
-                    >
-                      {c.label}
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Mobile search */}
-              <div className="md:hidden pt-4">
-                <input
-                  type="text"
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Search articles..."
-                  data-testid="journal-search-mobile"
-                  className="w-full bg-transparent border-b border-[var(--c-border)] focus:border-[var(--c-gold)] transition-colors text-[var(--c-text)] placeholder:text-[var(--c-text-muted)] font-body text-base py-2 focus:outline-none"
-                />
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </section>
-  );
-};
-
-/* ───────────────── INTRO + FOUR PILLARS SLIDER ───────────────── */
-
-const PillarsIntro = ({ setCategory }) => {
-  const scrollerRef = useRef(null);
-
-  const scrollBy = (dir) => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    const card = el.querySelector("[data-pillar-card]");
-    const step = card ? card.getBoundingClientRect().width + 24 : 360;
-    el.scrollBy({ left: dir * step, behavior: "smooth" });
-  };
-
-  return (
-    <section data-testid="journal-pillars" className="bg-[var(--c-off-white)] pt-14 md:pt-20 pb-12 md:pb-16">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+        {/* TITLE — at the very top */}
         <motion.h1
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display font-normal text-[var(--c-text)] leading-[1.05] tracking-tight text-3xl md:text-5xl lg:text-6xl max-w-[20ch]"
+          data-testid="journal-title"
+          className="font-display font-normal text-[var(--c-text)] leading-[1.05] tracking-tight text-3xl md:text-5xl lg:text-6xl max-w-[22ch] mb-10 md:mb-14"
         >
           Four editorial pillars guide <em className="italic text-[var(--c-gold)]">everything we publish.</em>
         </motion.h1>
 
-        <div className="mt-10 md:mt-14 flex items-center justify-end gap-3">
-          <button
-            type="button"
-            onClick={() => scrollBy(-1)}
-            aria-label="Previous pillar"
-            data-testid="pillar-prev"
-            className="w-11 h-11 inline-flex items-center justify-center border border-[var(--c-border)] hover:border-[var(--c-text)] text-[var(--c-text)] transition-colors rounded-full"
-          >
-            ←
-          </button>
-          <button
-            type="button"
-            onClick={() => scrollBy(1)}
-            aria-label="Next pillar"
-            data-testid="pillar-next"
-            className="w-11 h-11 inline-flex items-center justify-center border border-[var(--c-border)] hover:border-[var(--c-text)] text-[var(--c-text)] transition-colors rounded-full"
-          >
-            →
-          </button>
+        {/* CATEGORY FILTERS */}
+        <div className="flex flex-wrap gap-2 md:gap-3 mb-10 md:mb-12" data-testid="journal-categories">
+          {CATEGORIES.map((c) => {
+            const isActive = c.key === category;
+            return (
+              <button
+                key={c.key}
+                type="button"
+                onClick={() => setCategory(c.key)}
+                data-testid={`category-filter-${c.key}`}
+                className={`inline-flex items-center font-body text-sm md:text-base px-5 py-2.5 rounded-sm border transition-all duration-300 ${
+                  isActive
+                    ? "bg-[var(--c-green-deep)] text-[var(--c-off-white)] border-[var(--c-green-deep)]"
+                    : "bg-transparent text-[var(--c-text-mid)] border-[var(--c-border)] hover:border-[var(--c-text)] hover:text-[var(--c-text)]"
+                }`}
+              >
+                {c.label}
+              </button>
+            );
+          })}
         </div>
-      </div>
 
-      {/* Horizontal scroller */}
-      <div
-        ref={scrollerRef}
-        data-testid="pillar-scroller"
-        className="mt-6 md:mt-8 flex gap-5 md:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth px-6 md:px-12 pb-6"
-        style={{ scrollbarWidth: "none" }}
-      >
-        {PILLARS.map((p) => (
-          <button
-            key={p.id}
-            type="button"
-            data-pillar-card
-            data-testid={`pillar-card-${p.id}`}
-            onClick={() => {
-              setCategory(p.ctaCategory);
-              document.querySelector("[data-testid='journal-grid']")?.scrollIntoView({ behavior: "smooth", block: "start" });
-            }}
-            className="snap-start shrink-0 w-[78vw] sm:w-[60vw] md:w-[400px] text-left group"
-          >
-            <div className="relative aspect-[4/3] overflow-hidden bg-[var(--c-green-deep)] rounded-sm">
-              <img
-                src={p.image}
-                alt={p.title}
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
-              <span className="absolute top-4 left-4 font-mono text-[10px] uppercase tracking-[0.2em] text-white">
-                {p.number}
-              </span>
-            </div>
-            <h3 className="mt-5 font-display font-normal text-[var(--c-text)] text-2xl md:text-3xl leading-[1.15] tracking-tight">
-              {p.title}
-            </h3>
-            <p className="mt-3 font-body font-light text-[var(--c-text-mid)] text-base leading-[1.7] max-w-[42ch]">
-              {p.body}
-            </p>
-            <span className="mt-4 inline-flex items-center gap-2 font-display italic text-[var(--c-green-deep)] text-base group-hover:text-[var(--c-gold)] transition-colors">
-              Read
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </span>
-          </button>
-        ))}
+        {/* CONTEXT — changes with selected category */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-start">
+          <div className="md:col-span-8">
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={category}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                data-testid="category-context"
+                className="font-body font-light text-[var(--c-text-mid)] text-lg md:text-xl leading-[1.7] max-w-[58ch]"
+              >
+                <span className="font-display italic text-[var(--c-gold)] not-italic-em">
+                  {activeLabel}.
+                </span>{" "}
+                {context}
+              </motion.p>
+            </AnimatePresence>
+          </div>
+
+          {/* Search */}
+          <div className="md:col-span-4">
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search articles..."
+              data-testid="journal-search"
+              className="w-full bg-transparent border-b border-[var(--c-border)] focus:border-[var(--c-gold)] transition-colors text-[var(--c-text)] placeholder:text-[var(--c-text-muted)] font-body text-base py-3 focus:outline-none"
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -291,7 +160,7 @@ const FeaturedCard = ({ a }) => (
   </article>
 );
 
-/* ───────────────── ARTICLE CARD ───────────────── */
+/* ───────────────── ARTICLE CARD (framed) ───────────────── */
 
 const Card = ({ a }) => (
   <article data-testid={`journal-card-${a.slug}`} className="h-full">
@@ -344,17 +213,15 @@ const Journal = () => {
 
   return (
     <main data-testid="page-journal" className="relative bg-[var(--c-off-white)] pb-0">
-      <FilterBar
+      <JournalIntro
         category={category}
         setCategory={setCategory}
         search={search}
         setSearch={setSearch}
       />
 
-      <PillarsIntro setCategory={setCategory} />
-
       {/* Article grid */}
-      <section data-testid="journal-grid" className="pt-12 md:pt-20 pb-24 md:pb-32">
+      <section data-testid="journal-grid" className="pt-14 md:pt-20 pb-24 md:pb-32">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
           {filtered.length === 0 ? (
             <div
