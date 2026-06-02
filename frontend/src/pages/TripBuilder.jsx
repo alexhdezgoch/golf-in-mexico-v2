@@ -26,25 +26,14 @@ const LENGTHS = ["3–4 nights", "5–7 nights", "7–10 nights", "10+ nights"];
 
 const PACKAGES = [
   {
-    id: "curated",
-    title: "Curated Escape",
-    sub: "The essentials, handled.",
-    desc: "We secure the courses, tee times, and access. You handle your own hotel and flights. Perfect for experienced travelers who know what they want — and want the insider access.",
+    id: "bespoke",
+    title: "Bespoke Travel",
+    sub: "Everything, taken care of.",
+    desc: "Full end-to-end management. We handle courses, lodging, transport, restaurants, and every detail in between. Your only job is to show up.",
     items: [
       "Course selection and tee times",
       "Access coordination",
       "Itinerary and day-by-day schedule",
-      "Pablo available by message",
-    ],
-  },
-  {
-    id: "bespoke",
-    title: "Bespoke Travel",
-    sub: "Everything, taken care of.",
-    badge: "Most requested",
-    desc: "Full end-to-end management. We handle courses, lodging, transport, restaurants, and every detail in between. Your only job is to show up.",
-    items: [
-      "Everything in Curated Escape",
       "Hotel selection and booking",
       "Airport transfers and ground transport",
       "Restaurant reservations",
@@ -101,7 +90,7 @@ const TripBuilder = () => {
   const [year, setYear] = useState("2026");
   const [months, setMonths] = useState([]);
   const [length, setLength] = useState(null);
-  const [pkg, setPkg] = useState(null);
+  const [pkg, setPkg] = useState("bespoke");
   const [budget, setBudget] = useState("");
   const [contact, setContact] = useState({ name: "", email: "", phone: "" });
   const [errors, setErrors] = useState({});
@@ -431,29 +420,30 @@ const TripBuilder = () => {
               {step === 3 && (
                 <div data-testid="tb-step-3">
                   <StepPill n={3} />
-                  <h2 className="font-display font-light text-[var(--c-text)] text-2xl md:text-4xl leading-[1.15] mb-10 tracking-tight">What level of support do you need?</h2>
+                  <h2 className="font-display font-light text-[var(--c-text)] text-2xl md:text-4xl leading-[1.15] mb-3 tracking-tight">What you&apos;ll get.</h2>
+                  <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.7] mb-10 max-w-2xl">Every Golf in Mexico° trip is fully managed end-to-end. Here&apos;s what that includes.</p>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                  <div className="grid grid-cols-1 gap-4 mb-8 max-w-2xl">
                     {PACKAGES.map((p) => (
                       <SelectCard
                         key={p.id}
                         selected={pkg === p.id}
                         onClick={() => { setPkg(p.id); setErrors((e) => ({ ...e, pkg: null })); }}
                         testid={`tb-pkg-${p.id}`}
-                        className="p-6 md:p-7 relative"
+                        className="p-6 md:p-8 relative"
                       >
                         {p.badge && (
                           <span className="absolute -top-3 right-4 bg-[var(--c-gold)] text-[var(--c-green-deep)] font-mono text-[9px] uppercase tracking-[0.18em] font-bold px-2.5 py-1 rounded-full">{p.badge}</span>
                         )}
                         <div className="flex items-center justify-between mb-1">
-                          <h3 className="font-display text-[var(--c-text)] text-lg md:text-xl">{p.title}</h3>
+                          <h3 className="font-display text-[var(--c-text)] text-xl md:text-2xl">{p.title}</h3>
                           {pkg === p.id && <Checkmark />}
                         </div>
                         <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--c-gold)] mb-3">{p.sub}</p>
-                        <p className="text-[13px] text-[var(--c-text-mid)] leading-[1.65] mb-4">{p.desc}</p>
-                        <ul className="space-y-1.5">
+                        <p className="text-[14px] md:text-[15px] text-[var(--c-text-mid)] leading-[1.7] mb-5">{p.desc}</p>
+                        <ul className="space-y-2 grid grid-cols-1 sm:grid-cols-2 gap-x-6">
                           {p.items.map((it) => (
-                            <li key={it} className="flex items-start gap-2 text-[12px] text-[var(--c-text-mid)]">
+                            <li key={it} className="flex items-start gap-2 text-[13px] text-[var(--c-text-mid)] leading-[1.5]">
                               <span className="text-[var(--c-gold)] mt-0.5">✓</span>
                               <span>{it}</span>
                             </li>

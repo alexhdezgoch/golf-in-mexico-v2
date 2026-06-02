@@ -578,6 +578,18 @@ const LosCabos = ({ slug = "los-cabos" }) => {
         </div>
       </section>
 
+      {/* ═════════ S1.5  HERO PHOTO SLIDER — Before Quick Facts ═════════ */}
+      {!data.isDestinationList && (
+        <HeroSlider
+          name={data.name}
+          slides={
+            data.heroSlider && data.heroSlider.length > 0
+              ? data.heroSlider
+              : [null, null, null, null, null, null]
+          }
+        />
+      )}
+
       {/* ═════════ 2. QUICK FACTS — SURFACE (hidden on destination-list hubs) ═════════ */}
       {!data.isDestinationList && (
       <section data-testid="lc-quickfacts" className="bg-[var(--c-surface)] py-20 md:py-28">
@@ -597,18 +609,6 @@ const LosCabos = ({ slug = "los-cabos" }) => {
           </div>
         </div>
       </section>
-      )}
-
-      {/* ═════════ S2.5  HERO PHOTO SLIDER — Right after Quick Facts ═════════ */}
-      {!data.isDestinationList && (
-        <HeroSlider
-          name={data.name}
-          slides={
-            data.heroSlider && data.heroSlider.length > 0
-              ? data.heroSlider
-              : [null, null, null, null, null, null]
-          }
-        />
       )}
 
       {/* ═════════ S3. OVERVIEW — PAPER ═════════ */}
