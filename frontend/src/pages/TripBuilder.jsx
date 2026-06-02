@@ -199,7 +199,7 @@ const TripBuilder = () => {
               className="mt-10 inline-flex items-center gap-3 bg-[var(--c-green-deep)] text-white px-6 py-3.5 rounded-sm font-mono text-[11px] md:text-[12px] uppercase tracking-[0.2em] font-bold"
             >
               <span className="w-2 h-2 rounded-full bg-[var(--c-gold)] animate-pulse shrink-0" />
-              <span>Availability — One trip per week. Weeks fill as proposals are accepted.</span>
+              <span>Each confirmed trip blocks a full week — we&apos;re filling 2026 now.</span>
             </div>
           </div>
         </div>
@@ -513,7 +513,7 @@ const TripBuilder = () => {
                   </p>
                   <div className="mt-6 inline-flex items-center gap-2 bg-[var(--c-green-deep)] text-white font-mono text-[10px] md:text-[11px] uppercase tracking-[0.18em] font-bold w-full justify-center px-4 py-3 rounded-sm">
                     <span className="w-1.5 h-1.5 rounded-full bg-[var(--c-gold)]" />
-                    Accepting one trip per week to deliver highest attention.
+                    Every confirmed trip claims a full week — that&apos;s how we deliver this level of attention.
                   </div>
 
                   <div className="mt-10 flex items-center justify-start">
