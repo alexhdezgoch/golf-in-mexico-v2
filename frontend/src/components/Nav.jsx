@@ -26,7 +26,8 @@ const Nav = () => {
   const isDarkHeroPage =
     isHome ||
     location.pathname === "/destinations" ||
-    location.pathname.startsWith("/destinations/");
+    location.pathname.startsWith("/destinations/") ||
+    location.pathname === "/experience";
   const onDarkHero = isDarkHeroPage && !scrolled;
 
   const scrollToFounders = () => {
@@ -211,7 +212,7 @@ const Nav = () => {
           <span className={`h-3 w-px ${onDarkHero ? "bg-cream/20" : "bg-ink/15"}`} />
 
           {/* Socials */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             {SOCIALS.map((s) => (
               <a
                 key={s.label}
@@ -220,11 +221,13 @@ const Nav = () => {
                 rel="noopener noreferrer"
                 aria-label={s.label}
                 data-testid={`nav-social-${s.label.toLowerCase()}`}
-                className={`group inline-flex items-center justify-center transition-colors duration-300 ${
-                  onDarkHero ? "text-cream/55 hover:text-gold" : "text-ink/55 hover:text-gold"
+                className={`group inline-flex items-center justify-center w-9 h-9 rounded-full border transition-all duration-300 ${
+                  onDarkHero
+                    ? "border-cream/35 text-cream/85 hover:bg-cream hover:text-ink hover:border-cream"
+                    : "border-ink/25 text-ink/80 hover:bg-ink hover:text-cream hover:border-ink"
                 }`}
               >
-                <svg viewBox="0 0 24 24" className="w-[14px] h-[14px]" fill="currentColor" aria-hidden>
+                <svg viewBox="0 0 24 24" className="w-[16px] h-[16px]" fill="currentColor" aria-hidden>
                   <path d={s.path} />
                 </svg>
               </a>
