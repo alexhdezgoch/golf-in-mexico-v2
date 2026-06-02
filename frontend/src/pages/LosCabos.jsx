@@ -7,12 +7,12 @@ import { getHubData, KEEP_EXPLORING_HUBS } from "../data/hubs";
 
 /* Hero photo per destination */
 const HERO_PHOTOS = {
-  "los-cabos":       "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/0wyp4brb_CABO%20PHOTO.png",
-  "punta-mita":      "https://images.unsplash.com/photo-1592965046687-1acdbcdb5642?auto=format&fit=crop&w=2400&q=85",
-  "mexico-city":     "https://images.unsplash.com/photo-1717388835452-c9c8cda0002e?auto=format&fit=crop&w=2400&q=85",
-  "cancun":          "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=2400&q=85",
-  "puerto-vallarta": "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=2400&q=85",
-  "unique-destinations": "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=2400&q=85",
+  "los-cabos":            "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/w5pux6b7_GOLFINMEXICO-156.jpg",
+  "punta-mita":           "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/0wmultbm_DJI_0048.jpeg",
+  "mexico-city":          "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/g6r7fp45_GOLFINMEXICO-062.jpg",
+  "cancun-riviera-maya":  "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/xg8drvr6_IMG_3947.jpeg",
+  "puerto-vallarta":      "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/gyf4bofm_D104455E-21A3-4A8E-8A51-72FDB3B5B227_1_105_c.jpeg",
+  "unique-destinations":  "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/dhz92vfa_GOLFINMEXICO-001%202.jpg",
 };
 
 /* ═══════════════════════════════════════════════════════════════════
