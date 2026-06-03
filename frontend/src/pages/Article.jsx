@@ -635,6 +635,40 @@ const Article = () => {
           <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--c-gold)]">
             {article.readTimeMinutes} min read · Updated {article.updated}
           </p>
+
+          {article.author && (
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              data-testid="article-byline"
+              className="mt-6 flex items-center gap-4"
+            >
+              <img
+                src={article.author.photo}
+                alt={article.author.name}
+                loading="lazy"
+                data-testid="article-byline-photo"
+                className="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover border border-white/30 shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
+              />
+              <div className="leading-tight">
+                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/55 mb-1">
+                  Words by
+                </p>
+                <p
+                  className="font-display text-white text-base md:text-lg"
+                  data-testid="article-byline-name"
+                >
+                  {article.author.name}
+                </p>
+                {article.author.role && (
+                  <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-gold)] mt-0.5">
+                    {article.author.role}
+                  </p>
+                )}
+              </div>
+            </motion.div>
+          )}
         </div>
       </header>
 

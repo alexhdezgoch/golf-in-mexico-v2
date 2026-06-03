@@ -29,6 +29,11 @@ export const ARTICLES = [
     metaDescription: "A Tour agent's first-person account of a twelve-man bachelor golf trip to Cabo — Solmar Links and members-only Diamante Dunes — and how it sparked Golf in Mexico.",
     excerpt: "Twelve men. Four days. Two rounds at Solmar and Diamante Dunes. How this trip became the exact operational blueprint for Golf in Mexico.",
     heroImage: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/0wyp4brb_CABO%20PHOTO.png",
+    author: {
+      name: "Pablo De La Mora",
+      role: "Founder · GIM",
+      photo: "/founders/pablo/01.jpg",
+    },
     destination: "los-cabos",
     destinationLabel: "Los Cabos",
     articleType: "planning",
