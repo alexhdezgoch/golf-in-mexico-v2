@@ -290,6 +290,12 @@ const MEXICO_CITY = {
   name: "Mexico City",
   region: "CDMX · Estado de Mexico · Cuernavaca",
   heroPhoto: null,
+  heroSlider: [
+    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/duzvawrv_IMG_3845.jpeg",
+    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/7240pgi5_Screenshot%202026-06-10%20at%201.53.33%E2%80%AFp.m..png",
+    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/3npawpvw_Screenshot%202026-06-10%20at%201.53.50%E2%80%AFp.m..png",
+    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/1hcyue43_Screenshot%202026-06-10%20at%201.53.59%E2%80%AFp.m..png",
+  ],
   seoTitle: "Golf in Mexico City: Courses, Access & Altitude (2026) | Golf in Mexico°",
   seoDescription: "20+ golf courses within 90 minutes of Polanco. Chapultepec — Mexican Open · WGC · LIV host. Bosque Real · Amanali · Encinos · Avandaro · Tabachines. The complete editorial guide.",
   sources: [
