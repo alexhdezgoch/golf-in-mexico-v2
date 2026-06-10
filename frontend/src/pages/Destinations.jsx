@@ -13,7 +13,7 @@ export const REGIONS = [
     description:
       "The absolute best golf in Latin America. Massive desert dunes meeting the Sea of Cortez—a landscape that comes with a premium price tag, but is worth every single penny.",
     greenFees: "$250 – $450",
-    image: "https://images.unsplash.com/photo-1672825952732-ecef34882416?auto=format&fit=crop&w=2000&q=85",
+    image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/rg2d4m8m_GIM%20STILLS-41.jpg",
     live: true,
     href: "/destinations/los-cabos",
     blackbook: "/blackbook/los-cabos.pdf",
