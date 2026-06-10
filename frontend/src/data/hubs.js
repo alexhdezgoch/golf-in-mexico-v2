@@ -154,6 +154,10 @@ const PUNTA_MITA = {
   name: "Punta Mita",
   region: "Riviera Nayarit",
   heroPhoto: null,
+  heroSlider: [
+    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/b3h22ocy_MANDARINA%20BUNKER.png",
+    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/jkdh05kp_MANDARINA%20DRONE.png",
+  ],
   seoTitle: "Golf in Punta Mita & the Upper Riviera Nayarit (2026) | Golf in Mexico°",
   seoDescription: "Five championship golf courses within 75 km of PVR. Pacifico's Tail of the Whale — the only natural island green in golf. Mandarina (Norman) · Nauka (Fazio, 2025). Editorial access guide.",
   sources: [
