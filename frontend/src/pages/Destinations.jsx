@@ -166,8 +166,8 @@ const DestinationCard = ({ d, index }) => {
         <div className="absolute inset-x-0 bottom-0 h-[55%] sm:h-[55%] md:h-[52%] bg-gradient-to-t from-black/85 via-black/55 to-transparent" />
       </Link>
 
-      {/* Content — pinned to the bottom on every viewport so the photo gets the top half */}
-      <div className="relative z-10 h-full w-full flex flex-col justify-end p-6 pb-10 md:p-12 lg:p-16 pointer-events-none">
+      {/* Content — absolutely fills the card so justify-end can truly pin text to the bottom on every viewport */}
+      <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 pb-10 md:p-12 lg:p-16 pointer-events-none">
         <div className="max-w-[1100px] w-full mx-auto pointer-events-none">
           {/* Top meta */}
           <div className="mb-4 md:mb-5 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.18em]">
