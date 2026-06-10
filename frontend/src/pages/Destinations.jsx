@@ -161,10 +161,9 @@ const DestinationCard = ({ d, index }) => {
           loading="lazy"
           className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
         />
-        {/* Image-first: lighter top wash, compact dark gradient anchored to bottom so the photo dominates */}
-        <div className="absolute inset-0 bg-black/15" />
-        <div className="absolute inset-x-0 bottom-0 h-[42%] sm:h-[42%] md:h-[52%] bg-gradient-to-t from-black/95 via-black/75 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-[26%] sm:h-[26%] md:h-[32%] bg-gradient-to-t from-[var(--c-green-deep)] via-[var(--c-green-deep)]/70 to-transparent" />
+        {/* Photo covers the full card. Bottom-anchored dark gradient just deep enough for text legibility — no deep-green wash that would hide the image. */}
+        <div className="absolute inset-0 bg-black/10" />
+        <div className="absolute inset-x-0 bottom-0 h-[55%] sm:h-[55%] md:h-[52%] bg-gradient-to-t from-black/85 via-black/55 to-transparent" />
       </Link>
 
       {/* Content — pinned to the bottom on every viewport so the photo gets the top half */}
