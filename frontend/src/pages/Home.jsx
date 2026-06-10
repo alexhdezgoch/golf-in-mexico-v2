@@ -95,8 +95,7 @@ const HomeDivider = () => {
         <img
           src={HOME_DIVIDER_IMG}
           alt="Cinematic Mexico golf landscape"
-          className="w-full h-full object-cover scale-110"
-          style={{ objectPosition: "left center" }}
+          className="w-full h-full object-cover scale-110 object-center md:[object-position:left_center]"
         />
         <div className="absolute inset-0 bg-[rgba(15,36,25,0.18)]" />
       </motion.div>
