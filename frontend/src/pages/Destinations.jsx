@@ -146,7 +146,7 @@ const DestinationCard = ({ d, index }) => {
         ease: [0.16, 1, 0.3, 1],
       }}
       data-testid={`region-card-${d.slug}`}
-      className="relative w-full overflow-hidden bg-[var(--c-green-deep)] min-h-[820px] sm:min-h-[820px] md:min-h-0 md:h-[780px] lg:h-[860px]"
+      className="relative w-full overflow-hidden bg-[var(--c-green-deep)] min-h-[100svh] sm:min-h-[100svh] md:min-h-0 md:h-[780px] lg:h-[860px]"
     >
       {/* Background image */}
       <Link
@@ -163,12 +163,12 @@ const DestinationCard = ({ d, index }) => {
         />
         {/* Image-first: lighter top wash, compact dark gradient anchored to bottom so the photo dominates */}
         <div className="absolute inset-0 bg-black/15" />
-        <div className="absolute inset-x-0 bottom-0 h-[58%] sm:h-[55%] md:h-[52%] bg-gradient-to-t from-black/95 via-black/75 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-[38%] sm:h-[35%] md:h-[32%] bg-gradient-to-t from-[var(--c-green-deep)] via-[var(--c-green-deep)]/70 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-[42%] sm:h-[42%] md:h-[52%] bg-gradient-to-t from-black/95 via-black/75 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-[26%] sm:h-[26%] md:h-[32%] bg-gradient-to-t from-[var(--c-green-deep)] via-[var(--c-green-deep)]/70 to-transparent" />
       </Link>
 
       {/* Content — pinned to the bottom on every viewport so the photo gets the top half */}
-      <div className="relative z-10 h-full w-full flex flex-col justify-end p-6 pb-8 md:p-12 lg:p-16 pointer-events-none">
+      <div className="relative z-10 h-full w-full flex flex-col justify-end p-6 pb-10 md:p-12 lg:p-16 pointer-events-none">
         <div className="max-w-[1100px] w-full mx-auto pointer-events-none">
           {/* Top meta */}
           <div className="mb-4 md:mb-5 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.18em]">
