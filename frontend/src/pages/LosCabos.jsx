@@ -737,6 +737,14 @@ const LosCabos = ({ slug = "los-cabos" }) => {
                           testid={`lc-course-${idx}-photo`}
                           className="photo-slot--4x3 photo-slot--zoom-parent rounded-sm overflow-hidden"
                         />
+                        {c.photoSource && (
+                          <p
+                            data-testid={`lc-course-${idx}-photo-source`}
+                            className="mt-2 font-mono text-[9px] uppercase tracking-[0.14em] text-white/35 italic"
+                          >
+                            {c.photoSource}
+                          </p>
+                        )}
                       </div>
                     )}
 
