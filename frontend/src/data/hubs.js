@@ -155,6 +155,9 @@ const PUNTA_MITA = {
   region: "Riviera Nayarit",
   heroPhoto: null,
   heroSlider: [
+    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/jdd69nak_PUNTA%20MITA%20DRONE.png",
+    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/uibfbgsu_PUNTA%20MITA.png",
+    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/iwvp4z04_MANDARINA%20COURSE.png",
     "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/b3h22ocy_MANDARINA%20BUNKER.png",
     "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/jkdh05kp_MANDARINA%20DRONE.png",
   ],
