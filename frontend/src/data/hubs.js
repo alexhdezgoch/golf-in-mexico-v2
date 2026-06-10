@@ -169,7 +169,7 @@ const PUNTA_MITA = {
   ],
   heroLabel: "Destination Guide · Punta Mita",
   h1Pre: "Golf in",
-  h1Em: "Punta Mita.",
+  h1Em: "Punta Mita & Nayarit.",
   byline: "GIM Editorial · Field research by Pablo De La Mora & José Islas · Updated May 2026",
   stats: [
     { num: "5",          label: "Courses on the corridor" },
@@ -178,7 +178,7 @@ const PUNTA_MITA = {
     { num: "Nov – May",  label: "Best months" },
   ],
   heroAnswer:
-    "The Punta Mita corridor has five championship golf courses within 75 kilometers of Puerto Vallarta International Airport — designed by Jack Nicklaus, Greg Norman, and Tom Fazio. Green fees run $150 to $395 per round. Access to four of the five requires a room key or membership. This guide covers all five, what each costs, and exactly how to get on.",
+    "Riviera Nayarit holds five championship golf courses within a 75-kilometer corridor north of Puerto Vallarta International (PVR) — anchored by the private Punta Mita peninsula and extending to Mandarina and Siari. Designs by Jack Nicklaus, Greg Norman, and Tom Fazio. Green fees run $150 to $395 per round. Four of the five courses require a room key or membership. This guide covers all five, what each costs, and exactly how to get on.",
 
   quickFacts: [
     { icon: "flag",      label: "Courses",      value: "5 active (3 resort · 1 public · 1 private community)" },
@@ -193,12 +193,12 @@ const PUNTA_MITA = {
   ],
 
   overviewLabel: "The corridor",
-  overviewH2Pre: "Punta Mita golf —",
-  overviewH2Em: "what makes it different.",
+  overviewH2Pre: "Riviera Nayarit golf —",
+  overviewH2Em: "anchored by Punta Mita.",
   overviewParagraphs: [
-    "The Punta Mita corridor is not a golf destination that happens to have luxury hotels. It is a luxury destination that happens to have world-class golf. That sequence defines everything — the caddie program, the conditioning of the greens, the quality of the food at the halfway house, the ease of the booking. Four Seasons, St. Regis, One&Only, Rosewood, and Ritz-Carlton Reserve did not build here because of the courses. They built here because this stretch of Nayarit coastline — where the Sierra Madre meets the Pacific — is among the most carefully managed luxury addresses in the western hemisphere. The courses came after the hotels.",
-    "Five courses operate in the upper corridor today. Seven will be operational by 2027 when Montage and Pendry open inside the Punta Mita gate, both with new Nicklaus designs. Nauka — a 920-acre private community 75 minutes north of Punta Mita — opened the Tom Fazio course in 2025 alongside Siari, a Ritz-Carlton Reserve. The density of brand investment in this corridor is not found elsewhere in Mexican golf.",
-    "Most first-time visitors underestimate how restricted this corridor is. Four of five courses require either a room key or a community membership. Higuera Golf Club — 10 minutes north of the Punta Mita gate — is the only course publicly bookable without resort affiliation. Mandarina Golf Club at One&Only and Rosewood is open to outside visitors without a membership, but requires transportation to the property. Understanding the access structure before you book the trip is the most important piece of planning in this region.",
+    "Riviera Nayarit is a 200-mile Pacific coastline between Nuevo Vallarta and San Blas, and the most consequential stretch of luxury golf real estate in Mexico. The Sierra Madre Occidental meets the ocean here, and that geography — protected coves, micro-bays, dense jungle giving way to sand — is what made the corridor irresistible to global hotel brands. Four Seasons, St. Regis, One&Only, Rosewood, Ritz-Carlton Reserve, Montage, and Pendry have all chosen Nayarit. The golf followed the hospitality, not the other way around.",
+    "Punta Mita anchors the corridor. The 1,500-acre private peninsula 45 minutes north of Puerto Vallarta International (PVR) holds two Jack Nicklaus Signature courses — Pacifico and Bahia — both restricted to Four Seasons and St. Regis guests, villa renters, and property owners. Pacifico's 3B optional, the Tail of the Whale, is the only natural island green in golf and the single most photographed hole in Mexico.",
+    "Beyond the Punta Mita gate, Nayarit opens up. Higuera Golf Club — 10 minutes south, Greg Norman 2010 — is the only course in the corridor that takes public bookings without resort affiliation. Mandarina Golf Club, a new Greg Norman short course of nine par-3s plus one challenge hole, opened in 2025 at One&Only Mandarina and Rosewood Mandarina (30 minutes north of the gate). Nauka Golf Club — Tom Fazio, 920-acre private community 75 minutes north alongside Siari, a Ritz-Carlton Reserve — opened the same year. By 2027 Montage and Pendry will add two more Nicklaus designs inside the Punta Mita peninsula. The density of brand investment in this corridor is not found elsewhere in Mexican golf.",
   ],
   overviewStats: [
     { num: "5",       label: "Courses today" },
@@ -268,13 +268,13 @@ const PUNTA_MITA = {
   ],
 
   faqs: [
-    { q: "How many golf courses are in Punta Mita?", a: "Punta Mita has two championship Jack Nicklaus courses — Pacifico and Bahia — both on a private 1,500-acre peninsula accessible only to Four Seasons and St. Regis guests and Club Punta Mita members. The broader Riviera Nayarit upper corridor adds three more within 75 kilometers: Higuera Golf Club (public), Mandarina Golf Club (open to visitors), and Nauka Golf Club (private community, Ritz-Carlton Reserve guests)." },
-    { q: "Can non-resort guests play golf in Punta Mita?", a: "No. The Punta Mita peninsula gate has no public day-pass. Both Pacifico and Bahia require a confirmed room at the Four Seasons or St. Regis Punta Mita, or Club Punta Mita membership. The closest publicly accessible course is Higuera Golf Club, 10 minutes north of the gate — open daily with direct booking and no resort affiliation required." },
-    { q: "What is the Tail of the Whale?", a: "The Tail of the Whale is the optional 3B green on Pacifico Golf Course at Punta Mita. It is a natural island green in the middle of the Pacific Ocean — the only one of its kind in golf. Access requires a small boat (tender) at low tide only. Call the pro shop the night before to confirm the tide window aligns with your tee time. If it does not, you play 3A and lose nothing." },
-    { q: "What does a golf trip to Punta Mita cost?", a: "A realistic 4-night, 3-round trip to the Punta Mita corridor runs $3,995 on the lower end (Higuera + resort in the zone) to $9,515 at the full luxury tier (Pacifico + Mandarina + Nauka-level accommodation). The hotel is the primary cost variable — not the green fees, which range from $150 at Higuera to $395 at Pacifico. Per GIM editorial research, 2026." },
-    { q: "What is the best time of year to play golf in Punta Mita?", a: "November through May offers the best conditions — dry, 70–85°F, low humidity. April is the sharpest value window: near-peak conditions with demand running 25–35% below spring break and rooms 20–30% off peak rates. December through March coincides with humpback whale season in Banderas Bay — visible from several fairways on Pacifico, Higuera, and Mandarina. Avoid August through October for the rain and hurricane window." },
-    { q: "What is Higuera Golf Club?", a: "Higuera Golf Club is an 18-hole, par-72 course designed by Greg Norman, opened in 2010 in Punta de Mita, Nayarit — formerly known as Litibu Golf Club. It is the only publicly bookable course in the upper Riviera Nayarit corridor. Seven holes run along the Pacific coast, eight through virgin jungle, and the #8 green is a peninsula surrounded by water on three sides. Open daily 7:30am to 3:00pm. Direct booking at higueragolfclub.com." },
-    { q: "Is Punta Mita golf worth it?", a: "Yes, with a specific condition: the value depends entirely on where you are staying. The courses were designed as amenities for the hotels — not as stand-alone golf products. A guest of Four Seasons playing Pacifico gets a caddie included, a halfway house that matches the room service, and a pace of play that is not found at public courses. That context is the price of admission, and it holds." },
+    { q: "What golf courses are in Punta Mita?", a: "Two Jack Nicklaus Signature courses inside the private enclave (Pacifico and Bahia), one public Greg Norman layout 20 minutes south (Higuera Golf Club), one new public Greg Norman short course 30 minutes north (Mandarina Golf Club, opened 2025), and Nauka Golf Club (Tom Fazio, exclusive to Siari Ritz-Carlton Reserve guests)." },
+    { q: "Can anyone play golf in Punta Mita?", a: "Not at Pacifico or Bahia. Both are restricted to Four Seasons and St. Regis resort guests, Punta Mita villa renters, and property owners. Higuera Golf Club and Mandarina Golf Club accept public bookings with no resort affiliation required." },
+    { q: "How much does it cost to play golf in Punta Mita?", a: "Pacifico and Bahia run $300–$380 USD all-in after service charges and tax. Higuera Golf Club is $150–$285 USD rack rate, with packages available around $180 per round. Mandarina requires contacting the resort directly for current rates." },
+    { q: "What is the Tail of the Whale?", a: "Hole 3B on Pacifico — the world's only natural island green, reachable by a submerged stone path at low tide. At 194 yards over open Pacific with ocean wind, it is one of the most photographed and memorable par-3s in golf. Only playable at low tide. Confirm tidal conditions before your round." },
+    { q: "What is the best time of year to golf in Riviera Nayarit?", a: "November through May. Temperatures hold at 75–85°F with dry, clear skies. Humpback whale migrations run December through April — visible from several holes on Pacifico and Bahia. Avoid August through October." },
+    { q: "How far is Punta Mita from Puerto Vallarta airport?", a: "28 miles — approximately 45 minutes in normal traffic, up to 90 minutes during peak periods. Pre-arranged private transfers are required. Uber cannot enter the Punta Mita gated enclave. The gate requires a confirmed resort reservation." },
+    { q: "Is Punta Mita the same as Puerto Vallarta?", a: "No. Puerto Vallarta is a city. Punta Mita is a private 1,500-acre peninsula 45 minutes north on Banderas Bay. Staying in Puerto Vallarta and driving to Pacifico or Bahia is not possible — the gated enclave requires a confirmed stay at the Four Seasons or St. Regis." },
   ],
 
   credentials,
