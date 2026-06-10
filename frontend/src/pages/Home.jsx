@@ -89,7 +89,7 @@ const HomeDivider = () => {
     <section
       ref={ref}
       data-testid="home-divider"
-      className="relative h-[80vh] min-h-[520px] w-full overflow-hidden bg-[var(--c-green-deep)]"
+      className="relative aspect-[3/2] sm:aspect-auto sm:h-[80vh] sm:min-h-[520px] w-full overflow-hidden bg-[var(--c-green-deep)]"
     >
       <motion.div style={{ y }} className="absolute inset-0 -top-20 -bottom-20">
         <img
