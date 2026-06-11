@@ -17,7 +17,7 @@ const EXPERIENCES = [
     description:
       "A complete itinerary for two or more couple travelers — tee times paired with spa days, intimate restaurants, and the rounds that play just as well at sunset as they do at sunrise.",
     image:
-      "https://images.unsplash.com/photo-1592965046687-1acdbcdb5642?auto=format&fit=crop&w=2000&q=85",
+      "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/yszj15ke_willdwind-william-martret-9C_W8jfUhTw-unsplash.jpg",
   },
   {
     slug: "bachelor-trip",
@@ -27,7 +27,7 @@ const EXPERIENCES = [
     description:
       "Tournament-format itineraries for a group of friends. Members-only courses, private homes, group transport, and off-course experiences.",
     image:
-      "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=2000&q=85",
+      "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/fhv2viqt_D14F99BA-7F14-4273-BCD5-EF597DF7F5CB_1_105_c.jpeg",
   },
   {
     slug: "family-friends",
@@ -37,7 +37,7 @@ const EXPERIENCES = [
     description:
       "A trip built around the golfer without sacrificing what everyone else came for. Resorts, beach time, kid-friendly logistics, and routings that respect every handicap.",
     image:
-      "https://images.unsplash.com/photo-1717388835452-c9c8cda0002e?auto=format&fit=crop&w=2000&q=85",
+      "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/39q8yutm_lhc-services-richmond-va-Gr1V3SI-xAU-unsplash.jpg",
   },
   {
     slug: "corporate-retreat",
@@ -47,7 +47,7 @@ const EXPERIENCES = [
     description:
       "Tournament logistics for executive groups. Private clubs that open their gates for the day, named contacts at every venue, and a closing dinner that lands the conversation you flew here to have.",
     image:
-      "https://images.unsplash.com/photo-1672825952732-ecef34882416?auto=format&fit=crop&w=2000&q=85",
+      "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/w9mm3zx2_dean-5yxJpt_TcAo-unsplash.jpg",
   },
 ];
 
@@ -104,7 +104,7 @@ const ExperienceCard = ({ e, index }) => (
       ease: [0.16, 1, 0.3, 1],
     }}
     data-testid={`experience-card-${e.slug}`}
-    className="relative w-full overflow-hidden bg-[var(--c-green-deep)] min-h-[640px] sm:min-h-[600px] md:min-h-0 md:h-[600px]"
+    className="relative w-full overflow-hidden bg-[var(--c-green-deep)] min-h-[100svh] sm:min-h-[100svh] md:min-h-0 md:h-[780px] lg:h-[860px]"
   >
     <Link
       to={`/trip-builder?type=${e.type}`}
@@ -118,12 +118,13 @@ const ExperienceCard = ({ e, index }) => (
         loading="lazy"
         className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
       />
-      <div className="absolute inset-0 bg-black/35" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[var(--c-green-deep)] via-[var(--c-green-deep)]/85 to-transparent" />
+      {/* Photo covers the full card. Bottom-anchored dark gradient only for text legibility. */}
+      <div className="absolute inset-0 bg-black/10" />
+      <div className="absolute inset-x-0 bottom-0 h-[55%] sm:h-[55%] md:h-[52%] bg-gradient-to-t from-black/85 via-black/55 to-transparent" />
     </Link>
 
-    <div className="relative z-10 h-full w-full flex flex-col justify-end p-6 md:p-12 lg:p-16 pointer-events-none">
+    {/* Content pinned to the bottom on every viewport */}
+    <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 pb-10 md:p-12 lg:p-16 pointer-events-none">
       <div className="max-w-[1100px] w-full mx-auto pointer-events-none">
         <h2 className="font-display font-normal text-white leading-[1.02] tracking-tight text-4xl md:text-6xl lg:text-[4.5rem] max-w-[14ch] drop-shadow-[0_4px_24px_rgba(0,0,0,0.55)]">
           {e.name}
