@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ARTICLES } from "@/data/articles";
 
@@ -195,7 +195,12 @@ const Card = ({ a }) => (
 /* ───────────────── PAGE ───────────────── */
 
 const Journal = () => {
-  const [category, setCategory] = useState("all");
+  const [searchParams] = useSearchParams();
+  const initialCategory = searchParams.get("category");
+  const validKeys = ["all", "golf", "beyond-the-course", "the-concierge", "the-collective", "founders-journal"];
+  const [category, setCategory] = useState(
+    initialCategory && validKeys.includes(initialCategory) ? initialCategory : "all"
+  );
   const [search, setSearch] = useState("");
 
   const filtered = useMemo(() => {

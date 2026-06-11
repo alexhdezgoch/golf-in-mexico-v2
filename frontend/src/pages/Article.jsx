@@ -415,38 +415,42 @@ const ScrollEmailCapture = ({ slug }) => {
 
 /* ------------------------------- PAGE ------------------------------- */
 
-/* ───────────────── RECOMMENDED READS — horizontal carousel ───────────────── */
+/* ───────────────── EXPLORE BY PILLAR — horizontal carousel ─────────────────
+   Placeholder: one card per editorial pillar. Each links to the filtered
+   Journal view. Once real posts are published, this can be swapped for
+   per-pillar latest articles.
+   ───────────────────────────────────────────────────────────────────────── */
 
 const RECOMMENDED = [
   {
-    title: "The Greenskeepers",
-    excerpt: "Looking back on seasons spent happily in the mud.",
-    image: "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=1200&q=85",
-    href: "/journal",
+    title: "Golf",
+    excerpt: "Gameplay, courses, design, history. The craft of the game in Mexico.",
+    image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/xzs0k4px_JOSE%20PHOTO1.jpeg",
+    href: "/journal?category=golf",
   },
   {
-    title: "The Sober League",
-    excerpt: "Three members of Philadelphia's sober golf league discuss the game's role in their recovery.",
-    image: "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1200&q=85",
-    href: "/journal",
+    title: "Beyond the Course",
+    excerpt: "Culture, food, design — the world that surrounds the round.",
+    image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/g6r7fp45_GOLFINMEXICO-062.jpg",
+    href: "/journal?category=beyond-the-course",
   },
   {
-    title: "Bill and Tom's Holiday Adventure",
-    excerpt: "Charleston to Old Barnwell, with Bill Murray in the passenger seat.",
-    image: "https://images.unsplash.com/photo-1592965046687-1acdbcdb5642?auto=format&fit=crop&w=1200&q=85",
-    href: "/journal",
+    title: "Travel Concierge",
+    excerpt: "Strategy briefs for booking the right course, season, and stay.",
+    image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/0wmultbm_DJI_0048.jpeg",
+    href: "/journal?category=the-concierge",
   },
   {
-    title: "10 Years on the Range",
-    excerpt: "A lifelong amateur talks about the slow grind back to scratch.",
-    image: "https://images.unsplash.com/photo-1717388835452-c9c8cda0002e?auto=format&fit=crop&w=1200&q=85",
-    href: "/journal",
+    title: "The Collective",
+    excerpt: "Voices from the people building golf in Mexico — operators, members, locals.",
+    image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/fhv2viqt_D14F99BA-7F14-4273-BCD5-EF597DF7F5CB_1_105_c.jpeg",
+    href: "/journal?category=the-collective",
   },
   {
-    title: "After the Final Round",
-    excerpt: "Long-form interviews with players walking off the 18th for the last time.",
-    image: "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=1200&q=85",
-    href: "/journal",
+    title: "Founders Journal",
+    excerpt: "Notes from Pablo and José — long-form essays on the trips that built GIM.",
+    image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/0wyp4brb_CABO%20PHOTO.png",
+    href: "/journal?category=founders-journal",
   },
 ];
 
@@ -470,10 +474,10 @@ const RecommendedReads = () => {
         {/* Heading column */}
         <div className="px-6 md:px-12 lg:pl-12 lg:pr-0">
           <h2 className="font-display font-light text-ink text-3xl md:text-4xl lg:text-[2.5rem] leading-[1.1] tracking-tight mb-6">
-            Recommended Reads
+            Explore by Pillar
           </h2>
           <p className="font-body font-light text-ink/70 text-sm md:text-base leading-[1.65] mb-8 max-w-[28ch]">
-            Recently published reads, listens and watches.
+            Five editorial pillars guide everything we publish. Pick a thread and follow it.
           </p>
           <Link
             to="/journal"
