@@ -15,10 +15,10 @@ const DESTINATIONS = [
 ];
 
 const TRIP_TYPES = [
-  { id: "family",    label: "Family Trip",     desc: "Multi-gen or kids included." },
-  { id: "couples",   label: "Couples Trip",    desc: "Two travelers, full experience." },
-  { id: "bachelor",  label: "Bachelor Trip",   desc: "Group, competition-ready itinerary." },
-  { id: "corporate", label: "Corporate Retreat", desc: "12+ players, prizes, logistics." },
+  { id: "family",    label: "Family Trip",     desc: "Multi-gen or kids included.",        image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/39q8yutm_lhc-services-richmond-va-Gr1V3SI-xAU-unsplash.jpg" },
+  { id: "couples",   label: "Couples Trip",    desc: "Two travelers, full experience.",    image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/yszj15ke_willdwind-william-martret-9C_W8jfUhTw-unsplash.jpg" },
+  { id: "bachelor",  label: "Bachelor Trip",   desc: "Group, competition-ready itinerary.", image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/fhv2viqt_D14F99BA-7F14-4273-BCD5-EF597DF7F5CB_1_105_c.jpeg" },
+  { id: "corporate", label: "Corporate Retreat", desc: "12+ players, prizes, logistics.",  image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/w9mm3zx2_dean-5yxJpt_TcAo-unsplash.jpg" },
 ];
 
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -309,13 +309,25 @@ const TripBuilder = () => {
                             selected={tripType === t.id}
                             onClick={() => { setTripType(t.id); setErrors((e) => ({ ...e, tripType: null })); }}
                             testid={`tb-triptype-${t.id}`}
-                            className="p-4 md:p-5"
+                            className="overflow-hidden p-0 flex flex-col"
                           >
-                            <div className="flex items-center justify-between mb-1">
-                              <h4 className="font-display text-[var(--c-text)] text-base md:text-lg">{t.label}</h4>
-                              {tripType === t.id && <Checkmark />}
+                            <div className="relative w-full aspect-[4/3] overflow-hidden bg-[var(--c-green-deep)]">
+                              <img
+                                src={t.image}
+                                alt={t.label}
+                                loading="lazy"
+                                className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.04]"
+                              />
+                              {tripType === t.id && (
+                                <div className="absolute top-3 right-3 z-10">
+                                  <Checkmark />
+                                </div>
+                              )}
                             </div>
-                            <p className="text-[12px] text-[var(--c-text-muted)]">{t.desc}</p>
+                            <div className="p-4 md:p-5 mt-auto">
+                              <h4 className="font-display text-[var(--c-text)] text-base md:text-lg mb-1">{t.label}</h4>
+                              <p className="text-[12px] text-[var(--c-text-muted)]">{t.desc}</p>
+                            </div>
                           </SelectCard>
                         ))}
                       </div>
