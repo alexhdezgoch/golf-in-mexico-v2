@@ -220,10 +220,6 @@ const Body = ({ blocks, destinationLabel }) => {
         // (Simpler: render CTA right after each marked H2 paragraph block.)
         return p;
       })}
-
-      {/* Inject CTAs at known positions: after 2nd & 4th H2 */}
-      {h2Count >= 2 && <InlineCTA destinationLabel={destinationLabel} testId="inline-cta-1" />}
-      {h2Count >= 4 && <InlineCTA destinationLabel={destinationLabel} testId="inline-cta-2" />}
     </div>
   );
 };
@@ -383,13 +379,39 @@ const ScrollEmailCapture = ({ slug }) => {
       // ignore
     }
 
-    const onScroll = () => {
-      const h = document.documentElement;
-      const scrollPct = (h.scrollTop + window.innerHeight) / h.scrollHeight;
-      if (scrollPct >= 0.5) setVisible(true);
+    // Exit-intent trigger: desktop = mouseleave from top of viewport
+    // Mobile = fast upward scroll near top, or visibility change (tab switch)
+    const onMouseLeave = (e) => {
+      if (e.clientY <= 0) setVisible(true);
     };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+
+    let lastTouchY = 0;
+    const onTouchStart = (e) => {
+      lastTouchY = e.touches[0].clientY;
+    };
+    const onTouchMove = (e) => {
+      const currentY = e.touches[0].clientY;
+      const delta = currentY - lastTouchY;
+      // Fast swipe down near the top edge = likely about to leave
+      if (window.scrollY < 100 && delta > 40) setVisible(true);
+      lastTouchY = currentY;
+    };
+
+    const onVisibility = () => {
+      if (document.visibilityState === "hidden") setVisible(true);
+    };
+
+    document.addEventListener("mouseleave", onMouseLeave);
+    document.addEventListener("touchstart", onTouchStart, { passive: true });
+    document.addEventListener("touchmove", onTouchMove, { passive: true });
+    document.addEventListener("visibilitychange", onVisibility);
+
+    return () => {
+      document.removeEventListener("mouseleave", onMouseLeave);
+      document.removeEventListener("touchstart", onTouchStart);
+      document.removeEventListener("touchmove", onTouchMove);
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
   }, [slug]);
 
   const dismiss = () => {
@@ -556,12 +578,13 @@ const RecommendedReads = () => {
                 data-testid={`rr-card-${i}`}
                 className="group flex-none w-[260px] sm:w-[300px] md:w-[340px] snap-start"
               >
-                <div className="relative aspect-[3/5] overflow-hidden bg-ink mb-5 rounded-sm">
+                <div className="relative aspect-[4/5] overflow-hidden bg-ink mb-5 rounded-sm">
                   <img
                     src={r.image}
                     alt={r.title}
                     loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
+                    decoding="async"
+                    className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
                   />
                 </div>
                 <h3 className="font-display font-light text-ink text-xl md:text-2xl leading-[1.15] tracking-tight mb-3 group-hover:text-gold transition-colors">
@@ -580,7 +603,7 @@ const RecommendedReads = () => {
             aria-label="Scroll right"
             data-testid="rr-next"
             onClick={() => scrollBy(1)}
-            className="hidden md:flex absolute right-4 top-[28%] -translate-y-1/2 w-12 h-12 rounded-full bg-ink text-cream items-center justify-center hover:bg-gold hover:text-ink transition-colors shadow-lg"
+            className="flex absolute right-3 md:right-6 top-[36%] md:top-[40%] -translate-y-1/2 w-11 h-11 md:w-12 md:h-12 rounded-full bg-ink/90 backdrop-blur-sm text-cream items-center justify-center hover:bg-gold hover:text-ink transition-colors shadow-lg z-10"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
               <path d="M9 6l6 6-6 6" />
@@ -592,7 +615,7 @@ const RecommendedReads = () => {
             aria-label="Scroll left"
             data-testid="rr-prev"
             onClick={() => scrollBy(-1)}
-            className="hidden md:flex absolute left-4 top-[28%] -translate-y-1/2 w-12 h-12 rounded-full bg-ink/85 text-cream items-center justify-center hover:bg-gold hover:text-ink transition-colors shadow-lg"
+            className="hidden md:flex absolute left-4 top-[40%] -translate-y-1/2 w-12 h-12 rounded-full bg-ink/80 backdrop-blur-sm text-cream items-center justify-center hover:bg-gold hover:text-ink transition-colors shadow-lg z-10"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
               <path d="M15 6l-6 6 6 6" />
