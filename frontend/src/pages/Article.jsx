@@ -153,6 +153,58 @@ const Body = ({ blocks, destinationLabel }) => {
             </blockquote>
           );
         }
+        if (block.type === "lead") {
+          return (
+            <div key={i} data-testid="article-lead" className="my-8 md:my-10 p-6 md:p-7 border-l-2 border-gold bg-ink/5 max-w-[680px]">
+              <p className="font-display italic font-light text-ink text-lg md:text-xl leading-[1.55]">
+                {block.text}
+              </p>
+            </div>
+          );
+        }
+        if (block.type === "faq") {
+          return (
+            <div key={i} data-testid={`article-faq-${i}`} className="mt-8 first:mt-0 max-w-[680px]">
+              <h3 className="font-display font-normal text-ink text-xl md:text-2xl leading-[1.25] mb-3">
+                {block.q}
+              </h3>
+              <p className="font-body font-light text-ink/80 text-base md:text-lg leading-[1.75]">
+                {block.a}
+              </p>
+            </div>
+          );
+        }
+        if (block.type === "cta") {
+          return (
+            <div key={i} data-testid="article-cta" className="my-14 md:my-20 p-8 md:p-12 bg-ink text-cream max-w-[760px] rounded-sm">
+              {block.eyebrow && (
+                <span className="block font-mono text-[10px] uppercase tracking-[0.22em] text-gold mb-4">
+                  {block.eyebrow}
+                </span>
+              )}
+              {block.heading && (
+                <h3 className="font-display font-normal text-cream text-2xl md:text-3xl leading-[1.2] mb-4 max-w-[24ch]">
+                  {block.heading}
+                </h3>
+              )}
+              {block.text && (
+                <p className="font-body font-light text-cream/80 text-base md:text-lg leading-[1.7] mb-7 max-w-[58ch]">
+                  {block.text}
+                </p>
+              )}
+              {block.href && block.label && (
+                <Link
+                  to={block.href}
+                  data-testid="article-cta-link"
+                  className="inline-flex items-center gap-3 bg-gold text-ink pl-6 pr-5 py-3 rounded-full font-mono text-[11px] uppercase tracking-[0.18em] hover:bg-cream transition-colors"
+                >
+                  {block.label}
+                  <span>→</span>
+                </Link>
+              )}
+            </div>
+          );
+        }
         if (block.type === "divider") {
           return (
             <div key={i} className="my-14 md:my-20 text-center text-gold font-mono text-lg tracking-[0.5em]">◆ ◆ ◆</div>
