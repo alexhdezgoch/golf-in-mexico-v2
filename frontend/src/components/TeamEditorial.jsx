@@ -12,7 +12,7 @@ const PABLO = {
   credentials: [
     "PGA",
     "LPGA",
-    "WGC",
+    "WTA",
     "Sports Agent +5 years",
   ],
   photo: "/pablo.jpg",
@@ -24,7 +24,7 @@ const PABLO = {
     "matches the quality and value that Mexico offers.",
   ],
   body: [
-    "Over the past 5 years, my career has taken me inside the player-only areas of the PGA Tour, LIV Golf, and WGC events. But this isn't just a locker room conversation. Listen to almost any post-round interview, and the players will tell you the exact same thing: the people driving Mexican hospitality are world-class.",
+    "Over the past 5 years, my career has taken me inside the player-only areas of the PGA Tour, LIV Golf, and WTA events. But this isn't just a locker room conversation. Listen to almost any post-round interview, and the players will tell you the exact same thing: the people driving Mexican hospitality are world-class.",
     "Now, add to the equation over 50+ world-class designer golf courses, each shaped by its region's unique landscape. No other country in the world offers this exact blend.",
     "That is why I founded Golf in Mexico. I want to give you the exact experience I've enjoyed for the past 5 years. No generic itineraries or opaque pricing. Just honest opinions, genuine hidden gems, professional delivery, and the keys to bespoke experiences you simply won't find online.",
   ],
