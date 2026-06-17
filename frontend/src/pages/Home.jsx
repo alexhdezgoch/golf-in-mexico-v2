@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import TeamEditorial from "@/components/TeamEditorial";
+import { ARTICLES } from "@/data/articles";
 
 const HERO_VIDEO =
   "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/5lehrm14_HERO%20VIDEO.mov";
@@ -13,6 +14,78 @@ const HOME_DIVIDER_IMG =
   "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/nsvdb584_GOLFINMEXICO-014.jpg";
 
 const HOME_VIDEO_SRC = "/video/home.mp4";
+
+/* ─────────────── LATEST FROM THE JOURNAL ─────────────── */
+
+const LatestFromJournal = () => {
+  const items = ARTICLES.slice(0, 3);
+  if (items.length === 0) return null;
+  return (
+    <section
+      data-testid="home-latest-journal"
+      className="bg-[var(--c-off-white)] border-t border-[var(--c-border)] py-20 md:py-28"
+    >
+      <div className="max-w-[1240px] mx-auto px-6 md:px-12">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-14">
+          <div>
+            <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-3">
+              From the Journal
+            </span>
+            <h2 className="font-display font-normal text-[var(--c-text)] leading-[1.05] tracking-tight text-3xl md:text-4xl lg:text-5xl max-w-[22ch]">
+              Latest reads from <em className="italic text-[var(--c-gold)]">inside the ropes.</em>
+            </h2>
+          </div>
+          <Link
+            to="/journal"
+            data-testid="home-latest-view-all"
+            className="group self-start md:self-auto inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-text-mid)] hover:text-[var(--c-gold)] transition-colors"
+          >
+            View all articles
+            <span className="transition-transform duration-500 group-hover:translate-x-1.5">→</span>
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+          {items.map((a, i) => (
+            <motion.div
+              key={a.slug}
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 0.8, delay: 0.08 * i, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <Link
+                to={`/journal/${a.slug}`}
+                data-testid={`home-latest-card-${i}`}
+                className="group block"
+              >
+                <div className="relative aspect-[4/5] overflow-hidden bg-[var(--c-green-deep)] mb-5 rounded-sm">
+                  <img
+                    src={a.heroImage}
+                    alt={a.title}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
+                  />
+                </div>
+                {a.destinationLabel && (
+                  <span className="block font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-2">
+                    {a.destinationLabel}
+                  </span>
+                )}
+                <h3 className="font-display font-normal text-[var(--c-text)] text-xl md:text-2xl leading-[1.2] tracking-tight mb-3 group-hover:text-[var(--c-gold)] transition-colors">
+                  {a.title}
+                </h3>
+                <p className="font-body font-light text-[var(--c-text-mid)] text-sm md:text-[15px] leading-[1.65]">
+                  {a.excerpt}
+                </p>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 /* ─────────────── EDITORIAL STATEMENT + VIDEO BOX ─────────────── */
 
@@ -41,10 +114,9 @@ const StatementAndVideo = () => (
         data-testid="home-statement"
         className="font-body font-light text-[var(--c-text-mid)] leading-[1.7] text-lg md:text-xl max-w-[52ch] mb-14 md:mb-20"
       >
-        We are an editorial ecosystem covering Mexican golf nationwide —
-        showcasing elite courses, designing bespoke experiences, and capturing
-        the food, architecture, hospitality, and people who make it all
-        possible.
+        The only guide to Mexican golf written by people who&apos;ve played
+        it, planned it, and lived it — from elite courses to the experiences
+        that make the trip worth taking.
       </motion.p>
 
       <motion.div
@@ -156,6 +228,9 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* LATEST FROM THE JOURNAL */}
+      <LatestFromJournal />
 
       {/* EDITORIAL STATEMENT + VIDEO BOX */}
       <StatementAndVideo />

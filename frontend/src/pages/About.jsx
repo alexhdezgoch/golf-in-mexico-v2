@@ -43,7 +43,7 @@ const StillSlider = ({ photos, name, testid }) => {
 
   return (
     <div data-testid={testid}>
-      <div className="relative aspect-[3/4] overflow-hidden rounded-sm bg-[var(--c-green-deep)]">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-[var(--c-green-deep)]">
         <motion.img
           key={idx}
           src={current.src}
@@ -130,7 +130,7 @@ const About = () => (
           <em className="italic text-[var(--c-gold)]">one editorial promise.</em>
         </motion.h1>
         <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] max-w-[680px]">
-          Golf in Mexico° is{" "}
+          Golf in Mexico° comes from{" "}
           <strong className="font-normal text-[var(--c-text)]">Pablo De La Mora</strong>{" "}
           and{" "}
           <strong className="font-normal text-[var(--c-text)]">José Islas</strong>{" "}
@@ -196,21 +196,24 @@ const About = () => (
           {[
             {
               n: "/",
-              title: "Tour-Level Precision",
+              title: "Precision",
+              subtitle: "In every itinerary.",
               body:
-                "Our standards were forged on professional tours. From the first tee time to the final itinerary, we approach every single detail with the exact rigor and professionalism expected by the world's best players.",
+                "Our standards were forged on professional tours. From the first tee time to the final ride home, every course, hotel, and transfer is vetted, sequenced, and confirmed in writing — the same rigor expected by the world's best players, applied to your trip.",
             },
             {
               n: "//",
               title: "Destination Intelligence",
+              subtitle: "Over a decade in the field.",
               body:
                 "Over a decade spent scouting Mexico's most exclusive regions. We rely on genuine, boots-on-the-ground relationships to bypass the tourist noise and unlock the country's true hidden gems.",
             },
             {
               n: "///",
-              title: "Long-Term Relationships",
+              title: "Relationships That Open Doors",
+              subtitle: "Insider access, built over decades.",
               body:
-                "Tourism is transactional; real access is relational. We don't do one-off deals. We build lasting bonds and fiercely take care of the people we work with. From local caddies to course directors, we prioritize radical honesty and mutual respect — because true insider experiences are built on decades of trust.",
+                "Real access is relational, not transactional. Years of direct work with caddies, course directors, head pros, and resort operators means our clients get tee times, suites, and introductions that are not on any public booking platform. That network is the trip.",
             },
           ].map((p, i) => (
             <motion.article
@@ -223,9 +226,12 @@ const About = () => (
               className="border-t border-[var(--c-gold)]/40 pt-6"
             >
               <div className="font-display font-light text-[var(--c-gold)] text-3xl md:text-4xl mb-5 leading-none">{p.n}</div>
-              <h3 className="font-display font-normal text-[var(--c-text)] text-xl md:text-2xl leading-[1.15] mb-5">
+              <h3 className="font-display font-normal text-[var(--c-text)] text-xl md:text-2xl leading-[1.15] mb-2">
                 {p.title}
               </h3>
+              <p className="font-display italic text-[var(--c-gold)] text-sm md:text-base leading-[1.4] mb-5">
+                {p.subtitle}
+              </p>
               <p className="font-body font-light text-[var(--c-text-mid)] text-sm md:text-[15px] leading-[1.7]">
                 {p.body}
               </p>

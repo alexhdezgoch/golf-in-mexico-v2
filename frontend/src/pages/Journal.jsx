@@ -30,7 +30,7 @@ const CATEGORIES = [
 /* Brief context per category — shown when a filter is selected */
 const CATEGORY_CONTEXT = {
   all:
-    "Course reviews, cultural deep-dives, travel logistics, and the voices of the people who shape Mexican golf. Everything we publish, in one feed.",
+    "Every course review, golf trip guide, and insider take on golf in Mexico — all in one place.",
   golf:
     "Course reviews and insights from inside the ropes. The fairways, the design, the playability — documented with the same precision we use to scout a PGA Tour setup.",
   "beyond-the-course":
@@ -55,17 +55,6 @@ const JournalIntro = ({ category, setCategory, search, setSearch }) => {
       className="bg-[var(--c-off-white)] pt-32 md:pt-40 pb-12 md:pb-16 border-b border-[var(--c-border)]"
     >
       <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-        {/* TITLE — at the very top */}
-        <motion.h1
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          data-testid="journal-title"
-          className="font-display font-normal text-[var(--c-text)] leading-[1.05] tracking-tight text-3xl md:text-5xl lg:text-6xl max-w-[22ch] mb-10 md:mb-14"
-        >
-          Four editorial pillars guide <em className="italic text-[var(--c-gold)]">everything we publish.</em>
-        </motion.h1>
-
         {/* CATEGORY FILTERS */}
         <div className="flex flex-wrap gap-2 md:gap-3 mb-10 md:mb-12" data-testid="journal-categories">
           {CATEGORIES.map((c) => {

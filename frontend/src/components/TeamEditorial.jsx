@@ -12,7 +12,7 @@ const PABLO = {
   credentials: [
     "PGA",
     "LPGA",
-    "WTA",
+    "WGC",
     "Sports Agent +5 years",
   ],
   photo: "/pablo.jpg",
@@ -24,8 +24,8 @@ const PABLO = {
     "matches the quality and value that Mexico offers.",
   ],
   body: [
-    "Over the past 5 years, my career has taken me inside the player-only areas of the PGA Tour, LIV Golf, and WTA events. But this isn't just a locker room conversation. Listen to almost any post-round interview, and the players will tell you the exact same thing: the people driving Mexican hospitality are world-class.",
-    "Now, add to the equation over 50+ renowned designer golf courses, each shaped by its region's unique landscape. No other country in the world offers this exact blend.",
+    "Over the past 5 years, my career has taken me inside the player-only areas of the PGA Tour, LIV Golf, and WGC events. But this isn't just a locker room conversation. Listen to almost any post-round interview, and the players will tell you the exact same thing: the people driving Mexican hospitality are world-class.",
+    "Now, add to the equation over 50+ world-class designer golf courses, each shaped by its region's unique landscape. No other country in the world offers this exact blend.",
     "That is why I founded Golf in Mexico. I want to give you the exact experience I've enjoyed for the past 5 years. No generic itineraries or opaque pricing. Just honest opinions, genuine hidden gems, professional delivery, and the keys to bespoke experiences you simply won't find online.",
   ],
   signature: "— Pablo",
@@ -70,11 +70,11 @@ const GIM = {
   label: "The Collective",
   name: "Golf in Mexico°",
   short: "GIM",
-  roleParts: [{ text: "The result" }],
+  roleParts: [{ text: "The Collaboration" }],
   photo: "/logo-wordmark.png",
   isMark: true,
   accent: "#1A1A18",
-  headline: ["The result."],
+  headline: ["The Collaboration."],
 };
 
 const TABS = [PABLO, JOSE, GIM];
@@ -242,7 +242,7 @@ const TeamEditorial = () => {
                     data-testid="gim-result-heading"
                     className="font-display font-normal text-[var(--c-text)] text-2xl md:text-4xl leading-[1.2] tracking-tight max-w-3xl"
                   >
-                    The <em className="italic text-[var(--c-gold)]">result.</em>
+                    The <em className="italic text-[var(--c-gold)]">Collaboration.</em>
                   </h3>
                 )}
 
@@ -293,9 +293,12 @@ const TeamEditorial = () => {
                 )}
 
                 {isGIM && (
-                  <div data-testid="gim-result-body" className="mt-7 md:mt-9 max-w-2xl">
+                  <div data-testid="gim-result-body" className="mt-7 md:mt-9 max-w-2xl space-y-5 md:space-y-6">
                     <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75]">
-                      We built this platform to amplify the voices of the ultimate insiders. Caddies, course directors, designers, and the culinary minds shaping every premium itinerary in Mexico.{" "}
+                      Planning a golf trip to Mexico on your own means wading through generic resort packages, tourist-trap itineraries, and courses that look better in photos than they play in person.
+                    </p>
+                    <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75]">
+                      That&apos;s where Pablo and José come in — a sport agent and a touring professional who together bring the access, the relationships, and the on-course knowledge to build something no travel agency can replicate.{" "}
                       <em className="not-italic font-normal text-[var(--c-text)]">
                         Their stories. Their execution. Their perspective.
                       </em>
