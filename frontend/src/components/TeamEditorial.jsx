@@ -70,11 +70,11 @@ const GIM = {
   label: "The Collective",
   name: "Golf in Mexico°",
   short: "GIM",
-  roleParts: [{ text: "The Collaboration" }],
+  roleParts: [{ text: "The result" }],
   photo: "/logo-wordmark.png",
   isMark: true,
   accent: "#1A1A18",
-  headline: ["The Collaboration."],
+  headline: ["The result."],
 };
 
 const TABS = [PABLO, JOSE, GIM];
@@ -242,7 +242,7 @@ const TeamEditorial = () => {
                     data-testid="gim-result-heading"
                     className="font-display font-normal text-[var(--c-text)] text-2xl md:text-4xl leading-[1.2] tracking-tight max-w-3xl"
                   >
-                    The <em className="italic text-[var(--c-gold)]">Collaboration.</em>
+                    The <em className="italic text-[var(--c-gold)]">result.</em>
                   </h3>
                 )}
 
@@ -293,12 +293,9 @@ const TeamEditorial = () => {
                 )}
 
                 {isGIM && (
-                  <div data-testid="gim-result-body" className="mt-7 md:mt-9 max-w-2xl space-y-5 md:space-y-6">
+                  <div data-testid="gim-result-body" className="mt-7 md:mt-9 max-w-2xl">
                     <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75]">
-                      Planning a golf trip to Mexico on your own means wading through generic resort packages, tourist-trap itineraries, and courses that look better in photos than they play in person.
-                    </p>
-                    <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75]">
-                      That&apos;s where Pablo and José come in — a sport agent and a touring professional who together bring the access, the relationships, and the on-course knowledge to build something no travel agency can replicate.{" "}
+                      We built this platform to amplify the voices of the ultimate insiders. Caddies, course directors, designers, and the culinary minds shaping every premium itinerary in Mexico.{" "}
                       <em className="not-italic font-normal text-[var(--c-text)]">
                         Their stories. Their execution. Their perspective.
                       </em>
