@@ -373,10 +373,10 @@ const ScrollEmailCapture = ({ slug }) => {
   useEffect(() => {
     const key = `gim-email-dismissed-${slug}`;
     try {
-      const dismissedAt = Number(localStorage.getItem(key) || 0);
+      const dismissedAt = Number(sessionStorage.getItem(key) || 0);
       if (dismissedAt && Date.now() - dismissedAt < 1000 * 60 * 60 * 24 * 7) return;
-    } catch (e) {
-      // ignore
+    } catch (err) {
+      console.debug("[Article exit-intent] sessionStorage read failed", err);
     }
 
     // Exit-intent trigger: desktop = mouseleave from top of viewport
@@ -417,9 +417,9 @@ const ScrollEmailCapture = ({ slug }) => {
   const dismiss = () => {
     setVisible(false);
     try {
-      localStorage.setItem(`gim-email-dismissed-${slug}`, String(Date.now()));
-    } catch (e) {
-      // ignore
+      sessionStorage.setItem(`gim-email-dismissed-${slug}`, String(Date.now()));
+    } catch (err) {
+      console.debug("[Article exit-intent] sessionStorage write failed", err);
     }
   };
 

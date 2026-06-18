@@ -72,6 +72,33 @@ const Checkmark = () => (
   <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[var(--c-gold)] text-[var(--c-green-deep)] font-mono text-[10px]">✓</span>
 );
 
+const isDev = (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.DEV)
+  || (typeof process !== "undefined" && process.env && process.env.NODE_ENV !== "production");
+
+const devLog = (label, payload) => {
+  if (isDev) {
+    // eslint-disable-next-line no-console
+    console.log(label, payload);
+  }
+};
+
+const safeSessionWrite = (key, value) => {
+  try {
+    sessionStorage.setItem(key, value);
+  } catch (err) {
+    if (isDev) console.warn(`[GIM TB] sessionStorage write failed for ${key}`, err);
+  }
+};
+
+const safeSessionRead = (key) => {
+  try {
+    return sessionStorage.getItem(key);
+  } catch (err) {
+    if (isDev) console.warn(`[GIM TB] sessionStorage read failed for ${key}`, err);
+    return null;
+  }
+};
+
 const TripBuilder = () => {
   const [step, setStep] = useState(1);
   const [destinations, setDestinations] = useState([]);
@@ -104,12 +131,10 @@ const TripBuilder = () => {
   // Exit-intent trigger (only when wizard is not yet submitted and step < 4)
   useEffect(() => {
     if (submitted) return;
-    try {
-      if (sessionStorage.getItem("gim-tb-exit-shown")) return;
-    } catch (err) { /* ignore */ }
+    if (safeSessionRead("gim-tb-exit-shown")) return;
 
     const trigger = () => {
-      try { sessionStorage.setItem("gim-tb-exit-shown", "1"); } catch (err) { /* ignore */ }
+      safeSessionWrite("gim-tb-exit-shown", "1");
       setExitVisible(true);
     };
 
@@ -144,11 +169,10 @@ const TripBuilder = () => {
         capturedAt: new Date().toISOString(),
         stage: "exit_intent",
       };
-      try {
-        localStorage.setItem("gim-exit-lead", JSON.stringify(exitLead));
-      } catch (err) { /* ignore */ }
-
-      console.log("[GIM Trip Builder · exit-intent lead]", exitLead);
+      // Note: stored in sessionStorage (cleared on tab close). Mocked persistence
+      // until backend / MailerLite is wired up.
+      safeSessionWrite("gim-exit-lead", JSON.stringify(exitLead));
+      devLog("[GIM Trip Builder · exit-intent lead]", exitLead);
       setExitSent(true);
       setTimeout(() => setExitVisible(false), 2200);
     }
@@ -183,7 +207,8 @@ const TripBuilder = () => {
     if (Object.keys(e).length !== 0) return;
 
     // Persist the partial lead the moment Step 3 is completed.
-    // MOCKED (no MailerLite). Saves to console + localStorage so we don't lose
+    // MOCKED (no MailerLite). Saves to sessionStorage (cleared on tab close —
+    // sensitive data is NOT persisted across sessions) so we don't lose
     // anyone who abandons at Step 4.
     if (step === 3) {
       const partialLead = {
@@ -198,11 +223,8 @@ const TripBuilder = () => {
         capturedAt: new Date().toISOString(),
         stage: "contact_captured",
       };
-      try {
-        localStorage.setItem("gim-partial-lead", JSON.stringify(partialLead));
-      } catch (err) { /* ignore */ }
-
-      console.log("[GIM Trip Builder · partial lead — Step 3]", partialLead);
+      safeSessionWrite("gim-partial-lead", JSON.stringify(partialLead));
+      devLog("[GIM Trip Builder · partial lead — Step 3]", partialLead);
     }
 
     setStep((s) => Math.min(4, s + 1));
@@ -228,11 +250,8 @@ const TripBuilder = () => {
         submittedAt: new Date().toISOString(),
         stage: "submitted",
       };
-      try {
-        localStorage.setItem("gim-final-lead", JSON.stringify(finalLead));
-      } catch (err) { /* ignore */ }
-
-      console.log("[GIM Trip Builder · final lead]", finalLead);
+      safeSessionWrite("gim-final-lead", JSON.stringify(finalLead));
+      devLog("[GIM Trip Builder · final lead]", finalLead);
       setSubmitted(true);
     }
   };
