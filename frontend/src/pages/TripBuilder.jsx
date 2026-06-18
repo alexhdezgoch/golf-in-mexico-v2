@@ -96,6 +96,64 @@ const TripBuilder = () => {
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
 
+  // Exit-intent soft capture state
+  const [exitVisible, setExitVisible] = useState(false);
+  const [exitEmail, setExitEmail] = useState("");
+  const [exitSent, setExitSent] = useState(false);
+
+  // Exit-intent trigger (only when wizard is not yet submitted and step < 4)
+  useEffect(() => {
+    if (submitted) return;
+    try {
+      if (sessionStorage.getItem("gim-tb-exit-shown")) return;
+    } catch (err) { /* ignore */ }
+
+    const trigger = () => {
+      try { sessionStorage.setItem("gim-tb-exit-shown", "1"); } catch (err) { /* ignore */ }
+      setExitVisible(true);
+    };
+
+    // Desktop: mouse leaves through top edge
+    const onMouseLeave = (e) => {
+      if (e.clientY <= 0 && step < 4) trigger();
+    };
+    // Mobile: tab switch / app minimize
+    const onVisibility = () => {
+      if (document.visibilityState === "hidden" && step < 4) trigger();
+    };
+
+    document.addEventListener("mouseleave", onMouseLeave);
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      document.removeEventListener("mouseleave", onMouseLeave);
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
+  }, [step, submitted]);
+
+  const submitExitCapture = (ev) => {
+    ev.preventDefault();
+    if (exitEmail.trim().length > 3) {
+      const exitLead = {
+        email: exitEmail,
+        destinations,
+        tripType,
+        year,
+        months,
+        length,
+        contact,
+        capturedAt: new Date().toISOString(),
+        stage: "exit_intent",
+      };
+      try {
+        localStorage.setItem("gim-exit-lead", JSON.stringify(exitLead));
+      } catch (err) { /* ignore */ }
+
+      console.log("[GIM Trip Builder · exit-intent lead]", exitLead);
+      setExitSent(true);
+      setTimeout(() => setExitVisible(false), 2200);
+    }
+  };
+
   const toggleDestination = (slug) => {
     setDestinations((prev) => prev.includes(slug) ? prev.filter((s) => s !== slug) : [...prev, slug]);
     setErrors((e) => ({ ...e, destinations: null }));
@@ -117,19 +175,66 @@ const TripBuilder = () => {
       if (!length) e.length = "Pick a trip length.";
     }
     if (step === 3) {
-      if (!pkg) e.pkg = "Choose a package to continue.";
+      // Contact captured BEFORE budget. Persist lead the moment user advances.
+      if (!contact.name.trim())  e.name  = "Tell us your name.";
+      if (!contact.email.trim()) e.email = "We need your email to send the proposal.";
     }
     setErrors(e);
-    if (Object.keys(e).length === 0) setStep((s) => Math.min(4, s + 1));
+    if (Object.keys(e).length !== 0) return;
+
+    // Persist the partial lead the moment Step 3 is completed.
+    // MOCKED (no MailerLite). Saves to console + localStorage so we don't lose
+    // anyone who abandons at Step 4.
+    if (step === 3) {
+      const partialLead = {
+        destinations,
+        tripType,
+        isDM,
+        otherDM,
+        year,
+        months,
+        length,
+        contact,
+        capturedAt: new Date().toISOString(),
+        stage: "contact_captured",
+      };
+      try {
+        localStorage.setItem("gim-partial-lead", JSON.stringify(partialLead));
+      } catch (err) { /* ignore */ }
+
+      console.log("[GIM Trip Builder · partial lead — Step 3]", partialLead);
+    }
+
+    setStep((s) => Math.min(4, s + 1));
   };
 
   const submit = (ev) => {
     ev.preventDefault();
     const e = {};
-    if (!contact.name.trim())  e.name = "Tell us your name.";
-    if (!contact.email.trim()) e.email = "We need your email to send the proposal.";
+    if (!pkg) e.pkg = "Choose a package to continue.";
     setErrors(e);
-    if (Object.keys(e).length === 0) setSubmitted(true);
+    if (Object.keys(e).length === 0) {
+      const finalLead = {
+        destinations,
+        tripType,
+        isDM,
+        otherDM,
+        year,
+        months,
+        length,
+        contact,
+        pkg,
+        budget,
+        submittedAt: new Date().toISOString(),
+        stage: "submitted",
+      };
+      try {
+        localStorage.setItem("gim-final-lead", JSON.stringify(finalLead));
+      } catch (err) { /* ignore */ }
+
+      console.log("[GIM Trip Builder · final lead]", finalLead);
+      setSubmitted(true);
+    }
   };
 
   const scrollToForm = () => {
@@ -138,22 +243,108 @@ const TripBuilder = () => {
   };
 
   if (submitted) {
+    const destLabel = destinations.map((s) => DESTINATIONS.find((d) => d.slug === s)?.name).filter(Boolean).join(", ") || "Mexico";
+    const typeLabel = TRIP_TYPES.find((t) => t.id === tripType)?.label || "golf";
+    const whatsappMsg = encodeURIComponent(
+      `Hi GIM — I'm planning a ${typeLabel} to ${destLabel}, just submitted my proposal request.`
+    );
+    const whatsappHref = `https://wa.me/?text=${whatsappMsg}`;
+    const calendarHref = "https://calendar.app.google/jb2v4ujwvMMovSV98";
+
     return (
-      <main data-testid="trip-builder-success" className="min-h-screen bg-[var(--c-off-white)] flex items-center justify-center px-6 py-20">
-        <div className="max-w-[640px] mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[var(--c-gold)] text-[var(--c-green-deep)] font-mono text-2xl mb-8">✓</div>
-          <h1 className="font-display font-light text-[var(--c-text)] text-4xl md:text-6xl leading-[1.05] tracking-tight mb-8">You&apos;re in.</h1>
-          <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] mb-5">
-            Pablo or José will review your request personally. Your custom proposal arrives within 48 hours.
+      <main data-testid="trip-builder-success" className="min-h-screen bg-[var(--c-off-white)]">
+        <header className="border-b border-[var(--c-border)]">
+          <div className="max-w-[1200px] mx-auto px-6 md:px-12 py-5 flex items-center justify-between">
+            <Link to="/" className="flex items-center leading-none shrink-0">
+              <img src="/logo-wordmark.png" alt="Golf in Mexico°" className="h-8 md:h-10 w-auto invert" />
+            </Link>
+          </div>
+        </header>
+
+        <section className="max-w-[820px] mx-auto px-6 md:px-12 py-20 md:py-28">
+          <div className="text-center mb-12 md:mb-16">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[var(--c-gold)] text-[var(--c-green-deep)] font-mono text-2xl mb-8">✓</div>
+            <h1 className="font-display font-light text-[var(--c-text)] text-4xl md:text-6xl leading-[1.05] tracking-tight mb-6">
+              Your proposal is <em className="italic text-[var(--c-gold)]">in motion.</em>
+            </h1>
+            <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] max-w-[560px] mx-auto">
+              Pablo and José are reviewing your trip now. Your named, itemized itinerary lands in your inbox within 48 hours.
+            </p>
+          </div>
+
+          {/* PRIMARY optional fast lane — Pablo call */}
+          <div className="bg-[var(--c-green-deep)] text-white rounded-sm p-8 md:p-12 mb-6">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 mb-7">
+              <img
+                src="/founders/pablo/01.jpg"
+                alt="Pablo De La Mora · GIM Founder"
+                className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-2 border-[var(--c-gold)] shrink-0"
+                data-testid="tb-success-pablo-photo"
+              />
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-2">
+                  Optional fast lane
+                </p>
+                <h2 className="font-display font-light text-white text-2xl md:text-3xl leading-[1.2] tracking-tight mb-2">
+                  Want to talk it through first? <em className="italic text-[var(--c-gold)]">Grab 15 minutes with Pablo.</em>
+                </h2>
+                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-white/65">
+                  Pablo De La Mora · Founder · 5 years on the PGA Tour
+                </p>
+              </div>
+            </div>
+            <p className="font-body font-light text-white/85 text-base leading-[1.7] mb-7 max-w-2xl">
+              Some questions are faster to answer in person. Book a 15-minute call and Pablo will walk you through what we&apos;re building. Your form answers are passed straight into the meeting notes.
+            </p>
+            <a
+              href={calendarHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="tb-success-book-call"
+              className="group inline-flex items-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-7 py-3.5 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors"
+            >
+              Book 15 min with Pablo
+              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </a>
+          </div>
+
+          {/* SECONDARY — WhatsApp quick line */}
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-testid="tb-success-whatsapp"
+            className="block bg-white border border-[var(--c-border)] hover:border-[var(--c-gold)] rounded-sm p-6 md:p-7 transition-colors mb-12"
+          >
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-2">
+                  Quicker question?
+                </p>
+                <h3 className="font-display text-[var(--c-text)] text-lg md:text-xl mb-1">
+                  Message us on WhatsApp
+                </h3>
+                <p className="font-body font-light text-[var(--c-text-muted)] text-[13px] leading-[1.5]">
+                  Pre-filled with your {typeLabel.toLowerCase()} to {destLabel}.
+                </p>
+              </div>
+              <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-text-mid)] shrink-0">
+                Open →
+              </span>
+            </div>
+          </a>
+
+          <p className="text-center font-body font-light text-[var(--c-text-muted)] text-sm leading-[1.7] max-w-[480px] mx-auto mb-10">
+            Check your inbox — including spam, just in case. If your dates are urgent, the call is the fastest way through.
           </p>
-          <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] mb-12">
-            Check your inbox — including spam, just in case. If your dates are urgent, reply to the confirmation email and we&apos;ll prioritize your slot.
-          </p>
-          <Link to="/journal" className="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-gold)] hover:gap-4 transition-all">
-            While you wait → Read the Vault
-            <span>→</span>
-          </Link>
-        </div>
+
+          <div className="text-center">
+            <Link to="/journal" className="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-gold)] hover:gap-4 transition-all">
+              While you wait → Read the Journal
+              <span>→</span>
+            </Link>
+          </div>
+        </section>
       </main>
     );
   }
@@ -401,7 +592,7 @@ const TripBuilder = () => {
                   <div className="mt-10 flex items-center justify-between">
                     <button type="button" onClick={() => setStep(1)} className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-text-muted)] hover:text-[var(--c-text)] transition-colors">← Back</button>
                     <button type="button" onClick={next} data-testid="tb-next-2" className="group inline-flex items-center gap-3 bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-7 py-3.5 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors">
-                      Next: Your Trip
+                      Next: Contact
                       <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                     </button>
                   </div>
@@ -428,13 +619,57 @@ const TripBuilder = () => {
                 </div>
               )}
 
-              {/* ── STEP 3 ── */}
+              {/* ── STEP 3 · CONTACT (captured BEFORE budget) ── */}
               {step === 3 && (
                 <div data-testid="tb-step-3">
                   <StepPill n={3} />
-                  <h2 className="font-display font-light text-[var(--c-text)] text-2xl md:text-4xl leading-[1.15] mb-3 tracking-tight">What you&apos;ll get.</h2>
-                  <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.7] mb-10 max-w-2xl">Every Golf in Mexico° trip is fully managed end-to-end. Here&apos;s what that includes.</p>
+                  <h2 className="font-display font-light text-[var(--c-text)] text-2xl md:text-4xl leading-[1.15] mb-3 tracking-tight">
+                    Where should we send your proposal?
+                  </h2>
+                  <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.7] mb-10 max-w-2xl">
+                    Pablo reviews every submission personally. Drop your details and we&apos;ll start building.
+                  </p>
 
+                  <div className="space-y-5 mb-8 max-w-xl">
+                    <div>
+                      <label htmlFor="tb-name" className="block font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--c-text-muted)] mb-2">Your name *</label>
+                      <input id="tb-name" type="text" value={contact.name} onChange={(e) => { setContact({ ...contact, name: e.target.value }); setErrors((er) => ({ ...er, name: null })); }} placeholder="Your name" data-testid="tb-name" className="w-full bg-[var(--c-surface)] border border-[var(--c-border)] focus:border-[var(--c-gold)] text-[var(--c-text)] placeholder:text-[var(--c-text-muted)] font-body text-base px-4 py-3.5 rounded-sm focus:outline-none transition-colors" />
+                      {errors.name && <p className="mt-2 text-[13px] text-[#8b2020] font-mono">{errors.name}</p>}
+                    </div>
+                    <div>
+                      <label htmlFor="tb-email" className="block font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--c-text-muted)] mb-2">Email *</label>
+                      <input id="tb-email" type="email" value={contact.email} onChange={(e) => { setContact({ ...contact, email: e.target.value }); setErrors((er) => ({ ...er, email: null })); }} placeholder="your@email.com" data-testid="tb-email" className="w-full bg-[var(--c-surface)] border border-[var(--c-border)] focus:border-[var(--c-gold)] text-[var(--c-text)] placeholder:text-[var(--c-text-muted)] font-body text-base px-4 py-3.5 rounded-sm focus:outline-none transition-colors" />
+                      <p className="mt-2 text-[12px] text-[var(--c-text-muted)] italic">Your named itinerary lands here within 48 hours.</p>
+                      {errors.email && <p className="mt-2 text-[13px] text-[#8b2020] font-mono">{errors.email}</p>}
+                    </div>
+                    <div>
+                      <label htmlFor="tb-phone" className="block font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--c-text-muted)] mb-2">WhatsApp / Phone (optional)</label>
+                      <input id="tb-phone" type="tel" value={contact.phone} onChange={(e) => setContact({ ...contact, phone: e.target.value })} placeholder="For priority scheduling" data-testid="tb-phone" className="w-full bg-[var(--c-surface)] border border-[var(--c-border)] focus:border-[var(--c-gold)] text-[var(--c-text)] placeholder:text-[var(--c-text-muted)] font-body text-base px-4 py-3.5 rounded-sm focus:outline-none transition-colors" />
+                    </div>
+                  </div>
+
+                  <div className="mt-10 flex items-center justify-between">
+                    <button type="button" onClick={() => setStep(2)} className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-text-muted)] hover:text-[var(--c-text)] transition-colors">← Back</button>
+                    <button type="button" onClick={next} data-testid="tb-next-3" className="group inline-flex items-center gap-3 bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-7 py-3.5 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors">
+                      Next: Final detail
+                      <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* ── STEP 4 · PACKAGE PREVIEW + BUDGET + SUBMIT ── */}
+              {step === 4 && (
+                <form onSubmit={submit} data-testid="tb-step-4">
+                  <StepPill n={4} />
+                  <h2 className="font-display font-light text-[var(--c-text)] text-2xl md:text-4xl leading-[1.15] mb-3 tracking-tight">
+                    Last step — <em className="italic text-[var(--c-gold)]">match us to your expectations.</em>
+                  </h2>
+                  <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.7] mb-10 max-w-2xl">
+                    Ground + golf only. Excludes flights. No wrong answer — this helps us match course access and lodging to your expectations.
+                  </p>
+
+                  {/* Package selection (kept) */}
                   <div className="grid grid-cols-1 gap-4 mb-8 max-w-2xl">
                     {PACKAGES.map((p) => (
                       <SelectCard
@@ -466,58 +701,44 @@ const TripBuilder = () => {
                   </div>
                   {errors.pkg && <p className="text-[13px] text-[#8b2020] mb-5 font-mono">{errors.pkg}</p>}
 
-                  {pkg && (
-                    <div className="mb-8">
-                      <label className="block font-display text-[var(--c-text)] text-lg md:text-xl mb-1.5">What&apos;s your budget per player?</label>
-                      <p className="text-[13px] text-[var(--c-text-muted)] mb-4">Ground + golf only. Excludes flights.</p>
-                      <input
-                        type="text"
-                        value={budget}
-                        onChange={(e) => setBudget(e.target.value)}
-                        placeholder="e.g., $3,000 per person"
-                        data-testid="tb-budget"
-                        className="w-full bg-[var(--c-surface)] border border-[var(--c-border)] focus:border-[var(--c-gold)] text-[var(--c-text)] placeholder:text-[var(--c-text-muted)] font-body text-base px-4 py-3.5 rounded-sm focus:outline-none transition-colors"
-                      />
-                      <p className="mt-2 text-[12px] text-[var(--c-text-muted)] italic">No wrong answer. This helps us match course access and lodging to your expectations.</p>
-                    </div>
-                  )}
-
-                  <div className="mt-10 flex items-center justify-between">
-                    <button type="button" onClick={() => setStep(2)} className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-text-muted)] hover:text-[var(--c-text)] transition-colors">← Back</button>
-                    <button type="button" onClick={next} data-testid="tb-next-3" className="group inline-flex items-center gap-3 bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-7 py-3.5 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors">
-                      Next: Contact
-                      <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                    </button>
+                  {/* Open-ended budget input (USD primary) */}
+                  <div className="mb-10 max-w-xl">
+                    <label htmlFor="tb-budget" className="block font-display text-[var(--c-text)] text-lg md:text-xl mb-1.5">What&apos;s your budget per player?</label>
+                    <p className="text-[13px] text-[var(--c-text-muted)] mb-4">Ground + golf only (USD). Excludes flights.</p>
+                    <input
+                      id="tb-budget"
+                      type="text"
+                      value={budget}
+                      onChange={(e) => setBudget(e.target.value)}
+                      placeholder="e.g., $3,000 USD per person"
+                      data-testid="tb-budget"
+                      className="w-full bg-[var(--c-surface)] border border-[var(--c-border)] focus:border-[var(--c-gold)] text-[var(--c-text)] placeholder:text-[var(--c-text-muted)] font-body text-base px-4 py-3.5 rounded-sm focus:outline-none transition-colors"
+                    />
+                    <p className="mt-2 text-[12px] text-[var(--c-text-muted)] italic">No wrong answer. This helps us match course access and lodging to your expectations.</p>
                   </div>
-                </div>
-              )}
 
-              {/* ── STEP 4 ── */}
-              {step === 4 && (
-                <form onSubmit={submit} data-testid="tb-step-4">
-                  <StepPill n={4} />
-                  <h2 className="font-display font-light text-[var(--c-text)] text-2xl md:text-4xl leading-[1.15] mb-3 tracking-tight">Last step. Where do we send your proposal?</h2>
-                  <p className="font-body font-light text-[var(--c-text-mid)] text-base leading-[1.7] mb-10">Pablo reviews every submission personally before building the itinerary.</p>
-
-                  <div className="space-y-5 mb-8">
-                    <div>
-                      <label htmlFor="tb-name" className="block font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--c-text-muted)] mb-2">Your name *</label>
-                      <input id="tb-name" type="text" value={contact.name} onChange={(e) => setContact({ ...contact, name: e.target.value })} placeholder="Your name" data-testid="tb-name" className="w-full bg-[var(--c-surface)] border border-[var(--c-border)] focus:border-[var(--c-gold)] text-[var(--c-text)] placeholder:text-[var(--c-text-muted)] font-body text-base px-4 py-3.5 rounded-sm focus:outline-none transition-colors" />
-                      {errors.name && <p className="mt-2 text-[13px] text-[#8b2020] font-mono">{errors.name}</p>}
-                    </div>
-                    <div>
-                      <label htmlFor="tb-email" className="block font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--c-text-muted)] mb-2">Email *</label>
-                      <input id="tb-email" type="email" value={contact.email} onChange={(e) => setContact({ ...contact, email: e.target.value })} placeholder="your@email.com" data-testid="tb-email" className="w-full bg-[var(--c-surface)] border border-[var(--c-border)] focus:border-[var(--c-gold)] text-[var(--c-text)] placeholder:text-[var(--c-text-muted)] font-body text-base px-4 py-3.5 rounded-sm focus:outline-none transition-colors" />
-                      {errors.email && <p className="mt-2 text-[13px] text-[#8b2020] font-mono">{errors.email}</p>}
-                    </div>
-                    <div>
-                      <label htmlFor="tb-phone" className="block font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--c-text-muted)] mb-2">Phone (optional)</label>
-                      <input id="tb-phone" type="tel" value={contact.phone} onChange={(e) => setContact({ ...contact, phone: e.target.value })} placeholder="Cell phone — for priority scheduling" data-testid="tb-phone" className="w-full bg-[var(--c-surface)] border border-[var(--c-border)] focus:border-[var(--c-gold)] text-[var(--c-text)] placeholder:text-[var(--c-text-muted)] font-body text-base px-4 py-3.5 rounded-sm focus:outline-none transition-colors" />
-                    </div>
+                  {/* Recap value stack */}
+                  <div className="bg-[var(--c-surface)] border border-[var(--c-border)] rounded-sm p-6 md:p-7 mb-10 max-w-2xl">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-4">What you&apos;ll get</p>
+                    <ul className="space-y-2">
+                      {[
+                        "Named courses and routing for every day",
+                        "Itemized costs in USD — green fees, caddies, transport, lodging",
+                        "Two curated lodging options at each tier",
+                        "Ground transport + restaurant reservations",
+                        "Unlimited refinements until 100% perfect",
+                        "Pablo's personal cell for the entire trip",
+                      ].map((d) => (
+                        <li key={d} className="flex items-start gap-2 text-[13px] md:text-[14px] text-[var(--c-text-mid)] leading-[1.6]">
+                          <span className="text-[var(--c-gold)] mt-0.5">▸</span>
+                          <span>{d}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
                   <button type="submit" data-testid="tb-submit" className="group w-full inline-flex items-center justify-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-8 py-4 rounded-sm font-mono text-[12px] uppercase tracking-[0.18em] font-bold transition-colors">
-                    Get My Proposal in 48 Hours
+                    Get My 48-Hour Proposal
                     <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                   </button>
                   <p className="mt-4 text-[12px] text-[var(--c-text-muted)] text-center leading-[1.6]">
@@ -525,7 +746,7 @@ const TripBuilder = () => {
                   </p>
                   <div className="mt-6 inline-flex items-center gap-2 bg-[var(--c-green-deep)] text-white font-mono text-[10px] md:text-[11px] uppercase tracking-[0.18em] font-bold w-full justify-center px-4 py-3 rounded-sm">
                     <span className="w-1.5 h-1.5 rounded-full bg-[var(--c-gold)]" />
-                    Every confirmed trip claims a full week — that&apos;s how we deliver this level of attention.
+                    Each confirmed trip blocks a full week — we&apos;re filling 2026 now.
                   </div>
 
                   <div className="mt-10 flex items-center justify-start">
@@ -537,6 +758,78 @@ const TripBuilder = () => {
           </AnimatePresence>
         </div>
       </section>
+
+      {/* EXIT-INTENT SOFT CAPTURE */}
+      <AnimatePresence>
+        {exitVisible && (
+          <motion.div
+            data-testid="tb-exit-intent"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-6"
+            onClick={() => setExitVisible(false)}
+          >
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 20, opacity: 0 }}
+              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative bg-[var(--c-off-white)] rounded-sm max-w-[500px] w-full p-7 md:p-10 shadow-2xl"
+            >
+              <button
+                type="button"
+                onClick={() => setExitVisible(false)}
+                data-testid="tb-exit-dismiss"
+                aria-label="Dismiss"
+                className="absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center text-[var(--c-text-muted)] hover:text-[var(--c-text)] hover:bg-[var(--c-border)]/40 transition-colors"
+              >
+                ×
+              </button>
+              {!exitSent ? (
+                <>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)]">
+                    Leaving?
+                  </span>
+                  <h3 className="mt-3 font-display font-light text-[var(--c-text)] text-2xl md:text-3xl leading-[1.2] tracking-tight mb-3">
+                    Let us send what you&apos;ve started — plus a free Mexico golf brief.
+                  </h3>
+                  <p className="font-body font-light text-[var(--c-text-mid)] text-sm md:text-[15px] leading-[1.6] mb-6">
+                    Drop your email and we&apos;ll hold your progress so you can pick it back up when you&apos;re ready.
+                  </p>
+                  <form onSubmit={submitExitCapture} className="flex flex-col sm:flex-row gap-2">
+                    <input
+                      type="email"
+                      required
+                      value={exitEmail}
+                      onChange={(e) => setExitEmail(e.target.value)}
+                      placeholder="your@email.com"
+                      data-testid="tb-exit-email"
+                      className="flex-1 bg-white border border-[var(--c-border)] focus:border-[var(--c-gold)] focus:outline-none font-body text-base px-4 py-3 rounded-sm text-[var(--c-text)] placeholder:text-[var(--c-text-muted)]"
+                    />
+                    <button
+                      type="submit"
+                      data-testid="tb-exit-submit"
+                      className="bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-6 py-3 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors"
+                    >
+                      Send it to me →
+                    </button>
+                  </form>
+                  <p className="mt-3 text-[11px] text-[var(--c-text-muted)] italic">
+                    No spam. One email, then we go quiet until you reply.
+                  </p>
+                </>
+              ) : (
+                <p className="font-display italic text-[var(--c-gold)] text-xl py-6 text-center">
+                  On its way. Check your inbox.
+                </p>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* MINIMAL FOOTER */}
       <footer className="bg-[var(--c-off-white)] border-t border-[var(--c-border)] py-8">
