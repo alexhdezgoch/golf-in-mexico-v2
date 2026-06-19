@@ -13,8 +13,8 @@ const LOS_CABOS = {
   heroSlider: [
     "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/d3b1vfc5_GIM%20STILLS-36.jpg",
     "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/mmtjphx0_GIM%20STILLS-33.jpg",
-    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/64161yoc_Screenshot%202026-06-17%20at%204.54.02%E2%80%AFp.m..png",
-    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/5on7lc8g_Screenshot%202026-06-17%20at%204.54.02%E2%80%AFp.m..png",
+    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/rn8feiwi_Screenshot%202026-06-19%20at%2010.15.19%E2%80%AFa.m..jpg",
+    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/jvngefiv_Screenshot%202026-06-19%20at%2010.15.10%E2%80%AFa.m..jpg",
   ],
   seoTitle: "Golf in Cabo San Lucas: Courses, Costs & Access (2026) | Golf in Mexico°",
   seoDescription: "Eleven editorial-grade golf courses, green fees from $95–$500, and the insider access most travelers never find. The complete guide to Los Cabos for 2026.",
