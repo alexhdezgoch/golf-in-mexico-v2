@@ -217,10 +217,10 @@ const FIELD_NOTES = [
 ];
 
 const KEEP_EXPLORING = [
-  { slug: "punta-mita",           name: "Punta Mita",            region: "Riviera Nayarit",   image: "https://images.unsplash.com/photo-1592965046687-1acdbcdb5642?auto=format&fit=crop&w=1600&q=85" },
-  { slug: "mexico-city",          name: "Mexico City",            region: "Valle de Mexico",   image: "https://images.unsplash.com/photo-1717388835452-c9c8cda0002e?auto=format&fit=crop&w=1600&q=85" },
-  { slug: "cancun-riviera-maya",  name: "Cancun · Riviera Maya",  region: "Quintana Roo",      image: "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=1600&q=85" },
-  { slug: "puerto-vallarta",      name: "Puerto Vallarta",        region: "Bahía de Banderas", image: "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1600&q=85" },
+  { slug: "punta-mita",           name: "Punta Mita",            region: "Riviera Nayarit",   image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png" },
+  { slug: "mexico-city",          name: "Mexico City",            region: "Valle de Mexico",   image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png" },
+  { slug: "cancun-riviera-maya",  name: "Cancun · Riviera Maya",  region: "Quintana Roo",      image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png" },
+  { slug: "puerto-vallarta",      name: "Puerto Vallarta",        region: "Bahía de Banderas", image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png" },
 ];
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -467,7 +467,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
   const FAQS = data.faqs;
   const KEEP_EXPLORING = KEEP_EXPLORING_HUBS(data.slug).map((h) => ({
     ...h,
-    image: HERO_PHOTOS[h.slug] || "https://images.unsplash.com/photo-1535132011086-b8818f016104?auto=format&fit=crop&w=1600&q=85",
+    image: HERO_PHOTOS[h.slug] || "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png",
   }));
   useEffect(() => {
     document.title = data.seoTitle || `${data.name} — Golf in Mexico°`;

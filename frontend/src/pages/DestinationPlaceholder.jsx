@@ -9,21 +9,21 @@ const PLACEHOLDERS = {
     region: "Bahía de Banderas",
     tagline: "Jungle fairways, mountain greens.",
     heroImage:
-      "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=2400&q=85",
+      "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png",
   },
   "cancun-riviera-maya": {
     name: "Cancun · Riviera Maya",
     region: "Quintana Roo",
     tagline: "Limestone fairways, Caribbean light.",
     heroImage:
-      "https://images.unsplash.com/photo-1646606617448-e48f619c4abd?auto=format&fit=crop&w=2400&q=85",
+      "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png",
   },
   "unique-destinations": {
     name: "Unique Destinations",
     region: "Across Mexico",
     tagline: "Bajío, Huatulco, Mérida, and beyond.",
     heroImage:
-      "https://images.unsplash.com/photo-1543105177-748ceda71741?auto=format&fit=crop&w=2400&q=85",
+      "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png",
   },
 };
 
