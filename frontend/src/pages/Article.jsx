@@ -560,6 +560,32 @@ const RecommendedReads = () => {
           >
             View All
           </Link>
+
+          {/* Carousel nav arrows — anchored under the heading, always visible */}
+          <div className="mt-8 md:mt-10 flex items-center gap-3" data-testid="rr-nav">
+            <button
+              type="button"
+              aria-label="Scroll left"
+              data-testid="rr-prev"
+              onClick={() => scrollBy(-1)}
+              className="w-11 h-11 md:w-12 md:h-12 rounded-full border border-ink/25 text-ink flex items-center justify-center hover:bg-ink hover:text-cream transition-colors"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                <path d="M15 6l-6 6 6 6" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              aria-label="Scroll right"
+              data-testid="rr-next"
+              onClick={() => scrollBy(1)}
+              className="w-11 h-11 md:w-12 md:h-12 rounded-full bg-ink text-cream flex items-center justify-center hover:bg-gold hover:text-ink transition-colors"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                <path d="M9 6l6 6-6 6" />
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Carousel */}
@@ -596,31 +622,6 @@ const RecommendedReads = () => {
               </Link>
             ))}
           </div>
-
-          {/* Right arrow */}
-          <button
-            type="button"
-            aria-label="Scroll right"
-            data-testid="rr-next"
-            onClick={() => scrollBy(1)}
-            className="flex absolute right-3 md:right-6 top-[36%] md:top-[40%] -translate-y-1/2 w-11 h-11 md:w-12 md:h-12 rounded-full bg-ink/90 backdrop-blur-sm text-cream items-center justify-center hover:bg-gold hover:text-ink transition-colors shadow-lg z-10"
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-              <path d="M9 6l6 6-6 6" />
-            </svg>
-          </button>
-          {/* Left arrow */}
-          <button
-            type="button"
-            aria-label="Scroll left"
-            data-testid="rr-prev"
-            onClick={() => scrollBy(-1)}
-            className="hidden md:flex absolute left-4 top-[40%] -translate-y-1/2 w-12 h-12 rounded-full bg-ink/80 backdrop-blur-sm text-cream items-center justify-center hover:bg-gold hover:text-ink transition-colors shadow-lg z-10"
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-              <path d="M15 6l-6 6 6 6" />
-            </svg>
-          </button>
         </div>
       </div>
     </section>
