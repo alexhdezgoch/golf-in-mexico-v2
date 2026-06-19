@@ -11,9 +11,10 @@ const LOS_CABOS = {
   region: "Baja California Sur",
   heroPhoto: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/0wyp4brb_CABO%20PHOTO.png",
   heroSlider: [
-    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/4mxnh2t1_3DCB3E97-F719-4528-8A39-56921F816CF9_1_105_c.jpeg",
-    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/zrbeas6e_D090368D-C498-4ED4-9CA3-139553CD571D_1_105_c.jpeg",
-    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/54bjyy6t_8909F6AA-C7D4-40A4-86D2-7577FF01ADC6_1_105_c.jpeg",
+    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/d3b1vfc5_GIM%20STILLS-36.jpg",
+    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/mmtjphx0_GIM%20STILLS-33.jpg",
+    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/64161yoc_Screenshot%202026-06-17%20at%204.54.02%E2%80%AFp.m..png",
+    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/5on7lc8g_Screenshot%202026-06-17%20at%204.54.02%E2%80%AFp.m..png",
   ],
   seoTitle: "Golf in Cabo San Lucas: Courses, Costs & Access (2026) | Golf in Mexico°",
   seoDescription: "Eleven editorial-grade golf courses, green fees from $95–$500, and the insider access most travelers never find. The complete guide to Los Cabos for 2026.",
