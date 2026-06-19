@@ -569,6 +569,9 @@ const PUERTO_VALLARTA = {
   heroSlider: [
     "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/3z3gpvuk_81F3F231-303B-42AE-969B-440D82C25C70_1_105_c.jpeg",
     "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/jbqxmvek_B9218C30-F95E-41C2-A24A-A9867EB4DE7C_1_105_c.jpeg",
+    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/4snhxxzm_E8CF1585-FC08-494C-AD51-ECF8F27B8F26_1_105_c.jpeg",
+    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/wqf7n1js_FA4FD2FC-6222-4E3B-AD57-F9CC947B5AEB_1_105_c.jpeg",
+    "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/6ntevszb_5573A261-FA98-47F9-9CB4-AFC720500AD7_1_105_c.jpeg",
   ],
   seoTitle: "Golf in Puerto Vallarta: Courses, Costs & PGA Tour Venue (2026) | Golf in Mexico°",
   seoDescription: "Eight championship golf courses around Banderas Bay, the only PGA Tour venue in the region (Vidanta Norman), and Mexico's strongest value tier for Nicklaus and Weiskopf pedigree designs.",
