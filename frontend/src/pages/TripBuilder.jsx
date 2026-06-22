@@ -109,13 +109,12 @@ const TripBuilder = () => {
   const [searchParams] = useSearchParams();
 
   // Pre-select trip type from ?type= query (from /experience cards).
-  // If a type comes from the Experience page, the visitor already chose
-  // "build" — skip the intent splash and drop them straight into Step 1.
+  // We still show the intent splash to everyone — the type is just remembered
+  // so it lands pre-selected on Step 1 once they choose "Build my proposal".
   useEffect(() => {
     const t = searchParams.get("type");
     if (t && TRIP_TYPES.some((x) => x.id === t)) {
       setTripType(t);
-      setIntent("build");
     }
   }, [searchParams]);
   const [isDM, setIsDM] = useState(true);
