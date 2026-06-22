@@ -366,14 +366,17 @@ const TripBuilder = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-            {/* PATH 1 — Call */}
+            {/* PATH 1 — Call (recommended) */}
             <a
               href={calendarHref}
               target="_blank"
               rel="noopener noreferrer"
               data-testid="tb-intent-call"
-              className="group block bg-[var(--c-green-deep)] text-white rounded-sm p-8 md:p-10 hover:bg-[var(--c-green-mid)] transition-colors"
+              className="group block bg-[var(--c-green-deep)] text-white rounded-sm p-8 md:p-10 hover:bg-[var(--c-green-mid)] transition-colors relative"
             >
+              <span className="absolute -top-3 left-6 md:left-8 bg-[var(--c-gold)] text-[var(--c-green-deep)] font-mono text-[9px] uppercase tracking-[0.2em] font-bold px-3 py-1 rounded-full">
+                Our recommendation
+              </span>
               <div className="flex items-center gap-5 mb-7">
                 <img
                   src="/founders/pablo/01.jpg"
@@ -382,18 +385,21 @@ const TripBuilder = () => {
                 />
                 <div className="leading-tight">
                   <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-1.5">
-                    Fastest · 15 min
+                    15 minutes with a real human
                   </p>
                   <p className="font-display text-white text-xl md:text-2xl">Talk to Pablo first</p>
                 </div>
               </div>
-              <p className="font-body font-light text-white/85 text-[15px] md:text-base leading-[1.7] mb-7">
-                Skip the form. Book 15 minutes on Pablo&apos;s calendar and we&apos;ll plan the trip together in real time. Best for groups that already know roughly what they want.
+              <p className="font-body font-light text-white/90 text-[15px] md:text-base leading-[1.75] mb-5">
+                We are in the business of relationships. The best trips we have built started with a 15-minute conversation, not a form.
+              </p>
+              <p className="font-body font-light text-white/75 text-[14px] md:text-[15px] leading-[1.7] mb-7 italic">
+                In an era where everything is automated and nothing feels personal, we still believe a real conversation is the fastest way to build a trip that fits you. This is the path we quietly recommend.
               </p>
               <ul className="space-y-2 mb-8">
                 {[
-                  "Direct line to Pablo (PGA Tour agent · 5+ years)",
-                  "Live access checks for private courses",
+                  "Direct line to Pablo · PGA Tour agent, 5+ years",
+                  "We get to know who you are travelling with",
                   "Walk away with a clear path forward",
                 ].map((b) => (
                   <li key={b} className="flex items-start gap-2 text-[13px] text-white/75 leading-[1.55]">
