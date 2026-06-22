@@ -77,7 +77,6 @@ const isDev = (typeof import.meta !== "undefined" && import.meta.env && import.m
 
 const devLog = (label, payload) => {
   if (isDev) {
-    // eslint-disable-next-line no-console
     console.log(label, payload);
   }
 };
@@ -100,16 +99,23 @@ const safeSessionRead = (key) => {
 };
 
 const TripBuilder = () => {
+  // Intent gate — splash before the wizard so people choose:
+  // "Talk to Pablo first" vs "Build my proposal".
+  const [intent, setIntent] = useState(null);
+
   const [step, setStep] = useState(1);
   const [destinations, setDestinations] = useState([]);
   const [tripType, setTripType] = useState(null);
   const [searchParams] = useSearchParams();
 
-  // Pre-select trip type from ?type= query (from /experience cards)
+  // Pre-select trip type from ?type= query (from /experience cards).
+  // If a type comes from the Experience page, the visitor already chose
+  // "build" — skip the intent splash and drop them straight into Step 1.
   useEffect(() => {
     const t = searchParams.get("type");
     if (t && TRIP_TYPES.some((x) => x.id === t)) {
       setTripType(t);
+      setIntent("build");
     }
   }, [searchParams]);
   const [isDM, setIsDM] = useState(true);
@@ -268,7 +274,6 @@ const TripBuilder = () => {
       `Hi GIM — I'm planning a ${typeLabel} to ${destLabel}, just submitted my proposal request.`
     );
     const whatsappHref = `https://wa.me/?text=${whatsappMsg}`;
-    const calendarHref = "https://calendar.app.google/jb2v4ujwvMMovSV98";
 
     return (
       <main data-testid="trip-builder-success" className="min-h-screen bg-[var(--c-off-white)]">
@@ -280,7 +285,7 @@ const TripBuilder = () => {
           </div>
         </header>
 
-        <section className="max-w-[820px] mx-auto px-6 md:px-12 py-20 md:py-28">
+        <section className="max-w-[760px] mx-auto px-6 md:px-12 py-20 md:py-28">
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[var(--c-gold)] text-[var(--c-green-deep)] font-mono text-2xl mb-8">✓</div>
             <h1 className="font-display font-light text-[var(--c-text)] text-4xl md:text-6xl leading-[1.05] tracking-tight mb-6">
@@ -291,49 +296,13 @@ const TripBuilder = () => {
             </p>
           </div>
 
-          {/* PRIMARY optional fast lane — Pablo call */}
-          <div className="bg-[var(--c-green-deep)] text-white rounded-sm p-8 md:p-12 mb-6">
-            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 mb-7">
-              <img
-                src="/founders/pablo/01.jpg"
-                alt="Pablo De La Mora · GIM Founder"
-                className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-2 border-[var(--c-gold)] shrink-0"
-                data-testid="tb-success-pablo-photo"
-              />
-              <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-2">
-                  Optional fast lane
-                </p>
-                <h2 className="font-display font-light text-white text-2xl md:text-3xl leading-[1.2] tracking-tight mb-2">
-                  Want to talk it through first? <em className="italic text-[var(--c-gold)]">Grab 15 minutes with Pablo.</em>
-                </h2>
-                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-white/65">
-                  Pablo De La Mora · Founder · 5 years on the PGA Tour
-                </p>
-              </div>
-            </div>
-            <p className="font-body font-light text-white/85 text-base leading-[1.7] mb-7 max-w-2xl">
-              Some questions are faster to answer in person. Book a 15-minute call and Pablo will walk you through what we&apos;re building. Your form answers are passed straight into the meeting notes.
-            </p>
-            <a
-              href={calendarHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-testid="tb-success-book-call"
-              className="group inline-flex items-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-7 py-3.5 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors"
-            >
-              Book 15 min with Pablo
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </a>
-          </div>
-
-          {/* SECONDARY — WhatsApp quick line */}
+          {/* WhatsApp quick line — secondary contact path only */}
           <a
             href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
             data-testid="tb-success-whatsapp"
-            className="block bg-white border border-[var(--c-border)] hover:border-[var(--c-gold)] rounded-sm p-6 md:p-7 transition-colors mb-12"
+            className="block bg-white border border-[var(--c-border)] hover:border-[var(--c-gold)] rounded-sm p-6 md:p-7 transition-colors mb-10"
           >
             <div className="flex items-center justify-between gap-4">
               <div>
@@ -354,7 +323,7 @@ const TripBuilder = () => {
           </a>
 
           <p className="text-center font-body font-light text-[var(--c-text-muted)] text-sm leading-[1.7] max-w-[480px] mx-auto mb-10">
-            Check your inbox — including spam, just in case. If your dates are urgent, the call is the fastest way through.
+            Check your inbox — including spam, just in case.
           </p>
 
           <div className="text-center">
@@ -363,6 +332,121 @@ const TripBuilder = () => {
               <span>→</span>
             </Link>
           </div>
+        </section>
+      </main>
+    );
+  }
+
+  // Intent splash — shown before the wizard. Two paths:
+  //   1. Talk to Pablo first  → Google Calendar (15 min, low friction)
+  //   2. Build my proposal     → continues into Step 1 of the wizard
+  if (intent === null && !submitted) {
+    const calendarHref = "https://calendar.app.google/jb2v4ujwvMMovSV98";
+    return (
+      <main data-testid="trip-builder-intent" className="min-h-screen bg-[var(--c-off-white)]">
+        <header className="border-b border-[var(--c-border)] bg-[var(--c-off-white)]">
+          <div className="max-w-[1200px] mx-auto px-6 md:px-12 py-5 flex items-center justify-between">
+            <Link to="/" className="flex items-center leading-none shrink-0">
+              <img src="/logo-wordmark.png" alt="Golf in Mexico°" className="h-8 md:h-10 w-auto invert" />
+            </Link>
+          </div>
+        </header>
+
+        <section className="max-w-[1100px] mx-auto px-6 md:px-12 py-20 md:py-28">
+          <div className="text-center mb-14 md:mb-20">
+            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--c-gold)]">
+              How would you like to start?
+            </span>
+            <h1 className="mt-5 font-display font-light text-[var(--c-text)] text-4xl md:text-6xl leading-[1.05] tracking-tight max-w-[18ch] mx-auto">
+              Two ways in. <em className="italic text-[var(--c-gold)]">Both lead to a real itinerary.</em>
+            </h1>
+            <p className="mt-7 font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.7] max-w-[58ch] mx-auto">
+              Pick whichever fits how you operate. The fastest path is a 15-minute call with Pablo. The most thorough path is the form. Pablo and José review every submission personally and ship your named, itemized itinerary within 48 hours.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+            {/* PATH 1 — Call */}
+            <a
+              href={calendarHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="tb-intent-call"
+              className="group block bg-[var(--c-green-deep)] text-white rounded-sm p-8 md:p-10 hover:bg-[var(--c-green-mid)] transition-colors"
+            >
+              <div className="flex items-center gap-5 mb-7">
+                <img
+                  src="/founders/pablo/01.jpg"
+                  alt="Pablo De La Mora"
+                  className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-2 border-[var(--c-gold)] shrink-0"
+                />
+                <div className="leading-tight">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-1.5">
+                    Fastest · 15 min
+                  </p>
+                  <p className="font-display text-white text-xl md:text-2xl">Talk to Pablo first</p>
+                </div>
+              </div>
+              <p className="font-body font-light text-white/85 text-[15px] md:text-base leading-[1.7] mb-7">
+                Skip the form. Book 15 minutes on Pablo&apos;s calendar and we&apos;ll plan the trip together in real time. Best for groups that already know roughly what they want.
+              </p>
+              <ul className="space-y-2 mb-8">
+                {[
+                  "Direct line to Pablo (PGA Tour agent · 5+ years)",
+                  "Live access checks for private courses",
+                  "Walk away with a clear path forward",
+                ].map((b) => (
+                  <li key={b} className="flex items-start gap-2 text-[13px] text-white/75 leading-[1.55]">
+                    <span className="text-[var(--c-gold)] mt-0.5">✓</span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+              <span className="inline-flex items-center gap-3 bg-[var(--c-gold)] text-[var(--c-green-deep)] px-6 py-3 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold group-hover:bg-[var(--c-gold-light)] transition-colors">
+                Book 15 min with Pablo
+                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </span>
+            </a>
+
+            {/* PATH 2 — Build the form */}
+            <button
+              type="button"
+              onClick={() => setIntent("build")}
+              data-testid="tb-intent-build"
+              className="group block text-left bg-white border border-[var(--c-border)] rounded-sm p-8 md:p-10 hover:border-[var(--c-gold)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-all"
+            >
+              <div className="mb-7">
+                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-1.5">
+                  Thorough · 5 min
+                </p>
+                <p className="font-display text-[var(--c-text)] text-xl md:text-2xl">Build my proposal</p>
+              </div>
+              <p className="font-body font-light text-[var(--c-text-mid)] text-[15px] md:text-base leading-[1.7] mb-7">
+                Answer a few questions about your group, dates, and budget. Pablo and José personally build a named, itemized itinerary and send it back in 48 hours.
+              </p>
+              <ul className="space-y-2 mb-8">
+                {[
+                  "Named courses and routing for every day",
+                  "Itemized costs in USD — green fees, lodging, transport",
+                  "Two lodging options at every tier",
+                  "Pablo's personal cell for the entire trip",
+                ].map((b) => (
+                  <li key={b} className="flex items-start gap-2 text-[13px] text-[var(--c-text-mid)] leading-[1.55]">
+                    <span className="text-[var(--c-gold)] mt-0.5">✓</span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+              <span className="inline-flex items-center gap-3 bg-[var(--c-green-deep)] text-white px-6 py-3 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold group-hover:bg-[var(--c-green-mid)] transition-colors">
+                Start the proposal
+                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </span>
+            </button>
+          </div>
+
+          <p className="mt-10 text-center font-body font-light text-[var(--c-text-muted)] text-[13px] leading-[1.6] max-w-[58ch] mx-auto italic">
+            Either path delivers a real proposal in 48 hours. The call is faster up front; the form is more thorough.
+          </p>
         </section>
       </main>
     );
