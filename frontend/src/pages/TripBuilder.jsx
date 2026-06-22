@@ -291,7 +291,7 @@ const TripBuilder = () => {
               Your proposal is <em className="italic text-[var(--c-gold)]">in motion.</em>
             </h1>
             <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] max-w-[560px] mx-auto">
-              Pablo and José are reviewing your trip now. Your named, itemized itinerary lands in your inbox within 48 hours.
+              Pablo is reviewing your trip now. Your named, itemized itinerary lands in your inbox within 48 hours.
             </p>
           </div>
 
@@ -357,11 +357,8 @@ const TripBuilder = () => {
               How would you like to start?
             </span>
             <h1 className="mt-5 font-display font-light text-[var(--c-text)] text-4xl md:text-6xl leading-[1.05] tracking-tight max-w-[18ch] mx-auto">
-              Two ways in. <em className="italic text-[var(--c-gold)]">Both lead to a real itinerary.</em>
+              Two ways in. <em className="italic text-[var(--c-gold)]">Both end in a real itinerary.</em>
             </h1>
-            <p className="mt-7 font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.7] max-w-[58ch] mx-auto">
-              Pick whichever fits how you operate. The fastest path is a 15-minute call with Pablo. The most thorough path is the form. Pablo and José review every submission personally and ship your named, itemized itinerary within 48 hours.
-            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
@@ -384,31 +381,19 @@ const TripBuilder = () => {
                 />
                 <div className="leading-tight">
                   <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-1.5">
-                    15 minutes with a real human
+                    15 min with Pablo
                   </p>
-                  <p className="font-display text-white text-xl md:text-2xl">Talk to Pablo first</p>
+                  <p className="font-display text-white text-xl md:text-2xl">Talk first</p>
                 </div>
               </div>
-              <p className="font-body font-light text-white/90 text-[15px] md:text-base leading-[1.75] mb-5">
-                We are in the business of relationships. The best trips we have built started with a 15-minute conversation, not a form.
+              <p className="font-body font-light text-white/85 text-[15px] md:text-base leading-[1.7] mb-3">
+                We are in the business of relationships, not forms.
               </p>
-              <p className="font-body font-light text-white/75 text-[14px] md:text-[15px] leading-[1.7] mb-7 italic">
-                In an era where everything is automated and nothing feels personal, we still believe a real conversation is the fastest way to build a trip that fits you. This is the path we quietly recommend.
+              <p className="font-body font-light text-white/65 text-[14px] leading-[1.65] italic mb-8">
+                In a world running on automation, a real conversation is still the fastest way to build a trip that fits.
               </p>
-              <ul className="space-y-2 mb-8">
-                {[
-                  "Direct line to Pablo · PGA Tour agent, 5+ years",
-                  "We get to know who you are travelling with",
-                  "Walk away with a clear path forward",
-                ].map((b) => (
-                  <li key={b} className="flex items-start gap-2 text-[13px] text-white/75 leading-[1.55]">
-                    <span className="text-[var(--c-gold)] mt-0.5">✓</span>
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
               <span className="inline-flex items-center gap-3 bg-[var(--c-gold)] text-[var(--c-green-deep)] px-6 py-3 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold group-hover:bg-[var(--c-gold-light)] transition-colors">
-                Book 15 min with Pablo
+                Book 15 min
                 <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </span>
             </a>
@@ -422,36 +407,19 @@ const TripBuilder = () => {
             >
               <div className="mb-7">
                 <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-1.5">
-                  Thorough · 5 min
+                  5 min · 48-hour proposal
                 </p>
-                <p className="font-display text-[var(--c-text)] text-xl md:text-2xl">Build my proposal</p>
+                <p className="font-display text-[var(--c-text)] text-xl md:text-2xl">Build it on your own</p>
               </div>
-              <p className="font-body font-light text-[var(--c-text-mid)] text-[15px] md:text-base leading-[1.7] mb-7">
-                Answer a few questions about your group, dates, and budget. Pablo and José personally build a named, itemized itinerary and send it back in 48 hours.
+              <p className="font-body font-light text-[var(--c-text-mid)] text-[15px] md:text-base leading-[1.7] mb-8">
+                A few questions about your group, dates, and budget. Pablo personally reviews every submission and sends back a named, itemized itinerary in 48 hours.
               </p>
-              <ul className="space-y-2 mb-8">
-                {[
-                  "Named courses and routing for every day",
-                  "Itemized costs in USD — green fees, lodging, transport",
-                  "Two lodging options at every tier",
-                  "Pablo's personal cell for the entire trip",
-                ].map((b) => (
-                  <li key={b} className="flex items-start gap-2 text-[13px] text-[var(--c-text-mid)] leading-[1.55]">
-                    <span className="text-[var(--c-gold)] mt-0.5">✓</span>
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
               <span className="inline-flex items-center gap-3 bg-[var(--c-green-deep)] text-white px-6 py-3 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold group-hover:bg-[var(--c-green-mid)] transition-colors">
                 Start the proposal
                 <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </span>
             </button>
           </div>
-
-          <p className="mt-10 text-center font-body font-light text-[var(--c-text-muted)] text-[13px] leading-[1.6] max-w-[58ch] mx-auto italic">
-            Either path delivers a real proposal in 48 hours. The call is faster up front; the form is more thorough.
-          </p>
         </section>
       </main>
     );
@@ -519,7 +487,7 @@ const TripBuilder = () => {
             </p>
           </div>
           <p className="font-display italic font-normal text-[var(--c-gold)] text-base md:text-lg">
-            — Pablo De La Mora &amp; José Islas · Golf in Mexico°
+            — Pablo De La Mora · Golf in Mexico°
           </p>
         </div>
       </section>
