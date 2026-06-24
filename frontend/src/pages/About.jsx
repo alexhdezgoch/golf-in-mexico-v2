@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import TeamEditorial from "@/components/TeamEditorial";
 
 /* ═══════════════════════════════════════════════════════════════════
    About · /about
@@ -37,10 +38,10 @@ const About = () => (
       </div>
     </header>
 
-    {/* ── FOUNDER GALLERIES + FULL EDITORIAL BIOS ──
-        Pablo + José sliders, plus the three bio sections (The Agent · The
-        Player · The Collaboration) now live on the homepage. This About
-        page focuses on the brand mission and the three pillars below. ── */}
+    {/* ── FULL EDITORIAL · The Agent · The Player · The Collaboration ──
+        Built directly under the hero so the brand mission lands first,
+        then opens straight into the three named bios. ── */}
+    <TeamEditorial />
 
     {/* ── THREE PILLARS · OUR VALUES ── */}
     <section

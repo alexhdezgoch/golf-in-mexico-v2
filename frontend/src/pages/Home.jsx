@@ -2,7 +2,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import FoundersGallery from "@/components/FoundersGallery";
-import TeamEditorial from "@/components/TeamEditorial";
 import { ARTICLES } from "@/data/articles";
 
 const HERO_VIDEO =
@@ -239,9 +238,8 @@ const Home = () => {
       {/* CINEMATIC DIVIDER */}
       <HomeDivider />
 
-      {/* FOUNDERS · Visual sliders + full editorial bios (The Agent · The Player · The Collaboration) */}
+      {/* FOUNDERS · Visual sliders only · full editorial bios live on /about */}
       <FoundersGallery />
-      <TeamEditorial />
     </main>
   );
 };
