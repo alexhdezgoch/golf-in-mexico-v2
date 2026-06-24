@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import FoundersGallery from "@/components/FoundersGallery";
 import { ARTICLES } from "@/data/articles";
 
-const HERO_VIDEO =
-  "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/5lehrm14_HERO%20VIDEO.mov";
+const HERO_VIDEO_MP4 = "/video/hero.mp4";
+const HERO_VIDEO_WEBM = "/video/hero.webm";
 
 const HERO_POSTER =
   "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png";
@@ -191,14 +191,16 @@ const Home = () => {
         <video
           data-testid="hero-video"
           className="absolute inset-0 w-full h-full object-cover editorial-img"
-          src={HERO_VIDEO}
           poster={HERO_POSTER}
           autoPlay
           muted
           loop
           playsInline
-          preload="metadata"
-        />
+          preload="auto"
+        >
+          <source src={HERO_VIDEO_WEBM} type="video/webm" />
+          <source src={HERO_VIDEO_MP4} type="video/mp4" />
+        </video>
         {/* Readability overlay */}
         <div className="absolute inset-0 bg-black/45" />
 
