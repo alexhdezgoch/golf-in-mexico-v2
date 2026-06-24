@@ -1,0 +1,10 @@
+backend/
+tests/
+test_reports/
+.emergent/
+.ruff_cache/
+memory/
+design_guidelines.json
+test_result.md
+README.md
+*.zip
