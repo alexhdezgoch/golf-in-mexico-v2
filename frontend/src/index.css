@@ -689,7 +689,9 @@ html.lenis, html.lenis body { height: auto; }
 /* ── Section nav (sticky sub-nav for destination hubs) ── */
 .section-nav {
     position: sticky;
-    top: 72px;
+    /* Match the scrolled global-nav height (py-3 ≈ 65px) so the sticky
+       sub-nav tucks flush under it with no cream gap. */
+    top: 64px;
     z-index: 90;
     background: var(--c-off-white);
     border-bottom: 1px solid var(--c-border);

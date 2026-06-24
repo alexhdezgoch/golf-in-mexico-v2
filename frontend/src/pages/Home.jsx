@@ -196,7 +196,7 @@ const Home = () => {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
         >
           <source src={HERO_VIDEO_WEBM} type="video/webm" />
           <source src={HERO_VIDEO_MP4} type="video/mp4" />
