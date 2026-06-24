@@ -22,8 +22,8 @@ const About = () => (
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="font-display font-light text-[var(--c-text)] text-4xl md:text-6xl lg:text-[5rem] leading-[1.04] tracking-tight max-w-[18ch] mb-8"
         >
-          Two Mexican golfers,{" "}
-          <em className="italic text-[var(--c-gold)]">one editorial promise.</em>
+          Built by the people{" "}
+          <em className="italic text-[var(--c-gold)]">inside the ropes.</em>
         </motion.h1>
         <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] max-w-[680px]">
           Golf in Mexico° comes from{" "}

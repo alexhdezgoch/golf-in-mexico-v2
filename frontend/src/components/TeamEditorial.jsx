@@ -119,7 +119,7 @@ const TeamEditorial = () => {
           data-testid="founders-headline"
           className="font-display font-normal text-[var(--c-text)] leading-[1.1] tracking-tight text-3xl md:text-5xl lg:text-6xl max-w-[22ch] mb-14 md:mb-20"
         >
-          Built by the people <em className="italic text-[var(--c-gold)]">inside the ropes.</em>
+          A sport agent. A touring pro. <em className="italic text-[var(--c-gold)]">One editorial promise.</em>
         </motion.h2>
 
         {/* Tabs */}
