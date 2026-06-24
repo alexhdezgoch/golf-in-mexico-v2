@@ -407,12 +407,12 @@ const TripBuilder = () => {
             >
               <div className="mb-7">
                 <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-1.5">
-                  5 min · 48-hour proposal
+                  By email · 48-hour proposal
                 </p>
                 <p className="font-display text-[var(--c-text)] text-xl md:text-2xl">Build it on your own</p>
               </div>
               <p className="font-body font-light text-[var(--c-text-mid)] text-[15px] md:text-base leading-[1.7] mb-8">
-                A few questions about your group, dates, and budget. Pablo personally reviews every submission and sends back a named, itemized itinerary in 48 hours.
+                A few questions about your group, dates, and budget. Pablo personally reviews every submission and sends the named, itemized itinerary back to your inbox within 48 hours.
               </p>
               <span className="inline-flex items-center gap-3 bg-[var(--c-green-deep)] text-white px-6 py-3 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold group-hover:bg-[var(--c-green-mid)] transition-colors">
                 Start the proposal

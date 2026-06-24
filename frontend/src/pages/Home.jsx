@@ -1,7 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import TeamEditorial from "@/components/TeamEditorial";
 import { ARTICLES } from "@/data/articles";
 
 const HERO_VIDEO =
@@ -238,10 +237,71 @@ const Home = () => {
       {/* CINEMATIC DIVIDER */}
       <HomeDivider />
 
-      {/* FOUNDERS + VALUES */}
-      <TeamEditorial />
+      {/* FOUNDERS · Visual preview · full bios live on /about for EEAT */}
+      <MeetFounders />
     </main>
   );
 };
+
+/* ─────────────── MEET THE FOUNDERS · LIGHT VISUAL TEASER ───────────────
+   Full editorial bios for Pablo, José, and GIM live on /about for SEO.
+   Homepage stays visual: two portraits, two names, one CTA.
+   ──────────────────────────────────────────────────────────────────── */
+
+const MeetFounders = () => (
+  <section
+    data-testid="home-meet-founders"
+    className="bg-[var(--c-off-white)] border-t border-[var(--c-border)] py-20 md:py-28"
+  >
+    <div className="max-w-[1240px] mx-auto px-6 md:px-12">
+      <div className="text-center mb-12 md:mb-16">
+        <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--c-gold)]">
+          The team
+        </span>
+        <h2 className="mt-5 font-display font-light text-[var(--c-text)] text-3xl md:text-5xl lg:text-[3.5rem] leading-[1.05] tracking-tight max-w-[22ch] mx-auto">
+          An agent and a tour pro <em className="italic text-[var(--c-gold)]">behind every itinerary.</em>
+        </h2>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4 md:gap-8 mb-12 md:mb-16 max-w-[900px] mx-auto">
+        {[
+          { name: "Pablo De La Mora", role: "The Agent", photo: "/founders/pablo/01.jpg", testid: "founder-tile-pablo" },
+          { name: "José Islas",       role: "The Player", photo: "/jose.jpg",            testid: "founder-tile-jose" },
+        ].map((f) => (
+          <Link
+            key={f.name}
+            to="/about"
+            data-testid={f.testid}
+            className="group block"
+          >
+            <div className="relative aspect-[3/4] overflow-hidden bg-[var(--c-green-deep)] rounded-sm mb-4">
+              <img
+                src={f.photo}
+                alt={f.name}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
+              />
+            </div>
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-gold)] mb-1.5">{f.role}</p>
+            <h3 className="font-display font-normal text-[var(--c-text)] text-xl md:text-2xl lg:text-3xl group-hover:text-[var(--c-gold)] transition-colors">
+              {f.name}
+            </h3>
+          </Link>
+        ))}
+      </div>
+
+      <div className="text-center">
+        <Link
+          to="/about"
+          data-testid="home-meet-founders-cta"
+          className="group inline-flex items-center gap-3 bg-[var(--c-green-deep)] hover:bg-[var(--c-gold)] hover:text-[var(--c-green-deep)] text-white px-8 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors"
+        >
+          Meet the founders
+          <span className="transition-transform duration-500 group-hover:translate-x-1.5">→</span>
+        </Link>
+      </div>
+    </div>
+  </section>
+);
 
 export default Home;

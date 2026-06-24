@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import TeamEditorial from "@/components/TeamEditorial";
 
 /* ═══════════════════════════════════════════════════════════════════
    About · /about
@@ -240,6 +241,9 @@ const About = () => (
         </div>
       </div>
     </section>
+
+    {/* ── FULL EDITORIAL · The Agent, The Player, The Collaboration ── */}
+    <TeamEditorial />
 
     {/* ── GET IN TOUCH FOOTER ── */}
     <section className="bg-[var(--c-green-deep)] text-white py-20 md:py-28">
