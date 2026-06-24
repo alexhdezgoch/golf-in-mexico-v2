@@ -12,8 +12,8 @@ const LOS_CABOS = {
   name: "Los Cabos",
   title: "Golf in Los Cabos: The Complete Course Guide",
   metaTitle: "Los Cabos Golf Guide: Courses, Costs & Insider Access (2026) | Golf in Mexico",
-  heroImage: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png",
-  dividerImage: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png",
+  heroImage: "/images/e60z74y2-golf-in-mexico-5.webp",
+  dividerImage: "/images/e60z74y2-golf-in-mexico-5.webp",
   lastUpdated: "February 2026",
 
   // Section 1 — Hero Answer Block
@@ -302,8 +302,8 @@ const PUNTA_MITA = {
   name: "Punta Mita",
   title: "Golf in Punta Mita: Pacifico, Bahia & Everything You Need to Know",
   metaTitle: "Punta Mita Golf Guide: Courses, Costs & Insider Access (2026) | Golf in Mexico",
-  heroImage: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png",
-  dividerImage: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png",
+  heroImage: "/images/e60z74y2-golf-in-mexico-5.webp",
+  dividerImage: "/images/e60z74y2-golf-in-mexico-5.webp",
   lastUpdated: "February 2026",
 
   heroAnswer:
@@ -449,8 +449,8 @@ const MEXICO_CITY = {
   name: "Mexico City",
   title: "Golf in Mexico City: Every Course Worth Playing",
   metaTitle: "Mexico City Golf Guide: Courses, Costs & Insider Access (2026) | Golf in Mexico",
-  heroImage: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png",
-  dividerImage: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png",
+  heroImage: "/images/e60z74y2-golf-in-mexico-5.webp",
+  dividerImage: "/images/e60z74y2-golf-in-mexico-5.webp",
   lastUpdated: "February 2026",
 
   heroAnswer:

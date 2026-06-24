@@ -17,7 +17,7 @@ const EXPERIENCES = [
     description:
       "A complete itinerary for two or more couple travelers — tee times paired with spa days, intimate restaurants, and the rounds that play just as well at sunset as they do at sunrise.",
     image:
-      "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/yszj15ke_willdwind-william-martret-9C_W8jfUhTw-unsplash.jpg",
+      "/images/yszj15ke-willdwind-william-martret-9c-w8jfuhtw-unsplash.webp",
   },
   {
     slug: "bachelor-trip",
@@ -27,7 +27,7 @@ const EXPERIENCES = [
     description:
       "Tournament-format itineraries for a group of friends. Members-only courses, private homes, group transport, and off-course experiences.",
     image:
-      "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/fhv2viqt_D14F99BA-7F14-4273-BCD5-EF597DF7F5CB_1_105_c.jpeg",
+      "/images/fhv2viqt-d14f99ba-7f14-4273-bcd5-ef597df7f5cb-1-105-c.webp",
   },
   {
     slug: "family-friends",
@@ -37,7 +37,7 @@ const EXPERIENCES = [
     description:
       "A trip built around the golfer without sacrificing what everyone else came for. Resorts, beach time, kid-friendly logistics, and routings that respect every handicap.",
     image:
-      "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/39q8yutm_lhc-services-richmond-va-Gr1V3SI-xAU-unsplash.jpg",
+      "/images/39q8yutm-lhc-services-richmond-va-gr1v3si-xau-unsplash.webp",
   },
   {
     slug: "corporate-retreat",
@@ -47,7 +47,7 @@ const EXPERIENCES = [
     description:
       "Tournament logistics for executive groups. Private clubs that open their gates for the day, named contacts at every venue, and a closing dinner that lands the conversation you flew here to have.",
     image:
-      "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/w9mm3zx2_dean-5yxJpt_TcAo-unsplash.jpg",
+      "/images/w9mm3zx2-dean-5yxjpt-tcao-unsplash.webp",
   },
 ];
 

@@ -13,7 +13,7 @@ export const REGIONS = [
     description:
       "The absolute best golf in Latin America. Massive desert dunes meeting the Sea of Cortez—a landscape that comes with a premium price tag, but is worth every single penny.",
     greenFees: "$250 – $450",
-    image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/rg2d4m8m_GIM%20STILLS-41.jpg",
+    image: "/images/rg2d4m8m-gim-stills-41.webp",
     live: true,
     href: "/destinations/los-cabos",
     blackbook: "/blackbook/los-cabos.pdf",
@@ -28,7 +28,7 @@ export const REGIONS = [
     description:
       "Where the Sierra Madre jungle meets the Pacific. Five-star hospitality, exclusive gated communities, and some of the best oceanfront holes on the coast.",
     greenFees: "$280 – $420",
-    image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/0wmultbm_DJI_0048.jpeg",
+    image: "/images/0wmultbm-dji-0048.webp",
     live: true,
     href: "/destinations/punta-mita",
     blackbook: "/blackbook/punta-mita.pdf",
@@ -43,7 +43,7 @@ export const REGIONS = [
     description:
       "Historic, private clubs at 7,350 feet. The ball flies 10% further here, and the golf culture goes back decades before the beach resorts even existed. You just need the right connection to play.",
     greenFees: "Members & guests",
-    image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/g6r7fp45_GOLFINMEXICO-062.jpg",
+    image: "/images/g6r7fp45-golfinmexico-062.webp",
     live: true,
     href: "/destinations/mexico-city",
     blackbook: "/blackbook/mexico-city.pdf",
@@ -58,7 +58,7 @@ export const REGIONS = [
     description:
       "Where the mountains drop into Banderas Bay. Fun, technical courses carved through the tropical jungle, offering some of the best elevation changes you'll ever play.",
     greenFees: "$180 – $320",
-    image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/gyf4bofm_D104455E-21A3-4A8E-8A51-72FDB3B5B227_1_105_c.jpeg",
+    image: "/images/gyf4bofm-d104455e-21a3-4a8e-8a51-72fdb3b5b227-1-105-c.webp",
     live: true,
     href: "/destinations/puerto-vallarta",
     blackbook: "/blackbook/puerto-vallarta.pdf",
@@ -73,7 +73,7 @@ export const REGIONS = [
     description:
       "Courses carved straight through the Yucatán mangroves. This region has the largest concentration of resort golf in the country, right next to the Caribbean Sea.",
     greenFees: "$220 – $380",
-    image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/xg8drvr6_IMG_3947.jpeg",
+    image: "/images/xg8drvr6-img-3947.webp",
     live: true,
     href: "/destinations/cancun-riviera-maya",
     blackbook: "/blackbook/cancun-riviera-maya.pdf",
@@ -88,7 +88,7 @@ export const REGIONS = [
     description:
       "Real info on the country's lesser-known courses. From colonial towns to quiet Pacific bays. Perfect if you've already played the major spots and want something different for your next trip.",
     greenFees: "Varies by region",
-    image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/dhz92vfa_GOLFINMEXICO-001%202.jpg",
+    image: "/images/dhz92vfa-golfinmexico-001-2.webp",
     live: true,
     href: "/destinations/unique-destinations",
     blackbook: "/blackbook/unique-destinations.pdf",

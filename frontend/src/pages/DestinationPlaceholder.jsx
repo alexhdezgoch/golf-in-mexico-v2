@@ -9,21 +9,21 @@ const PLACEHOLDERS = {
     region: "Bahía de Banderas",
     tagline: "Jungle fairways, mountain greens.",
     heroImage:
-      "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png",
+      "/images/e60z74y2-golf-in-mexico-5.webp",
   },
   "cancun-riviera-maya": {
     name: "Cancun · Riviera Maya",
     region: "Quintana Roo",
     tagline: "Limestone fairways, Caribbean light.",
     heroImage:
-      "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png",
+      "/images/e60z74y2-golf-in-mexico-5.webp",
   },
   "unique-destinations": {
     name: "Unique Destinations",
     region: "Across Mexico",
     tagline: "Bajío, Huatulco, Mérida, and beyond.",
     heroImage:
-      "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png",
+      "/images/e60z74y2-golf-in-mexico-5.webp",
   },
 };
 

@@ -499,31 +499,31 @@ const RECOMMENDED = [
   {
     title: "Golf",
     excerpt: "Gameplay, courses, design, history. The craft of the game in Mexico.",
-    image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/xzs0k4px_JOSE%20PHOTO1.jpeg",
+    image: "/images/xzs0k4px-jose-photo1.webp",
     href: "/journal?category=golf",
   },
   {
     title: "Beyond the Course",
     excerpt: "Culture, food, design — the world that surrounds the round.",
-    image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/g6r7fp45_GOLFINMEXICO-062.jpg",
+    image: "/images/g6r7fp45-golfinmexico-062.webp",
     href: "/journal?category=beyond-the-course",
   },
   {
     title: "Travel Concierge",
     excerpt: "Strategy briefs for booking the right course, season, and stay.",
-    image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/0wmultbm_DJI_0048.jpeg",
+    image: "/images/0wmultbm-dji-0048.webp",
     href: "/journal?category=the-concierge",
   },
   {
     title: "The Collective",
     excerpt: "Voices from the people building golf in Mexico — operators, members, locals.",
-    image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/fhv2viqt_D14F99BA-7F14-4273-BCD5-EF597DF7F5CB_1_105_c.jpeg",
+    image: "/images/fhv2viqt-d14f99ba-7f14-4273-bcd5-ef597df7f5cb-1-105-c.webp",
     href: "/journal?category=the-collective",
   },
   {
     title: "Founders Journal",
     excerpt: "Notes from Pablo and José — long-form essays on the trips that built GIM.",
-    image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/0wyp4brb_CABO%20PHOTO.png",
+    image: "/images/0wyp4brb-cabo-photo.webp",
     href: "/journal?category=founders-journal",
   },
 ];

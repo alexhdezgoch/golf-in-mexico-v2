@@ -8,10 +8,10 @@ const HERO_VIDEO_MP4 = "/video/hero.mp4";
 const HERO_VIDEO_WEBM = "/video/hero.webm";
 
 const HERO_POSTER =
-  "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png";
+  "/images/e60z74y2-golf-in-mexico-5.webp";
 
 const HOME_DIVIDER_IMG =
-  "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/nsvdb584_GOLFINMEXICO-014.jpg";
+  "/images/nsvdb584-golfinmexico-014.webp";
 
 const HOME_VIDEO_SRC = "/video/home.mp4";
 const HOME_VIDEO_SRC_WEBM = "/video/home.webm";

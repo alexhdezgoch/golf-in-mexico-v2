@@ -26,11 +26,11 @@ const FOUNDERS = [
     name: "José Islas",
     role: "The Pro Player",
     photos: [
-      { src: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/xzs0k4px_JOSE%20PHOTO1.jpeg" },
-      { src: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/6pjb9z9s_JOSE%20PHOTO%202jpeg.jpeg" },
-      { src: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/55n1fq21_JOSE%20PHOTO3.jpeg" },
-      { src: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/13l2h84i_JOSE%20PHOTO4.jpeg" },
-      { src: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/zva8jb69_JOSE%20PHOTO5.jpeg" },
+      { src: "/images/xzs0k4px-jose-photo1.webp" },
+      { src: "/images/6pjb9z9s-jose-photo-2jpeg.webp" },
+      { src: "/images/55n1fq21-jose-photo3.webp" },
+      { src: "/images/13l2h84i-jose-photo4.webp" },
+      { src: "/images/zva8jb69-jose-photo5.webp" },
     ],
   },
 ];

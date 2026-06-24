@@ -15,10 +15,10 @@ const DESTINATIONS = [
 ];
 
 const TRIP_TYPES = [
-  { id: "family",    label: "Family Trip",     desc: "Multi-gen or kids included.",        image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/39q8yutm_lhc-services-richmond-va-Gr1V3SI-xAU-unsplash.jpg" },
-  { id: "couples",   label: "Couples Trip",    desc: "Two travelers, full experience.",    image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/yszj15ke_willdwind-william-martret-9C_W8jfUhTw-unsplash.jpg" },
-  { id: "bachelor",  label: "Bachelor Trip",   desc: "Group, competition-ready itinerary.", image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/fhv2viqt_D14F99BA-7F14-4273-BCD5-EF597DF7F5CB_1_105_c.jpeg" },
-  { id: "corporate", label: "Corporate Retreat", desc: "12+ players, prizes, logistics.",  image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/w9mm3zx2_dean-5yxJpt_TcAo-unsplash.jpg" },
+  { id: "family",    label: "Family Trip",     desc: "Multi-gen or kids included.",        image: "/images/39q8yutm-lhc-services-richmond-va-gr1v3si-xau-unsplash.webp" },
+  { id: "couples",   label: "Couples Trip",    desc: "Two travelers, full experience.",    image: "/images/yszj15ke-willdwind-william-martret-9c-w8jfuhtw-unsplash.webp" },
+  { id: "bachelor",  label: "Bachelor Trip",   desc: "Group, competition-ready itinerary.", image: "/images/fhv2viqt-d14f99ba-7f14-4273-bcd5-ef597df7f5cb-1-105-c.webp" },
+  { id: "corporate", label: "Corporate Retreat", desc: "12+ players, prizes, logistics.",  image: "/images/w9mm3zx2-dean-5yxjpt-tcao-unsplash.webp" },
 ];
 
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];

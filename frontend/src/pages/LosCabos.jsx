@@ -7,12 +7,12 @@ import { getHubData, KEEP_EXPLORING_HUBS } from "../data/hubs";
 
 /* Hero photo per destination */
 const HERO_PHOTOS = {
-  "los-cabos":            "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/w5pux6b7_GOLFINMEXICO-156.jpg",
-  "punta-mita":           "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/0wmultbm_DJI_0048.jpeg",
-  "mexico-city":          "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/g6r7fp45_GOLFINMEXICO-062.jpg",
-  "cancun-riviera-maya":  "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/xg8drvr6_IMG_3947.jpeg",
-  "puerto-vallarta":      "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/gyf4bofm_D104455E-21A3-4A8E-8A51-72FDB3B5B227_1_105_c.jpeg",
-  "unique-destinations":  "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/dhz92vfa_GOLFINMEXICO-001%202.jpg",
+  "los-cabos":            "/images/w5pux6b7-golfinmexico-156.webp",
+  "punta-mita":           "/images/0wmultbm-dji-0048.webp",
+  "mexico-city":          "/images/g6r7fp45-golfinmexico-062.webp",
+  "cancun-riviera-maya":  "/images/xg8drvr6-img-3947.webp",
+  "puerto-vallarta":      "/images/gyf4bofm-d104455e-21a3-4a8e-8a51-72fdb3b5b227-1-105-c.webp",
+  "unique-destinations":  "/images/dhz92vfa-golfinmexico-001-2.webp",
 };
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -217,10 +217,10 @@ const FIELD_NOTES = [
 ];
 
 const KEEP_EXPLORING = [
-  { slug: "punta-mita",           name: "Punta Mita",            region: "Riviera Nayarit",   image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png" },
-  { slug: "mexico-city",          name: "Mexico City",            region: "Valle de Mexico",   image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png" },
-  { slug: "cancun-riviera-maya",  name: "Cancun · Riviera Maya",  region: "Quintana Roo",      image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png" },
-  { slug: "puerto-vallarta",      name: "Puerto Vallarta",        region: "Bahía de Banderas", image: "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png" },
+  { slug: "punta-mita",           name: "Punta Mita",            region: "Riviera Nayarit",   image: "/images/e60z74y2-golf-in-mexico-5.webp" },
+  { slug: "mexico-city",          name: "Mexico City",            region: "Valle de Mexico",   image: "/images/e60z74y2-golf-in-mexico-5.webp" },
+  { slug: "cancun-riviera-maya",  name: "Cancun · Riviera Maya",  region: "Quintana Roo",      image: "/images/e60z74y2-golf-in-mexico-5.webp" },
+  { slug: "puerto-vallarta",      name: "Puerto Vallarta",        region: "Bahía de Banderas", image: "/images/e60z74y2-golf-in-mexico-5.webp" },
 ];
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -467,7 +467,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
   const FAQS = data.faqs;
   const KEEP_EXPLORING = KEEP_EXPLORING_HUBS(data.slug).map((h) => ({
     ...h,
-    image: HERO_PHOTOS[h.slug] || "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/e60z74y2_Golf%C2%B0%20In%20Mexico%C2%B0%20%285%29.png",
+    image: HERO_PHOTOS[h.slug] || "/images/e60z74y2-golf-in-mexico-5.webp",
   }));
   useEffect(() => {
     document.title = data.seoTitle || `${data.name} — Golf in Mexico°`;
