@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Linkedin, Instagram } from "lucide-react";
-import { Link } from "react-router-dom";
 
 const PABLO = {
   id: "pablo",
@@ -86,16 +85,7 @@ const fadeUp = {
   transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
 };
 
-const InsidersCTA = () => (
-  <Link
-    to="/about"
-    data-testid="founders-cta-insiders"
-    className="group mt-8 md:mt-10 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-green-mid)] hover:text-[var(--c-gold)] transition-colors duration-500 border-t border-[var(--c-border)] pt-6"
-  >
-    Meet the Founders
-    <span className="transition-transform duration-500 group-hover:translate-x-1.5">→</span>
-  </Link>
-);
+// Note: "Meet the Founders" CTA removed — this component already lives on /about.
 
 const TeamEditorial = () => {
   const [activeId, setActiveId] = useState("pablo");
@@ -110,18 +100,6 @@ const TeamEditorial = () => {
       className="relative bg-[var(--c-off-white)] border-t border-[var(--c-border)] scroll-mt-24"
     >
       <div className="max-w-[1100px] mx-auto px-6 md:px-12 py-20 md:py-28">
-        {/* Section headline */}
-        <motion.h2
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-10%" }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          data-testid="founders-headline"
-          className="font-display font-normal text-[var(--c-text)] leading-[1.1] tracking-tight text-3xl md:text-5xl lg:text-6xl max-w-[22ch] mb-14 md:mb-20"
-        >
-          A sport agent. A touring pro. <em className="italic text-[var(--c-gold)]">One editorial promise.</em>
-        </motion.h2>
-
         {/* Tabs */}
         <div
           data-testid="author-tabs"
@@ -288,7 +266,6 @@ const TeamEditorial = () => {
                       </div>
                     )}
 
-                    <InsidersCTA />
                   </>
                 )}
 
