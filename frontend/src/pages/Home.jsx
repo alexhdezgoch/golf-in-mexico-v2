@@ -14,6 +14,7 @@ const HOME_DIVIDER_IMG =
   "https://customer-assets.emergentagent.com/job_the-golfers-journal/artifacts/nsvdb584_GOLFINMEXICO-014.jpg";
 
 const HOME_VIDEO_SRC = "/video/home.mp4";
+const HOME_VIDEO_SRC_WEBM = "/video/home.webm";
 
 /* ─────────────── LATEST FROM THE JOURNAL ─────────────── */
 
@@ -129,14 +130,16 @@ const StatementAndVideo = () => (
       >
         <video
           data-testid="home-video"
-          src={HOME_VIDEO_SRC}
           autoPlay
           loop
           muted
           playsInline
           preload="metadata"
           className="absolute inset-0 w-full h-full object-cover"
-        />
+        >
+          <source src={HOME_VIDEO_SRC_WEBM} type="video/webm" />
+          <source src={HOME_VIDEO_SRC} type="video/mp4" />
+        </video>
         {/* Subtle gradient frame so the video doesn't fight the cream background */}
         <div
           aria-hidden
