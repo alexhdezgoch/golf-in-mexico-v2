@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import FoundersGallery from "@/components/FoundersGallery";
 import { ARTICLES } from "@/data/articles";
@@ -181,6 +181,27 @@ const HomeDivider = () => {
 /* ─────────────── PAGE ─────────────── */
 
 const Home = () => {
+  const heroVideoRef = useRef(null);
+
+  // Nudge autoplay across browsers: muted+playsInline lets most autoplay, but
+  // iOS/Safari can need an explicit play() once data is ready. (Low Power Mode
+  // still blocks autoplay at the OS level — the poster + tap-to-play covers that.)
+  useEffect(() => {
+    const v = heroVideoRef.current;
+    if (!v) return;
+    const tryPlay = () => {
+      const p = v.play();
+      if (p && typeof p.catch === "function") p.catch(() => {});
+    };
+    tryPlay();
+    v.addEventListener("canplay", tryPlay);
+    v.addEventListener("loadeddata", tryPlay);
+    return () => {
+      v.removeEventListener("canplay", tryPlay);
+      v.removeEventListener("loadeddata", tryPlay);
+    };
+  }, []);
+
   return (
     <main data-testid="page-home" className="relative">
       {/* HERO — full-bleed video, H1 only */}
@@ -189,6 +210,7 @@ const Home = () => {
         className="relative h-[100svh] w-full overflow-hidden bg-[var(--c-green-deep)]"
       >
         <video
+          ref={heroVideoRef}
           data-testid="hero-video"
           className="absolute inset-0 w-full h-full object-cover editorial-img"
           poster={HERO_POSTER}
@@ -196,8 +218,9 @@ const Home = () => {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
         >
+          {/* WebM first (smaller, Chrome/Firefox); iOS Safari skips it and uses the MP4 fallback */}
           <source src={HERO_VIDEO_WEBM} type="video/webm" />
           <source src={HERO_VIDEO_MP4} type="video/mp4" />
         </video>
