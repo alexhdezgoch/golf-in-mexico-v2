@@ -11,6 +11,7 @@ import Intro from "@/components/Intro";
 import ReadingProgress from "@/components/ReadingProgress";
 import InquiryModal from "@/components/InquiryModal";
 import { InquiryContext } from "@/context/Inquiry";
+import { initAnalytics, trackPageView } from "@/lib/analytics";
 
 import Home from "@/pages/Home";
 import Journal from "@/pages/Journal";
@@ -46,6 +47,12 @@ const pageVariants = {
 
 const AnimatedRoutes = () => {
   const location = useLocation();
+
+  // GA4: load gtag once, then send a page_view on every client-side route change.
+  useEffect(() => {
+    initAnalytics();
+    trackPageView(location.pathname + location.search);
+  }, [location.pathname, location.search]);
 
   useEffect(() => {
     const snapToTop = () => {

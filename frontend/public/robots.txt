@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://golf-in-mexico.com/sitemap.xml
