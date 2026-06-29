@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import TeamEditorial from "@/components/TeamEditorial";
+import { useSeo, orgSchema } from "@/hooks/useSeo";
 
 /* ═══════════════════════════════════════════════════════════════════
    About · /about
@@ -8,7 +9,15 @@ import TeamEditorial from "@/components/TeamEditorial";
    page focuses on the brand mission and the three editorial pillars.
    ═══════════════════════════════════════════════════════════════════ */
 
-const About = () => (
+const About = () => {
+  useSeo({
+    title: "About — Golf in Mexico°",
+    description:
+      "Golf in Mexico° comes from sports agent Pablo De La Mora and professional golfer José Islas — relationships, access, and an editorial voice built inside the ropes.",
+    canonical: "/about",
+    jsonLd: orgSchema(),
+  });
+  return (
   <main data-testid="page-about" className="bg-[var(--c-off-white)]">
     {/* ── HERO ── */}
     <header className="relative bg-[var(--c-off-white)] pt-32 md:pt-40 pb-16 md:pb-24 border-b border-[var(--c-border)]">
@@ -132,6 +141,7 @@ const About = () => (
       </div>
     </section>
   </main>
-);
+  );
+};
 
 export default About;

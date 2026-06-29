@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useSeo } from "@/hooks/useSeo";
 
 /* ─────────────── DATA ─────────────── */
 
@@ -218,6 +219,12 @@ const DestinationCard = ({ d, index }) => {
 /* ─────────────── PAGE ─────────────── */
 
 const Destinations = () => {
+  useSeo({
+    title: "Golf Destinations in Mexico — Los Cabos, Punta Mita, Mexico City & more",
+    description:
+      "Field guides to Mexico's golf destinations — Los Cabos, Punta Mita, Mexico City, Cancún · Riviera Maya, Puerto Vallarta and beyond. Courses, costs, access, and seasons.",
+    canonical: "/destinations",
+  });
   return (
     <main data-testid="page-destinations" className="relative bg-[var(--c-off-white)]">
       <DestinationsHeader />

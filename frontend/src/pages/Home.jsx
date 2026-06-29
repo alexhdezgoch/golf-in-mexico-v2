@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import FoundersGallery from "@/components/FoundersGallery";
 import { ARTICLES } from "@/data/articles";
+import { useSeo, orgSchema, webSiteSchema } from "@/hooks/useSeo";
 
 const HERO_VIDEO_MP4 = "/video/hero.mp4";
 const HERO_VIDEO_WEBM = "/video/hero.webm";
@@ -182,6 +183,14 @@ const HomeDivider = () => {
 
 const Home = () => {
   const heroVideoRef = useRef(null);
+
+  useSeo({
+    title: "Golf in Mexico° — The best golf in Mexico",
+    description:
+      "The only editorial guide to golf in Mexico — courses, costs, logistics, and bespoke trips across Los Cabos, Punta Mita, Mexico City and beyond. By Pablo De La Mora & José Islas.",
+    canonical: "/",
+    jsonLd: [orgSchema(), webSiteSchema()],
+  });
 
   // Nudge autoplay across browsers: muted+playsInline lets most autoplay, but
   // iOS/Safari can need an explicit play() once data is ready. (Low Power Mode

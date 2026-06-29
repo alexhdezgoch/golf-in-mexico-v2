@@ -1,0 +1,27 @@
+# Golf in Mexico°
+
+> Golf in Mexico° is the only editorial guide to golf in Mexico written by people who play it, plan it, and live it — sports agent Pablo De La Mora and professional golfer José Islas. Course intelligence, real green fees, costs, logistics, seasons, and bespoke trip planning across Los Cabos, Punta Mita, Mexico City, the Riviera Maya, Puerto Vallarta and beyond.
+
+## Destinations
+
+- [Los Cabos golf guide](https://golf-in-mexico.com/destinations/los-cabos): Eleven editorial-grade golf courses, green fees from $95–$500, and the insider access most travelers never find. The complete guide to Los Cabos for 2026.
+- [Punta Mita golf guide](https://golf-in-mexico.com/destinations/punta-mita): Five championship golf courses within 75 km of PVR. Pacifico's Tail of the Whale — the only natural island green in golf. Mandarina (Norman) · Nauka (Fazio, 2025).…
+- [Mexico City golf guide](https://golf-in-mexico.com/destinations/mexico-city): 20+ golf courses within 90 minutes of Polanco. Chapultepec — Mexican Open · WGC · LIV host. Bosque Real · Amanali · Encinos · Avandaro · Tabachines. The complete…
+- [Cancun · Riviera Maya golf guide](https://golf-in-mexico.com/destinations/cancun-riviera-maya): 12+ championship golf courses along 80 miles of Caribbean coastline. Green fees from $89 to $353. PGA Tour pedigree at El Camaleón Mayakoba. The lowest-friction golf trip…
+- [Puerto Vallarta golf guide](https://golf-in-mexico.com/destinations/puerto-vallarta): Eight championship golf courses around Banderas Bay, the only PGA Tour venue in the region (Vidanta Norman), and Mexico's strongest value tier for Nicklaus and Weiskopf…
+- [Unique Destinations golf guide](https://golf-in-mexico.com/destinations/unique-destinations): Beyond the headline corridors, Mexico hides another dozen destinations worth the detour — colonial towns, quiet Pacific bays, lakeside highlands, Caribbean limestone.…
+
+## Journal
+
+- [How I Planned My Bachelor Golf Trip in Cabo San Lucas as a Tour Agent](https://golf-in-mexico.com/journal/the-bachelor-trip-cabo): A Tour agent's first-person account of a twelve-man bachelor golf trip to Cabo — Solmar Links and members-only Diamante Dunes — and how it sparked Golf in Mexico.
+
+## About
+
+- [About Golf in Mexico°](https://golf-in-mexico.com/about): The founders, the mission, and the three editorial pillars.
+- [Experiences](https://golf-in-mexico.com/experience): Couples, bachelor, family/friends, and corporate golf trips.
+- [Plan a trip](https://golf-in-mexico.com/trip-builder): Build a custom Mexico golf trip.
+- [Contact](https://golf-in-mexico.com/contact): Reach the team.
+
+## Full content
+
+- [llms-full.txt](https://golf-in-mexico.com/llms-full.txt): The complete text of every destination guide and article.

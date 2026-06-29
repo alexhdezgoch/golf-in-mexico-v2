@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { getArticleBySlug, getRelatedArticles, ARTICLES } from "@/data/articles";
+import { useSeo, articleSchema, breadcrumbSchema, faqSchema } from "@/hooks/useSeo";
 
 const Badge = ({ children, variant = "default" }) => {
   const cls =
@@ -637,6 +638,36 @@ const Article = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" in window ? "instant" : "auto" });
   }, [slug]);
+
+  // SEO/JSON-LD — called unconditionally (no-op when article is missing) to keep hook order stable.
+  const articleFaqs = (article?.body || [])
+    .filter((b) => b.type === "faq")
+    .map((b) => ({ q: b.q, a: b.a }));
+  useSeo(
+    article
+      ? {
+          title: article.metaTitle || `${article.title} — Golf in Mexico°`,
+          description: article.metaDescription || article.excerpt || article.subtitle,
+          canonical: `/journal/${article.slug}`,
+          jsonLd: [
+            articleSchema({
+              headline: article.h1 || article.title,
+              description: article.metaDescription || article.excerpt,
+              path: `/journal/${article.slug}`,
+              image: article.heroImage,
+              author: { type: "Person", name: article.author?.name },
+              datePublished: "2026-05-01",
+            }),
+            breadcrumbSchema([
+              { name: "Journal", path: "/journal" },
+              { name: article.destinationLabel, path: `/journal?destination=${article.destination}` },
+              { name: article.title, path: `/journal/${article.slug}` },
+            ]),
+            ...(articleFaqs.length ? [faqSchema(articleFaqs)] : []),
+          ],
+        }
+      : {},
+  );
 
   if (!article) {
     return <Navigate to="/journal" replace />;

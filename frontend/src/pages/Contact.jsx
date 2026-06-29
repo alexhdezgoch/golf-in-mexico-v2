@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useSeo } from "@/hooks/useSeo";
 
 /* ═══════════════════════════════════════════════════════════════════
    Contact · /contact
@@ -10,7 +11,14 @@ const CALENDAR_URL = "https://calendar.app.google/aMfKM3QfqJa966m68";
 
 const EMAIL_ADDRESS = "hello@golf-in-mexico.com";
 
-const Contact = () => (
+const Contact = () => {
+  useSeo({
+    title: "Contact — Golf in Mexico°",
+    description:
+      "Talk golf with Golf in Mexico°. Email the team for trip planning, press, or partnerships, or book a call to plan your Mexico golf trip.",
+    canonical: "/contact",
+  });
+  return (
   <main data-testid="page-contact" className="relative bg-[var(--c-off-white)] pb-24 md:pb-32">
     {/* HERO */}
     <section className="pt-32 md:pt-40 pb-12 md:pb-16">
@@ -100,6 +108,7 @@ const Contact = () => (
       </div>
     </section>
   </main>
-);
+  );
+};
 
 export default Contact;

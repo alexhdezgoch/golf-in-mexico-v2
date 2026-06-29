@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import PhotoSlot from "../components/hub/PhotoSlot";
 import SectionNav from "../components/hub/SectionNav";
 import { getHubData, KEEP_EXPLORING_HUBS } from "../data/hubs";
+import { useSeo, articleSchema, breadcrumbSchema, faqSchema } from "@/hooks/useSeo";
 
 /* Hero photo per destination */
 const HERO_PHOTOS = {
@@ -469,36 +470,27 @@ const LosCabos = ({ slug = "los-cabos" }) => {
     ...h,
     image: HERO_PHOTOS[h.slug] || "/images/e60z74y2-golf-in-mexico-5.webp",
   }));
-  useEffect(() => {
-    document.title = data.seoTitle || `${data.name} — Golf in Mexico°`;
-    let meta = document.querySelector("meta[name='description']");
-    if (!meta) {
-      meta = document.createElement("meta");
-      meta.name = "description";
-      document.head.appendChild(meta);
-    }
-    meta.content = data.seoDescription || data.heroAnswer || "";
-
-    const breadcrumbName = data.name;
-    const slug = data.slug;
-    const schemas = [
-      { "@context": "https://schema.org", "@type": "Article", headline: data.seoTitle || `Golf in ${data.name}`, author: { "@type": "Organization", name: "Golf in Mexico" }, publisher: { "@type": "Organization", name: "Golf in Mexico", url: "https://golfin.mx" }, datePublished: "2026-05-01", dateModified: "2026-05-25" },
-      { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://golfin.mx/" },
-        { "@type": "ListItem", position: 2, name: "Destinations", item: "https://golfin.mx/destinations/" },
-        { "@type": "ListItem", position: 3, name: breadcrumbName, item: `https://golfin.mx/destinations/${slug}/` },
-      ]},
-      { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: (FAQS || []).map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) },
-    ];
-    const els = schemas.map((s) => {
-      const el = document.createElement("script");
-      el.type = "application/ld+json";
-      el.text = JSON.stringify(s);
-      document.head.appendChild(el);
-      return el;
-    });
-    return () => els.forEach((el) => el.remove());
-  }, [data, FAQS]);
+  useSeo({
+    title: data.seoTitle || `${data.name} — Golf in Mexico°`,
+    description: data.seoDescription || data.heroAnswer || "",
+    canonical: `/destinations/${data.slug}`,
+    jsonLd: [
+      articleSchema({
+        headline: data.seoTitle || `Golf in ${data.name}`,
+        description: data.seoDescription || data.heroAnswer,
+        path: `/destinations/${data.slug}`,
+        image: data.heroPhoto,
+        datePublished: "2026-05-01",
+        dateModified: "2026-05-25",
+      }),
+      breadcrumbSchema([
+        { name: "Home", path: "/" },
+        { name: "Destinations", path: "/destinations" },
+        { name: data.name, path: `/destinations/${data.slug}` },
+      ]),
+      faqSchema(FAQS || []),
+    ],
+  });
 
   return (
     <main data-testid="page-los-cabos" className="hub-page relative bg-[var(--c-off-white)]">

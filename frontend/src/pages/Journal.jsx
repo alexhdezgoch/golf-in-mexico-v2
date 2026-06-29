@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ARTICLES } from "@/data/articles";
+import { useSeo } from "@/hooks/useSeo";
 
 /* ───────────────── CATEGORY TAGGING ───────────────── */
 
@@ -184,6 +185,12 @@ const Card = ({ a }) => (
 /* ───────────────── PAGE ───────────────── */
 
 const Journal = () => {
+  useSeo({
+    title: "Journal — Golf in Mexico°",
+    description:
+      "Editorial stories, trip playbooks, and course intelligence for golf in Mexico — written by people who plan and play it.",
+    canonical: "/journal",
+  });
   const [searchParams] = useSearchParams();
   const initialCategory = searchParams.get("category");
   const validKeys = ["all", "golf", "beyond-the-course", "the-concierge", "the-collective", "founders-journal"];

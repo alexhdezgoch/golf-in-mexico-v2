@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useSeo } from "@/hooks/useSeo";
 
 /* ═══════════════════════════════════════════════════════════════════
    Experience selector · /experience
@@ -157,7 +158,14 @@ const ExperienceCard = ({ e, index }) => (
 
 /* ─────────────── PAGE ─────────────── */
 
-const Experience = () => (
+const Experience = () => {
+  useSeo({
+    title: "Golf Experiences in Mexico — Couples, Bachelor, Family & Corporate",
+    description:
+      "Choose your trip: couples golf, bachelor tournaments, family or friends, and corporate retreats — bespoke Mexico golf itineraries built around the golfer.",
+    canonical: "/experience",
+  });
+  return (
   <main data-testid="page-experience" className="relative bg-[var(--c-green-deep)]">
     <ExperienceHero />
 
@@ -193,6 +201,7 @@ const Experience = () => (
       </div>
     </section>
   </main>
-);
+  );
+};
 
 export default Experience;
