@@ -19,12 +19,14 @@
 const GTM_ID = process.env.REACT_APP_GTM_ID;
 const GA4_ID = process.env.REACT_APP_GA4_ID;
 const META_PIXEL_ID = process.env.REACT_APP_META_PIXEL_ID;
+const CLARITY_ID = process.env.REACT_APP_CLARITY_ID;
 
 const hasWindow = () => typeof window !== "undefined";
 const hasGTM = () => hasWindow() && Boolean(GTM_ID);
 const hasGA4Direct = () => hasWindow() && !GTM_ID && Boolean(GA4_ID);
 const hasMeta = () => hasWindow() && Boolean(META_PIXEL_ID);
-const isEnabled = () => hasGTM() || hasGA4Direct() || hasMeta();
+const hasClarity = () => hasWindow() && Boolean(CLARITY_ID);
+const isEnabled = () => hasGTM() || hasGA4Direct() || hasMeta() || hasClarity();
 
 let initialized = false;
 
@@ -79,12 +81,28 @@ function initMeta() {
   window.fbq("init", META_PIXEL_ID);
 }
 
+function initClarity() {
+  // Microsoft Clarity — session recordings + heatmaps. Auto-captures page views
+  // (including SPA history navigations) and clicks; nothing else to wire.
+  /* eslint-disable */
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+    t = l.createElement(r);
+    t.async = 1;
+    t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0];
+    y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", CLARITY_ID);
+  /* eslint-enable */
+}
+
 // Load configured tags once. Safe to call repeatedly.
 export const initAnalytics = () => {
   if (!isEnabled() || initialized) return;
   initialized = true;
   if (hasGTM() || hasGA4Direct()) initGoogle();
   if (hasMeta()) initMeta();
+  if (hasClarity()) initClarity();
 };
 
 // Emit a page view for the current SPA route across every active provider.

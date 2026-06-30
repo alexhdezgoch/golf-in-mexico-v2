@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { trackLead } from "@/lib/analytics";
+import { trackLead, trackEvent } from "@/lib/analytics";
 
 /* ═══════════════════════════════════════════════════════════════════
    GIM Trip Builder · /trip-builder
@@ -105,6 +105,11 @@ const TripBuilder = () => {
   const [intent, setIntent] = useState(null);
 
   const [step, setStep] = useState(1);
+
+  // Funnel: emit a step event as the user advances (step 1 is the page view).
+  useEffect(() => {
+    if (step > 1) trackEvent("trip_builder_step", { step });
+  }, [step]);
   const [destinations, setDestinations] = useState([]);
   const [tripType, setTripType] = useState(null);
   const [searchParams] = useSearchParams();

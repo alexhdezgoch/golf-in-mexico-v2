@@ -11,7 +11,7 @@ import Intro from "@/components/Intro";
 import ReadingProgress from "@/components/ReadingProgress";
 import InquiryModal from "@/components/InquiryModal";
 import { InquiryContext } from "@/context/Inquiry";
-import { initAnalytics, trackPageView } from "@/lib/analytics";
+import { initAnalytics, trackPageView, trackEvent } from "@/lib/analytics";
 
 import Home from "@/pages/Home";
 import Journal from "@/pages/Journal";
@@ -229,7 +229,10 @@ function App() {
     };
   }, []);
 
-  const openInquiry = () => setInquiryOpen(true);
+  const openInquiry = () => {
+    setInquiryOpen(true);
+    trackEvent("open_inquiry");
+  };
   const closeInquiry = () => setInquiryOpen(false);
 
   return (
