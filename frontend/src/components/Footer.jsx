@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { trackLead } from "@/lib/analytics";
 
 const NAV_LINKS = [
   { label: "Home", to: "/" },
@@ -35,7 +36,10 @@ const Footer = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (email.trim().length > 3) setSubmitted(true);
+    if (email.trim().length > 3) {
+      setSubmitted(true);
+      trackLead({ form: "footer_newsletter" });
+    }
   };
 
   const handleAboutClick = (e) => {

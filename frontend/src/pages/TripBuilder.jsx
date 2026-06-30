@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { trackLead } from "@/lib/analytics";
 
 /* ═══════════════════════════════════════════════════════════════════
    GIM Trip Builder · /trip-builder
@@ -179,6 +180,7 @@ const TripBuilder = () => {
       safeSessionWrite("gim-exit-lead", JSON.stringify(exitLead));
       devLog("[GIM Trip Builder · exit-intent lead]", exitLead);
       setExitSent(true);
+      trackLead({ form: "trip_builder_exit", trip_type: tripType });
       setTimeout(() => setExitVisible(false), 2200);
     }
   };
@@ -258,6 +260,7 @@ const TripBuilder = () => {
       safeSessionWrite("gim-final-lead", JSON.stringify(finalLead));
       devLog("[GIM Trip Builder · final lead]", finalLead);
       setSubmitted(true);
+      trackLead({ form: "trip_builder", trip_type: tripType, package: pkg });
     }
   };
 

@@ -5,6 +5,7 @@ import PhotoSlot from "../components/hub/PhotoSlot";
 import SectionNav from "../components/hub/SectionNav";
 import { getHubData, KEEP_EXPLORING_HUBS } from "../data/hubs";
 import { useSeo, articleSchema, breadcrumbSchema, faqSchema } from "@/hooks/useSeo";
+import { trackLead } from "@/lib/analytics";
 
 /* Hero photo per destination */
 const HERO_PHOTOS = {
@@ -333,7 +334,7 @@ const PlaybookCTA = ({ variant = "full", testid, h3Pre = "Cabo, distilled —", 
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
-  const submit = (e) => { e.preventDefault(); if (email.trim().length > 3) setSent(true); };
+  const submit = (e) => { e.preventDefault(); if (email.trim().length > 3) { setSent(true); trackLead({ form: "hub_playbook" }); } };
 
   if (variant === "short") {
     return (
@@ -1019,7 +1020,7 @@ const NewsletterMiniForm = ({ testid }) => {
   }
   return (
     <form
-      onSubmit={(e) => { e.preventDefault(); if (email.trim().length > 3) setSent(true); }}
+      onSubmit={(e) => { e.preventDefault(); if (email.trim().length > 3) { setSent(true); trackLead({ form: "hub_capture" }); } }}
       className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
       data-testid={testid}
     >
@@ -1056,7 +1057,7 @@ const PlaybookEndForm = () => {
   if (open) {
     return (
       <form
-        onSubmit={(e) => { e.preventDefault(); if (email.trim().length > 3) setSent(true); }}
+        onSubmit={(e) => { e.preventDefault(); if (email.trim().length > 3) { setSent(true); trackLead({ form: "hub_capture" }); } }}
         className="flex flex-col gap-2"
         data-testid="lc-playbook-end-form"
       >
