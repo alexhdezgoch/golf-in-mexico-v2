@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
+import { trackLead } from "@/lib/analytics";
 
 /* Static placeholder copy for the 3 not-yet-live destinations */
 const PLACEHOLDERS = {
@@ -37,7 +38,10 @@ const DestinationPlaceholder = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (email.trim().length > 3) setSubmitted(true);
+    if (email.trim().length > 3) {
+      setSubmitted(true);
+      trackLead({ form: "destination_waitlist", destination: slug });
+    }
   };
 
   if (!d) return null;

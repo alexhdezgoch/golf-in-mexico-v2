@@ -108,7 +108,23 @@ export const trackPageView = (path) => {
   }
 };
 
-// Emit a custom event (e.g. generate_lead) across every active provider.
+// Emit a lead conversion across every active provider, using each platform's
+// expected event name: GA4 -> "generate_lead", Meta -> standard "Lead".
+export const trackLead = (params = {}) => {
+  if (!isEnabled()) return;
+
+  if (hasGTM()) {
+    window.dataLayer.push({ event: "generate_lead", ...params });
+  } else if (typeof window.gtag === "function") {
+    window.gtag("event", "generate_lead", params);
+  }
+
+  if (hasMeta() && typeof window.fbq === "function") {
+    window.fbq("track", "Lead", params);
+  }
+};
+
+// Emit a custom event across every active provider.
 export const trackEvent = (name, params = {}) => {
   if (!isEnabled()) return;
 

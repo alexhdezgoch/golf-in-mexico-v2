@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { trackLead } from "@/lib/analytics";
 
 const REGIONS = [
   "Los Cabos",
@@ -40,6 +41,7 @@ const InquiryModal = ({ open, onClose }) => {
     e.preventDefault();
     // Design-only submission per current scope. Confirms the request.
     setSent(true);
+    trackLead({ form: "inquiry", region });
   };
 
   return (

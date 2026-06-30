@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { trackLead } from "@/lib/analytics";
 
 /**
  * Notify modal — reusable "Stay in the know" capture for regions in preparation.
@@ -26,6 +27,7 @@ const NotifyModal = ({ open, onClose, region }) => {
     if (!email) return;
     // TODO: connect to backend
     setSubmitted(true);
+    trackLead({ form: "notify", region });
     setTimeout(() => onClose && onClose(), 1800);
   };
 

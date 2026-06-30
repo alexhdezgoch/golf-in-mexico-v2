@@ -3,6 +3,7 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { getArticleBySlug, getRelatedArticles, ARTICLES } from "@/data/articles";
 import { useSeo, articleSchema, breadcrumbSchema, faqSchema } from "@/hooks/useSeo";
+import { trackLead } from "@/lib/analytics";
 
 const Badge = ({ children, variant = "default" }) => {
   const cls =
@@ -428,6 +429,7 @@ const ScrollEmailCapture = ({ slug }) => {
     e.preventDefault();
     if (email.trim().length > 3) {
       setSubmitted(true);
+      trackLead({ form: "article_newsletter" });
       setTimeout(dismiss, 2500);
     }
   };
