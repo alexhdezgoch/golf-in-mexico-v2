@@ -1,45 +1,38 @@
-// Analytics loader for a client-routed SPA.
+// Analytics loader for a client-routed SPA. Three independent, env-driven paths:
 //
-// Primary path: Google Tag Manager. Set REACT_APP_GTM_ID (GTM-XXXXXXX) and GA4
-// is configured *inside* GTM — this file just loads the container and pushes
-// clean dataLayer events on route change / conversion.
+//   - Google: REACT_APP_GTM_ID (GTM-XXXXXXX) loads GTM (GA4 configured inside it);
+//     else REACT_APP_GA4_ID (G-XXXXXXXXXX) loads gtag.js directly. GTM takes
+//     priority so GA4 is never loaded twice.
+//   - Meta: REACT_APP_META_PIXEL_ID (numeric) loads the Meta Pixel.
 //
-// Fallback path: if no GTM ID is set but REACT_APP_GA4_ID (G-XXXXXXXXXX) is,
-// gtag.js loads directly. GTM takes priority so GA4 is never loaded twice
-// (which would double-count every page_view).
+// Each path is optional and runs alongside the others. With no vars set, every
+// function is a safe no-op, so this can ship before the IDs exist.
 //
-// With neither var set, every function is a safe no-op, so this can ship before
-// the containers exist.
+// Because this is a client-routed SPA, automatic page views are suppressed and a
+// page view is emitted manually on every route change (see trackPageView).
 //
-// SPA contract for whoever configures GTM:
-//   - On every route change this pushes:  { event: "spa_pageview", page_path, page_location, page_title }
-//     → build a GA4 Event tag (event name "page_view") on a Custom Event trigger
-//       matching "spa_pageview", and DISABLE GA4 Enhanced Measurement's
-//       "page changes based on browser history events" to avoid duplicates.
-//   - Conversions push:  { event: "generate_lead", ...params }
+// GTM contract: on route change this pushes { event: "spa_pageview", page_path,
+// page_location, page_title } — build a GA4 Event tag (event "page_view") on a
+// Custom Event trigger "spa_pageview" and DISABLE GA4 Enhanced Measurement's
+// "page changes based on browser history events" to avoid duplicates.
 
 const GTM_ID = process.env.REACT_APP_GTM_ID;
 const GA4_ID = process.env.REACT_APP_GA4_ID;
+const META_PIXEL_ID = process.env.REACT_APP_META_PIXEL_ID;
 
-const hasGTM = () => typeof window !== "undefined" && Boolean(GTM_ID);
-const hasGA4Direct = () =>
-  typeof window !== "undefined" && !GTM_ID && Boolean(GA4_ID);
-const isEnabled = () => hasGTM() || hasGA4Direct();
+const hasWindow = () => typeof window !== "undefined";
+const hasGTM = () => hasWindow() && Boolean(GTM_ID);
+const hasGA4Direct = () => hasWindow() && !GTM_ID && Boolean(GA4_ID);
+const hasMeta = () => hasWindow() && Boolean(META_PIXEL_ID);
+const isEnabled = () => hasGTM() || hasGA4Direct() || hasMeta();
 
 let initialized = false;
 
-// Load the container/tag once. Safe to call repeatedly.
-export const initAnalytics = () => {
-  if (!isEnabled() || initialized) return;
-  initialized = true;
-
+function initGoogle() {
   window.dataLayer = window.dataLayer || [];
 
   if (hasGTM()) {
-    window.dataLayer.push({
-      "gtm.start": new Date().getTime(),
-      event: "gtm.js",
-    });
+    window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
     const script = document.createElement("script");
     script.async = true;
     script.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
@@ -48,7 +41,7 @@ export const initAnalytics = () => {
     return;
   }
 
-  // Direct GA4 fallback (no GTM).
+  // Direct GA4 (no GTM).
   const script = document.createElement("script");
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`;
@@ -60,9 +53,41 @@ export const initAnalytics = () => {
   gtag("js", new Date());
   // send_page_view: false — we emit page_view ourselves on every route change.
   gtag("config", GA4_ID, { send_page_view: false });
+}
+
+function initMeta() {
+  // Standard Meta Pixel loader. PageView is NOT fired here — trackPageView emits
+  // it on the initial route effect and every change, avoiding a double count.
+  /* eslint-disable */
+  !(function (f, b, e, v, n, t, s) {
+    if (f.fbq) return;
+    n = f.fbq = function () {
+      n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+    };
+    if (!f._fbq) f._fbq = n;
+    n.push = n;
+    n.loaded = !0;
+    n.version = "2.0";
+    n.queue = [];
+    t = b.createElement(e);
+    t.async = !0;
+    t.src = v;
+    s = b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t, s);
+  })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+  /* eslint-enable */
+  window.fbq("init", META_PIXEL_ID);
+}
+
+// Load configured tags once. Safe to call repeatedly.
+export const initAnalytics = () => {
+  if (!isEnabled() || initialized) return;
+  initialized = true;
+  if (hasGTM() || hasGA4Direct()) initGoogle();
+  if (hasMeta()) initMeta();
 };
 
-// Emit a page_view for the current SPA route.
+// Emit a page view for the current SPA route across every active provider.
 export const trackPageView = (path) => {
   if (!isEnabled()) return;
 
@@ -74,22 +99,26 @@ export const trackPageView = (path) => {
 
   if (hasGTM()) {
     window.dataLayer.push({ event: "spa_pageview", ...payload });
-    return;
-  }
-  if (typeof window.gtag === "function") {
+  } else if (typeof window.gtag === "function") {
     window.gtag("event", "page_view", payload);
+  }
+
+  if (hasMeta() && typeof window.fbq === "function") {
+    window.fbq("track", "PageView");
   }
 };
 
-// Emit a custom event (e.g. generate_lead). params is an optional object.
+// Emit a custom event (e.g. generate_lead) across every active provider.
 export const trackEvent = (name, params = {}) => {
   if (!isEnabled()) return;
 
   if (hasGTM()) {
     window.dataLayer.push({ event: name, ...params });
-    return;
-  }
-  if (typeof window.gtag === "function") {
+  } else if (typeof window.gtag === "function") {
     window.gtag("event", name, params);
+  }
+
+  if (hasMeta() && typeof window.fbq === "function") {
+    window.fbq("trackCustom", name, params);
   }
 };
