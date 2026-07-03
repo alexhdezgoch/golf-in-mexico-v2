@@ -9,7 +9,7 @@ import { useSeo } from "@/hooks/useSeo";
 const CATEGORY_MAP = {
   golf: [],
   "beyond-the-course": [],
-  "the-concierge": [],
+  "the-concierge": ["how-to-plan-a-golf-trip-to-mexico"],
   "the-collective": [],
   "founders-journal": ["the-bachelor-trip-cabo"],
 };

@@ -84,6 +84,23 @@ const InlineCTA = ({ destinationLabel, testId }) => (
 
 /* ----------------------------- BODY RENDERER ----------------------------- */
 
+// Inline markdown links: "[text](/path)" → <Link>. Internal paths only.
+const renderInline = (text) => {
+  if (!text || !text.includes("](")) return text;
+  const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g);
+  return parts.map((part, i) => {
+    const m = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (!m) return part;
+    const [, label, href] = m;
+    if (!href.startsWith("/")) return label;
+    return (
+      <Link key={i} to={href} className="underline decoration-gold/60 underline-offset-4 hover:text-gold transition-colors">
+        {label}
+      </Link>
+    );
+  });
+};
+
 const Body = ({ blocks, destinationLabel }) => {
   // Count H2s for inline CTA placement after #2 and #4
   let h2Count = 0;
@@ -141,6 +158,100 @@ const Body = ({ blocks, destinationLabel }) => {
             </figure>
           );
         }
+        if (block.type === "list") {
+          const ListTag = block.ordered ? "ol" : "ul";
+          return (
+            <ListTag
+              key={i}
+              className={`mt-4 space-y-2.5 pl-5 max-w-[680px] ${block.ordered ? "list-decimal" : "list-disc"} marker:text-gold`}
+            >
+              {block.items.map((item, j) => (
+                <li key={j} className="pl-1.5">
+                  {item.title ? (
+                    <>
+                      <span className="font-medium text-ink">{item.title}</span>
+                      {item.text ? <> — {renderInline(item.text)}</> : null}
+                    </>
+                  ) : (
+                    renderInline(item.text || item)
+                  )}
+                </li>
+              ))}
+            </ListTag>
+          );
+        }
+        if (block.type === "columns") {
+          return (
+            <div key={i} className="my-10 md:my-14 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 max-w-[680px]">
+              {block.columns.map((col, j) => (
+                <div key={j}>
+                  <h4 className="pb-3 mb-4 border-b-2 border-gold font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
+                    {col.heading}
+                  </h4>
+                  <ul className="space-y-4">
+                    {col.items.map((item, k) => (
+                      <li key={k}>
+                        <p className="font-display text-ink text-base leading-snug">{item.title}</p>
+                        {item.note && (
+                          <p className="mt-0.5 font-body font-light text-ink/60 text-sm leading-snug">{item.note}</p>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          );
+        }
+        if (block.type === "priceCards") {
+          return (
+            <div key={i} className="my-10 md:my-14 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 max-w-[680px]">
+              {block.items.map((item, j) => (
+                <div key={j} className="rounded-2xl border border-ink/15 bg-cream border-t-2 border-t-gold p-5 md:p-6">
+                  <p className="font-display text-ink text-lg leading-snug">{item.title}</p>
+                  {item.tag && (
+                    <span className="mt-2 inline-flex items-center px-2.5 py-1 rounded-full bg-ink/8 text-ink font-mono text-[9px] uppercase tracking-wide-editorial">
+                      {item.tag}
+                    </span>
+                  )}
+                  {item.price && (
+                    <p className="mt-3 font-display font-light text-ink text-2xl md:text-[26px] leading-none tracking-tight">
+                      {item.price}
+                    </p>
+                  )}
+                  {item.unit && (
+                    <p className="mt-1.5 font-mono text-[9px] uppercase tracking-wide-editorial text-ink/55">{item.unit}</p>
+                  )}
+                  {item.note && (
+                    <p className="mt-3 font-body font-light text-ink/70 text-sm leading-[1.6]">{item.note}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          );
+        }
+        if (block.type === "callout") {
+          return (
+            <aside key={i} className="my-10 md:my-12 rounded-2xl border border-ink/15 bg-ink/5 p-6 md:p-7 max-w-[680px]">
+              {block.title && (
+                <h4 className="mb-4 font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
+                  {block.title}
+                </h4>
+              )}
+              <ul className="space-y-3">
+                {block.items.map((item, j) => (
+                  <li key={j} className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-3">
+                    <span className="font-display italic text-ink text-base shrink-0">{item.term}</span>
+                    <span className="font-body font-light text-ink/65 text-sm">— {item.def}</span>
+                  </li>
+                ))}
+              </ul>
+              {block.note && (
+                <p className="mt-5 font-body font-light italic text-ink/60 text-sm leading-[1.6]">{block.note}</p>
+              )}
+            </aside>
+          );
+        }
         if (block.type === "pullquote") {
           return (
             <blockquote key={i} className="my-12 md:my-16 border-l-2 border-gold pl-6 md:pl-8 max-w-[640px]">
@@ -159,7 +270,7 @@ const Body = ({ blocks, destinationLabel }) => {
           return (
             <div key={i} data-testid="article-lead" className="my-8 md:my-10 p-6 md:p-7 border-l-2 border-gold bg-ink/5 max-w-[680px]">
               <p className="font-display italic font-light text-ink text-lg md:text-xl leading-[1.55]">
-                {block.text}
+                {renderInline(block.text)}
               </p>
             </div>
           );
@@ -215,7 +326,7 @@ const Body = ({ blocks, destinationLabel }) => {
         // paragraph
         const p = (
           <p key={i} className="mt-4 first:mt-0">
-            {block.text}
+            {renderInline(block.text)}
           </p>
         );
         // After the paragraph that follows the 2nd or 4th H2, render the CTA

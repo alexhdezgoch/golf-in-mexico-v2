@@ -183,8 +183,40 @@ function renderArticleFull(a) {
       case "h2":
         md += `### ${clean(block.text)}\n\n`;
         break;
+      case "h3":
+        md += `#### ${clean(block.text)}\n\n`;
+        break;
       case "divider":
         md += `---\n\n`;
+        break;
+      case "list":
+        for (const [idx, item] of (block.items || []).entries()) {
+          const marker = block.ordered ? `${idx + 1}.` : "-";
+          const line = item.title ? `**${clean(item.title)}** — ${clean(item.text || "")}` : clean(item.text || item);
+          md += `${marker} ${line}\n`;
+        }
+        md += `\n`;
+        break;
+      case "columns":
+        for (const col of block.columns || []) {
+          md += `**${clean(col.heading)}:** `;
+          md += (col.items || []).map((it) => `${clean(it.title)}${it.note ? ` (${clean(it.note)})` : ""}`).join(" · ");
+          md += `\n\n`;
+        }
+        break;
+      case "priceCards":
+        for (const item of block.items || []) {
+          md += `- **${clean(item.title)}** — ${clean(item.price || "")} ${clean(item.unit || "")}. ${clean(item.note || "")}\n`;
+        }
+        md += `\n`;
+        break;
+      case "callout":
+        if (block.title) md += `**${clean(block.title)}**\n\n`;
+        for (const item of block.items || []) {
+          md += `- *${clean(item.term)}* — ${clean(item.def)}\n`;
+        }
+        md += `\n`;
+        if (block.note) md += para(block.note);
         break;
       case "image":
         if (block.caption) md += `*${clean(block.caption)}*\n\n`;
