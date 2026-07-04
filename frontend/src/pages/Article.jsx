@@ -388,14 +388,14 @@ const FAQ = ({ items }) => {
 
 /* --------------------------- CONTINUE READING --------------------------- */
 
-const ContinueReading = ({ related, hubLabel, hubSlug }) => (
+const ContinueReading = ({ related, hubLabel }) => (
   <section data-testid="continue-reading" className="max-w-[1100px] mx-auto px-6 md:px-12 mt-16 md:mt-24">
     <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
       — Continue reading
     </span>
     <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
       <Link
-        to={`/journal?destination=${hubSlug}`}
+        to="/journal"
         data-testid="continue-hub"
         className="group block rounded-2xl border-2 border-ink bg-ink text-cream p-6 hover:border-gold transition-all duration-300"
       >
@@ -900,6 +900,11 @@ const Article = () => {
       <section data-testid="article-body" className="bg-cream py-12 md:py-16">
         <Body blocks={article.body} destinationLabel={article.destinationLabel} />
       </section>
+
+      {/* Related articles + destination hub */}
+      {related.length > 0 && (
+        <ContinueReading related={related} hubLabel={article.destinationLabel} />
+      )}
 
       {/* Recommended Reads — horizontal scroll carousel */}
       <RecommendedReads />

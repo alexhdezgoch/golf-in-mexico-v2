@@ -129,7 +129,7 @@ export const ARTICLES = [
       { type: "h2", text: "Mexico Is Not One Golf Destination — It's Several" },
       { type: "p", text: "Mexico has a little bit of everything — desert, jungle, forest, rainforest, all inside a single country. And that geography changes everything: the climate, the courses, the pace of the round, what you're eating at the turn, what you're doing when the golf is done for the day." },
       { type: "p", text: "The mistake most US golfers make is treating Mexico like a single market. It isn't." },
-      { type: "p", text: "The tourist corridor — Cabo, Cancún, Riviera Maya, Punta Mita — is built for the traveling golfer. Resort infrastructure, English-speaking staff, stay-and-play packages, 15 or more courses within 30 miles. These destinations are built for visitors and the planning is relatively straightforward once you know which corridor zone you're in." },
+      { type: "p", text: "The tourist corridor — Cabo, Cancún, Riviera Maya, [Punta Mita](/destinations/punta-mita) — is built for the traveling golfer. Resort infrastructure, English-speaking staff, stay-and-play packages, 15 or more courses within 30 miles. These destinations are built for visitors and the planning is relatively straightforward once you know which corridor zone you're in." },
       { type: "p", text: "What many golf travelers to Mexico don't know is that Cabo alone has [three distinct regions](/destinations/los-cabos), each with its own courses, price points, and feel." },
       { type: "p", text: "The same goes for [Cancún versus the Riviera Maya](/destinations/cancun-riviera-maya). They share a geography but not a golf identity. And the Valle de México is a good example too. There are courses just one hour from Mexico City that sit in a completely different state." },
       { type: "p", text: "The local destinations — Mexico City, Guadalajara, Monterrey — operate on a different model. These cities have a strong private club culture, more personalized service, and access that runs through networks rather than booking engines." },
@@ -222,7 +222,7 @@ export const ARTICLES = [
 
       { type: "h2", text: "The Food Is Part of the Round" },
       { type: "p", text: "One of the most underrated parts of a golf trip to Mexico is the food. The culture around the game here is inseparable from the cuisine, and paying attention to that can shape where you go and what you remember most." },
-      { type: "p", text: "Cancún, Cabo, and the Riviera Nayarit lead in seafood. For traditional tacos, Mexico City and Tijuana are in a category of their own. At [Club de Golf México, hole 15](/destinations/mexico-city) has some of the best tacos in the city. For the members, it's just a stop on the back nine. For a visitor, it's one of those moments you don't see coming." },
+      { type: "p", text: "Cancún, Cabo, and the [Riviera Nayarit](/destinations/puerto-vallarta) lead in seafood. For traditional tacos, Mexico City and Tijuana are in a category of their own. At [Club de Golf México, hole 15](/destinations/mexico-city) has some of the best tacos in the city. For the members, it's just a stop on the back nine. For a visitor, it's one of those moments you don't see coming." },
       { type: "p", text: "We've had people come back to Mexico because of a meal they couldn't stop thinking about — and the golf was almost secondary. That's just the kind of trip this country puts together." },
 
       { type: "h2", text: "How to Choose Your Destination" },
