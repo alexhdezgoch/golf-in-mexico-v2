@@ -30,6 +30,15 @@ const HubBySlug = () => {
   return <LosCabos slug={slug} />;
 };
 
+// True both while the build-time prerenderer captures a route (window.__PRERENDER__,
+// set by scripts/prerender.mjs) AND while a real user hydrates a page that was
+// prerendered (window.__WAS_PRERENDERED__, set in index.js). In either case the
+// first paint must skip the Intro overlay and the opacity:0/blur route-entry
+// variant — so bots capture visible content and hydration matches the captured DOM.
+const isPrerenderContext = () =>
+  typeof window !== "undefined" &&
+  (window.__PRERENDER__ === true || window.__WAS_PRERENDERED__ === true);
+
 const pageVariants = {
   initial: { opacity: 0, y: 18, filter: "blur(8px)" },
   animate: {
@@ -48,6 +57,10 @@ const pageVariants = {
 
 const AnimatedRoutes = () => {
   const location = useLocation();
+
+  // Under prerender/hydration, render routes at their final state (initial={false})
+  // so the captured HTML is fully visible and hydration matches — no blur/opacity flash.
+  const routeInitial = isPrerenderContext() ? false : "initial";
 
   // Capture UTM/click-id attribution from the landing URL once (first-touch).
   useEffect(() => {
@@ -88,7 +101,7 @@ const AnimatedRoutes = () => {
         <Route
           path="/"
           element={
-            <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
               <Home />
             </motion.div>
           }
@@ -96,7 +109,7 @@ const AnimatedRoutes = () => {
         <Route
           path="/journal"
           element={
-            <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
               <Journal />
             </motion.div>
           }
@@ -104,7 +117,7 @@ const AnimatedRoutes = () => {
         <Route
           path="/destinations"
           element={
-            <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
               <Destinations />
             </motion.div>
           }
@@ -112,7 +125,7 @@ const AnimatedRoutes = () => {
         <Route
           path="/destinations/los-cabos"
           element={
-            <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
               <LosCabos slug="los-cabos" />
             </motion.div>
           }
@@ -120,7 +133,7 @@ const AnimatedRoutes = () => {
         <Route
           path="/destinations/:slug"
           element={
-            <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
               <HubBySlug />
             </motion.div>
           }
@@ -132,7 +145,7 @@ const AnimatedRoutes = () => {
         <Route
           path="/journal/:slug"
           element={
-            <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
               <Article />
             </motion.div>
           }
@@ -144,7 +157,7 @@ const AnimatedRoutes = () => {
         <Route
           path="/experience"
           element={
-            <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
               <Experience />
             </motion.div>
           }
@@ -152,7 +165,7 @@ const AnimatedRoutes = () => {
         <Route
           path="/about"
           element={
-            <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
               <About />
             </motion.div>
           }
@@ -160,7 +173,7 @@ const AnimatedRoutes = () => {
         <Route
           path="/contact"
           element={
-            <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
               <Contact />
             </motion.div>
           }
@@ -188,6 +201,9 @@ const ChromeLayout = ({ children }) => {
 function App() {
   const [introDone, setIntroDone] = useState(() => {
     try {
+      // Skip the intro when prerendering / hydrating a prerendered page (so the
+      // captured HTML and the first client paint show real content, not the overlay).
+      if (isPrerenderContext()) return true;
       // Allow ?skipIntro=1 query param + sessionStorage flag
       if (typeof window !== "undefined" && /[?&]skipIntro=1/.test(window.location.search)) {
         return true;

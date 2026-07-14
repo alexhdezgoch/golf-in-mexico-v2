@@ -43,6 +43,13 @@ export function useSeo({ title, description, canonical, jsonLd } = {}) {
     }
 
     const schemas = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
+    // Drop any JSON-LD already in the document (e.g. injected at build time by the
+    // prerenderer) before adding this route's, so hydration doesn't duplicate it.
+    if (schemas.length) {
+      document
+        .querySelectorAll("script[type='application/ld+json']")
+        .forEach((el) => el.remove());
+    }
     const els = schemas.map((schema) => {
       const el = document.createElement("script");
       el.type = "application/ld+json";
