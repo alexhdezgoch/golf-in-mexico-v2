@@ -6,6 +6,8 @@ import SectionNav from "../components/hub/SectionNav";
 import { getHubData, KEEP_EXPLORING_HUBS } from "../data/hubs";
 import { useSeo, articleSchema, breadcrumbSchema, faqSchema } from "@/hooks/useSeo";
 import { trackLead } from "@/lib/analytics";
+import { useHubspotForm } from "@/hooks/useHubspotForm";
+import { getGuideUrl } from "@/lib/hubspot";
 
 /* Hero photo per destination */
 const HERO_PHOTOS = {
@@ -334,7 +336,15 @@ const PlaybookCTA = ({ variant = "full", testid, h3Pre = "Cabo, distilled —", 
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
-  const submit = (e) => { e.preventDefault(); if (email.trim().length > 3) { setSent(true); trackLead({ form: "hub_playbook" }); } };
+  const { submit: submitHubspot, submitting, error, honeypotProps } = useHubspotForm("hub_playbook");
+  const guideUrl = getGuideUrl("hub_playbook");
+  const submit = async (e) => {
+    e.preventDefault();
+    const ok = await submitHubspot({ email });
+    if (!ok) return;
+    setSent(true);
+    trackLead({ form: "hub_playbook" });
+  };
 
   if (variant === "short") {
     return (
@@ -355,11 +365,24 @@ const PlaybookCTA = ({ variant = "full", testid, h3Pre = "Cabo, distilled —", 
             )}
             {open && !sent && (
               <form onSubmit={submit} className="flex gap-2" data-testid={`${testid}-form`}>
+                <input {...honeypotProps} name="company_website" />
                 <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="your@email.com" className="flex-1 bg-white border border-[var(--c-border)] focus:border-[var(--c-gold)] text-[var(--c-text)] placeholder:text-[var(--c-text-muted)] font-body text-sm px-4 py-3 rounded-sm focus:outline-none transition-colors" />
-                <button type="submit" className="bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-5 py-3 rounded-sm font-mono text-[10px] uppercase tracking-[0.16em] font-bold transition-colors">Send →</button>
+                <button type="submit" disabled={submitting} className="bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-5 py-3 rounded-sm font-mono text-[10px] uppercase tracking-[0.16em] font-bold transition-colors disabled:opacity-60 disabled:cursor-not-allowed">{submitting ? "…" : "Send →"}</button>
               </form>
             )}
-            {sent && <p className="font-display italic text-[var(--c-green-deep)] text-lg">Check your inbox.</p>}
+            {error && !sent && (
+              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-red-700">{error}</p>
+            )}
+            {sent && (
+              <div>
+                <p className="font-display italic text-[var(--c-green-deep)] text-lg">Check your inbox.</p>
+                {guideUrl && (
+                  <a href={guideUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-green-deep)] underline">
+                    Download the guide now →
+                  </a>
+                )}
+              </div>
+            )}
             <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-text-muted)]">Enter your email. We send it immediately.</p>
           </div>
         </div>
@@ -404,16 +427,27 @@ const PlaybookCTA = ({ variant = "full", testid, h3Pre = "Cabo, distilled —", 
           )}
           {open && !sent && (
             <form onSubmit={submit} className="flex flex-col gap-2" data-testid={`${testid}-form`}>
+              <input {...honeypotProps} name="company_website" />
               <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="your@email.com" data-testid={`${testid}-email`} className="bg-white/[0.06] border border-white/20 focus:border-[var(--c-gold)] text-white placeholder:text-white/35 font-body text-sm px-4 py-3.5 rounded-sm focus:outline-none transition-colors" />
-              <button type="submit" data-testid={`${testid}-submit`} className="bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-6 py-3.5 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors">
-                Send It →
+              <button type="submit" disabled={submitting} data-testid={`${testid}-submit`} className="bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-6 py-3.5 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+                {submitting ? "Sending…" : "Send It →"}
               </button>
             </form>
           )}
+          {error && !sent && (
+            <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-red-300 text-center">{error}</p>
+          )}
           {sent && (
-            <p data-testid={`${testid}-success`} className="font-display italic text-[var(--c-gold)] text-lg text-center">
-              Check your inbox.
-            </p>
+            <div data-testid={`${testid}-success`} className="text-center">
+              <p className="font-display italic text-[var(--c-gold)] text-lg">
+                Check your inbox.
+              </p>
+              {guideUrl && (
+                <a href={guideUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)] underline">
+                  Download the guide now →
+                </a>
+              )}
+            </div>
           )}
         </div>
       </div>
@@ -1011,6 +1045,14 @@ const LosCabos = ({ slug = "los-cabos" }) => {
 const NewsletterMiniForm = ({ testid }) => {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
+  const { submit, submitting, error, honeypotProps } = useHubspotForm("hub_capture");
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const ok = await submit({ email });
+    if (!ok) return;
+    setSent(true);
+    trackLead({ form: "hub_capture" });
+  };
   if (sent) {
     return (
       <p data-testid={`${testid}-success`} className="font-display italic text-[var(--c-gold)] text-lg">
@@ -1020,10 +1062,11 @@ const NewsletterMiniForm = ({ testid }) => {
   }
   return (
     <form
-      onSubmit={(e) => { e.preventDefault(); if (email.trim().length > 3) { setSent(true); trackLead({ form: "hub_capture" }); } }}
+      onSubmit={onSubmit}
       className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
       data-testid={testid}
     >
+      <input {...honeypotProps} name="company_website" />
       <input
         type="email"
         required
@@ -1034,11 +1077,15 @@ const NewsletterMiniForm = ({ testid }) => {
       />
       <button
         type="submit"
-        className="group inline-flex items-center justify-center gap-2 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-6 py-3.5 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors"
+        disabled={submitting}
+        className="group inline-flex items-center justify-center gap-2 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-6 py-3.5 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
       >
-        Subscribe
+        {submitting ? "Sending…" : "Subscribe"}
         <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
       </button>
+      {error && (
+        <p className="basis-full font-mono text-[10px] uppercase tracking-[0.16em] text-red-300">{error}</p>
+      )}
     </form>
   );
 };
@@ -1047,6 +1094,14 @@ const PlaybookEndForm = () => {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
+  const { submit, submitting, error, honeypotProps } = useHubspotForm("hub_capture");
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const ok = await submit({ email });
+    if (!ok) return;
+    setSent(true);
+    trackLead({ form: "hub_capture" });
+  };
   if (sent) {
     return (
       <p data-testid="lc-playbook-end-success" className="font-display italic text-[var(--c-green-deep)] text-lg text-center">
@@ -1057,10 +1112,11 @@ const PlaybookEndForm = () => {
   if (open) {
     return (
       <form
-        onSubmit={(e) => { e.preventDefault(); if (email.trim().length > 3) { setSent(true); trackLead({ form: "hub_capture" }); } }}
+        onSubmit={onSubmit}
         className="flex flex-col gap-2"
         data-testid="lc-playbook-end-form"
       >
+        <input {...honeypotProps} name="company_website" />
         <input
           type="email"
           required
@@ -1071,10 +1127,14 @@ const PlaybookEndForm = () => {
         />
         <button
           type="submit"
-          className="bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-6 py-3.5 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors"
+          disabled={submitting}
+          className="bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-6 py-3.5 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
         >
-          Send It →
+          {submitting ? "Sending…" : "Send It →"}
         </button>
+        {error && (
+          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-red-700">{error}</p>
+        )}
       </form>
     );
   }

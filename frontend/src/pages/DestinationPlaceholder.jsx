@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { trackLead } from "@/lib/analytics";
+import { useHubspotForm } from "@/hooks/useHubspotForm";
 
 /* Static placeholder copy for the 3 not-yet-live destinations */
 const PLACEHOLDERS = {
@@ -35,13 +36,15 @@ const DestinationPlaceholder = () => {
   const d = PLACEHOLDERS[slug];
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const { submit, submitting, error, honeypotProps } = useHubspotForm("destination_waitlist");
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    if (email.trim().length > 3) {
-      setSubmitted(true);
-      trackLead({ form: "destination_waitlist", destination: slug });
-    }
+    if (email.trim().length <= 3) return;
+    const ok = await submit({ email, destination: slug, region: d?.region });
+    if (!ok) return;
+    setSubmitted(true);
+    trackLead({ form: "destination_waitlist", destination: slug });
   };
 
   if (!d) return null;
@@ -123,6 +126,7 @@ const DestinationPlaceholder = () => {
               data-testid="dh-placeholder-form"
               className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
             >
+              <input {...honeypotProps} name="company_website" />
               <input
                 type="email"
                 required
@@ -134,10 +138,11 @@ const DestinationPlaceholder = () => {
               />
               <button
                 type="submit"
+                disabled={submitting}
                 data-testid="dh-placeholder-submit"
-                className="group inline-flex items-center justify-center gap-2 bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-6 py-3 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] transition-colors whitespace-nowrap"
+                className="group inline-flex items-center justify-center gap-2 bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-6 py-3 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] transition-colors whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                Notify Me
+                {submitting ? "Sending…" : "Notify Me"}
                 <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </button>
             </form>
@@ -147,6 +152,11 @@ const DestinationPlaceholder = () => {
               className="font-display italic font-normal text-[var(--c-gold)] text-xl md:text-2xl"
             >
               Welcome. You&apos;ll hear from us first.
+            </p>
+          )}
+          {error && (
+            <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.18em] text-red-700">
+              {error}
             </p>
           )}
 

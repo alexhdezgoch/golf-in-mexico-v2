@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { trackLead, trackEvent } from "@/lib/analytics";
+import { useHubspotForm } from "@/hooks/useHubspotForm";
 
 /* ═══════════════════════════════════════════════════════════════════
    GIM Trip Builder · /trip-builder
@@ -139,6 +140,10 @@ const TripBuilder = () => {
   const [exitEmail, setExitEmail] = useState("");
   const [exitSent, setExitSent] = useState(false);
 
+  // HubSpot submission — main qualified lead + the exit-intent soft capture.
+  const mainHs = useHubspotForm("trip_builder");
+  const exitHs = useHubspotForm("trip_builder_exit");
+
   // Exit-intent trigger (only when wizard is not yet submitted and step < 4)
   useEffect(() => {
     if (submitted) return;
@@ -166,28 +171,35 @@ const TripBuilder = () => {
     };
   }, [step, submitted]);
 
-  const submitExitCapture = (ev) => {
+  const submitExitCapture = async (ev) => {
     ev.preventDefault();
-    if (exitEmail.trim().length > 3) {
-      const exitLead = {
-        email: exitEmail,
-        destinations,
-        tripType,
-        year,
-        months,
-        length,
-        contact,
-        capturedAt: new Date().toISOString(),
-        stage: "exit_intent",
-      };
-      // Note: stored in sessionStorage (cleared on tab close). Mocked persistence
-      // until backend / MailerLite is wired up.
-      safeSessionWrite("gim-exit-lead", JSON.stringify(exitLead));
-      devLog("[GIM Trip Builder · exit-intent lead]", exitLead);
-      setExitSent(true);
-      trackLead({ form: "trip_builder_exit", trip_type: tripType });
-      setTimeout(() => setExitVisible(false), 2200);
-    }
+    if (exitEmail.trim().length <= 3) return;
+
+    const ok = await exitHs.submit({
+      email: exitEmail,
+      destinations,
+      trip_type: tripType,
+      preferred_dates: months.join(", "),
+    });
+    if (!ok) return;
+
+    const exitLead = {
+      email: exitEmail,
+      destinations,
+      tripType,
+      year,
+      months,
+      length,
+      contact,
+      capturedAt: new Date().toISOString(),
+      stage: "exit_intent",
+    };
+    // Local safety copy (cleared on tab close) alongside the HubSpot submission.
+    safeSessionWrite("gim-exit-lead", JSON.stringify(exitLead));
+    devLog("[GIM Trip Builder · exit-intent lead]", exitLead);
+    setExitSent(true);
+    trackLead({ form: "trip_builder_exit", trip_type: tripType });
+    setTimeout(() => setExitVisible(false), 2200);
   };
 
   const toggleDestination = (slug) => {
@@ -237,36 +249,62 @@ const TripBuilder = () => {
       };
       safeSessionWrite("gim-partial-lead", JSON.stringify(partialLead));
       devLog("[GIM Trip Builder · partial lead — Step 3]", partialLead);
+      // Fire the qualified lead to HubSpot now (name + email are guaranteed here)
+      // so a Step-4 abandoner is still captured. Fire-and-forget: never block the
+      // wizard on the network. The final submit re-sends with package + budget.
+      mainHs.submit({
+        email: contact.email,
+        firstname: contact.name,
+        phone: contact.phone,
+        destinations,
+        trip_type: tripType,
+        preferred_dates: months.join(", "),
+        trip_length: length,
+      });
     }
 
     setStep((s) => Math.min(4, s + 1));
   };
 
-  const submit = (ev) => {
+  const submit = async (ev) => {
     ev.preventDefault();
     const e = {};
     if (!pkg) e.pkg = "Choose a package to continue.";
     setErrors(e);
-    if (Object.keys(e).length === 0) {
-      const finalLead = {
-        destinations,
-        tripType,
-        isDM,
-        otherDM,
-        year,
-        months,
-        length,
-        contact,
-        pkg,
-        budget,
-        submittedAt: new Date().toISOString(),
-        stage: "submitted",
-      };
-      safeSessionWrite("gim-final-lead", JSON.stringify(finalLead));
-      devLog("[GIM Trip Builder · final lead]", finalLead);
-      setSubmitted(true);
-      trackLead({ form: "trip_builder", trip_type: tripType, package: pkg });
-    }
+    if (Object.keys(e).length !== 0) return;
+
+    // Full qualified lead → HubSpot (enriches the contact captured at Step 3).
+    const ok = await mainHs.submit({
+      email: contact.email,
+      firstname: contact.name,
+      phone: contact.phone,
+      destinations,
+      trip_type: tripType,
+      preferred_dates: months.join(", "),
+      trip_length: length,
+      package: pkg,
+      budget,
+    });
+    if (!ok) return; // hook surfaces the error; keep them on Step 4 to retry
+
+    const finalLead = {
+      destinations,
+      tripType,
+      isDM,
+      otherDM,
+      year,
+      months,
+      length,
+      contact,
+      pkg,
+      budget,
+      submittedAt: new Date().toISOString(),
+      stage: "submitted",
+    };
+    safeSessionWrite("gim-final-lead", JSON.stringify(finalLead));
+    devLog("[GIM Trip Builder · final lead]", finalLead);
+    setSubmitted(true);
+    trackLead({ form: "trip_builder", trip_type: tripType, package: pkg });
   };
 
   const scrollToForm = () => {
@@ -745,6 +783,7 @@ const TripBuilder = () => {
               {/* ── STEP 4 · PACKAGE PREVIEW + BUDGET + SUBMIT ── */}
               {step === 4 && (
                 <form onSubmit={submit} data-testid="tb-step-4">
+                  <input {...mainHs.honeypotProps} name="company_website" />
                   <StepPill n={4} />
                   <h2 className="font-display font-light text-[var(--c-text)] text-2xl md:text-4xl leading-[1.15] mb-3 tracking-tight">
                     Last step — <em className="italic text-[var(--c-gold)]">match us to your expectations.</em>
@@ -821,10 +860,13 @@ const TripBuilder = () => {
                     </ul>
                   </div>
 
-                  <button type="submit" data-testid="tb-submit" className="group w-full inline-flex items-center justify-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-8 py-4 rounded-sm font-mono text-[12px] uppercase tracking-[0.18em] font-bold transition-colors">
-                    Get My 48-Hour Proposal
+                  <button type="submit" disabled={mainHs.submitting} data-testid="tb-submit" className="group w-full inline-flex items-center justify-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-8 py-4 rounded-sm font-mono text-[12px] uppercase tracking-[0.18em] font-bold transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+                    {mainHs.submitting ? "Sending…" : "Get My 48-Hour Proposal"}
                     <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                   </button>
+                  {mainHs.error && (
+                    <p className="mt-4 text-[12px] text-[#8b2020] text-center font-mono">{mainHs.error}</p>
+                  )}
                   <p className="mt-4 text-[12px] text-[var(--c-text-muted)] text-center leading-[1.6]">
                     No commitment. No call required. We build the itinerary. You decide if you want to move forward.
                   </p>
@@ -884,6 +926,7 @@ const TripBuilder = () => {
                     Drop your email and we&apos;ll hold your progress so you can pick it back up when you&apos;re ready.
                   </p>
                   <form onSubmit={submitExitCapture} className="flex flex-col sm:flex-row gap-2">
+                    <input {...exitHs.honeypotProps} name="company_website" />
                     <input
                       type="email"
                       required
@@ -895,12 +938,16 @@ const TripBuilder = () => {
                     />
                     <button
                       type="submit"
+                      disabled={exitHs.submitting}
                       data-testid="tb-exit-submit"
-                      className="bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-6 py-3 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors"
+                      className="bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-6 py-3 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      Send it to me →
+                      {exitHs.submitting ? "Sending…" : "Send it to me →"}
                     </button>
                   </form>
+                  {exitHs.error && (
+                    <p className="mt-2 text-[11px] text-[#8b2020] font-mono">{exitHs.error}</p>
+                  )}
                   <p className="mt-3 text-[11px] text-[var(--c-text-muted)] italic">
                     No spam. One email, then we go quiet until you reply.
                   </p>

@@ -3,6 +3,7 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { getDestination, COMING_SOON } from "@/data/destinations";
 import DestinationPlaceholder, { isDestinationPlaceholder } from "@/pages/DestinationPlaceholder";
+import { useHubspotForm } from "@/hooks/useHubspotForm";
 
 const fmt = (n) => (n === 0 ? "Included" : `$${n.toLocaleString()}`);
 
@@ -373,7 +374,13 @@ const AllArticles = ({ d }) => {
 const NewsletterCTA = ({ d }) => {
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
-  const submit = (e) => { e.preventDefault(); if (email.trim().length > 3) setDone(true); };
+  const { submit, submitting, error, honeypotProps } = useHubspotForm("hub_capture");
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const ok = await submit({ email, region: d.name });
+    if (!ok) return;
+    setDone(true);
+  };
   return (
     <Section id="s12" testId="dh-s12" dark>
       <div className="max-w-[760px] mx-auto text-center">
@@ -385,12 +392,16 @@ const NewsletterCTA = ({ d }) => {
           Pablo&apos;s weekly Field Notes — which courses he&apos;d play this month, which caddie to request, and what a round actually costs. Written from inside Mexico, not from a desk.
         </p>
         {!done ? (
-          <form onSubmit={submit} className="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+          <form onSubmit={onSubmit} className="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <input {...honeypotProps} name="company_website" />
             <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="your@email.com" data-testid={`dh-newsletter-${d.slug}`} className="flex-1 bg-transparent border-b border-cream/30 focus:border-gold transition-colors text-cream placeholder:text-cream/35 font-body py-2 focus:outline-none" />
-            <button type="submit" className="rounded-full bg-gold text-ink px-6 py-3 font-mono text-[11px] uppercase tracking-wide-editorial hover:bg-cream transition-colors whitespace-nowrap">Subscribe →</button>
+            <button type="submit" disabled={submitting} className="rounded-full bg-gold text-ink px-6 py-3 font-mono text-[11px] uppercase tracking-wide-editorial hover:bg-cream transition-colors whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed">{submitting ? "Subscribing…" : "Subscribe →"}</button>
           </form>
         ) : (
           <p className="mt-8 font-display italic text-gold text-xl">On its way. Welcome to the room.</p>
+        )}
+        {error && (
+          <p className="mt-4 font-mono text-[10px] uppercase tracking-wide-editorial text-red-300">{error}</p>
         )}
         <p className="mt-4 font-mono text-[10px] uppercase tracking-wide-editorial text-cream/45">No spam. Pablo writes these himself.</p>
       </div>

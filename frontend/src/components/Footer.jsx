@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { trackLead } from "@/lib/analytics";
+import { useHubspotForm } from "@/hooks/useHubspotForm";
 
 const NAV_LINKS = [
   { label: "Home", to: "/" },
@@ -33,13 +34,15 @@ const Footer = () => {
   const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const { submit, submitting, error, honeypotProps } = useHubspotForm("footer_newsletter");
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    if (email.trim().length > 3) {
-      setSubmitted(true);
-      trackLead({ form: "footer_newsletter" });
-    }
+    if (email.trim().length <= 3) return;
+    const ok = await submit({ email });
+    if (!ok) return;
+    setSubmitted(true);
+    trackLead({ form: "footer_newsletter" });
   };
 
   const handleAboutClick = (e) => {
@@ -83,6 +86,7 @@ const Footer = () => {
                 onSubmit={onSubmit}
                 className="flex flex-col gap-2 max-w-sm"
               >
+                <input {...honeypotProps} name="company_website" />
                 <div className="flex">
                   <input
                     type="email"
@@ -95,16 +99,22 @@ const Footer = () => {
                   />
                   <button
                     type="submit"
+                    disabled={submitting}
                     data-testid="newsletter-submit-button"
                     aria-label="Subscribe"
-                    className="group inline-flex items-center justify-center bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-4 ml-2 rounded-sm font-mono text-[10px] uppercase tracking-[0.16em] transition-colors duration-300 whitespace-nowrap"
+                    className="group inline-flex items-center justify-center bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-4 ml-2 rounded-sm font-mono text-[10px] uppercase tracking-[0.16em] transition-colors duration-300 whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    Subscribe
+                    {submitting ? "…" : "Subscribe"}
                     <span className="ml-2 inline-block transition-transform duration-300 group-hover:translate-x-0.5">
                       →
                     </span>
                   </button>
                 </div>
+                {error && (
+                  <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-red-400">
+                    {error}
+                  </span>
+                )}
               </form>
             ) : (
               <p

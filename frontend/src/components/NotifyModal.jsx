@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { trackLead } from "@/lib/analytics";
+import { useHubspotForm } from "@/hooks/useHubspotForm";
 
 /**
  * Notify modal — reusable "Stay in the know" capture for regions in preparation.
@@ -8,6 +9,7 @@ import { trackLead } from "@/lib/analytics";
 const NotifyModal = ({ open, onClose, region }) => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const { submit, submitting, error, honeypotProps } = useHubspotForm("notify");
 
   useEffect(() => {
     if (!open) {
@@ -22,10 +24,11 @@ const NotifyModal = ({ open, onClose, region }) => {
     return () => document.removeEventListener("keydown", onKey);
   }, [open, onClose]);
 
-  const submit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (!email) return;
-    // TODO: connect to backend
+    const ok = await submit({ email, region });
+    if (!ok) return;
     setSubmitted(true);
     trackLead({ form: "notify", region });
     setTimeout(() => onClose && onClose(), 1800);
@@ -73,7 +76,8 @@ const NotifyModal = ({ open, onClose, region }) => {
               and the people behind the round. We publish region by region.
             </p>
 
-            <form onSubmit={submit} data-testid="notify-form" className="mt-8">
+            <form onSubmit={onSubmit} data-testid="notify-form" className="mt-8">
+              <input {...honeypotProps} name="company_website" />
               <div className="relative flex flex-wrap items-end gap-3 border-b border-ink/30 pb-3 focus-within:border-gold transition-colors">
                 <label
                   htmlFor="notify-email"
@@ -93,10 +97,11 @@ const NotifyModal = ({ open, onClose, region }) => {
                 />
                 <button
                   type="submit"
+                  disabled={submitting}
                   data-testid="notify-submit"
-                  className="font-mono text-[11px] uppercase tracking-wide-editorial text-ink hover:text-gold transition-colors pb-1"
+                  className="font-mono text-[11px] uppercase tracking-wide-editorial text-ink hover:text-gold transition-colors pb-1 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Notify me →
+                  {submitting ? "Sending…" : "Notify me →"}
                 </button>
               </div>
               <div className="mt-3 h-5">
@@ -108,6 +113,11 @@ const NotifyModal = ({ open, onClose, region }) => {
                   >
                     Noted — we'll write first.
                   </motion.span>
+                )}
+                {error && (
+                  <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-red-700">
+                    {error}
+                  </span>
                 )}
               </div>
             </form>

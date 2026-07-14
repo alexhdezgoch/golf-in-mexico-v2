@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { trackLead } from "@/lib/analytics";
+import { useHubspotForm } from "@/hooks/useHubspotForm";
 
 const REGIONS = [
   "Los Cabos",
@@ -16,6 +17,7 @@ const InquiryModal = ({ open, onClose }) => {
   const [when, setWhen] = useState("");
   const [note, setNote] = useState("");
   const [sent, setSent] = useState(false);
+  const { submit, submitting, error, honeypotProps } = useHubspotForm("inquiry");
 
   useEffect(() => {
     const onKey = (e) => {
@@ -37,9 +39,16 @@ const InquiryModal = ({ open, onClose }) => {
     };
   }, [open]);
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    // Design-only submission per current scope. Confirms the request.
+    const ok = await submit({
+      email,
+      firstname: name,
+      region,
+      preferred_dates: when,
+      message: note,
+    });
+    if (!ok) return; // hook surfaces the error; keep the form open
     setSent(true);
     trackLead({ form: "inquiry", region });
   };
@@ -163,17 +172,30 @@ const InquiryModal = ({ open, onClose }) => {
                   />
                 </div>
 
+                {/* Spam honeypot — hidden from real users. */}
+                <input {...honeypotProps} name="company_website" />
+
+                {error && (
+                  <p
+                    data-testid="inquiry-error"
+                    className="mt-6 font-mono text-[10px] uppercase tracking-wide-editorial text-red-700"
+                  >
+                    {error}
+                  </p>
+                )}
+
                 <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
                   <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted max-w-xs">
                     No marketplace. No call-center. Just Pablo and José.
                   </span>
                   <button
                     type="submit"
+                    disabled={submitting}
                     data-testid="inquiry-submit"
-                    className="group inline-flex items-center gap-3 bg-ink text-cream px-6 py-3 hover:bg-forest transition-colors duration-500"
+                    className="group inline-flex items-center gap-3 bg-ink text-cream px-6 py-3 hover:bg-forest transition-colors duration-500 disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     <span className="font-mono text-[11px] uppercase tracking-wide-editorial">
-                      Send the inquiry
+                      {submitting ? "Sending…" : "Send the inquiry"}
                     </span>
                     <span className="font-mono text-[11px] transition-transform duration-500 group-hover:translate-x-0.5">
                       →

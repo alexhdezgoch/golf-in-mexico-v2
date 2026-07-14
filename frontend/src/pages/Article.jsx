@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { getArticleBySlug, getRelatedArticles, ARTICLES } from "@/data/articles";
 import { useSeo, articleSchema, breadcrumbSchema, faqSchema } from "@/hooks/useSeo";
 import { trackLead } from "@/lib/analytics";
+import { useHubspotForm } from "@/hooks/useHubspotForm";
+import { getGuideUrl } from "@/lib/hubspot";
 
 const Badge = ({ children, variant = "default" }) => {
   const cls =
@@ -482,6 +484,8 @@ const ScrollEmailCapture = ({ slug }) => {
   const [visible, setVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const { submit, submitting, error, honeypotProps } = useHubspotForm("article_newsletter");
+  const guideUrl = getGuideUrl("article_newsletter");
 
   useEffect(() => {
     const key = `gim-email-dismissed-${slug}`;
@@ -536,13 +540,15 @@ const ScrollEmailCapture = ({ slug }) => {
     }
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    if (email.trim().length > 3) {
-      setSubmitted(true);
-      trackLead({ form: "article_newsletter" });
-      setTimeout(dismiss, 2500);
-    }
+    if (email.trim().length <= 3) return;
+    const ok = await submit({ email });
+    if (!ok) return;
+    setSubmitted(true);
+    trackLead({ form: "article_newsletter" });
+    // Give the reader time to grab the download link before auto-dismissing.
+    setTimeout(dismiss, guideUrl ? 8000 : 2500);
   };
 
   return (
@@ -577,6 +583,7 @@ const ScrollEmailCapture = ({ slug }) => {
                 No spam. Only content worth your time.
               </p>
               <form onSubmit={onSubmit} className="mt-4 flex gap-2">
+                <input {...honeypotProps} name="company_website" />
                 <input
                   type="email"
                   required
@@ -585,15 +592,32 @@ const ScrollEmailCapture = ({ slug }) => {
                   placeholder="your@email.com"
                   className="flex-1 bg-cream border-b border-ink/25 focus:border-gold focus:outline-none font-body text-sm py-1.5 text-ink placeholder:text-ink/35"
                 />
-                <button type="submit" className="rounded-full bg-ink text-cream px-4 py-2 font-mono text-[10px] uppercase tracking-wide-editorial hover:bg-gold hover:text-ink transition-colors">
-                  Send →
+                <button type="submit" disabled={submitting} className="rounded-full bg-ink text-cream px-4 py-2 font-mono text-[10px] uppercase tracking-wide-editorial hover:bg-gold hover:text-ink transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+                  {submitting ? "…" : "Send →"}
                 </button>
               </form>
+              {error && (
+                <p className="mt-2 font-mono text-[10px] uppercase tracking-wide-editorial text-red-700">
+                  {error}
+                </p>
+              )}
             </>
           ) : (
-            <p className="font-display italic text-gold text-lg py-3">
-              On its way. Check your inbox.
-            </p>
+            <div className="py-3">
+              <p className="font-display italic text-gold text-lg">
+                On its way. Check your inbox.
+              </p>
+              {guideUrl && (
+                <a
+                  href={guideUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-wide-editorial text-ink editorial-link"
+                >
+                  Download the guide now →
+                </a>
+              )}
+            </div>
           )}
         </motion.div>
       )}
