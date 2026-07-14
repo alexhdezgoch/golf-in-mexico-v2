@@ -21,7 +21,7 @@
              before the splash. Crawlers / no-JS never run this, so they get clean
              content; returning visitors (session flag set) and prerender skip it. -->
         <style>html[data-gim-intro="pending"]::before{content:"";position:fixed;inset:0;z-index:9998;background:#f8f6f1}</style>
-        <script>(function(){try{if(sessionStorage.getItem("gim-intro-seen")==="1")return;if(/[?&]skipIntro=1/.test(location.search))return;document.documentElement.setAttribute("data-gim-intro","pending")}catch(e){}})();</script>
+        <script>(function(){try{if(sessionStorage.getItem("gim-intro-seen")==="1")return;if(/[?&]skipIntro=1/.test(location.search))return;var d=document.documentElement;d.setAttribute("data-gim-intro","pending");setTimeout(function(){d.removeAttribute("data-gim-intro")},6000)}catch(e){}})();</script>
     </head>
     <body>
         <noscript>You need to enable JavaScript to run this app.</noscript>
