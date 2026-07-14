@@ -76,6 +76,7 @@
     "@craco/craco": "^7.1.0",
     "@emergentbase/visual-edits": "https://assets.emergent.sh/npm/emergentbase-visual-edits-1.0.8.tgz",
     "@eslint/js": "9.23.0",
+    "@sparticuz/chromium": "^149.0.0",
     "autoprefixer": "^10.4.20",
     "esbuild": "^0.28.1",
     "eslint": "9.23.0",

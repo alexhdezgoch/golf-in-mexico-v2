@@ -109,6 +109,17 @@ function outFileFor(route) {
 }
 
 async function launchBrowser() {
+  // On Vercel the build image (AL2023) lacks the system shared libs puppeteer's
+  // bundled Chromium needs (libnspr4.so etc.), so use @sparticuz/chromium, which
+  // ships a self-contained Chromium build. Locally, puppeteer's own Chromium works.
+  if (process.env.VERCEL) {
+    const chromium = (await import("@sparticuz/chromium")).default;
+    return puppeteer.launch({
+      args: [...chromium.args, "--disable-dev-shm-usage"],
+      executablePath: await chromium.executablePath(),
+      headless: true,
+    });
+  }
   const opts = {
     headless: true,
     args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
