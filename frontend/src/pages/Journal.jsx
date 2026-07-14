@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ARTICLES } from "@/data/articles";
-import { useSeo } from "@/hooks/useSeo";
+import { useSeo, breadcrumbSchema } from "@/hooks/useSeo";
 
 /* ───────────────── CATEGORY TAGGING ───────────────── */
 
@@ -190,6 +190,10 @@ const Journal = () => {
     description:
       "Editorial stories, trip playbooks, and course intelligence for golf in Mexico — written by people who plan and play it.",
     canonical: "/journal",
+    jsonLd: breadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Journal", path: "/journal" },
+    ]),
   });
   const [searchParams] = useSearchParams();
   const initialCategory = searchParams.get("category");

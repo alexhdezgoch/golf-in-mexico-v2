@@ -3,6 +3,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { trackLead, trackEvent } from "@/lib/analytics";
 import { useHubspotForm } from "@/hooks/useHubspotForm";
+import { useSeo, breadcrumbSchema } from "@/hooks/useSeo";
 
 /* ═══════════════════════════════════════════════════════════════════
    GIM Trip Builder · /trip-builder
@@ -101,6 +102,17 @@ const safeSessionRead = (key) => {
 };
 
 const TripBuilder = () => {
+  useSeo({
+    title: "Plan Your Trip — Golf in Mexico°",
+    description:
+      "Build your Mexico golf trip in a few steps — destinations, dates, and budget. Pablo personally reviews every request and sends a named, itemized itinerary within 48 hours.",
+    canonical: "/trip-builder",
+    jsonLd: breadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Plan Your Trip", path: "/trip-builder" },
+    ]),
+  });
+
   // Intent gate — splash before the wizard so people choose:
   // "Talk to Pablo first" vs "Build my proposal".
   const [intent, setIntent] = useState(null);

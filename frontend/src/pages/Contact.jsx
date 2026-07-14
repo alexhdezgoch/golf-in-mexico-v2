@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useSeo } from "@/hooks/useSeo";
+import { useSeo, breadcrumbSchema } from "@/hooks/useSeo";
 
 /* ═══════════════════════════════════════════════════════════════════
    Contact · /contact
@@ -17,6 +17,10 @@ const Contact = () => {
     description:
       "Talk golf with Golf in Mexico°. Email the team for trip planning, press, or partnerships, or book a call to plan your Mexico golf trip.",
     canonical: "/contact",
+    jsonLd: breadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Contact", path: "/contact" },
+    ]),
   });
   return (
   <main data-testid="page-contact" className="relative bg-[var(--c-off-white)] pb-24 md:pb-32">

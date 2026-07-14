@@ -199,20 +199,29 @@ const ChromeLayout = ({ children }) => {
 };
 
 function App() {
-  const [introDone, setIntroDone] = useState(() => {
-    try {
-      // Skip the intro when prerendering / hydrating a prerendered page (so the
-      // captured HTML and the first client paint show real content, not the overlay).
-      if (isPrerenderContext()) return true;
-      // Allow ?skipIntro=1 query param + sessionStorage flag
-      if (typeof window !== "undefined" && /[?&]skipIntro=1/.test(window.location.search)) {
-        return true;
-      }
-      return sessionStorage.getItem("gim-intro-seen") === "1";
-    } catch (e) {
-      return false;
+  // The Intro splash mounts AFTER hydration — never in the prerendered/hydrated
+  // tree (that would be a hydration mismatch, since routes are captured with no
+  // overlay). The first-paint curtain in public/index.html covers the content in
+  // the gap so there's no flash. That inline script sets data-gim-intro="pending"
+  // only for first-time visitors (session flag unset, no ?skipIntro) and never
+  // during prerender (puppeteer pre-seeds the flag), so bots capture clean content.
+  const [showIntro, setShowIntro] = useState(false);
+
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    if (document.documentElement.getAttribute("data-gim-intro") === "pending") {
+      setShowIntro(true);
     }
-  });
+  }, []);
+
+  // Once the Intro is mounted and covering the viewport, drop the pre-paint
+  // curtain beneath it on the next frame (so there's never an uncovered gap).
+  useEffect(() => {
+    if (!showIntro) return undefined;
+    const id = requestAnimationFrame(() =>
+      document.documentElement.removeAttribute("data-gim-intro"));
+    return () => cancelAnimationFrame(id);
+  }, [showIntro]);
   const [inquiryOpen, setInquiryOpen] = useState(false);
 
   useEffect(() => {
@@ -221,6 +230,10 @@ function App() {
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
+    // First paint hydrated a prerendered page (routes rendered at final state to
+    // match the captured DOM). Clear the flag post-hydration so subsequent
+    // client-side navigations get their normal blur/opacity entry animation back.
+    if (typeof window !== "undefined") window.__WAS_PRERENDERED__ = false;
   }, []);
 
   // Lenis momentum smooth scroll (skip on touch devices to preserve native scroll)
@@ -262,7 +275,7 @@ function App() {
       <div className="App grain" data-testid="app-root">
         <Cursor />
         <AnimatePresence>
-          {!introDone && <Intro key="intro" onDone={() => setIntroDone(true)} />}
+          {showIntro && <Intro key="intro" onDone={() => setShowIntro(false)} />}
         </AnimatePresence>
         <BrowserRouter>
           <ChromeLayout>

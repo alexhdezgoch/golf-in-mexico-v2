@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useSeo } from "@/hooks/useSeo";
+import { useSeo, breadcrumbSchema } from "@/hooks/useSeo";
 
 /* ═══════════════════════════════════════════════════════════════════
    Experience selector · /experience
@@ -164,6 +164,10 @@ const Experience = () => {
     description:
       "Choose your trip: couples golf, bachelor tournaments, family or friends, and corporate retreats — bespoke Mexico golf itineraries built around the golfer.",
     canonical: "/experience",
+    jsonLd: breadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Experience", path: "/experience" },
+    ]),
   });
   return (
   <main data-testid="page-experience" className="relative bg-[var(--c-green-deep)]">

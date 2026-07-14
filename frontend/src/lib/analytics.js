@@ -22,11 +22,16 @@ const META_PIXEL_ID = process.env.REACT_APP_META_PIXEL_ID;
 const CLARITY_ID = process.env.REACT_APP_CLARITY_ID;
 
 const hasWindow = () => typeof window !== "undefined";
+// During build-time prerender (scripts/prerender.mjs sets window.__PRERENDER__),
+// stay fully disabled: never fire events from the build container or bake tag
+// scripts into the captured HTML.
+const isPrerendering = () => hasWindow() && window.__PRERENDER__ === true;
 const hasGTM = () => hasWindow() && Boolean(GTM_ID);
 const hasGA4Direct = () => hasWindow() && !GTM_ID && Boolean(GA4_ID);
 const hasMeta = () => hasWindow() && Boolean(META_PIXEL_ID);
 const hasClarity = () => hasWindow() && Boolean(CLARITY_ID);
-const isEnabled = () => hasGTM() || hasGA4Direct() || hasMeta() || hasClarity();
+const isEnabled = () =>
+  !isPrerendering() && (hasGTM() || hasGA4Direct() || hasMeta() || hasClarity());
 
 let initialized = false;
 

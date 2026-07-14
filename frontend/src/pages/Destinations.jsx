@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useSeo } from "@/hooks/useSeo";
+import { useSeo, breadcrumbSchema } from "@/hooks/useSeo";
 
 /* ─────────────── DATA ─────────────── */
 
@@ -224,6 +224,10 @@ const Destinations = () => {
     description:
       "Field guides to Mexico's golf destinations — Los Cabos, Punta Mita, Mexico City, Cancún · Riviera Maya, Puerto Vallarta and beyond. Courses, costs, access, and seasons.",
     canonical: "/destinations",
+    jsonLd: breadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Destinations", path: "/destinations" },
+    ]),
   });
   return (
     <main data-testid="page-destinations" className="relative bg-[var(--c-off-white)]">

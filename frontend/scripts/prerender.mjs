@@ -153,13 +153,13 @@ async function prerenderRoute(browser, base, route) {
   const html = await page.evaluate(() => "<!doctype html>\n" + document.documentElement.outerHTML);
   await page.close();
 
+  // STAGE the capture — do NOT write yet. Writing build/index.html mid-loop would
+  // overwrite the pristine SPA shell that the fallback serves, contaminating every
+  // subsequently-captured route (a route without its own useSeo would inherit
+  // home's canonical/title/schema). main() flushes all writes after the full loop.
   const outFile = outFileFor(route);
-  fs.mkdirSync(path.dirname(outFile), { recursive: true });
-  fs.writeFileSync(outFile, html);
-
-  // Report a rough size + JSON-LD count for the run log.
   const ldCount = (html.match(/application\/ld\+json/g) || []).length;
-  return { bytes: Buffer.byteLength(html), ldCount };
+  return { outFile, html, bytes: Buffer.byteLength(html), ldCount };
 }
 
 async function main() {
@@ -174,10 +174,12 @@ async function main() {
   const browser = await launchBrowser();
   let ok = 0;
   const failures = [];
+  const staged = [];
   try {
     for (const route of routes) {
       try {
-        const { bytes, ldCount } = await prerenderRoute(browser, base, route);
+        const { outFile, html, bytes, ldCount } = await prerenderRoute(browser, base, route);
+        staged.push({ outFile, html });
         ok += 1;
         console.log(`  ✓ ${route.padEnd(42)} ${bytes.toLocaleString()} bytes · ${ldCount} JSON-LD`);
       } catch (err) {
@@ -190,11 +192,20 @@ async function main() {
     server.close();
   }
 
-  console.log(`prerender: ${ok}/${routes.length} routes written to build/`);
+  // Fail the build LOUDLY before writing anything if any route failed — never
+  // ship a partial/contaminated set. The un-prerendered build/index.html shell
+  // is left intact (site still works as a plain SPA) and Vercel fails the deploy.
   if (failures.length) {
-    console.error(`prerender: FAILED routes: ${failures.join(", ")}`);
+    console.error(`prerender: FAILED routes: ${failures.join(", ")} — no files written`);
     process.exit(1);
   }
+  // All routes captured from the pristine shell — now flush every file to disk.
+  for (const { outFile, html } of staged) {
+    fs.mkdirSync(path.dirname(outFile), { recursive: true });
+    fs.writeFileSync(outFile, html);
+  }
+  console.log(`prerender: ${ok}/${routes.length} routes written to build/`);
+  process.exit(0);
 }
 
 main().catch((err) => {
