@@ -1,14 +1,23 @@
 # HubSpot Welcome Email — content & go-live notes
 
-Built 2026-07-16 in the GIM HubSpot portal (id **51554591**). The email itself is
-composed in the **Inquiry form → Automation → simple workflow → Send email**, but
-it could NOT be saved yet because HubSpot requires a **complete CAN-SPAM footer**
-(a physical mailing address) before a marketing email can save/send.
+**STATUS: LIVE ✅ (2026-07-16).** Built + published in the GIM HubSpot portal
+(id **51554591**). Attached to the **Inquiry form → Automation → simple workflow**;
+fires automatically when someone submits the inquiry form. Footer complete with
+GIM's physical address (below), so it saves and sends on the trial tier.
 
-## Blocker to finish
-Add GIM's **physical mailing address** in HubSpot → Settings → Marketing → Email →
-Footer (or the "Manage" link in the email editor's *Email footer* field). Once the
-footer is complete, re-open the workflow email and click **Save email**.
+Cleanup pending: a **duplicate** "GIM — Welcome (Inquiry follow-up)" email asset was
+created during setup (Marketing → Emails). The workflow uses one; delete the other
+unused copy (don't delete the one linked to the inquiry workflow).
+
+## Email footer address (CONFIRMED 2026-07-16)
+Company name shown: **Golf in Mexico**
+Physical address (from the SAS Constancia de Situación Fiscal, entity Soluciones
+Deportivas BKT S.A.S. de C.V.):
+> **Cerrada de la Amargura 500, Jardines de la Herradura, C.P. 52785,
+> Huixquilucan, Estado de México, México**
+
+Set this in HubSpot → Settings → Marketing → Email (footer / office location), so
+the default footer is complete → then the workflow email can Save.
 
 ## Tier note
 The portal is on a **22-day trial**. It allows only **1** follow-up email. To put a
