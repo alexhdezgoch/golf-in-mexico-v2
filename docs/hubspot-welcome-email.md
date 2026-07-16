@@ -18,7 +18,7 @@ Pablo must upgrade to **Marketing Hub Starter** (~$108/yr). Free = 1 email only.
 ## Email content (recreate exactly)
 - **Email name:** GIM — Welcome (Inquiry follow-up)
 - **From name:** Golf in Mexico
-- **From address:** jose@golf-in-mexico.com  (domain is verified for sending)
+- **From address:** admin@golf-in-mexico.com  (already a verified sender — no setup needed)
 - **Subscription type:** Marketing Email | Marketing Information
 - **Subject:** Thanks for reaching out to Golf in Mexico
 - **Body:**
