@@ -38,15 +38,17 @@ export const HUBSPOT_CONSENT_TEXT =
 //              (guide forms only; leave "" until the PDF exists → no link shown)
 export const HUBSPOT_FORMS = {
   // --- Welcome-only (acknowledge, sales/waitlist follows up by hand) ---
-  inquiry:              { formId: "", behavior: "welcome" },
-  trip_builder:         { formId: "", behavior: "welcome" },
-  trip_builder_exit:    { formId: "", behavior: "welcome" },
-  notify:               { formId: "", behavior: "welcome" },
-  destination_waitlist: { formId: "", behavior: "welcome" },
-  footer_newsletter:    { formId: "", behavior: "welcome" },
-  hub_capture:          { formId: "", behavior: "welcome" },
+  inquiry:              { formId: "cd60b7bb-d24f-4312-a979-232a64fc668c", behavior: "welcome" },
+  trip_builder:         { formId: "445b2b5c-17a0-4609-821a-3da9268d5365", behavior: "welcome" },
+  trip_builder_exit:    { formId: "2d7e9e75-eba9-43ce-9cd3-c54fc20e951c", behavior: "welcome" },
+  notify:               { formId: "07dc7a4a-2863-4d94-89fc-f4cc8063f0bc", behavior: "welcome" },
+  destination_waitlist: { formId: "eda80f6d-e0c7-474e-ae4d-d1f7ec415ce7", behavior: "welcome" },
+  footer_newsletter:    { formId: "1c191983-38c4-4b31-87c6-a62213a34d0d", behavior: "welcome" },
+  hub_capture:          { formId: "8e3c424e-6d74-440a-b480-61cc23a6115e", behavior: "welcome" },
 
   // --- Welcome + guide (HubSpot follow-up email delivers the PDF) ---
+  // Deferred until the lead-magnet PDFs exist (Email B / Email C). Left blank →
+  // these two forms stay a safe no-op even with the portal ID set. Wire on PDF day.
   article_newsletter:   { formId: "", behavior: "guide", guideUrl: "" }, // Mexico golf planning guide
   hub_playbook:         { formId: "", behavior: "guide", guideUrl: "" }, // Los Cabos playbook
 };
