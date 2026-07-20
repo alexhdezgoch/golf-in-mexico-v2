@@ -9,9 +9,7 @@ import Footer from "@/components/Footer";
 import Cursor from "@/components/Cursor";
 import Intro from "@/components/Intro";
 import ReadingProgress from "@/components/ReadingProgress";
-import InquiryModal from "@/components/InquiryModal";
-import { InquiryContext } from "@/context/Inquiry";
-import { initAnalytics, trackPageView, trackEvent } from "@/lib/analytics";
+import { initAnalytics, trackPageView } from "@/lib/analytics";
 import { captureAttribution } from "@/lib/attribution";
 
 import Home from "@/pages/Home";
@@ -222,7 +220,6 @@ function App() {
       document.documentElement.removeAttribute("data-gim-intro"));
     return () => cancelAnimationFrame(id);
   }, [showIntro]);
-  const [inquiryOpen, setInquiryOpen] = useState(false);
 
   useEffect(() => {
     document.documentElement.classList.add("cursor-custom");
@@ -264,15 +261,8 @@ function App() {
     };
   }, []);
 
-  const openInquiry = () => {
-    setInquiryOpen(true);
-    trackEvent("open_inquiry");
-  };
-  const closeInquiry = () => setInquiryOpen(false);
-
   return (
-    <InquiryContext.Provider value={{ open: inquiryOpen, openInquiry, closeInquiry }}>
-      <div className="App grain" data-testid="app-root">
+    <div className="App grain" data-testid="app-root">
         <Cursor />
         <AnimatePresence>
           {showIntro && <Intro key="intro" onDone={() => setShowIntro(false)} />}
@@ -282,9 +272,7 @@ function App() {
             <AnimatedRoutes />
           </ChromeLayout>
         </BrowserRouter>
-        <InquiryModal open={inquiryOpen} onClose={closeInquiry} />
       </div>
-    </InquiryContext.Provider>
   );
 }
 
