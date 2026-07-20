@@ -1,13 +1,37 @@
 # HubSpot Welcome Email — content & go-live notes
 
-**STATUS: LIVE ✅ (2026-07-16).** Built + published in the GIM HubSpot portal
-(id **51554591**). Attached to the **Inquiry form → Automation → simple workflow**;
-fires automatically when someone submits the inquiry form. Footer complete with
-GIM's physical address (below), so it saves and sends on the trial tier.
+**STATUS: LIVE ✅ — now on the TRIP BUILDER form (2026-07-20).** Built + published in
+the GIM HubSpot portal (id **51554591**). Footer complete with GIM's physical address
+(below), so it saves and sends on the trial tier.
 
-Cleanup pending: a **duplicate** "GIM — Welcome (Inquiry follow-up)" email asset was
-created during setup (Marketing → Emails). The workflow uses one; delete the other
-unused copy (don't delete the one linked to the inquiry workflow).
+**2026-07-20 — welcome email MOVED to the Trip Builder form (Alex's call).**
+Why: the site's INQUIRE button + every "start a proposal" CTA route to `/experience`
+→ the trip-builder, which submits the **`trip_builder`** form. The `InquiryModal`
+(the only UI using the `inquiry` form) is rendered but **never opened** — `openInquiry`
+is defined in App.js and called nowhere — so real visitors never touch the `inquiry`
+form. Proof: every real submission (Alex's + test) landed as **GIM — Trip Builder**.
+So the welcome auto-reply was firing off an unreachable form.
+Fix (HubSpot only, no code change): created a simple workflow on **GIM — Trip Builder
+→ Automation** ("Send a follow-up email after form submission", trigger = submits Trip
+Builder), pointed it at the existing **GIM — Welcome (Inquiry follow-up)** email asset,
+turned it **ON**, and **published** the form. The old Inquiry-form workflow is left
+**Off** (inert; unreachable form) — don't delete it in a way that removes the shared
+email asset the live Trip Builder workflow now depends on.
+Trial cap: **1 follow-up email total** ("1 of 1"). To also welcome footer-newsletter /
+other forms, Pablo must upgrade to Marketing Starter.
+
+**Spam-filter gotcha (preview only):** HubSpot's Forms API returns HTTP 200 even when it
+silently flags a submission as spam ("Unregistered Site Domain") if the submitting page's
+domain isn't in Settings → Reports & Analytics Tracking → Advanced Tracking → Additional
+site domains. Each Vercel **preview** deploy gets a unique subdomain, so preview tests get
+spam-flagged unless that exact subdomain is added there AND **Saved** (a staged-but-unsaved
+entry does nothing — this bit us). **Production `golf-in-mexico.com` is already allowlisted**,
+so production submissions create contacts normally with no action needed.
+
+Cleanup pending: a **duplicate** "GIM — Welcome (Inquiry follow-up)" email asset exists
+(Marketing → Emails). The live Trip Builder workflow uses one copy; leave both for now
+(deleting risks orphaning the live one). Also delete the test contacts created during
+verification (search `gimlivetest`, `gimtripbuilder`, `gimwelcome`, `smoke+inquiry`).
 
 ## Email footer address (CONFIRMED 2026-07-16)
 Company name shown: **Golf in Mexico**
