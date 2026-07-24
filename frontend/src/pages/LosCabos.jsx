@@ -341,7 +341,7 @@ const PlaybookCTA = ({ variant = "full", testid, region, h3Pre = "Stay in the lo
     const ok = await submitHubspot({ email, region });
     if (!ok) return;
     setSent(true);
-    trackLead({ form: "hub_playbook" });
+    trackLead({ form: "hub_playbook", placement: "hub-mid", region });
   };
 
   if (variant === "short") {
@@ -1079,7 +1079,7 @@ const PlaybookEndForm = ({ region }) => {
     const ok = await submit({ email, region });
     if (!ok) return;
     setSent(true);
-    trackLead({ form: "hub_capture" });
+    trackLead({ form: "hub_capture", placement: "hub-end", region });
   };
   if (sent) {
     return (

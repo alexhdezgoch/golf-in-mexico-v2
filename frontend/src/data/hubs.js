@@ -776,7 +776,7 @@ const UNIQUE = {
     ["Total all-in (per person)","$1,290", "$4,370",  "Single-destination estimate · 3 nights, 2 rounds"],
   ],
   callouts: [
-    { icon: "🤝", label: "The relationship rule",        body: "These rounds are not booked, they are arranged. Member-guest invitations, friend-of-the-property reservations, advance secretarial correspondence. The Playbook covers the access channel for each destination — the right relationship matters more than the right week." },
+    { icon: "🤝", label: "The relationship rule",        body: "These rounds are not booked, they are arranged. Member-guest invitations, friend-of-the-property reservations, advance secretarial correspondence. Tell us where you want to play and we'll walk you through the access channel — the right relationship matters more than the right week." },
     { icon: "🗺️", label: "The single-region rule",        body: "Pick one unique destination per trip. The temptation to chain Querétaro + San Miguel + Valle de Bravo into a single week destroys the experience. Each region has a particular pace — give it three days minimum to register what makes it different." },
   ],
 

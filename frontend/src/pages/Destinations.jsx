@@ -135,7 +135,9 @@ const DestinationCard = ({ d, index }) => {
     const ok = await submit({ email, region: d.name });
     if (!ok) return;
     setSent(true);
-    trackLead({ form: "hub_capture" });
+    // placement + region, because hub_capture's GUID is shared by four surfaces —
+    // without them GA4 can't tell a destinations card from a hub-page capture.
+    trackLead({ form: "hub_capture", placement: "destinations-card", region: d.name });
   };
 
   return (
@@ -193,7 +195,7 @@ const DestinationCard = ({ d, index }) => {
           </p>
 
           {/* CTAs */}
-          <div className="mt-8 md:mt-10 pt-6 md:pt-7 border-t border-white/15 flex flex-col sm:flex-row gap-3 sm:gap-4 pointer-events-auto">
+          <div className="mt-8 md:mt-10 pt-6 md:pt-7 border-t border-white/15 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3 sm:gap-4 sm:min-h-[62px] pointer-events-auto">
               <Link
                 to={d.href}
                 data-testid={`region-cta-explore-${d.slug}`}
@@ -221,15 +223,18 @@ const DestinationCard = ({ d, index }) => {
                   className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto"
                 >
                   <input {...honeypotProps} name="company_website" />
+                  {/* Dark fill, not bg-white/10: this sits on an unfiltered photo, so a
+                      lightening surface left the placeholder at ~3.3:1 contrast. */}
                   <input
                     type="email"
                     required
+                    autoFocus
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     onClick={(e) => e.stopPropagation()}
                     placeholder="your@email.com"
                     aria-label={`Email address for ${d.name} updates`}
-                    className="bg-white/10 backdrop-blur-sm border border-white/40 focus:border-[var(--c-gold)] text-white placeholder:text-white/45 font-body text-sm px-4 py-3 rounded-sm focus:outline-none transition-colors"
+                    className="bg-black/40 backdrop-blur-sm border border-white/40 focus:border-[var(--c-gold)] text-white placeholder:text-white/70 font-body text-sm px-4 py-3 rounded-sm focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--c-gold)] transition-colors"
                   />
                   <button
                     type="submit"
@@ -242,18 +247,21 @@ const DestinationCard = ({ d, index }) => {
                 </form>
               )}
 
-              {sent && (
-                <p
-                  data-testid={`region-cta-capture-success-${d.slug}`}
-                  className="font-display italic text-[var(--c-gold)] text-lg self-center"
-                >
-                  You&apos;re on the list.
-                </p>
-              )}
-
-              {error && !sent && (
-                <p className="basis-full font-mono text-[10px] uppercase tracking-[0.16em] text-red-300">{error}</p>
-              )}
+              {/* Kept mounted so the live region exists before text lands in it —
+                  otherwise screen readers announce neither success nor failure. */}
+              <div role="status" aria-live="polite" className="sm:basis-full">
+                {sent && (
+                  <p
+                    data-testid={`region-cta-capture-success-${d.slug}`}
+                    className="font-display italic text-[var(--c-gold)] text-base"
+                  >
+                    You&apos;re on the list.
+                  </p>
+                )}
+                {error && !sent && (
+                  <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-red-300">{error}</p>
+                )}
+              </div>
           </div>
         </div>
       </div>

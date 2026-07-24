@@ -79,7 +79,7 @@ For each form, turn ON **"Send follow-up email"** and attach the right email (§
 | `notify` | "Notify me" region modal | welcome | Email A — welcome |
 | `destination_waitlist` | Destination placeholder pages | welcome | Email A — welcome |
 | `footer_newsletter` | Site footer | welcome | Email A — welcome (or newsletter opt-in) |
-| `hub_capture` | Destination hub captures (×3 spots) | welcome | Email A — welcome |
+| `hub_capture` | Destination hub captures + the 6 destinations-index cards | welcome | Email A — welcome |
 | `article_newsletter` | Article exit-intent capture | welcome | *alias → `footer_newsletter` GUID* |
 | `hub_playbook` | Destination hub "stay in the loop" CTAs | welcome | *alias → `hub_capture` GUID* |
 
@@ -88,8 +88,12 @@ For each form, turn ON **"Send follow-up email"** and attach the right email (§
 > exist AND had a blank `formId`, meaning every email typed into them was
 > **discarded**. Per the 07-21 call, both CTAs are now plain "stay in the loop"
 > capture, and both keys **alias onto the live GUIDs above** — no new HubSpot forms
-> needed. Their `trackLead()` keys stay distinct so GA4 keeps per-CTA attribution,
-> and hub submissions pass `region` so HubSpot can tell destinations apart.
+> needed. Because a shared GUID means HubSpot can't separate them *by form*, the
+> distinction lives elsewhere: every call site sends `form` + `placement` to GA4,
+> and hub/destination submissions send `region` so the destination lands on the
+> contact. Caveat both ways — GA4 events are blocked by the same privacy lists that
+> block the HubSpot POST, and `region` is last-write-wins (HubSpot dedupes on email).
+> If per-form segmentation inside HubSpot is ever needed, these need real forms.
 >
 > To bring real guide delivery back once the PDFs exist: create the two forms in
 > HubSpot, attach Email B / Email C, put their own GUIDs in `src/config/hubspot.js`,
@@ -133,7 +137,8 @@ and a new formKey (see §7).
 
 Flipping this on is a **production behavior change** → get explicit sign-off first.
 
-1. Confirm Pablo is on **Marketing Hub Starter** and all 9 forms + 3 emails exist.
+1. Confirm Pablo is on **Marketing Hub Starter** and the 7 real forms + Email A exist.
+   (9 formKeys, but `article_newsletter`/`hub_playbook` are aliases — see §3. Emails B/C are deferred.)
 2. Fill every `formId` blank in `src/config/hubspot.js`.
 3. Set `REACT_APP_HUBSPOT_PORTAL_ID` in Vercel (Production) and redeploy.
 4. **Smoke test — one unique email per form** (e.g. `test+inquiry@…`):
@@ -189,4 +194,6 @@ Flipping this on is a **production behavior change** → get explicit sign-off f
 - `src/lib/hubspot.js` — the Forms API client (`submitToHubspot`).
 - `src/lib/attribution.js` — captures UTM/click-IDs on landing.
 - `src/hooks/useHubspotForm.js` — shared submit hook (validation, spam guards, in-flight + error state).
-- 8 form components/pages wired through the hook (inquiry, notify, footer, destination placeholder, article, trip builder, Los Cabos, destination hub).
+- Form components/pages wired through the hook: inquiry, notify, footer, destination placeholder,
+  article, trip builder, Los Cabos hub template, destination hub, destinations index (6 cards).
+  (Listed rather than counted so the number can't rot again.)

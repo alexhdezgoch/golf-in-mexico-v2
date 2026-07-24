@@ -54,7 +54,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build && yarn prerender",
+    "build": "yarn generate:seo && craco build && yarn prerender",
     "test": "craco test",
     "prerender": "node scripts/prerender.mjs",
     "generate:seo": "node scripts/generate-llms.mjs"
