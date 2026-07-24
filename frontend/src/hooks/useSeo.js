@@ -15,9 +15,10 @@ export const SITE_NAME = "Golf in Mexico°";
 
 const abs = (url) => (url && url.startsWith("http") ? url : `${SITE_URL}${url || ""}`);
 
-export function useSeo({ title, description, canonical, jsonLd } = {}) {
+export function useSeo({ title, description, canonical, jsonLd, alternates } = {}) {
   // Serialize jsonLd for a stable dependency (callers pass fresh literals).
   const jsonLdKey = jsonLd ? JSON.stringify(jsonLd) : "";
+  const alternatesKey = alternates ? JSON.stringify(alternates) : "";
 
   useEffect(() => {
     if (title) document.title = title;
@@ -42,6 +43,23 @@ export function useSeo({ title, description, canonical, jsonLd } = {}) {
       link.href = abs(canonical);
     }
 
+    // hreflang alternates — only for routes that exist in more than one language
+    // (currently /privacy ↔ /aviso-de-privacidad). Same rule as JSON-LD below:
+    // clear whatever is in the document first. Without this, hydrating a
+    // prerendered page would DOUBLE the baked-in tags, and navigating away from
+    // /privacy would leave its alternates behind on a single-language route.
+    document
+      .querySelectorAll("link[rel='alternate'][hreflang]")
+      .forEach((el) => el.remove());
+    const altEls = (alternates || []).map(({ hrefLang, href }) => {
+      const link = document.createElement("link");
+      link.rel = "alternate";
+      link.hreflang = hrefLang;
+      link.href = abs(href);
+      document.head.appendChild(link);
+      return link;
+    });
+
     const schemas = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
     // Drop any JSON-LD already in the document (e.g. injected at build time by the
     // prerenderer) before adding this route's, so hydration doesn't duplicate it.
@@ -57,9 +75,9 @@ export function useSeo({ title, description, canonical, jsonLd } = {}) {
       document.head.appendChild(el);
       return el;
     });
-    return () => els.forEach((el) => el.remove());
+    return () => [...els, ...altEls].forEach((el) => el.remove());
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [title, description, canonical, jsonLdKey]);
+  }, [title, description, canonical, jsonLdKey, alternatesKey]);
 }
 
 // ── Schema builders (all URLs absolute, on golf-in-mexico.com) ──────────────

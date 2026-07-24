@@ -23,6 +23,11 @@
 - [Plan a trip](https://golf-in-mexico.com/trip-builder): Build a custom Mexico golf trip.
 - [Contact](https://golf-in-mexico.com/contact): Reach the team.
 
+## Legal
+
+- [Privacy Policy](https://golf-in-mexico.com/privacy): What data the site collects, the third parties that receive it (HubSpot, Google Analytics 4, Meta Pixel, Microsoft Clarity, Vercel), retention periods, and how to exercise your privacy rights.
+- [Aviso de Privacidad](https://golf-in-mexico.com/aviso-de-privacidad): Spanish-language version of the privacy policy, written to Mexico's LFPDPPP (derechos ARCO).
+
 ## Full content
 
 - [llms-full.txt](https://golf-in-mexico.com/llms-full.txt): The complete text of every destination guide and article.

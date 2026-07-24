@@ -22,6 +22,13 @@ const LIVE_DESTINATIONS = [
 
 const SOON_DESTINATIONS = [];
 
+// Bottom-bar legal links. Both language versions are linked directly so the
+// Spanish notice is reachable without first landing on the English one.
+const LEGAL_LINKS = [
+  { label: "Privacy Policy", to: "/privacy", testId: "footer-link-privacy" },
+  { label: "Aviso de Privacidad", to: "/aviso-de-privacidad", testId: "footer-link-privacy-es" },
+];
+
 const SOCIALS = [
   { href: "https://www.facebook.com/", label: "Facebook", path: "M22 12a10 10 0 1 0-11.6 9.87v-6.98H8v-2.89h2.4V9.41c0-2.38 1.42-3.69 3.58-3.69 1.04 0 2.12.19 2.12.19v2.34h-1.2c-1.18 0-1.55.73-1.55 1.49v1.78h2.63l-.42 2.89H13.4v6.98A10 10 0 0 0 22 12Z" },
   { href: "https://www.instagram.com/", label: "Instagram", path: "M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.26.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.26.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.72 3.72 0 0 1-1.38-.9 3.72 3.72 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 1.8c-3.14 0-3.51.01-4.75.07-1.07.05-1.65.22-2.04.37-.51.2-.88.44-1.27.83-.39.39-.63.76-.83 1.27-.15.39-.32.97-.37 2.04-.06 1.24-.07 1.61-.07 4.75s.01 3.51.07 4.75c.05 1.07.22 1.65.37 2.04.2.51.44.88.83 1.27.39.39.76.63 1.27.83.39.15.97.32 2.04.37 1.24.06 1.61.07 4.75.07s3.51-.01 4.75-.07c1.07-.05 1.65-.22 2.04-.37.51-.2.88-.44 1.27-.83.39-.39.63-.76.83-1.27.15-.39.32-.97.37-2.04.06-1.24.07-1.61.07-4.75s-.01-3.51-.07-4.75c-.05-1.07-.22-1.65-.37-2.04a3.41 3.41 0 0 0-.83-1.27 3.41 3.41 0 0 0-1.27-.83c-.39-.15-.97-.32-2.04-.37-1.24-.06-1.61-.07-4.75-.07Zm0 3.06a4.98 4.98 0 1 1 0 9.96 4.98 4.98 0 0 1 0-9.96Zm0 8.21a3.23 3.23 0 1 0 0-6.46 3.23 3.23 0 0 0 0 6.46Zm6.34-8.4a1.16 1.16 0 1 1-2.32 0 1.16 1.16 0 0 1 2.32 0Z" },
@@ -240,9 +247,21 @@ const Footer = () => {
           © {year} Golf<span className="text-[var(--c-gold)]">°</span> in Mexico
           <span className="text-[var(--c-gold)]">°</span>. All rights reserved.
         </span>
-        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/30">
-          Crafted with care in Mexico
-        </span>
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+          {LEGAL_LINKS.map((l) => (
+            <Link
+              key={l.to}
+              to={l.to}
+              data-testid={l.testId}
+              className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/30 hover:text-[var(--c-gold)] transition-colors duration-300"
+            >
+              {l.label}
+            </Link>
+          ))}
+          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/30">
+            Crafted with care in Mexico
+          </span>
+        </div>
       </div>
     </footer>
   );

@@ -21,6 +21,7 @@ import Destinations from "@/pages/Destinations";
 import LosCabos from "@/pages/LosCabos";
 import Experience from "@/pages/Experience";
 import Contact from "@/pages/Contact";
+import Privacy from "@/pages/Privacy";
 
 // Generic destination hub — routes /destinations/:slug through the LosCabos layout with the matching data
 const HubBySlug = () => {
@@ -173,6 +174,23 @@ const AnimatedRoutes = () => {
           element={
             <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
               <Contact />
+            </motion.div>
+          }
+        />
+        {/* Privacy policy — same component, one route per language */}
+        <Route
+          path="/privacy"
+          element={
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
+              <Privacy locale="en" />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/aviso-de-privacidad"
+          element={
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
+              <Privacy locale="es" />
             </motion.div>
           }
         />

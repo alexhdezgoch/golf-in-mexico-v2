@@ -46,6 +46,10 @@ const TODAY = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
 // different hat, so we detect it and omit lastmod instead. Omitted lastmod is
 // well-defined: crawlers fall back to their own change detection.
 const gitDate = (relPath) => {
+  // A route with no ROUTE_SOURCE entry lands here as undefined. Bail rather than
+  // hand undefined to execFileSync, so adding a route without mapping it costs
+  // that route its lastmod instead of throwing mid-build.
+  if (!relPath) return null;
   try {
     return execFileSync("git", ["log", "-1", "--format=%cs", "--", relPath], {
       cwd: ROOT,
@@ -67,6 +71,10 @@ const ROUTE_SOURCE = {
   "/trip-builder": "src/pages/TripBuilder.jsx",
   "/about": "src/pages/About.jsx",
   "/contact": "src/pages/Contact.jsx",
+  // Both legal routes render from one bilingual content module, so they share
+  // its date — the policy text is what changes, not the component.
+  "/privacy": "src/data/privacy.js",
+  "/aviso-de-privacidad": "src/data/privacy.js",
 };
 const HUB_SOURCE = "src/data/hubs.js";
 const ARTICLE_SOURCE = "src/data/articles.js";
@@ -301,6 +309,9 @@ async function main() {
   index += `- [Experiences](${BASE}/experience): Couples, bachelor, family/friends, and corporate golf trips.\n`;
   index += `- [Plan a trip](${BASE}/trip-builder): Build a custom Mexico golf trip.\n`;
   index += `- [Contact](${BASE}/contact): Reach the team.\n`;
+  index += `\n## Legal\n\n`;
+  index += `- [Privacy Policy](${BASE}/privacy): What data the site collects, the third parties that receive it (HubSpot, Google Analytics 4, Meta Pixel, Microsoft Clarity, Vercel), retention periods, and how to exercise your privacy rights.\n`;
+  index += `- [Aviso de Privacidad](${BASE}/aviso-de-privacidad): Spanish-language version of the privacy policy, written to Mexico's LFPDPPP (derechos ARCO).\n`;
   index += `\n## Full content\n\n`;
   index += `- [llms-full.txt](${BASE}/llms-full.txt): The complete text of every destination guide and article.\n`;
 
@@ -330,6 +341,10 @@ async function main() {
     { loc: "/trip-builder", priority: "0.7", changefreq: "monthly" },
     { loc: "/about", priority: "0.6", changefreq: "monthly" },
     { loc: "/contact", priority: "0.6", changefreq: "monthly" },
+    // Legal. Low priority, but listed so crawlers (and the prerenderer, which
+    // reads its route list from this sitemap) both pick them up.
+    { loc: "/privacy", priority: "0.3", changefreq: "yearly" },
+    { loc: "/aviso-de-privacidad", priority: "0.3", changefreq: "yearly" },
   ].map((r) => ({ ...r, lastmod: gitDate(ROUTE_SOURCE[r.loc]) }));
   const hubLastmod = gitDate(HUB_SOURCE);
   const hubRoutes = hubs.map((h) => ({
