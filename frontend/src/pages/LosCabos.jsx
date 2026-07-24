@@ -7,6 +7,7 @@ import { getHubData, KEEP_EXPLORING_HUBS } from "../data/hubs";
 import { useSeo, articleSchema, breadcrumbSchema, faqSchema } from "@/hooks/useSeo";
 import { trackLead } from "@/lib/analytics";
 import { useHubspotForm } from "@/hooks/useHubspotForm";
+import { FORM_KEYS } from "@/config/hubspot";
 
 /* Hero photo per destination */
 const HERO_PHOTOS = {
@@ -335,13 +336,13 @@ const PlaybookCTA = ({ variant = "full", testid, region, h3Pre = "Stay in the lo
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
-  const { submit: submitHubspot, submitting, error, honeypotProps } = useHubspotForm("hub_playbook");
+  const { submit: submitHubspot, submitting, error, honeypotProps } = useHubspotForm(FORM_KEYS.hub_playbook);
   const submit = async (e) => {
     e.preventDefault();
     const ok = await submitHubspot({ email, region });
     if (!ok) return;
     setSent(true);
-    trackLead({ form: "hub_playbook", placement: "hub-mid", region });
+    trackLead({ form: FORM_KEYS.hub_playbook, placement: "hub-mid", region });
   };
 
   if (variant === "short") {
@@ -1024,13 +1025,13 @@ const LosCabos = ({ slug = "los-cabos" }) => {
 const NewsletterMiniForm = ({ testid }) => {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
-  const { submit, submitting, error, honeypotProps } = useHubspotForm("hub_capture");
+  const { submit, submitting, error, honeypotProps } = useHubspotForm(FORM_KEYS.hub_capture);
   const onSubmit = async (e) => {
     e.preventDefault();
     const ok = await submit({ email });
     if (!ok) return;
     setSent(true);
-    trackLead({ form: "hub_capture" });
+    trackLead({ form: FORM_KEYS.hub_capture });
   };
   if (sent) {
     return (
@@ -1073,13 +1074,13 @@ const PlaybookEndForm = ({ region }) => {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
-  const { submit, submitting, error, honeypotProps } = useHubspotForm("hub_capture");
+  const { submit, submitting, error, honeypotProps } = useHubspotForm(FORM_KEYS.hub_capture);
   const onSubmit = async (e) => {
     e.preventDefault();
     const ok = await submit({ email, region });
     if (!ok) return;
     setSent(true);
-    trackLead({ form: "hub_capture", placement: "hub-end", region });
+    trackLead({ form: FORM_KEYS.hub_capture, placement: "hub-end", region });
   };
   if (sent) {
     return (

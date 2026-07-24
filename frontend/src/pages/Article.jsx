@@ -5,6 +5,7 @@ import { getArticleBySlug, getRelatedArticles, ARTICLES } from "@/data/articles"
 import { useSeo, articleSchema, breadcrumbSchema, faqSchema } from "@/hooks/useSeo";
 import { trackLead } from "@/lib/analytics";
 import { useHubspotForm } from "@/hooks/useHubspotForm";
+import { FORM_KEYS } from "@/config/hubspot";
 
 const Badge = ({ children, variant = "default" }) => {
   const cls =
@@ -483,7 +484,7 @@ const ScrollEmailCapture = ({ slug }) => {
   const [visible, setVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const { submit, submitting, error, honeypotProps } = useHubspotForm("article_newsletter");
+  const { submit, submitting, error, honeypotProps } = useHubspotForm(FORM_KEYS.article_newsletter);
 
   useEffect(() => {
     const key = `gim-email-dismissed-${slug}`;
@@ -544,7 +545,7 @@ const ScrollEmailCapture = ({ slug }) => {
     const ok = await submit({ email });
     if (!ok) return;
     setSubmitted(true);
-    trackLead({ form: "article_newsletter" });
+    trackLead({ form: FORM_KEYS.article_newsletter });
     setTimeout(dismiss, 2500);
   };
 

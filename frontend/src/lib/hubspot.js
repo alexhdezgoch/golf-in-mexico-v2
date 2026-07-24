@@ -13,6 +13,7 @@ import {
   HUBSPOT_PORTAL_ID,
   HUBSPOT_ENDPOINT_BASE,
   HUBSPOT_CONSENT_TEXT,
+  HUBSPOT_FORMS,
   getFormConfig,
   isHubspotConfigured,
 } from "@/config/hubspot";
@@ -48,12 +49,29 @@ const buildContext = () => {
 export const submitToHubspot = async (formKey, fields = {}) => {
   const cfg = getFormConfig(formKey);
   if (!cfg) {
-    // Misconfiguration in our own code — surface loudly in dev, don't break UX.
-    return { ok: true, dormant: true, error: `Unknown HubSpot form key: ${formKey}` };
+    // A bad formKey is OUR bug, and it can only ever destroy leads — the visitor
+    // typed a real email and there is nowhere to send it. This used to return
+    // ok:true, so the form showed "You're on the list.", fired the GA4 lead event,
+    // and dropped the address with no signal anywhere. Fail loudly instead: the
+    // caller shows its error state and the visitor gets the mailto fallback.
+    console.error(
+      `[hubspot] Unknown form key "${formKey}" — submission NOT sent. ` +
+        `Valid keys: ${Object.keys(HUBSPOT_FORMS).join(", ")}`
+    );
+    return { ok: false, error: `Unknown HubSpot form key: ${formKey}` };
   }
 
   // Not wired up yet → behave exactly like today (optimistic success, no network).
+  // This is deliberate for the pre-integration period, but now that the portal ID
+  // IS set in production, hitting this path in prod means the env var is missing —
+  // so make it visible rather than silently swallowing every lead on the site.
   if (!isHubspotConfigured(formKey)) {
+    console.warn(
+      `[hubspot] DORMANT: "${formKey}" posted nowhere. ` +
+        (HUBSPOT_PORTAL_ID
+          ? `formId is blank for this key.`
+          : `REACT_APP_HUBSPOT_PORTAL_ID is not set in this build.`)
+    );
     return { ok: true, dormant: true };
   }
 

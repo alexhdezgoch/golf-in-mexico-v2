@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useSeo, breadcrumbSchema } from "@/hooks/useSeo";
 import { trackLead } from "@/lib/analytics";
 import { useHubspotForm } from "@/hooks/useHubspotForm";
+import { FORM_KEYS } from "@/config/hubspot";
 
 /* ─────────────── DATA ─────────────── */
 
@@ -121,13 +122,14 @@ const DestinationsHeader = () => (
 
 const DestinationCard = ({ d, index }) => {
   // Was a "Download the 2026 X Travel Brief" button that window.open()'d
-  // /blackbook/<slug>.pdf — a file that never existed, so it opened a 404 tab.
+  // /blackbook/<slug>.pdf — a file that never existed. Not even a 404: vercel.json
+  // rewrites everything to index.html, so it opened a tab serving the app shell.
   // Retired with the rest of the guide promises (call 07-21): now a plain
   // email capture, posting to the same live GUID as the hub captures.
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
-  const { submit, submitting, error, honeypotProps } = useHubspotForm("hub_capture");
+  const { submit, submitting, error, honeypotProps } = useHubspotForm(FORM_KEYS.hub_capture);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -137,7 +139,7 @@ const DestinationCard = ({ d, index }) => {
     setSent(true);
     // placement + region, because hub_capture's GUID is shared by four surfaces —
     // without them GA4 can't tell a destinations card from a hub-page capture.
-    trackLead({ form: "hub_capture", placement: "destinations-card", region: d.name });
+    trackLead({ form: FORM_KEYS.hub_capture, placement: "destinations-card", region: d.name });
   };
 
   return (

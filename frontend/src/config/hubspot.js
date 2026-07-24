@@ -75,6 +75,29 @@ export const HUBSPOT_FORMS = {
   hub_playbook:         { formId: HUB_CAPTURE_FORM_ID, behavior: "welcome" }, // alias → hub_capture
 };
 
+// Reference these instead of typing the key as a bare string at the call site.
+// A typo in FORM_KEYS.hub_captrue is `undefined` and fails loudly in submitToHubspot;
+// a typo in the string "hub_captrue" used to look exactly like a working form.
+export const FORM_KEYS = Object.freeze(
+  Object.keys(HUBSPOT_FORMS).reduce((acc, key) => ({ ...acc, [key]: key }), {})
+);
+
+// Boot-time guard. A blank formId is how the article and hub-playbook CTAs quietly
+// discarded every lead for weeks: the form rendered, the visitor submitted, the UI
+// confirmed, and nothing was ever POSTed. Shout about it in dev the moment the app
+// loads rather than waiting for someone to notice the contact count is flat.
+if (process.env.NODE_ENV !== "production") {
+  const GUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+  const bad = Object.entries(HUBSPOT_FORMS)
+    .filter(([, cfg]) => !GUID.test(cfg.formId || ""))
+    .map(([key]) => key);
+  if (bad.length) {
+    console.error(
+      `[hubspot] These formKeys have no valid form GUID and will DISCARD leads: ${bad.join(", ")}`
+    );
+  }
+}
+
 export const getFormConfig = (formKey) => HUBSPOT_FORMS[formKey] || null;
 
 export const isHubspotConfigured = (formKey) => {

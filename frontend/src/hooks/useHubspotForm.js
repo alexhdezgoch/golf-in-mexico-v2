@@ -50,6 +50,10 @@ export const useHubspotForm = (formKey) => {
         setError(
           "Something went wrong on our end. Please try again, or email hello@golf-in-mexico.com."
         );
+        // result.error carries the real cause (bad form key, HubSpot's own
+        // validation message, network/ad-blocker). The visitor gets the friendly
+        // line above; we keep the actual reason instead of discarding it.
+        if (result.error) console.error(`[hubspot] ${formKey} failed: ${result.error}`);
         return false;
       }
       return true;
