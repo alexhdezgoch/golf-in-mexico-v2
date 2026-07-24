@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useSeo, breadcrumbSchema } from "@/hooks/useSeo";
+import { trackLead } from "@/lib/analytics";
+import { useHubspotForm } from "@/hooks/useHubspotForm";
 
 /* ─────────────── DATA ─────────────── */
 
@@ -17,8 +20,6 @@ export const REGIONS = [
     image: "/images/rg2d4m8m-gim-stills-41.webp",
     live: true,
     href: "/destinations/los-cabos",
-    blackbook: "/blackbook/los-cabos.pdf",
-    blackbookLabel: "Download the 2026 Cabo Travel Brief",
   },
   {
     slug: "punta-mita",
@@ -32,8 +33,6 @@ export const REGIONS = [
     image: "/images/0wmultbm-dji-0048.webp",
     live: true,
     href: "/destinations/punta-mita",
-    blackbook: "/blackbook/punta-mita.pdf",
-    blackbookLabel: "Download the 2026 Nayarit Travel Brief",
   },
   {
     slug: "mexico-city",
@@ -47,8 +46,6 @@ export const REGIONS = [
     image: "/images/g6r7fp45-golfinmexico-062.webp",
     live: true,
     href: "/destinations/mexico-city",
-    blackbook: "/blackbook/mexico-city.pdf",
-    blackbookLabel: "Download the 2026 Mexico City Travel Brief",
   },
   {
     slug: "puerto-vallarta",
@@ -62,8 +59,6 @@ export const REGIONS = [
     image: "/images/gyf4bofm-d104455e-21a3-4a8e-8a51-72fdb3b5b227-1-105-c.webp",
     live: true,
     href: "/destinations/puerto-vallarta",
-    blackbook: "/blackbook/puerto-vallarta.pdf",
-    blackbookLabel: "Download the 2026 PV Travel Brief",
   },
   {
     slug: "cancun-riviera-maya",
@@ -77,8 +72,6 @@ export const REGIONS = [
     image: "/images/xg8drvr6-img-3947.webp",
     live: true,
     href: "/destinations/cancun-riviera-maya",
-    blackbook: "/blackbook/cancun-riviera-maya.pdf",
-    blackbookLabel: "Download the 2026 Riviera Maya Travel Brief",
   },
   {
     slug: "unique-destinations",
@@ -92,8 +85,6 @@ export const REGIONS = [
     image: "/images/dhz92vfa-golfinmexico-001-2.webp",
     live: true,
     href: "/destinations/unique-destinations",
-    blackbook: "/blackbook/unique-destinations.pdf",
-    blackbookLabel: "Download the 2026 Hidden Routings Travel Brief",
   },
 ];
 
@@ -129,11 +120,22 @@ const DestinationsHeader = () => (
 /* ─────────────── DESTINATION CARD ─────────────── */
 
 const DestinationCard = ({ d, index }) => {
-  const onDownload = (e) => {
+  // Was a "Download the 2026 X Travel Brief" button that window.open()'d
+  // /blackbook/<slug>.pdf — a file that never existed, so it opened a 404 tab.
+  // Retired with the rest of the guide promises (call 07-21): now a plain
+  // email capture, posting to the same live GUID as the hub captures.
+  const [open, setOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [sent, setSent] = useState(false);
+  const { submit, submitting, error, honeypotProps } = useHubspotForm("hub_capture");
+
+  const onSubmit = async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    // TODO: wire to real PDF / lead-capture form
-    window.open(d.blackbook, "_blank", "noopener,noreferrer");
+    const ok = await submit({ email, region: d.name });
+    if (!ok) return;
+    setSent(true);
+    trackLead({ form: "hub_capture" });
   };
 
   return (
@@ -201,14 +203,57 @@ const DestinationCard = ({ d, index }) => {
                 <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
               </Link>
 
-              <button
-                type="button"
-                onClick={onDownload}
-                data-testid={`region-cta-blackbook-${d.slug}`}
-                className="group inline-flex items-center justify-center gap-2 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-5 md:px-7 py-3 md:py-[14px] rounded-sm font-mono text-[10px] md:text-[11px] uppercase tracking-[0.16em] font-bold transition-colors duration-300 whitespace-nowrap shadow-[0_8px_24px_rgba(0,0,0,0.35)]"
-              >
-                <span>[ {d.blackbookLabel} ]</span>
-              </button>
+              {!open && !sent && (
+                <button
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); setOpen(true); }}
+                  data-testid={`region-cta-capture-${d.slug}`}
+                  className="group inline-flex items-center justify-center gap-2 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-5 md:px-7 py-3 md:py-[14px] rounded-sm font-mono text-[10px] md:text-[11px] uppercase tracking-[0.16em] font-bold transition-colors duration-300 whitespace-nowrap shadow-[0_8px_24px_rgba(0,0,0,0.35)]"
+                >
+                  <span>[ Keep me in the loop ]</span>
+                </button>
+              )}
+
+              {open && !sent && (
+                <form
+                  onSubmit={onSubmit}
+                  data-testid={`region-cta-capture-form-${d.slug}`}
+                  className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto"
+                >
+                  <input {...honeypotProps} name="company_website" />
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    onClick={(e) => e.stopPropagation()}
+                    placeholder="your@email.com"
+                    aria-label={`Email address for ${d.name} updates`}
+                    className="bg-white/10 backdrop-blur-sm border border-white/40 focus:border-[var(--c-gold)] text-white placeholder:text-white/45 font-body text-sm px-4 py-3 rounded-sm focus:outline-none transition-colors"
+                  />
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    data-testid={`region-cta-capture-submit-${d.slug}`}
+                    className="bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-5 md:px-7 py-3 rounded-sm font-mono text-[10px] md:text-[11px] uppercase tracking-[0.16em] font-bold transition-colors disabled:opacity-60 disabled:cursor-not-allowed whitespace-nowrap"
+                  >
+                    {submitting ? "Sending…" : "Send →"}
+                  </button>
+                </form>
+              )}
+
+              {sent && (
+                <p
+                  data-testid={`region-cta-capture-success-${d.slug}`}
+                  className="font-display italic text-[var(--c-gold)] text-lg self-center"
+                >
+                  You&apos;re on the list.
+                </p>
+              )}
+
+              {error && !sent && (
+                <p className="basis-full font-mono text-[10px] uppercase tracking-[0.16em] text-red-300">{error}</p>
+              )}
           </div>
         </div>
       </div>

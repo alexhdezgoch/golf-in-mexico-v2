@@ -94,9 +94,3 @@ export const submitToHubspot = async (formKey, fields = {}) => {
     return { ok: false, error: err && err.message ? err.message : "Network error" };
   }
 };
-
-// The guide download URL for a form, if one is configured (guide forms only).
-export const getGuideUrl = (formKey) => {
-  const cfg = getFormConfig(formKey);
-  return cfg && cfg.guideUrl ? cfg.guideUrl : "";
-};

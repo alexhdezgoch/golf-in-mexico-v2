@@ -67,9 +67,9 @@ const LOS_CABOS = {
   ],
   overviewStatsNote: "5 more under construction — reaching 23 by 2026. Source: Mexico News Daily · Los Cabos Tourism Board",
 
-  playbookH3Pre: "Your free",
-  playbookH3Em: "2026 Cabo Travel Brief.",
-  playbookBody: "Get the full Cabo guide as a PDF. Course notes, real prices, a 4-day sample plan, and how to book the private rounds. Sent to your inbox in 60 seconds.",
+  playbookH3Pre: "Stay in the loop on",
+  playbookH3Em: "Cabo golf.",
+  playbookBody: "We're publishing course notes, real prices, and access intel for Los Cabos as we go. Drop your email and we'll send it when it's live — no spam, unsubscribe anytime.",
 
   photoStrip: [
     { label: "Quivira Golf Club · Pacific Cliffs" },
@@ -212,9 +212,9 @@ const PUNTA_MITA = {
     { num: "75 km",   label: "Corridor reach" },
   ],
 
-  playbookH3Pre: "Your free",
-  playbookH3Em: "2026 Punta Mita Travel Brief.",
-  playbookBody: "The full Punta Mita guide as a PDF. How to get inside the gate, which course suits your game, where to stay, and what each day really costs. Sent to your inbox in 60 seconds.",
+  playbookH3Pre: "Stay in the loop on",
+  playbookH3Em: "Punta Mita golf.",
+  playbookBody: "We're publishing how to get inside the gate, which course suits your game, where to stay, and what each day really costs. Drop your email and we'll send it when it's live — no spam, unsubscribe anytime.",
 
   photoStrip: [
     { label: "Pacifico · Tail of the Whale" },
@@ -348,9 +348,9 @@ const MEXICO_CITY = {
     { num: "90 min",  label: "Max drive to corridor's best escapes" },
   ],
 
-  playbookH3Pre: "Your free",
-  playbookH3Em: "2026 Mexico City Travel Brief.",
-  playbookBody: "The full CDMX guide as a PDF. Which private clubs we can get you into, how altitude changes your distances, and where to go after the round. Sent to your inbox in 60 seconds.",
+  playbookH3Pre: "Stay in the loop on",
+  playbookH3Em: "Mexico City golf.",
+  playbookBody: "We're publishing which private clubs we can get you into, how altitude changes your distances, and where to go after the round. Drop your email and we'll send it when it's live — no spam, unsubscribe anytime.",
 
   photoStrip: [
     { label: "Club de Golf Chapultepec · WGC era" },
@@ -486,9 +486,9 @@ const CANCUN = {
     { num: "2007–22", label: "PGA Tour at El Camaleón" },
   ],
 
-  playbookH3Pre: "Your free",
-  playbookH3Em: "2026 Riviera Maya Travel Brief.",
-  playbookBody: "The full Cancun & Riviera Maya guide as a PDF. Best Caribbean-side resorts that bundle golf, real cost of each round, and the courses worth your time. Sent to your inbox in 60 seconds.",
+  playbookH3Pre: "Stay in the loop on",
+  playbookH3Em: "Riviera Maya golf.",
+  playbookBody: "We're publishing the Caribbean-side resorts that bundle golf well, the real cost of each round, and the courses worth your time. Drop your email and we'll send it when it's live — no spam, unsubscribe anytime.",
 
   photoStrip: [
     { label: "El Camaleón · Mayakoba" },
@@ -629,9 +629,9 @@ const PUERTO_VALLARTA = {
     { num: "30–40%",  label: "Below Cabo / Punta Mita pricing" },
   ],
 
-  playbookH3Pre: "Your free",
-  playbookH3Em: "2026 PV Travel Brief.",
-  playbookBody: "The full Puerto Vallarta guide as a PDF. Jungle-and-mountain courses worth the trip, how to pair PV with Punta Mita, and the restaurants worth a reservation. Sent to your inbox in 60 seconds.",
+  playbookH3Pre: "Stay in the loop on",
+  playbookH3Em: "Puerto Vallarta golf.",
+  playbookBody: "We're publishing the jungle-and-mountain courses worth the trip, how to pair PV with Punta Mita, and the restaurants worth a reservation. Drop your email and we'll send it when it's live — no spam, unsubscribe anytime.",
 
   photoStrip: [
     { label: "Vista Vallarta · Nicklaus / Weiskopf" },
@@ -741,9 +741,9 @@ const UNIQUE = {
   ],
   overviewStats: [],
 
-  playbookH3Pre: "Your free",
-  playbookH3Em: "2026 Hidden Routings Travel Brief.",
-  playbookBody: "The full Hidden Mexico guide as a PDF. The lesser-known destinations worth flying for, what makes each one different, and how to actually book the round. Sent to your inbox in 60 seconds.",
+  playbookH3Pre: "Stay in the loop on",
+  playbookH3Em: "hidden Mexico.",
+  playbookBody: "We're publishing the lesser-known destinations worth flying for, what makes each one different, and how to actually book the round. Drop your email and we'll send it when it's live — no spam, unsubscribe anytime.",
 
   photoStrip: [],
 
@@ -803,7 +803,7 @@ const UNIQUE = {
     { q: "Which courses count as Mexico's hidden destinations?",          a: "Six regions worth the detour: Valle de Bravo (lakeside Nicklaus), Querétaro (highland Bajío trio), San Miguel de Allende (Faldo hillside), Acapulco (Tres Vidas), Mazatlán (Estrella del Mar), and Loreto (Rees Jones on the Sea of Cortez)." },
     { q: "Which one is best for a first visit?",        a: "San Miguel de Allende. The colonial city alone is worth the trip, the golf at Ventanas is excellent without being brutal, and the BJX airport is just over an hour from Mexico City." },
     { q: "Is Loreto worth the longer flight?",                     a: "Yes, especially if you've already done Cabo. Loreto feels like Cabo 30 years ago — dramatic Sea of Cortez terrain, very few crowds, direct LAX flights. Loreto Bay (Rees Jones) is the most remote championship round in Mexico." },
-    { q: "How do I book these courses?",                                a: "Most aren't on standard booking channels. It's member-guest invitations, friend-of-the-property bookings, and direct emails. The Travel Brief covers the access channel for each destination." },
+    { q: "How do I book these courses?",                                a: "Most aren't on standard booking channels. It's member-guest invitations, friend-of-the-property bookings, and direct emails. Tell us where you want to play and we'll walk you through the access channel for that destination." },
     { q: "Can I combine several of these on one trip?",       a: "We recommend against it. Each region has its own pace and needs at least 3 days to get a real feel. Hopping between them usually ruins the experience. Pick one per trip — come back for the next." },
     { q: "When's the best time to play highland golf in Mexico?",          a: "October through April. February is the sweet spot — clear, dry, cool mornings, mild afternoons. Avoid June through September (afternoon storms). Above 6,000 feet, every course plays half a club shorter — recalibrate on day one." },
   ],
