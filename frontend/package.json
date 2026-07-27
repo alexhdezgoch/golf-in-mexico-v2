@@ -54,7 +54,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "yarn generate:seo && craco build && yarn prerender",
+    "build": "(yarn generate:seo || echo '[build] generate:seo FAILED — deploying with committed crawler files') && craco build && yarn prerender",
     "test": "craco test",
     "prerender": "node scripts/prerender.mjs",
     "generate:seo": "node scripts/generate-llms.mjs"

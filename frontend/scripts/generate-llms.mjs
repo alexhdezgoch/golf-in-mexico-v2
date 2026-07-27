@@ -5,17 +5,24 @@
  * emits, into public/:
  *   - llms.txt        curated markdown index (the llmstxt.org convention)
  *   - llms-full.txt   full editorial corpus as clean markdown
- *   - sitemap.xml     every real route, with today's lastmod
+ *   - sitemap.xml     every real route, lastmod from git per content file
  *
  * Why esbuild: `frontend` is a CommonJS CRA package, but the data files use ESM
  * `export const`. esbuild bundles each module to ESM in-memory; we write it to a
  * temp .mjs and import it. The data files have zero imports, so this is safe.
  *
- * Run manually: `yarn generate:seo`. NOT wired into `build` so a failure here can
- * never block a deploy. Commit the generated output.
+ * Runs as the first step of `yarn build`, because it used to be manual-only and
+ * the committed output silently drifted from the content for weeks — llms-full.txt
+ * kept serving retired "download the guide" copy that the site no longer showed.
+ * The original reason for keeping it out of `build` still stands, though: a failure
+ * here must never block a deploy. So the build step is `|| true` — if this script
+ * dies, the deploy proceeds with the committed files (the old behavior) and the
+ * build log carries the error. Also run it directly with `yarn generate:seo`, and
+ * commit the output so the files are correct even on a build that skipped it.
  */
 
 import { build } from "esbuild";
+import { execFileSync } from "child_process";
 import fs from "fs";
 import os from "os";
 import path from "path";
@@ -27,6 +34,42 @@ const DATA = path.join(ROOT, "src", "data");
 const PUBLIC = path.join(ROOT, "public");
 const BASE = "https://golf-in-mexico.com";
 const TODAY = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+
+// ---- sitemap lastmod ------------------------------------------------------
+// lastmod must be the date the PAGE's content actually changed, never the build
+// date. Stamping today on all 15 URLs every deploy tells Google 15 pages changed
+// when none did, and Google openly discounts lastmod it finds unreliable — so a
+// wrong date is worse than no date. We take it from git, per content file.
+//
+// This repo is a shallow clone (and Vercel's is shallower), so `git log` can
+// collapse every file onto the deploy commit's date. That's the same lie in a
+// different hat, so we detect it and omit lastmod instead. Omitted lastmod is
+// well-defined: crawlers fall back to their own change detection.
+const gitDate = (relPath) => {
+  try {
+    return execFileSync("git", ["log", "-1", "--format=%cs", "--", relPath], {
+      cwd: ROOT,
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+    }).trim() || null;
+  } catch {
+    return null; // no git, no history for the path, or a detached build env
+  }
+};
+
+// Route content sources. A hub page's words live in hubs.js, not in the shared
+// template that renders them, so that's the file whose date matters.
+const ROUTE_SOURCE = {
+  "/": "src/pages/Home.jsx",
+  "/destinations": "src/pages/Destinations.jsx",
+  "/journal": "src/pages/Journal.jsx",
+  "/experience": "src/pages/Experience.jsx",
+  "/trip-builder": "src/pages/TripBuilder.jsx",
+  "/about": "src/pages/About.jsx",
+  "/contact": "src/pages/Contact.jsx",
+};
+const HUB_SOURCE = "src/data/hubs.js";
+const ARTICLE_SOURCE = "src/data/articles.js";
 
 // Load an ESM data module by bundling it to a temp file and importing it.
 async function loadData(file) {
@@ -287,25 +330,42 @@ async function main() {
     { loc: "/trip-builder", priority: "0.7", changefreq: "monthly" },
     { loc: "/about", priority: "0.6", changefreq: "monthly" },
     { loc: "/contact", priority: "0.6", changefreq: "monthly" },
-  ];
+  ].map((r) => ({ ...r, lastmod: gitDate(ROUTE_SOURCE[r.loc]) }));
+  const hubLastmod = gitDate(HUB_SOURCE);
   const hubRoutes = hubs.map((h) => ({
     loc: `/destinations/${h.slug}`,
     priority: "0.9",
     changefreq: "monthly",
+    lastmod: hubLastmod,
   }));
+  const articleLastmod = gitDate(ARTICLE_SOURCE);
   const articleRoutes = articles.map((a) => ({
     loc: `/journal/${a.slug}`,
     priority: "0.8",
     changefreq: "monthly",
+    lastmod: articleLastmod,
   }));
   const urls = [...staticRoutes, ...hubRoutes, ...articleRoutes];
+
+  // Collapse check: if git handed back one date for everything (or nothing at
+  // all), it isn't telling us when pages changed — it's telling us when this
+  // clone was made. Drop lastmod entirely rather than publish that as fact.
+  const distinctDates = new Set(urls.map((u) => u.lastmod).filter(Boolean));
+  const lastmodTrustworthy = distinctDates.size > 1;
+  if (!lastmodTrustworthy) {
+    urls.forEach((u) => {
+      u.lastmod = null;
+    });
+  }
   const sitemap =
     `<?xml version="1.0" encoding="UTF-8"?>\n` +
     `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
     urls
       .map(
         (u) =>
-          `  <url>\n    <loc>${BASE}${u.loc}</loc>\n    <lastmod>${TODAY}</lastmod>\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`,
+          `  <url>\n    <loc>${BASE}${u.loc}</loc>\n` +
+          (u.lastmod ? `    <lastmod>${u.lastmod}</lastmod>\n` : "") +
+          `    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`,
       )
       .join("\n") +
     `\n</urlset>\n`;
@@ -317,7 +377,12 @@ async function main() {
   const words = full.split(/\s+/).filter(Boolean).length;
   console.log(`✓ llms.txt        (${hubs.length} destinations, ${articles.length} articles)`);
   console.log(`✓ llms-full.txt   (~${words.toLocaleString()} words)`);
-  console.log(`✓ sitemap.xml     (${urls.length} URLs, lastmod ${TODAY})`);
+  console.log(
+    `✓ sitemap.xml     (${urls.length} URLs, ` +
+      (lastmodTrustworthy
+        ? `lastmod from git: ${[...distinctDates].sort().join(", ")})`
+        : `lastmod OMITTED — git gave ${distinctDates.size} distinct date(s), not enough to be honest)`),
+  );
 }
 
 main().catch((err) => {
