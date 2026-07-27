@@ -5,7 +5,7 @@ import { getArticleBySlug, getRelatedArticles, ARTICLES } from "@/data/articles"
 import { useSeo, articleSchema, breadcrumbSchema, faqSchema } from "@/hooks/useSeo";
 import { trackLead } from "@/lib/analytics";
 import { useHubspotForm } from "@/hooks/useHubspotForm";
-import { getGuideUrl } from "@/lib/hubspot";
+import { FORM_KEYS } from "@/config/hubspot";
 
 const Badge = ({ children, variant = "default" }) => {
   const cls =
@@ -484,8 +484,7 @@ const ScrollEmailCapture = ({ slug }) => {
   const [visible, setVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const { submit, submitting, error, honeypotProps } = useHubspotForm("article_newsletter");
-  const guideUrl = getGuideUrl("article_newsletter");
+  const { submit, submitting, error, honeypotProps } = useHubspotForm(FORM_KEYS.article_newsletter);
 
   useEffect(() => {
     const key = `gim-email-dismissed-${slug}`;
@@ -546,9 +545,8 @@ const ScrollEmailCapture = ({ slug }) => {
     const ok = await submit({ email });
     if (!ok) return;
     setSubmitted(true);
-    trackLead({ form: "article_newsletter" });
-    // Give the reader time to grab the download link before auto-dismissing.
-    setTimeout(dismiss, guideUrl ? 8000 : 2500);
+    trackLead({ form: FORM_KEYS.article_newsletter });
+    setTimeout(dismiss, 2500);
   };
 
   return (
@@ -574,10 +572,10 @@ const ScrollEmailCapture = ({ slug }) => {
           {!submitted ? (
             <>
               <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
-                Free guide
+                Stay in the loop
               </span>
               <h4 className="mt-2 font-display font-light text-ink text-xl md:text-2xl leading-tight tracking-tight">
-                The Mexico golf <span className="italic">planning guide</span>.
+                Golf in Mexico, <span className="italic">in your inbox</span>.
               </h4>
               <p className="mt-2 font-body font-light text-ink/65 text-sm">
                 No spam. Only content worth your time.
@@ -605,18 +603,8 @@ const ScrollEmailCapture = ({ slug }) => {
           ) : (
             <div className="py-3">
               <p className="font-display italic text-gold text-lg">
-                On its way. Check your inbox.
+                You're on the list.
               </p>
-              {guideUrl && (
-                <a
-                  href={guideUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-3 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-wide-editorial text-ink editorial-link"
-                >
-                  Download the guide now →
-                </a>
-              )}
             </div>
           )}
         </motion.div>

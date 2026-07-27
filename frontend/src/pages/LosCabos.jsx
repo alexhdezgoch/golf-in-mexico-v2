@@ -7,7 +7,7 @@ import { getHubData, KEEP_EXPLORING_HUBS } from "../data/hubs";
 import { useSeo, articleSchema, breadcrumbSchema, faqSchema } from "@/hooks/useSeo";
 import { trackLead } from "@/lib/analytics";
 import { useHubspotForm } from "@/hooks/useHubspotForm";
-import { getGuideUrl } from "@/lib/hubspot";
+import { FORM_KEYS } from "@/config/hubspot";
 
 /* Hero photo per destination */
 const HERO_PHOTOS = {
@@ -332,18 +332,17 @@ const HeroSlider = ({ name, slides }) => {
    PLAYBOOK CTA
    ═══════════════════════════════════════════════════════════════════ */
 
-const PlaybookCTA = ({ variant = "full", testid, h3Pre = "Cabo, distilled —", h3Em = "free.", body = "Our 2026 Playbook. Course notes, access codes, a 4-day itinerary. Built inside the corridor." }) => {
+const PlaybookCTA = ({ variant = "full", testid, region, h3Pre = "Stay in the loop on", h3Em = "Mexico golf.", body = "We're publishing course notes, real prices, and access intel as we go. Drop your email and we'll send it when it's live — no spam, unsubscribe anytime." }) => {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
-  const { submit: submitHubspot, submitting, error, honeypotProps } = useHubspotForm("hub_playbook");
-  const guideUrl = getGuideUrl("hub_playbook");
+  const { submit: submitHubspot, submitting, error, honeypotProps } = useHubspotForm(FORM_KEYS.hub_playbook);
   const submit = async (e) => {
     e.preventDefault();
-    const ok = await submitHubspot({ email });
+    const ok = await submitHubspot({ email, region });
     if (!ok) return;
     setSent(true);
-    trackLead({ form: "hub_playbook" });
+    trackLead({ form: FORM_KEYS.hub_playbook, placement: "hub-mid", region });
   };
 
   if (variant === "short") {
@@ -351,15 +350,15 @@ const PlaybookCTA = ({ variant = "full", testid, h3Pre = "Cabo, distilled —", 
       <section data-testid={testid} className="bg-[var(--c-surface)] py-16 md:py-20">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12 flex flex-col md:flex-row md:items-center md:justify-between gap-8 border-y border-[var(--c-border)] py-12 md:py-14">
           <div className="max-w-2xl">
-            <Label>The 2026 Cabo Golf Playbook</Label>
+            <Label>The Golf in Mexico dispatch</Label>
             <h3 className="font-display font-normal text-[var(--c-text)] text-xl md:text-3xl leading-[1.2] tracking-tight">
-              The access codes, the insider notes, and a sample 4-day <em className="italic text-[var(--c-gold)]">itinerary — free.</em>
+              Access notes, real prices, and course intel — <em className="italic text-[var(--c-gold)]">as we publish it.</em>
             </h3>
           </div>
           <div className="flex flex-col gap-2">
             {!open && !sent && (
               <button type="button" onClick={() => setOpen(true)} data-testid={`${testid}-open`} className="group inline-flex items-center gap-3 bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-7 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors whitespace-nowrap">
-                Download the Playbook
+                Keep me in the loop
                 <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </button>
             )}
@@ -374,29 +373,14 @@ const PlaybookCTA = ({ variant = "full", testid, h3Pre = "Cabo, distilled —", 
               <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-red-700">{error}</p>
             )}
             {sent && (
-              <div>
-                <p className="font-display italic text-[var(--c-green-deep)] text-lg">Check your inbox.</p>
-                {guideUrl && (
-                  <a href={guideUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-green-deep)] underline">
-                    Download the guide now →
-                  </a>
-                )}
-              </div>
+              <p className="font-display italic text-[var(--c-green-deep)] text-lg">You're on the list.</p>
             )}
-            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-text-muted)]">Enter your email. We send it immediately.</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-text-muted)]">No spam. Unsubscribe anytime.</p>
           </div>
         </div>
       </section>
     );
   }
-
-  const inside = [
-    "8 course field notes",
-    "Access codes by resort",
-    "Sample 4-day itinerary",
-    "Caddie tip guide",
-    "Season + pricing calendar",
-  ];
 
   return (
     <div
@@ -421,7 +405,7 @@ const PlaybookCTA = ({ variant = "full", testid, h3Pre = "Cabo, distilled —", 
         <div className="lg:col-span-5">
           {!open && !sent && (
             <button type="button" onClick={() => setOpen(true)} data-testid={`${testid}-open`} className="group w-full inline-flex items-center justify-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-6 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors">
-              Download the Playbook
+              Keep me in the loop
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </button>
           )}
@@ -440,13 +424,8 @@ const PlaybookCTA = ({ variant = "full", testid, h3Pre = "Cabo, distilled —", 
           {sent && (
             <div data-testid={`${testid}-success`} className="text-center">
               <p className="font-display italic text-[var(--c-gold)] text-lg">
-                Check your inbox.
+                You're on the list.
               </p>
-              {guideUrl && (
-                <a href={guideUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)] underline">
-                  Download the guide now →
-                </a>
-              )}
             </div>
           )}
         </div>
@@ -664,7 +643,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
       {!data.isDestinationList && (
         <section
           data-testid="lc-free-brief"
-          aria-label={`Download the ${data.name} Travel Brief`}
+          aria-label={`Stay in the loop on ${data.name} golf`}
           className="relative overflow-hidden text-white"
         >
           {/* Background photo */}
@@ -686,6 +665,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
             <PlaybookCTA
               variant="standalone"
               testid="lc-playbook-1"
+              region={data.name}
               h3Pre={data.playbookH3Pre}
               h3Em={data.playbookH3Em}
               body={data.playbookBody}
@@ -978,7 +958,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
       <section data-testid="lc-playbook-end" className="bg-[var(--c-surface)] py-20 md:py-28">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center border-y border-[var(--c-border)] py-12 md:py-14">
           <div className="md:col-span-7">
-            <Label>The 2026 {data.name} Playbook</Label>
+            <Label>The Golf in Mexico dispatch</Label>
             <h3 className="font-display font-light text-[var(--c-text)] text-2xl md:text-4xl leading-[1.15] tracking-tight mb-5">
               {data.playbookH3Pre} <em className="italic text-[var(--c-gold)]">{data.playbookH3Em}</em>
             </h3>
@@ -987,7 +967,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
             </p>
           </div>
           <div className="md:col-span-5">
-            <PlaybookEndForm />
+            <PlaybookEndForm region={data.name} />
           </div>
         </div>
       </section>
@@ -1045,13 +1025,13 @@ const LosCabos = ({ slug = "los-cabos" }) => {
 const NewsletterMiniForm = ({ testid }) => {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
-  const { submit, submitting, error, honeypotProps } = useHubspotForm("hub_capture");
+  const { submit, submitting, error, honeypotProps } = useHubspotForm(FORM_KEYS.hub_capture);
   const onSubmit = async (e) => {
     e.preventDefault();
     const ok = await submit({ email });
     if (!ok) return;
     setSent(true);
-    trackLead({ form: "hub_capture" });
+    trackLead({ form: FORM_KEYS.hub_capture });
   };
   if (sent) {
     return (
@@ -1090,22 +1070,22 @@ const NewsletterMiniForm = ({ testid }) => {
   );
 };
 
-const PlaybookEndForm = () => {
+const PlaybookEndForm = ({ region }) => {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
-  const { submit, submitting, error, honeypotProps } = useHubspotForm("hub_capture");
+  const { submit, submitting, error, honeypotProps } = useHubspotForm(FORM_KEYS.hub_capture);
   const onSubmit = async (e) => {
     e.preventDefault();
-    const ok = await submit({ email });
+    const ok = await submit({ email, region });
     if (!ok) return;
     setSent(true);
-    trackLead({ form: "hub_capture" });
+    trackLead({ form: FORM_KEYS.hub_capture, placement: "hub-end", region });
   };
   if (sent) {
     return (
       <p data-testid="lc-playbook-end-success" className="font-display italic text-[var(--c-green-deep)] text-lg text-center">
-        Check your inbox — your Playbook is on its way.
+        You're on the list.
       </p>
     );
   }
@@ -1145,7 +1125,7 @@ const PlaybookEndForm = () => {
       data-testid="lc-playbook-end-open"
       className="group w-full inline-flex items-center justify-center gap-3 bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-7 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors"
     >
-      Download the Playbook
+      Keep me in the loop
       <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
     </button>
   );

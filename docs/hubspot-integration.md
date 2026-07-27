@@ -79,16 +79,28 @@ For each form, turn ON **"Send follow-up email"** and attach the right email (§
 | `notify` | "Notify me" region modal | welcome | Email A — welcome |
 | `destination_waitlist` | Destination placeholder pages | welcome | Email A — welcome |
 | `footer_newsletter` | Site footer | welcome | Email A — welcome (or newsletter opt-in) |
-| `hub_capture` | Destination hub captures (×3 spots) | welcome | Email A — welcome |
-| `article_newsletter` | Article exit-intent ("Free guide") | **guide** | Email B — planning guide |
-| `hub_playbook` | Los Cabos playbook CTA | **guide** | Email C — Los Cabos playbook |
+| `hub_capture` | Destination hub captures + the 6 destinations-index cards | welcome | Email A — welcome |
+| `article_newsletter` | Article exit-intent capture | welcome | *alias → `footer_newsletter` GUID* |
+| `hub_playbook` | Destination hub "stay in the loop" CTAs | welcome | *alias → `hub_capture` GUID* |
+
+> **07-24 change — guide CTAs retired.** The lead-magnet PDFs were never produced,
+> so the two guide forms became a dead end: they promised a download that didn't
+> exist AND had a blank `formId`, meaning every email typed into them was
+> **discarded**. Per the 07-21 call, both CTAs are now plain "stay in the loop"
+> capture, and both keys **alias onto the live GUIDs above** — no new HubSpot forms
+> needed. Because a shared GUID means HubSpot can't separate them *by form*, the
+> distinction lives elsewhere: every call site sends `form` + `placement` to GA4,
+> and hub/destination submissions send `region` so the destination lands on the
+> contact. Caveat both ways — GA4 events are blocked by the same privacy lists that
+> block the HubSpot POST, and `region` is last-write-wins (HubSpot dedupes on email).
+> If per-form segmentation inside HubSpot is ever needed, these need real forms.
+>
+> To bring real guide delivery back once the PDFs exist: create the two forms in
+> HubSpot, attach Email B / Email C, put their own GUIDs in `src/config/hubspot.js`,
+> and re-add a `guideUrl` + `getGuideUrl()` helper for the instant on-page download.
 
 ### Also set on the code side (integration day)
 - `REACT_APP_HUBSPOT_PORTAL_ID` → set in **Vercel → Project → Settings → Environment Variables** (Production). This is the master switch.
-- In `src/config/hubspot.js`, for the two **guide** forms set `guideUrl` to the
-  public URL of the PDF (upload the PDF to HubSpot Files or `/public`), so the
-  site also shows an **instant download link** on submit. Leave `guideUrl: ""`
-  until the PDF exists → no link shown, email still delivers it.
 
 ---
 
@@ -97,9 +109,10 @@ For each form, turn ON **"Send follow-up email"** and attach the right email (§
 - **Email A — Welcome** (welcome-only forms): "Thanks — you'll hear from Pablo &
   José / Golf in Mexico shortly." No attachment.
 - **Email B — Mexico golf planning guide** (`article_newsletter`): welcome +
-  link/attachment to the planning-guide PDF.
+  link/attachment to the planning-guide PDF. **Deferred** — the PDF doesn't exist;
+  see the 07-24 note in §3. Not needed for the current capture-only CTAs.
 - **Email C — Los Cabos playbook** (`hub_playbook`): welcome + the Los Cabos
-  playbook PDF.
+  playbook PDF. **Deferred** — same reason.
 
 Add more region-specific guide emails later by creating a new form + email pair
 and a new formKey (see §7).
@@ -124,8 +137,9 @@ and a new formKey (see §7).
 
 Flipping this on is a **production behavior change** → get explicit sign-off first.
 
-1. Confirm Pablo is on **Marketing Hub Starter** and all 9 forms + 3 emails exist.
-2. Fill every `formId` blank in `src/config/hubspot.js`; set `guideUrl` for the two guide forms.
+1. Confirm Pablo is on **Marketing Hub Starter** and the 7 real forms + Email A exist.
+   (9 formKeys, but `article_newsletter`/`hub_playbook` are aliases — see §3. Emails B/C are deferred.)
+2. Fill every `formId` blank in `src/config/hubspot.js`.
 3. Set `REACT_APP_HUBSPOT_PORTAL_ID` in Vercel (Production) and redeploy.
 4. **Smoke test — one unique email per form** (e.g. `test+inquiry@…`):
 
@@ -139,8 +153,8 @@ Flipping this on is a **production behavior change** → get explicit sign-off f
    | destination_waitlist | submit on a placeholder page | contact w/ destination; Email A |
    | footer_newsletter | submit footer | contact created; Email A |
    | hub_capture | submit a hub capture | contact created; Email A |
-   | article_newsletter | trigger article popup, submit | contact; **Email B w/ guide**; on-page download link shows |
-   | hub_playbook | submit Los Cabos playbook | contact; **Email C w/ playbook**; download link shows |
+   | article_newsletter | trigger article popup, submit | contact created (lands via `footer_newsletter` GUID) |
+   | hub_playbook | submit a hub "keep me in the loop" CTA | contact created w/ `region` (via `hub_capture` GUID) |
 
 5. Verify UTM capture: visit `/?utm_source=test&gclid=abc`, submit any form,
    confirm `utm_source`/`gclid` land on the contact.
@@ -156,13 +170,14 @@ Flipping this on is a **production behavior change** → get explicit sign-off f
   HubSpot dedupes on email → one contact. A completer may receive Email A twice;
   if that's not wanted, set Email A to send only on first submission, or gate the
   step-3 send. Acceptable as-is (both are "welcome").
-- **`PlaybookEndForm` copy mismatch:** its success message says "your Playbook is
-  on its way," but it's wired to `hub_capture` (welcome, no PDF). On integration
-  day either point it at `hub_playbook` (so it delivers the playbook) or soften
-  the copy. Decision pending.
-- **Regional guides beyond Los Cabos:** when more hub guides exist, create a
-  form+email per region and add a formKey (e.g. `guide_punta_mita`) with its
-  `guideUrl`; wire the relevant hub form to it. Don't build these until the PDFs exist.
+- **~~`PlaybookEndForm` copy mismatch~~ — RESOLVED 07-24.** Its success message
+  used to say "your Playbook is on its way" while wired to `hub_capture` (welcome,
+  no PDF). Softened to "You're on the list." along with the rest of the guide-CTA
+  de-promise; it now also passes `region`.
+- **Regional guides beyond Los Cabos:** when hub guide PDFs actually exist, create
+  a form+email per region and add a formKey (e.g. `guide_punta_mita`) with its own
+  `guideUrl`. Don't build these until the PDFs exist — that's exactly the trap the
+  07-24 change undid.
 - **Ad-blocker loss (~20–30%):** browser posts to `api.hsforms.com` can be
   blocked by privacy lists (and the GA4 event too, so the loss is invisible in
   both). If live numbers look low, swap `HUBSPOT_ENDPOINT_BASE` for a same-origin
@@ -176,7 +191,9 @@ Flipping this on is a **production behavior change** → get explicit sign-off f
 
 ## Files in this integration
 - `src/config/hubspot.js` — committed config: portal ID (env), endpoint, consent text, form map. **Fill the blanks here on integration day.**
-- `src/lib/hubspot.js` — the Forms API client (`submitToHubspot`, `getGuideUrl`).
+- `src/lib/hubspot.js` — the Forms API client (`submitToHubspot`).
 - `src/lib/attribution.js` — captures UTM/click-IDs on landing.
 - `src/hooks/useHubspotForm.js` — shared submit hook (validation, spam guards, in-flight + error state).
-- 8 form components/pages wired through the hook (inquiry, notify, footer, destination placeholder, article, trip builder, Los Cabos, destination hub).
+- Form components/pages wired through the hook: inquiry, notify, footer, destination placeholder,
+  article, trip builder, Los Cabos hub template, destination hub, destinations index (6 cards).
+  (Listed rather than counted so the number can't rot again.)
