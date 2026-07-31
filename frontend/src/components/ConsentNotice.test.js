@@ -66,6 +66,17 @@ describe("consent text recorded vs. rendered", () => {
     expect(component).not.toContain("By submitting");
   });
 
+  test("the link opens in a new tab, so an in-form reader keeps their answers", () => {
+    // The trip-builder notice sits inside the submit form and the wizard state is
+    // component-local useState that nothing restores — an SPA navigation to
+    // /privacy would discard four steps of input.
+    const component = read("components/ConsentNotice.jsx");
+
+    expect(component).toContain('target="_blank"');
+    expect(component).toContain('rel="noopener noreferrer"');
+    expect(component).not.toContain("react-router-dom");
+  });
+
   test("the linked route actually exists in the router", () => {
     expect(read("App.js")).toContain(`path="${CONSENT_NOTICE.linkPath}"`);
   });

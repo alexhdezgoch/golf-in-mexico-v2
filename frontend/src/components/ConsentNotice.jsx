@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { CONSENT_NOTICE } from "@/config/hubspot";
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -23,6 +22,16 @@ import { CONSENT_NOTICE } from "@/config/hubspot";
             pure-white photo pixel underneath)
    The link is underlined, never color-only, and carries its own focus-visible
    ring in a color that reads on its own backdrop.
+
+   It is a plain <a target="_blank"> and NOT a react-router <Link>, on purpose.
+   Several of these notices sit inside a form that holds unsaved input — the
+   trip-builder step 4 notice renders directly above "Get My 48-Hour Proposal",
+   and the whole wizard (step, destinations, trip type, months, length, package,
+   budget, name/email/phone) is component-local useState that nothing restores.
+   An in-app navigation to /privacy would unmount TripBuilder and silently throw
+   away four steps of answers, with the back button landing on a blank intent
+   splash. Legal copy opens in a new tab for exactly this reason. Side benefit:
+   the component no longer needs a Router above it.
 */
 
 const TONES = {
@@ -52,12 +61,14 @@ const ConsentNotice = ({ tone = "light", className = "", testid = "consent-notic
       className={`font-body font-light text-[11px] md:text-[12px] leading-[1.55] ${t.text} ${className}`}
     >
       {CONSENT_NOTICE.lead}{" "}
-      <Link
-        to={CONSENT_NOTICE.linkPath}
+      <a
+        href={CONSENT_NOTICE.linkPath}
+        target="_blank"
+        rel="noopener noreferrer"
         className={`underline underline-offset-2 decoration-1 rounded-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${t.link}`}
       >
         {CONSENT_NOTICE.linkLabel}
-      </Link>
+      </a>
       .
     </p>
   );
