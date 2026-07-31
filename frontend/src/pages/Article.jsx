@@ -6,6 +6,7 @@ import { useSeo, articleSchema, breadcrumbSchema, faqSchema } from "@/hooks/useS
 import { trackLead } from "@/lib/analytics";
 import { useHubspotForm } from "@/hooks/useHubspotForm";
 import { FORM_KEYS } from "@/config/hubspot";
+import ConsentNotice from "@/components/ConsentNotice";
 
 const Badge = ({ children, variant = "default" }) => {
   const cls =
@@ -599,6 +600,7 @@ const ScrollEmailCapture = ({ slug }) => {
                   {error}
                 </p>
               )}
+              <ConsentNotice tone="light" testid="consent-notice-article" className="mt-3" />
             </>
           ) : (
             <div className="py-3">
