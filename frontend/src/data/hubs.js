@@ -314,7 +314,7 @@ const MEXICO_CITY = {
   // SEO — matched to live GSC query phrasing ("golf mexico city"): the course
   // count answers the query in the title, access + cost carry the click.
   seoTitle: "Golf in Mexico City: 20+ Courses & Access | Golf in Mexico°",
-  seoDescription: "Mexico City has 20+ golf courses within 90 minutes of the center, nearly all private. Green fees $150–$400. How to get on, and how altitude changes your round.",
+  seoDescription: "Mexico City has 20+ golf courses within 90 minutes of the center, nearly all private. Green fees $150–$400 USD a round. How to get on, and how altitude plays.",
   sources: [
     "Club de Golf Chapultepec — Mexican Open, WGC-Mexico Championship (2017–2020), LIV Golf Mexico City (2025, 2026) records",
     "LPGA Tour — MasterCard Classic at Bosque Real (2005–2009) records",
@@ -335,7 +335,7 @@ const MEXICO_CITY = {
   // Answer-first lead: courses, access and cost, then altitude — all inside the
   // first ~45 words, because these are the three things the search queries ask.
   heroAnswer:
-    "Mexico City has 20+ golf courses within 90 minutes of the center, nearly all private — access comes through a member, a hotel, or advance coordination. Green fees run $150–$400. At 2,240 m (7,350 ft) the ball carries 10–12% farther, and the golf is playable year-round. Chapultepec — Mexican Open, WGC and LIV host — is invitation only; Los Tabachines in Cuernavaca is the most accessible semi-public round, from $1,000 MXN.",
+    "Mexico City has 20+ golf courses within 90 minutes of the center, nearly all private — access comes through a member, a hotel, or advance coordination. Green fees run $150–$400 USD a round at the private clubs. At 2,240 m (7,350 ft) the ball carries 10–12% farther, and the golf is playable year-round. Chapultepec — Mexican Open, WGC and LIV host — is invitation only; Los Tabachines in Cuernavaca is the most accessible semi-public round and the one exception on price, quoted in pesos from $1,000 MXN.",
 
   quickFacts: [
     { icon: "flag",      label: "Courses",       value: "8 featured (CDMX + Estado de Mexico + Morelos + Hidalgo + Valle de Bravo)" },
@@ -452,10 +452,10 @@ const CANCUN = {
     "/images/jsn8nf92-edf7bcf8-0376-48ee-9113-e1bddba9cb45-1-105-c.webp",
     "/images/soiqih16-92f4cd01-830e-40d0-b77b-71a908b90e27-1-105-c.webp",
   ],
-  // SEO — the top GSC query for this page is "riviera maya golf courses" (with
-  // "riviera maya golf" / "riviera maya golf course" / "cancun golf" behind it),
-  // so the title leads with that exact phrase and the fee/access angle follows.
-  seoTitle: "Riviera Maya Golf Courses: Fees & Access | Golf in Mexico°",
+  // SEO — this page draws two query families: "riviera maya golf courses" (most
+  // impressions) and the better-ranking "cancun golf prices / green fees" set.
+  // The title holds both, then the fee/access angle carries the click.
+  seoTitle: "Riviera Maya & Cancun Golf: Fees & Access | Golf in Mexico°",
   seoDescription: "Cancun and the Riviera Maya have 12+ championship courses along 80 miles of Caribbean coast. Green fees $89–$353, and which you can play without a resort stay.",
   sources: [
     "PGA Tour — Mayakoba Golf Classic records (2007–2022)",
