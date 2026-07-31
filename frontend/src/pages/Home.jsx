@@ -114,11 +114,47 @@ const StatementAndVideo = () => (
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 0.95, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         data-testid="home-statement"
-        className="font-body font-light text-[var(--c-text-mid)] leading-[1.7] text-lg md:text-xl max-w-[52ch] mb-14 md:mb-20"
+        className="font-body font-light text-[var(--c-text-mid)] leading-[1.7] text-lg md:text-xl max-w-[52ch] mb-6 md:mb-8"
       >
         The only guide to Mexican golf written by people who&apos;ve played
         it, planned it, and lived it — from elite courses to the experiences
         that make the trip worth taking.
+      </motion.p>
+
+      {/* Descriptive entry links into the destination guides that carry the search demand */}
+      <motion.p
+        initial={{ opacity: 0, y: 14 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.95, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+        data-testid="home-statement-guides"
+        className="font-body font-light text-[var(--c-text-mid)] leading-[1.8] text-base md:text-lg max-w-[52ch] mb-14 md:mb-20"
+      >
+        Start with a destination:{" "}
+        <Link
+          to="/destinations/mexico-city"
+          data-testid="home-guide-mexico-city"
+          className="text-[var(--c-text)] underline decoration-[var(--c-gold)] underline-offset-4 hover:text-[var(--c-gold)] transition-colors"
+        >
+          golf in Mexico City — 20+ courses at altitude
+        </Link>
+        ,{" "}
+        <Link
+          to="/destinations/cancun-riviera-maya"
+          data-testid="home-guide-cancun"
+          className="text-[var(--c-text)] underline decoration-[var(--c-gold)] underline-offset-4 hover:text-[var(--c-gold)] transition-colors"
+        >
+          Riviera Maya golf courses
+        </Link>
+        , or{" "}
+        <Link
+          to="/destinations/los-cabos"
+          data-testid="home-guide-los-cabos"
+          className="text-[var(--c-text)] underline decoration-[var(--c-gold)] underline-offset-4 hover:text-[var(--c-gold)] transition-colors"
+        >
+          Los Cabos green fees and access
+        </Link>
+        .
       </motion.p>
 
       <motion.div

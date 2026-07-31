@@ -995,6 +995,37 @@ const LosCabos = ({ slug = "los-cabos" }) => {
       </section>
       )}
 
+      {/* ═════════ READ NEXT — descriptive internal links to sibling hubs ═════════ */}
+      {Array.isArray(data.relatedReads) && data.relatedReads.length > 0 && (
+      <section data-testid="lc-related-reads" className="bg-[var(--c-surface)] border-t border-[var(--c-border)] py-14 md:py-20">
+        <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-start">
+            <h4 className="md:col-span-3 font-display font-normal italic text-[var(--c-text-mid)] text-lg md:text-xl leading-[1.3]">
+              Read next
+            </h4>
+            <ul className="md:col-span-9 space-y-4">
+              {data.relatedReads.map((r) => (
+                <li
+                  key={r.to}
+                  className="font-body font-light text-[var(--c-text-mid)] text-sm md:text-[15px] leading-[1.7]"
+                >
+                  <Link
+                    to={r.to}
+                    data-testid={`lc-related-${r.to.split("/").pop()}`}
+                    className="font-normal text-[var(--c-text)] underline decoration-[var(--c-gold)] underline-offset-4 hover:text-[var(--c-gold)] transition-colors"
+                  >
+                    {r.anchor}
+                  </Link>
+                  {" — "}
+                  {r.note}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+      )}
+
       {/* ═════════ KEEP EXPLORING — DARK ═════════ */}
       <section data-testid="lc-keep-exploring" className="bg-[var(--c-green-deep)] text-white py-28 md:py-40">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
