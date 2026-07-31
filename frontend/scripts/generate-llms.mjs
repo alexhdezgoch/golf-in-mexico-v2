@@ -70,11 +70,21 @@ const gitDate = (relPath) => {
   }
 };
 
-// The clone floor: the oldest commit date reachable from HEAD, but ONLY when the
-// repository is shallow. In a full clone the oldest commit is a real boundary of
-// the project's own history, not of the clone, so a file legitimately dated there
-// is telling the truth and must be left alone — hence the is-shallow gate.
-const cloneFloorDate = () => {
+// The clone floor: the date(s) of the commits where this clone's history is cut
+// off, but ONLY when the repository is shallow. In a full clone the oldest commit
+// is a real boundary of the project's own history, not of the clone, so a file
+// legitimately dated there is telling the truth and must be left alone — hence
+// the is-shallow gate.
+//
+// The floor is the BOUNDARY commit's date, not the oldest date in the clone. In a
+// shallow clone the grafts are exactly the parentless commits, so ask git for
+// those (plural: a merge inside the clone window can leave several). Taking the
+// minimum date instead inverts the guard whenever dates aren't monotonic — the
+// ordinary "branch merged a week after its commits were written" shape: with
+// commits 01-11, 02-12, 03-13 plus a tip backdated to 01-01, a --depth 2 clone
+// floors at the 03-13 boundary, yet the minimum is 01-01. That would null the one
+// date that was TRUE and publish the two that were FALSE.
+const cloneFloorDates = () => {
   const git = (args) => {
     try {
       return execFileSync("git", args, {
@@ -87,14 +97,11 @@ const cloneFloorDate = () => {
     }
   };
   if (git(["rev-parse", "--is-shallow-repository"]) !== "true") return null;
-  // Commit dates are not guaranteed monotonic, so take the minimum rather than
-  // the last line of the log.
-  const dates = (git(["log", "--format=%cs"]) || "")
+  const dates = (git(["log", "--max-parents=0", "--format=%cs", "HEAD"]) || "")
     .split("\n")
     .map((s) => s.trim())
-    .filter(Boolean)
-    .sort();
-  return dates[0] || null;
+    .filter(Boolean);
+  return dates.length ? new Set(dates) : null;
 };
 
 // Route content sources. A hub page's words live in hubs.js, not in the shared
@@ -398,22 +405,23 @@ async function main() {
   }));
   const urls = [...staticRoutes, ...hubRoutes, ...articleRoutes];
 
-  // Guard 1 — clone floor. On a shallow clone, a date equal to the oldest
-  // reachable commit means "the history ran out here", not "the page changed
+  // Guard 1 — clone floor. On a shallow clone, a date equal to a boundary
+  // (graft) commit's date means "the history ran out here", not "the page changed
   // here". Omit those; keep the rest, which are still real.
-  const floorDate = cloneFloorDate();
+  const floorDates = cloneFloorDates();
   let floorSuppressed = 0;
-  if (floorDate) {
+  if (floorDates) {
     for (const u of urls) {
-      if (u.lastmod === floorDate) {
+      if (u.lastmod && floorDates.has(u.lastmod)) {
         u.lastmod = null;
         floorSuppressed += 1;
       }
     }
     if (floorSuppressed) {
       console.log(
-        `⚠ shallow clone: history floored at ${floorDate} — lastmod OMITTED on ` +
-          `${floorSuppressed} of ${urls.length} URLs (their real dates are not in this clone)`,
+        `⚠ shallow clone: history floored at ${[...floorDates].sort().join(", ")} — ` +
+          `lastmod OMITTED on ${floorSuppressed} of ${urls.length} URLs ` +
+          `(their real dates are not in this clone)`,
       );
     }
   }
