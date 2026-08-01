@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { trackLead } from "@/lib/analytics";
 import { useHubspotForm } from "@/hooks/useHubspotForm";
+import ConsentNotice from "@/components/ConsentNotice";
 
 const NAV_LINKS = [
   { label: "Home", to: "/" },
@@ -122,6 +123,7 @@ const Footer = () => {
                     {error}
                   </span>
                 )}
+                <ConsentNotice tone="dark" testid="consent-notice-footer" className="mt-1" />
               </form>
             ) : (
               <p

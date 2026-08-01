@@ -5,6 +5,7 @@ import { useSeo, breadcrumbSchema } from "@/hooks/useSeo";
 import { trackLead } from "@/lib/analytics";
 import { useHubspotForm } from "@/hooks/useHubspotForm";
 import { FORM_KEYS } from "@/config/hubspot";
+import ConsentNotice from "@/components/ConsentNotice";
 
 /* ─────────────── DATA ─────────────── */
 
@@ -265,6 +266,18 @@ const DestinationCard = ({ d, index }) => {
                 )}
               </div>
           </div>
+
+          {/* Consent — OUTSIDE the CTA row on purpose: the row reserves
+              sm:min-h-[62px] so swapping the button for the form never reflows,
+              and a line inside it would eat that reservation. Rendered in both
+              states (button + form), so its height is constant too. */}
+          {!sent && (
+            <ConsentNotice
+              tone="photo"
+              testid={`consent-notice-destinations-${d.slug}`}
+              className="mt-4 max-w-md pointer-events-auto"
+            />
+          )}
         </div>
       </div>
     </motion.article>
