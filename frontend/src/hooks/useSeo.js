@@ -129,24 +129,48 @@ export const faqSchema = (faqs = []) => ({
   })),
 });
 
+/**
+ * Build the author value for Article schema.
+ *
+ * A Person entity is only worth emitting if it can be resolved to a real,
+ * identifiable person — a bare name with no bio, profile or link is a weaker
+ * claim than naming the organization. So a full canonical author (see
+ * data/authors.js) gets url/image/sameAs/jobTitle attached; anything else falls
+ * back to the Organization.
+ */
+const authorEntity = (a) => ({
+  "@type": "Person",
+  name: a.name,
+  ...(a.jobTitle ? { jobTitle: a.jobTitle } : {}),
+  ...(a.description ? { description: a.description } : {}),
+  ...(a.path ? { url: abs(a.path) } : {}),
+  ...(a.image ? { image: abs(a.image) } : {}),
+  ...(a.sameAs?.length ? { sameAs: a.sameAs } : {}),
+  ...(a.knowsAbout?.length ? { knowsAbout: a.knowsAbout } : {}),
+});
+
 export const articleSchema = ({
   headline,
   description,
   path,
   image,
   author,
+  authors,
   datePublished,
   dateModified,
-}) => ({
+}) => {
+  const people = (authors?.length ? authors : author ? [author] : []).filter(
+    (a) => a?.type === "Person" && a?.name
+  );
+  return {
   "@context": "https://schema.org",
   "@type": "Article",
   headline,
   ...(description ? { description } : {}),
   ...(image ? { image: abs(image) } : {}),
-  author: {
-    "@type": author?.type === "Person" ? "Person" : "Organization",
-    name: author?.name || SITE_NAME,
-  },
+  author: people.length
+    ? (people.length === 1 ? authorEntity(people[0]) : people.map(authorEntity))
+    : { "@type": "Organization", name: SITE_NAME },
   publisher: {
     "@type": "Organization",
     name: SITE_NAME,
@@ -156,4 +180,5 @@ export const articleSchema = ({
   ...(path ? { mainEntityOfPage: abs(path) } : {}),
   ...(datePublished ? { datePublished } : {}),
   ...(dateModified ? { dateModified } : {}),
-});
+  };
+};

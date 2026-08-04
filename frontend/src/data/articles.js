@@ -110,9 +110,9 @@ export const ARTICLES = [
     excerpt: "Region first — then budget, season, and access. The planning framework we use after hundreds of these trips, and the mistakes it saves you from.",
     heroImage: "/images/plan-golf-trip-mexico.webp",
     author: {
-      name: "Golf in Mexico Staff",
-      role: "Editorial Team",
-      photo: "/images/gim-staff-avatar.svg",
+      name: "Pablo De La Mora",
+      role: "Founder · GIM",
+      photo: "/founders/pablo/01.jpg",
     },
     destination: "planning",
     destinationLabel: "Planning",
