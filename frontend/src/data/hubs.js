@@ -456,7 +456,7 @@ const CANCUN = {
   // impressions) and the better-ranking "cancun golf prices / green fees" set.
   // The title holds both, then the fee/access angle carries the click.
   seoTitle: "Riviera Maya & Cancun Golf: Fees & Access | Golf in Mexico°",
-  seoDescription: "Cancun and the Riviera Maya have 12+ championship courses along 80 miles of Caribbean coast. Green fees $89–$353, and which you can play without a resort stay.",
+  seoDescription: "Cancun and the Riviera Maya have 12+ championship courses along 80 miles of Caribbean coast. Green fees $109–$353, and which you can play without a resort stay.",
   sources: [
     "PGA Tour — Mayakoba Golf Classic records (2007–2022)",
     "Korn Ferry Tour — PGA Riviera Maya 2025 event records",
