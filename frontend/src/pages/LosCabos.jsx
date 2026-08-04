@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import PhotoSlot from "../components/hub/PhotoSlot";
 import SectionNav from "../components/hub/SectionNav";
 import { getHubData, KEEP_EXPLORING_HUBS } from "../data/hubs";
+import { GUIDE_AUTHORS } from "../data/authors";
 import { useSeo, articleSchema, breadcrumbSchema, faqSchema } from "@/hooks/useSeo";
 import { trackLead } from "@/lib/analytics";
 import { useHubspotForm } from "@/hooks/useHubspotForm";
@@ -502,6 +503,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
         description: data.seoDescription || data.heroAnswer,
         path: `/destinations/${data.slug}`,
         image: data.heroPhoto,
+        authors: GUIDE_AUTHORS,
         datePublished: "2026-05-01",
         dateModified: "2026-05-25",
       }),

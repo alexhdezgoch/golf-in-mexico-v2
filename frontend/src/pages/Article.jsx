@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { getArticleBySlug, getRelatedArticles, ARTICLES } from "@/data/articles";
+import { authorByName } from "@/data/authors";
 import { useSeo, articleSchema, breadcrumbSchema, faqSchema } from "@/hooks/useSeo";
 import { trackLead } from "@/lib/analytics";
 import { useHubspotForm } from "@/hooks/useHubspotForm";
@@ -782,7 +783,7 @@ const Article = () => {
               description: article.metaDescription || article.excerpt,
               path: `/journal/${article.slug}`,
               image: article.heroImage,
-              author: { type: "Person", name: article.author?.name },
+              author: authorByName(article.author?.name),
               datePublished: "2026-05-01",
             }),
             breadcrumbSchema([
