@@ -88,13 +88,38 @@ const InlineCTA = ({ destinationLabel, testId }) => (
 
 /* ----------------------------- BODY RENDERER ----------------------------- */
 
+// "**text**" → <strong>, "*text*" → <em>.
+//
+// Authors' drafts arrive as markdown and carry emphasis. Until this existed the
+// body renderer understood links and nothing else, so a sentence like
+// *access to the golf.* shipped to the page with its asterisks showing — and the
+// only alternative was deleting the author's emphasis, which is not ours to do.
+const renderEmphasis = (text, keyPrefix) => {
+  if (!text || !text.includes("*")) return text;
+  return text.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g).map((part, i) => {
+    const strong = part.match(/^\*\*([^*]+)\*\*$/);
+    if (strong) {
+      return (
+        <strong key={`${keyPrefix}-s${i}`} className="font-medium text-ink">
+          {strong[1]}
+        </strong>
+      );
+    }
+    const em = part.match(/^\*([^*]+)\*$/);
+    if (em) return <em key={`${keyPrefix}-e${i}`}>{em[1]}</em>;
+    return part;
+  });
+};
+
 // Inline markdown links: "[text](/path)" → <Link>. Internal paths only.
+// Non-link runs still go through renderEmphasis.
 const renderInline = (text) => {
-  if (!text || !text.includes("](")) return text;
+  if (!text) return text;
+  if (!text.includes("](")) return renderEmphasis(text, "p");
   const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g);
   return parts.map((part, i) => {
     const m = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
-    if (!m) return part;
+    if (!m) return renderEmphasis(part, `p${i}`);
     const [, label, href] = m;
     if (!href.startsWith("/")) return label;
     return (
@@ -784,7 +809,10 @@ const Article = () => {
               path: `/journal/${article.slug}`,
               image: article.heroImage,
               author: authorByName(article.author?.name),
-              datePublished: "2026-05-01",
+              // Per-article, from data/articles.js. This used to be one hardcoded
+              // date for every article, so a piece published in August still told
+              // Google it went up on May 1.
+              datePublished: article.datePublished,
             }),
             breadcrumbSchema([
               { name: "Journal", path: "/journal" },

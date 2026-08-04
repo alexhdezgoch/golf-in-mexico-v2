@@ -92,13 +92,19 @@
   </url>
   <url>
     <loc>https://golf-in-mexico.com/journal/the-bachelor-trip-cabo</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://golf-in-mexico.com/journal/how-to-plan-a-golf-trip-to-mexico</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://golf-in-mexico.com/journal/how-to-plan-golf-trip-punta-mita</loc>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
