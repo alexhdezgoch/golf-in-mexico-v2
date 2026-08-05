@@ -16,8 +16,10 @@ const LOS_CABOS = {
     "/images/rn8feiwi-screenshot-2026-06-19-at-10-15-19-a-m.webp",
     "/images/jvngefiv-screenshot-2026-06-19-at-10-15-10-a-m.webp",
   ],
-  seoTitle: "Golf in Cabo San Lucas: Courses, Costs & Access (2026) | Golf in Mexico°",
-  seoDescription: "Eleven editorial-grade golf courses, green fees from $95–$500, and the insider access most travelers never find. The complete guide to Los Cabos for 2026.",
+  // SEO — matched to live GSC query phrasing ("golf in los cabos",
+  // "cabo san lucas golf prices"): destination first, then the price/access angle.
+  seoTitle: "Golf in Los Cabos: Course Prices & Access | Golf in Mexico°",
+  seoDescription: "18 championship courses from Cabo San Lucas to San José del Cabo, green fees $95–$500 a round, and how access actually works.",
   sources: [
     "Golf Digest — World's 100 Greatest Courses (2024 list)",
     "Los Cabos Tourism Board — 350 sunny days statistic, visitor data",
@@ -146,6 +148,11 @@ const LOS_CABOS = {
     { q: "Do I need to tip caddies?", a: "Yes — tipping is expected and an important part of their income. Standard: $40–$60 USD per bag per round. At Twin Dolphin, the $50 caddie fee is mandatory and built into the booking price. At elite courses, the caddie is the difference between a good round and a great one — they know the ocean breaks, the wind patterns, and the pin positions. Tip accordingly." },
   ],
 
+  // Descriptive internal links out of this hub (see the "Read next" section).
+  relatedReads: [
+    { to: "/destinations/mexico-city", anchor: "golf in Mexico City", note: "20+ courses within 90 minutes of the center, nearly all private — and the lowest all-in trip cost of any GIM destination." },
+    { to: "/destinations/cancun-riviera-maya", anchor: "Riviera Maya golf courses", note: "12+ championship courses along 80 miles of Caribbean coast, with green fees from $109." },
+  ],
   credentials,
 };
 
@@ -283,6 +290,11 @@ const PUNTA_MITA = {
     { q: "Is Punta Mita the same as Puerto Vallarta?", a: "No. Puerto Vallarta is a city. Punta Mita is a private 1,500-acre peninsula 45 minutes north on Banderas Bay. Staying in Puerto Vallarta and driving to Pacifico or Bahia is not possible — the gated enclave requires a confirmed stay at the Four Seasons or St. Regis." },
   ],
 
+  // Descriptive internal links out of this hub (see the "Read next" section).
+  relatedReads: [
+    { to: "/destinations/mexico-city", anchor: "golf in Mexico City", note: "Historic private clubs at 2,240 m, where the ball carries 10–12% farther — and how visiting golfers get on." },
+    { to: "/destinations/los-cabos", anchor: "Los Cabos green fees and access", note: "18 championship courses on a 20-mile corridor, $95–$500 a round." },
+  ],
   credentials,
 };
 
@@ -299,8 +311,10 @@ const MEXICO_CITY = {
     "/images/3npawpvw-screenshot-2026-06-10-at-1-53-50-p-m.webp",
     "/images/1hcyue43-screenshot-2026-06-10-at-1-53-59-p-m.webp",
   ],
-  seoTitle: "Golf in Mexico City: Courses, Access & Altitude (2026) | Golf in Mexico°",
-  seoDescription: "20+ golf courses within 90 minutes of Polanco. Chapultepec — Mexican Open · WGC · LIV host. Bosque Real · Amanali · Encinos · Avandaro · Tabachines. The complete editorial guide.",
+  // SEO — matched to live GSC query phrasing ("golf mexico city"): the course
+  // count answers the query in the title, access + cost carry the click.
+  seoTitle: "Golf in Mexico City: 20+ Courses & Access | Golf in Mexico°",
+  seoDescription: "20+ golf courses within 90 minutes of the center, nearly all private. Green fees $150–$400 a round, and how altitude plays.",
   sources: [
     "Club de Golf Chapultepec — Mexican Open, WGC-Mexico Championship (2017–2020), LIV Golf Mexico City (2025, 2026) records",
     "LPGA Tour — MasterCard Classic at Bosque Real (2005–2009) records",
@@ -318,8 +332,10 @@ const MEXICO_CITY = {
     { num: "$150–$400",  label: "Green fees" },
     { num: "Year-round", label: "Playable" },
   ],
+  // Answer-first lead: courses, access and cost, then altitude — all inside the
+  // first ~45 words, because these are the three things the search queries ask.
   heroAnswer:
-    "Mexico City and its surrounding states have more than 20 golf courses within 90 minutes of the city center — ranging from the historic WGC and LIV host at Chapultepec to the mountain escapes at Valle de Bravo and Tepeji del Río. All courses are private or semi-private. Access requires a member invitation, a hotel reservation, or advance coordination.",
+    "Mexico City has 20+ golf courses within 90 minutes of the center, nearly all private — access comes through a member, a hotel, or advance coordination. Green fees run $150–$400 USD a round at the private clubs. At 2,240 m (7,350 ft) the ball carries 10–12% farther, and the golf is playable year-round. Chapultepec — Mexican Open, WGC and LIV host — is invitation only; Los Tabachines in Cuernavaca is the most accessible semi-public round and the one exception on price, quoted in pesos from $1,000 MXN.",
 
   quickFacts: [
     { icon: "flag",      label: "Courses",       value: "8 featured (CDMX + Estado de Mexico + Morelos + Hidalgo + Valle de Bravo)" },
@@ -436,8 +452,11 @@ const CANCUN = {
     "/images/jsn8nf92-edf7bcf8-0376-48ee-9113-e1bddba9cb45-1-105-c.webp",
     "/images/soiqih16-92f4cd01-830e-40d0-b77b-71a908b90e27-1-105-c.webp",
   ],
-  seoTitle: "Golf in Cancun & the Riviera Maya: Courses, Costs & Access (2026) | Golf in Mexico°",
-  seoDescription: "12+ championship golf courses along 80 miles of Caribbean coastline. Green fees from $109 to $353. PGA Tour pedigree at El Camaleón Mayakoba. The lowest-friction golf trip in Mexico.",
+  // SEO — this page draws two query families: "riviera maya golf courses" (most
+  // impressions) and the better-ranking "cancun golf prices / green fees" set.
+  // The title holds both, then the fee/access angle carries the click.
+  seoTitle: "Riviera Maya & Cancun Golf: Fees & Access | Golf in Mexico°",
+  seoDescription: "12+ championship courses along 80 miles of Caribbean coast, which ones you can play without a resort stay, and green fees from $109.",
   sources: [
     "PGA Tour — Mayakoba Golf Classic records (2007–2022)",
     "Korn Ferry Tour — PGA Riviera Maya 2025 event records",
@@ -562,6 +581,11 @@ const CANCUN = {
     { q: "How much does a golf trip to Cancun cost?", a: "A 4-night, 3-round trip to Cancun and the Riviera Maya runs $2,200 on the lower end (all-inclusive resort with bundled golf) to $6,590 at the luxury tier (Mayakoba-level accommodation plus standalone green fees). The all-inclusive arbitrage is the key variable: Moon Palace guests can play 3 rounds for under $100 total — a fraction of the $870 standalone cost for the same number of rounds at premium courses. Green fees alone range from $109 (Iberostar guest rate) to $353 at El Camaleón at Mayakoba." },
   ],
 
+  // Descriptive internal links out of this hub (see the "Read next" section).
+  relatedReads: [
+    { to: "/destinations/mexico-city", anchor: "Mexico City golf courses", note: "The inland counterpoint: 20+ courses at altitude, invitation-led access, green fees $150–$400." },
+    { to: "/destinations/los-cabos", anchor: "golf in Los Cabos", note: "18 courses between Cabo San Lucas and San José del Cabo, $95–$500 a round." },
+  ],
   credentials,
 };
 
@@ -700,6 +724,11 @@ const PUERTO_VALLARTA = {
     { q: "How much does a golf trip to Puerto Vallarta Mexico cost?", a: "A 4-night, 3-round trip to Puerto Vallarta runs $1,920 on the accessible end (old-town hotel + Flamingos + Vista Vallarta + Marina Vallarta) to $5,675 at the premium tier (Grand Velas or equivalent + Vista Nicklaus + Vidanta Norman + El Tigre). The primary variable is accommodation. Green fees run 30–40% below Cabo or Punta Mita for comparable design pedigrees — making Puerto Vallarta the strongest value proposition in championship golf along Mexico's Pacific coast." },
   ],
 
+  // Descriptive internal links out of this hub (see the "Read next" section).
+  relatedReads: [
+    { to: "/destinations/mexico-city", anchor: "golf in Mexico City", note: "20+ courses within 90 minutes of the center — Chapultepec's tournament history, and the semi-public round you can actually book." },
+    { to: "/destinations/cancun-riviera-maya", anchor: "Riviera Maya golf courses", note: "12+ courses along 80 miles of Caribbean coast, green fees $109–$353." },
+  ],
   credentials,
 };
 
@@ -808,6 +837,11 @@ const UNIQUE = {
     { q: "When's the best time to play highland golf in Mexico?",          a: "October through April. February is the sweet spot — clear, dry, cool mornings, mild afternoons. Avoid June through September (afternoon storms). Above 6,000 feet, every course plays half a club shorter — recalibrate on day one." },
   ],
 
+  // Descriptive internal links out of this hub (see the "Read next" section).
+  relatedReads: [
+    { to: "/destinations/mexico-city", anchor: "golf in Mexico City", note: "The city circuit behind the escapes: 20+ courses, altitude that adds 10–12% of carry, access through a member or a hotel." },
+    { to: "/destinations/los-cabos", anchor: "Los Cabos course prices", note: "18 championship courses, green fees $95–$500 a round." },
+  ],
   credentials,
 };
 
