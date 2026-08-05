@@ -4,10 +4,12 @@ import { motion } from "framer-motion";
 import PhotoSlot from "../components/hub/PhotoSlot";
 import SectionNav from "../components/hub/SectionNav";
 import { getHubData, KEEP_EXPLORING_HUBS } from "../data/hubs";
+import { GUIDE_AUTHORS } from "../data/authors";
 import { useSeo, articleSchema, breadcrumbSchema, faqSchema } from "@/hooks/useSeo";
 import { trackLead } from "@/lib/analytics";
 import { useHubspotForm } from "@/hooks/useHubspotForm";
 import { FORM_KEYS } from "@/config/hubspot";
+import ConsentNotice from "@/components/ConsentNotice";
 
 /* Hero photo per destination */
 const HERO_PHOTOS = {
@@ -375,7 +377,11 @@ const PlaybookCTA = ({ variant = "full", testid, region, h3Pre = "Stay in the lo
             {sent && (
               <p className="font-display italic text-[var(--c-green-deep)] text-lg">You're on the list.</p>
             )}
-            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-text-muted)]">No spam. Unsubscribe anytime.</p>
+            {/* Replaces a "No spam. Unsubscribe anytime." line that said less and
+                linked nowhere — same promise, now matching what HubSpot records. */}
+            {!sent && (
+              <ConsentNotice tone="light" testid={`${testid}-consent`} className="max-w-sm" />
+            )}
           </div>
         </div>
       </section>
@@ -427,6 +433,9 @@ const PlaybookCTA = ({ variant = "full", testid, region, h3Pre = "Stay in the lo
                 You're on the list.
               </p>
             </div>
+          )}
+          {!sent && (
+            <ConsentNotice tone="dark" testid={`${testid}-consent`} className="mt-3" />
           )}
         </div>
       </div>
@@ -494,6 +503,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
         description: data.seoDescription || data.heroAnswer,
         path: `/destinations/${data.slug}`,
         image: data.heroPhoto,
+        authors: GUIDE_AUTHORS,
         datePublished: "2026-05-01",
         dateModified: "2026-05-25",
       }),
@@ -1097,6 +1107,7 @@ const NewsletterMiniForm = ({ testid }) => {
       {error && (
         <p className="basis-full font-mono text-[10px] uppercase tracking-[0.16em] text-red-300">{error}</p>
       )}
+      <ConsentNotice tone="dark" testid={`${testid}-consent`} className="basis-full" />
     </form>
   );
 };
@@ -1146,19 +1157,25 @@ const PlaybookEndForm = ({ region }) => {
         {error && (
           <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-red-700">{error}</p>
         )}
+        <ConsentNotice tone="light" testid="lc-playbook-end-consent" />
       </form>
     );
   }
   return (
-    <button
-      type="button"
-      onClick={() => setOpen(true)}
-      data-testid="lc-playbook-end-open"
-      className="group w-full inline-flex items-center justify-center gap-3 bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-7 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors"
-    >
-      Keep me in the loop
-      <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-    </button>
+    <>
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        data-testid="lc-playbook-end-open"
+        className="group w-full inline-flex items-center justify-center gap-3 bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-7 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors"
+      >
+        Keep me in the loop
+        <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+      </button>
+      {/* Also in the closed state: the promise is made by the button, not just
+          by the field it reveals — and it keeps the block height stable. */}
+      <ConsentNotice tone="light" testid="lc-playbook-end-consent" className="mt-3" />
+    </>
   );
 };
 

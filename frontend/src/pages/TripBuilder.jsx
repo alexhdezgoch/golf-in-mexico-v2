@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { trackLead, trackEvent } from "@/lib/analytics";
 import { useHubspotForm } from "@/hooks/useHubspotForm";
 import { useSeo, breadcrumbSchema } from "@/hooks/useSeo";
+import ConsentNotice from "@/components/ConsentNotice";
 
 /* ═══════════════════════════════════════════════════════════════════
    GIM Trip Builder · /trip-builder
@@ -882,6 +883,13 @@ const TripBuilder = () => {
                   <p className="mt-4 text-[12px] text-[var(--c-text-muted)] text-center leading-[1.6]">
                     No commitment. No call required. We build the itinerary. You decide if you want to move forward.
                   </p>
+                  {/* The email typed in step 3 is only POSTed when this button is
+                      pressed, so the consent line belongs on the step that sends it. */}
+                  <ConsentNotice
+                    tone="light"
+                    testid="consent-notice-trip-builder"
+                    className="mt-3 text-center"
+                  />
                   <div className="mt-6 inline-flex items-center gap-2 bg-[var(--c-green-deep)] text-white font-mono text-[10px] md:text-[11px] uppercase tracking-[0.18em] font-bold w-full justify-center px-4 py-3 rounded-sm">
                     <span className="w-1.5 h-1.5 rounded-full bg-[var(--c-gold)]" />
                     Each confirmed trip blocks a full week — we&apos;re filling 2026 now.
@@ -963,6 +971,11 @@ const TripBuilder = () => {
                   <p className="mt-3 text-[11px] text-[var(--c-text-muted)] italic">
                     No spam. One email, then we go quiet until you reply.
                   </p>
+                  <ConsentNotice
+                    tone="light"
+                    testid="consent-notice-trip-builder-exit"
+                    className="mt-2"
+                  />
                 </>
               ) : (
                 <p className="font-display italic text-[var(--c-gold)] text-xl py-6 text-center">

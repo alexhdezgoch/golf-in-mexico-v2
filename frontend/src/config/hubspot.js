@@ -29,10 +29,31 @@ export const HUBSPOT_ENDPOINT_BASE =
   process.env.REACT_APP_HUBSPOT_ENDPOINT_BASE ||
   "https://api.hsforms.com/submissions/v3/integration/submit";
 
-// Consent notice shown under email fields and recorded with each submission.
-// Required if the HubSpot portal has GDPR features enabled; harmless otherwise.
+// ─── Consent notice ─────────────────────────────────────────────────────────
+// The sentence a visitor reads before handing over an email, in ONE place, so
+// the text rendered on the page and the text recorded on the HubSpot contact
+// cannot drift. Until 07-31 they were not the same thing at all: this constant
+// was POSTed with every submission (legalConsentOptions.consent.text) while the
+// site rendered it NOWHERE — HubSpot held consent records for wording no user
+// had ever seen.
+//
+// components/ConsentNotice.jsx renders `lead` followed by a real client-side
+// link labeled `linkLabel` pointing at `linkPath`. HUBSPOT_CONSENT_TEXT is that
+// same sentence with the link resolved to an absolute URL, because a stored
+// consent record is plain text and has to stand on its own years later.
+export const CONSENT_NOTICE = Object.freeze({
+  lead: "By submitting, you agree to hear from Golf in Mexico by email. Unsubscribe anytime. See our",
+  linkLabel: "Privacy Policy",
+  linkPath: "/privacy",
+  // Kept literal (not imported from hooks/useSeo) so this config stays
+  // dependency-free; config/hubspot.test.js pins it to SITE_URL + linkPath.
+  linkUrl: "https://golf-in-mexico.com/privacy",
+});
+
+// Recorded with each submission. Required if the HubSpot portal has GDPR
+// features enabled; harmless otherwise.
 export const HUBSPOT_CONSENT_TEXT =
-  "By submitting, you agree to hear from Golf in Mexico by email. You can unsubscribe at any time.";
+  `${CONSENT_NOTICE.lead} ${CONSENT_NOTICE.linkLabel} (${CONSENT_NOTICE.linkUrl}).`;
 
 // formKey → HubSpot form. `formId` blanks are filled on integration day.
 //   behavior : "welcome"  (documentation only; drives spec doc)

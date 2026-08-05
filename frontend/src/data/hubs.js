@@ -151,7 +151,7 @@ const LOS_CABOS = {
   // Descriptive internal links out of this hub (see the "Read next" section).
   relatedReads: [
     { to: "/destinations/mexico-city", anchor: "golf in Mexico City", note: "20+ courses within 90 minutes of the center, nearly all private — and the lowest all-in trip cost of any GIM destination." },
-    { to: "/destinations/cancun-riviera-maya", anchor: "Riviera Maya golf courses", note: "12+ championship courses along 80 miles of Caribbean coast, with green fees from $89." },
+    { to: "/destinations/cancun-riviera-maya", anchor: "Riviera Maya golf courses", note: "12+ championship courses along 80 miles of Caribbean coast, with green fees from $109." },
   ],
   credentials,
 };
@@ -471,16 +471,16 @@ const CANCUN = {
   stats: [
     { num: "12+",        label: "Courses" },
     { num: "80 mi",      label: "Coastline" },
-    { num: "$89–$353",   label: "Green fees" },
+    { num: "$109–$353",  label: "Green fees" },
     { num: "Dec – Apr",  label: "Best months" },
   ],
   heroAnswer:
-    "Cancun and the Riviera Maya have more than 12 championship golf courses along 80 miles of Caribbean coastline — designed by Greg Norman, Jack Nicklaus, Tom Weiskopf, Nick Price, and Robert Trent Jones Jr. Green fees run $89 to $353 per round. Cancun International (CUN) is the most-served Mexican airport by US carriers. This is the easiest golf trip in Mexico to book.",
+    "Cancun and the Riviera Maya have more than 12 championship golf courses along 80 miles of Caribbean coastline — designed by Greg Norman, Jack Nicklaus, Tom Weiskopf, Nick Price, and Robert Trent Jones Jr. Green fees run $109 to $353 per round. Cancun International (CUN) is the most-served Mexican airport by US carriers. This is the easiest golf trip in Mexico to book.",
 
   quickFacts: [
     { icon: "flag",      label: "Courses",        value: "12+ along the corridor (Cancun → Tulum)" },
     { icon: "pencil",    label: "Designers",      value: "Greg Norman · Jack Nicklaus · Tom Weiskopf · Nick Price · Robert Trent Jones Jr. · Isao Aoki" },
-    { icon: "dollar",    label: "Green fees",     value: "$89 – $353 USD per round" },
+    { icon: "dollar",    label: "Green fees",     value: "$109 – $353 USD per round" },
     { icon: "calendar",  label: "Best months",    value: "December – April" },
     { icon: "alert",     label: "Avoid",          value: "August – October (hurricane peak)" },
     { icon: "plane",     label: "Airport",        value: "Cancun International (CUN) — 25+ direct US cities" },
@@ -578,7 +578,7 @@ const CANCUN = {
     { q: "Is Puerto Cancun Golf Club open to the public?", a: "Yes. Puerto Cancun Golf Club is a public-access course with direct booking — no resort affiliation required. Tom Weiskopf designed the 7,241-yard, par-72 layout in 2013 between Cancun's Hotel Zone and downtown. Green fees run $270 ($165 twilight). Several holes play along the Caribbean shoreline and the Puerto Cancun marina, and the closing par-4 18th finishes on an island green in the property's main canal. Ranked top 10 in Mexico by Golf Advisor every year from 2020 to 2024." },
     { q: "Is PGA Riviera Maya open to the public?", a: "Yes. PGA Riviera Maya offers direct public booking with no resort stay required. Located 90 minutes south of Cancun at Tulum Country Club, the Robert Trent Jones Jr. design opened in 2010 and became the first PGA of America partner destination in Latin America in 2019. Won Best Golf Course in Mexico at the 2024 World Golf Awards and hosted Mexico's first Korn Ferry Tour event in 2025. The course routes through cenotes, limestone terrain, and dense jungle — a Korn Ferry-level layout open to outside players." },
     { q: "What is the best time to play golf in Cancun?", a: "December through April — dry, 75–85°F, low humidity, manageable trade winds. For the best value, May and early July deliver near-peak conditions with rooms 25–40% off peak rates. Avoid August through October: the highest hurricane-risk window on the Caribbean coast. Late November transitions back toward peak as the hurricane season closes — the sharpest end-of-off-season rates on the corridor. Travel insurance with hurricane coverage is standard for any trip booked in the off-season window." },
-    { q: "How much does a golf trip to Cancun cost?", a: "A 4-night, 3-round trip to Cancun and the Riviera Maya runs $2,200 on the lower end (all-inclusive resort with bundled golf) to $6,590 at the luxury tier (Mayakoba-level accommodation plus standalone green fees). The all-inclusive arbitrage is the key variable: Moon Palace guests can play 3 rounds for under $100 total — a fraction of the $870 standalone cost for the same number of rounds at premium courses. Green fees alone range from $89 (resort guest rate) to $353 at Playa Mujeres." },
+    { q: "How much does a golf trip to Cancun cost?", a: "A 4-night, 3-round trip to Cancun and the Riviera Maya runs $2,200 on the lower end (all-inclusive resort with bundled golf) to $6,590 at the luxury tier (Mayakoba-level accommodation plus standalone green fees). The all-inclusive arbitrage is the key variable: Moon Palace guests can play 3 rounds for under $100 total — a fraction of the $870 standalone cost for the same number of rounds at premium courses. Green fees alone range from $109 (Iberostar guest rate) to $353 at El Camaleón at Mayakoba." },
   ],
 
   // Descriptive internal links out of this hub (see the "Read next" section).
@@ -727,7 +727,7 @@ const PUERTO_VALLARTA = {
   // Descriptive internal links out of this hub (see the "Read next" section).
   relatedReads: [
     { to: "/destinations/mexico-city", anchor: "golf in Mexico City", note: "20+ courses within 90 minutes of the center — Chapultepec's tournament history, and the semi-public round you can actually book." },
-    { to: "/destinations/cancun-riviera-maya", anchor: "Riviera Maya golf courses", note: "12+ courses along 80 miles of Caribbean coast, green fees $89–$353." },
+    { to: "/destinations/cancun-riviera-maya", anchor: "Riviera Maya golf courses", note: "12+ courses along 80 miles of Caribbean coast, green fees $109–$353." },
   ],
   credentials,
 };

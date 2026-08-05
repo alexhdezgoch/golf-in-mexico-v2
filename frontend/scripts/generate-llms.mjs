@@ -45,6 +45,15 @@ const TODAY = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
 // collapse every file onto the deploy commit's date. That's the same lie in a
 // different hat, so we detect it and omit lastmod instead. Omitted lastmod is
 // well-defined: crawlers fall back to their own change detection.
+//
+// Two independent guards, because a shallow clone lies in two ways:
+//   1. CLONE FLOOR (below). History stops at a boundary commit, so every file
+//      whose last real change predates the boundary reports the BOUNDARY's date
+//      instead of its own. Vercel's clone floored 8 URLs at 2026-07-14 when they
+//      had really last changed 06-29/07-03 — dates plausible enough that nothing
+//      downstream noticed. Any file sitting exactly on the floor is therefore
+//      unknowable, and we omit its lastmod.
+//   2. TOTAL COLLAPSE (further down). Every file lands on one date, or on none.
 const gitDate = (relPath) => {
   // A route with no ROUTE_SOURCE entry lands here as undefined. Bail rather than
   // hand undefined to execFileSync, so adding a route without mapping it costs
@@ -59,6 +68,40 @@ const gitDate = (relPath) => {
   } catch {
     return null; // no git, no history for the path, or a detached build env
   }
+};
+
+// The clone floor: the date(s) of the commits where this clone's history is cut
+// off, but ONLY when the repository is shallow. In a full clone the oldest commit
+// is a real boundary of the project's own history, not of the clone, so a file
+// legitimately dated there is telling the truth and must be left alone — hence
+// the is-shallow gate.
+//
+// The floor is the BOUNDARY commit's date, not the oldest date in the clone. In a
+// shallow clone the grafts are exactly the parentless commits, so ask git for
+// those (plural: a merge inside the clone window can leave several). Taking the
+// minimum date instead inverts the guard whenever dates aren't monotonic — the
+// ordinary "branch merged a week after its commits were written" shape: with
+// commits 01-11, 02-12, 03-13 plus a tip backdated to 01-01, a --depth 2 clone
+// floors at the 03-13 boundary, yet the minimum is 01-01. That would null the one
+// date that was TRUE and publish the two that were FALSE.
+const cloneFloorDates = () => {
+  const git = (args) => {
+    try {
+      return execFileSync("git", args, {
+        cwd: ROOT,
+        encoding: "utf8",
+        stdio: ["ignore", "pipe", "ignore"],
+      }).trim();
+    } catch {
+      return null;
+    }
+  };
+  if (git(["rev-parse", "--is-shallow-repository"]) !== "true") return null;
+  const dates = (git(["log", "--max-parents=0", "--format=%cs", "HEAD"]) || "")
+    .split("\n")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  return dates.length ? new Set(dates) : null;
 };
 
 // Route content sources. A hub page's words live in hubs.js, not in the shared
@@ -362,9 +405,30 @@ async function main() {
   }));
   const urls = [...staticRoutes, ...hubRoutes, ...articleRoutes];
 
-  // Collapse check: if git handed back one date for everything (or nothing at
-  // all), it isn't telling us when pages changed — it's telling us when this
-  // clone was made. Drop lastmod entirely rather than publish that as fact.
+  // Guard 1 — clone floor. On a shallow clone, a date equal to a boundary
+  // (graft) commit's date means "the history ran out here", not "the page changed
+  // here". Omit those; keep the rest, which are still real.
+  const floorDates = cloneFloorDates();
+  let floorSuppressed = 0;
+  if (floorDates) {
+    for (const u of urls) {
+      if (u.lastmod && floorDates.has(u.lastmod)) {
+        u.lastmod = null;
+        floorSuppressed += 1;
+      }
+    }
+    if (floorSuppressed) {
+      console.log(
+        `⚠ shallow clone: history floored at ${[...floorDates].sort().join(", ")} — ` +
+          `lastmod OMITTED on ${floorSuppressed} of ${urls.length} URLs ` +
+          `(their real dates are not in this clone)`,
+      );
+    }
+  }
+
+  // Guard 2 — collapse check: if git handed back one date for everything (or
+  // nothing at all), it isn't telling us when pages changed — it's telling us
+  // when this clone was made. Drop lastmod entirely rather than publish that as fact.
   const distinctDates = new Set(urls.map((u) => u.lastmod).filter(Boolean));
   const lastmodTrustworthy = distinctDates.size > 1;
   if (!lastmodTrustworthy) {
