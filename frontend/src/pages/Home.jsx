@@ -121,12 +121,11 @@ const StatementAndVideo = () => (
         that make the trip worth taking.
       </motion.p>
 
-      {/* Descriptive entry links into the destination guides that carry the search demand */}
-      <motion.p
-        initial={{ opacity: 0, y: 14 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-10%" }}
-        transition={{ duration: 0.95, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+      {/* Descriptive entry links into the destination guides that carry the search demand.
+          Deliberately NOT a motion.p: the prerenderer captures the entry animation's
+          initial frame, so a motion wrapper would ship these links to crawlers and
+          non-JS AI bots inside style="opacity: 0" markup — the opposite of the point. */}
+      <p
         data-testid="home-statement-guides"
         className="font-body font-light text-[var(--c-text-mid)] leading-[1.8] text-base md:text-lg max-w-[52ch] mb-14 md:mb-20"
       >
@@ -155,7 +154,7 @@ const StatementAndVideo = () => (
           Los Cabos green fees and access
         </Link>
         .
-      </motion.p>
+      </p>
 
       <motion.div
         initial={{ opacity: 0, y: 32 }}

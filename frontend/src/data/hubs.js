@@ -19,7 +19,7 @@ const LOS_CABOS = {
   // SEO — matched to live GSC query phrasing ("golf in los cabos",
   // "cabo san lucas golf prices"): destination first, then the price/access angle.
   seoTitle: "Golf in Los Cabos: Course Prices & Access | Golf in Mexico°",
-  seoDescription: "Los Cabos has 18 championship courses along the 20-mile corridor from Cabo San Lucas to San José del Cabo. Green fees $95–$500 a round, and how access works.",
+  seoDescription: "18 championship courses from Cabo San Lucas to San José del Cabo, green fees $95–$500 a round, and how access actually works.",
   sources: [
     "Golf Digest — World's 100 Greatest Courses (2024 list)",
     "Los Cabos Tourism Board — 350 sunny days statistic, visitor data",
@@ -314,7 +314,7 @@ const MEXICO_CITY = {
   // SEO — matched to live GSC query phrasing ("golf mexico city"): the course
   // count answers the query in the title, access + cost carry the click.
   seoTitle: "Golf in Mexico City: 20+ Courses & Access | Golf in Mexico°",
-  seoDescription: "Mexico City has 20+ golf courses within 90 minutes of the center, nearly all private. Green fees $150–$400 USD a round. How to get on, and how altitude plays.",
+  seoDescription: "20+ golf courses within 90 minutes of the center, nearly all private. Green fees $150–$400 a round, and how altitude plays.",
   sources: [
     "Club de Golf Chapultepec — Mexican Open, WGC-Mexico Championship (2017–2020), LIV Golf Mexico City (2025, 2026) records",
     "LPGA Tour — MasterCard Classic at Bosque Real (2005–2009) records",
@@ -456,7 +456,7 @@ const CANCUN = {
   // impressions) and the better-ranking "cancun golf prices / green fees" set.
   // The title holds both, then the fee/access angle carries the click.
   seoTitle: "Riviera Maya & Cancun Golf: Fees & Access | Golf in Mexico°",
-  seoDescription: "Cancun and the Riviera Maya have 12+ championship courses along 80 miles of Caribbean coast. Green fees $109–$353, and which you can play without a resort stay.",
+  seoDescription: "12+ championship courses along 80 miles of Caribbean coast, which ones you can play without a resort stay, and green fees from $109.",
   sources: [
     "PGA Tour — Mayakoba Golf Classic records (2007–2022)",
     "Korn Ferry Tour — PGA Riviera Maya 2025 event records",
