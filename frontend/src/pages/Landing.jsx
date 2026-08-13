@@ -170,9 +170,11 @@ const Figure = ({ photo, eager = false }) => (
         className="w-full h-full object-cover"
       />
     </div>
-    {photo.caption && (
+    {(photo.caption || photo.photoSource) && (
       <figcaption className="mt-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-text-mid)]">
         {photo.caption}
+        {photo.caption && photo.photoSource && " · "}
+        {photo.photoSource}
       </figcaption>
     )}
   </motion.figure>
@@ -265,6 +267,19 @@ const Landing = () => {
               >
                 {landing.heroAnswer}
               </motion.p>
+
+              {/* Byline — same editorial signature the hubs carry. */}
+              {landing.byline && (
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.9, delay: 0.25, ease: EASE }}
+                  data-testid="landing-byline"
+                  className="mt-6 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-text-mid)]"
+                >
+                  {landing.byline}
+                </motion.p>
+              )}
             </div>
 
             <motion.div
@@ -565,6 +580,27 @@ const Landing = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* ── SOURCES — same convention as the destination hubs ────── */}
+      {landing.sources && (
+        <section className="pb-12 md:pb-16">
+          <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--c-gold)] mb-4">
+              Sources
+            </p>
+            <ul data-testid="landing-sources" className="space-y-1.5">
+              {landing.sources.map((s) => (
+                <li
+                  key={s}
+                  className="font-body font-light text-[13px] leading-relaxed text-[var(--c-text-mid)]"
+                >
+                  {s}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       {/* ── READ NEXT ────────────────────────────────────────────── */}
       {landing.relatedReads && (

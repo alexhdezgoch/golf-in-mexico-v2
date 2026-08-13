@@ -35,39 +35,48 @@
 const PENINSULA_ACCESS =
   "Four Seasons and St. Regis guests, Punta Mita villa renters, and residence owners.";
 
-/* ─────────── PACÍFICO vs BAHÍA ─────────── */
+/* ─────────── PACIFICO vs BAHIA ─────────── */
 
 const PACIFICO_BAHIA = {
   slug: "pacifico-bahia",
   hub: "punta-mita",
   hubName: "Punta Mita",
-  name: "Pacífico vs Bahía",
+  name: "Pacifico vs Bahia",
 
-  seoTitle: "Pacífico vs Bahía: Which Punta Mita Course to Play (2026) | Golf in Mexico°",
+  seoTitle: "Pacifico vs Bahia: Which Punta Mita Course to Play (2026) | Golf in Mexico°",
   seoDescription:
     "Two Jack Nicklaus Signature courses on the same peninsula, and they do not play alike. Specs, green fees $325–$400, the Tail of the Whale tide window, and how to get on.",
 
   heroLabel: "Punta Mita · Course Comparison",
-  h1Pre: "Pacífico or Bahía —",
+  h1Pre: "Pacifico or Bahia —",
   h1Em: "which one do you play?",
 
   // Answer-first. The question in the title is settled inside 50 words.
   heroAnswer:
-    "Play Pacífico for the ocean and the island green at 3B. Play Bahía for the tighter, more technical round through jungle. Both are Jack Nicklaus Signature courses on the same peninsula, both run $325–$400 for resort guests, and most golfers here play one of each.",
+    "Play Pacifico for the ocean and the island green at 3B. Play Bahia for the tighter, more technical round through jungle. Both are Jack Nicklaus Signature courses on the same peninsula, both run $325–$400 for resort guests, and most golfers here play one of each.",
 
   heroPhoto: "/images/punta-mita/punta-mita-pacifico-tail-of-the-whale-island-green-aerial.webp",
   heroAlt:
-    "Aerial view of the Tail of the Whale, hole 3B at Pacífico Course in Punta Mita — a natural island green ringed by surf, with the stone causeway visible at low tide.",
+    "Aerial view of the Tail of the Whale, hole 3B at Pacifico Course in Punta Mita — a natural island green ringed by surf, with the stone causeway visible at low tide.",
 
   ctaPrimary: "Plan the round",
   ctaNote: "Pablo answers himself. No call required to get a proposal.",
+
+  byline:
+    "GIM Editorial · Field research by Pablo De La Mora & José Islas · Updated August 2026",
+  sources: [
+    "Pacifico Golf Course — Punta Mita pro shop and resort archives",
+    "Nicklaus Design — Pacifico course specifications (par, yardage, opening year)",
+    "GIM field research — Riviera Nayarit, May 2026",
+    "Green fee range confirmed with Golf in Mexico, August 2026",
+  ],
 
   /* Side-by-side specs. Every row is sourced; a cell we cannot source is "—". */
   specsLabel: "The specs",
   specsH2Pre: "Same architect,",
   specsH2Em: "two different arguments.",
   specs: [
-    ["", "Pacífico", "Bahía"],
+    ["", "Pacifico", "Bahia"],
     ["Designer", "Jack Nicklaus Signature", "Jack Nicklaus Signature"],
     ["Opened", "1999", "—"],
     ["Par", "72", "72"],
@@ -78,66 +87,69 @@ const PACIFICO_BAHIA = {
     ["Caddie", "Included at Four Seasons", "Included at Four Seasons"],
   ],
   specsNote:
-    "Bahía's opening year and yardage are left blank on purpose — the available sources disagree, and we would rather leave a gap than publish a number you could catch us on.",
+    "Bahia's opening year and yardage are left blank on purpose — the available sources disagree, and we'd rather leave a gap than publish a number you could catch us on.",
 
   contrastLabel: "The difference",
   contrastH2Pre: "One pulls you into the jungle.",
   contrastH2Em: "The other opens onto the Pacific.",
   contrastParagraphs: [
-    "Pacífico faces the ocean from start to finish. Constant wind off Banderas Bay, longer club selections than the scorecard suggests, and the island green at 3B — visible only when the tide pulls back. Not every hole faces the water, but the ones that do carry the round.",
-    "Bahía closes in. Tight corridors, shot-shaping on nearly every hole, bunkers deep enough to punish a small miss. It plays more open off the tee than Pacífico and asks harder questions once you are there. Less theater, more test.",
-    "Nicklaus built them to be felt as a contrast. That is the argument for playing both — you will not play the same round twice.",
+    "Pacifico faces the ocean from start to finish. Constant wind off Banderas Bay, longer club selections than the scorecard suggests, and the island green at 3B — visible only when the tide pulls back. Not every hole faces the water, but the ones that do carry the round.",
+    "Bahia closes in. Tight corridors, shot-shaping on nearly every hole, bunkers deep enough to punish a small miss. It plays more open off the tee than Pacifico and asks harder questions once you are there. Less theater, more test.",
+    "Nicklaus built them to be felt as a contrast. That's the argument for playing both — you won't play the same round twice.",
   ],
 
   /* The one hole that sells the destination. Kept factual and caveated. */
   calloutIcon: "🐳",
   calloutLabel: "The Tail of the Whale",
   calloutBody:
-    "Hole 3B at Pacífico is the only natural island green in golf — a green sitting on a rock island off the peninsula, reached across a natural stone causeway when the tide is out. It is optional. Ask the pro shop the night before for the tide window; surfers time the swell nearby with a tide app and the concierge desks use the same one. If your tee time lands inside the window, go. If not, play 3A. The round holds either way.",
+    "Hole 3B at Pacifico is the only natural island green in golf — a green sitting on a rock island off the peninsula, reached across a natural stone causeway when the tide is out. It's optional. Ask the pro shop the night before for the tide window; surfers time the swell nearby with a tide app and the concierge desks use the same one. If your tee time lands inside the window, go. If not, play 3A. The round holds either way.",
 
   sectionPhotos: [
     {
       src: "/images/punta-mita/punta-mita-pacifico-tee-shot-tail-of-the-whale.webp",
-      alt: "A golfer mid-swing at Pacífico Course, Punta Mita, playing toward the island green at hole 3B with the Pacific behind.",
-      caption: "Pacífico · the tee shot at 3B",
+      alt: "A golfer mid-swing at Pacifico Course, Punta Mita, playing toward the island green at hole 3B with the Pacific behind.",
+      caption: "Pacifico · the tee shot at 3B",
+      photoSource: "Riviera Nayarit Field Photography",
     },
     {
       src: "/images/punta-mita/punta-mita-green-palms-dune-grass.webp",
       alt: "An oceanfront green on the Punta Mita peninsula framed by palms and dune grass.",
       caption: "Punta Mita peninsula",
+      photoSource: "Riviera Nayarit Field Photography",
     },
     {
       src: "/images/punta-mita/punta-mita-green-flag-bunker-surf.webp",
       alt: "A green and flagstick on the Punta Mita peninsula with a bunker short and surf breaking beyond.",
       caption: "Punta Mita peninsula",
+      photoSource: "Riviera Nayarit Field Photography",
     },
   ],
 
   accessLabel: "Getting on",
   accessH2Pre: "Neither course",
   accessH2Em: "sells a public tee time.",
-  accessBody: `Pacífico and Bahía are restricted to ${PENINSULA_ACCESS} There is no day-pass and no walk-up rate. The usual route in is the room — or the villa, which is the part most golfers do not know about. Green fees run $325 to $400 per round for resort guests, varying by season and course. Caddies are included at Four Seasons and billed separately at St. Regis.`,
+  accessBody: `Pacifico and Bahia are restricted to ${PENINSULA_ACCESS} There is no day-pass and no walk-up rate. The usual route in is the room — or the villa, which is the part most golfers don't know about. Green fees run $325 to $400 per round for resort guests, varying by season and course. Caddies are included at Four Seasons and billed separately at St. Regis.`,
 
   faqs: [
     {
-      q: "Is Pacífico or Bahía harder to play at Punta Mita?",
-      a: "Neither is universally harder — it depends on the golfer. Bahía plays more open off the tee. Pacífico demands more precision, because constant ocean wind changes what club the distance actually calls for. If you dislike wind, Bahía is the friendlier round. If you dislike tight corridors, Pacífico is.",
+      q: "Is Pacifico or Bahia harder to play at Punta Mita?",
+      a: "Neither is universally harder — it depends on the golfer. Bahia plays more open off the tee. Pacifico demands more precision, because constant ocean wind changes what club the distance actually calls for. If you dislike wind, Bahia is the friendlier round. If you dislike tight corridors, Pacifico is.",
     },
     {
       q: "What is the Tail of the Whale at Punta Mita?",
-      a: "It is hole 3B at Pacífico Course, a Jack Nicklaus Signature design — the only natural island green in golf. The green sits on a rock island off the peninsula and is reached across a natural stone causeway at low tide. It plays as an optional alternative to 3A, so the round works whether or not the tide cooperates.",
+      a: "It's hole 3B at Pacifico Course, a Jack Nicklaus Signature design — the only natural island green in golf. The green sits on a rock island off the peninsula and is reached across a natural stone causeway at low tide. It plays as an optional alternative to 3A, so the round works whether or not the tide cooperates.",
     },
     {
-      q: "Can I play both Pacífico and Bahía on one trip?",
+      q: "Can I play both Pacifico and Bahia on one trip?",
       a: "Yes, and most golfers do. The two courses are about five minutes apart by cart inside the peninsula, so a two-round trip usually means one at each. Golf in Mexico books both rounds as part of one reservation rather than two separate calls.",
     },
     {
-      q: "Do I need to be a hotel guest to play Pacífico or Bahía?",
-      a: "Not a hotel guest specifically. Access also runs through Punta Mita villa rentals and group bookings, which Golf in Mexico coordinates. What you cannot do is drive up from Puerto Vallarta and buy a tee time — the peninsula gate requires a confirmed stay.",
+      q: "Do I need to be a hotel guest to play Pacifico or Bahia?",
+      a: "Not a hotel guest specifically. Access also runs through Punta Mita villa rentals and group bookings, which Golf in Mexico coordinates. What you can't do is drive up from Puerto Vallarta and buy a tee time — the peninsula gate requires a confirmed stay.",
     },
     {
       q: "How much does it cost to play golf in Punta Mita?",
-      a: "Green fees at Pacífico and Bahía run $325 to $400 USD per round for resort guests, varying by season and course. Caddies are included at Four Seasons and billed separately at St. Regis. Caddie tips run $40–$60 per bag per round and are expected.",
+      a: "Green fees at Pacifico and Bahia run $325 to $400 USD per round for resort guests, varying by season and course. Caddies are included at Four Seasons and billed separately at St. Regis. Caddie tips run $40–$60 per bag per round and are expected.",
     },
   ],
 
@@ -170,14 +182,14 @@ const STAY_AND_PLAY = {
 
   seoTitle: "Punta Mita Stay & Play: Villa + Golf Access (2026) | Golf in Mexico°",
   seoDescription:
-    "You do not need a Four Seasons room to play Pacífico and Bahía. How villa access works, what a group of eight actually pays, and what a two-day golf trip looks like.",
+    "You do not need a Four Seasons room to play Pacifico and Bahia. How villa access works, what a group of eight actually pays, and what a two-day golf trip looks like.",
 
   heroLabel: "Punta Mita · Stay & Play",
   h1Pre: "You do not need a hotel room",
   h1Em: "to play Punta Mita.",
 
   heroAnswer:
-    "Pacífico and Bahía accept players staying in Punta Mita villas, not only Four Seasons and St. Regis guests. We are partners with the peninsula's official rental agency — they curate the stay, we curate the golf. For a group, it is usually the cheaper way in and always the better one.",
+    "Pacifico and Bahia accept players staying in Punta Mita villas, not only Four Seasons and St. Regis guests. We're partners with the peninsula's official rental agency — they curate the stay, we curate the golf. For a group, it is usually the cheaper way in and always the better one.",
 
   heroPhoto: "/images/punta-mita/punta-mita-golfers-coastal-tee.webp",
   heroAlt:
@@ -186,20 +198,29 @@ const STAY_AND_PLAY = {
   ctaPrimary: "Start a proposal",
   ctaNote: "Pablo builds it inside 48 hours. No call required.",
 
+  byline:
+    "GIM Editorial · Field research by Pablo De La Mora & José Islas · Updated August 2026",
+  sources: [
+    "Punta Mita Properties — villa access and group booking terms (2026)",
+    "Pacifico Golf Course — Punta Mita pro shop and resort archives",
+    "GIM field research — Riviera Nayarit, May 2026",
+    "Green fee range confirmed with Golf in Mexico, August 2026",
+  ],
+
   accessLabel: "Access",
   accessH2Pre: "The gate is real.",
   accessH2Em: "The room is not the only key.",
   accessParagraphs: [
-    "Punta Mita is a private peninsula, and the gate does not open for a tee time. That much is true and it is why the round is genuinely uncrowded. What is not true is that the Four Seasons is the only way through it.",
-    "Pacífico and Bahía also accept outside players through Punta Mita villa rentals — coordinated by a golf concierge rather than by the resort front desk. That is the door we hold. We are partners with the peninsula's official rental agency: they handle the villa, we handle the golf.",
-    "For one or two players, the room is usually simpler. From about four rooms or eight players, the villa route starts to win on price and stops being close.",
+    "Punta Mita is a private peninsula, and the gate does not open for a tee time. That much is true, and it's why the round is genuinely uncrowded. What isn't true is that the Four Seasons is the only way through it.",
+    "Pacifico and Bahia also accept outside players through Punta Mita villa rentals — coordinated by a golf concierge rather than by the resort front desk. That's the door we hold. We're partners with the peninsula's official rental agency: they handle the villa, we handle the golf.",
+    "For one or two players, the room's usually simpler. From about four rooms or eight players, the villa route starts to win on price and stops being close.",
   ],
 
   includedLabel: "What you get",
   includedH2Pre: "One booking,",
   includedH2Em: "not five reservations.",
   included: [
-    ["Golf", "Tee times at Pacífico and Bahía, arranged as part of the stay rather than requested against it."],
+    ["Golf", "Tee times at Pacifico and Bahia, arranged as part of the stay rather than requested against it."],
     ["The villa", "Through the peninsula's official rental agency — inside the gate, with the golf built around it."],
     ["Ground transport", "Airport pickup and movement on the peninsula. PVR to the gate is about 45 minutes."],
     ["A private chef", "Dinner at the villa when you want the night back instead of a restaurant reservation."],
@@ -217,9 +238,9 @@ const STAY_AND_PLAY = {
   tournamentH2Pre: "Eight players",
   tournamentH2Em: "is not an accident.",
   tournamentParagraphs: [
-    "A group of eight splits cleanly into two foursomes — and it is the right number for the Sprinter, which matters more than it sounds like it should.",
+    "A group of eight splits cleanly into two foursomes — and it's the right number for the Sprinter, which matters more than it sounds like it should.",
     "Day one is a straight 18-hole qualifier, with whatever wager the group prefers. Whoever comes out ahead forms the honor foursome; the rest make up the back foursome. From day two it is match play — top seed against bottom, and down the list. Six-hole matches, best of three, all inside one round of 18.",
-    "By the end you have a real winner instead of eight separate rounds of golf. The course is the course. What we control is everything around it.",
+    "By the end you've got a real winner instead of eight separate rounds of golf. The course is the course. What we control is everything around it.",
   ],
 
   itineraryLabel: "A sample two days",
@@ -228,11 +249,11 @@ const STAY_AND_PLAY = {
   itinerary: [
     {
       day: "Day one",
-      body: "Check the tide app the night before and take an early tee time at Pacífico, timed to the 3B window. Lunch at the Surf Club after the round, a paddleboard lesson, then time to rest. Skip the restaurant that night — have the private chef put together ceviche and pescadillas back at the villa.",
+      body: "Check the tide app the night before and take an early tee time at Pacifico, timed to the 3B window. Lunch at the Surf Club after the round, a paddleboard lesson, then time to rest. Skip the restaurant that night — have the private chef put together ceviche and pescadillas back at the villa.",
     },
     {
       day: "Day two",
-      body: "A later start: 9 or 10 AM at Bahía. Early risers can add a 5K to Café Mita before the round. Match play begins here, so the scorecards matter.",
+      body: "A later start: 9 or 10 AM at Bahia. Early risers can add a 5K to Café Mita before the round. Match play begins here, so the scorecards matter.",
     },
   ],
 
@@ -241,28 +262,31 @@ const STAY_AND_PLAY = {
       src: "/images/punta-mita/punta-mita-clubhouse-terrace-course-view.webp",
       alt: "A shaded clubhouse terrace at Punta Mita looking out over the course, with palms and the ocean beyond.",
       caption: "Punta Mita peninsula",
+      photoSource: "Riviera Nayarit Field Photography",
     },
     {
       src: "/images/punta-mita/punta-mita-sunset-fairway-palms.webp",
       alt: "Sunset over a Punta Mita fairway, palms in silhouette against the light.",
       caption: "Punta Mita peninsula",
+      photoSource: "Riviera Nayarit Field Photography",
     },
     {
       src: "/images/punta-mita/punta-mita-practice-range-balls.webp",
       alt: "A pyramid of range balls on the practice facility at Punta Mita, with the course and mountains behind.",
       caption: "The practice range",
+      photoSource: "Riviera Nayarit Field Photography",
     },
   ],
 
   honestyIcon: "🎯",
   honestyLabel: "Who this is not for",
   honestyBody:
-    "This page is written for someone planning a golf trip. If you want to rent a house in Punta Mita and have no interest in the golf, we are not the right people to call — the rental agency is. And if you had Cabo in mind and end up here because of how we talk about this place, that is a good outcome for everyone.",
+    "This page is written for someone planning a golf trip. If you want to rent a house in Punta Mita and have no interest in the golf, we're not the right people to call — the rental agency is. And if you had Cabo in mind and end up here because of how we talk about this place, that's a good outcome for everyone.",
 
   faqs: [
     {
       q: "Can I play golf in Punta Mita without staying at Four Seasons or St. Regis?",
-      a: "Yes. Pacífico and Bahía accept outside players through Punta Mita villa rentals, typically coordinated by a golf concierge rather than by the resort directly. What does not work is arriving without a confirmed stay — the peninsula gate requires one.",
+      a: "Yes. Pacifico and Bahia accept outside players through Punta Mita villa rentals, typically coordinated by a golf concierge rather than by the resort directly. What doesn't work is arriving without a confirmed stay — the peninsula gate requires one.",
     },
     {
       q: "What is included in a Punta Mita golf package with Golf in Mexico?",
@@ -274,11 +298,11 @@ const STAY_AND_PLAY = {
     },
     {
       q: "Is golf cart rental available separately in Punta Mita?",
-      a: "Some villas include carts. Where they do not, cart rental runs about $20 USD per day. Carts on the course itself are part of the round.",
+      a: "Some villas include carts. Where they don't, cart rental runs about $20 USD per day. Carts on the course itself are part of the round.",
     },
     {
       q: "How much does it cost to play golf in Punta Mita?",
-      a: "Green fees at Pacífico and Bahía run $325 to $400 USD per round for resort guests, varying by season and course. Villa-based group bookings typically cost less per person than booking rooms individually, which is the reason the eight-player number keeps coming up.",
+      a: "Green fees at Pacifico and Bahia run $325 to $400 USD per round for resort guests, varying by season and course. Villa-based group bookings typically cost less per person than booking rooms individually, which is the reason the eight-player number keeps coming up.",
     },
   ],
 
@@ -290,7 +314,7 @@ const STAY_AND_PLAY = {
   relatedReads: [
     {
       to: "/destinations/punta-mita/pacifico-bahia",
-      anchor: "Pacífico versus Bahía",
+      anchor: "Pacifico versus Bahia",
       note: "Which of the two courses suits your game, and what the Tail of the Whale actually requires.",
     },
     {
