@@ -295,25 +295,45 @@ const Landing = () => {
       data-testid={`page-landing-${landing.slug}`}
       className="relative bg-[var(--c-off-white)] pb-24 md:pb-32"
     >
-      {/* ── HERO — offer + CTA above the fold ────────────────────── */}
-      <section className="pt-28 md:pt-36 pb-10 md:pb-16">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+      {/* ── HERO — full-bleed photo, offer + CTA over it ──────────
+            Same pattern as the destination-hub heroes: the photograph IS the
+            hero, headline and form float over a scrim, so photo + answer +
+            form all sit above the fold. The img is the LCP element — eager,
+            high priority, and it's a <200KB local WebP. ─────────────────── */}
+      <section className="relative lg:min-h-[92vh] flex items-center pt-28 md:pt-36 pb-12 md:pb-16">
+        <img
+          src={landing.heroPhoto}
+          alt={landing.heroAlt}
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          data-testid="landing-hero-photo"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Scrim: heavier at the top (nav + headline legibility) and the
+            bottom, lighter mid-frame so the course still reads as a photo. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/55"
+        />
+
+        <div className="relative w-full max-w-[1200px] mx-auto px-6 md:px-12">
           <nav aria-label="Breadcrumb" className="mb-6">
             <Link
               to={`/destinations/${landing.hub}`}
-              className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-text-mid)] hover:text-[var(--c-gold)] transition-colors"
+              className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/70 hover:text-[var(--c-gold-light)] transition-colors"
             >
               ← {landing.hubName}
             </Link>
           </nav>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             <div className="lg:col-span-7">
               <motion.p
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: EASE }}
-                className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-[var(--c-gold)] mb-5"
+                className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-[var(--c-gold-light)] mb-5"
               >
                 {landing.heroLabel}
               </motion.p>
@@ -323,9 +343,9 @@ const Landing = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, ease: EASE }}
                 data-testid="landing-h1"
-                className="font-display font-normal text-[var(--c-text)] leading-[1.05] tracking-tight text-4xl md:text-6xl max-w-[16ch]"
+                className="font-display font-normal text-white leading-[1.05] tracking-tight text-4xl md:text-6xl max-w-[16ch]"
               >
-                {landing.h1Pre} <em className="italic text-[var(--c-gold)]">{landing.h1Em}</em>
+                {landing.h1Pre} <em className="italic text-[var(--c-gold-light)]">{landing.h1Em}</em>
               </motion.h1>
 
               {/* Answer-first: the title question is settled in the first 50 words. */}
@@ -334,7 +354,7 @@ const Landing = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.12, ease: EASE }}
                 data-testid="landing-answer"
-                className="mt-7 md:mt-9 font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] max-w-[58ch]"
+                className="mt-7 md:mt-9 font-body font-light text-white/85 text-base md:text-lg leading-[1.75] max-w-[58ch]"
               >
                 {landing.heroAnswer}
               </motion.p>
@@ -346,7 +366,7 @@ const Landing = () => {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.9, delay: 0.25, ease: EASE }}
                   data-testid="landing-byline"
-                  className="mt-6 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-text-mid)]"
+                  className="mt-6 font-mono text-[10px] uppercase tracking-[0.18em] text-white/60"
                 >
                   {landing.byline}
                 </motion.p>
@@ -357,27 +377,10 @@ const Landing = () => {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
-              className="lg:col-span-5 w-full"
+              className="lg:col-span-5 w-full backdrop-blur-md rounded-sm"
             >
-              <LeadForm landing={landing} placement="hero" />
+              <LeadForm landing={landing} placement="hero" dark />
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── HERO IMAGE ───────────────────────────────────────────── */}
-      <section className="pb-14 md:pb-24">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-          <div className="aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-sm bg-[var(--c-border)]">
-            <img
-              src={landing.heroPhoto}
-              alt={landing.heroAlt}
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-              data-testid="landing-hero-photo"
-              className="w-full h-full object-cover"
-            />
           </div>
         </div>
       </section>
