@@ -212,6 +212,33 @@ const STAY_AND_PLAY = {
     "Green fee range confirmed with Golf in Mexico, August 2026",
   ],
 
+  /* Pablo's 34-second brand film. Its description is this page's argument
+     almost word for word, which is why it lives here rather than on the
+     comparison page.
+
+     ⚠ The upload is currently UNLISTED (verified 2026-08-13 via the watch
+     page's `"isUnlisted":true`, and the channel's public uploads feed is
+     empty). Unlisted plays fine embedded — this section works — but the video
+     cannot rank on YouTube, will not appear in YouTube search, and earns no
+     video rich result. Switching it to Public costs nothing and is the whole
+     reason to have put it on YouTube instead of self-hosting. */
+  video: {
+    videoId: "PGII_IMCWmM",
+    title: "Punta Mita — the stay and the game as one experience",
+    description:
+      "Punta Mita has spent almost three decades perfecting the stay: private villas, in-home dining, airport transport, full service, all within the property. Golf in Mexico builds the trip around the golfer who notices the details.",
+    uploadDate: "2026-08-12",
+    durationSec: 34,
+    // Local poster, so the facade costs one request to our own origin instead
+    // of a round trip to i.ytimg.com before anything paints.
+    poster: "/images/punta-mita/punta-mita-oceanfront-green-palms.webp",
+    posterAlt:
+      "An oceanfront green on the Punta Mita peninsula, framed by palms — the opening frame of the Golf in Mexico film.",
+  },
+  videoLabel: "The film",
+  videoH2Pre: "Thirty seconds",
+  videoH2Em: "of what you're actually buying.",
+
   accessLabel: "Access",
   accessH2Pre: "The gate is real.",
   accessH2Em: "The room is not the only key.",

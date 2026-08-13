@@ -119,6 +119,38 @@ export const breadcrumbSchema = (items = []) => ({
   })),
 });
 
+/**
+ * VideoObject for an embedded YouTube film.
+ *
+ * NOTE: Google only awards a video rich result when the video is the main
+ * content of the page AND the video itself is publicly indexable. An UNLISTED
+ * YouTube video cannot rank and cannot be surfaced — the markup is still valid
+ * and harmless, but it earns nothing until the upload is switched to Public.
+ */
+export const videoSchema = ({
+  name,
+  description,
+  videoId,
+  thumbnailUrl,
+  uploadDate,
+  durationSec,
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  name,
+  ...(description ? { description } : {}),
+  ...(thumbnailUrl ? { thumbnailUrl: abs(thumbnailUrl) } : {}),
+  ...(uploadDate ? { uploadDate } : {}),
+  ...(durationSec ? { duration: `PT${durationSec}S` } : {}),
+  embedUrl: `https://www.youtube.com/embed/${videoId}`,
+  publisher: {
+    "@type": "Organization",
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: { "@type": "ImageObject", url: `${SITE_URL}/logo-wordmark.png` },
+  },
+});
+
 export const faqSchema = (faqs = []) => ({
   "@context": "https://schema.org",
   "@type": "FAQPage",

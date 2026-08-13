@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useSeo, breadcrumbSchema, faqSchema } from "@/hooks/useSeo";
+import { useSeo, breadcrumbSchema, faqSchema, videoSchema } from "@/hooks/useSeo";
 import { useHubspotForm } from "@/hooks/useHubspotForm";
-import { trackLead } from "@/lib/analytics";
+import { trackLead, trackEvent } from "@/lib/analytics";
 import { FORM_KEYS } from "@/config/hubspot";
 import ConsentNotice from "@/components/ConsentNotice";
 import { getLandingData, landingPath } from "@/data/landings";
@@ -180,6 +180,65 @@ const Figure = ({ photo, eager = false }) => (
   </motion.figure>
 );
 
+/* ── Click-to-play video facade.
+      A live YouTube iframe pulls ~700KB of third-party JS before the page
+      settles, which on an ads landing hurts both Quality Score and the
+      conversion rate it feeds. So we paint our own poster and only mount the
+      iframe once someone actually asks for the video. ─────────────────── */
+const VideoFacade = ({ video }) => {
+  const [playing, setPlaying] = useState(false);
+
+  const play = () => {
+    setPlaying(true);
+    trackEvent("video_play", { video_id: video.videoId, title: video.title });
+  };
+
+  return (
+    <div className="aspect-video overflow-hidden rounded-sm bg-[var(--c-green-deep)] relative">
+      {playing ? (
+        <iframe
+          src={`https://www.youtube.com/embed/${video.videoId}?autoplay=1&rel=0&modestbranding=1`}
+          title={video.title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+          className="w-full h-full"
+        />
+      ) : (
+        <button
+          type="button"
+          onClick={play}
+          data-testid="landing-video-play"
+          aria-label={`Play: ${video.title}`}
+          className="group w-full h-full block relative"
+        >
+          <img
+            src={video.poster}
+            alt={video.posterAlt || ""}
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.03]"
+          />
+          <span className="absolute inset-0 bg-black/25 group-hover:bg-black/15 transition-colors" />
+          <span className="absolute inset-0 flex items-center justify-center">
+            <span className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[var(--c-gold)] flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+              {/* Play triangle */}
+              <svg
+                width="22"
+                height="26"
+                viewBox="0 0 22 26"
+                aria-hidden="true"
+                className="translate-x-[2px]"
+              >
+                <path d="M0 0 L22 13 L0 26 Z" fill="var(--c-green-deep)" />
+              </svg>
+            </span>
+          </span>
+        </button>
+      )}
+    </div>
+  );
+};
+
 const Landing = () => {
   const { hub, slug } = useParams();
   const landing = getLandingData(hub, slug);
@@ -199,6 +258,18 @@ const Landing = () => {
             { name: landing.name, path },
           ]),
           faqSchema(landing.faqs),
+          ...(landing.video
+            ? [
+                videoSchema({
+                  name: landing.video.title,
+                  description: landing.video.description,
+                  videoId: landing.video.videoId,
+                  thumbnailUrl: landing.video.poster,
+                  uploadDate: landing.video.uploadDate,
+                  durationSec: landing.video.durationSec,
+                }),
+              ]
+            : []),
         ]
       : undefined,
   });
@@ -411,6 +482,18 @@ const Landing = () => {
               <p className="font-body font-light text-white/85 text-base md:text-lg leading-[1.8] max-w-[70ch]">
                 {landing.calloutBody}
               </p>
+            </motion.div>
+          </div>
+        </section>
+      )}
+
+      {/* ── FILM ─────────────────────────────────────────────────── */}
+      {landing.video && (
+        <section className="py-12 md:py-20 border-t border-[var(--c-border)]">
+          <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+            <SectionHead label={landing.videoLabel} pre={landing.videoH2Pre} em={landing.videoH2Em} />
+            <motion.div {...fadeUp}>
+              <VideoFacade video={landing.video} />
             </motion.div>
           </div>
         </section>
