@@ -406,7 +406,7 @@ const Landing = () => {
               className="bg-[var(--c-green-deep)] text-white rounded-sm p-8 md:p-12"
             >
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--c-gold)] mb-4">
-                {landing.calloutIcon} {landing.calloutLabel}
+                {landing.calloutLabel}
               </p>
               <p className="font-body font-light text-white/85 text-base md:text-lg leading-[1.8] max-w-[70ch]">
                 {landing.calloutBody}
@@ -531,7 +531,7 @@ const Landing = () => {
               className="border-l-2 border-[var(--c-gold)] pl-6 md:pl-8 max-w-[72ch]"
             >
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--c-gold)] mb-3">
-                {landing.honestyIcon} {landing.honestyLabel}
+                {landing.honestyLabel}
               </p>
               <p className="font-body font-light text-[var(--c-text-mid)] text-base leading-[1.8]">
                 {landing.honestyBody}

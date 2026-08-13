@@ -99,7 +99,6 @@ const PACIFICO_BAHIA = {
   ],
 
   /* The one hole that sells the destination. Kept factual and caveated. */
-  calloutIcon: "🐳",
   calloutLabel: "The Tail of the Whale",
   calloutBody:
     "Hole 3B at Pacifico is the only natural island green in golf — a green sitting on a rock island off the peninsula, reached across a natural stone causeway when the tide is out. It's optional. Ask the pro shop the night before for the tide window; surfers time the swell nearby with a tide app and the concierge desks use the same one. If your tee time lands inside the window, go. If not, play 3A. The round holds either way.",
@@ -278,7 +277,6 @@ const STAY_AND_PLAY = {
     },
   ],
 
-  honestyIcon: "🎯",
   honestyLabel: "Who this is not for",
   honestyBody:
     "This page is written for someone planning a golf trip. If you want to rent a house in Punta Mita and have no interest in the golf, we're not the right people to call — the rental agency is. And if you had Cabo in mind and end up here because of how we talk about this place, that's a good outcome for everyone.",
