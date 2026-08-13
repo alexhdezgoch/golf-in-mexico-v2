@@ -307,12 +307,12 @@ const PUNTA_MITA = {
   lastUpdated: "February 2026",
 
   heroAnswer:
-    "Punta Mita has two championship golf courses — Pacifico and Bahia — both designed by Jack Nicklaus and held inside the Four Seasons / St. Regis private peninsula. Green fees range from $325 to $395 per round, and access is limited to Four Seasons, St. Regis, and private residence guests. The 3B optional at Pacifico — the Tail of the Whale — is the only natural island green in golf.",
+    "Punta Mita has two championship golf courses — Pacifico and Bahia — both designed by Jack Nicklaus and held inside the Four Seasons / St. Regis private peninsula. Green fees range from $325 to $400 per round, and access is limited to Four Seasons, St. Regis, and private residence guests. The 3B optional at Pacifico — the Tail of the Whale — is the only natural island green in golf.",
 
   quickFacts: [
     ["Number of golf courses", "2 (both private peninsula access)"],
     ["Course designers", "Jack Nicklaus (both)"],
-    ["Green fee range", "$325 – $395 USD"],
+    ["Green fee range", "$325 – $400 USD"],
     ["Best months for golf", "November – May"],
     ["Months to avoid", "August – October (rain + hurricane window)"],
     ["Nearest international airport", "Puerto Vallarta (PVR)"],
@@ -334,7 +334,7 @@ const PUNTA_MITA = {
     },
     {
       h3: "What makes Punta Mita distinct",
-      text: "Two reasons: privacy and the Tail of the Whale. Punta Mita is the only peninsula in Mexico where the gate is closed to non-guests — the round is genuinely uncrowded. Pacifico's 3B optional green sits on a natural island reachable only at low tide; you take a small boat across with your caddie. Bahia's 12th is the only par-5 in Mexico with a forced carry across an ocean inlet.",
+      text: "Two reasons: privacy and the Tail of the Whale. Punta Mita is the only peninsula in Mexico where the gate is closed to non-guests — the round is genuinely uncrowded. Pacifico's 3B optional green sits on a natural island reachable only at low tide, across a natural stone causeway. Bahia's 12th is the only par-5 in Mexico with a forced carry across an ocean inlet.",
     },
     {
       h3: "Course landscape",
@@ -349,8 +349,8 @@ const PUNTA_MITA = {
       type: "Resort guest-only",
       holes: 18,
       par: 72,
-      feeLow: 345,
-      feeHigh: 395,
+      feeLow: 325,
+      feeHigh: 400,
       access: "Four Seasons / St. Regis Punta Mita guests",
       bestFor: "The Tail of the Whale — the only natural island green in golf, at low tide.",
       isGIMProperty: false,
@@ -362,7 +362,7 @@ const PUNTA_MITA = {
       holes: 18,
       par: 72,
       feeLow: 325,
-      feeHigh: 375,
+      feeHigh: 400,
       access: "Four Seasons / St. Regis Punta Mita guests",
       bestFor: "The 12th — the only ocean-carry par-5 in Mexico.",
       isGIMProperty: false,
@@ -384,7 +384,7 @@ const PUNTA_MITA = {
   costNote:
     "Punta Mita pricing is uniform across Pacifico and Bahia: the cost difference is the resort, not the course. The Four Seasons includes caddies in the green fee; St. Regis bills them separately. Mandarina is independently priced through One&Only or Rosewood.",
   costRows: [
-    ["Green fee", 325, 395, "Per round, peak season"],
+    ["Green fee", 325, 400, "Per round, peak season"],
     ["Cart fee", 0, 0, "Included in green fee"],
     ["Caddie", 0, 75, "Included at Four Seasons; separate at St. Regis & Mandarina"],
     ["Caddie tip", 40, 60, "20–30% of caddie service"],

@@ -1,0 +1,602 @@
+import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useSeo, breadcrumbSchema, faqSchema } from "@/hooks/useSeo";
+import { useHubspotForm } from "@/hooks/useHubspotForm";
+import { trackLead } from "@/lib/analytics";
+import { FORM_KEYS } from "@/config/hubspot";
+import ConsentNotice from "@/components/ConsentNotice";
+import { getLandingData, landingPath } from "@/data/landings";
+
+/* ═══════════════════════════════════════════════════════════════════
+   Landing · /destinations/:hub/:slug
+   Transactional page under a destination hub. Unlike the editorial hub
+   layout, every section here funnels to one form — these are the pages
+   paid traffic lands on, so the CTA sits above the fold and the lead
+   event fires on submit (GA4 generate_lead via trackLead).
+
+   Content lives in data/landings.js. This file is layout only.
+   ═══════════════════════════════════════════════════════════════════ */
+
+const EASE = [0.16, 1, 0.3, 1];
+
+const fadeUp = {
+  initial: { opacity: 0, y: 16 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-80px" },
+  transition: { duration: 0.8, ease: EASE },
+};
+
+/* ── Section heading: eyebrow + two-tone display headline ───────────── */
+const SectionHead = ({ label, pre, em }) => (
+  <motion.div {...fadeUp} className="mb-8 md:mb-12">
+    {label && (
+      <p className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-[var(--c-gold)] mb-4">
+        {label}
+      </p>
+    )}
+    <h2 className="font-display font-normal text-[var(--c-text)] text-2xl md:text-4xl lg:text-[2.75rem] leading-[1.15] tracking-tight max-w-[24ch]">
+      {pre} <em className="italic text-[var(--c-gold)]">{em}</em>
+    </h2>
+  </motion.div>
+);
+
+/* ── Lead form. The only conversion surface on the page. ────────────── */
+const LeadForm = ({ landing, placement, dark = false }) => {
+  const { submit, submitting, error, honeypotProps } = useHubspotForm(FORM_KEYS.inquiry);
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [group, setGroup] = useState("");
+  const [sent, setSent] = useState(false);
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const ok = await submit({
+      email,
+      firstname: name,
+      region: landing.hubName,
+      // Free-text so the sales context survives into HubSpot without a new property.
+      message: `Landing: ${landing.name} · Group size: ${group || "not given"}`,
+    });
+    if (!ok) return;
+    setSent(true);
+    trackLead({
+      form: FORM_KEYS.inquiry,
+      placement,
+      region: landing.hubName,
+      landing: landing.slug,
+    });
+  };
+
+  const label = dark ? "text-white/60" : "text-[var(--c-text-mid)]";
+  const field = dark
+    ? "bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:border-[var(--c-gold)]"
+    : "bg-white border-[var(--c-border)] text-[var(--c-text)] placeholder:text-[var(--c-text-mid)]/60 focus:border-[var(--c-gold)]";
+
+  if (sent) {
+    return (
+      <div
+        data-testid={`landing-form-sent-${placement}`}
+        className={`rounded-sm border p-6 md:p-8 ${
+          dark ? "border-white/20 bg-white/5" : "border-[var(--c-border)] bg-white"
+        }`}
+      >
+        <p
+          className={`font-display text-xl md:text-2xl leading-snug ${
+            dark ? "text-white" : "text-[var(--c-text)]"
+          }`}
+        >
+          Got it — <em className="italic text-[var(--c-gold)]">we&apos;ll be in touch.</em>
+        </p>
+        <p className={`mt-3 font-body font-light text-sm leading-relaxed ${label}`}>
+          Pablo reads these himself and comes back inside 48 hours with a proposal, not a brochure.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <form
+      onSubmit={onSubmit}
+      data-testid={`landing-form-${placement}`}
+      className={`rounded-sm border p-6 md:p-8 ${
+        dark ? "border-white/20 bg-white/5" : "border-[var(--c-border)] bg-white"
+      }`}
+    >
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+        <input
+          type="text"
+          required
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="First name"
+          aria-label="First name"
+          className={`w-full border rounded-sm px-4 py-3 font-body text-sm outline-none transition-colors ${field}`}
+        />
+        <input
+          type="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+          aria-label="Email"
+          className={`w-full border rounded-sm px-4 py-3 font-body text-sm outline-none transition-colors ${field}`}
+        />
+      </div>
+      <input
+        type="text"
+        value={group}
+        onChange={(e) => setGroup(e.target.value)}
+        placeholder="How many players?"
+        aria-label="How many players"
+        className={`mt-3 md:mt-4 w-full border rounded-sm px-4 py-3 font-body text-sm outline-none transition-colors ${field}`}
+      />
+      {/* Spam guard — visually hidden, never filled by a human. */}
+      <input {...honeypotProps} />
+
+      <button
+        type="submit"
+        disabled={submitting}
+        data-testid={`landing-submit-${placement}`}
+        className="group mt-4 w-full inline-flex items-center justify-between gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] disabled:opacity-60 text-[var(--c-green-deep)] px-7 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.2em] font-bold transition-colors"
+      >
+        {submitting ? "Sending…" : landing.ctaPrimary}
+        <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+      </button>
+
+      {error && (
+        <p className="mt-3 font-body text-sm text-red-600" role="alert">
+          {error}
+        </p>
+      )}
+      <p className={`mt-4 font-body font-light text-xs leading-relaxed ${label}`}>
+        {landing.ctaNote}
+      </p>
+      <ConsentNotice tone={dark ? "dark" : "light"} className="mt-3" testid={`landing-consent-${placement}`} />
+    </form>
+  );
+};
+
+/* ── Photo with a caption. Course attribution stays neutral until the
+      shoot is labelled — see the FACT NOTES in data/landings.js. ────── */
+const Figure = ({ photo, eager = false }) => (
+  <motion.figure {...fadeUp} className="overflow-hidden">
+    <div className="aspect-[3/2] overflow-hidden rounded-sm bg-[var(--c-border)]">
+      <img
+        src={photo.src}
+        alt={photo.alt}
+        loading={eager ? "eager" : "lazy"}
+        decoding="async"
+        className="w-full h-full object-cover"
+      />
+    </div>
+    {photo.caption && (
+      <figcaption className="mt-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-text-mid)]">
+        {photo.caption}
+      </figcaption>
+    )}
+  </motion.figure>
+);
+
+const Landing = () => {
+  const { hub, slug } = useParams();
+  const landing = getLandingData(hub, slug);
+
+  const path = landing ? landingPath(landing) : "/destinations";
+
+  useSeo({
+    title: landing?.seoTitle,
+    description: landing?.seoDescription,
+    canonical: path,
+    jsonLd: landing
+      ? [
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Destinations", path: "/destinations" },
+            { name: landing.hubName, path: `/destinations/${landing.hub}` },
+            { name: landing.name, path },
+          ]),
+          faqSchema(landing.faqs),
+        ]
+      : undefined,
+  });
+
+  if (!landing) {
+    return (
+      <main className="min-h-[60vh] flex items-center justify-center bg-[var(--c-off-white)]">
+        <div className="text-center px-6">
+          <p className="font-display text-2xl text-[var(--c-text)]">Page not found.</p>
+          <Link
+            to="/destinations"
+            className="mt-4 inline-block font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--c-gold)]"
+          >
+            Back to destinations →
+          </Link>
+        </div>
+      </main>
+    );
+  }
+
+  return (
+    <main
+      data-testid={`page-landing-${landing.slug}`}
+      className="relative bg-[var(--c-off-white)] pb-24 md:pb-32"
+    >
+      {/* ── HERO — offer + CTA above the fold ────────────────────── */}
+      <section className="pt-28 md:pt-36 pb-10 md:pb-16">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+          <nav aria-label="Breadcrumb" className="mb-6">
+            <Link
+              to={`/destinations/${landing.hub}`}
+              className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-text-mid)] hover:text-[var(--c-gold)] transition-colors"
+            >
+              ← {landing.hubName}
+            </Link>
+          </nav>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+            <div className="lg:col-span-7">
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease: EASE }}
+                className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-[var(--c-gold)] mb-5"
+              >
+                {landing.heroLabel}
+              </motion.p>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, ease: EASE }}
+                data-testid="landing-h1"
+                className="font-display font-normal text-[var(--c-text)] leading-[1.05] tracking-tight text-4xl md:text-6xl max-w-[16ch]"
+              >
+                {landing.h1Pre} <em className="italic text-[var(--c-gold)]">{landing.h1Em}</em>
+              </motion.h1>
+
+              {/* Answer-first: the title question is settled in the first 50 words. */}
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, delay: 0.12, ease: EASE }}
+                data-testid="landing-answer"
+                className="mt-7 md:mt-9 font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] max-w-[58ch]"
+              >
+                {landing.heroAnswer}
+              </motion.p>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
+              className="lg:col-span-5 w-full"
+            >
+              <LeadForm landing={landing} placement="hero" />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── HERO IMAGE ───────────────────────────────────────────── */}
+      <section className="pb-14 md:pb-24">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+          <div className="aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-sm bg-[var(--c-border)]">
+            <img
+              src={landing.heroPhoto}
+              alt={landing.heroAlt}
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              data-testid="landing-hero-photo"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ── SPECS TABLE (comparison landings) ─────────────────────── */}
+      {landing.specs && (
+        <section className="py-12 md:py-20 border-t border-[var(--c-border)]">
+          <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+            <SectionHead label={landing.specsLabel} pre={landing.specsH2Pre} em={landing.specsH2Em} />
+            <motion.div {...fadeUp} className="overflow-x-auto">
+              <table className="w-full min-w-[520px] border-collapse" data-testid="landing-specs">
+                <tbody>
+                  {landing.specs.map((row, i) => (
+                    <tr
+                      key={row[0] || i}
+                      className={
+                        i === 0
+                          ? "border-b border-[var(--c-text)]/20"
+                          : "border-b border-[var(--c-border)]"
+                      }
+                    >
+                      {row.map((cell, j) => (
+                        <td
+                          key={j}
+                          className={[
+                            "py-4 pr-6 align-top",
+                            j === 0
+                              ? "font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-text-mid)] w-[34%]"
+                              : "font-body font-light text-sm md:text-base text-[var(--c-text)]",
+                            i === 0 && j > 0
+                              ? "font-display text-base md:text-lg text-[var(--c-gold)]"
+                              : "",
+                          ].join(" ")}
+                        >
+                          {cell}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </motion.div>
+            {landing.specsNote && (
+              <motion.p
+                {...fadeUp}
+                className="mt-6 font-body font-light text-sm leading-relaxed text-[var(--c-text-mid)] max-w-[70ch]"
+              >
+                {landing.specsNote}
+              </motion.p>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* ── PROSE BLOCK (contrast / access) ───────────────────────── */}
+      {(landing.contrastParagraphs || landing.accessParagraphs) && (
+        <section className="py-12 md:py-20 border-t border-[var(--c-border)]">
+          <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+            <SectionHead
+              label={landing.contrastLabel || landing.accessLabel}
+              pre={landing.contrastH2Pre || landing.accessH2Pre}
+              em={landing.contrastH2Em || landing.accessH2Em}
+            />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+              {(landing.contrastParagraphs || landing.accessParagraphs).map((p, i) => (
+                <motion.p
+                  key={i}
+                  {...fadeUp}
+                  className="font-body font-light text-[var(--c-text-mid)] text-base leading-[1.8]"
+                >
+                  {p}
+                </motion.p>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── PHOTOS ────────────────────────────────────────────────── */}
+      {landing.sectionPhotos && (
+        <section className="py-12 md:py-16">
+          <div className="max-w-[1200px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+            {landing.sectionPhotos.map((p) => (
+              <Figure key={p.src} photo={p} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* ── CALLOUT (the one hole / the honest caveat) ────────────── */}
+      {landing.calloutBody && (
+        <section className="py-10 md:py-16">
+          <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+            <motion.div
+              {...fadeUp}
+              data-testid="landing-callout"
+              className="bg-[var(--c-green-deep)] text-white rounded-sm p-8 md:p-12"
+            >
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--c-gold)] mb-4">
+                {landing.calloutIcon} {landing.calloutLabel}
+              </p>
+              <p className="font-body font-light text-white/85 text-base md:text-lg leading-[1.8] max-w-[70ch]">
+                {landing.calloutBody}
+              </p>
+            </motion.div>
+          </div>
+        </section>
+      )}
+
+      {/* ── WHAT'S INCLUDED ──────────────────────────────────────── */}
+      {landing.included && (
+        <section className="py-12 md:py-20 border-t border-[var(--c-border)]">
+          <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+            <SectionHead
+              label={landing.includedLabel}
+              pre={landing.includedH2Pre}
+              em={landing.includedH2Em}
+            />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+              {landing.included.map(([title, body]) => (
+                <motion.div key={title} {...fadeUp} className="border-t border-[var(--c-border)] pt-5">
+                  <h3 className="font-display text-lg md:text-xl text-[var(--c-text)] mb-2">{title}</h3>
+                  <p className="font-body font-light text-[var(--c-text-mid)] text-base leading-[1.75]">
+                    {body}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── ADD-ONS ──────────────────────────────────────────────── */}
+      {landing.addOnBody && (
+        <section className="py-12 md:py-16">
+          <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+            <SectionHead label={landing.addOnLabel} pre={landing.addOnH2Pre} em={landing.addOnH2Em} />
+            <motion.p
+              {...fadeUp}
+              className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.8] max-w-[70ch]"
+            >
+              {landing.addOnBody}
+            </motion.p>
+          </div>
+        </section>
+      )}
+
+      {/* ── THE FORMAT ───────────────────────────────────────────── */}
+      {landing.tournamentParagraphs && (
+        <section className="py-12 md:py-20 border-t border-[var(--c-border)]">
+          <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+            <SectionHead
+              label={landing.tournamentLabel}
+              pre={landing.tournamentH2Pre}
+              em={landing.tournamentH2Em}
+            />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+              {landing.tournamentParagraphs.map((p, i) => (
+                <motion.p
+                  key={i}
+                  {...fadeUp}
+                  className="font-body font-light text-[var(--c-text-mid)] text-base leading-[1.8]"
+                >
+                  {p}
+                </motion.p>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── ITINERARY ────────────────────────────────────────────── */}
+      {landing.itinerary && (
+        <section className="py-12 md:py-20 border-t border-[var(--c-border)]">
+          <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+            <SectionHead
+              label={landing.itineraryLabel}
+              pre={landing.itineraryH2Pre}
+              em={landing.itineraryH2Em}
+            />
+            <div className="space-y-8">
+              {landing.itinerary.map((d) => (
+                <motion.div
+                  key={d.day}
+                  {...fadeUp}
+                  className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 border-t border-[var(--c-border)] pt-6"
+                >
+                  <p className="md:col-span-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-gold)]">
+                    {d.day}
+                  </p>
+                  <p className="md:col-span-9 font-body font-light text-[var(--c-text-mid)] text-base leading-[1.8]">
+                    {d.body}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── ACCESS (prose, comparison landing) ───────────────────── */}
+      {landing.accessBody && (
+        <section className="py-12 md:py-20 border-t border-[var(--c-border)]">
+          <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+            <SectionHead label={landing.accessLabel} pre={landing.accessH2Pre} em={landing.accessH2Em} />
+            <motion.p
+              {...fadeUp}
+              className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.8] max-w-[72ch]"
+            >
+              {landing.accessBody}
+            </motion.p>
+          </div>
+        </section>
+      )}
+
+      {/* ── HONESTY BLOCK ────────────────────────────────────────── */}
+      {landing.honestyBody && (
+        <section className="py-10 md:py-16">
+          <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+            <motion.div
+              {...fadeUp}
+              className="border-l-2 border-[var(--c-gold)] pl-6 md:pl-8 max-w-[72ch]"
+            >
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--c-gold)] mb-3">
+                {landing.honestyIcon} {landing.honestyLabel}
+              </p>
+              <p className="font-body font-light text-[var(--c-text-mid)] text-base leading-[1.8]">
+                {landing.honestyBody}
+              </p>
+            </motion.div>
+          </div>
+        </section>
+      )}
+
+      {/* ── FAQ ──────────────────────────────────────────────────── */}
+      <section className="py-12 md:py-20 border-t border-[var(--c-border)]">
+        <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+          <SectionHead label="Questions" pre="What golfers" em="actually ask." />
+          <div data-testid="landing-faqs">
+            {landing.faqs.map((f) => (
+              <motion.div key={f.q} {...fadeUp} className="border-t border-[var(--c-border)] py-6">
+                <h3 className="font-display text-lg md:text-xl text-[var(--c-text)] mb-3 max-w-[60ch]">
+                  {f.q}
+                </h3>
+                <p className="font-body font-light text-[var(--c-text-mid)] text-base leading-[1.8] max-w-[72ch]">
+                  {f.a}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CLOSING CTA ──────────────────────────────────────────── */}
+      <section className="py-12 md:py-20">
+        <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+          <motion.div
+            {...fadeUp}
+            className="bg-[var(--c-green-deep)] rounded-sm p-8 md:p-14 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center"
+          >
+            <div>
+              <h2 className="font-display font-normal text-white text-2xl md:text-4xl leading-[1.15] tracking-tight">
+                {landing.closingH2Pre}{" "}
+                <em className="italic text-[var(--c-gold)]">{landing.closingH2Em}</em>
+              </h2>
+              <p className="mt-6 font-body font-light text-white/75 text-base leading-[1.8] max-w-[52ch]">
+                {landing.closingBody}
+              </p>
+            </div>
+            <LeadForm landing={landing} placement="closing" dark />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── READ NEXT ────────────────────────────────────────────── */}
+      {landing.relatedReads && (
+        <section className="pb-4">
+          <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--c-gold)] mb-6">
+              Read next
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+              {landing.relatedReads.map((r) => (
+                <Link
+                  key={r.to}
+                  to={r.to}
+                  className="group border-t border-[var(--c-border)] pt-5 block"
+                >
+                  <p className="font-display text-lg md:text-xl text-[var(--c-text)] group-hover:text-[var(--c-gold)] transition-colors">
+                    {r.anchor}{" "}
+                    <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+                      →
+                    </span>
+                  </p>
+                  <p className="mt-2 font-body font-light text-sm text-[var(--c-text-mid)] leading-relaxed">
+                    {r.note}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+    </main>
+  );
+};
+
+export default Landing;

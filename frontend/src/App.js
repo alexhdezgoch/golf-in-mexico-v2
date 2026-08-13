@@ -22,6 +22,7 @@ import LosCabos from "@/pages/LosCabos";
 import Experience from "@/pages/Experience";
 import Contact from "@/pages/Contact";
 import Privacy from "@/pages/Privacy";
+import Landing from "@/pages/Landing";
 
 // Generic destination hub — routes /destinations/:slug through the LosCabos layout with the matching data
 const HubBySlug = () => {
@@ -134,6 +135,17 @@ const AnimatedRoutes = () => {
           element={
             <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
               <HubBySlug />
+            </motion.div>
+          }
+        />
+        {/* Transactional landings under a hub — /destinations/:hub/:slug.
+            Three segments, so this never collides with the two-segment
+            /destinations/:slug hub route above. Content: data/landings.js. */}
+        <Route
+          path="/destinations/:hub/:slug"
+          element={
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
+              <Landing />
             </motion.div>
           }
         />

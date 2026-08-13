@@ -121,6 +121,7 @@ const ROUTE_SOURCE = {
 };
 const HUB_SOURCE = "src/data/hubs.js";
 const ARTICLE_SOURCE = "src/data/articles.js";
+const LANDING_SOURCE = "src/data/landings.js";
 
 // Load an ESM data module by bundling it to a temp file and importing it.
 async function loadData(file) {
@@ -328,12 +329,57 @@ function renderArticleFull(a) {
   return md.trim() + "\n";
 }
 
+// Landing pages (data/landings.js) are transactional, so their corpus entry is
+// the part an answer engine can actually use: the answer-first paragraph, the
+// specs, the prose, and the FAQ. The form and the CTA copy are skipped.
+function renderLandingFull(l) {
+  let md = `## ${clean(l.name)} — ${clean(l.hubName)}\n\n`;
+  md += `URL: ${BASE}/destinations/${l.hub}/${l.slug}\n\n`;
+  md += para(l.heroAnswer);
+
+  if (l.specs) {
+    md += `### Specifications\n\n`;
+    const [head, ...rows] = l.specs;
+    for (const row of rows) {
+      const cells = row
+        .slice(1)
+        .map((c, i) => `${clean(head[i + 1] || "")}: ${clean(c)}`)
+        .join(" · ");
+      md += `- ${clean(row[0])} — ${cells}\n`;
+    }
+    md += `\n`;
+    if (l.specsNote) md += para(l.specsNote);
+  }
+
+  for (const key of ["contrastParagraphs", "accessParagraphs", "tournamentParagraphs"]) {
+    if (l[key]) for (const p of l[key]) md += para(p);
+  }
+  if (l.calloutBody) md += para(`${clean(l.calloutLabel)}. ${clean(l.calloutBody)}`);
+  if (l.included) {
+    md += `### What's included\n\n`;
+    for (const [t, b] of l.included) md += `- **${clean(t)}** — ${clean(b)}\n`;
+    md += `\n`;
+  }
+  if (l.addOnBody) md += para(l.addOnBody);
+  if (l.itinerary) for (const d of l.itinerary) md += para(`${clean(d.day)}. ${clean(d.body)}`);
+  if (l.accessBody) md += para(l.accessBody);
+  if (l.honestyBody) md += para(l.honestyBody);
+
+  if (l.faqs?.length) {
+    md += `### FAQ\n\n`;
+    for (const f of l.faqs) md += `**${clean(f.q)}**\n\n${para(f.a)}`;
+  }
+  return md.trim() + "\n";
+}
+
 // ── build the three files ──────────────────────────────────────────────────
 async function main() {
   const hubsMod = await loadData("hubs.js");
   const articlesMod = await loadData("articles.js");
+  const landingsMod = await loadData("landings.js");
   const hubs = hubsMod.default || [];
   const articles = articlesMod.ARTICLES || [];
+  const landings = landingsMod.default || [];
 
   // ---- llms.txt (curated index) ----
   let index = `# Golf in Mexico°\n\n> ${SITE_SUMMARY}\n\n`;
@@ -341,6 +387,11 @@ async function main() {
   for (const h of hubs) {
     const desc = truncate(h.seoDescription || h.heroAnswer);
     index += `- [${clean(h.name)} golf guide](${BASE}/destinations/${h.slug}): ${desc}\n`;
+    for (const l of landings.filter((x) => x.hub === h.slug)) {
+      index += `  - [${clean(l.name)}](${BASE}/destinations/${l.hub}/${l.slug}): ${truncate(
+        l.seoDescription || l.heroAnswer,
+      )}\n`;
+    }
   }
   index += `\n## Journal\n\n`;
   for (const a of articles) {
@@ -371,6 +422,11 @@ async function main() {
 
   full += `# Destination Guides\n\n`;
   for (const h of hubs) full += renderHubFull(h) + "\n---\n\n";
+
+  if (landings.length) {
+    full += `# Trip Pages\n\n`;
+    for (const l of landings) full += renderLandingFull(l) + "\n---\n\n";
+  }
 
   full += `# Journal\n\n`;
   for (const a of articles) full += renderArticleFull(a) + "\n---\n\n";
@@ -403,7 +459,15 @@ async function main() {
     changefreq: "monthly",
     lastmod: articleLastmod,
   }));
-  const urls = [...staticRoutes, ...hubRoutes, ...articleRoutes];
+  // Landings are the paid-traffic destinations, so they rank above the hubs.
+  const landingLastmod = gitDate(LANDING_SOURCE);
+  const landingRoutes = landings.map((l) => ({
+    loc: `/destinations/${l.hub}/${l.slug}`,
+    priority: "0.9",
+    changefreq: "monthly",
+    lastmod: landingLastmod,
+  }));
+  const urls = [...staticRoutes, ...hubRoutes, ...landingRoutes, ...articleRoutes];
 
   // Guard 1 — clone floor. On a shallow clone, a date equal to a boundary
   // (graft) commit's date means "the history ran out here", not "the page changed
@@ -454,7 +518,9 @@ async function main() {
   fs.writeFileSync(path.join(PUBLIC, "sitemap.xml"), sitemap);
 
   const words = full.split(/\s+/).filter(Boolean).length;
-  console.log(`✓ llms.txt        (${hubs.length} destinations, ${articles.length} articles)`);
+  console.log(
+    `✓ llms.txt        (${hubs.length} destinations, ${landings.length} trip pages, ${articles.length} articles)`,
+  );
   console.log(`✓ llms-full.txt   (~${words.toLocaleString()} words)`);
   console.log(
     `✓ sitemap.xml     (${urls.length} URLs, ` +
