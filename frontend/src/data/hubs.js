@@ -177,6 +177,7 @@ const PUNTA_MITA = {
     "Greg Norman Golf Course Design — Mandarina Golf Club design notes",
     "Nauka Golf Club — Tom Fazio design archive, 2025 opening records",
     "Higuera Golf Club — direct booking and rate card (2026)",
+    "Punta Mita — partnership and ambassador roster (golf.com, American Express, Punta Mita Invitational)",
     "Banco de México — peso/USD exchange data (May 2026)",
   ],
   heroLabel: "Destination Guide · Punta Mita",
@@ -210,6 +211,9 @@ const PUNTA_MITA = {
   overviewParagraphs: [
     "Punta Mita is a luxury destination on the Riviera Nayarit coastline that happens to have world-class golf. Four Seasons, St. Regis, One&Only, Rosewood, and Ritz-Carlton Reserve built here for the coastline, not the courses — and that sequence defines everything from the caddie program to the quality of the greens.",
     "Punta Mita anchors the corridor. The 1,500-acre private peninsula 45 minutes north of Puerto Vallarta International (PVR) holds two Jack Nicklaus Signature courses — Pacifico and Bahia — both restricted to Four Seasons and St. Regis guests, villa renters, and property owners. Pacifico features an optional island green — the Tail of the Whale (hole 3B) — reached across a natural stone causeway at low tide. It is the only natural island green in golf and the single most photographed hole in Mexico.",
+    "Punta Mita has spent almost three decades perfecting the stay — private villas, in-home dining, airport transport, full service, all inside the property. That's what the peninsula is actually built around. We build the trip around the golfer who notices those details, so the stay and the game arrive as one experience instead of two bookings.",
+    "The reputation has receipts. Punta Mita's own partnerships run to golf.com, American Express and the Punta Mita Invitational, and the ambassador list reads like a leaderboard: Lorena Ochoa, Carlos Ortiz, Abraham Ancer, Checo Pérez. We've worked with them before — a few years back Pablo connected Punta Mita with players including Abraham Ancer and Isabella Fierro, both now on the PGA Tour and LPGA.",
+    "We've seen the service ourselves. We arrived by Mercedes Sprinter to three full-size carts already parked and waiting, and Carl, Stephanie and Vero stayed with us through the entire shoot. Lunch and dinner followed at an Italian restaurant on the property, drinks on the house. That is the standard the courses sit inside, and it is the reason the round here feels different from a resort tee time.",
     "Beyond the Punta Mita gate, the Riviera Nayarit opens up. Higuera Golf Club — 10 minutes south, Greg Norman 2010 — is the only course in the corridor that takes public bookings without resort affiliation. Mandarina Golf Club, a new Greg Norman short course of nine par-3s plus one challenge hole, opened in 2025 at One&Only Mandarina and Rosewood Mandarina (30 minutes north of the gate). Nauka Golf Club — Tom Fazio, 920-acre private community 75 minutes north alongside Siari, a Ritz-Carlton Reserve — opened the same year. By 2027 Montage and Pendry will add two more Nicklaus designs inside the Punta Mita peninsula. The density of brand investment in this corridor is not found elsewhere in Mexican golf.",
   ],
   overviewStats: [

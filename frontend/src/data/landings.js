@@ -43,7 +43,10 @@ const PACIFICO_BAHIA = {
   hubName: "Punta Mita",
   name: "Pacifico vs Bahia",
 
-  seoTitle: "Pacifico vs Bahia: Which Punta Mita Course to Play (2026) | Golf in Mexico°",
+  // Title carries Pablo's two keyword targets for this page:
+  // "punta mita pacifico golf course" + "bahia golf course punta mita".
+  seoTitle:
+    "Punta Mita Pacifico vs Bahia Golf Course: Which to Play (2026) | Golf in Mexico°",
   seoDescription:
     "Two Jack Nicklaus Signature courses on the same peninsula, and they do not play alike. Specs, green fees $325–$400, the Tail of the Whale tide window, and how to get on.",
 
@@ -179,7 +182,10 @@ const STAY_AND_PLAY = {
   hubName: "Punta Mita",
   name: "Stay & Play",
 
-  seoTitle: "Punta Mita Stay & Play: Villa + Golf Access (2026) | Golf in Mexico°",
+  // Title carries Pablo's two highest-volume targets for this page:
+  // "punta mita golf packages" + "punta mita golf tee times".
+  seoTitle:
+    "Punta Mita Golf Packages & Tee Times: Villa Stay & Play (2026) | Golf in Mexico°",
   seoDescription:
     "You do not need a Four Seasons room to play Pacifico and Bahia. How villa access works, what a group of eight actually pays, and what a two-day golf trip looks like.",
 
@@ -215,9 +221,9 @@ const STAY_AND_PLAY = {
     "For one or two players, the room's usually simpler. From about four rooms or eight players, the villa route starts to win on price and stops being close.",
   ],
 
-  includedLabel: "What you get",
-  includedH2Pre: "One booking,",
-  includedH2Em: "not five reservations.",
+  includedLabel: "Tee times & what's included",
+  includedH2Pre: "How Punta Mita golf tee times",
+  includedH2Em: "actually work.",
   included: [
     ["Golf", "Tee times at Pacifico and Bahia, arranged as part of the stay rather than requested against it."],
     ["The villa", "Through the peninsula's official rental agency — inside the gate, with the golf built around it."],
