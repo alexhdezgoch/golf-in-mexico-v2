@@ -35,7 +35,7 @@ const SectionHead = ({ label, pre, em }) => (
         {label}
       </p>
     )}
-    <h2 className="font-display font-normal text-[var(--c-text)] text-2xl md:text-4xl lg:text-[2.75rem] leading-[1.15] tracking-tight max-w-[24ch]">
+    <h2 className="font-display font-normal text-[var(--c-text)] text-2xl md:text-4xl lg:text-[2.75rem] leading-[1.2] md:leading-[1.2] tracking-tight max-w-[24ch]">
       {pre} <em className="italic text-[var(--c-gold)]">{em}</em>
     </h2>
   </motion.div>
@@ -351,7 +351,7 @@ const Landing = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, ease: EASE }}
                 data-testid="landing-h1"
-                className="font-display font-normal text-white leading-[1.05] tracking-tight text-4xl md:text-6xl max-w-[16ch]"
+                className="font-display font-normal text-white leading-[1.1] md:leading-[1.1] tracking-tight text-4xl md:text-6xl max-w-[16ch]"
               >
                 {landing.h1Pre} <em className="italic text-[var(--c-gold-light)]">{landing.h1Em}</em>
               </motion.h1>
@@ -521,7 +521,7 @@ const Landing = () => {
               <p className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-[var(--c-gold-light)] mb-4">
                 {landing.includedLabel}
               </p>
-              <h2 className="font-display font-normal text-white text-2xl md:text-4xl lg:text-[2.75rem] leading-[1.15] tracking-tight max-w-[24ch]">
+              <h2 className="font-display font-normal text-white text-2xl md:text-4xl lg:text-[2.75rem] leading-[1.2] md:leading-[1.2] tracking-tight max-w-[24ch]">
                 {landing.includedH2Pre}{" "}
                 <em className="italic text-[var(--c-gold-light)]">{landing.includedH2Em}</em>
               </h2>
@@ -708,7 +708,7 @@ const Landing = () => {
             className="bg-[var(--c-green-deep)] rounded-sm p-8 md:p-14 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center"
           >
             <div>
-              <h2 className="font-display font-normal text-white text-2xl md:text-4xl leading-[1.15] tracking-tight">
+              <h2 className="font-display font-normal text-white text-2xl md:text-4xl leading-[1.2] md:leading-[1.2] tracking-tight">
                 {landing.closingH2Pre}{" "}
                 <em className="italic text-[var(--c-gold)]">{landing.closingH2Em}</em>
               </h2>
