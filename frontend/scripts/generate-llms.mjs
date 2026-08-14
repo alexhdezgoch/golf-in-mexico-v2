@@ -360,6 +360,14 @@ function renderLandingFull(l) {
     for (const [t, b] of l.included) md += `- **${clean(t)}** — ${clean(b)}\n`;
     md += `\n`;
   }
+  if (l.packages) {
+    md += `### Packages\n\n`;
+    for (const pkg of l.packages) {
+      md += `**${clean(pkg.name)}** — ${clean(pkg.blurb)}\n`;
+      md += `Includes: ${pkg.includes.map(clean).join(" · ")}.\n`;
+      md += `${clean(pkg.price)}${pkg.priceNote ? ` (${clean(pkg.priceNote)})` : ""}.\n\n`;
+    }
+  }
   if (l.addOnBody) md += para(l.addOnBody);
   if (l.itinerary) for (const d of l.itinerary) md += para(`${clean(d.day)}. ${clean(d.body)}`);
   if (l.accessBody) md += para(l.accessBody);

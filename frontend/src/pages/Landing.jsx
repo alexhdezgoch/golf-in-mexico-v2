@@ -138,7 +138,7 @@ const LeadForm = ({ landing, placement, dark = false }) => {
         type="submit"
         disabled={submitting}
         data-testid={`landing-submit-${placement}`}
-        className="group mt-4 w-full inline-flex items-center justify-between gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] disabled:opacity-60 text-[var(--c-green-deep)] px-7 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.2em] font-bold transition-colors"
+        className="group mt-4 w-full inline-flex items-center justify-between gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] disabled:opacity-60 text-[var(--c-green-deep)] px-8 py-4 rounded-full font-mono text-[11px] uppercase tracking-[0.2em] font-bold transition-colors"
       >
         {submitting ? "Sending…" : landing.ctaPrimary}
         <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -274,6 +274,14 @@ const Landing = () => {
       : undefined,
   });
 
+  // Package-card CTA → glide to the closing form (lenis owns wheel scroll).
+  const scrollToProposal = () => {
+    const el = document.getElementById("landing-proposal");
+    if (!el) return;
+    if (window.__lenis) window.__lenis.scrollTo(el, { offset: -60 });
+    else el.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
   if (!landing) {
     return (
       <main className="min-h-[60vh] flex items-center justify-center bg-[var(--c-off-white)]">
@@ -314,7 +322,7 @@ const Landing = () => {
             bottom, lighter mid-frame so the course still reads as a photo. */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/55"
+          className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/25 to-black/50"
         />
 
         <div className="relative w-full max-w-[1200px] mx-auto px-6 md:px-12">
@@ -502,23 +510,69 @@ const Landing = () => {
         </section>
       )}
 
-      {/* ── WHAT'S INCLUDED ──────────────────────────────────────── */}
-      {landing.included && (
-        <section className="py-12 md:py-20 border-t border-[var(--c-border)]">
-          <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-            <SectionHead
-              label={landing.includedLabel}
-              pre={landing.includedH2Pre}
-              em={landing.includedH2Em}
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
-              {landing.included.map(([title, body]) => (
-                <motion.div key={title} {...fadeUp} className="border-t border-[var(--c-border)] pt-5">
-                  <h3 className="font-display text-lg md:text-xl text-[var(--c-text)] mb-2">{title}</h3>
-                  <p className="font-body font-light text-[var(--c-text-mid)] text-base leading-[1.75]">
-                    {body}
-                  </p>
-                </motion.div>
+      {/* ── PACKAGES — Preserve-style trip cards on the dark ground ──
+            Pablo's named reference (preservegolfjapan.com/premium-tour):
+            photo → name → one-liner → ✓ inclusions → price line → pill CTA,
+            in GIM's palette (deep green, not black; gold, not white). ───── */}
+      {landing.packages && (
+        <section className="py-14 md:py-24 bg-[var(--c-green-deep)]">
+          <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+            <motion.div {...fadeUp} className="mb-10 md:mb-14">
+              <p className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-[var(--c-gold-light)] mb-4">
+                {landing.includedLabel}
+              </p>
+              <h2 className="font-display font-normal text-white text-2xl md:text-4xl lg:text-[2.75rem] leading-[1.15] tracking-tight max-w-[24ch]">
+                {landing.includedH2Pre}{" "}
+                <em className="italic text-[var(--c-gold-light)]">{landing.includedH2Em}</em>
+              </h2>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8" data-testid="landing-packages">
+              {landing.packages.map((pkg) => (
+                <motion.article
+                  key={pkg.name}
+                  {...fadeUp}
+                  className="flex flex-col bg-white/[0.04] border border-white/10 rounded-sm overflow-hidden"
+                >
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={pkg.photo}
+                      alt={pkg.photoAlt || ""}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="flex flex-col flex-1 p-6 md:p-7">
+                    <h3 className="font-display text-white text-xl md:text-2xl mb-2">{pkg.name}</h3>
+                    <p className="font-body font-light text-white/70 text-sm leading-[1.7] mb-5">
+                      {pkg.blurb}
+                    </p>
+                    <ul className="space-y-2 mb-6">
+                      {pkg.includes.map((item) => (
+                        <li key={item} className="flex gap-2.5 font-body font-light text-white/85 text-sm leading-snug">
+                          <span aria-hidden="true" className="text-[var(--c-gold)] shrink-0">✓</span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-auto">
+                      <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-[var(--c-gold-light)]">
+                        {pkg.price}
+                      </p>
+                      {pkg.priceNote && (
+                        <p className="mt-1 font-body font-light text-white/50 text-xs">{pkg.priceNote}</p>
+                      )}
+                      <button
+                        type="button"
+                        onClick={scrollToProposal}
+                        className="mt-5 w-full inline-flex items-center justify-center border border-white/30 hover:border-[var(--c-gold)] hover:text-[var(--c-gold-light)] text-white px-6 py-3.5 rounded-full font-mono text-[11px] uppercase tracking-[0.2em] transition-colors"
+                      >
+                        Request this trip
+                      </button>
+                    </div>
+                  </div>
+                </motion.article>
               ))}
             </div>
           </div>
@@ -647,7 +701,7 @@ const Landing = () => {
       </section>
 
       {/* ── CLOSING CTA ──────────────────────────────────────────── */}
-      <section className="py-12 md:py-20">
+      <section id="landing-proposal" className="py-12 md:py-20">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12">
           <motion.div
             {...fadeUp}

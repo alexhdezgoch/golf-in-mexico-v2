@@ -248,16 +248,54 @@ const STAY_AND_PLAY = {
     "For one or two players, the room's usually simpler. From about four rooms or eight players, the villa route starts to win on price and stops being close.",
   ],
 
-  includedLabel: "Tee times & what's included",
+  includedLabel: "Tee times & packages",
   includedH2Pre: "How Punta Mita golf tee times",
   includedH2Em: "actually work.",
-  included: [
-    ["Golf", "Tee times at Pacifico and Bahia, arranged as part of the stay rather than requested against it."],
-    ["The villa", "Through the peninsula's official rental agency — inside the gate, with the golf built around it."],
-    ["Ground transport", "Airport pickup and movement on the peninsula. PVR to the gate is about 45 minutes."],
-    ["A private chef", "Dinner at the villa when you want the night back instead of a restaurant reservation."],
-    ["Carts", "Included with some villas. Where they are not, cart rental runs about $20 USD per day."],
-    ["The format", "Scorecards printed, groups drawn, prizes set — before anyone tees off."],
+  /* Preserve-style trip cards (Pablo's named reference). Every price line is
+     sourced; package totals stay off until the savings base case is settled. */
+  packages: [
+    {
+      name: "Stay & Play",
+      blurb: "The core trip — a villa inside the gate, both Nicklaus courses booked as one reservation.",
+      photo: "/images/punta-mita/punta-mita-clubhouse-terrace-course-view.webp",
+      photoAlt: "A shaded clubhouse terrace at Punta Mita looking out over the course.",
+      includes: [
+        "Tee times at Pacifico and Bahia",
+        "Villa through the peninsula's official rental agency",
+        "Airport pickup + ground transport",
+        "A private chef when you want the night back",
+        "Carts — included with some villas, ~$20 USD/day where not",
+      ],
+      price: "Green fees $325 – $400 per round",
+      priceNote: "Villa priced per group and season",
+    },
+    {
+      name: "The Group Trip",
+      blurb: "Eight players, two foursomes, one Sprinter — a qualifier on day one, match play from day two.",
+      photo: "/images/punta-mita/punta-mita-golfers-green-ocean.webp",
+      photoAlt: "Two golfers on an oceanfront green at Punta Mita.",
+      includes: [
+        "Everything in Stay & Play",
+        "The tournament format, run for you",
+        "Scorecards printed, groups drawn, prizes set",
+        "Group pricing on the villa",
+      ],
+      price: "Group pricing from 8 players",
+      priceNote: "Four rooms is where the villa math starts winning",
+    },
+    {
+      name: "Add-On Rounds",
+      blurb: "Mandarina and Higuera sit just beyond the peninsula — no room key required.",
+      photo: "/images/punta-mita/punta-mita-fairway-ocean-aerial.webp",
+      photoAlt: "Aerial view of a Punta Mita fairway running toward the Pacific.",
+      includes: [
+        "Mandarina — Greg Norman short course",
+        "Higuera — the corridor's public Norman 18",
+        "Transport between courses",
+      ],
+      price: "Public green fee + $100 USD per player",
+      priceNote: "No markup buried in the room rate",
+    },
   ],
 
   addOnLabel: "Add-ons",
