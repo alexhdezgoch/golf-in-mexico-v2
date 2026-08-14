@@ -399,7 +399,7 @@ const Landing = () => {
           <div className="max-w-[1100px] mx-auto px-6 md:px-12">
             <SectionHead label={landing.specsLabel} pre={landing.specsH2Pre} em={landing.specsH2Em} />
             <motion.div {...fadeUp} className="overflow-x-auto">
-              <table className="w-full min-w-[520px] border-collapse" data-testid="landing-specs">
+              <table className="w-full border-collapse" data-testid="landing-specs">
                 <tbody>
                   {landing.specs.map((row, i) => (
                     <tr
