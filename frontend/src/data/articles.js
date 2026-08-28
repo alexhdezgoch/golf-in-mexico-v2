@@ -264,6 +264,298 @@ export const ARTICLES = [
     faqItems: [],
     relatedArticles: ["the-bachelor-trip-cabo"],
   },
+
+  /* ═══════════════════════════════════════════════════════════════════
+     PUNTA MITA CLUSTER — six answer-first spokes.
+
+     Copy by Pablo De La Mora ("UX Redesign v5 · The Dossier", 2026-08).
+     Prose is the client's under scope v2; structure, meta and internal
+     links are ours (precedent: 15e48b8).
+
+     Every question is a `faq` block on purpose — Article.jsx builds
+     FAQPage schema from those blocks only, and this cluster exists to be
+     cited by AI engines. Keep faq answers link-free: `a` is emitted raw
+     into JSON-LD, so markdown in it would ship as literal text.
+
+     GREEN FEE BASIS (Alex, 2026-08-27): the club publishes USD 250–320
+     before 16% tax and 10% service; 250×1.26≈315 and 320×1.26≈403, which
+     is the site's $325–$400 all-in. Both numbers are true. The
+     fourseasons.com citation attaches ONLY to the pre-tax figure.
+
+     PHOTO CAPTIONS stay course-neutral — shoot attribution is unconfirmed
+     except for 3B, which is definitively Pacifico (see landings.js).
+
+     searchVolume traces to the 2026-07-08 DataForSEO + Autocomplete pull;
+     0 means "verified ~0 measurable US volume", which is why these are
+     GEO plays rather than head-term SEO plays.
+     ═══════════════════════════════════════════════════════════════════ */
+
+  {
+    slug: "how-to-play-punta-mita-golf-access",
+    title: "How to Actually Play Golf in Punta Mita",
+    h1: "How to Actually Play Golf in Punta Mita",
+    subtitle: "Access is tied to the property, not the price — two identical villas can have completely different golf access.",
+    metaTitle: "Punta Mita Golf Access & Tee Times | Golf in Mexico°",
+    metaDescription: "Punta Mita golf is private. The four ways on: Club member's guest, Four Seasons guest, St. Regis guest, or a villa rental that carries authorized club access.",
+    excerpt: "Access is tied to the property, not the price — two identical villas can have completely different golf access.",
+    heroImage: "/images/punta-mita/punta-mita-clubhouse-terrace-course-view.webp",
+    author: { name: "Pablo De La Mora", role: "Founder · GIM", photo: "/founders/pablo/01.jpg" },
+    destination: "punta-mita",
+    destinationLabel: "Punta Mita",
+    articleType: "planning",
+    isGIMProperty: false,
+    searchVolume: 720,
+    readTimeMinutes: 4,
+    updated: "August 2026",
+    body: [
+      { type: "lead", text: "You can play Punta Mita's courses as a Club Punta Mita member's guest, a Four Seasons guest, a St. Regis guest, or a villa guest whose rental carries authorized club access. Access is tied to the property, not the price — two identical villas can have completely different golf access." },
+      { type: "image", src: "/images/punta-mita/punta-mita-clubhouse-terrace-course-view.webp", caption: "Clubhouse terrace · Punta Mita", alt: "Clubhouse terrace overlooking the course at Punta Mita" },
+
+      { type: "faq", q: "Is Punta Mita golf public?", a: "No. Confirmed directly on golfpuntamita.com: the private Punta Mita Golf Club is open exclusively to Club Punta Mita Members and their guests, and guests of the Four Seasons and St. Regis resorts. There is a fourth path documented on puntamita.com's own property pages — a villa rental that carries authorized club access." },
+      { type: "list", items: [
+        { text: "As a Club Punta Mita member's invited guest" },
+        { text: "As a Four Seasons Punta Mita guest" },
+        { text: "As a St. Regis Punta Mita guest" },
+        { text: "As a villa guest whose specific rental carries authorized club access" },
+      ] },
+
+      { type: "faq", q: "Can you play if you stay at the Four Seasons or St. Regis?", a: "Yes — as a resort guest, tee times are confirmed through the Golf Pro Shop staff, per golfpuntamita.com. The first tee time is at 7:30 a.m. (subject to sunrise), with tee times available at 10-minute intervals." },
+
+      { type: "faq", q: "Is renting a villa or condo actually cheaper than a hotel?", a: "Yes — the best way to get resort-level golf access at a fraction of hotel pricing is to rent a villa or condo instead of booking a hotel room. Because villas are built for groups, the same trip splits across 4–8 players in one property instead of 4–8 separate hotel rooms, and the math changes completely: green fees, staff, and amenities get shared across the group rather than paid per room." },
+      { type: "columns", columns: [
+        { heading: "Punta Mita Rentals", items: [
+          { title: "The official rental agency", note: "They own and operate the inventory of villas and condos on the peninsula, and can confirm which specific properties carry authorized golf club access." },
+        ] },
+        { heading: "Golf in Mexico", items: [
+          { title: "An official partner agency", note: "Builds the itinerary golf-first — arranging tee times, access, and the golf side of the trip around the villa stay, rather than treating golf as an afterthought to the accommodation." },
+        ] },
+      ] },
+      { type: "p", text: "Booking through either the official agency or a recognized partner is what actually protects your access — confirm \"access to the golf,\" in writing, before paying anything." },
+
+      { type: "faq", q: "How do you book tee times?", a: "Per golfpuntamita.com: resort guests confirm tee times through the Golf Pro Shop; singles are accepted and may be paired upon request; and groups can confirm tee times up to two years in advance through a Golf Club representative. In high season, morning slots go quickly, so book as early as your access window allows." },
+
+      { type: "faq", q: "What if you can't get on?", a: "If access falls through, Higuera Golf Club — a public Greg Norman design 10 minutes from the gate — is the closest alternative, along with courses in Nuevo Vallarta and Vista Vallarta." },
+
+      { type: "p", text: "Related: [Golf in Punta Mita](/destinations/punta-mita) · [Cost Guide](/journal/punta-mita-golf-cost-green-fees) · [Luxury / Stay & Play](/journal/luxury-golf-trip-punta-mita)" },
+      { type: "cta", eyebrow: "Not sure your villa includes golf?", heading: "That's the exact question we answer every week.", text: "Tell us your dates and group, and we'll confirm what your property actually carries before you pay anything.", href: "/trip-builder", label: "Tell us your dates" },
+    ],
+    faqItems: [],
+    relatedArticles: [],
+  },
+
+  {
+    slug: "punta-mita-golf-cost-green-fees",
+    title: "How Much Does It Cost to Golf in Punta Mita?",
+    h1: "How Much Does It Cost to Golf in Punta Mita?",
+    subtitle: "The club's published rate card, what tax and service add on top, and what a full trip actually costs per player.",
+    metaTitle: "Punta Mita Green Fees & Golf Costs 2026 | Golf in Mexico°",
+    metaDescription: "Punta Mita publishes USD 250–320 for 18 holes before 16% tax and 10% service — about $325–$400 all-in. The full 2026 cost breakdown, carts, caddies and trip totals.",
+    excerpt: "The club's published rate card, what tax and service add on top, and what a full trip actually costs per player.",
+    heroImage: "/images/punta-mita/punta-mita-practice-range-balls.webp",
+    author: { name: "Pablo De La Mora", role: "Founder · GIM", photo: "/founders/pablo/01.jpg" },
+    destination: "punta-mita",
+    destinationLabel: "Punta Mita",
+    articleType: "planning",
+    isGIMProperty: false,
+    searchVolume: 0,
+    readTimeMinutes: 4,
+    updated: "August 2026",
+    body: [
+      { type: "lead", text: "Four Seasons Punta Mita publishes USD 320 for 18 holes in high season (Nov 1–May 31) and USD 250 in low season (Jun 1–Oct 31), before 16% tax and 10% service charge. Once those are added, expect roughly $325–$400 all-in as a resort guest. Rates confirmed as current for 2026." },
+      { type: "image", src: "/images/punta-mita/punta-mita-practice-range-balls.webp", caption: "Practice range · Punta Mita", alt: "Range balls on the practice range at Punta Mita" },
+
+      { type: "faq", q: "How much are green fees?", a: "Per Four Seasons Resort Punta Mita's official golf page, current 2026 guest rates are USD 320 for 18 holes in high season and USD 250 in low season. Those are the published rates before 16% tax and 10% service charge — added on, an 18-hole round lands at roughly $325–$400 all-in, which is the range we quote across our Punta Mita guides." },
+      { type: "table",
+        caption: "Published guest rates · 2026",
+        head: ["Rate", "High Season (Nov 1–May 31)", "Low Season (Jun 1–Oct 31)"],
+        rows: [
+          ["18 holes", "USD 320", "USD 250"],
+          ["9 holes", "USD 200", "USD 175"],
+          ["Twilight (after 1:00 pm)", "USD 250", "USD 210"],
+          ["Guest 15 & under", "USD 185", "USD 175"],
+          ["Guest under 12", "USD 95", "USD 95"],
+        ],
+        note: "Rates are subject to 16% tax and 10% service charge, and include a shared golf cart and use of the driving range. Villa-based group bookings can cost less per person once split across a group." },
+
+      { type: "faq", q: "What does the club publish?", a: "Confirmed directly on golfpuntamita.com's official rates: private lessons run $75 per half-hour and $125 per hour for 1–2 players (plus $35/hour per additional player); clinics are $45 per golfer, held Tuesdays and Thursdays; and a two-hour playing lesson runs $260 plus green fee. Golf clinics pause from December 15–January 15 and March 14–31." },
+
+      { type: "faq", q: "Is a caddie required, and how much do you tip?", a: "Confirm exactly what your quoted rate includes before you tee off. As a general guide: 10% is standard, 15% for good service, and 20% for exceptional service — on a $325–$400 round that works out to roughly $35–$80 per bag. The standard range we quote across our Punta Mita guides is $40–$60 per bag per round." },
+
+      { type: "faq", q: "Do you need a golf cart, and what does it cost?", a: "Green fees at Four Seasons Punta Mita include a shared golf cart, confirmed directly on the resort's golf page. An extra cart runs USD 55, and the 3B Experience — cart, clubs, guide, and access to the Tail of the Whale hole — runs USD 60, per the same official source." },
+
+      { type: "faq", q: "What does a full trip cost per person?", a: "Based on a real sample trip built through Golf in Mexico, a villa-based group booking has run roughly $3,460 per player, versus about $7,070 per player for an equivalent hotel booking. The gap is almost entirely accommodation and food." },
+      { type: "table",
+        caption: "Per player · USD",
+        head: ["", "Golf in Mexico booking", "Hotel booking"],
+        rows: [
+          ["Flights", "$300–$520", "Same either way"],
+          ["Accommodation", "$1,140", "$2,200–$6,000"],
+          ["Green fees", "$760", "$1,000"],
+          ["Club rentals", "$150", "$150"],
+          ["Caddies & carts", "$210", "$210"],
+          ["Ground transport", "$0", "$0"],
+          ["Food", "$790", "$1,200"],
+          ["Total", "$3,460 avg", "$7,070 avg"],
+        ],
+        note: "These are illustrative sample figures for a villa-based group trip, shown in USD — your final quote depends on your group size and dates." },
+
+      { type: "faq", q: "Cheaper ways nearby?", a: "Higuera Golf Club, the public Greg Norman course 10 minutes from the gate, runs $150–$285 rack rate with packages available around $180 per round. Nuevo Vallarta and Vista Vallarta are also worth considering." },
+
+      { type: "p", text: "Related: [Golf in Punta Mita](/destinations/punta-mita) · [Access Guide](/journal/how-to-play-punta-mita-golf-access)" },
+      { type: "cta", eyebrow: "Want a real number?", heading: "We'll price the trip for your dates and group.", text: "Tell us when you want to play and how many of you there are, and we'll send the whole thing back costed.", href: "/trip-builder", label: "Get a real quote" },
+    ],
+    faqItems: [],
+    relatedArticles: [],
+  },
+
+  {
+    slug: "luxury-golf-trip-punta-mita",
+    title: "Luxury Golf in Punta Mita",
+    h1: "Luxury Golf in Punta Mita",
+    subtitle: "Where you stay decides whether — and how — you play.",
+    metaTitle: "Luxury Punta Mita Golf: Villas, Resorts & Stay-and-Play | Golf in Mexico°",
+    metaDescription: "A luxury Punta Mita golf trip comes down to one decision: where you stay decides whether you play. Four Seasons, St. Regis, or the right villa rental.",
+    excerpt: "Where you stay decides whether — and how — you play.",
+    heroImage: "/images/punta-mita/punta-mita-oceanfront-hole-pier-aerial.webp",
+    author: { name: "Pablo De La Mora", role: "Founder · GIM", photo: "/founders/pablo/01.jpg" },
+    destination: "punta-mita",
+    destinationLabel: "Punta Mita",
+    articleType: "packages",
+    isGIMProperty: false,
+    searchVolume: 70,
+    readTimeMinutes: 3,
+    updated: "August 2026",
+    body: [
+      { type: "lead", text: "A luxury golf trip to Punta Mita comes down to one decision: where you stay decides whether — and how — you play. Four Seasons and St. Regis guests get the courses; the right villa rental does too. Get the stay right and the rest of the trip is Mexico's best golf, arranged." },
+      { type: "image", src: "/images/punta-mita/punta-mita-oceanfront-hole-pier-aerial.webp", caption: "Oceanfront hole · Punta Mita", alt: "Aerial view of an oceanfront hole at Punta Mita" },
+
+      { type: "faq", q: "Where do you stay to golf Punta Mita in style?", a: "Three paths get you on Pacifico and Bahia, confirmed directly on golfpuntamita.com: staying at the Four Seasons, staying at the St. Regis, or booking a villa with confirmed club access." },
+      { type: "p", text: "See our full breakdown in the [Access Guide](/journal/how-to-play-punta-mita-golf-access)." },
+
+      { type: "faq", q: "What is a stay-and-play package here?", a: "A stay-and-play package bundles accommodation with green fees, ground transport, and often meals into a single arranged trip rather than booking each piece separately. Based on our own sample trip data, villa-based group packages have run roughly $3,460 per player on average, versus $7,070 per player for an equivalent hotel-based booking." },
+
+      { type: "faq", q: "How do you plan the whole trip?", a: "Lock your accommodation first — it determines your access. Confirm golf access in writing before you book. Reserve tee times as early as your access window allows; groups can book up to two years out, per golfpuntamita.com. Then layer in the extras — dining, transport, non-golf activities." },
+      { type: "list", ordered: true, items: [
+        { title: "Lock your accommodation first", text: "it determines your access" },
+        { title: "Confirm golf access in writing", text: "before you book" },
+        { title: "Reserve tee times early", text: "groups can book up to two years out, per golfpuntamita.com" },
+        { title: "Layer in the extras", text: "dining, transport, non-golf activities" },
+      ] },
+
+      { type: "faq", q: "What makes it worth it?", a: "Two Jack Nicklaus courses on one peninsula, the Tail of the Whale, and a jungle-and-bay setting on Banderas Bay — a very different feel from the desert golf destinations like Los Cabos." },
+
+      { type: "p", text: "Related: [Golf in Punta Mita](/destinations/punta-mita) · [Access Guide](/journal/how-to-play-punta-mita-golf-access) · [Cost Guide](/journal/punta-mita-golf-cost-green-fees)" },
+      { type: "cta", eyebrow: "Tell us your dates and group", heading: "We'll design the trip — stay, access, tee times, and the rest.", text: "Package pricing figures above are Golf in Mexico's own sample trip data, shown as illustrative averages. Your quote is built for your group.", href: "/trip-builder", label: "Design my trip" },
+    ],
+    faqItems: [],
+    relatedArticles: [],
+  },
+
+  {
+    slug: "best-time-to-golf-punta-mita",
+    title: "The Best Time to Golf in Punta Mita",
+    h1: "The Best Time to Golf in Punta Mita",
+    subtitle: "Weather, seasons, and the whale window — Punta Mita runs on the Pacific's calendar.",
+    metaTitle: "Best Time to Golf Punta Mita: Weather, Seasons & Whales | Golf in Mexico°",
+    metaDescription: "The dry season runs November to May; December to March is peak weather, peak rates and whale season. June to October is rainy, quieter and cheaper.",
+    excerpt: "Weather, seasons, and the whale window — Punta Mita runs on the Pacific's calendar.",
+    heroImage: "/images/punta-mita/punta-mita-sunset-fairway-palms.webp",
+    author: { name: "Pablo De La Mora", role: "Founder · GIM", photo: "/founders/pablo/01.jpg" },
+    destination: "punta-mita",
+    destinationLabel: "Punta Mita",
+    articleType: "planning",
+    isGIMProperty: false,
+    searchVolume: 0,
+    readTimeMinutes: 3,
+    updated: "August 2026",
+    body: [
+      { type: "lead", text: "Punta Mita runs on the Pacific's calendar. The dry season — November to May — is when you want to be here: warm days, low rain, the conditions the courses were built for. December to March is peak (best weather, tightest tee sheets) and whale season. June to October is rainy and cheaper." },
+      { type: "image", src: "/images/punta-mita/punta-mita-sunset-fairway-palms.webp", caption: "Fairway and palms at last light · Punta Mita", alt: "Fairway lined with palms at sunset in Punta Mita" },
+
+      { type: "faq", q: "What's the best time of year to golf Punta Mita?", a: "The dry season runs roughly November through May. Within that window, December through March is peak — matching Four Seasons Punta Mita's own published high-season golf rates (Nov 1–May 31), which reflect the same demand window." },
+
+      { type: "faq", q: "What's the weather like month to month?", a: "Mornings are typically clear year-round. From July onward, expect afternoon storms as the rainy season builds. Humidity runs high near the water regardless of season." },
+
+      { type: "faq", q: "When can you see whales?", a: "Humpback whales pass through Banderas Bay roughly December through March. Punta Mita Gourmet & Golf's own 2026 event program includes a dedicated whale-watching activity for non-golfing guests during this same window, confirmed on puntamita.com." },
+
+      { type: "faq", q: "Is the rainy season worth it?", a: "Yes, for the right traveler. Rainy season (June–October) means lower prices — Four Seasons Punta Mita's own low-season green fee, USD 250 for 18 holes before tax and service, runs $70 less than high season — plus a much quieter peninsula, at the cost of an occasional lost afternoon." },
+
+      { type: "p", text: "Related: [Golf in Punta Mita](/destinations/punta-mita) · [Access Guide](/journal/how-to-play-punta-mita-golf-access)" },
+      { type: "cta", eyebrow: "Tell us your dates", heading: "We'll tell you what to expect — and lock your tee times.", text: "Seasonal pricing verified directly on fourseasons.com/puntamita/golf; whale-watching timing corroborated by puntamita.com's own Gourmet & Golf event program.", href: "/trip-builder", label: "Tell us your dates" },
+    ],
+    faqItems: [],
+    relatedArticles: [],
+  },
+
+  {
+    slug: "tail-of-the-whale-punta-mita",
+    title: "The Tail of the Whale: Punta Mita's Island Green",
+    h1: "The Tail of the Whale: Punta Mita's Island Green",
+    subtitle: "Pacifico's optional extra — a par-3 played to a green set on a natural rock in the Pacific.",
+    metaTitle: "The Tail of the Whale — Punta Mita's Island Green | Golf in Mexico°",
+    metaDescription: "Pacifico's optional 19th is a par-3 to a green on a natural rock in the Pacific. How to reach it, what the 3B Experience costs, and when the ocean says no.",
+    excerpt: "Pacifico's optional extra — a par-3 played to a green set on a natural rock in the Pacific.",
+    heroImage: "/images/punta-mita/punta-mita-pacifico-tail-of-the-whale-island-green-aerial.webp",
+    author: { name: "Pablo De La Mora", role: "Founder · GIM", photo: "/founders/pablo/01.jpg" },
+    destination: "punta-mita",
+    destinationLabel: "Punta Mita",
+    articleType: "courses",
+    isGIMProperty: false,
+    searchVolume: 0,
+    readTimeMinutes: 2,
+    updated: "August 2026",
+    body: [
+      { type: "lead", text: "The Tail of the Whale is Pacifico's optional 19-hole extra — a par-3 played to a green set on a natural rock in the Pacific. The Punta Mita Golf Club restaurant is named after this signature hole. Reach it by amphibious cart, or on foot at low tide." },
+      { type: "image", src: "/images/punta-mita/punta-mita-pacifico-tail-of-the-whale-island-green-aerial.webp", caption: "The Tail of the Whale, hole 3B · Pacifico Course", alt: "Aerial view of the Tail of the Whale island green at Pacifico Course, Punta Mita, ringed by surf" },
+
+      { type: "faq", q: "What is the Tail of the Whale?", a: "It's Pacifico's signature optional hole — a par-3 played to a green set on a natural rock formation in the Pacific Ocean. Punta Mita Golf Club's own clubhouse restaurant, Tail of the Whale, is named directly after this signature island green, confirmed on golfpuntamita.com." },
+
+      { type: "faq", q: "How do you get to the green?", a: "Golfers reach the island green by amphibious cart, or on foot along a stone path when tide conditions allow. Four Seasons Punta Mita's own golf page lists a dedicated 3B Experience package — cart, clubs, guide, and access to the hole — at USD 60, per the same official source." },
+
+      { type: "faq", q: "Can you always play it?", a: "No — access depends on ocean and tide conditions at the time of your round, plus the club's operating schedule that day. As we put it: the ocean has a vote." },
+
+      { type: "p", text: "Related: [Golf in Punta Mita](/destinations/punta-mita) · [Cost Guide](/journal/punta-mita-golf-cost-green-fees)" },
+      { type: "cta", eyebrow: "Want a shot at 3B?", heading: "We'll build your Punta Mita round around it.", text: "Confirm current tide and operating conditions with the club before your round — we'll handle the tee time either way.", href: "/trip-builder", label: "Plan my round" },
+    ],
+    faqItems: [],
+    relatedArticles: [],
+  },
+
+  {
+    slug: "things-to-do-punta-mita",
+    title: "Punta Mita for Non-Golfers",
+    h1: "Punta Mita for Non-Golfers",
+    subtitle: "Beaches, spas and Sayulita — what the rest of the group does while you play.",
+    metaTitle: "Punta Mita for Non-Golfers: Beaches, Sayulita & What to Do | Golf in Mexico°",
+    metaDescription: "A Punta Mita golf trip doesn't have to strand the people who don't play. Calm Banderas Bay beaches, resort spas, and Sayulita 20 minutes north.",
+    excerpt: "Beaches, spas and Sayulita — what the rest of the group does while you play.",
+    heroImage: "/images/punta-mita/punta-mita-oceanfront-green-palms.webp",
+    author: { name: "Pablo De La Mora", role: "Founder · GIM", photo: "/founders/pablo/01.jpg" },
+    destination: "punta-mita",
+    destinationLabel: "Punta Mita",
+    articleType: "planning",
+    isGIMProperty: false,
+    searchVolume: 0,
+    readTimeMinutes: 3,
+    updated: "August 2026",
+    body: [
+      { type: "lead", text: "A Punta Mita golf trip doesn't have to strand the people who don't play. The peninsula sits on Banderas Bay with calm beaches, world-class spas, and Sayulita — a surf-and-art town 20 minutes north — all within reach while the rest of the group is on the course." },
+      { type: "image", src: "/images/punta-mita/punta-mita-oceanfront-green-palms.webp", caption: "Banderas Bay from the property · Punta Mita", alt: "Oceanfront green framed by palms above Banderas Bay in Punta Mita" },
+
+      { type: "faq", q: "What is there to do in Punta Mita besides golf?", a: "Beyond the two courses, Punta Mita offers calm beaches on Banderas Bay, resort spas, strong local dining, and seasonal whale watching from December to March. Punta Mita's own Gourmet & Golf event program confirms whale watching and cooking classes as standing non-golf activities during peak season." },
+
+      { type: "faq", q: "Is Sayulita worth a day trip?", a: "Yes — it's a surf-and-art town about 20 minutes north of Punta Mita, a natural half-day escape for anyone not on the course." },
+
+      { type: "faq", q: "What can non-golfers do while the group plays?", a: "A half-day plan — beach time, a spa morning, or a Sayulita run — fits neatly around a single round of golf, so the group reconnects by the afternoon." },
+
+      { type: "faq", q: "Where to eat and relax?", a: "El Faro, the point's surf break, is a well-known landmark near the peninsula's tip." },
+
+      { type: "p", text: "Related: [Golf in Punta Mita](/destinations/punta-mita) · [Best Time to Go](/journal/best-time-to-golf-punta-mita)" },
+      { type: "cta", eyebrow: "Not everyone golfs?", heading: "We build both sides of the trip.", text: "Tell us who's coming and what they want out of the week, and we'll plan around the tee times.", href: "/trip-builder", label: "Plan the whole trip" },
+    ],
+    faqItems: [],
+    relatedArticles: [],
+  },
 ];
 
 // Helper: ordered list of destinations to render
