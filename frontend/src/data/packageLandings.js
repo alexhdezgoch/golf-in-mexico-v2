@@ -508,10 +508,15 @@ const MEXICO_CITY = {
    existing equity. Three of Pablo's four FAQ answers read "Answer pending"
    and are omitted. */
 
+/* Four regions, four real photographs — this page argues "one country, five
+   ways to play", so the hero should show the country rather than the mark.
+   NB: /images/e60z74y2-golf-in-mexico-5.webp is a 3KB brand graphic used as
+   filler elsewhere in the data, NOT photography. Never use it as a hero. */
 const NATIONAL_PHOTOS = [
-  "/images/e60z74y2-golf-in-mexico-5.webp",
+  "/images/punta-mita/punta-mita-pacifico-tail-of-the-whale-island-green-aerial.webp",
   "/images/0wyp4brb-cabo-photo.webp",
   "/images/3z3gpvuk-81f3f231-303b-42ae-969b-440d82c25c70-1-105-c.webp",
+  "/images/e9jy3mtt-6d0178a2-8a06-4752-bbe4-3ae6b5a70413-1-105-c.webp",
 ];
 
 const NATIONAL = {
@@ -531,7 +536,7 @@ const NATIONAL = {
   heroAnswer:
     "No other country offers this exact formula: championship designer architecture, legendary hospitality, incredible gastronomy, and unbeatable value. Golf in Mexico was founded by a former PGA Tour agent and a Mexican Tour pro to guide you to the best golf experiences in Mexico.",
   heroPhotos: NATIONAL_PHOTOS,
-  heroAlt: "Golf course on the Mexican coast at first light.",
+  heroAlt: "The Tail of the Whale island green at Pacifico, Punta Mita, ringed by Pacific surf.",
   ctaPrimary: "Plan my trip",
   ctaNote: "Pablo answers himself. No call required to get a proposal.",
   byline: BYLINE,
