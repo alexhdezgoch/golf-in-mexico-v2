@@ -207,6 +207,57 @@ const Body = ({ blocks, destinationLabel }) => {
             </div>
           );
         }
+        if (block.type === "table") {
+          return (
+            <div key={i} className="my-10 md:my-14 max-w-[680px]">
+              {block.caption && (
+                <h4 className="pb-3 mb-4 border-b-2 border-gold font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
+                  {block.caption}
+                </h4>
+              )}
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse text-left">
+                  {block.head && (
+                    <thead>
+                      <tr>
+                        {block.head.map((h, j) => (
+                          <th
+                            key={j}
+                            scope="col"
+                            className="border-b hairline py-3 pr-4 font-mono text-[10px] uppercase tracking-wide-editorial text-gold whitespace-nowrap"
+                          >
+                            {h}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                  )}
+                  <tbody>
+                    {block.rows.map((row, j) => (
+                      <tr key={j}>
+                        {row.map((cell, k) => (
+                          <td
+                            key={k}
+                            className={`border-b hairline py-3 pr-4 align-top font-body font-light text-base leading-snug ${
+                              k === 0 ? "text-ink" : "text-ink/70"
+                            }`}
+                          >
+                            {renderInline(cell)}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              {block.note && (
+                <p className="mt-3 font-body font-light text-ink/55 text-sm leading-snug">
+                  {renderInline(block.note)}
+                </p>
+              )}
+            </div>
+          );
+        }
         if (block.type === "priceCards") {
           return (
             <div key={i} className="my-10 md:my-14 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 max-w-[680px]">
