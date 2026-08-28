@@ -565,12 +565,17 @@ const ScrollEmailCapture = ({ slug }) => {
       setVisible(heroCleared && !carouselNear);
     };
 
+    // "Mostly gone", not "entirely gone". The hero carries ~120px of trailing
+    // whitespace, so waiting for bottom <= 0 held the card back until the reader
+    // was already well into the article. 30% visible ≈ the answer block sitting
+    // in the top third of the screen, which is where "past the hero" actually
+    // feels like it happens.
     const heroObs = new IntersectionObserver(
       ([e]) => {
-        heroCleared = e.boundingClientRect.bottom <= 0;
+        heroCleared = e.intersectionRatio <= 0.3;
         sync();
       },
-      { threshold: 0 },
+      { threshold: [0, 0.1, 0.2, 0.25, 0.3, 0.35, 0.4, 0.5, 0.75, 1] },
     );
     heroObs.observe(hero);
 
