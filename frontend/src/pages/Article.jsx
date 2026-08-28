@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { getArticleBySlug, getRelatedArticles, ARTICLES } from "@/data/articles";
@@ -620,7 +621,14 @@ const ScrollEmailCapture = ({ slug }) => {
     setTimeout(dismiss, 2500);
   };
 
-  return (
+  // Portalled to <body> on purpose. The route-transition wrapper carries
+  // filter: blur(0px) for the page-entry animation, and ANY non-none filter
+  // makes that element the containing block for position:fixed descendants.
+  // Rendered in place, this card pins to that wrapper instead of the viewport
+  // and ends up ~4,900px down the document — present, visible, off screen.
+  if (typeof document === "undefined") return null;
+
+  return createPortal(
     <AnimatePresence>
       {visible && (
         <motion.div
@@ -681,7 +689,8 @@ const ScrollEmailCapture = ({ slug }) => {
           )}
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   );
 };
 
