@@ -768,8 +768,10 @@ const RecommendedReads = () => {
           </div>
         </div>
 
-        {/* Carousel */}
-        <div className="relative">
+        {/* Carousel — min-w-0 lets the 1fr grid column shrink below its content
+            width. Without it the column expands to fit all five cards (1844px),
+            overflow-x never engages, and the arrows have nothing to scroll. */}
+        <div className="relative min-w-0">
           <div
             ref={scrollerRef}
             data-testid="rr-scroller"
