@@ -535,60 +535,73 @@ const FooterCTA = ({ destinationLabel }) => (
 
 const ScrollEmailCapture = ({ slug }) => {
   const [visible, setVisible] = useState(false);
+  const dismissedRef = useRef(false);
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const { submit, submitting, error, honeypotProps } = useHubspotForm(FORM_KEYS.article_newsletter);
 
   useEffect(() => {
-    const key = `gim-email-dismissed-${slug}`;
+    if (dismissedRef.current) return undefined;
     try {
-      const dismissedAt = Number(sessionStorage.getItem(key) || 0);
-      if (dismissedAt && Date.now() - dismissedAt < 1000 * 60 * 60 * 24 * 7) return;
+      if (sessionStorage.getItem(`gim-email-dismissed-${slug}`)) {
+        dismissedRef.current = true;
+        return undefined;
+      }
     } catch (err) {
-      console.debug("[Article exit-intent] sessionStorage read failed", err);
+      console.debug("[Article capture] sessionStorage read failed", err);
     }
 
-    // Exit-intent trigger: desktop = mouseleave from top of viewport
-    // Mobile = fast upward scroll near top, or visibility change (tab switch)
-    const onMouseLeave = (e) => {
-      if (e.clientY <= 0) setVisible(true);
+    // Presence, not exit-intent. The card rides along from the moment the reader
+    // clears the hero until the pillar carousel comes up, so it is available for
+    // the whole article and never sits on top of the carousel cards.
+    const hero = document.querySelector('[data-testid="article-hero"]');
+    const carousel = document.querySelector('[data-testid="recommended-reads"]');
+    if (!hero) return undefined;
+
+    let heroCleared = false;
+    let carouselNear = false;
+    const sync = () => {
+      if (dismissedRef.current) return;
+      setVisible(heroCleared && !carouselNear);
     };
 
-    let lastTouchY = 0;
-    const onTouchStart = (e) => {
-      lastTouchY = e.touches[0].clientY;
-    };
-    const onTouchMove = (e) => {
-      const currentY = e.touches[0].clientY;
-      const delta = currentY - lastTouchY;
-      // Fast swipe down near the top edge = likely about to leave
-      if (window.scrollY < 100 && delta > 40) setVisible(true);
-      lastTouchY = currentY;
-    };
+    const heroObs = new IntersectionObserver(
+      ([e]) => {
+        heroCleared = e.boundingClientRect.bottom <= 0;
+        sync();
+      },
+      { threshold: 0 },
+    );
+    heroObs.observe(hero);
 
-    const onVisibility = () => {
-      if (document.visibilityState === "hidden") setVisible(true);
-    };
-
-    document.addEventListener("mouseleave", onMouseLeave);
-    document.addEventListener("touchstart", onTouchStart, { passive: true });
-    document.addEventListener("touchmove", onTouchMove, { passive: true });
-    document.addEventListener("visibilitychange", onVisibility);
+    let carouselObs;
+    if (carousel) {
+      carouselObs = new IntersectionObserver(
+        ([e]) => {
+          carouselNear = e.isIntersecting;
+          sync();
+        },
+        // Retire it a little before the carousel is actually on screen.
+        { rootMargin: "0px 0px 140px 0px" },
+      );
+      carouselObs.observe(carousel);
+    }
 
     return () => {
-      document.removeEventListener("mouseleave", onMouseLeave);
-      document.removeEventListener("touchstart", onTouchStart);
-      document.removeEventListener("touchmove", onTouchMove);
-      document.removeEventListener("visibilitychange", onVisibility);
+      heroObs.disconnect();
+      if (carouselObs) carouselObs.disconnect();
     };
   }, [slug]);
 
+  // Dismissal is per article and lasts the browsing session — close it on this
+  // page and it stays closed here, but the next article offers it again.
   const dismiss = () => {
+    dismissedRef.current = true;
     setVisible(false);
     try {
-      sessionStorage.setItem(`gim-email-dismissed-${slug}`, String(Date.now()));
+      sessionStorage.setItem(`gim-email-dismissed-${slug}`, "1");
     } catch (err) {
-      console.debug("[Article exit-intent] sessionStorage write failed", err);
+      console.debug("[Article capture] sessionStorage write failed", err);
     }
   };
 
