@@ -35,6 +35,8 @@
 const PENINSULA_ACCESS =
   "Four Seasons and St. Regis guests, Punta Mita villa renters, and residence owners.";
 
+import { PACKAGE_LANDINGS } from "./packageLandings";
+
 /* ─────────── PACIFICO vs BAHIA ─────────── */
 
 const PACIFICO_BAHIA = {
@@ -394,11 +396,20 @@ const STAY_AND_PLAY = {
   ],
 };
 
-export const ALL_LANDINGS = [PACIFICO_BAHIA, STAY_AND_PLAY];
+export const ALL_LANDINGS = [PACIFICO_BAHIA, STAY_AND_PLAY, ...PACKAGE_LANDINGS];
 
 export const getLandingData = (hub, slug) =>
   ALL_LANDINGS.find((l) => l.hub === hub && l.slug === slug);
 
-export const landingPath = (l) => `/destinations/${l.hub}/${l.slug}`;
+/* Landings that sit above every hub (the national package page) carry an
+   explicit `path` and no hub, so they resolve by pathname instead. */
+export const getLandingByPath = (pathname) => {
+  // Trailing slashes are real: the prerendered build is served from
+  // /golf-packages/index.html, so the browser can land on either form.
+  const clean = pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
+  return ALL_LANDINGS.find((l) => l.path && l.path === clean);
+};
+
+export const landingPath = (l) => l.path || `/destinations/${l.hub}/${l.slug}`;
 
 export default ALL_LANDINGS;

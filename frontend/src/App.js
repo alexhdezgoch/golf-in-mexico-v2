@@ -141,6 +141,17 @@ const AnimatedRoutes = () => {
         {/* Transactional landings under a hub — /destinations/:hub/:slug.
             Three segments, so this never collides with the two-segment
             /destinations/:slug hub route above. Content: data/landings.js. */}
+        {/* National package page — sits above every hub, so it gets its own
+            top-level route rather than replacing the homepage. Resolved by
+            pathname in Landing (data/packageLandings.js). */}
+        <Route
+          path="/golf-packages"
+          element={
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
+              <Landing />
+            </motion.div>
+          }
+        />
         <Route
           path="/destinations/:hub/:slug"
           element={

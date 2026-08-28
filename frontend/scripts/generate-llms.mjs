@@ -332,9 +332,13 @@ function renderArticleFull(a) {
 // Landing pages (data/landings.js) are transactional, so their corpus entry is
 // the part an answer engine can actually use: the answer-first paragraph, the
 // specs, the prose, and the FAQ. The form and the CTA copy are skipped.
+// Landings that sit above every hub (the national package page) carry an
+// explicit `path` and no hub, so URLs come from here rather than the hub tree.
+const landingHref = (l) => l.path || `/destinations/${l.hub}/${l.slug}`;
+
 function renderLandingFull(l) {
   let md = `## ${clean(l.name)} — ${clean(l.hubName)}\n\n`;
-  md += `URL: ${BASE}/destinations/${l.hub}/${l.slug}\n\n`;
+  md += `URL: ${BASE}${landingHref(l)}\n\n`;
   md += para(l.heroAnswer);
 
   if (l.specs) {
@@ -396,10 +400,17 @@ async function main() {
     const desc = truncate(h.seoDescription || h.heroAnswer);
     index += `- [${clean(h.name)} golf guide](${BASE}/destinations/${h.slug}): ${desc}\n`;
     for (const l of landings.filter((x) => x.hub === h.slug)) {
-      index += `  - [${clean(l.name)}](${BASE}/destinations/${l.hub}/${l.slug}): ${truncate(
+      index += `  - [${clean(l.name)}](${BASE}${landingHref(l)}): ${truncate(
         l.seoDescription || l.heroAnswer,
       )}\n`;
     }
+  }
+  // Landings with no parent hub sit above the destination tree, so they are
+  // listed once at country level rather than nested under a destination.
+  for (const l of landings.filter((x) => !x.hub)) {
+    index += `- [${clean(l.name)}](${BASE}${landingHref(l)}): ${truncate(
+      l.seoDescription || l.heroAnswer,
+    )}\n`;
   }
   index += `\n## Journal\n\n`;
   for (const a of articles) {
@@ -470,7 +481,7 @@ async function main() {
   // Landings are the paid-traffic destinations, so they rank above the hubs.
   const landingLastmod = gitDate(LANDING_SOURCE);
   const landingRoutes = landings.map((l) => ({
-    loc: `/destinations/${l.hub}/${l.slug}`,
+    loc: landingHref(l),
     priority: "0.9",
     changefreq: "monthly",
     lastmod: landingLastmod,
