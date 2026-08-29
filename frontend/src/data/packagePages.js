@@ -182,4 +182,76 @@ export const PUERTO_VALLARTA = {
   dockMsg: "Preferred access · Morning tee times · Private transport",
 };
 
+/* Punta Mita has no pricing-tier carousel in Pablo's source — instead a
+   cost-comparison table, a $1,500 savings banner, a 3-course proof grid and
+   a two-operator (GIM / Punta Mita Rentals) transparency section. Different
+   shape, so it gets its own fields rather than reusing `tiers`. Rendered by
+   pages/packages/PuntaMitaPackagePage.jsx. Source: Pablo's
+   golf-in-mexico-punta-mita.html, 2026-08-29. */
+export const PUNTA_MITA = {
+  hub: "punta-mita",
+  hubName: "Punta Mita",
+  canonical: "/destinations/punta-mita/golf-packages",
+  seoTitle: "Punta Mita Golf Packages — Book Your Golf Trip | Golf in Mexico°",
+  seoDescription:
+    "A Punta Mita golf trip priced, assembled and booked by a former PGA Tour agent. Private villas, 36 holes of Jack Nicklaus, and full concierge service on one peninsula.",
+
+  heroLabel: "Punta Mita",
+  h1: "Punta Mita Golf — Book Your Golf Trip with Our Exclusive Perks",
+  heroSub:
+    "Punta Mita has perfected the golf trip for 25+ years. Private villas, in-home dining, airport transport, and full service—priced, assembled, and booked directly by a former PGA Tour agent.",
+  perks: ["Exclusive PM Partner", "Better Tee Time Rates", "Airport Pick-Up", "Full-Time Concierge"],
+  heroPhotos: [
+    "/images/punta-mita/package/hero-coastline-aerial.webp",
+    "/images/punta-mita/package/hero-tour-action.webp",
+    "/images/punta-mita/package/hero-oceanfront-hole.webp",
+    "/images/punta-mita/package/hero-palm-green.webp",
+    "/images/punta-mita/package/hero-tail-whale-sunset.webp",
+  ],
+
+  filmLede: "Punta Mita is home to 100+ private villas and condos—and the operation behind them is what sets it apart.",
+  filmLabel: "Punta Mita, inside the gate.",
+  filmWidePhoto: "/images/punta-mita/package/film-wide-inside-gate.webp",
+  filmTall: [
+    { photo: "/images/punta-mita/package/film-villa.webp", label: "The Villa" },
+    { photo: "/images/punta-mita/package/film-pacifico.webp", label: "Pacífico" },
+    { photo: "/images/punta-mita/package/film-bahia.webp", label: "Bahía" },
+    { photo: "/images/punta-mita/package/film-table.webp", label: "The Table" },
+    { photo: "/images/punta-mita/package/film-group.webp", label: "The Group" },
+  ],
+
+  costTable: {
+    rows: [
+      { label: "Flights", gim: "$300–$520", hotel: "Same either way" },
+      { label: "Accommodation", gim: "$1,140", hotel: "$2,200–$6,000" },
+      { label: "Green fees", gim: "$760", hotel: "$1,000" },
+      { label: "Club rentals", gim: "$150", hotel: "$150" },
+      { label: "Caddies & carts", gim: "$210", hotel: "$210" },
+      { label: "Ground transport", gim: "$0", hotel: "$0" },
+      { label: "Food", gim: "$790", hotel: "$1,200" },
+    ],
+    total: { label: "Total", gim: "$3,460 avg", hotel: "$7,070 avg" },
+  },
+  savingsTarget: 1500,
+  savingsLabel: "Save $1,500+ per person when booking with Golf in Mexico",
+
+  proofHeading: "36 holes of Jack Nicklaus. One private peninsula.",
+  proofCards: [
+    { photo: "/images/punta-mita/package/proof-tail-whale.webp", title: "Tail of the Whale", caption: "Pacífico · 3B — the only natural island green in golf" },
+    { photo: "/images/punta-mita/package/proof-bahia-oceanfront.webp", title: "Bahía Oceanfront", caption: "Bahía · Nicklaus signature along Banderas Bay" },
+    { photo: "/images/punta-mita/package/proof-villa-base.webp", title: "The Villa Base", caption: "100+ private villas · full staff · beach club" },
+  ],
+
+  faqs: [
+    { q: "How much does it cost to play golf in Punta Mita?", a: "Green fees run $325–$400 per round for hotel guests, varying by season and course. Villa-based group bookings cost less per person." },
+    { q: "What is included in a Punta Mita golf package with Golf in Mexico?", a: "Green fees at both courses, villa accommodation, ground transport, and a private chef — meals at the beach club included. We provide a real all-inclusive experience, not just green fees and accommodation." },
+    { q: "Can I play golf in Punta Mita without staying at one of the resort hotels?", a: "Yes. Pacífico and Bahía are accessible through Punta Mita Properties rentals, coordinated by a golf concierge." },
+    { q: "How many players do I need for group pricing at Punta Mita?", a: "Group savings start to apply around 4 players — and scale from there." },
+  ],
+
+  guideLinkText: "Check Out Our Golf in Punta Mita Destination Guide",
+  guideLinkHref: "/destinations/punta-mita",
+  dockMsg: "Preferred access · Morning tee times · Private transport",
+};
+
 export const PACKAGE_PAGES = [CANCUN, LOS_CABOS, PUERTO_VALLARTA];

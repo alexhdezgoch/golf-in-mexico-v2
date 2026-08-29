@@ -24,7 +24,8 @@ import Contact from "@/pages/Contact";
 import Privacy from "@/pages/Privacy";
 import Landing from "@/pages/Landing";
 import PackageBookingPage from "@/pages/packages/PackageBookingPage";
-import { CANCUN, LOS_CABOS, PUERTO_VALLARTA } from "@/data/packagePages";
+import PuntaMitaPackagePage from "@/pages/packages/PuntaMitaPackagePage";
+import { CANCUN, LOS_CABOS, PUERTO_VALLARTA, PUNTA_MITA } from "@/data/packagePages";
 import PackageWaitlistPage from "@/pages/packages/PackageWaitlistPage";
 import PackageNationalPage from "@/pages/packages/PackageNationalPage";
 
@@ -167,6 +168,14 @@ const AnimatedRoutes = () => {
           element={
             <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
               <PackageBookingPage data={PUERTO_VALLARTA} />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/destinations/punta-mita/golf-packages"
+          element={
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
+              <PuntaMitaPackagePage data={PUNTA_MITA} />
             </motion.div>
           }
         />

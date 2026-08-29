@@ -124,6 +124,7 @@ const ROUTE_SOURCE = {
   "/destinations/cancun-riviera-maya/golf-packages": "src/data/packagePages.js",
   "/destinations/los-cabos/golf-packages": "src/data/packagePages.js",
   "/destinations/puerto-vallarta/golf-packages": "src/data/packagePages.js",
+  "/destinations/punta-mita/golf-packages": "src/data/packagePages.js",
   "/destinations/mexico-city/private-access": "src/pages/packages/PackageWaitlistPage.jsx",
   "/golf-packages": "src/pages/packages/PackageNationalPage.jsx",
 };
@@ -406,6 +407,7 @@ async function main() {
     { hub: "cancun-riviera-maya", loc: "/destinations/cancun-riviera-maya/golf-packages", title: "Cancun golf packages", desc: "Three package tiers, airport transfer included, all three Cancun courses in one trip." },
     { hub: "los-cabos", loc: "/destinations/los-cabos/golf-packages", title: "Los Cabos golf packages", desc: "Three package tiers across a 20-mile corridor of Nicklaus, Woods, Norman and Fazio designs." },
     { hub: "puerto-vallarta", loc: "/destinations/puerto-vallarta/golf-packages", title: "Puerto Vallarta golf packages", desc: "Seven courses within 45 minutes of PVR, including the Mexico Open venue at Vidanta." },
+    { hub: "punta-mita", loc: "/destinations/punta-mita/golf-packages", title: "Punta Mita golf packages", desc: "Private villas, 36 holes of Jack Nicklaus, and full concierge service on one peninsula." },
     { hub: "mexico-city", loc: "/destinations/mexico-city/private-access", title: "Mexico City private access", desc: "Mexico City's best golf is private, member-guest only. Join the list and hear first as access opens." },
   ];
   for (const h of hubs) {
@@ -477,6 +479,7 @@ async function main() {
     { loc: "/destinations/cancun-riviera-maya/golf-packages", priority: "0.9", changefreq: "monthly" },
     { loc: "/destinations/los-cabos/golf-packages", priority: "0.9", changefreq: "monthly" },
     { loc: "/destinations/puerto-vallarta/golf-packages", priority: "0.9", changefreq: "monthly" },
+    { loc: "/destinations/punta-mita/golf-packages", priority: "0.9", changefreq: "monthly" },
     { loc: "/destinations/mexico-city/private-access", priority: "0.8", changefreq: "monthly" },
     { loc: "/golf-packages", priority: "0.8", changefreq: "monthly" },
   ].map((r) => ({ ...r, lastmod: gitDate(ROUTE_SOURCE[r.loc]) }));
