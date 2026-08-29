@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
-import { Link, useParams, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useSeo, breadcrumbSchema, faqSchema, videoSchema } from "@/hooks/useSeo";
 import { useHubspotForm } from "@/hooks/useHubspotForm";
 import { trackLead, trackEvent } from "@/lib/analytics";
 import { FORM_KEYS } from "@/config/hubspot";
 import ConsentNotice from "@/components/ConsentNotice";
-import { getLandingData, getLandingByPath, landingPath } from "@/data/landings";
+import { getLandingData, landingPath } from "@/data/landings";
 
 /* ═══════════════════════════════════════════════════════════════════
    Landing · /destinations/:hub/:slug
@@ -239,81 +239,9 @@ const VideoFacade = ({ video }) => {
   );
 };
 
-/* Hero slideshow. Pablo's package pages lead with a rotating set of frames
-   rather than one still. One photo → renders exactly as before, no slider
-   chrome. Auto-advance pauses for prefers-reduced-motion. */
-const HeroPhotos = ({ photos, alt, testId = "landing-hero-photo" }) => {
-  const [i, setI] = useState(0);
-  const many = photos.length > 1;
-
-  useEffect(() => {
-    if (!many) return undefined;
-    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return undefined;
-    const t = setInterval(() => setI((n) => (n + 1) % photos.length), 6000);
-    return () => clearInterval(t);
-  }, [many, photos.length]);
-
-  return (
-    <>
-      {photos.map((src, n) => (
-        <img
-          key={src}
-          src={src}
-          alt={n === 0 ? alt : ""}
-          aria-hidden={n === 0 ? undefined : true}
-          loading={n === 0 ? "eager" : "lazy"}
-          fetchpriority={n === 0 ? "high" : undefined}
-          decoding="async"
-          data-testid={n === 0 ? testId : undefined}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms] ${
-            n === i ? "opacity-100" : "opacity-0"
-          }`}
-        />
-      ))}
-      {many && (
-        <div className="absolute bottom-6 right-6 md:bottom-8 md:right-10 z-20 flex gap-2" data-testid="landing-hero-thumbs">
-          {photos.map((src, n) => (
-            <button
-              key={src}
-              type="button"
-              aria-label={`Show photo ${n + 1}`}
-              aria-current={n === i}
-              onClick={() => setI(n)}
-              className={`h-1.5 rounded-full transition-all ${
-                n === i ? "w-8 bg-white" : "w-4 bg-white/45 hover:bg-white/70"
-              }`}
-            />
-          ))}
-        </div>
-      )}
-    </>
-  );
-};
-
-/* The savings figure. ONE source of truth on purpose: Pablo's HTML animated a
-   counter to 750 but its reduced-motion fallback was hard-coded to "$1,500+",
-   so anyone with that accessibility setting saw double the real number beside
-   copy saying $750+. Here the amount is rendered from the data either way. */
-const SavingsBanner = ({ savings }) => (
-  <section className="py-10 md:py-14 bg-[var(--c-green-deep)] border-t border-white/10">
-    <div className="max-w-[1100px] mx-auto px-6 md:px-12 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
-      <p
-        data-testid="landing-savings-amount"
-        className="font-display text-[var(--c-gold-light)] text-4xl md:text-5xl leading-none"
-      >
-        {savings.amount}
-      </p>
-      <p className="font-body font-light text-white/85 text-base md:text-lg leading-[1.6] max-w-[46ch]">
-        {savings.note}
-      </p>
-    </div>
-  </section>
-);
-
 const Landing = () => {
   const { hub, slug } = useParams();
-  const { pathname } = useLocation();
-  const landing = getLandingData(hub, slug) || getLandingByPath(pathname);
+  const landing = getLandingData(hub, slug);
 
   const path = landing ? landingPath(landing) : "/destinations";
 
@@ -326,10 +254,7 @@ const Landing = () => {
           breadcrumbSchema([
             { name: "Home", path: "/" },
             { name: "Destinations", path: "/destinations" },
-            // The national package page has no parent hub, so it has no hub crumb.
-            ...(landing.hub
-              ? [{ name: landing.hubName, path: `/destinations/${landing.hub}` }]
-              : []),
+            { name: landing.hubName, path: `/destinations/${landing.hub}` },
             { name: landing.name, path },
           ]),
           ...(landing.faqs ? [faqSchema(landing.faqs)] : []),
@@ -384,9 +309,14 @@ const Landing = () => {
             form all sit above the fold. The img is the LCP element — eager,
             high priority, and it's a <200KB local WebP. ─────────────────── */}
       <section className="relative lg:min-h-[92vh] flex items-center pt-28 md:pt-36 pb-12 md:pb-16">
-        <HeroPhotos
-          photos={landing.heroPhotos || [landing.heroPhoto]}
+        <img
+          src={landing.heroPhoto}
           alt={landing.heroAlt}
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          data-testid="landing-hero-photo"
+          className="absolute inset-0 w-full h-full object-cover"
         />
         {/* Scrim: heavier at the top (nav + headline legibility) and the
             bottom, lighter mid-frame so the course still reads as a photo. */}
@@ -448,23 +378,6 @@ const Landing = () => {
                 >
                   {landing.byline}
                 </motion.p>
-              )}
-
-              {landing.heroPerks && (
-                <ul
-                  data-testid="landing-hero-perks"
-                  className="mt-6 flex flex-wrap gap-x-6 gap-y-2"
-                >
-                  {landing.heroPerks.map((perk) => (
-                    <li
-                      key={perk}
-                      className="flex items-center gap-2 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.18em] text-white/85"
-                    >
-                      <span aria-hidden="true" className="text-[var(--c-gold-light)]">✓</span>
-                      {perk}
-                    </li>
-                  ))}
-                </ul>
               )}
             </div>
 
@@ -631,11 +544,6 @@ const Landing = () => {
                     />
                   </div>
                   <div className="flex flex-col flex-1 p-6 md:p-7">
-                    {pkg.tier && (
-                      <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--c-gold)] mb-2">
-                        {pkg.tier}
-                      </p>
-                    )}
                     <h3 className="font-display text-white text-xl md:text-2xl mb-2">{pkg.name}</h3>
                     <p className="font-body font-light text-white/70 text-sm leading-[1.7] mb-5">
                       {pkg.blurb}
@@ -670,9 +578,6 @@ const Landing = () => {
           </div>
         </section>
       )}
-
-      {/* ── SAVINGS ──────────────────────────────────────────────── */}
-      {landing.savings && <SavingsBanner savings={landing.savings} />}
 
       {/* ── ADD-ONS ──────────────────────────────────────────────── */}
       {landing.addOnBody && (
@@ -738,44 +643,6 @@ const Landing = () => {
                 </motion.div>
               ))}
             </div>
-          </div>
-        </section>
-      )}
-
-      {/* ── WHO DOES WHAT — two-operator split + the billing disclaimer.
-            This copy is compliance-shaped: it tells the traveller which company
-            takes their money for what. It ships verbatim. ─────────────────── */}
-      {landing.operators && (
-        <section className="py-12 md:py-20 border-t border-[var(--c-border)]">
-          <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-            <SectionHead
-              label={landing.operatorsLabel}
-              pre={landing.operatorsH2Pre}
-              em={landing.operatorsH2Em}
-            />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12" data-testid="landing-operators">
-              {landing.operators.map((o) => (
-                <motion.div key={o.name} {...fadeUp} className="border-t border-[var(--c-border)] pt-6">
-                  <h3 className="font-display text-[var(--c-text)] text-xl md:text-2xl mb-3">{o.name}</h3>
-                  <p className="font-body font-light text-[var(--c-text-mid)] text-base leading-[1.8]">
-                    {o.role}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-            {landing.operatorsNote && (
-              <p className="mt-8 font-body text-[var(--c-text)] text-base md:text-lg leading-[1.7] max-w-[60ch]">
-                {landing.operatorsNote}
-              </p>
-            )}
-            {landing.operatorsDisclaimer && (
-              <p
-                data-testid="landing-operators-disclaimer"
-                className="mt-5 font-body font-light text-[var(--c-text-mid)] text-sm leading-[1.75] max-w-[80ch]"
-              >
-                {landing.operatorsDisclaimer}
-              </p>
-            )}
           </div>
         </section>
       )}

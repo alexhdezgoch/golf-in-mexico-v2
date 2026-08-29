@@ -118,6 +118,14 @@ const ROUTE_SOURCE = {
   // its date — the policy text is what changes, not the component.
   "/privacy": "src/data/privacy.js",
   "/aviso-de-privacidad": "src/data/privacy.js",
+  // Pablo's three bookable package pages + the Mexico City waitlist + the
+  // national page — ported near-verbatim into their own components rather
+  // than data/landings.js, so they need explicit entries here too.
+  "/destinations/cancun-riviera-maya/golf-packages": "src/data/packagePages.js",
+  "/destinations/los-cabos/golf-packages": "src/data/packagePages.js",
+  "/destinations/puerto-vallarta/golf-packages": "src/data/packagePages.js",
+  "/destinations/mexico-city/private-access": "src/pages/packages/PackageWaitlistPage.jsx",
+  "/golf-packages": "src/pages/packages/PackageNationalPage.jsx",
 };
 const HUB_SOURCE = "src/data/hubs.js";
 const ARTICLE_SOURCE = "src/data/articles.js";
@@ -332,13 +340,9 @@ function renderArticleFull(a) {
 // Landing pages (data/landings.js) are transactional, so their corpus entry is
 // the part an answer engine can actually use: the answer-first paragraph, the
 // specs, the prose, and the FAQ. The form and the CTA copy are skipped.
-// Landings that sit above every hub (the national package page) carry an
-// explicit `path` and no hub, so URLs come from here rather than the hub tree.
-const landingHref = (l) => l.path || `/destinations/${l.hub}/${l.slug}`;
-
 function renderLandingFull(l) {
   let md = `## ${clean(l.name)} — ${clean(l.hubName)}\n\n`;
-  md += `URL: ${BASE}${landingHref(l)}\n\n`;
+  md += `URL: ${BASE}/destinations/${l.hub}/${l.slug}\n\n`;
   md += para(l.heroAnswer);
 
   if (l.specs) {
@@ -396,22 +400,27 @@ async function main() {
   // ---- llms.txt (curated index) ----
   let index = `# Golf in Mexico°\n\n> ${SITE_SUMMARY}\n\n`;
   index += `## Destinations\n\n`;
+  // Pablo's package pages — ported into their own components, not
+  // data/landings.js, so they are listed here by hand rather than derived.
+  const PACKAGE_PAGES = [
+    { hub: "cancun-riviera-maya", loc: "/destinations/cancun-riviera-maya/golf-packages", title: "Cancun golf packages", desc: "Three package tiers, airport transfer included, all three Cancun courses in one trip." },
+    { hub: "los-cabos", loc: "/destinations/los-cabos/golf-packages", title: "Los Cabos golf packages", desc: "Three package tiers across a 20-mile corridor of Nicklaus, Woods, Norman and Fazio designs." },
+    { hub: "puerto-vallarta", loc: "/destinations/puerto-vallarta/golf-packages", title: "Puerto Vallarta golf packages", desc: "Seven courses within 45 minutes of PVR, including the Mexico Open venue at Vidanta." },
+    { hub: "mexico-city", loc: "/destinations/mexico-city/private-access", title: "Mexico City private access", desc: "Mexico City's best golf is private, member-guest only. Join the list and hear first as access opens." },
+  ];
   for (const h of hubs) {
     const desc = truncate(h.seoDescription || h.heroAnswer);
     index += `- [${clean(h.name)} golf guide](${BASE}/destinations/${h.slug}): ${desc}\n`;
     for (const l of landings.filter((x) => x.hub === h.slug)) {
-      index += `  - [${clean(l.name)}](${BASE}${landingHref(l)}): ${truncate(
+      index += `  - [${clean(l.name)}](${BASE}/destinations/${l.hub}/${l.slug}): ${truncate(
         l.seoDescription || l.heroAnswer,
       )}\n`;
     }
+    for (const pkg of PACKAGE_PAGES.filter((x) => x.hub === h.slug)) {
+      index += `  - [${clean(pkg.title)}](${BASE}${pkg.loc}): ${pkg.desc}\n`;
+    }
   }
-  // Landings with no parent hub sit above the destination tree, so they are
-  // listed once at country level rather than nested under a destination.
-  for (const l of landings.filter((x) => !x.hub)) {
-    index += `- [${clean(l.name)}](${BASE}${landingHref(l)}): ${truncate(
-      l.seoDescription || l.heroAnswer,
-    )}\n`;
-  }
+  index += `- [Mexico golf packages](${BASE}/golf-packages): Five regions, one operator — matches your group to the right destination before you book the wrong one.\n`;
   index += `\n## Journal\n\n`;
   for (const a of articles) {
     const desc = truncate(a.metaDescription || a.subtitle);
@@ -463,6 +472,13 @@ async function main() {
     // reads its route list from this sitemap) both pick them up.
     { loc: "/privacy", priority: "0.3", changefreq: "yearly" },
     { loc: "/aviso-de-privacidad", priority: "0.3", changefreq: "yearly" },
+    // Package pages — ads-facing, so they rank with the landings, not the
+    // static marketing pages above.
+    { loc: "/destinations/cancun-riviera-maya/golf-packages", priority: "0.9", changefreq: "monthly" },
+    { loc: "/destinations/los-cabos/golf-packages", priority: "0.9", changefreq: "monthly" },
+    { loc: "/destinations/puerto-vallarta/golf-packages", priority: "0.9", changefreq: "monthly" },
+    { loc: "/destinations/mexico-city/private-access", priority: "0.8", changefreq: "monthly" },
+    { loc: "/golf-packages", priority: "0.8", changefreq: "monthly" },
   ].map((r) => ({ ...r, lastmod: gitDate(ROUTE_SOURCE[r.loc]) }));
   const hubLastmod = gitDate(HUB_SOURCE);
   const hubRoutes = hubs.map((h) => ({
@@ -481,7 +497,7 @@ async function main() {
   // Landings are the paid-traffic destinations, so they rank above the hubs.
   const landingLastmod = gitDate(LANDING_SOURCE);
   const landingRoutes = landings.map((l) => ({
-    loc: landingHref(l),
+    loc: `/destinations/${l.hub}/${l.slug}`,
     priority: "0.9",
     changefreq: "monthly",
     lastmod: landingLastmod,
