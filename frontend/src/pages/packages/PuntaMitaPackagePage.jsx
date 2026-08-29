@@ -192,22 +192,55 @@ const PuntaMitaPackagePage = ({ data }) => {
     });
     cleanups.push(() => faqHandlers.forEach(([q, h]) => q.removeEventListener("click", h)));
 
-    // wide "full film" — click-to-embed YouTube once a real video ID is supplied
+    // wide "full film" — same scroll-triggered behavior as the vertical clips
+    // below: muted autoplay once it's in view, pause once it scrolls away.
+    // A YouTube embed is a cross-origin iframe, so play/pause on an already-
+    // mounted player go through the postMessage command protocol
+    // (enablejsapi=1) rather than a DOM method; loop=1+playlist=id makes a
+    // single-video iframe loop, mirroring the vertical clips' `loop`.
+    const ytCommand = (iframe, func) => {
+      iframe.contentWindow?.postMessage(JSON.stringify({ event: "command", func, args: [] }), "*");
+    };
+    const wideEl = root.querySelector(".vslot.wide");
+    const wideId = (wideEl?.dataset.yt || "").trim();
+    let wideIO;
+    if (wideEl && wideId && "IntersectionObserver" in window) {
+      wideIO = new IntersectionObserver((es) => {
+        es.forEach((e) => {
+          const v = e.target;
+          let iframe = v.querySelector("iframe");
+          if (e.isIntersecting) {
+            if (!iframe) {
+              iframe = document.createElement("iframe");
+              iframe.src = `https://www.youtube-nocookie.com/embed/${wideId}?autoplay=1&mute=1&rel=0&playsinline=1&loop=1&playlist=${wideId}&enablejsapi=1`;
+              iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+              iframe.allowFullscreen = true;
+              v.innerHTML = "";
+              v.appendChild(iframe);
+            } else {
+              ytCommand(iframe, "playVideo");
+            }
+          } else if (iframe) {
+            ytCommand(iframe, "pauseVideo");
+          }
+        });
+      }, { threshold: 0.5 });
+      wideIO.observe(wideEl);
+      cleanups.push(() => wideIO.disconnect());
+    }
+
+    // tap the full film to toggle play/pause manually, same as the clips below
     const wideHandlers = [];
-    root.querySelectorAll(".vslot.wide").forEach((v) => {
+    if (wideEl && wideId) {
       const h = () => {
-        const id = (v.dataset.yt || "").trim();
-        if (!id || v.querySelector("iframe")) return;
-        const f = document.createElement("iframe");
-        f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`;
-        f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-        f.allowFullscreen = true;
-        v.innerHTML = "";
-        v.appendChild(f);
+        const iframe = wideEl.querySelector("iframe");
+        if (!iframe) return;
+        ytCommand(iframe, wideEl.classList.contains("yt-paused") ? "playVideo" : "pauseVideo");
+        wideEl.classList.toggle("yt-paused");
       };
-      v.addEventListener("click", h);
-      wideHandlers.push([v, h]);
-    });
+      wideEl.addEventListener("click", h);
+      wideHandlers.push([wideEl, h]);
+    }
     cleanups.push(() => wideHandlers.forEach(([v, h]) => v.removeEventListener("click", h)));
 
     // the 5 vertical clips — muted autoplay/pause as each scrolls in and out
