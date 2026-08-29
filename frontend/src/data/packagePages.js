@@ -233,8 +233,8 @@ export const PUNTA_MITA = {
     ],
     total: { label: "Total", gim: "$3,460 avg", hotel: "$7,070 avg" },
   },
-  savingsTarget: 1500,
-  savingsLabel: "Save $1,500+ per person when booking with Golf in Mexico",
+  savingsTarget: 750,
+  savingsLabel: "Typically savings $750 per person in GIM Packages",
 
   proofHeading: "36 holes of Jack Nicklaus. One private peninsula.",
   proofCards: [

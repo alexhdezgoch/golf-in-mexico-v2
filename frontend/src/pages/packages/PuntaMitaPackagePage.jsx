@@ -10,15 +10,14 @@ import "./PuntaMitaPackagePage.css";
 
    This page's shape genuinely differs from the three PackageBookingPage
    destinations — no pricing-tier carousel. Instead: a cost-comparison
-   table, a $1,500 savings banner, a 3-course proof grid, and a two-operator
+   table, a $750 savings banner, a 3-course proof grid, and a two-operator
    (Golf in Mexico / Punta Mita Rentals) transparency section. That's why it
    gets its own component rather than reusing PackageBookingPage with a
    different data shape.
 
-   Verified against Pablo's source script: the savings counter here
-   genuinely targets $1,500 (not $750 like the other three pages), and the
-   "+" suffix in both the counter and its label is his own copy — no fix
-   needed, unlike the reduced-motion fallback bug on PackageBookingPage.
+   Pablo's source script had this counter targeting $1,500 with a "+" —
+   Alex corrected it 2026-08-29: the real figure is $750, same as the
+   other three destinations, no "+". Copy now matches sitewide.
    ═══════════════════════════════════════════════════════════════════ */
 
 const PuntaMitaPackagePage = ({ data }) => {
@@ -147,12 +146,12 @@ const PuntaMitaPackagePage = ({ data }) => {
     });
     cleanups.push(() => tabHandlers.forEach(([t, h]) => t.removeEventListener("click", h)));
 
-    // savings counter — targets $1,500 with a trailing "+", Pablo's real copy
+    // savings counter — targets $750, same figure and formatting as the
+    // other three destinations (no "+")
     const amt = saveAmtRef.current;
     let counterIO;
     if (amt) {
       const target = +amt.dataset.target;
-      const suffix = target >= 1500 ? "+" : "";
       if ("IntersectionObserver" in window && !reduced) {
         counterIO = new IntersectionObserver((es) => {
           es.forEach((e) => {
@@ -163,7 +162,7 @@ const PuntaMitaPackagePage = ({ data }) => {
               if (!t0) t0 = t;
               const k = Math.min((t - t0) / 1400, 1);
               const eased = 1 - (1 - k) ** 3;
-              amt.textContent = `$${Math.round(target * eased).toLocaleString("en-US")}${k >= 1 ? suffix : ""}`;
+              amt.textContent = `$${Math.round(target * eased).toLocaleString("en-US")}`;
               if (k < 1) requestAnimationFrame(step);
             };
             requestAnimationFrame(step);
@@ -172,7 +171,7 @@ const PuntaMitaPackagePage = ({ data }) => {
         counterIO.observe(amt);
         cleanups.push(() => counterIO.disconnect());
       } else {
-        amt.textContent = `$${target.toLocaleString("en-US")}${suffix}`;
+        amt.textContent = `$${target.toLocaleString("en-US")}`;
       }
     }
 
