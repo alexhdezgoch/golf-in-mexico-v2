@@ -211,6 +211,7 @@ export const PUNTA_MITA = {
 
   filmLede: "Punta Mita is home to 100+ private villas and condos—and the operation behind them is what sets it apart.",
   filmLabel: "Punta Mita, inside the gate.",
+  filmVideoId: "PGII_IMCWmM",
   filmWidePhoto: "/images/punta-mita/package/film-wide-inside-gate.webp",
   filmTall: [
     { photo: "/images/punta-mita/package/film-villa.webp", label: "The Villa" },

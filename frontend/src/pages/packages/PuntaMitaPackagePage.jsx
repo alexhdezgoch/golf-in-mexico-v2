@@ -271,7 +271,7 @@ const PuntaMitaPackagePage = ({ data }) => {
       <p className="lede" style={{margin: "20px auto 0"}}>{data.filmLede}</p>
     </div>
     <div className="film-frame rv">
-      <div className="vslot wide" data-yt="" style={{ backgroundImage: `url(${data.filmWidePhoto})`, backgroundSize: "cover", backgroundPosition: "center" }}>
+      <div className="vslot wide" data-yt={data.filmVideoId} style={{ backgroundImage: `url(${data.filmWidePhoto})`, backgroundSize: "cover", backgroundPosition: "center" }}>
         <div className="v-ph"><div className="v-play"></div><div className="v-lab"><b>{data.filmLabel}</b>The full film</div></div>
       </div>
       <div className="film-verticals">
