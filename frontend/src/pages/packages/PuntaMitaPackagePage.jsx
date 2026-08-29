@@ -24,6 +24,7 @@ import "./PuntaMitaPackagePage.css";
 const PuntaMitaPackagePage = ({ data }) => {
   const rootRef = useRef(null);
   const saveAmtRef = useRef(null);
+  const tallVideoRefs = useRef([]);
 
   useSeo({
     title: data.seoTitle,
@@ -191,40 +192,62 @@ const PuntaMitaPackagePage = ({ data }) => {
     });
     cleanups.push(() => faqHandlers.forEach(([q, h]) => q.removeEventListener("click", h)));
 
-    // film — click-to-embed: a YouTube ID gets the iframe embed, a local clip
-    // (the 5 tall slots' own vertical films) gets a native <video> instead
-    const videoHandlers = [];
-    root.querySelectorAll(".vslot").forEach((v) => {
+    // wide "full film" — click-to-embed YouTube once a real video ID is supplied
+    const wideHandlers = [];
+    root.querySelectorAll(".vslot.wide").forEach((v) => {
       const h = () => {
-        if (v.querySelector("iframe, video")) return;
         const id = (v.dataset.yt || "").trim();
-        const src = (v.dataset.src || "").trim();
-        if (id) {
-          const f = document.createElement("iframe");
-          f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`;
-          f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-          f.allowFullscreen = true;
-          v.innerHTML = "";
-          v.appendChild(f);
-        } else if (src) {
-          const vid = document.createElement("video");
-          vid.src = src;
-          vid.controls = true;
-          vid.playsInline = true;
-          vid.style.cssText = "position:absolute;inset:0;width:100%;height:100%;object-fit:cover";
-          v.innerHTML = "";
-          v.appendChild(vid);
-          // explicit play() (not just the `autoplay` attribute) so this counts
-          // as part of the click's user-activation and isn't silently blocked
-          // by browser autoplay policy; on rejection the native controls are
-          // already visible so the visitor can just press play themselves
-          vid.play().catch(() => {});
-        }
+        if (!id || v.querySelector("iframe")) return;
+        const f = document.createElement("iframe");
+        f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`;
+        f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        f.allowFullscreen = true;
+        v.innerHTML = "";
+        v.appendChild(f);
       };
       v.addEventListener("click", h);
-      videoHandlers.push([v, h]);
+      wideHandlers.push([v, h]);
     });
-    cleanups.push(() => videoHandlers.forEach(([v, h]) => v.removeEventListener("click", h)));
+    cleanups.push(() => wideHandlers.forEach(([v, h]) => v.removeEventListener("click", h)));
+
+    // the 5 vertical clips — muted autoplay/pause as each scrolls in and out
+    // of view (Reels-style), not click-to-play: they're short silent teaser
+    // loops, unlike the wide slot's deliberate full-film watch with sound.
+    const tallVideos = tallVideoRefs.current.filter(Boolean);
+    // belt-and-suspenders: the JSX `muted` prop doesn't reliably stick on
+    // <video> across browsers/React versions, and an unmuted autoplay()
+    // call is silently blocked rather than erroring — so it would look
+    // exactly like "doesn't play" again. Force the property directly.
+    tallVideos.forEach((v) => { v.muted = true; });
+    let filmIO;
+    if (tallVideos.length && "IntersectionObserver" in window && !reduced) {
+      filmIO = new IntersectionObserver((es) => {
+        es.forEach((e) => {
+          const vid = e.target;
+          const slot = vid.closest(".vslot");
+          if (e.isIntersecting) {
+            vid.play().catch(() => {});
+            slot?.classList.add("playing");
+          } else {
+            vid.pause();
+            slot?.classList.remove("playing");
+          }
+        });
+      }, { threshold: 0.5 });
+      tallVideos.forEach((v) => filmIO.observe(v));
+      cleanups.push(() => filmIO.disconnect());
+    }
+
+    // tap a clip to override the auto-behavior (pause a playing one, resume a paused one)
+    const tallClickHandlers = [];
+    root.querySelectorAll(".vslot.tall").forEach((slot) => {
+      const vid = slot.querySelector("video");
+      if (!vid) return;
+      const h = () => { if (vid.paused) { vid.play().catch(() => {}); } else { vid.pause(); } };
+      slot.addEventListener("click", h);
+      tallClickHandlers.push([slot, h]);
+    });
+    cleanups.push(() => tallClickHandlers.forEach(([s, h]) => s.removeEventListener("click", h)));
 
     return () => cleanups.forEach((fn) => fn());
   }, []);
@@ -293,8 +316,18 @@ const PuntaMitaPackagePage = ({ data }) => {
       </div>
       <div className="film-verticals">
         {data.filmTall.map((f, i) => (
-          <div className="vslot tall" data-src={f.video} key={f.label} style={{ backgroundImage: `url(${f.photo})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-            <div className="v-ph"><div className="v-play"></div><div className="v-lab"><b>{f.label}</b>Short · 0{i + 1}</div></div>
+          <div className="vslot tall" key={f.label}>
+            <video
+              ref={(el) => { tallVideoRefs.current[i] = el; }}
+              className="vslot-video"
+              src={f.video}
+              poster={f.photo}
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            />
+            <div className="v-ph"><div className="v-lab"><b>{f.label}</b>Short · 0{i + 1}</div></div>
           </div>
         ))}
       </div>
