@@ -140,10 +140,11 @@ export const PUERTO_VALLARTA = {
     "We have tailored a golf trip designed to deliver maximum value for your Puerto Vallarta golf trip — priced, assembled, and booked directly by a former PGA Tour agent rather than a call center representative reading from a rate card.",
   perks: PERKS,
   heroPhotos: [
-    "/images/3z3gpvuk-81f3f231-303b-42ae-969b-440d82c25c70-1-105-c.webp",
-    "/images/jbqxmvek-b9218c30-f95e-41c2-a24a-a9867eb4de7c-1-105-c.webp",
+    "/images/puerto-vallarta/fairway-walk.webp",
+    "/images/puerto-vallarta/eighteenth-green-sunset.webp",
+    "/images/puerto-vallarta/clubhouse-dusk.webp",
+    "/images/puerto-vallarta/mexico-open-lake.webp",
     "/images/4snhxxzm-e8cf1585-fc08-494c-ad51-ecf8f27b8f26-1-105-c.webp",
-    "/images/wqf7n1js-fa4fd2fc-6222-4e3b-ad57-f9cc947b5aeb-1-105-c.webp",
   ],
 
   filmLede: "Puerto Vallarta holds the region's only PGA Tour venue, plus Nicklaus and Weiskopf side by side at Vista Vallarta. Book it once, repeat it every year.",
