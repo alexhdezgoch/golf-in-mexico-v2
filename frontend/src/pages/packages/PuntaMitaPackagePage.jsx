@@ -210,11 +210,15 @@ const PuntaMitaPackagePage = ({ data }) => {
           const vid = document.createElement("video");
           vid.src = src;
           vid.controls = true;
-          vid.autoplay = true;
           vid.playsInline = true;
           vid.style.cssText = "position:absolute;inset:0;width:100%;height:100%;object-fit:cover";
           v.innerHTML = "";
           v.appendChild(vid);
+          // explicit play() (not just the `autoplay` attribute) so this counts
+          // as part of the click's user-activation and isn't silently blocked
+          // by browser autoplay policy; on rejection the native controls are
+          // already visible so the visitor can just press play themselves
+          vid.play().catch(() => {});
         }
       };
       v.addEventListener("click", h);
