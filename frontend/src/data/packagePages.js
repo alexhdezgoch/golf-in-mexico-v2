@@ -29,10 +29,11 @@ export const CANCUN = {
     "We have tailored a golf trip designed to deliver maximum value for your Cancun golf trip—priced, assembled, and booked directly by a former PGA Tour agent rather than a call center representative reading from a rate card.",
   perks: PERKS,
   heroPhotos: [
-    "/images/e9jy3mtt-6d0178a2-8a06-4752-bbe4-3ae6b5a70413-1-105-c.webp",
-    "/images/newnok86-b9ce778b-517c-4a10-8f13-e5b8156efb2c-1-105-c.webp",
-    "/images/jsn8nf92-edf7bcf8-0376-48ee-9113-e1bddba9cb45-1-105-c.webp",
-    "/images/soiqih16-92f4cd01-830e-40d0-b77b-71a908b90e27-1-105-c.webp",
+    "/images/cancun/bunker-blast.webp",
+    "/images/cancun/resort-pool.webp",
+    "/images/cancun/green-flag.webp",
+    "/images/cancun/pot-bunker.webp",
+    "/images/cancun/putting-green.webp",
   ],
 
   filmLede: "All-inclusive resorts bundle golf into the room rate. The all-inclusive arbitrage is the entire game here.",
