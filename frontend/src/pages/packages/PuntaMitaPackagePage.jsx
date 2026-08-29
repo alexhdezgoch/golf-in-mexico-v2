@@ -191,18 +191,31 @@ const PuntaMitaPackagePage = ({ data }) => {
     });
     cleanups.push(() => faqHandlers.forEach(([q, h]) => q.removeEventListener("click", h)));
 
-    // film — click-to-embed YouTube once a real video ID is supplied
+    // film — click-to-embed: a YouTube ID gets the iframe embed, a local clip
+    // (the 5 tall slots' own vertical films) gets a native <video> instead
     const videoHandlers = [];
     root.querySelectorAll(".vslot").forEach((v) => {
       const h = () => {
+        if (v.querySelector("iframe, video")) return;
         const id = (v.dataset.yt || "").trim();
-        if (!id || v.querySelector("iframe")) return;
-        const f = document.createElement("iframe");
-        f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`;
-        f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-        f.allowFullscreen = true;
-        v.innerHTML = "";
-        v.appendChild(f);
+        const src = (v.dataset.src || "").trim();
+        if (id) {
+          const f = document.createElement("iframe");
+          f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`;
+          f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+          f.allowFullscreen = true;
+          v.innerHTML = "";
+          v.appendChild(f);
+        } else if (src) {
+          const vid = document.createElement("video");
+          vid.src = src;
+          vid.controls = true;
+          vid.autoplay = true;
+          vid.playsInline = true;
+          vid.style.cssText = "position:absolute;inset:0;width:100%;height:100%;object-fit:cover";
+          v.innerHTML = "";
+          v.appendChild(vid);
+        }
       };
       v.addEventListener("click", h);
       videoHandlers.push([v, h]);
@@ -276,7 +289,7 @@ const PuntaMitaPackagePage = ({ data }) => {
       </div>
       <div className="film-verticals">
         {data.filmTall.map((f, i) => (
-          <div className="vslot tall" data-yt="" key={f.label} style={{ backgroundImage: `url(${f.photo})`, backgroundSize: "cover", backgroundPosition: "center" }}>
+          <div className="vslot tall" data-src={f.video} key={f.label} style={{ backgroundImage: `url(${f.photo})`, backgroundSize: "cover", backgroundPosition: "center" }}>
             <div className="v-ph"><div className="v-play"></div><div className="v-lab"><b>{f.label}</b>Short · 0{i + 1}</div></div>
           </div>
         ))}
