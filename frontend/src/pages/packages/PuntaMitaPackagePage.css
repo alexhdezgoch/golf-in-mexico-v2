@@ -71,7 +71,8 @@
 .pkgPuntaMita .thumb.t4{background-image:linear-gradient(135deg,#3a3226 0%,#1f1a14 100%)}
 .pkgPuntaMita .thumb.t5{background-image:linear-gradient(135deg,#3a3226 0%,#1f1a14 100%)}
 @media (max-width:900px){.pkgPuntaMita .hero-inner{grid-template-columns:1fr;gap:28px}.pkgPuntaMita .thumbs{align-items:flex-start}.pkgPuntaMita .thumb{width:52px;height:38px}}
-.pkgPuntaMita .subnav{position:sticky;top:64px;z-index:60;background:rgba(246,242,232,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(26,23,20,.14)}
+.pkgPuntaMita .subnav{position:sticky;top:57px;z-index:60;background:rgba(246,242,232,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(26,23,20,.14)}
+@media (min-width:768px){.pkgPuntaMita .subnav{top:65px}}
 .pkgPuntaMita .subnav-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none;padding:0 clamp(20px,3.5vw,44px);-webkit-overflow-scrolling:touch;touch-action:pan-x}
 .pkgPuntaMita #film, .pkgPuntaMita #problem, .pkgPuntaMita #proof, .pkgPuntaMita #handled, .pkgPuntaMita #faq, .pkgPuntaMita #final{scroll-margin-top:120px}
 .pkgPuntaMita .subnav-inner::-webkit-scrollbar{display:none}
@@ -93,10 +94,6 @@
 .pkgPuntaMita .duo-block p{font-family:var(--font-display);font-size:clamp(1.02rem,1.35vw,1.2rem);line-height:1.62;margin:0;color:#3E382C}
 .pkgPuntaMita .duo-block.answer p{color:var(--c-text)}
 .pkgPuntaMita .duo-block.answer{border-left:1px solid rgba(26,23,20,.14);padding-left:clamp(24px,3vw,48px)}
-.pkgPuntaMita .stamp{display:flex;align-items:center;gap:14px;margin-top:28px}
-.pkgPuntaMita .stamp-mark{font-family:var(--font-display);font-size:.95rem;color:var(--c-gold);border:1px solid var(--c-gold);border-radius:50%;width:46px;height:46px;display:flex;align-items:center;justify-content:center;transform:rotate(-7deg);flex-shrink:0}
-.pkgPuntaMita .stamp-text{font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(34,30,23,.55);line-height:1.9}
-.pkgPuntaMita .stamp-text b{color:var(--c-text);font-weight:600;display:block}
 @media (max-width:820px){.pkgPuntaMita .duo-grid{grid-template-columns:1fr}.pkgPuntaMita .duo-block.answer{border-left:none;border-top:1px solid rgba(26,23,20,.14);padding-left:0;padding-top:36px}}
 .pkgPuntaMita .tiers-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,96px);align-items:start}
 .pkgPuntaMita .tiers-intro{position:sticky;top:130px}

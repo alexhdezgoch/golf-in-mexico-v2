@@ -319,10 +319,6 @@ const PuntaMitaPackagePage = ({ data }) => {
         <div className="v-ph"><div className="v-play"></div><div className="v-lab"><b>{data.filmLabel}</b>The full film</div></div>
       </div>
     </div>
-    <div className="stamp" style={{marginTop: "32px", justifyContent: "center", display: "flex"}}>
-      <div className="stamp-mark">PM</div>
-      <div className="stamp-text"><b>Pablo De La Mora</b>PGA / LPGA / WTA Agent, 5+ years</div>
-    </div>
   </div>
 </section>
 
