@@ -119,6 +119,24 @@ const PuntaMitaPackagePage = ({ data }) => {
         });
         cleanups.push(() => spyIO.disconnect());
       }
+
+      // WebKit/Safari doesn't apply `scroll-margin-top` to a native #hash
+      // fragment jump (only to a JS-invoked scrollIntoView), so clicking a
+      // link here landed on the section's content instead of its heading
+      // on iPhone even though the CSS was correct. Drive the scroll
+      // manually instead — scrollIntoView honors scroll-margin-top
+      // everywhere, including Safari.
+      const navClickHandlers = [];
+      subnav.querySelectorAll("a[data-spy]").forEach((a) => {
+        const h = (e) => {
+          e.preventDefault();
+          const el = root.querySelector(`#${a.dataset.spy}`);
+          if (el) el.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+        };
+        a.addEventListener("click", h);
+        navClickHandlers.push([a, h]);
+      });
+      cleanups.push(() => navClickHandlers.forEach(([a, h]) => a.removeEventListener("click", h)));
     }
 
     // tabs (no-op — no .tab/.panel on this page; present for parity with
