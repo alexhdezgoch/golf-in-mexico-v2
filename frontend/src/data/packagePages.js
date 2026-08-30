@@ -213,13 +213,6 @@ export const PUNTA_MITA = {
   filmLabel: "Punta Mita, inside the gate.",
   filmVideoId: "PGII_IMCWmM",
   filmWidePhoto: "/images/punta-mita/package/film-wide-inside-gate.webp",
-  filmTall: [
-    { photo: "/images/punta-mita/package/film-golf-nicklaus.webp", video: "/videos/punta-mita/golf-nicklaus.mp4", label: "36 Holes of Nicklaus" },
-    { photo: "/images/punta-mita/package/film-the-villas.webp", video: "/videos/punta-mita/the-villas.mp4", label: "100+ Private Villas" },
-    { photo: "/images/punta-mita/package/film-food-lovers.webp", video: "/videos/punta-mita/food-lovers.mp4", label: "A Food Lovers' Paradise" },
-    { photo: "/images/punta-mita/package/film-surf-yachts-wellness.webp", video: "/videos/punta-mita/surf-yachts-wellness.mp4", label: "Surf, Yachts & Wellness" },
-    { photo: "/images/punta-mita/package/film-beach-clubs.webp", video: "/videos/punta-mita/beach-clubs.mp4", label: "5+ Beach Clubs" },
-  ],
 
   costTable: {
     rows: [
@@ -252,7 +245,6 @@ export const PUNTA_MITA = {
 
   guideLinkText: "Check Out Our Golf in Punta Mita Destination Guide",
   guideLinkHref: "/destinations/punta-mita",
-  dockMsg: "Preferred access · Morning tee times · Private transport",
 };
 
 export const PACKAGE_PAGES = [CANCUN, LOS_CABOS, PUERTO_VALLARTA];

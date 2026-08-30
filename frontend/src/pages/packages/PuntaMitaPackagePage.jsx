@@ -23,7 +23,6 @@ import "./PuntaMitaPackagePage.css";
 const PuntaMitaPackagePage = ({ data }) => {
   const rootRef = useRef(null);
   const saveAmtRef = useRef(null);
-  const tallVideoRefs = useRef([]);
 
   useSeo({
     title: data.seoTitle,
@@ -122,15 +121,6 @@ const PuntaMitaPackagePage = ({ data }) => {
       }
     }
 
-    // mobile dock — shows after the reader clears the hero
-    const dock = root.querySelector("#dock");
-    const onScroll = () => {
-      if (dock) dock.classList.toggle("show", window.scrollY > window.innerHeight * 0.6);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    cleanups.push(() => window.removeEventListener("scroll", onScroll));
-
     // tabs (no-op — no .tab/.panel on this page; present for parity with
     // the shared script base, same as PackageBookingPage)
     const tabHandlers = [];
@@ -191,12 +181,11 @@ const PuntaMitaPackagePage = ({ data }) => {
     });
     cleanups.push(() => faqHandlers.forEach(([q, h]) => q.removeEventListener("click", h)));
 
-    // wide "full film" — same scroll-triggered behavior as the vertical clips
-    // below: muted autoplay once it's in view, pause once it scrolls away.
-    // A YouTube embed is a cross-origin iframe, so play/pause on an already-
-    // mounted player go through the postMessage command protocol
-    // (enablejsapi=1) rather than a DOM method; loop=1+playlist=id makes a
-    // single-video iframe loop, mirroring the vertical clips' `loop`.
+    // wide "full film" — muted autoplay once it's in view, pause once it
+    // scrolls away. A YouTube embed is a cross-origin iframe, so play/pause
+    // on an already-mounted player go through the postMessage command
+    // protocol (enablejsapi=1) rather than a DOM method; loop=1+playlist=id
+    // makes a single-video iframe loop.
     const ytCommand = (iframe, func) => {
       iframe.contentWindow?.postMessage(JSON.stringify({ event: "command", func, args: [] }), "*");
     };
@@ -216,6 +205,10 @@ const PuntaMitaPackagePage = ({ data }) => {
               iframe.allowFullscreen = true;
               v.innerHTML = "";
               v.appendChild(iframe);
+              // the static poster lives on this div's own inline style, not
+              // just its (now-removed) .v-ph overlay — clear it once the
+              // video mounts so no sliver of it shows at the frame's edge
+              v.style.backgroundImage = "none";
             } else {
               ytCommand(iframe, "playVideo");
             }
@@ -228,7 +221,7 @@ const PuntaMitaPackagePage = ({ data }) => {
       cleanups.push(() => wideIO.disconnect());
     }
 
-    // tap the full film to toggle play/pause manually, same as the clips below
+    // tap the full film to toggle play/pause manually
     const wideHandlers = [];
     if (wideEl && wideId) {
       const h = () => {
@@ -241,45 +234,6 @@ const PuntaMitaPackagePage = ({ data }) => {
       wideHandlers.push([wideEl, h]);
     }
     cleanups.push(() => wideHandlers.forEach(([v, h]) => v.removeEventListener("click", h)));
-
-    // the 5 vertical clips — muted autoplay/pause as each scrolls in and out
-    // of view (Reels-style), not click-to-play: they're short silent teaser
-    // loops, unlike the wide slot's deliberate full-film watch with sound.
-    const tallVideos = tallVideoRefs.current.filter(Boolean);
-    // belt-and-suspenders: the JSX `muted` prop doesn't reliably stick on
-    // <video> across browsers/React versions, and an unmuted autoplay()
-    // call is silently blocked rather than erroring — so it would look
-    // exactly like "doesn't play" again. Force the property directly.
-    tallVideos.forEach((v) => { v.muted = true; });
-    let filmIO;
-    if (tallVideos.length && "IntersectionObserver" in window && !reduced) {
-      filmIO = new IntersectionObserver((es) => {
-        es.forEach((e) => {
-          const vid = e.target;
-          const slot = vid.closest(".vslot");
-          if (e.isIntersecting) {
-            vid.play().catch(() => {});
-            slot?.classList.add("playing");
-          } else {
-            vid.pause();
-            slot?.classList.remove("playing");
-          }
-        });
-      }, { threshold: 0.5 });
-      tallVideos.forEach((v) => filmIO.observe(v));
-      cleanups.push(() => filmIO.disconnect());
-    }
-
-    // tap a clip to override the auto-behavior (pause a playing one, resume a paused one)
-    const tallClickHandlers = [];
-    root.querySelectorAll(".vslot.tall").forEach((slot) => {
-      const vid = slot.querySelector("video");
-      if (!vid) return;
-      const h = () => { if (vid.paused) { vid.play().catch(() => {}); } else { vid.pause(); } };
-      slot.addEventListener("click", h);
-      tallClickHandlers.push([slot, h]);
-    });
-    cleanups.push(() => tallClickHandlers.forEach(([s, h]) => s.removeEventListener("click", h)));
 
     return () => cleanups.forEach((fn) => fn());
   }, []);
@@ -345,23 +299,6 @@ const PuntaMitaPackagePage = ({ data }) => {
     <div className="film-frame rv">
       <div className="vslot wide" data-yt={data.filmVideoId} style={{ backgroundImage: `url(${data.filmWidePhoto})`, backgroundSize: "cover", backgroundPosition: "center" }}>
         <div className="v-ph"><div className="v-play"></div><div className="v-lab"><b>{data.filmLabel}</b>The full film</div></div>
-      </div>
-      <div className="film-verticals">
-        {data.filmTall.map((f, i) => (
-          <div className="vslot tall" key={f.label}>
-            <video
-              ref={(el) => { tallVideoRefs.current[i] = el; }}
-              className="vslot-video"
-              src={f.video}
-              poster={f.photo}
-              muted
-              loop
-              playsInline
-              preload="metadata"
-            />
-            <div className="v-ph"><div className="v-lab"><b>{f.label}</b>Short · 0{i + 1}</div></div>
-          </div>
-        ))}
       </div>
     </div>
     <div className="stamp" style={{marginTop: "32px", justifyContent: "center", display: "flex"}}>
@@ -490,12 +427,6 @@ const PuntaMitaPackagePage = ({ data }) => {
     <br/>
     <Link to={data.guideLinkHref} className="guide-link">{data.guideLinkText} →</Link>
   </div>
-</div>
-
-<div className="dock" id="dock">
-  <span className="dock-msg">{data.dockMsg}</span>
-  <a href="#problem" className="btn ghostd">See Pricing</a>
-  <Link to="/trip-builder" className="btn solid">Claim Preferred Rates &amp; Perks →</Link>
 </div>
     </main>
   );
