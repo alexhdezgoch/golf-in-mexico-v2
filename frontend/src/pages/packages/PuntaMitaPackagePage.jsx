@@ -268,26 +268,23 @@ const PuntaMitaPackagePage = ({ data }) => {
     <div className="slide k5"><i style={{ backgroundImage: `url(${data.heroPhotos[4 % data.heroPhotos.length]})` }} /></div>
   </div>
   <div className="hero-inner">
-    <div>
+    <div className="hero-content">
       <div className="hero-eyebrow"><span className="label">{data.heroLabel}</span></div>
       <h1>{data.h1}</h1>
       <p className="hero-sub">{data.heroSub}</p>
-      <div className="perks">
-        {data.perks.map((p) => <span className="perk" key={p}>{p}</span>)}
-      </div>
       <div className="hero-ctas">
         <a href="https://golf-in-mexico.com/trip-builder" target="_blank" rel="noopener" className="btn solid">Claim Preferred Rates &amp; Perks →</a>
         <a href="#problem" className="btn ghost">Why Us? →</a>
       </div>
-    </div>
-    <div className="thumbs">
-      <span className="thumbs-label">The Peninsula</span>
-      <div className="thumbs-row">
-        <button className="thumb t1 on" data-slide="0" aria-label="Photo 1" style={{ backgroundImage: `url(${data.heroPhotos[0 % data.heroPhotos.length]})` }} />
-        <button className="thumb t2" data-slide="1" aria-label="Photo 2" style={{ backgroundImage: `url(${data.heroPhotos[1 % data.heroPhotos.length]})` }} />
-        <button className="thumb t3" data-slide="2" aria-label="Photo 3" style={{ backgroundImage: `url(${data.heroPhotos[2 % data.heroPhotos.length]})` }} />
-        <button className="thumb t4" data-slide="3" aria-label="Photo 4" style={{ backgroundImage: `url(${data.heroPhotos[3 % data.heroPhotos.length]})` }} />
-        <button className="thumb t5" data-slide="4" aria-label="Photo 5" style={{ backgroundImage: `url(${data.heroPhotos[4 % data.heroPhotos.length]})` }} />
+      <ul className="hero-perks-list">
+        {data.perks.map((p) => <li key={p}>{p}</li>)}
+      </ul>
+      <div className="hero-dots">
+        <button className="thumb t1 on" data-slide="0" aria-label="Photo 1" />
+        <button className="thumb t2" data-slide="1" aria-label="Photo 2" />
+        <button className="thumb t3" data-slide="2" aria-label="Photo 3" />
+        <button className="thumb t4" data-slide="3" aria-label="Photo 4" />
+        <button className="thumb t5" data-slide="4" aria-label="Photo 5" />
       </div>
     </div>
   </div>
@@ -352,6 +349,8 @@ const PuntaMitaPackagePage = ({ data }) => {
   </div>
 </section>
 
+<div className="photo-divider pd-1" aria-hidden="true" style={{ backgroundImage: `url(${data.heroPhotos[0]})` }} />
+
 {/* ————— VISUAL PROOF ————— */}
 <section className="section" id="proof" style={{paddingTop: "0"}}>
   <div className="wrap">
@@ -360,14 +359,16 @@ const PuntaMitaPackagePage = ({ data }) => {
       <h2>{data.proofHeading}</h2>
     </div>
     <div className="proof-grid rv">
-      {data.proofCards.map((c) => (
-        <div className="pcard" key={c.title} style={{ backgroundImage: `url(${c.photo})` }}>
+      {data.proofCards.map((c, i) => (
+        <div className={`pcard pc${i + 1}`} key={c.title} style={{ backgroundImage: `url(${c.photo})` }}>
           <span>{c.title}<small>{c.caption}</small></span>
         </div>
       ))}
     </div>
   </div>
 </section>
+
+<div className="photo-divider pd-2" aria-hidden="true" style={{ backgroundImage: `url(${data.heroPhotos[4 % data.heroPhotos.length]})` }} />
 
 {/* ————— HANDLED ————— */}
 <section className="section" id="handled">
@@ -412,6 +413,8 @@ const PuntaMitaPackagePage = ({ data }) => {
     </details>
   </div>
 </section>
+
+<div className="photo-divider pd-3" aria-hidden="true" style={{ backgroundImage: `url(${data.heroPhotos[2]})` }} />
 
 {/* ————— FAQ ————— */}
 <section className="section" id="faq" style={{paddingTop: "0"}}>
