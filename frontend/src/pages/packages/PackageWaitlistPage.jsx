@@ -34,11 +34,14 @@ import "./PackageWaitlistPage.css";
    carried over verbatim. v5's hero has no perks list, so none is invented.
    ═══════════════════════════════════════════════════════════════════ */
 
+// Pablo's CDMX shoot (received 2026-09-01), resized 2000px → webp q80.
+// 5 photos: the 5 hero slides map 1:1 (no more % wrap repeats).
 const PHOTOS = [
-  "/images/duzvawrv-img-3845.webp",
-  "/images/7240pgi5-screenshot-2026-06-10-at-1-53-33-p-m.webp",
-  "/images/3npawpvw-screenshot-2026-06-10-at-1-53-50-p-m.webp",
-  "/images/1hcyue43-screenshot-2026-06-10-at-1-53-59-p-m.webp",
+  "/images/mexico-city/hero-volcano-fairway.webp",
+  "/images/mexico-city/hero-tree-bunker.webp",
+  "/images/mexico-city/hero-misty-dawn.webp",
+  "/images/mexico-city/hero-morning-rays.webp",
+  "/images/mexico-city/hero-greenkeeper-dawn.webp",
 ];
 
 const FAQS = [
