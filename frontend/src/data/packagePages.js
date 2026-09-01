@@ -93,6 +93,7 @@ export const LOS_CABOS = {
 
   filmLede: "Cabo holds Mexico's highest concentration of signature oceanfront golf. Book it once, repeat it every year.",
   filmLabel: "Los Cabos, golf-side.",
+  filmVideoId: "tG2jjv249Bw",
 
   tiers: [
     {

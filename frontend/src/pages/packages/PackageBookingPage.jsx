@@ -356,7 +356,7 @@ const PackageBookingPage = ({ data }) => {
       <p className="lede" style={{margin: "20px auto 0"}}>{data.filmLede}</p>
     </div>
     <div className="film-frame rv">
-      <div className="vslot wide" data-yt="">
+      <div className="vslot wide" data-yt={data.filmVideoId || ""}>
         <div className="v-ph"><div className="v-play"></div><div className="v-lab"><b>{data.filmLabel}</b>The full film</div></div>
       </div>
       <div className="film-verticals">

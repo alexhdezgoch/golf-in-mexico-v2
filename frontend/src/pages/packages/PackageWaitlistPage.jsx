@@ -249,7 +249,7 @@ const PackageWaitlistPage = () => {
       <p className="lede" style={{margin: "20px auto 0"}}>Clubs here have hosted the biggest names in the sport — Tiger Woods, Dustin Johnson, the WGC-Mexico Championship — and they don't open their gates to outside golfers. We're building the relationships to change that for Mexico City, the way we already have in Los Cabos.</p>
     </div>
     <div className="film-frame rv">
-      <div className="vslot wide" data-yt="">
+      <div className="vslot wide" data-yt="d-ebc_mJABo">
         <div className="v-ph"><div className="v-play"></div><div className="v-lab"><b>Mexico City, golf-side.</b>The full film</div></div>
       </div>
     </div>
