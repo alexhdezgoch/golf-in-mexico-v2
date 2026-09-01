@@ -20,19 +20,22 @@ import "./PackageNationalPage.css";
    package pages.
    ═══════════════════════════════════════════════════════════════════ */
 
+// Pablo's own NATIONAL photo set (Drive folder, received 2026-09-01),
+// resized to 2000px and converted to webp.
 const HERO_PHOTOS = [
-  "/images/punta-mita/punta-mita-pacifico-tail-of-the-whale-island-green-aerial.webp",
-  "/images/0wyp4brb-cabo-photo.webp",
-  "/images/3z3gpvuk-81f3f231-303b-42ae-969b-440d82c25c70-1-105-c.webp",
-  "/images/e9jy3mtt-6d0178a2-8a06-4752-bbe4-3ae6b5a70413-1-105-c.webp",
+  "/images/national/hero-punta-mita-coastline.webp",
+  "/images/national/hero-mandarina-bunkers.webp",
+  "/images/national/hero-cancun-jungle-lake.webp",
+  "/images/national/hero-cdmx-volcano-fairway.webp",
+  "/images/national/hero-parkland-dusk.webp",
 ];
 
 const REGION_PHOTOS = {
-  cancun: "/images/e9jy3mtt-6d0178a2-8a06-4752-bbe4-3ae6b5a70413-1-105-c.webp",
-  loscabos: "/images/0wyp4brb-cabo-photo.webp",
-  vallarta: "/images/3z3gpvuk-81f3f231-303b-42ae-969b-440d82c25c70-1-105-c.webp",
-  cdmx: "/images/duzvawrv-img-3845.webp",
-  unique: "/images/punta-mita/punta-mita-pacifico-tail-of-the-whale-island-green-aerial.webp",
+  cancun: "/images/national/hero-cancun-jungle-lake.webp",
+  loscabos: "/images/national/region-cabo-desert-course.webp",
+  vallarta: "/images/national/hero-mandarina-bunkers.webp",
+  cdmx: "/images/national/hero-cdmx-volcano-fairway.webp",
+  unique: "/images/national/region-unique-hill-green.webp",
 };
 
 const FAQS = [
