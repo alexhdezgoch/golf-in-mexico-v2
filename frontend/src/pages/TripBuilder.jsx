@@ -444,14 +444,15 @@ const TripBuilder = () => {
               ↓
             </button>
 
-            {/* Exclusivity banner — high contrast */}
+            {/* Exclusivity banner — no dark box: sits on the page background,
+                green text sized up, closer sentence in gold (Alex, 2026-09-01) */}
             <div
               data-testid="tb-scarcity"
-              className="mt-10 flex items-start gap-3 bg-[var(--c-green-deep)] text-white px-6 py-4 rounded-sm max-w-[620px] text-left"
+              className="mt-10 flex items-start gap-3 px-6 py-4 max-w-[680px] text-left"
             >
-              <span className="w-2 h-2 rounded-full bg-[var(--c-gold)] animate-pulse shrink-0 mt-[7px]" />
-              <p className="font-body font-light text-[13px] md:text-[14px] leading-[1.7]">
-                When you block your dates, they&apos;re yours alone — we don&apos;t run another trip at the same time. It&apos;s how we protect the attention to detail every trip deserves. <span className="font-bold">We&apos;re filling 2026 now.</span>
+              <span className="w-2 h-2 rounded-full bg-[var(--c-gold)] animate-pulse shrink-0 mt-[10px]" />
+              <p className="font-body font-light text-[var(--c-green-deep)] text-[16px] md:text-[18px] leading-[1.7]">
+                When you block your dates, they&apos;re yours alone — we don&apos;t run another trip at the same time. It&apos;s how we protect the attention to detail every trip deserves. <span className="font-bold text-[var(--c-gold)]">We&apos;re filling 2026 now.</span>
               </p>
             </div>
           </div>
