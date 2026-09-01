@@ -46,7 +46,6 @@
 .pkgWaitlist .hero-content{position:relative;z-index:2;width:100%;max-width:560px;box-sizing:border-box}
 .pkgWaitlist .hero-content, .pkgWaitlist .hero-content *{min-width:0}
 .pkgWaitlist .hero-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:18px}
-.pkgWaitlist .hero-eyebrow::after{content:"";width:52px;height:1px;background:var(--c-gold)}
 .pkgWaitlist h1{font-family:var(--font-display);font-weight:400;font-size:clamp(2.4rem,4.8vw,4.3rem);line-height:1.06;letter-spacing:.005em;margin:0;max-width:17ch;color:var(--c-off-white)}
 .pkgWaitlist .hero-sub{font-size:clamp(.88rem,1.05vw,.96rem);color:rgba(246,242,232,.85);max-width:none;margin-top:18px;line-height:1.65}
 .pkgWaitlist .hero-ctas{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
