@@ -8,18 +8,30 @@ import "./PackageWaitlistPage.css";
 /* ═══════════════════════════════════════════════════════════════════
    PackageWaitlistPage — Mexico City
 
-   Ported near-verbatim from Pablo's own HTML/CSS/JS, same rationale as
-   PackageBookingPage.jsx. One real functional gap closed: his own join-form
-   JS has no backend ("join the list — chips + submit sin backend" — his own
-   comment) — it just swaps a CSS class to show a fake "you're on the list"
-   message and drops every real signup. Wired to the site's actual capture
-   path (destination_waitlist, the same form the other destination-placeholder
+   Ported near-verbatim from Pablo's updated v5 "The Dossier" HTML/CSS/JS
+   (golf-in-mexico-mexico-city-diciembre, shipped Aug 31 2026). One real
+   functional gap closed, same as the prior port: his own join-form JS has
+   no backend ("join the list — sin backend", his own comment) — it just
+   swaps a CSS class to show a fake "you're on the list" message and drops
+   every real signup. Wired to the site's actual capture path
+   (destination_waitlist, the same form the other destination-placeholder
    waitlists use) so submissions are not silently discarded.
 
-   Two of his four FAQ answers read "Answer pending" (his own TODO markers)
-   and are omitted — publishing them would ship that text into FAQPage
-   schema for AI engines to cite. Same precedent as the VERIFY gate on the
-   non-golfer Punta Mita article.
+   v5 shipped all 5 FAQ answers complete — no more "Answer pending" TODO
+   markers like the old v4 source had. The FAQS const below is now the
+   single source for both the rendered accordion and the FAQPage schema
+   (the old file hardcoded FAQ markup separately from the const; that
+   duplication is gone).
+
+   Per the agency lead's sign-off on this re-port: the #dock floating
+   mobile bar and the .stamp/.stamp-mark/.stamp-text founder-photo callout
+   are omitted (markup + CSS — .stamp-mark itself is kept only because the
+   join-done confirmation panel reuses that circle style for its "GIM"
+   mark, unrelated to the founder callout). The hero uses the homologated
+   new-hero layout from PuntaMitaPackagePage (bottom-left .hero-content
+   column, corner radial gradient, plain-dot .hero-dots, no thumbnail
+   panel) instead of v5's old thumbnail-strip hero, with v5's hero copy
+   carried over verbatim. v5's hero has no perks list, so none is invented.
    ═══════════════════════════════════════════════════════════════════ */
 
 const PHOTOS = [
@@ -29,37 +41,26 @@ const PHOTOS = [
   "/images/1hcyue43-screenshot-2026-06-10-at-1-53-59-p-m.webp",
 ];
 
-const CHIPS = [
-  { value: "specific-club", title: "A specific private club", note: "Tell us which one when you're ready" },
-  { value: "high-altitude", title: "High-altitude golf, in general", note: "Open to whichever clubs we unlock first" },
-  { value: "combine-beach", title: "Combining it with a beach destination", note: "Mexico City plus Los Cabos or Punta Mita" },
-];
-
 const FAQS = [
-  { q: "Can I play a Mexico City golf course today?", a: "Semi-private and public options exist — the private member clubs are what we're building access to." },
-  { q: "Does signing up commit me to anything?", a: "No — it tells us there's demand, and puts you first in line when access opens." },
+  { q: "When is this happening?", a: "December 2026. Exact dates confirm the moment we lock 50 committed golfers — you'll hear first if you're on the list." },
+  { q: "How many spots are there?", a: "50. This is a single member-only access event, not an open booking calendar — once it's full, it's full." },
+  { q: "What's included in the $4,500?", a: "Four days, member-only course access through GIM, two supporting rounds at other courses, a boutique hotel, and dinners, activations, and private transport." },
+  { q: "Can I bring a group?", a: "Yes — most of the 50 spots will fill through groups traveling together. Tell us your group size when we follow up." },
+  { q: "Does joining the list commit me to anything?", a: "No — it tells us you're serious, and you hear the confirmed date before anyone else." },
 ];
 
 const CANONICAL = "/destinations/mexico-city/private-access";
 
 const PackageWaitlistPage = () => {
   const rootRef = useRef(null);
-  const nameRef = useRef(null);
   const emailRef = useRef(null);
-  const groupRef = useRef(null);
-  const datesRef = useRef(null);
-  const [chip, setChip] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const { submit, submitting, error, honeypotProps } = useHubspotForm(FORM_KEYS.destination_waitlist);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const ok = await submit({
-      firstname: nameRef.current?.value,
       email: emailRef.current?.value,
-      group: groupRef.current?.value,
-      dates: datesRef.current?.value,
-      whatMattersMost: chip,
       destination: "mexico-city",
       region: "Mexico City",
     });
@@ -134,7 +135,7 @@ const PackageWaitlistPage = () => {
     });
 
     const subnav = root.querySelector("#subnavInner");
-    const spyTargets = ["film", "notyet", "handled", "join", "faq"];
+    const spyTargets = ["film", "solution", "handled", "join", "faq"];
     let spyIO;
     if (subnav) {
       const setSpy = (id) => {
@@ -159,14 +160,6 @@ const PackageWaitlistPage = () => {
         cleanups.push(() => spyIO.disconnect());
       }
     }
-
-    const dock = root.querySelector("#dock");
-    const onScroll = () => {
-      if (dock) dock.classList.toggle("show", window.scrollY > window.innerHeight * 0.6);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    cleanups.push(() => window.removeEventListener("scroll", onScroll));
 
     const videoHandlers = [];
     root.querySelectorAll(".vslot").forEach((v) => {
@@ -205,7 +198,7 @@ const PackageWaitlistPage = () => {
 
   return (
     <main data-testid="page-package-mexico-city" className="pkgWaitlist" ref={rootRef}>
-{/* ————— HERO FIJO CON SLIDER ————— */}
+{/* ————— HERO FIJO CON SLIDER (homologated new-hero layout, v5 copy) ————— */}
 <div className="hero" id="top">
   <div className="slides" aria-hidden="true">
     <div className="slide k1 on"><i style={{ backgroundImage: `url(${PHOTOS[0 % PHOTOS.length]})` }} /></div>
@@ -215,23 +208,20 @@ const PackageWaitlistPage = () => {
     <div className="slide k5"><i style={{ backgroundImage: `url(${PHOTOS[4 % PHOTOS.length]})` }} /></div>
   </div>
   <div className="hero-inner">
-    <div>
+    <div className="hero-content">
       <div className="hero-eyebrow"><span className="label">Mexico City</span></div>
       <h1>Mexico City's Best Golf Isn't Public — Yet.</h1>
-      <p className="hero-sub">We're building the relationships to open the doors of Mexico City's private, member-guest clubs — the same way we already have in Los Cabos.</p>
+      <p className="hero-sub">We're led by a former PGA Tour agent who has lived in Mexico City for 30 years — these aren't new relationships. They're finally being put to use.</p>
       <div className="hero-ctas">
         <a href="#join" className="btn solid">Join the List →</a>
         <a href="#film" className="btn ghost">See the Opportunity →</a>
       </div>
-    </div>
-    <div className="thumbs">
-      <span className="thumbs-label">The Destination</span>
-      <div className="thumbs-row">
-        <button className="thumb t1 on" data-slide="0" aria-label="Photo 1" style={{ backgroundImage: `url(${PHOTOS[0 % PHOTOS.length]})` }} />
-        <button className="thumb t2" data-slide="1" aria-label="Photo 2" style={{ backgroundImage: `url(${PHOTOS[1 % PHOTOS.length]})` }} />
-        <button className="thumb t3" data-slide="2" aria-label="Photo 3" style={{ backgroundImage: `url(${PHOTOS[2 % PHOTOS.length]})` }} />
-        <button className="thumb t4" data-slide="3" aria-label="Photo 4" style={{ backgroundImage: `url(${PHOTOS[3 % PHOTOS.length]})` }} />
-        <button className="thumb t5" data-slide="4" aria-label="Photo 5" style={{ backgroundImage: `url(${PHOTOS[4 % PHOTOS.length]})` }} />
+      <div className="hero-dots">
+        <button className="thumb t1 on" data-slide="0" aria-label="Photo 1" />
+        <button className="thumb t2" data-slide="1" aria-label="Photo 2" />
+        <button className="thumb t3" data-slide="2" aria-label="Photo 3" />
+        <button className="thumb t4" data-slide="3" aria-label="Photo 4" />
+        <button className="thumb t5" data-slide="4" aria-label="Photo 5" />
       </div>
     </div>
   </div>
@@ -242,14 +232,14 @@ const PackageWaitlistPage = () => {
   <div className="subnav-inner" id="subnavInner">
     <span className="idx">Index</span>
     <a href="#film" data-spy="film">The Opportunity</a>
-    <a href="#notyet" data-spy="notyet">Why Not Yet</a>
+    <a href="#solution" data-spy="solution">Our Solution</a>
     <a href="#handled" data-spy="handled">Golf Concierge</a>
     <a href="#join" data-spy="join">Join the List</a>
     <a href="#faq" data-spy="faq">Questions</a>
   </div>
 </nav>
 
-{/* ————— 01 · THE OPPORTUNITY + VIDEO (espacio del video sin cambios) ————— */}
+{/* ————— 01 · THE OPPORTUNITY + VIDEO ————— */}
 <section className="film" id="film">
   <div className="wrap">
     <div className="center-head rv">
@@ -262,36 +252,41 @@ const PackageWaitlistPage = () => {
       <div className="vslot wide" data-yt="">
         <div className="v-ph"><div className="v-play"></div><div className="v-lab"><b>Mexico City, golf-side.</b>The full film</div></div>
       </div>
-      <div className="film-verticals">
-        <div className="vphoto" style={{ backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `url(${PHOTOS[2 % PHOTOS.length]})` }}><span>The Clubs</span></div>
-        <div className="vphoto" style={{ backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `url(${PHOTOS[3 % PHOTOS.length]})` }}><span>The City</span></div>
-        <div className="vphoto" style={{ backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `url(${PHOTOS[0 % PHOTOS.length]})` }}><span>The History</span></div>
-        <div className="vphoto" style={{ backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `url(${PHOTOS[1 % PHOTOS.length]})` }}><span>The Group</span></div>
-        <div className="vphoto" style={{ backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `url(${PHOTOS[2 % PHOTOS.length]})` }}><span>Arrival</span></div>
-      </div>
-    </div>
-    <div className="stamp" style={{marginTop: "32px", justifyContent: "center", display: "flex"}}>
-      <div className="stamp-mark">PM</div>
-      <div className="stamp-text"><b>Pablo De La Mora</b>PGA / LPGA / WTA Agent, 5+ years</div>
     </div>
   </div>
 </section>
 
-{/* ————— 02 · WHY THIS ISN'T A BOOKING PAGE YET ————— */}
-<section className="section" id="notyet">
+{/* ————— 02 · OUR SOLUTION: MEMBER-ONLY ACCESS ————— */}
+<div className="photo-divider pd-1" aria-hidden="true" style={{ backgroundImage: `url(${PHOTOS[1 % PHOTOS.length]})` }} />
+
+<section className="section" id="solution">
   <div className="wrap">
     <div className="center-head rv">
       <div className="sec-no">02</div>
-      <span className="label">Not Yet Bookable</span>
-      <h2>Why this isn't a booking page yet.</h2>
+      <span className="label">Our Solution</span>
+      <h2>Private clubs don’t say yes to one golfer. They say yes to the room.</h2>
     </div>
     <div className="notyet-body rv">
-      <p>Most of our destinations, you can book today. Mexico City is different — the courses that matter here are private, member-guest clubs, some public. No rack rate, no outside bookings, no amount of calling changes that.</p>
-      <p>Getting access to a club like that isn't a transaction. It's a relationship, and relationships get built faster when there's real demand standing behind them. That's what this page is for.</p>
-      <p>Leave your info and you're on the list. As we lock in access, you hear first — and you'll have already told us exactly what kind of trip you're waiting for.</p>
+      <p>So that’s what we’re building: access to a member-only course in Mexico City, through GIM, this December. Four days. Golf at the center, but not the whole trip — two supporting rounds, a boutique hotel, and dinners and activations that only work because the whole group is there together.</p>
+      <p><b>$4,500 per person.</b> Member-only course, through GIM access. Everything handled, start to finish.</p>
+      <p>The only thing standing between this and a confirmed date on the calendar: <b>50 golfers ready to commit.</b></p>
+    </div>
+    <div className="spec-line rv" style={{justifyContent: "center", marginTop: "32px"}}>
+      <div className="spec-cell"><em>Length</em><b>4 Days</b></div>
+      <div className="spec-cell"><em>Access</em><b>Member-Only, via GIM</b></div>
+      <div className="spec-cell"><em>Golf</em><b>1 Member Course + 2 Supporting Rounds</b></div>
+      <div className="spec-cell"><em>Price</em><b>$4,500 / Person</b></div>
+    </div>
+    <div className="spots-badge-wrap rv">
+      <span className="spots-badge">First to Register, First Option to Buy</span>
+    </div>
+    <div className="hero-ctas" style={{justifyContent: "center", marginTop: "20px"}}>
+      <a href="#join" className="btn solid">Join the List →</a>
     </div>
   </div>
 </section>
+
+<div className="photo-divider pd-2" aria-hidden="true" style={{ backgroundImage: `url(${PHOTOS[3 % PHOTOS.length]})` }} />
 
 {/* ————— GOLF CONCIERGE ————— */}
 <section className="section" id="handled">
@@ -310,42 +305,32 @@ const PackageWaitlistPage = () => {
   </div>
 </section>
 
-{/* ————— 03 · JOIN THE LIST (formulario, sin backend) ————— */}
+<div className="photo-divider pd-3" aria-hidden="true" style={{ backgroundImage: `url(${PHOTOS[0 % PHOTOS.length]})` }} />
+
+{/* ————— 03 · JOIN THE LIST (solo email, copy que filtra) ————— */}
 <section className="section" id="join" style={{paddingTop: "0"}}>
   <div className="wrap">
     <div className="center-head rv">
       <div className="sec-no">03</div>
       <span className="label">Join the List</span>
-      <h2>Tell us what you're waiting for.</h2>
+      <h2>This is for 50 golfers. Not everyone.</h2>
+    </div>
+
+    <div className="spots-badge-wrap rv" style={{marginBottom: "22px"}}>
+      <span className="spots-badge">First to Register, First Option to Buy</span>
+    </div>
+    <div className="notyet-body rv" style={{textAlign: "center", maxWidth: "64ch", margin: "0 auto"}}>
+      <p>This works if you can travel <b>December 2026</b>, you’re bringing or joining a group, and <b>$4,500 for four days</b> — member-only course access through GIM, two supporting rounds, hotel, dining, and transport — is the trip you’re already looking for.</p>
+      <p>If that’s you, leave your email. We confirm the date the moment we lock 50.</p>
     </div>
 
     {!submitted && (
-    <form className="joinform rv" onSubmit={handleSubmit}>
+    <form className="joinform rv" style={{maxWidth: "440px"}} onSubmit={handleSubmit}>
       {error && <p className="join-error">{error}</p>}
       <input {...honeypotProps} name="company" />
-      <div className="field-row">
-        <div className="field"><label htmlFor="jf-name">Name</label><input id="jf-name" type="text" autoComplete="name" required ref={nameRef} /></div>
-        <div className="field"><label htmlFor="jf-email">Email</label><input id="jf-email" type="email" autoComplete="email" required ref={emailRef} /></div>
-      </div>
-      <div className="field"><label htmlFor="jf-group">Group Size</label><input id="jf-group" type="number" min="1" placeholder="4" ref={groupRef} /></div>
-      <div className="field"><label htmlFor="jf-dates">Approximate Season or Dates</label><input id="jf-dates" type="text" placeholder="e.g. Spring 2027" ref={datesRef} /></div>
-      <div className="field">
-        <label>What Matters Most</label>
-        <div className="chip-row">
-          {CHIPS.map((c) => (
-            <button
-              key={c.value}
-              type="button"
-              className={`chip${chip === c.value ? " sel" : ""}`}
-              onClick={() => setChip(c.value)}
-            >
-              <b>{c.title}</b><span>{c.note}</span>
-            </button>
-          ))}
-        </div>
-      </div>
+      <div className="field"><label htmlFor="jf-email">Email</label><input id="jf-email" type="email" autoComplete="email" placeholder="you@email.com" required ref={emailRef} /></div>
       <button type="submit" className="btn solid joinform-submit" disabled={submitting}>
-        {submitting ? "Sending…" : "Join the List →"}
+        {submitting ? "Sending…" : "Join the 50 →"}
       </button>
     </form>
     )}
@@ -353,8 +338,8 @@ const PackageWaitlistPage = () => {
     {submitted && (
     <div className="joinform join-done rv show">
       <div className="stamp-mark">GIM</div>
-      <h3 style={{marginTop: "0"}}>You're on the list.</h3>
-      <p style={{color: "#544C3D", lineHeight: "1.7", marginTop: "10px"}}>As we lock in access, you hear first. Thanks for telling us exactly what you're waiting for.</p>
+      <h3 style={{marginTop: "0"}}>You're in.</h3>
+      <p style={{color: "#544C3D", lineHeight: "1.7", marginTop: "10px"}}>We’ll confirm the December date the moment we lock 50 golfers. You hear first — before anyone else.</p>
     </div>
     )}
   </div>
@@ -368,14 +353,12 @@ const PackageWaitlistPage = () => {
       <span className="label">Questions</span>
       <h2 style={{margin: "16px 0 20px"}}>FAQ</h2>
     </div>
-    <div className="faq-item rv">
-      <button className="faq-q" aria-expanded="false">Can I play a Mexico City golf course today?<span className="x">+</span></button>
-      <div className="faq-a"><p>Semi-private and public options exist — the private member clubs are what we're building access to.</p></div>
-    </div>
-    <div className="faq-item rv">
-      <button className="faq-q" aria-expanded="false">Does signing up commit me to anything?<span className="x">+</span></button>
-      <div className="faq-a"><p>No — it tells us there's demand, and puts you first in line when access opens.</p></div>
-    </div>
+    {FAQS.map((f) => (
+      <div className="faq-item rv" key={f.q}>
+        <button className="faq-q" aria-expanded="false">{f.q}<span className="x">+</span></button>
+        <div className="faq-a"><p>{f.a}</p></div>
+      </div>
+    ))}
   </div>
 </section>
 
@@ -383,16 +366,12 @@ const PackageWaitlistPage = () => {
 <div className="final" id="final">
   <div className="final-bg" aria-hidden="true"></div>
   <div className="final-inner rv">
-    <h2>Tell Us You're Interested.</h2>
-    <p>That's what gets a club like this to say yes.</p>
+    <h2>Tell Us You're In.</h2>
+    <p>We need 50 golfers to make this real. Leave your email — that's it.</p>
     <div className="hero-ctas">
       <a href="#join" className="btn solid">Join the List →</a>
     </div>
   </div>
-</div>
-
-<div className="dock" id="dock">
-  <a href="#join" className="btn solid">Join the List →</a>
 </div>
     </main>
   );
