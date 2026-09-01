@@ -42,13 +42,21 @@
 .pkgBooking .slide.k3 i, .pkgBooking .pc2{background-image:linear-gradient(135deg,#3a3226 0%,#1f1a14 100%);background-position:center 30%}
 .pkgBooking .slide.k4 i, .pkgBooking .pc3{background-image:linear-gradient(135deg,#3a3226 0%,#1f1a14 100%)}
 .pkgBooking .slide.k5 i{background-image:linear-gradient(135deg,#3a3226 0%,#1f1a14 100%)}
-.pkgBooking .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,18,14,.35) 0%,rgba(21,18,14,0) 34%,rgba(21,18,14,.28) 62%,rgba(21,18,14,.9) 100%);z-index:1}
-.pkgBooking .hero-inner{position:relative;z-index:2;width:100%;max-width:1400px;margin:0 auto;padding:110px clamp(20px,3.5vw,44px) clamp(40px,6vh,70px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end}
-.pkgBooking .hero-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:26px}
-.pkgBooking .hero-eyebrow::after{content:"";width:52px;height:1px;background:var(--c-gold)}
+.pkgBooking .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 1100px 850px at 0% 100%,rgba(21,18,14,.82) 0%,rgba(38,28,16,.58) 30%,rgba(38,28,16,.24) 52%,rgba(38,28,16,0) 72%);z-index:1;pointer-events:none}
+.pkgBooking .hero-inner{position:relative;z-index:2;width:100%;max-width:1400px;margin:0 auto;padding:110px clamp(24px,3.5vw,56px) clamp(48px,7vh,80px);box-sizing:border-box}
+.pkgBooking .hero-content{position:relative;z-index:2;width:100%;max-width:560px;box-sizing:border-box}
+.pkgBooking .hero-content, .pkgBooking .hero-content *{min-width:0}
+.pkgBooking .hero-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:18px}
 .pkgBooking h1{font-family:var(--font-display);font-weight:400;font-size:clamp(2.4rem,4.8vw,4.3rem);line-height:1.06;letter-spacing:.005em;margin:0;max-width:17ch;color:var(--c-off-white)}
-.pkgBooking .hero-sub{font-size:clamp(.96rem,1.2vw,1.05rem);color:rgba(246,242,232,.85);max-width:50ch;margin-top:26px;line-height:1.75}
-.pkgBooking .hero-ctas{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap}
+.pkgBooking .hero-sub{font-size:clamp(.88rem,1.05vw,.96rem);color:rgba(246,242,232,.85);max-width:none;margin-top:18px;line-height:1.65}
+.pkgBooking .hero-ctas{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.pkgBooking .hero-perks-list{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-direction:column;gap:9px}
+.pkgBooking .hero-perks-list li{display:flex;align-items:center;gap:10px;font-family:var(--font-body);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,242,232,.88)}
+.pkgBooking .hero-perks-list li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--c-gold);flex-shrink:0}
+.pkgBooking .hero-dots{display:flex;gap:8px;margin-top:20px}
+.pkgBooking .hero-dots .thumb{width:7px;height:7px;padding:0;border:none;border-radius:50%;background:rgba(246,242,232,.4);background-image:none !important;cursor:pointer;transition:all .35s var(--ease);opacity:1}
+.pkgBooking .hero-dots .thumb.on{width:22px;border-radius:5px;background:var(--c-gold) !important;box-shadow:none}
+.pkgBooking .hero-dots .thumb:hover{background:rgba(246,242,232,.7)}
 .pkgBooking .hero .btn.solid{background:var(--c-gold);border-color:var(--c-gold);color:var(--c-off-white)}
 .pkgBooking .hero .btn.solid:hover{background:var(--c-off-white);border-color:var(--c-off-white);color:var(--c-text)}
 .pkgBooking .hero .btn.ghost{border-color:rgba(246,242,232,.55);color:var(--c-off-white)}
@@ -60,18 +68,6 @@
 .pkgBooking .hero-video-text{line-height:1.6}
 .pkgBooking .hero-video-text b{display:block;font-family:var(--font-display);font-weight:400;font-size:clamp(1rem,1.3vw,1.2rem);color:var(--c-off-white);margin-bottom:5px;letter-spacing:.01em}
 .pkgBooking .hero-video-text span{font-family:var(--font-body);font-size:9.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,242,232,.55)}
-.pkgBooking .thumbs{display:flex;flex-direction:column;gap:10px;align-items:flex-end}
-.pkgBooking .thumbs-label{font-family:var(--font-body);font-weight:600;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:rgba(246,242,232,.5)}
-.pkgBooking .thumbs-row{display:flex;gap:8px}
-.pkgBooking .thumb{width:64px;height:44px;border:1px solid rgba(246,242,232,.35);padding:0;background-size:cover;background-position:center;cursor:pointer;opacity:.55;transition:all .35s var(--ease);position:relative}
-.pkgBooking .thumb:hover{opacity:.85}
-.pkgBooking .thumb.on{opacity:1;border-color:var(--c-gold);box-shadow:0 0 0 1px var(--c-gold)}
-.pkgBooking .thumb.t1{background-image:linear-gradient(135deg,#3a3226 0%,#1f1a14 100%)}
-.pkgBooking .thumb.t2{background-image:linear-gradient(135deg,#3a3226 0%,#1f1a14 100%)}
-.pkgBooking .thumb.t3{background-image:linear-gradient(135deg,#3a3226 0%,#1f1a14 100%)}
-.pkgBooking .thumb.t4{background-image:linear-gradient(135deg,#3a3226 0%,#1f1a14 100%)}
-.pkgBooking .thumb.t5{background-image:linear-gradient(135deg,#3a3226 0%,#1f1a14 100%)}
-@media (max-width:900px){.pkgBooking .hero-inner{grid-template-columns:1fr;gap:28px}.pkgBooking .thumbs{align-items:flex-start}.pkgBooking .thumb{width:52px;height:38px}}
 .pkgBooking .subnav{position:sticky;top:57px;z-index:60;background:rgba(246,242,232,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(26,23,20,.14)}
 .pkgBooking .subnav-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none;padding:0 clamp(20px,3.5vw,44px);-webkit-overflow-scrolling:touch}
 .pkgBooking .subnav-inner::-webkit-scrollbar{display:none}
@@ -133,9 +129,6 @@
 .pkgBooking .v-lab b{display:block;font-family:var(--font-display);font-weight:400;font-size:clamp(.9rem,1.2vw,1.1rem);letter-spacing:.02em;color:var(--c-off-white);text-transform:none;margin-bottom:4px}
 .pkgBooking .film-note{font-size:.76rem;color:rgba(246,242,232,.45);margin-top:16px;letter-spacing:.02em;text-align:center}
 @media (max-width:820px){.pkgBooking .film-verticals{grid-template-columns:repeat(5,minmax(140px,1fr));overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}.pkgBooking .film-verticals::-webkit-scrollbar{display:none}}
-.pkgBooking .perks{display:flex;gap:7px;margin-top:22px;flex-wrap:wrap}
-.pkgBooking .perk{display:inline-flex;align-items:center;gap:6px;background:rgba(21,18,14,.45);backdrop-filter:blur(6px);border:1px solid rgba(122,205,157,.5);color:var(--c-off-white);font-family:var(--font-body);font-weight:600;font-size:9px;letter-spacing:.09em;text-transform:uppercase;padding:6px 10px}
-.pkgBooking .perk::before{content:"";width:6px;height:6px;border-radius:50%;background:#4CBF7E;box-shadow:0 0 6px rgba(76,191,126,.8);flex-shrink:0}
 .pkgBooking .perk-inline{display:inline-flex;align-items:center;gap:8px;background:var(--perk-bg);border:1px solid rgba(47,122,77,.35);color:var(--perk);font-family:var(--font-body);font-weight:600;font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px}
 .pkgBooking .perk-inline::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--perk);flex-shrink:0}
 .pkgBooking .vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,24px);margin-top:48px}
@@ -157,6 +150,10 @@
 .pkgBooking .pcard span{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;color:var(--c-off-white);font-family:var(--font-display);font-size:clamp(1rem,1.4vw,1.25rem);line-height:1.3}
 .pkgBooking .pcard small{display:block;font-family:var(--font-body);font-weight:600;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(246,242,232,.65);margin-top:5px}
 @media (max-width:820px){.pkgBooking .proof-grid{grid-template-columns:1fr;gap:12px}.pkgBooking .pcard{aspect-ratio:16/10}}
+.pkgBooking .photo-divider{width:100%;position:relative;overflow:hidden;height:clamp(260px,32vw,420px);background-size:cover;background-position:center}
+.pkgBooking .photo-divider.pd-1{background-image:linear-gradient(135deg,#3a3226 0%,#1f1a14 100%)}
+.pkgBooking .photo-divider.pd-2{background-image:linear-gradient(135deg,#3a3226 0%,#1f1a14 100%)}
+.pkgBooking .photo-divider.pd-3{background-image:linear-gradient(135deg,#3a3226 0%,#1f1a14 100%)}
 .pkgBooking .pk-scroll{position:relative;margin-top:52px}
 .pkgBooking .pk-cards{display:flex;gap:clamp(14px,2vw,22px);overflow-x:auto;scroll-snap-type:x proximity;scroll-behavior:smooth;padding:6px 6px 28px;margin:0 -6px;cursor:grab;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .pkgBooking .pk-cards.dragging{cursor:grabbing;scroll-snap-type:none}

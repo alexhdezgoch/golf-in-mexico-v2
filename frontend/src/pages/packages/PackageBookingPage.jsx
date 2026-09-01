@@ -312,28 +312,23 @@ const PackageBookingPage = ({ data }) => {
     <div className="slide k5"><i style={{ backgroundImage: `url(${data.heroPhotos[4 % data.heroPhotos.length]})` }} /></div>
   </div>
   <div className="hero-inner">
-    <div>
+    <div className="hero-content">
       <div className="hero-eyebrow"><span className="label">{data.heroLabel}</span></div>
       <h1>{data.h1}</h1>
       <p className="hero-sub">{data.heroSub}</p>
-      <div className="perks">
-        <span className="perk">Better Tee Time Rates</span>
-        <span className="perk">Airport Pick-Up</span>
-        <span className="perk">Full-Time Concierge</span>
-      </div>
       <div className="hero-ctas">
         <a href="https://golf-in-mexico.com/trip-builder" target="_blank" rel="noopener" className="btn solid">Claim Preferred Rates &amp; Perks →</a>
         <a href="#problem" className="btn ghost">Why Us? →</a>
       </div>
-    </div>
-    <div className="thumbs">
-      <span className="thumbs-label">The Destination</span>
-      <div className="thumbs-row">
-        <button className="thumb t1 on" data-slide="0" aria-label="Photo 1" style={{ backgroundImage: `url(${data.heroPhotos[0 % data.heroPhotos.length]})` }} />
-        <button className="thumb t2" data-slide="1" aria-label="Photo 2" style={{ backgroundImage: `url(${data.heroPhotos[1 % data.heroPhotos.length]})` }} />
-        <button className="thumb t3" data-slide="2" aria-label="Photo 3" style={{ backgroundImage: `url(${data.heroPhotos[2 % data.heroPhotos.length]})` }} />
-        <button className="thumb t4" data-slide="3" aria-label="Photo 4" style={{ backgroundImage: `url(${data.heroPhotos[3 % data.heroPhotos.length]})` }} />
-        <button className="thumb t5" data-slide="4" aria-label="Photo 5" style={{ backgroundImage: `url(${data.heroPhotos[4 % data.heroPhotos.length]})` }} />
+      <ul className="hero-perks-list">
+        {data.perks.map((p) => <li key={p}>{p}</li>)}
+      </ul>
+      <div className="hero-dots">
+        <button className="thumb t1 on" data-slide="0" aria-label="Photo 1" />
+        <button className="thumb t2" data-slide="1" aria-label="Photo 2" />
+        <button className="thumb t3" data-slide="2" aria-label="Photo 3" />
+        <button className="thumb t4" data-slide="3" aria-label="Photo 4" />
+        <button className="thumb t5" data-slide="4" aria-label="Photo 5" />
       </div>
     </div>
   </div>
@@ -378,6 +373,8 @@ const PackageBookingPage = ({ data }) => {
     </div>
   </div>
 </section>
+
+<div className="photo-divider pd-1" aria-hidden="true" style={{ backgroundImage: `url(${data.heroPhotos[0]})` }} />
 
 <section className="section" id="problem" style={{paddingTop: "clamp(60px,8vw,100px)"}}>
   <div className="wrap">
@@ -447,6 +444,8 @@ const PackageBookingPage = ({ data }) => {
   </div>
 </section>
 
+<div className="photo-divider pd-2" aria-hidden="true" style={{ backgroundImage: `url(${data.heroPhotos[4 % data.heroPhotos.length]})` }} />
+
 {/* ————— TIERS ————— */}
 {/* ————— THE FILM ————— */}
 
@@ -497,7 +496,7 @@ const PackageBookingPage = ({ data }) => {
   </div>
 </section>
 
-
+<div className="photo-divider pd-3" aria-hidden="true" style={{ backgroundImage: `url(${data.heroPhotos[2]})` }} />
 
 {/* ————— FAQ ————— */}
 <section className="section" id="faq" style={{paddingTop: "0"}}>
