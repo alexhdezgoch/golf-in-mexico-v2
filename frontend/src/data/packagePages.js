@@ -84,11 +84,14 @@ export const LOS_CABOS = {
   heroSub:
     "We have tailored a golf trip designed to deliver maximum value for your Cabo golf trip—priced, assembled, and booked directly by a former PGA Tour agent rather than a call center representative reading from a rate card.",
   perks: PERKS,
+  // Pablo's Cabo set (received 2026-09-01) — 5 photos, so the 5 hero
+  // slides map 1:1 (the old 4-photo array made slide 5 repeat slide 1).
   heroPhotos: [
-    "/images/0wyp4brb-cabo-photo.webp",
-    "/images/d3b1vfc5-gim-stills-36.webp",
-    "/images/w9zxd211-palmilla.webp",
-    "/images/0vavic1n-solmar-links.webp",
+    "/images/los-cabos/hero-oceanfront-green.webp",
+    "/images/los-cabos/hero-dunes-fairway.webp",
+    "/images/los-cabos/hero-desert-aerial.webp",
+    "/images/los-cabos/hero-dune-swing.webp",
+    "/images/los-cabos/hero-lake-green-aerial.webp",
   ],
 
   filmLede: "Cabo holds Mexico's highest concentration of signature oceanfront golf. Book it once, repeat it every year.",
