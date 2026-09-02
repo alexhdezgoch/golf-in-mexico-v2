@@ -63,7 +63,7 @@ const BUDGET_OPTIONS = [
   { id: "7000-plus",  label: "$7,000+" },
 ];
 
-const CALENDAR_HREF = "https://calendar.app.google/jb2v4ujwvMMovSV98";
+const CALENDAR_HREF = "https://calendly.com/pablo-golf-in-mexico/trip-builder?primary_color=4a5e45";
 
 const StepPill = ({ n, total = 4 }) => (
   <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-text-muted)] mb-6">
