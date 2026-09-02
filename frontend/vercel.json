@@ -1,5 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/cancun/golf-packages", "destination": "/destinations/cancun-riviera-maya/golf-packages", "permanent": true },
+    { "source": "/los-cabos/golf-packages", "destination": "/destinations/los-cabos/golf-packages", "permanent": true },
+    { "source": "/vallarta/golf-packages", "destination": "/destinations/puerto-vallarta/golf-packages", "permanent": true },
+    { "source": "/cdmx/private-access", "destination": "/destinations/mexico-city/private-access", "permanent": true },
+    { "source": "/golf/unique-destinations", "destination": "/destinations/unique-destinations", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ],

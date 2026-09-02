@@ -16,12 +16,14 @@ const DESTINATIONS = [
   { slug: "punta-mita",     name: "Punta Mita",          region: "Riviera Nayarit",     desc: "Soft luxury + relaxed vacations" },
   { slug: "mexico-city",    name: "Mexico City",         region: "Valle de Mexico",     desc: "Historic clubs + off-course experiences" },
   { slug: "cancun",         name: "Cancun · Riviera Maya", region: "Quintana Roo",     desc: "Easiest trip to book" },
+  { slug: "puerto-vallarta", name: "Puerto Vallarta",     region: "Riviera Nayarit",     desc: "Colonial charm, oceanfront golf" },
+  { slug: "unique-destinations", name: "Unique Destinations", region: "Nationwide",     desc: "Courses beyond the usual coasts" },
 ];
 
 const TRIP_TYPES = [
   { id: "family",    label: "Family Trip",     desc: "Multi-gen or kids included.",        image: "/images/39q8yutm-lhc-services-richmond-va-gr1v3si-xau-unsplash.webp" },
-  { id: "couples",   label: "Couples Trip",    desc: "Two travelers, full experience.",    image: "/images/yszj15ke-willdwind-william-martret-9c-w8jfuhtw-unsplash.webp" },
-  { id: "bachelor",  label: "Bachelor Trip",   desc: "Group, competition-ready itinerary.", image: "/images/fhv2viqt-d14f99ba-7f14-4273-bcd5-ef597df7f5cb-1-105-c.webp" },
+  { id: "couples",   label: "Couples Trip",    desc: "Two golfers or more, one seamless trip.", image: "/images/yszj15ke-willdwind-william-martret-9c-w8jfuhtw-unsplash.webp" },
+  { id: "bachelor",  label: "Bachelor / Buddies Trip", desc: "Group trip, competition-ready itinerary.", image: "/images/fhv2viqt-d14f99ba-7f14-4273-bcd5-ef597df7f5cb-1-105-c.webp" },
   { id: "corporate", label: "Corporate Retreat", desc: "12+ players, prizes, logistics.",  image: "/images/w9mm3zx2-dean-5yxjpt-tcao-unsplash.webp" },
 ];
 
@@ -45,6 +47,23 @@ const PACKAGES = [
     ],
   },
 ];
+
+// Trip focus — single-select on Step 2 ("Select your type of trip").
+const TRIP_FOCUS = [
+  { id: "luxury",       label: "Luxury",       desc: "Five-star hotels, elevated everything." },
+  { id: "golf-focused", label: "Golf Focused", desc: "Serious golf, top-ranked courses, nothing else on the agenda." },
+  { id: "golf-beyond",  label: "Golf & Beyond", desc: "The round's only part of the trip. Good company, relaxed pace, the scorecard doesn't matter." },
+];
+
+// Budget per player — single-select chips on Step 2 (USD, ground + golf).
+const BUDGET_OPTIONS = [
+  { id: "under-2000", label: "Under $2,000" },
+  { id: "2000-4000",  label: "$2,000–$4,000" },
+  { id: "4000-7000",  label: "$4,000–$7,000" },
+  { id: "7000-plus",  label: "$7,000+" },
+];
+
+const CALENDAR_HREF = "https://calendar.app.google/jb2v4ujwvMMovSV98";
 
 const StepPill = ({ n, total = 4 }) => (
   <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-text-muted)] mb-6">
@@ -114,10 +133,6 @@ const TripBuilder = () => {
     ]),
   });
 
-  // Intent gate — splash before the wizard so people choose:
-  // "Talk to Pablo first" vs "Build my proposal".
-  const [intent, setIntent] = useState(null);
-
   const [step, setStep] = useState(1);
 
   // Funnel: emit a step event as the user advances (step 1 is the page view).
@@ -128,15 +143,16 @@ const TripBuilder = () => {
   const [tripType, setTripType] = useState(null);
   const [searchParams] = useSearchParams();
 
-  // Pre-select trip type from ?type= query (from /experience cards).
-  // We still show the intent splash to everyone — the type is just remembered
-  // so it lands pre-selected on Step 1 once they choose "Build my proposal".
+  // Pre-select trip type from ?type= query (from /experience cards) so it
+  // lands pre-selected on the trip-kind step.
   useEffect(() => {
     const t = searchParams.get("type");
     if (t && TRIP_TYPES.some((x) => x.id === t)) {
       setTripType(t);
     }
   }, [searchParams]);
+  const [uniqueCities, setUniqueCities] = useState("");
+  const [tripFocus, setTripFocus] = useState(null);
   const [isDM, setIsDM] = useState(true);
   const [otherDM, setOtherDM] = useState("");
   const [year, setYear] = useState("2026");
@@ -147,6 +163,12 @@ const TripBuilder = () => {
   const [contact, setContact] = useState({ name: "", email: "", phone: "" });
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+
+  // Conversion event — fires once when the confirmation screen is reached.
+  useEffect(() => {
+    if (submitted) trackEvent("trip_builder_complete", { trip_type: tripType });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [submitted]);
 
   // Exit-intent soft capture state
   const [exitVisible, setExitVisible] = useState(false);
@@ -229,51 +251,39 @@ const TripBuilder = () => {
     const e = {};
     if (step === 1) {
       if (destinations.length === 0) e.destinations = "Pick at least one destination to continue.";
-      if (!tripType) e.tripType = "Choose a trip type.";
     }
     if (step === 2) {
-      if (months.length === 0) e.months = "Select at least one month — even a rough window works.";
-      if (!length) e.length = "Pick a trip length.";
+      if (!tripType) e.tripType = "Choose a trip type.";
     }
     if (step === 3) {
-      // Contact captured BEFORE budget. Persist lead the moment user advances.
-      if (!contact.name.trim())  e.name  = "Tell us your name.";
-      if (!contact.email.trim()) e.email = "We need your email to send the proposal.";
+      if (months.length === 0) e.months = "Select at least one month — even a rough window works.";
+      if (!length) e.length = "Pick a trip length.";
     }
     setErrors(e);
     if (Object.keys(e).length !== 0) return;
 
-    // Persist the partial lead the moment Step 3 is completed.
-    // MOCKED (no MailerLite). Saves to sessionStorage (cleared on tab close —
-    // sensitive data is NOT persisted across sessions) so we don't lose
-    // anyone who abandons at Step 4.
+    // Persist a partial-lead safety copy the moment Step 3 is completed
+    // (trip details are known; contact comes on the final step). Saves to
+    // sessionStorage (cleared on tab close — sensitive data is NOT persisted
+    // across sessions) so we don't lose everything if Step 4 is abandoned.
+    // The lead itself only fires on the final submit or via exit-intent.
     if (step === 3) {
       const partialLead = {
         destinations,
+        uniqueCities,
         tripType,
+        tripFocus,
+        budget,
         isDM,
         otherDM,
         year,
         months,
         length,
-        contact,
         capturedAt: new Date().toISOString(),
-        stage: "contact_captured",
+        stage: "pre_contact",
       };
       safeSessionWrite("gim-partial-lead", JSON.stringify(partialLead));
       devLog("[GIM Trip Builder · partial lead — Step 3]", partialLead);
-      // Fire the qualified lead to HubSpot now (name + email are guaranteed here)
-      // so a Step-4 abandoner is still captured. Fire-and-forget: never block the
-      // wizard on the network. The final submit re-sends with package + budget.
-      mainHs.submit({
-        email: contact.email,
-        firstname: contact.name,
-        phone: contact.phone,
-        destinations,
-        trip_type: tripType,
-        preferred_dates: months.join(", "),
-        trip_length: length,
-      });
     }
 
     setStep((s) => Math.min(4, s + 1));
@@ -282,17 +292,21 @@ const TripBuilder = () => {
   const submit = async (ev) => {
     ev.preventDefault();
     const e = {};
+    if (!contact.name.trim())  e.name  = "Tell us your name.";
+    if (!contact.email.trim()) e.email = "We need your email to send the proposal.";
     if (!pkg) e.pkg = "Choose a package to continue.";
     setErrors(e);
     if (Object.keys(e).length !== 0) return;
 
-    // Full qualified lead → HubSpot (enriches the contact captured at Step 3).
+    // Full qualified lead → HubSpot.
     const ok = await mainHs.submit({
       email: contact.email,
       firstname: contact.name,
       phone: contact.phone,
       destinations,
+      unique_cities: uniqueCities,
       trip_type: tripType,
+      trip_focus: tripFocus,
       preferred_dates: months.join(", "),
       trip_length: length,
       package: pkg,
@@ -302,7 +316,9 @@ const TripBuilder = () => {
 
     const finalLead = {
       destinations,
+      uniqueCities,
       tripType,
+      tripFocus,
       isDM,
       otherDM,
       year,
@@ -395,95 +411,6 @@ const TripBuilder = () => {
     );
   }
 
-  // Intent splash — shown before the wizard. Two paths:
-  //   1. Talk to Pablo first  → Google Calendar (15 min, low friction)
-  //   2. Build my proposal     → continues into Step 1 of the wizard
-  if (intent === null && !submitted) {
-    const calendarHref = "https://calendar.app.google/jb2v4ujwvMMovSV98";
-    return (
-      <main data-testid="trip-builder-intent" className="min-h-screen bg-[var(--c-off-white)]">
-        <header className="border-b border-[var(--c-border)] bg-[var(--c-off-white)]">
-          <div className="max-w-[1200px] mx-auto px-6 md:px-12 py-5 flex items-center justify-between">
-            <Link to="/" className="flex items-center leading-none shrink-0">
-              <img src="/logo-wordmark.png" alt="Golf in Mexico°" className="h-8 md:h-10 w-auto invert" />
-            </Link>
-          </div>
-        </header>
-
-        <section className="max-w-[1100px] mx-auto px-6 md:px-12 py-20 md:py-28">
-          <div className="text-center mb-14 md:mb-20">
-            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--c-gold)]">
-              How would you like to start?
-            </span>
-            <h1 className="mt-5 font-display font-light text-[var(--c-text)] text-4xl md:text-6xl leading-[1.05] tracking-tight max-w-[18ch] mx-auto">
-              Two ways in. <em className="italic text-[var(--c-gold)]">Both end in a real itinerary.</em>
-            </h1>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-            {/* PATH 1 — Call (recommended) */}
-            <a
-              href={calendarHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-testid="tb-intent-call"
-              className="group block bg-[var(--c-green-deep)] text-white rounded-sm p-8 md:p-10 hover:bg-[var(--c-green-mid)] transition-colors relative"
-            >
-              <span className="absolute -top-3 left-6 md:left-8 bg-[var(--c-gold)] text-[var(--c-green-deep)] font-mono text-[9px] uppercase tracking-[0.2em] font-bold px-3 py-1 rounded-full">
-                Our recommendation
-              </span>
-              <div className="flex items-center gap-5 mb-7">
-                <img
-                  src="/founders/pablo/01.jpg"
-                  alt="Pablo De La Mora"
-                  className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-2 border-[var(--c-gold)] shrink-0"
-                />
-                <div className="leading-tight">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-1.5">
-                    15 min with Pablo
-                  </p>
-                  <p className="font-display text-white text-xl md:text-2xl">Talk first</p>
-                </div>
-              </div>
-              <p className="font-body font-light text-white/85 text-[15px] md:text-base leading-[1.7] mb-3">
-                We are in the business of relationships, not forms.
-              </p>
-              <p className="font-body font-light text-white/65 text-[14px] leading-[1.65] italic mb-8">
-                In a world running on automation, a real conversation is still the fastest way to build a trip that fits.
-              </p>
-              <span className="inline-flex items-center gap-3 bg-[var(--c-gold)] text-[var(--c-green-deep)] px-6 py-3 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold group-hover:bg-[var(--c-gold-light)] transition-colors">
-                Book 15 min
-                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-              </span>
-            </a>
-
-            {/* PATH 2 — Build the form */}
-            <button
-              type="button"
-              onClick={() => setIntent("build")}
-              data-testid="tb-intent-build"
-              className="group block text-left bg-white border border-[var(--c-border)] rounded-sm p-8 md:p-10 hover:border-[var(--c-gold)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-all"
-            >
-              <div className="mb-7">
-                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-1.5">
-                  By email · 48-hour proposal
-                </p>
-                <p className="font-display text-[var(--c-text)] text-xl md:text-2xl">Build it on your own</p>
-              </div>
-              <p className="font-body font-light text-[var(--c-text-mid)] text-[15px] md:text-base leading-[1.7] mb-8">
-                A few questions about your group, dates, and budget. Pablo personally reviews every submission and sends the named, itemized itinerary back to your inbox within 48 hours.
-              </p>
-              <span className="inline-flex items-center gap-3 bg-[var(--c-green-deep)] text-white px-6 py-3 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold group-hover:bg-[var(--c-green-mid)] transition-colors">
-                Start the proposal
-                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-              </span>
-            </button>
-          </div>
-        </section>
-      </main>
-    );
-  }
-
   return (
     <main data-testid="page-trip-builder" className="min-h-screen bg-[var(--c-off-white)]">
       {/* Minimal top bar */}
@@ -505,27 +432,28 @@ const TripBuilder = () => {
           <h1 className="font-display font-light text-[var(--c-text)] text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight max-w-[900px] mx-auto mb-8">
             A custom Mexico golf itinerary in <em className="italic text-[var(--c-gold)]">48 hours. On us.</em>
           </h1>
-          <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] max-w-[680px] mx-auto mb-10">
-            Built by real insiders — not AI. Tell us where you want to play and what matters most. We will hand-craft a named itinerary with confirmed course access, itemized down to the peso. No call required to get your proposal.
-          </p>
           <div className="flex flex-col items-center">
+            {/* Minimal scroll cue */}
             <button
               type="button"
               onClick={scrollToForm}
-              data-testid="tb-hero-cta"
-              className="group inline-flex items-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-9 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.2em] font-bold transition-colors"
+              aria-label="Scroll down"
+              data-testid="tb-hero-arrow"
+              className="font-display text-[var(--c-gold)] text-3xl md:text-4xl leading-none animate-bounce hover:text-[var(--c-gold-light)] transition-colors"
             >
-              Get My 48-Hour Proposal
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              ↓
             </button>
 
-            {/* Scarcity banner — high contrast */}
+            {/* Exclusivity banner — no dark box: sits on the page background,
+                green text sized up, closer sentence in gold (Alex, 2026-09-01) */}
             <div
               data-testid="tb-scarcity"
-              className="mt-10 inline-flex items-center gap-3 bg-[var(--c-green-deep)] text-white px-6 py-3.5 rounded-sm font-mono text-[11px] md:text-[12px] uppercase tracking-[0.2em] font-bold"
+              className="mt-10 flex items-start gap-3 px-6 py-4 max-w-[680px] text-left"
             >
-              <span className="w-2 h-2 rounded-full bg-[var(--c-gold)] animate-pulse shrink-0" />
-              <span>Each confirmed trip blocks a full week — we&apos;re filling 2026 now.</span>
+              <span className="w-2 h-2 rounded-full bg-[var(--c-gold)] animate-pulse shrink-0 mt-[10px]" />
+              <p className="font-body font-light text-[var(--c-green-deep)] text-[16px] md:text-[18px] leading-[1.7]">
+                When you block your dates, they&apos;re yours alone — we don&apos;t run another trip at the same time. It&apos;s how we protect the attention to detail every trip deserves. <span className="font-bold text-[var(--c-gold)]">We&apos;re filling 2026 now.</span>
+              </p>
             </div>
           </div>
         </div>
@@ -538,15 +466,12 @@ const TripBuilder = () => {
             The GIM Promise: <em className="italic text-[var(--c-gold)]">if we can&apos;t deliver, we don&apos;t deserve your money.</em>
           </h2>
           <div className="border-t border-[var(--c-gold)]/40 pt-8 max-w-3xl mb-10">
-            <h3 className="font-display font-normal text-[var(--c-gold)] text-xl md:text-2xl leading-[1.25] mb-5">
-              Attention to clients &amp; the expectation refund.
-            </h3>
             <p className="font-body font-light text-white/85 text-base md:text-lg leading-[1.75]">
-              If after your first 36 hours on the ground you decide the trip isn&apos;t exactly what we promised, or we didn&apos;t give you the personalized attention we committed to, we refund the GIM fee.
+              If your first 36 hours on the ground aren&apos;t exactly what we promised, we refund our fee — in full.
             </p>
           </div>
           <p className="font-display italic font-normal text-[var(--c-gold)] text-base md:text-lg">
-            — Pablo De La Mora · Golf in Mexico°
+            — Pablo De La Mora, Founder, Golf in Mexico
           </p>
         </div>
       </section>
@@ -578,6 +503,81 @@ const TripBuilder = () => {
           <p className="font-display italic font-light text-[var(--c-text)] text-xl md:text-2xl text-center max-w-[760px] mx-auto leading-[1.5] border-t border-[var(--c-border)] pt-10">
             &ldquo;This is the exact logistical blueprint a Tour agent and Tour Pro would build for himself. You&apos;re getting the blueprint on us.&rdquo;
           </p>
+        </div>
+      </section>
+
+      {/* TWO WAYS IN — call vs. self-serve, right above the form */}
+      <section data-testid="tb-two-ways" className="bg-[var(--c-off-white)] border-t border-[var(--c-border)] py-20 md:py-28">
+        <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+          <div className="text-center mb-14 md:mb-20">
+            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--c-gold)]">
+              How would you like to start?
+            </span>
+            <h2 className="mt-5 font-display font-light text-[var(--c-text)] text-4xl md:text-6xl leading-[1.05] tracking-tight max-w-[18ch] mx-auto">
+              Two ways in. <em className="italic text-[var(--c-gold)]">Both end in a real itinerary.</em>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+            {/* PATH 1 — Call (recommended) */}
+            <a
+              href={CALENDAR_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="tb-intent-call"
+              onClick={() => trackEvent("book_call_click", { source: "trip_builder" })}
+              className="group block bg-[var(--c-green-deep)] text-white rounded-sm p-8 md:p-10 hover:bg-[var(--c-green-mid)] transition-colors relative"
+            >
+              <span className="absolute -top-3 left-6 md:left-8 bg-[var(--c-gold)] text-[var(--c-green-deep)] font-mono text-[9px] uppercase tracking-[0.2em] font-bold px-3 py-1 rounded-full">
+                Our recommendation
+              </span>
+              <div className="flex items-center gap-5 mb-7">
+                <img
+                  src="/founders/pablo/01.jpg"
+                  alt="Pablo De La Mora"
+                  className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-2 border-[var(--c-gold)] shrink-0"
+                />
+                <div className="leading-tight">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-1.5">
+                    15 min with Pablo
+                  </p>
+                  <p className="font-display text-white text-xl md:text-2xl">Talk first</p>
+                </div>
+              </div>
+              <p className="font-body font-light text-white/85 text-[15px] md:text-base leading-[1.7] mb-3">
+                We are in the business of relationships, not forms.
+              </p>
+              <p className="font-body font-light text-white/65 text-[14px] leading-[1.65] italic mb-8">
+                In a world running on automation, a real conversation is still the fastest way to build a trip that fits.
+              </p>
+              <span className="inline-flex items-center gap-3 bg-[var(--c-gold)] text-[var(--c-green-deep)] px-6 py-3 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold group-hover:bg-[var(--c-gold-light)] transition-colors">
+                Book 15 min
+                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </span>
+            </a>
+
+            {/* PATH 2 — Build it yourself (the form is right below) */}
+            <button
+              type="button"
+              onClick={scrollToForm}
+              data-testid="tb-intent-build"
+              className="group block text-left bg-white border border-[var(--c-border)] rounded-sm p-8 md:p-10 hover:border-[var(--c-gold)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-all"
+            >
+              <div className="mb-7">
+                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-1.5">
+                  By Email:
+                </p>
+                <p className="font-display text-[var(--c-text)] text-xl md:text-2xl">Build it on your own</p>
+              </div>
+              <p className="font-body font-light text-[var(--c-text-mid)] text-[15px] md:text-base leading-[1.7] mb-8">
+                Itinerary back to your inbox in 48 hours.
+              </p>
+              <span className="inline-flex items-center gap-3 bg-[var(--c-green-deep)] text-white px-6 py-3 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold group-hover:bg-[var(--c-green-mid)] transition-colors">
+                Start Trip Builder
+                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </span>
+            </button>
+          </div>
         </div>
       </section>
 
@@ -625,39 +625,19 @@ const TripBuilder = () => {
                   </div>
                   {errors.destinations && <p className="text-[13px] text-[#8b2020] mb-5 font-mono">{errors.destinations}</p>}
 
-                  {destinations.length > 0 && (
+                  {destinations.includes("unique-destinations") && (
                     <div className="mb-8">
-                      <label className="block font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--c-text-muted)] mb-4">What kind of trip is this?</label>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        {TRIP_TYPES.map((t) => (
-                          <SelectCard
-                            key={t.id}
-                            selected={tripType === t.id}
-                            onClick={() => { setTripType(t.id); setErrors((e) => ({ ...e, tripType: null })); }}
-                            testid={`tb-triptype-${t.id}`}
-                            className="overflow-hidden p-0 flex flex-col"
-                          >
-                            <div className="relative w-full aspect-[4/3] overflow-hidden bg-[var(--c-green-deep)]">
-                              <img
-                                src={t.image}
-                                alt={t.label}
-                                loading="lazy"
-                                className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.04]"
-                              />
-                              {tripType === t.id && (
-                                <div className="absolute top-3 right-3 z-10">
-                                  <Checkmark />
-                                </div>
-                              )}
-                            </div>
-                            <div className="p-4 md:p-5 mt-auto">
-                              <h4 className="font-display text-[var(--c-text)] text-base md:text-lg mb-1">{t.label}</h4>
-                              <p className="text-[12px] text-[var(--c-text-muted)]">{t.desc}</p>
-                            </div>
-                          </SelectCard>
-                        ))}
-                      </div>
-                      {errors.tripType && <p className="mt-3 text-[13px] text-[#8b2020] font-mono">{errors.tripType}</p>}
+                      <label htmlFor="tb-unique-cities" className="block font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--c-text-muted)] mb-2">Any cities in mind?</label>
+                      <input
+                        id="tb-unique-cities"
+                        type="text"
+                        value={uniqueCities}
+                        onChange={(e) => setUniqueCities(e.target.value)}
+                        placeholder="e.g., Guadalajara, Monterrey, San Miguel"
+                        data-testid="tb-unique-cities"
+                        className="w-full bg-[var(--c-surface)] border border-[var(--c-border)] focus:border-[var(--c-gold)] text-[var(--c-text)] placeholder:text-[var(--c-text-muted)] font-body text-sm px-4 py-3 rounded-sm focus:outline-none transition-colors"
+                      />
+                      <p className="mt-2 text-[12px] text-[var(--c-text-muted)] italic">Optional — helps us start with courses you&apos;re already curious about.</p>
                     </div>
                   )}
 
@@ -678,6 +658,97 @@ const TripBuilder = () => {
 
                   <div className="mt-10 flex items-center justify-end">
                     <button type="button" onClick={next} data-testid="tb-next-1" className="group inline-flex items-center gap-3 bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-7 py-3.5 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors">
+                      Next: Trip Type
+                      <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* ── STEP 2 · TRIP KIND + FOCUS + BUDGET ── */}
+              {step === 2 && (
+                <div data-testid="tb-step-2">
+                  <StepPill n={2} />
+                  <h2 className="font-display font-light text-[var(--c-text)] text-2xl md:text-4xl leading-[1.15] mb-10 tracking-tight">What kind of trip is this?</h2>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+                    {TRIP_TYPES.map((t) => (
+                      <SelectCard
+                        key={t.id}
+                        selected={tripType === t.id}
+                        onClick={() => { setTripType(t.id); setErrors((e) => ({ ...e, tripType: null })); }}
+                        testid={`tb-triptype-${t.id}`}
+                        className="overflow-hidden p-0 flex flex-col"
+                      >
+                        <div className="relative w-full aspect-[4/3] overflow-hidden bg-[var(--c-green-deep)]">
+                          <img
+                            src={t.image}
+                            alt={t.label}
+                            loading="lazy"
+                            className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.04]"
+                          />
+                          {tripType === t.id && (
+                            <div className="absolute top-3 right-3 z-10">
+                              <Checkmark />
+                            </div>
+                          )}
+                        </div>
+                        <div className="p-4 md:p-5 mt-auto">
+                          <h4 className="font-display text-[var(--c-text)] text-base md:text-lg mb-1">{t.label}</h4>
+                          <p className="text-[12px] text-[var(--c-text-muted)]">{t.desc}</p>
+                        </div>
+                      </SelectCard>
+                    ))}
+                  </div>
+                  {errors.tripType && <p className="text-[13px] text-[#8b2020] mb-5 font-mono">{errors.tripType}</p>}
+
+                  {/* Trip focus — single select */}
+                  <div className="mt-10">
+                    <label className="block font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--c-text-muted)] mb-4">Select your type of trip</label>
+                    <div className="grid grid-cols-1 gap-3">
+                      {TRIP_FOCUS.map((f) => (
+                        <SelectCard
+                          key={f.id}
+                          selected={tripFocus === f.id}
+                          onClick={() => setTripFocus(f.id)}
+                          testid={`tb-focus-${f.id}`}
+                          className="p-5 md:p-6"
+                        >
+                          <div className="flex items-start justify-between gap-3">
+                            <div>
+                              <h4 className="font-display text-[var(--c-text)] text-base md:text-lg mb-1">{f.label}</h4>
+                              <p className="text-[13px] text-[var(--c-text-mid)] leading-[1.6]">{f.desc}</p>
+                            </div>
+                            {tripFocus === f.id && <Checkmark />}
+                          </div>
+                        </SelectCard>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Budget per player — single-select chips */}
+                  <div className="mt-10">
+                    <label className="block font-display text-[var(--c-text)] text-lg md:text-xl mb-1.5">What&apos;s your budget per player?</label>
+                    <p className="text-[13px] text-[var(--c-text-muted)] mb-4">Ground + golf only (USD). Excludes flights. No wrong answer — this helps us match course access and lodging to your expectations.</p>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                      {BUDGET_OPTIONS.map((b) => (
+                        <button
+                          key={b.id}
+                          type="button"
+                          onClick={() => setBudget(b.label)}
+                          data-testid={`tb-budget-${b.id}`}
+                          aria-pressed={budget === b.label}
+                          className={`py-3 px-2 rounded-sm font-mono text-[11px] uppercase tracking-[0.08em] transition-all ${budget === b.label ? "bg-[var(--c-gold)] text-[var(--c-green-deep)] font-bold" : "bg-[var(--c-surface)] text-[var(--c-text-mid)] border border-[var(--c-border)] hover:border-[var(--c-gold)]"}`}
+                        >
+                          {b.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="mt-10 flex items-center justify-between">
+                    <button type="button" onClick={() => setStep(1)} className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-text-muted)] hover:text-[var(--c-text)] transition-colors">← Back</button>
+                    <button type="button" onClick={next} data-testid="tb-next-2" className="group inline-flex items-center gap-3 bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-7 py-3.5 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors">
                       Next: When
                       <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                     </button>
@@ -685,10 +756,10 @@ const TripBuilder = () => {
                 </div>
               )}
 
-              {/* ── STEP 2 ── */}
-              {step === 2 && (
-                <div data-testid="tb-step-2">
-                  <StepPill n={2} />
+              {/* ── STEP 3 · WHEN ── */}
+              {step === 3 && (
+                <div data-testid="tb-step-3">
+                  <StepPill n={3} />
                   <h2 className="font-display font-light text-[var(--c-text)] text-2xl md:text-4xl leading-[1.15] mb-10 tracking-tight">When are you thinking?</h2>
 
                   <div className="flex gap-2 mb-6">
@@ -725,9 +796,9 @@ const TripBuilder = () => {
                   {errors.months && <p className="text-[13px] text-[#8b2020] mb-5 font-mono">{errors.months}</p>}
 
                   <div className="mt-10 flex items-center justify-between">
-                    <button type="button" onClick={() => setStep(1)} className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-text-muted)] hover:text-[var(--c-text)] transition-colors">← Back</button>
-                    <button type="button" onClick={next} data-testid="tb-next-2" className="group inline-flex items-center gap-3 bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-7 py-3.5 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors">
-                      Next: Contact
+                    <button type="button" onClick={() => setStep(2)} className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-text-muted)] hover:text-[var(--c-text)] transition-colors">← Back</button>
+                    <button type="button" onClick={next} data-testid="tb-next-3" className="group inline-flex items-center gap-3 bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-7 py-3.5 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors">
+                      Next: Last Step
                       <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                     </button>
                   </div>
@@ -754,18 +825,17 @@ const TripBuilder = () => {
                 </div>
               )}
 
-              {/* ── STEP 3 · CONTACT (captured BEFORE budget) ── */}
-              {step === 3 && (
-                <div data-testid="tb-step-3">
-                  <StepPill n={3} />
-                  <h2 className="font-display font-light text-[var(--c-text)] text-2xl md:text-4xl leading-[1.15] mb-3 tracking-tight">
-                    Where should we send your proposal?
+              {/* ── STEP 4 · CONTACT + BESPOKE + SUBMIT ── */}
+              {step === 4 && (
+                <form onSubmit={submit} data-testid="tb-step-4">
+                  <input {...mainHs.honeypotProps} name="company_website" />
+                  <StepPill n={4} />
+                  <h2 className="font-display font-light text-[var(--c-text)] text-2xl md:text-4xl leading-[1.15] mb-10 tracking-tight">
+                    Last Step
                   </h2>
-                  <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.7] mb-10 max-w-2xl">
-                    Pablo reviews every submission personally. Drop your details and we&apos;ll start building.
-                  </p>
 
-                  <div className="space-y-5 mb-8 max-w-xl">
+                  {/* Contact fields */}
+                  <div className="space-y-5 mb-10 max-w-xl">
                     <div>
                       <label htmlFor="tb-name" className="block font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--c-text-muted)] mb-2">Your name *</label>
                       <input id="tb-name" type="text" value={contact.name} onChange={(e) => { setContact({ ...contact, name: e.target.value }); setErrors((er) => ({ ...er, name: null })); }} placeholder="Your name" data-testid="tb-name" className="w-full bg-[var(--c-surface)] border border-[var(--c-border)] focus:border-[var(--c-gold)] text-[var(--c-text)] placeholder:text-[var(--c-text-muted)] font-body text-base px-4 py-3.5 rounded-sm focus:outline-none transition-colors" />
@@ -783,29 +853,7 @@ const TripBuilder = () => {
                     </div>
                   </div>
 
-                  <div className="mt-10 flex items-center justify-between">
-                    <button type="button" onClick={() => setStep(2)} className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-text-muted)] hover:text-[var(--c-text)] transition-colors">← Back</button>
-                    <button type="button" onClick={next} data-testid="tb-next-3" className="group inline-flex items-center gap-3 bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-7 py-3.5 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors">
-                      Next: Final detail
-                      <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {/* ── STEP 4 · PACKAGE PREVIEW + BUDGET + SUBMIT ── */}
-              {step === 4 && (
-                <form onSubmit={submit} data-testid="tb-step-4">
-                  <input {...mainHs.honeypotProps} name="company_website" />
-                  <StepPill n={4} />
-                  <h2 className="font-display font-light text-[var(--c-text)] text-2xl md:text-4xl leading-[1.15] mb-3 tracking-tight">
-                    Last step — <em className="italic text-[var(--c-gold)]">match us to your expectations.</em>
-                  </h2>
-                  <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.7] mb-10 max-w-2xl">
-                    Ground + golf only. Excludes flights. No wrong answer — this helps us match course access and lodging to your expectations.
-                  </p>
-
-                  {/* Package selection (kept) */}
+                  {/* Bespoke Travel box (COPY ONLY — no payment flow) */}
                   <div className="grid grid-cols-1 gap-4 mb-8 max-w-2xl">
                     {PACKAGES.map((p) => (
                       <SelectCard
@@ -832,46 +880,18 @@ const TripBuilder = () => {
                             </li>
                           ))}
                         </ul>
+                        <div className="mt-6 pt-5 border-t border-[var(--c-border)]">
+                          <p className="text-[14px] text-[var(--c-text-mid)] leading-[1.7]">
+                            A $100 USD deposit per player initiates your custom itinerary and confirms your trip booking.
+                          </p>
+                          <p className="mt-1.5 text-[13px] text-[var(--c-text-muted)] italic">
+                            Protected by our 36-Hour GIM Guarantee.
+                          </p>
+                        </div>
                       </SelectCard>
                     ))}
                   </div>
                   {errors.pkg && <p className="text-[13px] text-[#8b2020] mb-5 font-mono">{errors.pkg}</p>}
-
-                  {/* Open-ended budget input (USD primary) */}
-                  <div className="mb-10 max-w-xl">
-                    <label htmlFor="tb-budget" className="block font-display text-[var(--c-text)] text-lg md:text-xl mb-1.5">What&apos;s your budget per player?</label>
-                    <p className="text-[13px] text-[var(--c-text-muted)] mb-4">Ground + golf only (USD). Excludes flights.</p>
-                    <input
-                      id="tb-budget"
-                      type="text"
-                      value={budget}
-                      onChange={(e) => setBudget(e.target.value)}
-                      placeholder="e.g., $3,000 USD per person"
-                      data-testid="tb-budget"
-                      className="w-full bg-[var(--c-surface)] border border-[var(--c-border)] focus:border-[var(--c-gold)] text-[var(--c-text)] placeholder:text-[var(--c-text-muted)] font-body text-base px-4 py-3.5 rounded-sm focus:outline-none transition-colors"
-                    />
-                    <p className="mt-2 text-[12px] text-[var(--c-text-muted)] italic">No wrong answer. This helps us match course access and lodging to your expectations.</p>
-                  </div>
-
-                  {/* Recap value stack */}
-                  <div className="bg-[var(--c-surface)] border border-[var(--c-border)] rounded-sm p-6 md:p-7 mb-10 max-w-2xl">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-4">What you&apos;ll get</p>
-                    <ul className="space-y-2">
-                      {[
-                        "Named courses and routing for every day",
-                        "Itemized costs in USD — green fees, caddies, transport, lodging",
-                        "Two curated lodging options at each tier",
-                        "Ground transport + restaurant reservations",
-                        "Unlimited refinements until 100% perfect",
-                        "Pablo's personal cell for the entire trip",
-                      ].map((d) => (
-                        <li key={d} className="flex items-start gap-2 text-[13px] md:text-[14px] text-[var(--c-text-mid)] leading-[1.6]">
-                          <span className="text-[var(--c-gold)] mt-0.5">▸</span>
-                          <span>{d}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
 
                   <button type="submit" disabled={mainHs.submitting} data-testid="tb-submit" className="group w-full inline-flex items-center justify-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-8 py-4 rounded-sm font-mono text-[12px] uppercase tracking-[0.18em] font-bold transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
                     {mainHs.submitting ? "Sending…" : "Get My 48-Hour Proposal"}
@@ -883,17 +903,13 @@ const TripBuilder = () => {
                   <p className="mt-4 text-[12px] text-[var(--c-text-muted)] text-center leading-[1.6]">
                     No commitment. No call required. We build the itinerary. You decide if you want to move forward.
                   </p>
-                  {/* The email typed in step 3 is only POSTed when this button is
+                  {/* The email typed above is only POSTed when this button is
                       pressed, so the consent line belongs on the step that sends it. */}
                   <ConsentNotice
                     tone="light"
                     testid="consent-notice-trip-builder"
                     className="mt-3 text-center"
                   />
-                  <div className="mt-6 inline-flex items-center gap-2 bg-[var(--c-green-deep)] text-white font-mono text-[10px] md:text-[11px] uppercase tracking-[0.18em] font-bold w-full justify-center px-4 py-3 rounded-sm">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--c-gold)]" />
-                    Each confirmed trip blocks a full week — we&apos;re filling 2026 now.
-                  </div>
 
                   <div className="mt-10 flex items-center justify-start">
                     <button type="button" onClick={() => setStep(3)} className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-text-muted)] hover:text-[var(--c-text)] transition-colors">← Back</button>

@@ -22,6 +22,12 @@ import LosCabos from "@/pages/LosCabos";
 import Experience from "@/pages/Experience";
 import Contact from "@/pages/Contact";
 import Privacy from "@/pages/Privacy";
+import Landing from "@/pages/Landing";
+import PackageBookingPage from "@/pages/packages/PackageBookingPage";
+import PuntaMitaPackagePage from "@/pages/packages/PuntaMitaPackagePage";
+import { CANCUN, LOS_CABOS, PUERTO_VALLARTA, PUNTA_MITA } from "@/data/packagePages";
+import PackageWaitlistPage from "@/pages/packages/PackageWaitlistPage";
+import PackageNationalPage from "@/pages/packages/PackageNationalPage";
 
 // Generic destination hub — routes /destinations/:slug through the LosCabos layout with the matching data
 const HubBySlug = () => {
@@ -134,6 +140,69 @@ const AnimatedRoutes = () => {
           element={
             <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
               <HubBySlug />
+            </motion.div>
+          }
+        />
+        {/* Pablo's three bookable package pages — ported near-verbatim from his
+            own HTML/CSS/JS (pages/packages/PackageBookingPage.jsx), not the
+            site's Landing.jsx component system. Explicit per-destination
+            routes so they resolve before the generic :hub/:slug route below. */}
+        <Route
+          path="/destinations/cancun-riviera-maya/golf-packages"
+          element={
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
+              <PackageBookingPage data={CANCUN} />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/destinations/los-cabos/golf-packages"
+          element={
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
+              <PackageBookingPage data={LOS_CABOS} />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/destinations/puerto-vallarta/golf-packages"
+          element={
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
+              <PackageBookingPage data={PUERTO_VALLARTA} />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/destinations/punta-mita/golf-packages"
+          element={
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
+              <PuntaMitaPackagePage data={PUNTA_MITA} />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/golf-packages"
+          element={
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
+              <PackageNationalPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/destinations/mexico-city/private-access"
+          element={
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
+              <PackageWaitlistPage />
+            </motion.div>
+          }
+        />
+        {/* Transactional landings under a hub — /destinations/:hub/:slug.
+            Three segments, so this never collides with the two-segment
+            /destinations/:slug hub route above. Content: data/landings.js. */}
+        <Route
+          path="/destinations/:hub/:slug"
+          element={
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
+              <Landing />
             </motion.div>
           }
         />

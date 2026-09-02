@@ -118,9 +118,19 @@ const ROUTE_SOURCE = {
   // its date — the policy text is what changes, not the component.
   "/privacy": "src/data/privacy.js",
   "/aviso-de-privacidad": "src/data/privacy.js",
+  // Pablo's three bookable package pages + the Mexico City waitlist + the
+  // national page — ported near-verbatim into their own components rather
+  // than data/landings.js, so they need explicit entries here too.
+  "/destinations/cancun-riviera-maya/golf-packages": "src/data/packagePages.js",
+  "/destinations/los-cabos/golf-packages": "src/data/packagePages.js",
+  "/destinations/puerto-vallarta/golf-packages": "src/data/packagePages.js",
+  "/destinations/punta-mita/golf-packages": "src/data/packagePages.js",
+  "/destinations/mexico-city/private-access": "src/pages/packages/PackageWaitlistPage.jsx",
+  "/golf-packages": "src/pages/packages/PackageNationalPage.jsx",
 };
 const HUB_SOURCE = "src/data/hubs.js";
 const ARTICLE_SOURCE = "src/data/articles.js";
+const LANDING_SOURCE = "src/data/landings.js";
 
 // Load an ESM data module by bundling it to a temp file and importing it.
 async function loadData(file) {
@@ -328,20 +338,91 @@ function renderArticleFull(a) {
   return md.trim() + "\n";
 }
 
+// Landing pages (data/landings.js) are transactional, so their corpus entry is
+// the part an answer engine can actually use: the answer-first paragraph, the
+// specs, the prose, and the FAQ. The form and the CTA copy are skipped.
+function renderLandingFull(l) {
+  let md = `## ${clean(l.name)} — ${clean(l.hubName)}\n\n`;
+  md += `URL: ${BASE}/destinations/${l.hub}/${l.slug}\n\n`;
+  md += para(l.heroAnswer);
+
+  if (l.specs) {
+    md += `### Specifications\n\n`;
+    const [head, ...rows] = l.specs;
+    for (const row of rows) {
+      const cells = row
+        .slice(1)
+        .map((c, i) => `${clean(head[i + 1] || "")}: ${clean(c)}`)
+        .join(" · ");
+      md += `- ${clean(row[0])} — ${cells}\n`;
+    }
+    md += `\n`;
+    if (l.specsNote) md += para(l.specsNote);
+  }
+
+  for (const key of ["contrastParagraphs", "accessParagraphs", "tournamentParagraphs"]) {
+    if (l[key]) for (const p of l[key]) md += para(p);
+  }
+  if (l.calloutBody) md += para(`${clean(l.calloutLabel)}. ${clean(l.calloutBody)}`);
+  if (l.included) {
+    md += `### What's included\n\n`;
+    for (const [t, b] of l.included) md += `- **${clean(t)}** — ${clean(b)}\n`;
+    md += `\n`;
+  }
+  if (l.packages) {
+    md += `### Packages\n\n`;
+    for (const pkg of l.packages) {
+      md += `**${clean(pkg.name)}** — ${clean(pkg.blurb)}\n`;
+      md += `Includes: ${pkg.includes.map(clean).join(" · ")}.\n`;
+      md += `${clean(pkg.price)}${pkg.priceNote ? ` (${clean(pkg.priceNote)})` : ""}.\n\n`;
+    }
+  }
+  if (l.addOnBody) md += para(l.addOnBody);
+  if (l.itinerary) for (const d of l.itinerary) md += para(`${clean(d.day)}. ${clean(d.body)}`);
+  if (l.accessBody) md += para(l.accessBody);
+  if (l.honestyBody) md += para(l.honestyBody);
+
+  if (l.faqs?.length) {
+    md += `### FAQ\n\n`;
+    for (const f of l.faqs) md += `**${clean(f.q)}**\n\n${para(f.a)}`;
+  }
+  return md.trim() + "\n";
+}
+
 // ── build the three files ──────────────────────────────────────────────────
 async function main() {
   const hubsMod = await loadData("hubs.js");
   const articlesMod = await loadData("articles.js");
+  const landingsMod = await loadData("landings.js");
   const hubs = hubsMod.default || [];
   const articles = articlesMod.ARTICLES || [];
+  const landings = landingsMod.default || [];
 
   // ---- llms.txt (curated index) ----
   let index = `# Golf in Mexico°\n\n> ${SITE_SUMMARY}\n\n`;
   index += `## Destinations\n\n`;
+  // Pablo's package pages — ported into their own components, not
+  // data/landings.js, so they are listed here by hand rather than derived.
+  const PACKAGE_PAGES = [
+    { hub: "cancun-riviera-maya", loc: "/destinations/cancun-riviera-maya/golf-packages", title: "Cancun golf packages", desc: "Three package tiers, airport transfer included, all three Cancun courses in one trip." },
+    { hub: "los-cabos", loc: "/destinations/los-cabos/golf-packages", title: "Los Cabos golf packages", desc: "Three package tiers across a 20-mile corridor of Nicklaus, Woods, Norman and Fazio designs." },
+    { hub: "puerto-vallarta", loc: "/destinations/puerto-vallarta/golf-packages", title: "Puerto Vallarta golf packages", desc: "Seven courses within 45 minutes of PVR, including the Mexico Open venue at Vidanta." },
+    { hub: "punta-mita", loc: "/destinations/punta-mita/golf-packages", title: "Punta Mita golf packages", desc: "Private villas, 36 holes of Jack Nicklaus, and full concierge service on one peninsula." },
+    { hub: "mexico-city", loc: "/destinations/mexico-city/private-access", title: "Mexico City private access", desc: "Mexico City's best golf is private, member-guest only. Join the list and hear first as access opens." },
+  ];
   for (const h of hubs) {
     const desc = truncate(h.seoDescription || h.heroAnswer);
     index += `- [${clean(h.name)} golf guide](${BASE}/destinations/${h.slug}): ${desc}\n`;
+    for (const l of landings.filter((x) => x.hub === h.slug)) {
+      index += `  - [${clean(l.name)}](${BASE}/destinations/${l.hub}/${l.slug}): ${truncate(
+        l.seoDescription || l.heroAnswer,
+      )}\n`;
+    }
+    for (const pkg of PACKAGE_PAGES.filter((x) => x.hub === h.slug)) {
+      index += `  - [${clean(pkg.title)}](${BASE}${pkg.loc}): ${pkg.desc}\n`;
+    }
   }
+  index += `- [Mexico golf packages](${BASE}/golf-packages): Five regions, one operator — matches your group to the right destination before you book the wrong one.\n`;
   index += `\n## Journal\n\n`;
   for (const a of articles) {
     const desc = truncate(a.metaDescription || a.subtitle);
@@ -372,6 +453,11 @@ async function main() {
   full += `# Destination Guides\n\n`;
   for (const h of hubs) full += renderHubFull(h) + "\n---\n\n";
 
+  if (landings.length) {
+    full += `# Trip Pages\n\n`;
+    for (const l of landings) full += renderLandingFull(l) + "\n---\n\n";
+  }
+
   full += `# Journal\n\n`;
   for (const a of articles) full += renderArticleFull(a) + "\n---\n\n";
 
@@ -388,6 +474,14 @@ async function main() {
     // reads its route list from this sitemap) both pick them up.
     { loc: "/privacy", priority: "0.3", changefreq: "yearly" },
     { loc: "/aviso-de-privacidad", priority: "0.3", changefreq: "yearly" },
+    // Package pages — ads-facing, so they rank with the landings, not the
+    // static marketing pages above.
+    { loc: "/destinations/cancun-riviera-maya/golf-packages", priority: "0.9", changefreq: "monthly" },
+    { loc: "/destinations/los-cabos/golf-packages", priority: "0.9", changefreq: "monthly" },
+    { loc: "/destinations/puerto-vallarta/golf-packages", priority: "0.9", changefreq: "monthly" },
+    { loc: "/destinations/punta-mita/golf-packages", priority: "0.9", changefreq: "monthly" },
+    { loc: "/destinations/mexico-city/private-access", priority: "0.8", changefreq: "monthly" },
+    { loc: "/golf-packages", priority: "0.8", changefreq: "monthly" },
   ].map((r) => ({ ...r, lastmod: gitDate(ROUTE_SOURCE[r.loc]) }));
   const hubLastmod = gitDate(HUB_SOURCE);
   const hubRoutes = hubs.map((h) => ({
@@ -403,7 +497,15 @@ async function main() {
     changefreq: "monthly",
     lastmod: articleLastmod,
   }));
-  const urls = [...staticRoutes, ...hubRoutes, ...articleRoutes];
+  // Landings are the paid-traffic destinations, so they rank above the hubs.
+  const landingLastmod = gitDate(LANDING_SOURCE);
+  const landingRoutes = landings.map((l) => ({
+    loc: `/destinations/${l.hub}/${l.slug}`,
+    priority: "0.9",
+    changefreq: "monthly",
+    lastmod: landingLastmod,
+  }));
+  const urls = [...staticRoutes, ...hubRoutes, ...landingRoutes, ...articleRoutes];
 
   // Guard 1 — clone floor. On a shallow clone, a date equal to a boundary
   // (graft) commit's date means "the history ran out here", not "the page changed
@@ -454,7 +556,9 @@ async function main() {
   fs.writeFileSync(path.join(PUBLIC, "sitemap.xml"), sitemap);
 
   const words = full.split(/\s+/).filter(Boolean).length;
-  console.log(`✓ llms.txt        (${hubs.length} destinations, ${articles.length} articles)`);
+  console.log(
+    `✓ llms.txt        (${hubs.length} destinations, ${landings.length} trip pages, ${articles.length} articles)`,
+  );
   console.log(`✓ llms-full.txt   (~${words.toLocaleString()} words)`);
   console.log(
     `✓ sitemap.xml     (${urls.length} URLs, ` +

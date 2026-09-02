@@ -260,19 +260,117 @@ const AccessPill = ({ tier }) => {
 };
 
 /* ═══════════════════════════════════════════════════════════════════
-   HERO SLIDER — horizontal scroller with arrow controls
+   HERO SLIDER — self-scrolling film strip with arrow controls.
+
+   The strip drifts continuously (~30px/s) and loops seamlessly: the
+   slides render twice, and when the scroll position passes the width of
+   the first set it wraps back by exactly that width — no rewind, no
+   jump a viewer can see. The reel pauses the moment the visitor touches
+   it (hover, swipe, wheel, arrows) and resumes a beat after they let
+   go, pauses off-screen (IntersectionObserver), and stays fully manual
+   under prefers-reduced-motion — where it keeps the original snap
+   behavior and renders no clones.
    ═══════════════════════════════════════════════════════════════════ */
+
+const AUTOPLAY_SPEED = 0.5; // px per frame ≈ 30px/s at 60fps
 
 const HeroSlider = ({ name, slides }) => {
   const scrollerRef = useRef(null);
+  const setRef = useRef(null); // first copy of the slides — its width is the loop length
+  const pausedRef = useRef(false);
+  const posRef = useRef(0); // fractional scroll position (scrollLeft rounds to ints)
+  const resumeTimer = useRef(null);
+  // Read once — flipping this mid-session is not worth a listener.
+  const [reducedMotion] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+
+  const pause = () => {
+    pausedRef.current = true;
+    clearTimeout(resumeTimer.current);
+  };
+  const resumeAfter = (ms) => {
+    clearTimeout(resumeTimer.current);
+    resumeTimer.current = setTimeout(() => {
+      pausedRef.current = false;
+    }, ms);
+  };
+
+  useEffect(() => {
+    if (reducedMotion) return undefined;
+    const el = scrollerRef.current;
+    const set = setRef.current;
+    if (!el || !set) return undefined;
+
+    // Loop length = one full set plus the flex gap between the two sets.
+    const gapOf = () => parseFloat(getComputedStyle(el).columnGap) || 0;
+    let loopW = set.offsetWidth + gapOf();
+    const onResize = () => {
+      loopW = set.offsetWidth + gapOf();
+    };
+    window.addEventListener("resize", onResize);
+
+    // Only burn frames while the strip is actually on screen.
+    let inView = false;
+    const io = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+    });
+    io.observe(el);
+
+    // While the visitor drives (swipe, wheel, smooth arrow scroll), follow
+    // their position so autoplay resumes from wherever they left the reel.
+    const onScroll = () => {
+      if (pausedRef.current) posRef.current = el.scrollLeft;
+    };
+    el.addEventListener("scroll", onScroll, { passive: true });
+
+    posRef.current = el.scrollLeft;
+    let rafId;
+    const tick = () => {
+      if (!pausedRef.current && inView && document.visibilityState === "visible" && loopW > 0) {
+        let next = posRef.current + AUTOPLAY_SPEED;
+        if (next >= loopW) next -= loopW;
+        posRef.current = next;
+        el.scrollLeft = next;
+      }
+      rafId = requestAnimationFrame(tick);
+    };
+    rafId = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      io.disconnect();
+      el.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
+      clearTimeout(resumeTimer.current);
+    };
+  }, [reducedMotion]);
 
   const scrollByOne = (dir) => {
     const el = scrollerRef.current;
     if (!el) return;
+    pause();
     const card = el.querySelector(".photo-slot");
     const step = card ? card.getBoundingClientRect().width + 12 : 540;
     el.scrollBy({ left: dir * step, behavior: "smooth" });
+    resumeAfter(3500);
   };
+
+  const slideNodes = (dup) =>
+    slides.map((src, i) => (
+      <PhotoSlot
+        key={`hero-slider${dup ? "-dup" : ""}-${i}`}
+        src={src || undefined}
+        alt={dup ? "" : `${name} — view ${i + 1}`}
+        label={i === 0 ? name : null}
+        showLabel={i === 0}
+        testid={`lc-hero-slider${dup ? "-dup" : ""}-${i}`}
+        className="photo-slot--4x3 photo-slot--zoom-parent snap-start shrink-0 w-[78vw] sm:w-[60vw] md:w-[520px] rounded-sm overflow-hidden"
+      />
+    ));
 
   return (
     <section
@@ -308,22 +406,41 @@ const HeroSlider = ({ name, slides }) => {
           </div>
         </div>
 
+        {/* CSS scroll-snap and scroll-smooth both fight per-frame scrollLeft
+            writes, so the marquee drops them; reduced-motion keeps the
+            original manual snap strip with no clones. */}
         <div
           ref={scrollerRef}
-          className="flex gap-2 md:gap-3 overflow-x-auto snap-x snap-mandatory px-6 md:px-12 pb-2 scroll-smooth"
+          onPointerEnter={reducedMotion ? undefined : pause}
+          onPointerLeave={reducedMotion ? undefined : () => resumeAfter(600)}
+          onTouchStart={reducedMotion ? undefined : pause}
+          onTouchEnd={reducedMotion ? undefined : () => resumeAfter(3000)}
+          onWheel={
+            reducedMotion
+              ? undefined
+              : () => {
+                  pause();
+                  resumeAfter(3000);
+                }
+          }
+          className={`flex gap-2 md:gap-3 overflow-x-auto px-6 md:px-12 pb-2 ${
+            reducedMotion ? "snap-x snap-mandatory scroll-smooth" : ""
+          }`}
           style={{ scrollbarWidth: "none" }}
         >
-          {slides.map((src, i) => (
-            <PhotoSlot
-              key={`hero-slider-${i}`}
-              src={src || undefined}
-              alt={`${name} — view ${i + 1}`}
-              label={i === 0 ? name : null}
-              showLabel={i === 0}
-              testid={`lc-hero-slider-${i}`}
-              className="photo-slot--4x3 photo-slot--zoom-parent snap-start shrink-0 w-[78vw] sm:w-[60vw] md:w-[520px] rounded-sm overflow-hidden"
-            />
-          ))}
+          {reducedMotion ? (
+            slideNodes(false)
+          ) : (
+            <>
+              <div ref={setRef} className="flex gap-2 md:gap-3 shrink-0">
+                {slideNodes(false)}
+              </div>
+              {/* Clone set for the seamless wrap — invisible to a11y. */}
+              <div aria-hidden="true" className="flex gap-2 md:gap-3 shrink-0">
+                {slideNodes(true)}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </section>

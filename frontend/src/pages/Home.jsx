@@ -2,7 +2,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import FoundersGallery from "@/components/FoundersGallery";
-import { ARTICLES } from "@/data/articles";
 import { useSeo, orgSchema, webSiteSchema } from "@/hooks/useSeo";
 
 const HERO_VIDEO_MP4 = "/video/hero.mp4";
@@ -16,78 +15,6 @@ const HOME_DIVIDER_IMG =
 
 const HOME_VIDEO_SRC = "/video/home.mp4";
 const HOME_VIDEO_SRC_WEBM = "/video/home.webm";
-
-/* ─────────────── LATEST FROM THE JOURNAL ─────────────── */
-
-const LatestFromJournal = () => {
-  const items = ARTICLES.slice(0, 3);
-  if (items.length === 0) return null;
-  return (
-    <section
-      data-testid="home-latest-journal"
-      className="bg-[var(--c-off-white)] border-t border-[var(--c-border)] py-20 md:py-28"
-    >
-      <div className="max-w-[1240px] mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-14">
-          <div>
-            <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-3">
-              From the Journal
-            </span>
-            <h2 className="font-display font-normal text-[var(--c-text)] leading-[1.05] tracking-tight text-3xl md:text-4xl lg:text-5xl max-w-[22ch]">
-              Latest reads from <em className="italic text-[var(--c-gold)]">inside the ropes.</em>
-            </h2>
-          </div>
-          <Link
-            to="/journal"
-            data-testid="home-latest-view-all"
-            className="group self-start md:self-auto inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-text-mid)] hover:text-[var(--c-gold)] transition-colors"
-          >
-            View all articles
-            <span className="transition-transform duration-500 group-hover:translate-x-1.5">→</span>
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-          {items.map((a, i) => (
-            <motion.div
-              key={a.slug}
-              initial={{ opacity: 0, y: 22 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 0.8, delay: 0.08 * i, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <Link
-                to={`/journal/${a.slug}`}
-                data-testid={`home-latest-card-${i}`}
-                className="group block"
-              >
-                <div className="relative aspect-[4/5] overflow-hidden bg-[var(--c-green-deep)] mb-5 rounded-sm">
-                  <img
-                    src={a.heroImage}
-                    alt={a.title}
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
-                  />
-                </div>
-                {a.destinationLabel && (
-                  <span className="block font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-2">
-                    {a.destinationLabel}
-                  </span>
-                )}
-                <h3 className="font-display font-normal text-[var(--c-text)] text-xl md:text-2xl leading-[1.2] tracking-tight mb-3 group-hover:text-[var(--c-gold)] transition-colors">
-                  {a.title}
-                </h3>
-                <p className="font-body font-light text-[var(--c-text-mid)] text-sm md:text-[15px] leading-[1.65]">
-                  {a.excerpt}
-                </p>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
 
 /* ─────────────── EDITORIAL STATEMENT + VIDEO BOX ─────────────── */
 
@@ -120,41 +47,6 @@ const StatementAndVideo = () => (
         it, planned it, and lived it — from elite courses to the experiences
         that make the trip worth taking.
       </motion.p>
-
-      {/* Descriptive entry links into the destination guides that carry the search demand.
-          Deliberately NOT a motion.p: the prerenderer captures the entry animation's
-          initial frame, so a motion wrapper would ship these links to crawlers and
-          non-JS AI bots inside style="opacity: 0" markup — the opposite of the point. */}
-      <p
-        data-testid="home-statement-guides"
-        className="font-body font-light text-[var(--c-text-mid)] leading-[1.8] text-base md:text-lg max-w-[52ch] mb-14 md:mb-20"
-      >
-        Start with a destination:{" "}
-        <Link
-          to="/destinations/mexico-city"
-          data-testid="home-guide-mexico-city"
-          className="text-[var(--c-text)] underline decoration-[var(--c-gold)] underline-offset-4 hover:text-[var(--c-gold)] transition-colors"
-        >
-          golf in Mexico City — 20+ courses at altitude
-        </Link>
-        ,{" "}
-        <Link
-          to="/destinations/cancun-riviera-maya"
-          data-testid="home-guide-cancun"
-          className="text-[var(--c-text)] underline decoration-[var(--c-gold)] underline-offset-4 hover:text-[var(--c-gold)] transition-colors"
-        >
-          Riviera Maya golf courses
-        </Link>
-        , or{" "}
-        <Link
-          to="/destinations/los-cabos"
-          data-testid="home-guide-los-cabos"
-          className="text-[var(--c-text)] underline decoration-[var(--c-gold)] underline-offset-4 hover:text-[var(--c-gold)] transition-colors"
-        >
-          Los Cabos green fees and access
-        </Link>
-        .
-      </p>
 
       <motion.div
         initial={{ opacity: 0, y: 32 }}
@@ -280,9 +172,20 @@ const Home = () => {
             transition={{ duration: 1.4, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
             className="font-display font-normal text-white leading-[1.02] tracking-tight text-[9vw] md:text-[6.2vw] lg:text-[5.6rem] max-w-[18ch] mx-auto"
           >
-            We uncover{" "}
-            <span className="italic text-[var(--c-gold)]">the best golf in Mexico.</span>
+            There is no golf destination{" "}
+            <span className="italic text-[var(--c-gold)]">like Mexico.</span>
           </motion.h1>
+
+          {/* Deliberately a plain <p>, not a motion element: the prerenderer captures
+              the entry animation's initial frame, so a motion wrapper would ship this
+              crawler-visible sub-line inside style="opacity: 0" markup. See the same
+              rule documented above StatementAndVideo's guides paragraph pattern. */}
+          <p
+            data-testid="hero-subline"
+            className="mt-6 md:mt-8 font-body font-light text-white/85 text-base md:text-lg max-w-[42ch] mx-auto"
+          >
+            Curated experiences, planned by a tour agent and a tour pro.
+          </p>
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -290,7 +193,7 @@ const Home = () => {
             transition={{ duration: 1, delay: 1, ease: [0.22, 1, 0.36, 1] }}
           >
             <Link
-              to="/experience"
+              to="/golf-packages"
               data-testid="hero-cta-discover"
               className="group mt-10 md:mt-14 inline-flex items-center gap-3 border border-[var(--c-gold)] text-white px-7 md:px-9 py-4 md:py-[18px] rounded-sm font-mono text-[11px] md:text-[12px] uppercase tracking-[0.18em] hover:bg-[var(--c-gold)] hover:text-[var(--c-green-deep)] transition-colors duration-500"
             >
@@ -300,9 +203,6 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
-
-      {/* LATEST FROM THE JOURNAL */}
-      <LatestFromJournal />
 
       {/* EDITORIAL STATEMENT + VIDEO BOX */}
       <StatementAndVideo />
