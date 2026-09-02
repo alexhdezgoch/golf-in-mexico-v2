@@ -190,9 +190,9 @@ const Nav = () => {
             Contact
           </Link>
 
-          {/* Inquire CTA — premium magnetic-style button → routes to Experience selector */}
+          {/* Inquire CTA — premium magnetic-style button → routes to Golf Packages page */}
           <Link
-            to="/experience"
+            to="/golf-packages"
             data-testid="nav-inquire-cta"
             className={`group relative inline-flex items-center gap-2 rounded-full pl-4 pr-3.5 py-2 font-mono text-[11px] uppercase tracking-wide-editorial transition-all duration-500 ${
               onDarkHero
@@ -200,7 +200,7 @@ const Nav = () => {
                 : "bg-ink text-cream hover:bg-gold hover:text-ink"
             }`}
           >
-            <span className="relative">Inquire</span>
+            <span className="relative">Golf Packages</span>
             <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-ink/15 text-current transition-transform duration-500 group-hover:rotate-45">
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
                 <path d="M5 12h14M13 6l6 6-6 6" />
@@ -304,12 +304,12 @@ const Nav = () => {
             type="button"
             onClick={() => {
               setOpen(false);
-              navigate("/experience");
+              navigate("/golf-packages");
             }}
             data-testid="nav-mobile-inquire"
             className="mt-3 self-start inline-flex items-center gap-2 rounded-full bg-ink text-cream pl-5 pr-4 py-3 font-mono text-[11px] uppercase tracking-wide-editorial"
           >
-            Inquire
+            Golf Packages
             <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-cream/15">
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
                 <path d="M5 12h14M13 6l6 6-6 6" />
