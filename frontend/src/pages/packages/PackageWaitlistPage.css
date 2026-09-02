@@ -206,7 +206,9 @@
 .pkgWaitlist .spec-cell b{font-family:var(--font-display);font-weight:400;font-size:1.05rem;color:var(--c-text)}
 @media (max-width:700px){.pkgWaitlist .spec-cell{flex:1 1 50%;border-bottom:1px solid rgba(26,23,20,.14)}}
 .pkgWaitlist .photo-divider{width:100%;position:relative;overflow:hidden;height:clamp(260px,32vw,420px);background-size:cover;background-position:center}
-.pkgWaitlist .photo-divider.pd-1{background-image:linear-gradient(135deg,#3a3226 0%,#1f1a14 100%)}
+/* pd-1 carries the tree-and-bunker photo — centered crop showed only canopy;
+   bias the slice toward the bottom so the fairway grass is in frame */
+.pkgWaitlist .photo-divider.pd-1{background-image:linear-gradient(135deg,#3a3226 0%,#1f1a14 100%);background-position:center 82%}
 .pkgWaitlist .photo-divider.pd-2{background-image:linear-gradient(135deg,#3a3226 0%,#1f1a14 100%)}
 .pkgWaitlist .photo-divider.pd-3{background-image:linear-gradient(135deg,#3a3226 0%,#1f1a14 100%)}
 .pkgWaitlist .spots-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(166,91,59,.08);border:1px solid var(--c-gold);color:var(--c-gold);font-family:var(--font-body);font-weight:600;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:8px 16px;margin:20px auto 0}
