@@ -198,13 +198,14 @@ const PackageNationalPage = () => {
         regionCards.classList.add("dragging");
         rStartX = e.clientX;
         rScrollStart = regionCards.scrollLeft;
-        regionCards.setPointerCapture(e.pointerId);
       };
       const onPointerMove = (e) => {
         if (!rDown) return;
         const dx = e.clientX - rStartX;
-        if (Math.abs(dx) > 4) rDragged = true;
-        regionCards.scrollLeft = rScrollStart - dx;
+        // Capture only once a real drag starts — capturing on pointerdown retargets
+        // the click to the container and kills every link inside the cards.
+        if (Math.abs(dx) > 4 && !rDragged) { rDragged = true; regionCards.setPointerCapture(e.pointerId); }
+        if (rDragged) regionCards.scrollLeft = rScrollStart - dx;
       };
       const onPointerEnd = () => {
         rDown = false;
@@ -373,10 +374,10 @@ const PackageNationalPage = () => {
           <div className="region-img" style={{ backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `url(${REGION_PHOTOS.vallarta})` }} />
           <div className="region-card-body">
             <div>
-              <h4>Puerto Vallarta &amp; Riviera Nayarit</h4>
-              <p>Resort-town courses, room to go bigger nearby.</p>
+              <h4>Punta Mita &amp; Nayarit</h4>
+              <p>Ocean-cliff golf on Mexico's most exclusive coast.</p>
             </div>
-            <Link to="/destinations/puerto-vallarta/golf-packages">Explore →</Link>
+            <Link to="/destinations/punta-mita/golf-packages">Explore →</Link>
           </div>
         </div>
         <div className="region-card">

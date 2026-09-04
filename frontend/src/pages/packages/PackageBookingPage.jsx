@@ -246,13 +246,14 @@ const PackageBookingPage = ({ data }) => {
         pkCards.classList.add("dragging");
         startX = e.clientX;
         scrollStart = pkCards.scrollLeft;
-        pkCards.setPointerCapture(e.pointerId);
       };
       const onPointerMove = (e) => {
         if (!isDown) return;
         const dx = e.clientX - startX;
-        if (Math.abs(dx) > 4) dragged = true;
-        pkCards.scrollLeft = scrollStart - dx;
+        // Capture only once a real drag starts — capturing on pointerdown retargets
+        // the click to the container and kills every link inside the cards.
+        if (Math.abs(dx) > 4 && !dragged) { dragged = true; pkCards.setPointerCapture(e.pointerId); }
+        if (dragged) pkCards.scrollLeft = scrollStart - dx;
       };
       const onPointerEnd = () => {
         isDown = false;
@@ -354,7 +355,7 @@ const PackageBookingPage = ({ data }) => {
       <h1>{data.h1}</h1>
       <p className="hero-sub">{data.heroSub}</p>
       <div className="hero-ctas">
-        <a href="https://golf-in-mexico.com/trip-builder" target="_blank" rel="noopener" className="btn solid">Claim Preferred Rates &amp; Perks →</a>
+        <Link to="/trip-builder" className="btn solid">Claim Preferred Rates &amp; Perks →</Link>
         <a href="#problem" className="btn ghost">Why Us? →</a>
       </div>
       <ul className="hero-perks-list">
@@ -396,17 +397,6 @@ const PackageBookingPage = ({ data }) => {
       <div className="vslot wide" data-yt={data.filmVideoId || ""}>
         <div className="v-ph"><div className="v-play"></div><div className="v-lab"><b>{data.filmLabel}</b>The full film</div></div>
       </div>
-      <div className="film-verticals">
-        <div className="vphoto" style={{ backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `url(${data.heroPhotos[2 % data.heroPhotos.length]})` }}><span>The Resort</span></div>
-        <div className="vphoto" style={{ backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `url(${data.heroPhotos[3 % data.heroPhotos.length]})` }}><span>The Courses</span></div>
-        <div className="vphoto" style={{ backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `url(${data.heroPhotos[0 % data.heroPhotos.length]})` }}><span>The Group</span></div>
-        <div className="vphoto" style={{ backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `url(${data.heroPhotos[1 % data.heroPhotos.length]})` }}><span>The Table</span></div>
-        <div className="vphoto" style={{ backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `url(${data.heroPhotos[2 % data.heroPhotos.length]})` }}><span>Arrival</span></div>
-      </div>
-    </div>
-    <div className="stamp" style={{marginTop: "32px", justifyContent: "center", display: "flex"}}>
-      <div className="stamp-mark">PM</div>
-      <div className="stamp-text"><b>Pablo De La Mora</b>PGA / LPGA / WTA Agent, 5+ years</div>
     </div>
   </div>
 </section>
@@ -424,7 +414,7 @@ const PackageBookingPage = ({ data }) => {
     <div className="pk-scroll rv">
       <div className="pk-cards" id="pkCards">
       <div className="pk-card hot rv">
-        <div className="pk-img pk-preferred"><span>Preferred</span></div>
+        <div className="pk-img pk-preferred" style={{ backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `url(${data.tiers[0].photo})` }}><span>Preferred</span></div>
         <div className="pk-card-body">
         <h4>Luxury Stay</h4>
         <div className="pk-tag">5 Star Hotels</div>
@@ -433,12 +423,12 @@ const PackageBookingPage = ({ data }) => {
         <ul className="pk-list">
           {data.tiers[0].features.map((f) => <li key={f}>{f}</li>)}
         </ul>
-        <a href="https://golf-in-mexico.com/trip-builder" target="_blank" rel="noopener" className="btn solid">Claim Preferred Rates &amp; Perks →</a>
+        <Link to="/trip-builder" className="btn solid">Claim Preferred Rates &amp; Perks →</Link>
         </div>
       </div>
 
       <div className="pk-card rv">
-        <div className="pk-img"><span>Golf-Forward</span></div>
+        <div className="pk-img" style={{ backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `url(${data.tiers[1].photo})` }}><span>Golf-Forward</span></div>
         <div className="pk-card-body">
         <h4>Golf Every Day</h4>
         <div className="pk-tag">Pure Championship Golf</div>
@@ -447,21 +437,21 @@ const PackageBookingPage = ({ data }) => {
         <ul className="pk-list">
           {data.tiers[1].features.map((f) => <li key={f}>{f}</li>)}
         </ul>
-        <a href="https://golf-in-mexico.com/trip-builder" target="_blank" rel="noopener" className="btn solid">Claim Preferred Rates &amp; Perks →</a>
+        <Link to="/trip-builder" className="btn solid">Claim Preferred Rates &amp; Perks →</Link>
         </div>
       </div>
 
       <div className="pk-card rv">
-        <div className="pk-img"><span>Budget</span></div>
+        <div className="pk-img" style={{ backgroundSize: "cover", backgroundPosition: "center", backgroundImage: `url(${data.tiers[2].photo})` }}><span>Budget</span></div>
         <div className="pk-card-body">
-        <h4>Golf &amp; Beach</h4>
+        <h4>Golf &amp; Beyond</h4>
         <div className="pk-tag">Value for Price</div>
         <p className="pk-desc">For the trip that isn’t only about golf.</p>
         <div className="pk-price">{data.tiers[2].price}<span>{data.tiers[2].priceUnit}</span></div>
         <ul className="pk-list">
           {data.tiers[2].features.map((f) => <li key={f}>{f}</li>)}
         </ul>
-        <a href="https://golf-in-mexico.com/trip-builder" target="_blank" rel="noopener" className="btn solid">Claim Preferred Rates &amp; Perks →</a>
+        <Link to="/trip-builder" className="btn solid">Claim Preferred Rates &amp; Perks →</Link>
         </div>
       </div>
       </div>
@@ -477,7 +467,7 @@ const PackageBookingPage = ({ data }) => {
       <div className="lbl">Typically savings $750 per person in GIM Packages</div>
     </div>
 
-    <div className="vs-cta rv" style={{marginTop: "36px"}}><a href="https://golf-in-mexico.com/trip-builder" target="_blank" rel="noopener" className="btn solid">Claim Preferred Rates &amp; Perks →</a></div>
+    <div className="vs-cta rv" style={{marginTop: "36px"}}><Link to="/trip-builder" className="btn solid">Claim Preferred Rates &amp; Perks →</Link></div>
   </div>
 </section>
 
@@ -564,7 +554,7 @@ const PackageBookingPage = ({ data }) => {
     <h2>Let’s Talk.</h2>
     <p>We value relationships over forms. 15 minutes to align your trip.</p>
     <div className="hero-ctas">
-      <a href="https://golf-in-mexico.com/trip-builder" target="_blank" rel="noopener" className="btn solid">Book Call &amp; Claim Preferred Rates &amp; Perks →</a>
+      <Link to="/trip-builder" className="btn solid">Book Call &amp; Claim Preferred Rates &amp; Perks →</Link>
     </div>
     <br/>
     <Link to={data.guideLinkHref} className="guide-link">{data.guideLinkText} →</Link>
