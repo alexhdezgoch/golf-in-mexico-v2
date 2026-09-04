@@ -246,13 +246,14 @@ const PackageBookingPage = ({ data }) => {
         pkCards.classList.add("dragging");
         startX = e.clientX;
         scrollStart = pkCards.scrollLeft;
-        pkCards.setPointerCapture(e.pointerId);
       };
       const onPointerMove = (e) => {
         if (!isDown) return;
         const dx = e.clientX - startX;
-        if (Math.abs(dx) > 4) dragged = true;
-        pkCards.scrollLeft = scrollStart - dx;
+        // Capture only once a real drag starts — capturing on pointerdown retargets
+        // the click to the container and kills every link inside the cards.
+        if (Math.abs(dx) > 4 && !dragged) { dragged = true; pkCards.setPointerCapture(e.pointerId); }
+        if (dragged) pkCards.scrollLeft = scrollStart - dx;
       };
       const onPointerEnd = () => {
         isDown = false;

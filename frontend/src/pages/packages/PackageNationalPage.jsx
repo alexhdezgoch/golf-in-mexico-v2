@@ -198,13 +198,14 @@ const PackageNationalPage = () => {
         regionCards.classList.add("dragging");
         rStartX = e.clientX;
         rScrollStart = regionCards.scrollLeft;
-        regionCards.setPointerCapture(e.pointerId);
       };
       const onPointerMove = (e) => {
         if (!rDown) return;
         const dx = e.clientX - rStartX;
-        if (Math.abs(dx) > 4) rDragged = true;
-        regionCards.scrollLeft = rScrollStart - dx;
+        // Capture only once a real drag starts — capturing on pointerdown retargets
+        // the click to the container and kills every link inside the cards.
+        if (Math.abs(dx) > 4 && !rDragged) { rDragged = true; regionCards.setPointerCapture(e.pointerId); }
+        if (rDragged) regionCards.scrollLeft = rScrollStart - dx;
       };
       const onPointerEnd = () => {
         rDown = false;
