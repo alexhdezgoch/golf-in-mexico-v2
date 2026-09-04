@@ -273,7 +273,7 @@ const PuntaMitaPackagePage = ({ data }) => {
       <h1>{data.h1}</h1>
       <p className="hero-sub">{data.heroSub}</p>
       <div className="hero-ctas">
-        <a href="https://golf-in-mexico.com/trip-builder" target="_blank" rel="noopener" className="btn solid">Claim Preferred Rates &amp; Perks →</a>
+        <Link to="/trip-builder" className="btn solid">Claim Preferred Rates &amp; Perks →</Link>
         <a href="#problem" className="btn ghost">Why Us? →</a>
       </div>
       <ul className="hero-perks-list">
@@ -345,7 +345,7 @@ const PuntaMitaPackagePage = ({ data }) => {
       <div className="lbl">{data.savingsLabel}</div>
     </div>
 
-    <div className="vs-cta rv" style={{marginTop: "36px"}}><a href="https://golf-in-mexico.com/trip-builder" target="_blank" rel="noopener" className="btn solid">Claim Preferred Rates &amp; Perks →</a></div>
+    <div className="vs-cta rv" style={{marginTop: "36px"}}><Link to="/trip-builder" className="btn solid">Claim Preferred Rates &amp; Perks →</Link></div>
   </div>
 </section>
 
@@ -439,7 +439,7 @@ const PuntaMitaPackagePage = ({ data }) => {
     <h2>Let’s Talk.</h2>
     <p>We value relationships over forms. 15 minutes to align your trip.</p>
     <div className="hero-ctas">
-      <a href="https://golf-in-mexico.com/trip-builder" target="_blank" rel="noopener" className="btn solid">Book Call &amp; Claim Preferred Rates &amp; Perks →</a>
+      <Link to="/trip-builder" className="btn solid">Book Call &amp; Claim Preferred Rates &amp; Perks →</Link>
     </div>
     <br/>
     <Link to={data.guideLinkHref} className="guide-link">{data.guideLinkText} →</Link>
