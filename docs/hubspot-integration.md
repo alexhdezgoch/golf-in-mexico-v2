@@ -52,12 +52,21 @@ Settings → Properties → Contact properties, type "Single-line text" unless n
 | `preferred_dates` ★ | custom | inquiry, trip_builder |
 | `trip_length` ★ | custom | trip_builder |
 | `trip_type` ★ | custom | trip_builder(+exit) |
+| `group_size` ★ | custom | trip_builder(+exit) |
 | `package` ★ | custom | trip_builder |
 | `budget` ★ | custom | trip_builder |
 | `utm_source` `utm_medium` `utm_campaign` `utm_term` `utm_content` ★ | custom | all (attribution) |
 | `gclid` `fbclid` ★ | custom | all (ad click IDs) |
 | `landing_page` `referrer` ★ | custom | all (attribution) |
 | `company_website` | **do NOT create / ignore** | honeypot spam trap — must be ignored |
+
+> **`preferred_dates` format note (added with Trip Builder group size / exact dates,
+> 2026-09):** normally a joined list of selected months (e.g. `"Nov 2026, Dec 2026"`).
+> When the visitor enters exact arrive/depart dates in Trip Builder (Step 3, "I have
+> exact dates"), it instead sends `"<Mon D> to <Mon D, YYYY> (exact)"`, followed by
+> any selected months (year stripped, since the exact dates already carry it) — e.g.
+> `"Nov 12 to Nov 16, 2026 (exact); Nov"`. Still a single-line text property, no
+> HubSpot-side change needed.
 
 ---
 

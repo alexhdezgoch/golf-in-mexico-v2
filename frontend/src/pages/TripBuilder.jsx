@@ -29,6 +29,7 @@ const TRIP_TYPES = [
 
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const LENGTHS = ["3–4 nights", "5–7 nights", "7–10 nights", "10+ nights"];
+const GROUP_SIZES = ["2", "3–4", "5–8", "9–12", "13+"];
 
 const PACKAGES = [
   {
@@ -121,6 +122,29 @@ const safeSessionRead = (key) => {
   }
 };
 
+// Native <input type="date"> gives YYYY-MM-DD strings, which sort correctly
+// as plain strings — no Date math needed for the "depart after arrive" check.
+// This helper turns a valid start/end pair into "Nov 12 to Nov 16, 2026".
+const formatExactDateRange = (start, end) => {
+  if (!start || !end) return null;
+  const startDate = new Date(`${start}T00:00:00`);
+  const endDate = new Date(`${end}T00:00:00`);
+  if (Number.isNaN(startDate.getTime()) || Number.isNaN(endDate.getTime())) return null;
+  const startLabel = startDate.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  const endLabel = endDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+  return `${startLabel} to ${endLabel}`;
+};
+
+// preferred_dates for HubSpot: exact dates (when both are set) take priority,
+// with any selected months appended as a rough secondary window — otherwise
+// the existing months.join(", ") behavior.
+const buildPreferredDates = (monthsList, start, end) => {
+  const range = formatExactDateRange(start, end);
+  if (!range) return monthsList.join(", ");
+  const monthAbbrevs = monthsList.map((tag) => tag.split(" ")[0]);
+  return monthAbbrevs.length > 0 ? `${range} (exact); ${monthAbbrevs.join(", ")}` : `${range} (exact)`;
+};
+
 const TripBuilder = () => {
   useSeo({
     title: "Plan Your Trip — Golf in Mexico°",
@@ -158,6 +182,10 @@ const TripBuilder = () => {
   const [year, setYear] = useState("2026");
   const [months, setMonths] = useState([]);
   const [length, setLength] = useState(null);
+  const [groupSize, setGroupSize] = useState(null);
+  const [exactDates, setExactDates] = useState(false);
+  const [dateStart, setDateStart] = useState("");
+  const [dateEnd, setDateEnd] = useState("");
   const [pkg, setPkg] = useState("bespoke");
   const [budget, setBudget] = useState("");
   const [contact, setContact] = useState({ name: "", email: "", phone: "" });
@@ -215,6 +243,9 @@ const TripBuilder = () => {
       destinations,
       trip_type: tripType,
       preferred_dates: months.join(", "),
+      // group_size is only known once Step 3 is answered — send it if we have it,
+      // stay silent otherwise rather than posting an empty field.
+      ...(groupSize ? { group_size: groupSize } : {}),
     });
     if (!ok) return;
 
@@ -225,6 +256,7 @@ const TripBuilder = () => {
       year,
       months,
       length,
+      groupSize,
       contact,
       capturedAt: new Date().toISOString(),
       stage: "exit_intent",
@@ -258,6 +290,8 @@ const TripBuilder = () => {
     if (step === 3) {
       if (months.length === 0) e.months = "Select at least one month — even a rough window works.";
       if (!length) e.length = "Pick a trip length.";
+      if (!groupSize) e.groupSize = "Choose your group size.";
+      if (dateStart && dateEnd && dateEnd <= dateStart) e.dates = "Depart date must be after your arrival date.";
     }
     setErrors(e);
     if (Object.keys(e).length !== 0) return;
@@ -279,6 +313,10 @@ const TripBuilder = () => {
         year,
         months,
         length,
+        groupSize,
+        exactDates,
+        dateStart,
+        dateEnd,
         capturedAt: new Date().toISOString(),
         stage: "pre_contact",
       };
@@ -307,8 +345,9 @@ const TripBuilder = () => {
       unique_cities: uniqueCities,
       trip_type: tripType,
       trip_focus: tripFocus,
-      preferred_dates: months.join(", "),
+      preferred_dates: buildPreferredDates(months, dateStart, dateEnd),
       trip_length: length,
+      group_size: groupSize,
       package: pkg,
       budget,
     });
@@ -324,6 +363,10 @@ const TripBuilder = () => {
       year,
       months,
       length,
+      groupSize,
+      exactDates,
+      dateStart,
+      dateEnd,
       contact,
       pkg,
       budget,
@@ -344,8 +387,11 @@ const TripBuilder = () => {
   if (submitted) {
     const destLabel = destinations.map((s) => DESTINATIONS.find((d) => d.slug === s)?.name).filter(Boolean).join(", ") || "Mexico";
     const typeLabel = TRIP_TYPES.find((t) => t.id === tripType)?.label || "golf";
+    const groupLabel = groupSize ? `, group of ${groupSize}` : "";
+    const exactRange = formatExactDateRange(dateStart, dateEnd);
+    const dateLabel = exactRange ? `, ${exactRange}` : "";
     const whatsappMsg = encodeURIComponent(
-      `Hi GIM — I'm planning a ${typeLabel} to ${destLabel}, just submitted my proposal request.`
+      `Hi GIM — I'm planning a ${typeLabel} to ${destLabel}${groupLabel}${dateLabel}, just submitted my proposal request.`
     );
     const whatsappHref = `https://wa.me/?text=${whatsappMsg}`;
 
@@ -387,7 +433,7 @@ const TripBuilder = () => {
                   Message us on WhatsApp
                 </h3>
                 <p className="font-body font-light text-[var(--c-text-muted)] text-[13px] leading-[1.5]">
-                  Pre-filled with your {typeLabel.toLowerCase()} to {destLabel}.
+                  Pre-filled with your {typeLabel.toLowerCase()} to {destLabel}{groupLabel}{dateLabel}.
                 </p>
               </div>
               <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-text-mid)] shrink-0">
@@ -795,6 +841,44 @@ const TripBuilder = () => {
                   </div>
                   {errors.months && <p className="text-[13px] text-[#8b2020] mb-5 font-mono">{errors.months}</p>}
 
+                  <label className="flex items-center gap-3 text-sm text-[var(--c-text-mid)] cursor-pointer mb-4" data-testid="tb-exact-dates-toggle">
+                    <input
+                      type="checkbox"
+                      checked={exactDates}
+                      onChange={(e) => setExactDates(e.target.checked)}
+                      className="accent-[var(--c-gold)]"
+                    />
+                    <span>I have exact dates</span>
+                  </label>
+
+                  {exactDates && (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 max-w-xl">
+                      <div>
+                        <label htmlFor="tb-date-start" className="block font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--c-text-muted)] mb-2">Arrive</label>
+                        <input
+                          id="tb-date-start"
+                          type="date"
+                          value={dateStart}
+                          onChange={(e) => { setDateStart(e.target.value); setErrors((er) => ({ ...er, dates: null })); }}
+                          data-testid="tb-date-start"
+                          className="w-full bg-[var(--c-surface)] border border-[var(--c-border)] focus:border-[var(--c-gold)] text-[var(--c-text)] font-body text-sm px-4 py-3 rounded-sm focus:outline-none transition-colors"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="tb-date-end" className="block font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--c-text-muted)] mb-2">Depart</label>
+                        <input
+                          id="tb-date-end"
+                          type="date"
+                          value={dateEnd}
+                          onChange={(e) => { setDateEnd(e.target.value); setErrors((er) => ({ ...er, dates: null })); }}
+                          data-testid="tb-date-end"
+                          className="w-full bg-[var(--c-surface)] border border-[var(--c-border)] focus:border-[var(--c-gold)] text-[var(--c-text)] font-body text-sm px-4 py-3 rounded-sm focus:outline-none transition-colors"
+                        />
+                      </div>
+                    </div>
+                  )}
+                  {errors.dates && <p className="text-[13px] text-[#8b2020] mb-5 font-mono">{errors.dates}</p>}
+
                   <div className="mt-10 flex items-center justify-between">
                     <button type="button" onClick={() => setStep(2)} className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-text-muted)] hover:text-[var(--c-text)] transition-colors">← Back</button>
                     <button type="button" onClick={next} data-testid="tb-next-3" className="group inline-flex items-center gap-3 bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-7 py-3.5 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors">
@@ -822,6 +906,25 @@ const TripBuilder = () => {
                       {errors.length && <p className="mt-3 text-[13px] text-[#8b2020] font-mono">{errors.length}</p>}
                     </div>
                   )}
+
+                  <div data-testid="tb-group-size" className="mt-12 pt-10 border-t border-[var(--c-border)]">
+                    <label className="block font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--c-text-muted)] mb-4">How many in your group?</label>
+                    <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                      {GROUP_SIZES.map((g) => (
+                        <button
+                          key={g}
+                          type="button"
+                          onClick={() => { setGroupSize(g); setErrors((e) => ({ ...e, groupSize: null })); }}
+                          data-testid={`tb-groupsize-${g}`}
+                          aria-pressed={groupSize === g}
+                          className={`py-3 rounded-sm font-mono text-[11px] uppercase tracking-[0.1em] transition-all ${groupSize === g ? "bg-[var(--c-gold)] text-[var(--c-green-deep)] font-bold" : "bg-[var(--c-surface)] text-[var(--c-text-mid)] border border-[var(--c-border)] hover:border-[var(--c-gold)]"}`}
+                        >
+                          {g}
+                        </button>
+                      ))}
+                    </div>
+                    {errors.groupSize && <p className="mt-3 text-[13px] text-[#8b2020] font-mono">{errors.groupSize}</p>}
+                  </div>
                 </div>
               )}
 
