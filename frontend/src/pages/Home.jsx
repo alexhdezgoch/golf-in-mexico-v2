@@ -30,9 +30,9 @@ const StatementAndVideo = () => (
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         data-testid="home-section-heading"
-        className="font-display font-normal text-[var(--c-text)] leading-[1.05] tracking-tight text-3xl md:text-5xl lg:text-6xl max-w-[20ch] mb-10 md:mb-14"
+        className="font-display font-normal text-[var(--c-text)] leading-[1.05] tracking-tight text-3xl md:text-5xl lg:text-6xl max-w-[24ch] mb-10 md:mb-14"
       >
-        Everything you need to know <em className="italic text-[var(--c-gold)]">before you play Mexico.</em>
+        We help global golfers play Mexico&apos;s <em className="italic text-[var(--c-gold)]">top golf experiences.</em>
       </motion.h2>
 
       <motion.p
@@ -43,9 +43,9 @@ const StatementAndVideo = () => (
         data-testid="home-statement"
         className="font-body font-light text-[var(--c-text-mid)] leading-[1.7] text-lg md:text-xl max-w-[52ch] mb-6 md:mb-8"
       >
-        The only guide to Mexican golf written by people who&apos;ve played
-        it, planned it, and lived it — from elite courses to the experiences
-        that make the trip worth taking.
+        Powered by our professional golf experience, we curate trips around
+        the best courses, authentic local experiences, and optimized value
+        for every group.
       </motion.p>
 
       <motion.div
