@@ -6,6 +6,8 @@
  *   - llms.txt        curated markdown index (the llmstxt.org convention)
  *   - llms-full.txt   full editorial corpus as clean markdown
  *   - sitemap.xml     every real route, lastmod from git per content file
+ *   - index.md        the homepage as markdown, served by middleware.js when a
+ *                     client sends Accept: text/markdown
  *
  * Why esbuild: `frontend` is a CommonJS CRA package, but the data files use ESM
  * `export const`. esbuild bundles each module to ESM in-memory; we write it to a
@@ -190,6 +192,27 @@ const HOME_STATEMENT =
 
 const CONTACT =
   "Talk golf with us. Reach the team by email for trip planning, press, or partnerships, or book a call to plan a trip directly. Plan a trip via the Trip Builder at /trip-builder.";
+
+// The homepage as markdown (public/index.md). Mirrors the copy in
+// src/pages/Home.jsx and src/components/FoundersGallery.jsx — update it with them.
+const HOME_MD = `# There is no golf destination like Mexico.
+
+Curated experiences, planned by a tour agent and a tour pro. [Discover your golf experience](${BASE}/golf-packages).
+
+## We help global golfers play Mexico's top golf experiences.
+
+Powered by our professional golf experience, we curate trips around the best courses, authentic local experiences, and optimized value for every group.
+
+## An agent and a tour pro behind every itinerary.
+
+What began inside professional tours and global fairways has grown into a bridge to Mexico's finest golf experiences. Today, we combine years of golf insights to bring you world-class courses, hidden gems, and the hospitality that makes this country unmatched.
+
+- Pablo De La Mora — The Agent
+- José Islas — The Pro Player
+
+[About the team](${BASE}/about)
+
+`;
 
 // ── markdown helpers ───────────────────────────────────────────────────────
 const clean = (s) => String(s ?? "").replace(/\s+/g, " ").trim();
@@ -451,6 +474,10 @@ async function main() {
   index += `\n## Full content\n\n`;
   index += `- [llms-full.txt](${BASE}/llms-full.txt): The complete text of every destination guide and article.\n`;
 
+  // ---- index.md (homepage as markdown) ----
+  // The homepage's own copy, then the same link index llms.txt carries.
+  const home = HOME_MD + index.slice(index.indexOf("## Destinations"));
+
   // ---- llms-full.txt (full corpus) ----
   let full = `# Golf in Mexico° — Full Content\n\n> ${SITE_SUMMARY}\n\n`;
   full += `Source: ${BASE} · Generated ${TODAY}\n\n---\n\n`;
@@ -566,6 +593,7 @@ async function main() {
   fs.writeFileSync(path.join(PUBLIC, "llms.txt"), index.trim() + "\n");
   fs.writeFileSync(path.join(PUBLIC, "llms-full.txt"), full.trim() + "\n");
   fs.writeFileSync(path.join(PUBLIC, "sitemap.xml"), sitemap);
+  fs.writeFileSync(path.join(PUBLIC, "index.md"), home.trim() + "\n");
 
   const words = full.split(/\s+/).filter(Boolean).length;
   console.log(

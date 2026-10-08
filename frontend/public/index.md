@@ -1,0 +1,54 @@
+# There is no golf destination like Mexico.
+
+Curated experiences, planned by a tour agent and a tour pro. [Discover your golf experience](https://golf-in-mexico.com/golf-packages).
+
+## We help global golfers play Mexico's top golf experiences.
+
+Powered by our professional golf experience, we curate trips around the best courses, authentic local experiences, and optimized value for every group.
+
+## An agent and a tour pro behind every itinerary.
+
+What began inside professional tours and global fairways has grown into a bridge to Mexico's finest golf experiences. Today, we combine years of golf insights to bring you world-class courses, hidden gems, and the hospitality that makes this country unmatched.
+
+- Pablo De La Mora — The Agent
+- José Islas — The Pro Player
+
+[About the team](https://golf-in-mexico.com/about)
+
+## Destinations
+
+- [Los Cabos golf guide](https://golf-in-mexico.com/destinations/los-cabos): 18 championship courses from Cabo San Lucas to San José del Cabo, green fees $95–$500 a round, and how access actually works.
+  - [Los Cabos golf packages](https://golf-in-mexico.com/destinations/los-cabos/golf-packages): Three package tiers across a 20-mile corridor of Nicklaus, Woods, Norman and Fazio designs.
+- [Punta Mita golf guide](https://golf-in-mexico.com/destinations/punta-mita): Five championship golf courses within 75 km of PVR. Pacifico's Tail of the Whale — the only natural island green in golf. Mandarina (Norman) · Nauka (Fazio, 2025).…
+  - [Pacifico vs Bahia](https://golf-in-mexico.com/destinations/punta-mita/pacifico-bahia): Two Jack Nicklaus Signature courses on the same peninsula, and they do not play alike. Specs, green fees $325–$400, the Tail of the Whale tide window, and how to get on.
+  - [Stay & Play](https://golf-in-mexico.com/destinations/punta-mita/stay-and-play): You do not need a Four Seasons room to play Pacifico and Bahia. How villa access works, what a group of eight actually pays, and what a two-day golf trip looks like.
+  - [Punta Mita golf packages](https://golf-in-mexico.com/destinations/punta-mita/golf-packages): Private villas, 36 holes of Jack Nicklaus, and full concierge service on one peninsula.
+- [Mexico City golf guide](https://golf-in-mexico.com/destinations/mexico-city): 20+ golf courses within 90 minutes of the center, nearly all private. Green fees $150–$400 a round, and how altitude plays.
+  - [Mexico City private access](https://golf-in-mexico.com/destinations/mexico-city/private-access): Mexico City's best golf is private, member-guest only. Join the list and hear first as access opens.
+- [Cancun · Riviera Maya golf guide](https://golf-in-mexico.com/destinations/cancun-riviera-maya): 12+ championship courses along 80 miles of Caribbean coast, which ones you can play without a resort stay, and green fees from $109.
+  - [Cancun golf packages](https://golf-in-mexico.com/destinations/cancun-riviera-maya/golf-packages): Three package tiers, airport transfer included, all three Cancun courses in one trip.
+- [Puerto Vallarta golf guide](https://golf-in-mexico.com/destinations/puerto-vallarta): Eight championship golf courses around Banderas Bay, the only PGA Tour venue in the region (Vidanta Norman), and Mexico's strongest value tier for Nicklaus and Weiskopf…
+  - [Puerto Vallarta golf packages](https://golf-in-mexico.com/destinations/puerto-vallarta/golf-packages): Seven courses within 45 minutes of PVR, including the Mexico Open venue at Vidanta.
+- [Unique Destinations golf guide](https://golf-in-mexico.com/destinations/unique-destinations): Beyond the headline corridors, Mexico hides another dozen destinations worth the detour — colonial towns, quiet Pacific bays, lakeside highlands, Caribbean limestone.…
+- [Mexico golf packages](https://golf-in-mexico.com/golf-packages): Five regions, one operator — matches your group to the right destination before you book the wrong one.
+
+## Journal
+
+- [How I Planned My Bachelor Golf Trip in Cabo San Lucas as a Tour Agent](https://golf-in-mexico.com/journal/the-bachelor-trip-cabo): A Tour agent's first-person account of a twelve-man bachelor golf trip to Cabo — Solmar Links and members-only Diamante Dunes — and how it sparked Golf in Mexico.
+- [How to Plan a Golf Trip to Mexico: The Complete Guide for US Golfers](https://golf-in-mexico.com/journal/how-to-plan-a-golf-trip-to-mexico): Region first, then budget, season, and access. How to plan a golf trip to Mexico — from Cabo's three corridors to Mexico City's private clubs — by the Golf in Mexico…
+
+## About
+
+- [About Golf in Mexico°](https://golf-in-mexico.com/about): The founders, the mission, and the three editorial pillars.
+- [Experiences](https://golf-in-mexico.com/experience): Couples, bachelor, family/friends, and corporate golf trips.
+- [Plan a trip](https://golf-in-mexico.com/trip-builder): Build a custom Mexico golf trip.
+- [Contact](https://golf-in-mexico.com/contact): Reach the team.
+
+## Legal
+
+- [Privacy Policy](https://golf-in-mexico.com/privacy): What data the site collects, the third parties that receive it (HubSpot, Google Analytics 4, Meta Pixel, Microsoft Clarity, Vercel), retention periods, and how to exercise your privacy rights.
+- [Aviso de Privacidad](https://golf-in-mexico.com/aviso-de-privacidad): Spanish-language version of the privacy policy, written to Mexico's LFPDPPP (derechos ARCO).
+
+## Full content
+
+- [llms-full.txt](https://golf-in-mexico.com/llms-full.txt): The complete text of every destination guide and article.
