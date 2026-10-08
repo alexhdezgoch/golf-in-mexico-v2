@@ -14,6 +14,18 @@ describe("orgSchema", () => {
     expect(schema.contactPoint.telephone).toMatch(/^\+\d/);
   });
 
+  it("links the brand's own profiles in sameAs, not the founders'", () => {
+    expect(schema.sameAs).toEqual([
+      "https://www.instagram.com/golf.inmexico/",
+      "https://www.facebook.com/people/Golf-In-Mexico/61590265455260/",
+      "https://www.linkedin.com/company/golfinmexico/",
+      "https://www.youtube.com/@golf.inmexico",
+    ]);
+    const founders = schema.founder.flatMap((f) => f.sameAs);
+    expect(founders.length).toBeGreaterThan(0);
+    founders.forEach((url) => expect(schema.sameAs).not.toContain(url));
+  });
+
   it("includes a PostalAddress with locality and country", () => {
     expect(schema.address["@type"]).toBe("PostalAddress");
     expect(schema.address.addressLocality).toBeTruthy();

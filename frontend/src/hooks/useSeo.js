@@ -91,13 +91,24 @@ export const orgSchema = () => ({
   description:
     "Editorial guide and bespoke trip planning for golf in Mexico, by sports agent Pablo De La Mora and professional golfer José Islas.",
   founder: [
-    { "@type": "Person", name: "Pablo De La Mora" },
-    { "@type": "Person", name: "José Islas" },
+    {
+      "@type": "Person",
+      name: "Pablo De La Mora",
+      sameAs: ["https://www.instagram.com/pablodlmc/", "https://www.linkedin.com/in/pablodlm/"],
+    },
+    {
+      "@type": "Person",
+      name: "José Islas",
+      sameAs: ["https://www.instagram.com/joseislasgolf/"],
+    },
   ],
+  // The brand's own profiles. The founders' personal ones belong to their
+  // Person entries above, so the organization isn't confused with them.
   sameAs: [
-    "https://www.instagram.com/pablodlmc/",
-    "https://www.linkedin.com/in/pablodlm/",
-    "https://www.instagram.com/joseislasgolf/",
+    "https://www.instagram.com/golf.inmexico/",
+    "https://www.facebook.com/people/Golf-In-Mexico/61590265455260/",
+    "https://www.linkedin.com/company/golfinmexico/",
+    "https://www.youtube.com/@golf.inmexico",
   ],
   contactPoint: {
     "@type": "ContactPoint",
