@@ -119,6 +119,13 @@ const FoundersGallery = () => (
         <h2 className="mt-5 font-display font-light text-[var(--c-text)] text-3xl md:text-5xl lg:text-[3.5rem] leading-[1.05] tracking-tight max-w-[22ch] mx-auto">
           An agent and a tour pro <em className="italic text-[var(--c-gold)]">behind every itinerary.</em>
         </h2>
+        {/* Plain <p>, not a motion element, so the prerendered HTML ships it visible. */}
+        <p
+          data-testid="home-founders-intro"
+          className="mt-6 md:mt-8 font-body font-light text-[var(--c-text-mid)] leading-[1.7] text-lg md:text-xl max-w-[58ch] mx-auto"
+        >
+          What began inside professional tours and global fairways has grown into a bridge to Mexico&apos;s finest golf experiences. Today, we combine years of golf insights to bring you world-class courses, hidden gems, and the hospitality that makes this country unmatched.
+        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-20">
