@@ -186,7 +186,7 @@ const ABOUT = {
 };
 
 const HOME_STATEMENT =
-  "We uncover the best golf in Mexico. The only guide to Mexican golf written by people who've played it, planned it, and lived it — from elite courses to the experiences that make the trip worth taking.";
+  "We help global golfers play Mexico's top golf experiences. Powered by our professional golf experience, we curate trips around the best courses, authentic local experiences, and optimized value for every group.";
 
 const CONTACT =
   "Talk golf with us. Reach the team by email for trip planning, press, or partnerships, or book a call to plan a trip directly. Plan a trip via the Trip Builder at /trip-builder.";
