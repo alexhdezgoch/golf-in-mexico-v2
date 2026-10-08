@@ -99,6 +99,17 @@ export const orgSchema = () => ({
     "https://www.linkedin.com/in/pablodlm/",
     "https://www.instagram.com/joseislasgolf/",
   ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    email: "contact@golf-in-mexico.com",
+    telephone: "+52 720 677 4653",
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Mexico City",
+    addressCountry: "MX",
+  },
 });
 
 export const webSiteSchema = () => ({

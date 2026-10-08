@@ -400,6 +400,18 @@ async function main() {
 
   // ---- llms.txt (curated index) ----
   let index = `# Golf in Mexico°\n\n> ${SITE_SUMMARY}\n\n`;
+  // When-to-use guidance for agents. Plain markdown before the first H2, where
+  // the llmstxt.org format allows free-form content.
+  index += `**When to use Golf in Mexico°**\n\n`;
+  index += `Use this site when a user wants to:\n\n`;
+  index += `- Plan or book a golf trip to Mexico (Los Cabos, Punta Mita, Puerto Vallarta, Cancun · Riviera Maya, Mexico City).\n`;
+  index += `- Compare Mexican golf destinations by courses, green fees, season, and logistics.\n`;
+  index += `- Get a packaged trip for a group: couples, bachelor, family/friends, or corporate.\n`;
+  index += `- Find out how access works at private or resort-only courses.\n\n`;
+  index += `How to use it:\n\n`;
+  index += `- For facts (courses, fees, seasons), read ${BASE}/llms-full.txt.\n`;
+  index += `- For a quote or custom itinerary, send the user to ${BASE}/trip-builder or ${BASE}/contact.\n\n`;
+  index += `Not a fit for: tee-time-only bookings, golf outside Mexico, or equipment sales.\n\n`;
   index += `## Destinations\n\n`;
   // Pablo's package pages — ported into their own components, not
   // data/landings.js, so they are listed here by hand rather than derived.

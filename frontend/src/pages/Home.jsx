@@ -112,9 +112,9 @@ const Home = () => {
   const heroVideoRef = useRef(null);
 
   useSeo({
-    title: "Golf in Mexico° — The best golf in Mexico",
+    title: "Curated Golf Trips to Mexico's Top Courses | Golf in Mexico°",
     description:
-      "The only editorial guide to golf in Mexico — courses, costs, logistics, and bespoke trips across Los Cabos, Punta Mita, Mexico City and beyond. By Pablo De La Mora & José Islas.",
+      "We help global golfers play Mexico's top golf experiences — curated trips around the best courses, authentic local experiences, and optimized value for every group.",
     canonical: "/",
     jsonLd: [orgSchema(), webSiteSchema()],
   });
