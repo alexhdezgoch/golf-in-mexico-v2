@@ -5,10 +5,8 @@
     { "source": "/los-cabos/golf-packages", "destination": "/destinations/los-cabos/golf-packages", "permanent": true },
     { "source": "/vallarta/golf-packages", "destination": "/destinations/puerto-vallarta/golf-packages", "permanent": true },
     { "source": "/cdmx/private-access", "destination": "/destinations/mexico-city/private-access", "permanent": true },
-    { "source": "/golf/unique-destinations", "destination": "/destinations/unique-destinations", "permanent": true }
-  ],
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/golf/unique-destinations", "destination": "/destinations/unique-destinations", "permanent": true },
+    { "source": "/journal/los-cabos", "destination": "/destinations/los-cabos", "permanent": true }
   ],
   "headers": [
     {
