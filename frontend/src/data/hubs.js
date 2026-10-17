@@ -18,7 +18,7 @@ const LOS_CABOS = {
   ],
   // SEO — matched to live GSC query phrasing ("golf in los cabos",
   // "cabo san lucas golf prices"): destination first, then the price/access angle.
-  seoTitle: "Golf in Los Cabos: Course Prices & Access | Golf in Mexico°",
+  seoTitle: "Cabo San Lucas Golf Courses: Prices & Access | GOLF° IN MEXICO°",
   seoDescription: "18 championship courses from Cabo San Lucas to San José del Cabo, green fees $95–$500 a round, and how access actually works.",
   sources: [
     "Golf Digest — World's 100 Greatest Courses (2024 list)",
@@ -29,7 +29,7 @@ const LOS_CABOS = {
   ],
   heroLabel: "Destination Guide · Los Cabos",
   h1Pre: "Golf in",
-  h1Em: "Cabo San Lucas.",
+  h1Em: "Los Cabos.",
   byline: "GIM Editorial · Field research by Pablo De La Mora & José Islas · Updated May 2026",
   stats: [
     { num: "18",        label: "Active courses" },
@@ -170,8 +170,8 @@ const PUNTA_MITA = {
     "/images/b3h22ocy-mandarina-bunker.webp",
     "/images/jkdh05kp-mandarina-drone.webp",
   ],
-  seoTitle: "Golf in Punta Mita & the Upper Riviera Nayarit (2026) | Golf in Mexico°",
-  seoDescription: "Five championship golf courses within 75 km of PVR. Pacifico's Tail of the Whale — the only natural island green in golf. Mandarina (Norman) · Nauka (Fazio, 2025). Editorial access guide.",
+  seoTitle: "Punta Mita Golf: Courses & Green Fees | GOLF° IN MEXICO°",
+  seoDescription: "Five championship courses within 75 km of PVR: Pacifico's Tail of the Whale, the only natural island green in golf, plus Mandarina (Norman) and Nauka (Fazio).",
   sources: [
     "Pacifico Golf Course — Punta Mita pro shop and resort archives",
     "Greg Norman Golf Course Design — Mandarina Golf Club design notes",
@@ -317,7 +317,7 @@ const MEXICO_CITY = {
   ],
   // SEO — matched to live GSC query phrasing ("golf mexico city"): the course
   // count answers the query in the title, access + cost carry the click.
-  seoTitle: "Golf in Mexico City: 20+ Courses & Access | Golf in Mexico°",
+  seoTitle: "Mexico City Golf Courses: Access & Fees | GOLF° IN MEXICO°",
   seoDescription: "20+ golf courses within 90 minutes of the center, nearly all private. Green fees $150–$400 a round, and how altitude plays.",
   sources: [
     "Club de Golf Chapultepec — Mexican Open, WGC-Mexico Championship (2017–2020), LIV Golf Mexico City (2025, 2026) records",
@@ -459,7 +459,7 @@ const CANCUN = {
   // SEO — this page draws two query families: "riviera maya golf courses" (most
   // impressions) and the better-ranking "cancun golf prices / green fees" set.
   // The title holds both, then the fee/access angle carries the click.
-  seoTitle: "Riviera Maya & Cancun Golf: Fees & Access | Golf in Mexico°",
+  seoTitle: "Cancún & Riviera Maya Golf Courses: Green Fees | GOLF° IN MEXICO°",
   seoDescription: "12+ championship courses along 80 miles of Caribbean coast, which ones you can play without a resort stay, and green fees from $109.",
   sources: [
     "PGA Tour — Mayakoba Golf Classic records (2007–2022)",
@@ -470,7 +470,7 @@ const CANCUN = {
   ],
   heroLabel: "Destination Guide · Riviera Maya",
   h1Pre: "Golf in",
-  h1Em: "the Riviera Maya.",
+  h1Em: "Cancún & the Riviera Maya.",
   byline: "GIM Editorial · Field research by Pablo De La Mora & José Islas · Updated May 2026",
   stats: [
     { num: "12+",        label: "Courses" },
@@ -607,8 +607,8 @@ const PUERTO_VALLARTA = {
     "/images/wqf7n1js-fa4fd2fc-6222-4e3b-ad57-f9cc947b5aeb-1-105-c.webp",
     "/images/6ntevszb-5573a261-fa98-47f9-9cb4-afc720500ad7-1-105-c.webp",
   ],
-  seoTitle: "Golf in Puerto Vallarta: Courses, Costs & PGA Tour Venue (2026) | Golf in Mexico°",
-  seoDescription: "Eight championship golf courses around Banderas Bay, the only PGA Tour venue in the region (Vidanta Norman), and Mexico's strongest value tier for Nicklaus and Weiskopf pedigree designs.",
+  seoTitle: "Golf in Puerto Vallarta: Courses, Fees & Access | GOLF° IN MEXICO°",
+  seoDescription: "Eight championship courses around Banderas Bay, including Vidanta, the region's only PGA Tour venue, and Nicklaus and Weiskopf designs for less than in Cabo.",
   sources: [
     "PGA Tour — Mexico Open at VidantaWorld official records",
     "Vista Vallarta Golf Club — course records and 2002 WGC-World Cup archive",
@@ -744,8 +744,10 @@ const UNIQUE = {
   region: "Across Mexico",
   heroPhoto: null,
   heroLabel: "Destination Guide · Unique",
-  h1Pre: "Hidden",
-  h1Em: "Mexico.",
+  seoTitle: "Hidden Golf Destinations in Mexico | GOLF° IN MEXICO°",
+  seoDescription: "Beyond the headline corridors: a dozen more golf destinations in Mexico, from colonial towns and quiet Pacific bays to lakeside highlands.",
+  h1Pre: "Golf in",
+  h1Em: "hidden Mexico.",
   byline: "GIM Editorial · Field research by Pablo De La Mora & José Islas · Updated May 2026",
   stats: [
     { num: "12+",        label: "Hidden destinations" },

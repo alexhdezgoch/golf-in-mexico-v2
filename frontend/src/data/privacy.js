@@ -35,9 +35,9 @@ const EN = {
   path: "/privacy",
   altPath: "/aviso-de-privacidad",
   altLabel: "Leer en español",
-  seoTitle: "Privacy Policy — Golf in Mexico°",
+  seoTitle: "Privacy Policy | GOLF° IN MEXICO°",
   seoDescription:
-    "How Golf in Mexico° collects, uses, and protects your personal data: the forms we run, the analytics we load (GA4, Meta Pixel, Microsoft Clarity), cookies, and how to exercise your privacy rights.",
+    "How GOLF° IN MEXICO° collects, uses and protects your personal data: our forms, the analytics we load, cookies, and how to exercise your privacy rights.",
   eyebrow: "Legal",
   title: "Privacy",
   titleEm: "Policy",
@@ -226,9 +226,9 @@ const ES = {
   path: "/aviso-de-privacidad",
   altPath: "/privacy",
   altLabel: "Read in English",
-  seoTitle: "Aviso de Privacidad — Golf in Mexico°",
+  seoTitle: "Aviso de Privacidad | GOLF° IN MEXICO°",
   seoDescription:
-    "Cómo Golf in Mexico° recaba, usa y protege tus datos personales: los formularios del sitio, las herramientas de analítica (GA4, Meta Pixel, Microsoft Clarity), las cookies y cómo ejercer tus derechos ARCO.",
+    "Cómo GOLF° IN MEXICO° recaba, usa y protege tus datos personales: los formularios, la analítica, las cookies y cómo ejercer tus derechos ARCO.",
   eyebrow: "Legal",
   title: "Aviso de",
   titleEm: "Privacidad",

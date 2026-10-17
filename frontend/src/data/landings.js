@@ -46,7 +46,7 @@ const PACIFICO_BAHIA = {
   // Title carries Pablo's two keyword targets for this page:
   // "punta mita pacifico golf course" + "bahia golf course punta mita".
   seoTitle:
-    "Punta Mita Pacifico vs Bahia Golf Course: Which to Play (2026) | Golf in Mexico°",
+    "Punta Mita Pacifico vs Bahia: Which to Play | GOLF° IN MEXICO°",
   seoDescription:
     "Two Jack Nicklaus Signature courses on the same peninsula, and they do not play alike. Specs, green fees $325–$400, the Tail of the Whale tide window, and how to get on.",
 
@@ -183,9 +183,9 @@ const STAY_AND_PLAY = {
   name: "Stay & Play",
 
   // Title carries Pablo's two highest-volume targets for this page:
-  // "punta mita golf packages" + "punta mita golf tee times".
+  // Its own query, so it does not compete with the Punta Mita golf packages page: playing Punta Mita from a villa.
   seoTitle:
-    "Punta Mita Golf Packages & Tee Times: Villa Stay & Play (2026) | Golf in Mexico°",
+    "Play Punta Mita Without a Hotel Room | GOLF° IN MEXICO°",
   seoDescription:
     "You do not need a Four Seasons room to play Pacifico and Bahia. How villa access works, what a group of eight actually pays, and what a two-day golf trip looks like.",
 
