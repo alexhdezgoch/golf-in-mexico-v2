@@ -614,7 +614,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
         image: data.heroPhoto,
         authors: GUIDE_AUTHORS,
         datePublished: "2026-05-01",
-        dateModified: "2026-05-25",
+        dateModified: "2026-10-17",
       }),
       breadcrumbSchema([
         { name: "Home", path: "/" },

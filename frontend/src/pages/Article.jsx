@@ -325,6 +325,43 @@ const Body = ({ blocks, destinationLabel }) => {
             </div>
           );
         }
+        if (block.type === "table") {
+          // A real table, so readers and answer engines can lift a row as-is. Scrolls sideways on a phone.
+          return (
+            <figure key={i} data-testid="article-table" className="my-10 -mx-6 md:mx-0">
+              {block.caption && (
+                <figcaption className="px-6 md:px-0 mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-ink/60">{block.caption}</figcaption>
+              )}
+              <div className="overflow-x-auto px-6 md:px-0">
+                <table className="w-full min-w-[640px] border-collapse text-left text-[14px] leading-snug">
+                  <thead>
+                    <tr>
+                      {block.columns.map((c) => (
+                        <th key={c} scope="col" className="border-b border-ink/20 py-2 pr-4 font-mono text-[10px] font-normal uppercase tracking-[0.16em] text-ink/60 align-bottom">
+                          {c}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {block.rows.map((row, r) => (
+                      <tr key={r} className="border-b border-ink/10 align-top">
+                        {row.map((cell, c) =>
+                          c === 0 ? (
+                            <th key={c} scope="row" className="py-3 pr-4 font-normal text-ink">{renderInline(cell)}</th>
+                          ) : (
+                            <td key={c} className="py-3 pr-4">{renderInline(cell)}</td>
+                          ),
+                        )}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              {block.note && <p className="px-6 md:px-0 mt-3 text-[13px] text-ink/60">{block.note}</p>}
+            </figure>
+          );
+        }
         if (block.type === "divider") {
           return (
             <div key={i} className="my-14 md:my-20 text-center text-gold font-mono text-lg tracking-[0.5em]">◆ ◆ ◆</div>
@@ -770,7 +807,8 @@ const Article = () => {
               path: `/journal/${article.slug}`,
               image: article.heroImage,
               author: authorByName(article.author?.name),
-              datePublished: "2026-05-01",
+              datePublished: article.published || "2026-05-01",
+              dateModified: article.modified,
             }),
             breadcrumbSchema([
               { name: "Journal", path: "/journal" },
