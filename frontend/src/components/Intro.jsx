@@ -16,13 +16,14 @@ const Intro = ({ onDone }) => {
   const [phase, setPhase] = useState("in"); // in -> out
 
   useEffect(() => {
+    // Seen as soon as it starts, so leaving the page mid-intro does not play it again.
+    try {
+      sessionStorage.setItem("gim-intro-seen", "1");
+    } catch (e) {
+      // ignore storage errors
+    }
     const t1 = setTimeout(() => setPhase("out"), 3600);
     const t2 = setTimeout(() => {
-      try {
-        sessionStorage.setItem("gim-intro-seen", "1");
-      } catch (e) {
-        // ignore storage errors
-      }
       onDone && onDone();
     }, 4400);
     return () => {

@@ -626,28 +626,10 @@ const ScrollEmailCapture = ({ slug }) => {
 
 const RECOMMENDED = [
   {
-    title: "Golf",
-    excerpt: "Gameplay, courses, design, history. The craft of the game in Mexico.",
-    image: "/images/xzs0k4px-jose-photo1.webp",
-    href: "/journal?category=golf",
-  },
-  {
-    title: "Beyond the Course",
-    excerpt: "Culture, food, design — the world that surrounds the round.",
-    image: "/images/g6r7fp45-golfinmexico-062.webp",
-    href: "/journal?category=beyond-the-course",
-  },
-  {
     title: "Travel Concierge",
     excerpt: "Strategy briefs for booking the right course, season, and stay.",
     image: "/images/0wmultbm-dji-0048.webp",
     href: "/journal?category=the-concierge",
-  },
-  {
-    title: "The Collective",
-    excerpt: "Voices from the people building golf in Mexico — operators, members, locals.",
-    image: "/images/fhv2viqt-d14f99ba-7f14-4273-bcd5-ef597df7f5cb-1-105-c.webp",
-    href: "/journal?category=the-collective",
   },
   {
     title: "Founders Journal",
@@ -774,7 +756,7 @@ const Article = () => {
   useSeo(
     article
       ? {
-          title: article.metaTitle || `${article.title} — Golf in Mexico°`,
+          title: article.metaTitle || `${article.title}${" | GOLF° IN MEXICO°"}`,
           description: article.metaDescription || article.excerpt || article.subtitle,
           canonical: `/journal/${article.slug}`,
           jsonLd: [
@@ -804,7 +786,7 @@ const Article = () => {
   const related = getRelatedArticles(article.relatedArticles);
 
   return (
-    <main data-testid={`page-article-${article.slug}`} className="relative bg-cream pb-0">
+    <main data-testid={`page-article-${article.slug}`} className="reading relative bg-cream pb-0">
       {/* ═════════ HERO — Full-bleed photo + minimal type (matches Destinations) ═════════ */}
       <header
         data-testid="article-hero"

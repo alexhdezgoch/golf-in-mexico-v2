@@ -104,7 +104,7 @@ const DestinationsHeader = () => (
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         className="font-display font-normal text-white leading-[0.96] tracking-tight text-5xl md:text-7xl lg:text-[5.5rem] max-w-[16ch]"
       >
-        Where to go<span className="text-[var(--c-gold)]">.</span>
+        Golf destinations in Mexico<span className="text-[var(--c-gold)]">.</span>
       </motion.h1>
       <motion.p
         initial={{ opacity: 0, y: 14 }}
@@ -288,9 +288,9 @@ const DestinationCard = ({ d, index }) => {
 
 const Destinations = () => {
   useSeo({
-    title: "Golf Destinations in Mexico — Los Cabos, Punta Mita, Mexico City & more",
+    title: "Golf Destinations in Mexico: Los Cabos, Punta Mita & More",
     description:
-      "Field guides to Mexico's golf destinations — Los Cabos, Punta Mita, Mexico City, Cancún · Riviera Maya, Puerto Vallarta and beyond. Courses, costs, access, and seasons.",
+      "Field guides to Mexico's golf destinations: Los Cabos, Punta Mita, Mexico City, Cancún, Puerto Vallarta and beyond. Courses, costs, access and seasons.",
     canonical: "/destinations",
     jsonLd: breadcrumbSchema([
       { name: "Home", path: "/" },

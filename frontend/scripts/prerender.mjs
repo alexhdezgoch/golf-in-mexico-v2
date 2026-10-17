@@ -68,8 +68,10 @@ function readRoutes() {
       return loc;
     }
   });
+  // Paths the trip builder serves (see servedByTripBuilder in middleware.js) or that redirect to it have no page here to capture.
+  const elsewhere = (p) => p === "/trip-builder" || p === "/golf-packages" || p === "/courses" || /^\/destinations\/[^/]+\/(golf-packages|courses\/[^/]+)$/.test(p);
   // De-dupe, ensure "/" is present, keep deterministic order.
-  return [...new Set(routes.length ? routes : ["/"])];
+  return [...new Set(routes.length ? routes.filter((p) => !elsewhere(p)) : ["/"])];
 }
 
 // ── tiny static server with SPA fallback ─────────────────────────────────────

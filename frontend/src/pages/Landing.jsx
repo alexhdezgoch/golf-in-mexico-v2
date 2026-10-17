@@ -301,7 +301,7 @@ const Landing = () => {
   return (
     <main
       data-testid={`page-landing-${landing.slug}`}
-      className="relative bg-[var(--c-off-white)] pb-24 md:pb-32"
+      className="reading relative bg-[var(--c-off-white)] pb-24 md:pb-32"
     >
       {/* ── HERO — full-bleed photo, offer + CTA over it ──────────
             Same pattern as the destination-hub heroes: the photograph IS the

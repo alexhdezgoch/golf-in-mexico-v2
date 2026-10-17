@@ -23,9 +23,25 @@
 
 export const config = {
   // Page-like paths only: skip build assets, Vercel internals (/_vercel/…),
-  // and anything with a file extension.
-  matcher: ["/((?!static/|_|.*\\.[\\w]+$).*)"],
+  // and anything with a file extension. Plus the trip builder's own assets, which it serves.
+  matcher: ["/((?!static/|_|.*\\.[\\w]+$).*)", "/_next/:path*", "/media/:path*", "/api/:path*"],
 };
+
+/**
+ * The trip builder (a separate Next.js app) answers some addresses of this site: the trip builder, the golf packages
+ * pages, the course pages and the courses index, plus its own assets. The visitor stays on golf-in-mexico.com.
+ */
+// The integration copy of the trip builder; at launch this points at its production deployment.
+export const TRIP_BUILDER = "https://gim-trip-builder-integration.vercel.app";
+const PACKAGE_REGIONS = ["los-cabos", "cancun-riviera-maya", "punta-mita", "puerto-vallarta", "mexico-city", "san-miguel-de-allende", "merida", "costalegre", "ensenada", "multi-city"];
+export const servedByTripBuilder = (p) =>
+  p === "/trip-builder" ||
+  p === "/courses" ||
+  p === "/terms" ||
+  p === "/photo-credits" ||
+  /^\/(_next|media|api)\//.test(p) ||
+  /^\/destinations\/[^/]+\/courses\/[^/]+$/.test(p) ||
+  PACKAGE_REGIONS.some((r) => p === `/destinations/${r}/golf-packages`);
 
 const SITE = "https://golf-in-mexico.com";
 const MARKDOWN = "text/markdown; charset=utf-8";
@@ -137,9 +153,18 @@ const respond = (body, status, type) =>
 
 export default async function middleware(request) {
   if (request.headers.get(INTERNAL_HEADER)) return next();
+  if (servedByTripBuilder(new URL(request.url).pathname)) {
+    const u = new URL(request.url);
+    return new Response(null, { headers: { "x-middleware-rewrite": TRIP_BUILDER + u.pathname + u.search } });
+  }
   if (!["GET", "HEAD"].includes(request.method)) return next();
 
   const url = new URL(request.url);
+  // The old national packages page leads to the trip builder, where every booking starts now.
+  if (normalizePath(url.pathname) === "/golf-packages") return Response.redirect(new URL("/trip-builder" + url.search, url), 308);
+  if (servedByTripBuilder(url.pathname)) {
+    return new Response(null, { headers: { "x-middleware-rewrite": TRIP_BUILDER + url.pathname + url.search } });
+  }
   const markdown = wantsMarkdown(request.headers.get("accept"));
 
   try {

@@ -73,7 +73,7 @@ const PackageWaitlistPage = () => {
   };
 
   useSeo({
-    title: "Mexico City Private Golf Access — Join the List | Golf in Mexico°",
+    title: "Mexico City Private Golf Access: Join the List | GOLF° IN MEXICO°",
     description:
       "Mexico City's best golf is private, member-guest only. We're building the relationships to open those gates. Join the list and you hear first.",
     canonical: CANONICAL,

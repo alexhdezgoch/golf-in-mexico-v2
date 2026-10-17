@@ -11,7 +11,7 @@ import { useEffect } from "react";
  */
 
 export const SITE_URL = "https://golf-in-mexico.com";
-export const SITE_NAME = "Golf in Mexico°";
+export const SITE_NAME = "GOLF° IN MEXICO°";
 
 const abs = (url) => (url && url.startsWith("http") ? url : `${SITE_URL}${url || ""}`);
 
@@ -86,6 +86,7 @@ export const orgSchema = () => ({
   "@context": "https://schema.org",
   "@type": "Organization",
   name: SITE_NAME,
+  alternateName: "Golf in Mexico",
   url: SITE_URL,
   logo: `${SITE_URL}/logo-wordmark.png`,
   description:
@@ -127,6 +128,7 @@ export const webSiteSchema = () => ({
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: SITE_NAME,
+  alternateName: "Golf in Mexico",
   url: SITE_URL,
 });
 

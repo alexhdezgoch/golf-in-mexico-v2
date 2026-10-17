@@ -63,20 +63,7 @@ const JOSE = {
   ],
 };
 
-const GIM = {
-  id: "gim",
-  number: "N° 03",
-  label: "The Collective",
-  name: "Golf in Mexico°",
-  short: "GIM",
-  roleParts: [{ text: "The result" }],
-  photo: "/logo-wordmark.png",
-  isMark: true,
-  accent: "#1A1A18",
-  headline: ["The result."],
-};
-
-const TABS = [PABLO, JOSE, GIM];
+const TABS = [PABLO, JOSE];
 
 const fadeUp = {
   initial: { opacity: 0, y: 14 },

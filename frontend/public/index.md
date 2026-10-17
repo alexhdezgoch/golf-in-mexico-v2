@@ -1,6 +1,6 @@
 # There is no golf destination like Mexico.
 
-Curated experiences, planned by a tour agent and a tour pro. [Discover your golf experience](https://golf-in-mexico.com/golf-packages).
+Curated experiences, planned by a tour agent and a tour pro. [Build your trip](https://golf-in-mexico.com/trip-builder).
 
 ## We help global golfers play Mexico's top golf experiences.
 
@@ -18,19 +18,97 @@ What began inside professional tours and global fairways has grown into a bridge
 ## Destinations
 
 - [Los Cabos golf guide](https://golf-in-mexico.com/destinations/los-cabos): 18 championship courses from Cabo San Lucas to San José del Cabo, green fees $95–$500 a round, and how access actually works.
-  - [Los Cabos golf packages](https://golf-in-mexico.com/destinations/los-cabos/golf-packages): Three package tiers across a 20-mile corridor of Nicklaus, Woods, Norman and Fazio designs.
-- [Punta Mita golf guide](https://golf-in-mexico.com/destinations/punta-mita): Five championship golf courses within 75 km of PVR. Pacifico's Tail of the Whale — the only natural island green in golf. Mandarina (Norman) · Nauka (Fazio, 2025).…
+  - [Los Cabos golf packages](https://golf-in-mexico.com/destinations/los-cabos/golf-packages): Curated Los Cabos golf trips with the courses, stay and transfers already planned: see the price per person and request a quote.
+- [Punta Mita golf guide](https://golf-in-mexico.com/destinations/punta-mita): Five championship courses within 75 km of PVR: Pacifico's Tail of the Whale, the only natural island green in golf, plus Mandarina (Norman) and Nauka (Fazio).
   - [Pacifico vs Bahia](https://golf-in-mexico.com/destinations/punta-mita/pacifico-bahia): Two Jack Nicklaus Signature courses on the same peninsula, and they do not play alike. Specs, green fees $325–$400, the Tail of the Whale tide window, and how to get on.
   - [Stay & Play](https://golf-in-mexico.com/destinations/punta-mita/stay-and-play): You do not need a Four Seasons room to play Pacifico and Bahia. How villa access works, what a group of eight actually pays, and what a two-day golf trip looks like.
-  - [Punta Mita golf packages](https://golf-in-mexico.com/destinations/punta-mita/golf-packages): Private villas, 36 holes of Jack Nicklaus, and full concierge service on one peninsula.
+  - [Punta Mita golf packages](https://golf-in-mexico.com/destinations/punta-mita/golf-packages): Curated Punta Mita golf trips with the courses, stay and transfers already planned: see the price per person and request a quote.
 - [Mexico City golf guide](https://golf-in-mexico.com/destinations/mexico-city): 20+ golf courses within 90 minutes of the center, nearly all private. Green fees $150–$400 a round, and how altitude plays.
+  - [Mexico City golf packages](https://golf-in-mexico.com/destinations/mexico-city/golf-packages): Curated Mexico City golf trips with the courses, stay and transfers already planned: see the price per person and request a quote.
   - [Mexico City private access](https://golf-in-mexico.com/destinations/mexico-city/private-access): Mexico City's best golf is private, member-guest only. Join the list and hear first as access opens.
 - [Cancun · Riviera Maya golf guide](https://golf-in-mexico.com/destinations/cancun-riviera-maya): 12+ championship courses along 80 miles of Caribbean coast, which ones you can play without a resort stay, and green fees from $109.
-  - [Cancun golf packages](https://golf-in-mexico.com/destinations/cancun-riviera-maya/golf-packages): Three package tiers, airport transfer included, all three Cancun courses in one trip.
-- [Puerto Vallarta golf guide](https://golf-in-mexico.com/destinations/puerto-vallarta): Eight championship golf courses around Banderas Bay, the only PGA Tour venue in the region (Vidanta Norman), and Mexico's strongest value tier for Nicklaus and Weiskopf…
-  - [Puerto Vallarta golf packages](https://golf-in-mexico.com/destinations/puerto-vallarta/golf-packages): Seven courses within 45 minutes of PVR, including the Mexico Open venue at Vidanta.
-- [Unique Destinations golf guide](https://golf-in-mexico.com/destinations/unique-destinations): Beyond the headline corridors, Mexico hides another dozen destinations worth the detour — colonial towns, quiet Pacific bays, lakeside highlands, Caribbean limestone.…
-- [Mexico golf packages](https://golf-in-mexico.com/golf-packages): Five regions, one operator — matches your group to the right destination before you book the wrong one.
+  - [Cancún golf packages](https://golf-in-mexico.com/destinations/cancun-riviera-maya/golf-packages): Curated Cancún golf trips with the courses, stay and transfers already planned: see the price per person and request a quote.
+- [Puerto Vallarta golf guide](https://golf-in-mexico.com/destinations/puerto-vallarta): Eight championship courses around Banderas Bay, including Vidanta, the region's only PGA Tour venue, and Nicklaus and Weiskopf designs for less than in Cabo.
+  - [Puerto Vallarta golf packages](https://golf-in-mexico.com/destinations/puerto-vallarta/golf-packages): Curated Puerto Vallarta golf trips with the courses, stay and transfers already planned: see the price per person and request a quote.
+- [Unique Destinations golf guide](https://golf-in-mexico.com/destinations/unique-destinations): Beyond the headline corridors: a dozen more golf destinations in Mexico, from colonial towns and quiet Pacific bays to lakeside highlands.
+  - [San Miguel de Allende golf packages](https://golf-in-mexico.com/destinations/san-miguel-de-allende/golf-packages): Curated San Miguel de Allende golf trips with the courses, stay and transfers already planned: see the price per person and request a quote.
+  - [Mérida golf packages](https://golf-in-mexico.com/destinations/merida/golf-packages): Curated Mérida golf trips with the courses, stay and transfers already planned: see the price per person and request a quote.
+  - [Costalegre golf packages](https://golf-in-mexico.com/destinations/costalegre/golf-packages): Curated Costalegre golf trips with the courses, stay and transfers already planned: see the price per person and request a quote.
+  - [Ensenada golf packages](https://golf-in-mexico.com/destinations/ensenada/golf-packages): Curated Ensenada golf trips with the courses, stay and transfers already planned: see the price per person and request a quote.
+  - [Multi-city golf packages](https://golf-in-mexico.com/destinations/multi-city/golf-packages): Curated Multi-city golf trips with the courses, stay and transfers already planned: see the price per person and request a quote.
+- [Trip builder](https://golf-in-mexico.com/trip-builder): Every curated trip in Mexico, matched to the group, with the price per person; request a quote.
+
+## Courses
+
+- [All golf courses in Mexico](https://golf-in-mexico.com/courses): every course we plan trips around, by destination and designer.
+
+### Mexico City
+
+- [Bosque Real](https://golf-in-mexico.com/destinations/mexico-city/courses/bosque-real-country-club): designed by Robert von Hagge, green fee about US$600.
+- [Club de Golf Chapultepec](https://golf-in-mexico.com/destinations/mexico-city/courses/club-de-golf-chapultepec): designed by Willie Smith, green fee about US$600.
+- [Club de Golf México](https://golf-in-mexico.com/destinations/mexico-city/courses/club-de-golf-mexico): designed by Lawrence Hughes, green fee about US$600.
+- [Coral](https://golf-in-mexico.com/destinations/mexico-city/courses/el-coral): designed by Robert Hugues, green fee about US$100.
+
+### Los Cabos
+
+- [Cabo del Sol Golf Course](https://golf-in-mexico.com/destinations/los-cabos/courses/cabo-del-sol-golf-course): designed by Tom Weiskopf, green fee about US$385.
+- [Cabo Real Golf Course](https://golf-in-mexico.com/destinations/los-cabos/courses/cabo-real-golf-course): designed by Robert Trent Jones II, green fee about US$260.
+- [Chileno Bay Golf Club](https://golf-in-mexico.com/destinations/los-cabos/courses/chileno-bay-golf-club): designed by Tom Fazio, for guests of its resort.
+- [Club Campestre San José](https://golf-in-mexico.com/destinations/los-cabos/courses/club-campestre-san-jose): designed by Nicklaus Design, green fee about US$175.
+- [Diamante Dunes Course](https://golf-in-mexico.com/destinations/los-cabos/courses/diamante-dunes-course): designed by Davis Love III, for guests of its resort.
+- [Diamante El Cardonal](https://golf-in-mexico.com/destinations/los-cabos/courses/diamante-el-cardonal): designed by Tiger Woods, for guests of its resort.
+- [Oleada Golf Links](https://golf-in-mexico.com/destinations/los-cabos/courses/oleada-golf-links): designed by Ernie Els, green fee about US$300.
+- [Palmilla Golf Club](https://golf-in-mexico.com/destinations/los-cabos/courses/palmilla-golf-club): designed by Jack Nicklaus, for guests of its resort.
+- [Puerto Los Cabos Golf Club](https://golf-in-mexico.com/destinations/los-cabos/courses/puerto-los-cabos-golf-club): designed by Greg Norman, green fee about US$280.
+- [Quivira Golf Club](https://golf-in-mexico.com/destinations/los-cabos/courses/quivira-golf-club): designed by Jack Nicklaus, for guests of its resort.
+- [Solmar Golf Links](https://golf-in-mexico.com/destinations/los-cabos/courses/solmar-golf-links): designed by Greg Norman, green fee about US$400.
+- [Twin Dolphin Golf Club](https://golf-in-mexico.com/destinations/los-cabos/courses/twin-dolphin-golf-club): designed by Fred Couples, for guests of its resort.
+- [Vidanta Golf Los Cabos](https://golf-in-mexico.com/destinations/los-cabos/courses/vidanta-golf-los-cabos).
+
+### Cancún & Riviera Maya
+
+- [El Camaleón Mayakoba](https://golf-in-mexico.com/destinations/cancun-riviera-maya/courses/el-camaleon-mayakoba): designed by Greg Norman, green fee about US$375.
+- [El Tinto](https://golf-in-mexico.com/destinations/cancun-riviera-maya/courses/el-tinto-cancun-country-club): designed by Nick Price, green fee about US$190.
+- [Gran Coyote](https://golf-in-mexico.com/destinations/cancun-riviera-maya/courses/gran-coyote-golf-club): designed by Nick Price, green fee about US$269.
+- [Moon Palace Golf Course](https://golf-in-mexico.com/destinations/cancun-riviera-maya/courses/moon-palace-golf-course): designed by Jack Nicklaus, green fee about US$310.
+- [PGA Riviera Maya](https://golf-in-mexico.com/destinations/cancun-riviera-maya/courses/pga-riviera-maya-championship-course): designed by Robert Trent Jones II, green fee about US$200.
+- [Playa Mujeres Golf Club](https://golf-in-mexico.com/destinations/cancun-riviera-maya/courses/playa-mujeres-golf-club): designed by Greg Norman, green fee about US$250.
+- [Puerto Cancún Golf Club](https://golf-in-mexico.com/destinations/cancun-riviera-maya/courses/puerto-cancun-golf-club): designed by Tom Weiskopf.
+- [Riviera Cancún Golf & Resorts](https://golf-in-mexico.com/destinations/cancun-riviera-maya/courses/riviera-cancun-golf-resorts): designed by Jack Nicklaus, green fee about US$249.
+
+### Punta Mita & Nayarit
+
+- [Higuera Golf Club](https://golf-in-mexico.com/destinations/punta-mita/courses/higuera-golf-club): designed by Greg Norman, green fee about US$350.
+- [Mandarina Golf Club](https://golf-in-mexico.com/destinations/punta-mita/courses/mandarina-golf-club): designed by Greg Norman, green fee about US$280.
+- [Nauka Golf Club](https://golf-in-mexico.com/destinations/punta-mita/courses/nauka-golf-club): designed by Tom Fazio, for guests of its resort.
+- [Punta Mita Bahía](https://golf-in-mexico.com/destinations/punta-mita/courses/punta-mita-bahia): designed by Jack Nicklaus, for guests of its resort.
+- [Punta Mita Pacífico](https://golf-in-mexico.com/destinations/punta-mita/courses/punta-mita-pacifico): designed by Jack Nicklaus, for guests of its resort.
+
+### Puerto Vallarta
+
+- [El Tigre Golf Club](https://golf-in-mexico.com/destinations/puerto-vallarta/courses/el-tigre-golf-club): designed by Robert von Hagge, green fee about US$287.
+- [Nayar Course](https://golf-in-mexico.com/destinations/puerto-vallarta/courses/vidanta-nayar-course): designed by Jack Nicklaus, green fee about US$249.
+- [The Lakes Course](https://golf-in-mexico.com/destinations/puerto-vallarta/courses/vidanta-the-lakes-course): designed by Chet Williams, green fee about US$75.
+- [Vidanta Vallarta Course](https://golf-in-mexico.com/destinations/puerto-vallarta/courses/vidanta-vallarta-course): designed by Greg Norman, green fee about US$280.
+- [Vista Vallarta Nicklaus Course](https://golf-in-mexico.com/destinations/puerto-vallarta/courses/vista-vallarta-nicklaus-course): designed by Jack Nicklaus, green fee about US$299.
+- [Vista Vallarta Weiskopf Course](https://golf-in-mexico.com/destinations/puerto-vallarta/courses/vista-vallarta-weiskopf-course): designed by Tom Weiskopf, green fee about US$299.
+
+### More destinations
+
+- [Club de Golf Malanquín](https://golf-in-mexico.com/destinations/san-miguel-de-allende/courses/club-de-golf-malanquin): designed by Steven Newgent, green fee about US$146.
+- [Ventanas de San Miguel](https://golf-in-mexico.com/destinations/san-miguel-de-allende/courses/ventanas-de-san-miguel): designed by Nick Faldo, green fee about US$204.
+- [La Ceiba (Club de Golf de Yucatán)](https://golf-in-mexico.com/destinations/merida/courses/la-ceiba-golf-club): designed by Félix Mier y Terán, green fee about US$184.
+- [El Tamarindo Golf Course](https://golf-in-mexico.com/destinations/costalegre/courses/el-tamarindo-golf-course): designed by David Fleming, green fee about US$165.
+- [Bajamar Ocean Front Golf Resort](https://golf-in-mexico.com/destinations/ensenada/courses/bajamar-ocean-front-golf-resort): designed by Percy Clifford, green fee about US$180.
+- [Amanali](https://golf-in-mexico.com/destinations/multi-city/courses/amanali-country-club): designed by Schmidt-Curley, green fee about US$276.
+- [Club de Golf Avándaro](https://golf-in-mexico.com/destinations/multi-city/courses/club-de-golf-avandaro): designed by Percy Clifford, green fee about US$276.
+- [Costa Palmas Golf Club](https://golf-in-mexico.com/destinations/multi-city/courses/costa-palmas-golf-club): designed by Robert Trent Jones II, for guests of its resort.
+- [El Cortés Golf Club](https://golf-in-mexico.com/destinations/multi-city/courses/el-cortes-golf-club): designed by Gary Player, green fee about US$270.
+- [Madeiras](https://golf-in-mexico.com/destinations/multi-city/courses/madeiras-country-club): designed by Joe Finger, green fee about US$154.49.
+- [Palma Real Golf Club](https://golf-in-mexico.com/destinations/multi-city/courses/palma-real-golf-club): designed by Robert Trent Jones II, green fee about US$110.
+- [Rancho Avándaro](https://golf-in-mexico.com/destinations/multi-city/courses/rancho-avandaro-golf-club): green fee about US$276.
+- [TPC Danzante Bay](https://golf-in-mexico.com/destinations/multi-city/courses/tpc-danzante-bay): designed by Rees Jones, green fee about US$282.
+- [Vidanta Puerto Peñasco Nicklaus Course](https://golf-in-mexico.com/destinations/multi-city/courses/vidanta-puerto-penasco-nicklaus-course): designed by Jack Nicklaus.
 
 ## Journal
 

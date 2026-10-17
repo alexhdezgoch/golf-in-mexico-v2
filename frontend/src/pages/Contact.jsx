@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useSeo, breadcrumbSchema } from "@/hooks/useSeo";
 
@@ -7,13 +6,14 @@ import { useSeo, breadcrumbSchema } from "@/hooks/useSeo";
    Two ways to reach GIM: email or schedule a call.
    ═══════════════════════════════════════════════════════════════════ */
 
-const CALENDAR_URL = "https://calendar.app.google/aMfKM3QfqJa966m68";
+// The 15-minute call with Pablo, the same booking link as every other "Book 15 minutes" on the site.
+const CALENDAR_URL = "https://calendly.com/pablo-golf-in-mexico/trip-builder";
 
 const EMAIL_ADDRESS = "hello@golf-in-mexico.com";
 
 const Contact = () => {
   useSeo({
-    title: "Contact — Golf in Mexico°",
+    title: "Contact Us: Plan Your Mexico Golf Trip | GOLF° IN MEXICO°",
     description:
       "Talk golf with Golf in Mexico°. Email the team for trip planning, press, or partnerships, or book a call to plan your Mexico golf trip.",
     canonical: "/contact",
@@ -82,19 +82,19 @@ const Contact = () => {
             Schedule a <em className="italic text-[var(--c-gold)]">call.</em>
           </h2>
           <p className="font-body font-light text-white/80 text-base leading-[1.7] mb-8">
-            Planning a trip? Start a proposal first — Pablo builds it inside 48 hours, no call needed. If it&apos;s anything else, book a 30-minute call directly.
+            Planning a trip? Build it first: see the trips that fit your group, with the price per person, and request a quote. Rather talk it through? Book 15 minutes with Pablo.
           </p>
 
           <div className="mt-auto flex flex-col gap-3">
             {/* Primary — Trip Builder */}
-            <Link
-              to="/trip-builder"
+            <a
+              href="/trip-builder"
               data-testid="contact-trip-cta"
               className="group inline-flex items-center justify-between gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-7 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.2em] font-bold transition-colors"
             >
-              Start a trip proposal
+              Build your trip
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </Link>
+            </a>
 
             {/* Secondary — Book a call */}
             <a
@@ -102,9 +102,11 @@ const Contact = () => {
               target="_blank"
               rel="noopener noreferrer"
               data-testid="contact-call-cta"
+              data-track="planner_call"
+              data-track-id="contact"
               className="group inline-flex items-center justify-between gap-3 border border-white/30 hover:border-white text-white px-7 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.2em] transition-colors"
             >
-              Book a 30-min call
+              Book 15 minutes with Pablo
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
           </div>
