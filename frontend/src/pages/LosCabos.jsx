@@ -605,6 +605,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
     title: data.seoTitle || `Golf in ${data.name} | GOLF° IN MEXICO°`,
     description: data.seoDescription || data.heroAnswer || "",
     canonical: `/destinations/${data.slug}`,
+    image: `/og/guide-${data.slug}.jpg`,
     jsonLd: [
       articleSchema({
         headline: (data.seoTitle || `Golf in ${data.name}`).replace(/ \| GOLF° IN MEXICO°$/, ""),

@@ -4,6 +4,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { getArticleBySlug, getRelatedArticles, ARTICLES } from "@/data/articles";
 import { authorByName } from "@/data/authors";
 import { useSeo, articleSchema, breadcrumbSchema, faqSchema } from "@/hooks/useSeo";
+
+// Articles with a social card of their own in public/og; the rest share with the brand card.
+const OG_ARTICLES = ["the-bachelor-trip-cabo", "how-to-plan-a-golf-trip-to-mexico"];
 import { trackLead } from "@/lib/analytics";
 import { useHubspotForm } from "@/hooks/useHubspotForm";
 import { FORM_KEYS } from "@/config/hubspot";
@@ -759,6 +762,7 @@ const Article = () => {
           title: article.metaTitle || `${article.title}${" | GOLF° IN MEXICO°"}`,
           description: article.metaDescription || article.excerpt || article.subtitle,
           canonical: `/journal/${article.slug}`,
+          image: OG_ARTICLES.includes(article.slug) ? `/og/journal-${article.slug}.jpg` : undefined,
           jsonLd: [
             articleSchema({
               headline: article.h1 || article.title,
