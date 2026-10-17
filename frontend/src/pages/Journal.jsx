@@ -7,10 +7,7 @@ import { useSeo, breadcrumbSchema } from "@/hooks/useSeo";
 /* ───────────────── CATEGORY TAGGING ───────────────── */
 
 const CATEGORY_MAP = {
-  golf: [],
-  "beyond-the-course": [],
   "the-concierge": ["how-to-plan-a-golf-trip-to-mexico"],
-  "the-collective": [],
   "founders-journal": ["the-bachelor-trip-cabo"],
 };
 
@@ -21,10 +18,7 @@ const articleHasCategory = (article, category) => {
 
 const CATEGORIES = [
   { key: "all", label: "All" },
-  { key: "golf", label: "Golf" },
-  { key: "beyond-the-course", label: "Beyond the Course" },
   { key: "the-concierge", label: "Travel Concierge" },
-  { key: "the-collective", label: "The Collective" },
   { key: "founders-journal", label: "Founders Journal" },
 ];
 
@@ -32,21 +26,15 @@ const CATEGORIES = [
 const CATEGORY_CONTEXT = {
   all:
     "Every course review, golf trip guide, and insider take on golf in Mexico — all in one place.",
-  golf:
-    "Course reviews and insights from inside the ropes. The fairways, the design, the playability — documented with the same precision we use to scout a PGA Tour setup.",
-  "beyond-the-course":
-    "The true essence of the country beyond the 18th hole. World-class gastronomy, local hospitality, and cultural nuances you won't find on any other golf trip.",
   "the-concierge":
     "Obsessive attention to detail for the traveling golfer. Insider intelligence, travel logistics, and the information you need to navigate your trip like a professional.",
-  "the-collective":
-    "Voices from inside the game — caddies, course directors, designers, chefs, and the operators who shape every world-class round in Mexico. Their stories, their craft.",
   "founders-journal":
     "First-person field notes from Pablo and José — the trips, the people, and the decisions behind Golf in Mexico°.",
 };
 
 /* ───────────────── INTRO + FILTERS ───────────────── */
 
-const JournalIntro = ({ category, setCategory, search, setSearch }) => {
+const JournalIntro = ({ category, setCategory }) => {
   const activeLabel = CATEGORIES.find((c) => c.key === category)?.label || "All";
   const context = CATEGORY_CONTEXT[category] || CATEGORY_CONTEXT.all;
 
@@ -56,6 +44,9 @@ const JournalIntro = ({ category, setCategory, search, setSearch }) => {
       className="bg-[var(--c-off-white)] pt-32 md:pt-40 pb-12 md:pb-16 border-b border-[var(--c-border)]"
     >
       <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+        <h1 className="font-display font-light text-[var(--c-text)] leading-[1.02] tracking-tight text-5xl md:text-7xl mb-10 md:mb-12">
+          The Journal<span className="text-[var(--c-gold)]">.</span>
+        </h1>
         {/* CATEGORY FILTERS */}
         <div className="flex flex-wrap gap-2 md:gap-3 mb-10 md:mb-12" data-testid="journal-categories">
           {CATEGORIES.map((c) => {
@@ -97,18 +88,6 @@ const JournalIntro = ({ category, setCategory, search, setSearch }) => {
                 {context}
               </motion.p>
             </AnimatePresence>
-          </div>
-
-          {/* Search */}
-          <div className="md:col-span-4">
-            <input
-              type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search articles..."
-              data-testid="journal-search"
-              className="w-full bg-transparent border-b border-[var(--c-border)] focus:border-[var(--c-gold)] transition-colors text-[var(--c-text)] placeholder:text-[var(--c-text-muted)] font-body text-base py-3 focus:outline-none"
-            />
           </div>
         </div>
       </div>
@@ -186,7 +165,7 @@ const Card = ({ a }) => (
 
 const Journal = () => {
   useSeo({
-    title: "Journal — Golf in Mexico°",
+    title: "The Journal: Mexico Golf Guides & Stories | GOLF° IN MEXICO°",
     description:
       "Editorial stories, trip playbooks, and course intelligence for golf in Mexico — written by people who plan and play it.",
     canonical: "/journal",
@@ -197,32 +176,18 @@ const Journal = () => {
   });
   const [searchParams] = useSearchParams();
   const initialCategory = searchParams.get("category");
-  const validKeys = ["all", "golf", "beyond-the-course", "the-concierge", "the-collective", "founders-journal"];
+  const validKeys = ["all", "the-concierge", "founders-journal"];
   const [category, setCategory] = useState(
     initialCategory && validKeys.includes(initialCategory) ? initialCategory : "all"
   );
-  const [search, setSearch] = useState("");
 
-  const filtered = useMemo(() => {
-    const q = search.trim().toLowerCase();
-    return ARTICLES.filter((a) => {
-      if (!articleHasCategory(a, category)) return false;
-      if (!q) return true;
-      return (
-        a.title.toLowerCase().includes(q) ||
-        (a.excerpt || "").toLowerCase().includes(q) ||
-        (a.destinationLabel || "").toLowerCase().includes(q)
-      );
-    });
-  }, [category, search]);
+  const filtered = useMemo(() => ARTICLES.filter((a) => articleHasCategory(a, category)), [category]);
 
   return (
     <main data-testid="page-journal" className="relative bg-[var(--c-off-white)] pb-0">
       <JournalIntro
         category={category}
         setCategory={setCategory}
-        search={search}
-        setSearch={setSearch}
       />
 
       {/* Article grid */}
@@ -237,17 +202,16 @@ const Journal = () => {
                 The first entries are being polished.
               </h3>
               <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.7]">
-                New articles publish weekly, written by Pablo, José, and our
-                collective. Subscribe below and you&apos;ll be the first to know.
+                New articles publish weekly, written by Pablo and José. Subscribe below and you&apos;ll be the first to know.
               </p>
             </div>
           ) : (
             <>
-              {category === "all" && !search && filtered[0]?.slug === "the-bachelor-trip-cabo" && (
+              {category === "all" && filtered[0]?.slug === "the-bachelor-trip-cabo" && (
                 <FeaturedCard a={filtered[0]} />
               )}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                {(category === "all" && !search && filtered[0]?.slug === "the-bachelor-trip-cabo"
+                {(category === "all" && filtered[0]?.slug === "the-bachelor-trip-cabo"
                   ? filtered.slice(1)
                   : filtered
                 ).map((a, i) => (

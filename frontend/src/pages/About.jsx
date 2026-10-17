@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import TeamEditorial from "@/components/TeamEditorial";
 import { useSeo, orgSchema } from "@/hooks/useSeo";
+import PartnersStrip from "@/components/PartnersStrip";
 
 /* ═══════════════════════════════════════════════════════════════════
    About · /about
@@ -11,7 +12,7 @@ import { useSeo, orgSchema } from "@/hooks/useSeo";
 
 const About = () => {
   useSeo({
-    title: "About — Golf in Mexico°",
+    title: "About Us: Pablo De La Mora & José Islas | GOLF° IN MEXICO°",
     description:
       "Golf in Mexico° comes from sports agent Pablo De La Mora and professional golfer José Islas — relationships, access, and an editorial voice built inside the ropes.",
     canonical: "/about",
@@ -113,6 +114,9 @@ const About = () => {
         </div>
       </div>
     </section>
+
+    {/* ── WHO WE WORK WITH ── */}
+    <PartnersStrip />
 
     {/* ── GET IN TOUCH FOOTER ── */}
     <section className="bg-[var(--c-green-deep)] text-white py-20 md:py-28">

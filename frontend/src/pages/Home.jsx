@@ -1,8 +1,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
 import FoundersGallery from "@/components/FoundersGallery";
 import { useSeo, orgSchema, webSiteSchema } from "@/hooks/useSeo";
+import PartnersStrip from "@/components/PartnersStrip";
 
 const HERO_VIDEO_MP4 = "/video/hero.mp4";
 const HERO_VIDEO_WEBM = "/video/hero.webm";
@@ -112,9 +112,9 @@ const Home = () => {
   const heroVideoRef = useRef(null);
 
   useSeo({
-    title: "Curated Golf Trips to Mexico's Top Courses | Golf in Mexico°",
+    title: "Curated Golf Trips to Mexico's Top Courses | GOLF° IN MEXICO°",
     description:
-      "We help global golfers play Mexico's top golf experiences — curated trips around the best courses, authentic local experiences, and optimized value for every group.",
+      "We help golfers play Mexico's best: curated trips around the top courses, authentic local experiences and the best value for every group.",
     canonical: "/",
     jsonLd: [orgSchema(), webSiteSchema()],
   });
@@ -192,14 +192,14 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Link
-              to="/golf-packages"
+            <a
+              href="/trip-builder"
               data-testid="hero-cta-discover"
               className="group mt-10 md:mt-14 inline-flex items-center gap-3 border border-[var(--c-gold)] text-white px-7 md:px-9 py-4 md:py-[18px] rounded-sm font-mono text-[11px] md:text-[12px] uppercase tracking-[0.18em] hover:bg-[var(--c-gold)] hover:text-[var(--c-green-deep)] transition-colors duration-500"
             >
-              Discover your golf experience
+              Build your trip
               <span className="transition-transform duration-500 group-hover:translate-x-1.5">→</span>
-            </Link>
+            </a>
           </motion.div>
         </div>
       </section>
@@ -212,6 +212,9 @@ const Home = () => {
 
       {/* FOUNDERS · Visual sliders only · full editorial bios live on /about */}
       <FoundersGallery />
+
+      {/* WHO WE WORK WITH */}
+      <PartnersStrip />
     </main>
   );
 };

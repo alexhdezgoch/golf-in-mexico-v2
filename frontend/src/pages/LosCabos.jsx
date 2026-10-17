@@ -9,6 +9,11 @@ import { useSeo, articleSchema, breadcrumbSchema, faqSchema } from "@/hooks/useS
 import { trackLead } from "@/lib/analytics";
 import { useHubspotForm } from "@/hooks/useHubspotForm";
 import { FORM_KEYS } from "@/config/hubspot";
+import CourseSlider from "@/components/CourseSlider";
+import PartnersStrip from "@/components/PartnersStrip";
+
+// The partner each destination works with on the ground (the same as its golf packages page).
+const LOCAL_PARTNER = { "los-cabos": "Cocobay", "cancun-riviera-maya": "The Palace Company", "punta-mita": "Punta Mita" };
 import ConsentNotice from "@/components/ConsentNotice";
 
 /* Hero photo per destination */
@@ -244,20 +249,6 @@ const H2 = ({ children, onDark = false, className = "" }) => (
     {children}
   </h2>
 );
-
-const AccessPill = ({ tier }) => {
-  const map = {
-    public:  { bg: "bg-[rgba(45,106,79,0.12)]",      color: "text-[#2d6a4f]", label: "Public" },
-    resort:  { bg: "bg-[rgba(200,169,110,0.18)]",    color: "text-[#8a6a2e]", label: "Resort" },
-    private: { bg: "bg-black/8",                      color: "text-[var(--c-text-muted)]", label: "Private" },
-  };
-  const s = map[tier] || map.private;
-  return (
-    <span className={`inline-flex items-center font-mono text-[9px] uppercase tracking-[0.1em] px-2.5 py-1 rounded-full ${s.bg} ${s.color}`}>
-      {s.label}
-    </span>
-  );
-};
 
 /* ═══════════════════════════════════════════════════════════════════
    HERO SLIDER — self-scrolling film strip with arrow controls.
@@ -611,12 +602,12 @@ const LosCabos = ({ slug = "los-cabos" }) => {
     image: HERO_PHOTOS[h.slug] || "/images/e60z74y2-golf-in-mexico-5.webp",
   }));
   useSeo({
-    title: data.seoTitle || `${data.name} — Golf in Mexico°`,
+    title: data.seoTitle || `Golf in ${data.name} | GOLF° IN MEXICO°`,
     description: data.seoDescription || data.heroAnswer || "",
     canonical: `/destinations/${data.slug}`,
     jsonLd: [
       articleSchema({
-        headline: data.seoTitle || `Golf in ${data.name}`,
+        headline: (data.seoTitle || `Golf in ${data.name}`).replace(/ \| GOLF° IN MEXICO°$/, ""),
         description: data.seoDescription || data.heroAnswer,
         path: `/destinations/${data.slug}`,
         image: data.heroPhoto,
@@ -634,7 +625,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
   });
 
   return (
-    <main data-testid="page-los-cabos" className="hub-page relative bg-[var(--c-off-white)]">
+    <main data-testid="page-los-cabos" className="hub-page reading relative bg-[var(--c-off-white)]">
       {/* ═════════ S1. HERO — FULL-BLEED PHOTO + CINEMATIC GRADIENT ═════════ */}
       <header
         data-testid="lc-header"
@@ -812,7 +803,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
 
           {/* Destination list (Unique hub) — minimal editorial list, no specs */}
           {data.isDestinationList && data.destinations ? (
-            <div className="border-t border-white/10">
+            <><div className="border-t border-white/10">
               {data.destinations.map((d, idx) => (
                 <motion.div
                   key={d.name}
@@ -840,147 +831,17 @@ const LosCabos = ({ slug = "los-cabos" }) => {
                 … and more, quarterly
               </p>
             </div>
+            <div className="mt-16">
+              <CourseSlider hubSlug={slug} hubCourses={COURSES} />
+            </div></>
           ) : (
-          <div>
-            {(() => {
-              const verifiedCourses = COURSES.filter((c) => c.verified);
-              const honorableCourses = COURSES.filter((c) => !c.verified);
-
-              const renderCourse = (c, idx) => {
-                const singlePhoto = c.photos && c.photos.length > 0 ? c.photos[0] : null;
-                return (
-                <motion.article
-                  key={c.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-10%" }}
-                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                  data-testid={`lc-course-${c.verified ? "verified" : "honorable"}-${idx}`}
-                  className={`group py-10 md:py-12 border-b border-white/10 ${c.verified ? "" : "opacity-80"}`}
-                >
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-6 lg:gap-x-10 lg:gap-y-0 items-start">
-
-                    {/* LEFT — single photo (verified) */}
-                    {c.verified && (
-                      <div className="lg:col-span-4">
-                        <PhotoSlot
-                          src={singlePhoto || undefined}
-                          alt={c.name}
-                          label={c.name}
-                          showLabel={!singlePhoto}
-                          testid={`lc-course-${idx}-photo`}
-                          className="photo-slot--4x3 photo-slot--zoom-parent rounded-sm overflow-hidden"
-                        />
-                        {c.photoSource && (
-                          <p
-                            data-testid={`lc-course-${idx}-photo-source`}
-                            className="mt-2 font-mono text-[9px] uppercase tracking-[0.14em] text-white/35 italic"
-                          >
-                            {c.photoSource}
-                          </p>
-                        )}
-                      </div>
-                    )}
-
-                    {/* MIDDLE — index + name + specs + note + standout */}
-                    <div className={c.verified ? "lg:col-span-5" : "lg:col-span-8"}>
-                      <div className="flex items-baseline gap-4 mb-3">
-                        <span className="font-display font-light text-[var(--c-gold)] text-2xl md:text-3xl leading-none">
-                          {String(idx + 1).padStart(2, "0")}
-                        </span>
-                        <h3 className={`course-name uppercase leading-tight tracking-wide ${c.verified ? "text-white text-xl md:text-2xl" : "text-white/75 text-lg md:text-xl"}`}>
-                          {c.name}
-                        </h3>
-                      </div>
-                      <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--c-gold)]/85 mb-5">{c.specs}</p>
-
-                      <p className={`text-[14px] md:text-[15px] leading-[1.7] mb-4 ${c.verified ? "text-white/85" : "text-white/55"}`}>{c.note}</p>
-                      <p className={`text-[13px] italic leading-[1.55] border-l-2 border-[var(--c-gold)] pl-3 ${c.verified ? "text-white/65" : "text-white/45"}`}>
-                        <span className="font-mono not-italic text-[10px] uppercase tracking-[0.1em] text-[var(--c-gold)] mr-2">Standout</span>
-                        {c.standout}
-                      </p>
-                    </div>
-
-                    {/* RIGHT rail */}
-                    <div className="lg:col-span-3 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-1 gap-x-4 gap-y-4 pt-4 lg:pt-0 border-t lg:border-t-0 border-white/10">
-                      <div>
-                        <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Access</span>
-                        <AccessPill tier={c.tier} />
-                      </div>
-                      <div>
-                        <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Fee</span>
-                        <span className="font-mono text-[13px] font-bold text-[var(--c-gold)]">{c.fee}</span>
-                      </div>
-                      <div>
-                        <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Difficulty</span>
-                        <span className="font-mono text-[13px] text-white/90">{c.difficulty}</span>
-                      </div>
-                      <div>
-                        <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-white/40 mb-1.5">Best for</span>
-                        <span className="text-[12px] text-white/70 leading-[1.4]">{c.bestFor}</span>
-                      </div>
-                    </div>
-                  </div>
-                </motion.article>
-                );
-              };
-
-              return (
-                <>
-                  {verifiedCourses.length > 0 && (
-                    <div data-testid="lc-courses-verified" className="mb-20 md:mb-28">
-                      {/* High-contrast gold banner */}
-                      <div className="mb-10 md:mb-12 -mx-6 md:-mx-12 bg-[var(--c-gold)] text-[var(--c-green-deep)] px-6 md:px-12 py-6 md:py-7 flex items-center gap-5 md:gap-7 flex-wrap shadow-[0_18px_45px_-22px_rgba(200,169,110,0.55)]">
-                        <span className="inline-flex items-center gap-3 font-mono text-xs md:text-sm uppercase tracking-[0.22em] font-bold">
-                          <span className="w-2.5 h-2.5 rounded-full bg-[var(--c-green-deep)] animate-pulse" />
-                          GIM Verified
-                        </span>
-                        <span className="hidden md:inline-block h-5 w-px bg-[var(--c-green-deep)]/35" />
-                        <span className="font-display italic text-base md:text-lg text-[var(--c-green-deep)]/85 leading-snug">
-                          Courses we have played, walked, and verified ourselves.
-                        </span>
-                      </div>
-                      <div>
-                        {verifiedCourses.map((c, i) => renderCourse(c, i))}
-                      </div>
-                    </div>
-                  )}
-
-                  {honorableCourses.length > 0 && (
-                    <div data-testid="lc-courses-honorable" className="relative">
-                      {/* Dim black-band divider for full contrast pivot */}
-                      <div className="mb-10 md:mb-12 -mx-6 md:-mx-12 bg-black/55 backdrop-blur-sm border-t border-b border-white/10 px-6 md:px-12 py-6 md:py-7 flex items-center gap-5 md:gap-7 flex-wrap">
-                        <span className="inline-flex items-center gap-3 font-mono text-xs md:text-sm uppercase tracking-[0.22em] text-white/85">
-                          <span className="w-2.5 h-2.5 rounded-full border border-white/55" />
-                          Honorable Mentions
-                        </span>
-                        <span className="hidden md:inline-block h-5 w-px bg-white/15" />
-                        <span className="font-display italic text-sm md:text-base text-white/60 leading-snug">
-                          Worth knowing — pending GIM verification. Want to play one? Let us coordinate.
-                        </span>
-                      </div>
-                      <div>
-                        {honorableCourses.map((c, i) => renderCourse(c, i))}
-                      </div>
-                    </div>
-                  )}
-                </>
-              );
-            })()}
-          </div>
-          )}
-
-          {/* Legend (hidden on destination-list hubs) */}
-          {!data.isDestinationList && (
-          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em] text-white/55">
-            <span className="inline-flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#2d6a4f]" /> Public — book directly</span>
-            <span className="inline-flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[var(--c-gold)]" /> Resort — room key required</span>
-            <span className="inline-flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#8b2020]" /> Private — invitation only</span>
-            <span className="basis-full text-white/35 normal-case">Difficulty: 1 Beginner → 5 Tournament · GIM editorial rating</span>
-          </div>
+          <CourseSlider hubSlug={slug} hubCourses={COURSES} />
           )}
         </div>
       </section>
+
+      {/* ═════════ S5.5 WHO WE WORK WITH — Fora and PGA México everywhere, plus the partner of this destination ═════════ */}
+      <PartnersStrip only={["Fora Travel", "PGA México", ...(LOCAL_PARTNER[slug] ? [LOCAL_PARTNER[slug]] : [])]} />
 
       {/* ═════════ S6. COST — PAPER (hidden on destination-list hubs) ═════════ */}
       {!data.isDestinationList && (
