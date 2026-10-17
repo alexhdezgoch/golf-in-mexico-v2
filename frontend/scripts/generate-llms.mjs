@@ -158,10 +158,10 @@ async function loadData(file) {
 
 // ── static page copy that isn't in the data files ──────────────────────────
 const SITE_SUMMARY =
-  "Golf in Mexico° is the only editorial guide to golf in Mexico written by people who play it, plan it, and live it — sports agent Pablo De La Mora and professional golfer José Islas. Course intelligence, real green fees, costs, logistics, seasons, and bespoke trip planning across Los Cabos, Punta Mita, Mexico City, the Riviera Maya, Puerto Vallarta and beyond.";
+  "GOLF° IN MEXICO° is the only editorial guide to golf in Mexico written by people who play it, plan it, and live it — sports agent Pablo De La Mora and professional golfer José Islas. Course intelligence, real green fees, costs, logistics, seasons, and bespoke trip planning across Los Cabos, Punta Mita, Mexico City, the Riviera Maya, Puerto Vallarta and beyond.";
 
 const ABOUT = {
-  hero: "Golf in Mexico° comes from Pablo De La Mora and José Islas — a sports agent and a professional golfer who together hold the relationships, the access, and the editorial voice that turn a Mexico golf trip into something different from what a tourism board can offer.",
+  hero: "GOLF° IN MEXICO° comes from Pablo De La Mora and José Islas — a sports agent and a professional golfer who together hold the relationships, the access, and the editorial voice that turn a Mexico golf trip into something different from what a tourism board can offer.",
   pillars: [
     {
       title: "Precision — in every itinerary.",
@@ -346,6 +346,17 @@ function renderArticleFull(a) {
         md += `\n`;
         if (block.note) md += para(block.note);
         break;
+      case "table": {
+        // A Markdown table, with site links made absolute so they work outside the site.
+        const cell = (s) => clean(s).replace(/\|/g, "/").replace(/\]\(\//g, `](${BASE}/`);
+        if (block.caption) md += `**${clean(block.caption)}**\n\n`;
+        md += `| ${(block.columns || []).map(cell).join(" | ")} |\n`;
+        md += `| ${(block.columns || []).map(() => "---").join(" | ")} |\n`;
+        for (const row of block.rows || []) md += `| ${row.map(cell).join(" | ")} |\n`;
+        md += `\n`;
+        if (block.note) md += para(block.note);
+        break;
+      }
       case "image":
         if (block.caption) md += `*${clean(block.caption)}*\n\n`;
         break;
@@ -423,10 +434,10 @@ async function main() {
   const landings = landingsMod.default || [];
 
   // ---- llms.txt (curated index) ----
-  let index = `# Golf in Mexico°\n\n> ${SITE_SUMMARY}\n\n`;
+  let index = `# GOLF° IN MEXICO°\n\n> ${SITE_SUMMARY}\n\n`;
   // When-to-use guidance for agents. Plain markdown before the first H2, where
   // the llmstxt.org format allows free-form content.
-  index += `**When to use Golf in Mexico°**\n\n`;
+  index += `**When to use GOLF° IN MEXICO°**\n\n`;
   index += `Use this site when a user wants to:\n\n`;
   index += `- Plan or book a golf trip to Mexico (Los Cabos, Punta Mita, Puerto Vallarta, Cancun · Riviera Maya, Mexico City).\n`;
   index += `- Compare Mexican golf destinations by courses, green fees, season, and logistics.\n`;
@@ -479,7 +490,7 @@ async function main() {
     index += `- [${clean(a.title)}](${BASE}/journal/${a.slug}): ${desc}\n`;
   }
   index += `\n## About\n\n`;
-  index += `- [About Golf in Mexico°](${BASE}/about): The founders, the mission, and the three editorial pillars.\n`;
+  index += `- [About GOLF° IN MEXICO°](${BASE}/about): The founders, the mission, and the three editorial pillars.\n`;
   index += `- [Experiences](${BASE}/experience): Couples, bachelor, family/friends, and corporate golf trips.\n`;
   index += `- [Plan a trip](${BASE}/trip-builder): Build a custom Mexico golf trip.\n`;
   index += `- [Contact](${BASE}/contact): Reach the team.\n`;
@@ -494,7 +505,7 @@ async function main() {
   const home = HOME_MD + index.slice(index.indexOf("## Destinations"));
 
   // ---- llms-full.txt (full corpus) ----
-  let full = `# Golf in Mexico° — Full Content\n\n> ${SITE_SUMMARY}\n\n`;
+  let full = `# GOLF° IN MEXICO° — Full Content\n\n> ${SITE_SUMMARY}\n\n`;
   full += `Source: ${BASE} · Generated ${TODAY}\n\n---\n\n`;
 
   full += `# About\n\n${para(HOME_STATEMENT)}${para(ABOUT.hero)}`;
