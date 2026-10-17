@@ -15,7 +15,23 @@ export const SITE_NAME = "GOLF° IN MEXICO°";
 
 const abs = (url) => (url && url.startsWith("http") ? url : `${SITE_URL}${url || ""}`);
 
-export function useSeo({ title, description, canonical, jsonLd, alternates } = {}) {
+/** Sets (or adds) one <meta>, by property (Open Graph) or by name (Twitter, description). */
+const setMeta = (attr, key, content) => {
+  if (!content) return;
+  let meta = document.head.querySelector(`meta[${attr}="${key}"]`);
+  if (!meta) {
+    meta = document.createElement("meta");
+    meta.setAttribute(attr, key);
+    document.head.appendChild(meta);
+  }
+  meta.setAttribute("content", content);
+};
+
+// Every page shares through its own card: its title, description and a 1200x630 image (public/og/). Pages without
+// a photo of their own use the brand card.
+export const DEFAULT_OG_IMAGE = "/og/default.jpg";
+
+export function useSeo({ title, description, canonical, jsonLd, alternates, image } = {}) {
   // Serialize jsonLd for a stable dependency (callers pass fresh literals).
   const jsonLdKey = jsonLd ? JSON.stringify(jsonLd) : "";
   const alternatesKey = alternates ? JSON.stringify(alternates) : "";
@@ -32,6 +48,19 @@ export function useSeo({ title, description, canonical, jsonLd, alternates } = {
       }
       meta.content = description;
     }
+
+    // What messaging apps and social networks show when the page is shared. They read the prerendered HTML, which
+    // captures these tags.
+    const ogImage = abs(image || DEFAULT_OG_IMAGE);
+    setMeta("property", "og:title", title);
+    setMeta("property", "og:description", description);
+    setMeta("property", "og:url", canonical ? abs(canonical) : undefined);
+    setMeta("property", "og:image", ogImage);
+    setMeta("property", "og:image:width", "1200");
+    setMeta("property", "og:image:height", "630");
+    setMeta("name", "twitter:title", title);
+    setMeta("name", "twitter:description", description);
+    setMeta("name", "twitter:image", ogImage);
 
     if (canonical) {
       let link = document.querySelector("link[rel='canonical']");
@@ -77,7 +106,7 @@ export function useSeo({ title, description, canonical, jsonLd, alternates } = {
     });
     return () => [...els, ...altEls].forEach((el) => el.remove());
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [title, description, canonical, jsonLdKey, alternatesKey]);
+  }, [title, description, canonical, jsonLdKey, alternatesKey, image]);
 }
 
 // ── Schema builders (all URLs absolute, on golf-in-mexico.com) ──────────────
