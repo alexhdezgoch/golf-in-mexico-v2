@@ -249,6 +249,7 @@ const Landing = () => {
     title: landing?.seoTitle,
     description: landing?.seoDescription,
     canonical: path,
+    image: landing ? `/og/landing-${landing.slug}.jpg` : undefined,
     jsonLd: landing
       ? [
           breadcrumbSchema([

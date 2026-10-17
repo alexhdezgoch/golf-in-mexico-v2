@@ -116,6 +116,7 @@ const Home = () => {
     description:
       "We help golfers play Mexico's best: curated trips around the top courses, authentic local experiences and the best value for every group.",
     canonical: "/",
+    image: "/og/home.jpg",
     jsonLd: [orgSchema(), webSiteSchema()],
   });
 

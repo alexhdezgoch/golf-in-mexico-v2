@@ -292,6 +292,7 @@ const Destinations = () => {
     description:
       "Field guides to Mexico's golf destinations: Los Cabos, Punta Mita, Mexico City, Cancún, Puerto Vallarta and beyond. Courses, costs, access and seasons.",
     canonical: "/destinations",
+    image: "/og/destinations.jpg",
     jsonLd: breadcrumbSchema([
       { name: "Home", path: "/" },
       { name: "Destinations", path: "/destinations" },
