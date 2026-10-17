@@ -777,3 +777,28 @@ html.lenis, html.lenis body { height: auto; }
     letter-spacing: -0.015em;
 }
 
+
+/* ═════════════════════════ READING — guides, landings and articles ═════════════════════════
+   Long-form text at reading standards, without touching a word: regular weight instead of light
+   (light grey-on-cream tires the eye over 3,000 words), 1.75 line height, lines capped near 75
+   characters, and nothing under 15px. Display type (font-display) and labels (font-mono) keep
+   their own styles. */
+/* Body copy: every paragraph and list item that is not display type, a label or micro text (text-[10px] to text-[13px]). */
+.reading :is(p, li, dd):not(.font-display):not(.font-mono):not([class*="text-[1"]) {
+  font-weight: 400;
+  line-height: 1.75;
+}
+.reading p:not(.font-display):not(.font-mono):not(.text-center):not([class*="text-[1"]) {
+  max-width: 60ch;
+}
+.reading p.text-sm:not(.font-mono),
+.reading li.text-sm:not(.font-mono) {
+  font-size: 15px;
+  line-height: 1.7;
+}
+@media (min-width: 768px) {
+  .reading p.text-sm:not(.font-mono),
+  .reading li.text-sm:not(.font-mono) {
+    font-size: 16px;
+  }
+}

@@ -8,14 +8,14 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Cursor from "@/components/Cursor";
 import Intro from "@/components/Intro";
+import CookieNotice from "@/components/CookieNotice";
 import ReadingProgress from "@/components/ReadingProgress";
-import { initAnalytics, trackPageView } from "@/lib/analytics";
+import { initAnalytics, trackEvent, trackPageView } from "@/lib/analytics";
 import { captureAttribution } from "@/lib/attribution";
 
 import Home from "@/pages/Home";
 import Journal from "@/pages/Journal";
 import Article from "@/pages/Article";
-import TripBuilder from "@/pages/TripBuilder";
 import About from "@/pages/About";
 import Destinations from "@/pages/Destinations";
 import LosCabos from "@/pages/LosCabos";
@@ -23,11 +23,20 @@ import Experience from "@/pages/Experience";
 import Contact from "@/pages/Contact";
 import Privacy from "@/pages/Privacy";
 import Landing from "@/pages/Landing";
-import PackageBookingPage from "@/pages/packages/PackageBookingPage";
-import PuntaMitaPackagePage from "@/pages/packages/PuntaMitaPackagePage";
-import { CANCUN, LOS_CABOS, PUERTO_VALLARTA, PUNTA_MITA } from "@/data/packagePages";
 import PackageWaitlistPage from "@/pages/packages/PackageWaitlistPage";
-import PackageNationalPage from "@/pages/packages/PackageNationalPage";
+
+/**
+ * Pages served by the trip builder app (see middleware.js). Reached by an in-app link, the router hands them back
+ * to the server with a full page load, which the middleware answers.
+ */
+function ServerPage() {
+  useEffect(() => {
+    // The build-time prerenderer captures this route too: it must not reload.
+    if (window.__PRERENDER__) return;
+    window.location.replace(window.location.href);
+  }, []);
+  return null;
+}
 
 // Generic destination hub — routes /destinations/:slug through the LosCabos layout with the matching data
 const HubBySlug = () => {
@@ -70,6 +79,17 @@ const AnimatedRoutes = () => {
   // Capture UTM/click-id attribution from the landing URL once (first-touch).
   useEffect(() => {
     captureAttribution();
+  }, []);
+
+  // Every "Book 15 minutes with Pablo" link carries data-track="planner_call": one listener reports the click as the
+  // book_call_click conversion, the same event the trip builder pages send.
+  useEffect(() => {
+    const onClick = (e) => {
+      const el = e.target.closest && e.target.closest('[data-track="planner_call"]');
+      if (el) trackEvent("book_call_click", { source: el.getAttribute("data-track-id") || "site" });
+    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
   }, []);
 
   // GA4: load gtag once, then send a page_view on every client-side route change.
@@ -150,41 +170,31 @@ const AnimatedRoutes = () => {
         <Route
           path="/destinations/cancun-riviera-maya/golf-packages"
           element={
-            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
-              <PackageBookingPage data={CANCUN} />
-            </motion.div>
+            <ServerPage />
           }
         />
         <Route
           path="/destinations/los-cabos/golf-packages"
           element={
-            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
-              <PackageBookingPage data={LOS_CABOS} />
-            </motion.div>
+            <ServerPage />
           }
         />
         <Route
           path="/destinations/puerto-vallarta/golf-packages"
           element={
-            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
-              <PackageBookingPage data={PUERTO_VALLARTA} />
-            </motion.div>
+            <ServerPage />
           }
         />
         <Route
           path="/destinations/punta-mita/golf-packages"
           element={
-            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
-              <PuntaMitaPackagePage data={PUNTA_MITA} />
-            </motion.div>
+            <ServerPage />
           }
         />
         <Route
           path="/golf-packages"
           element={
-            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
-              <PackageNationalPage />
-            </motion.div>
+            <ServerPage />
           }
         />
         <Route
@@ -198,6 +208,11 @@ const AnimatedRoutes = () => {
         {/* Transactional landings under a hub — /destinations/:hub/:slug.
             Three segments, so this never collides with the two-segment
             /destinations/:slug hub route above. Content: data/landings.js. */}
+        {/* Course pages and the courses index come from the trip builder app too. */}
+        <Route path="/courses" element={<ServerPage />} />
+        <Route path="/terms" element={<ServerPage />} />
+        <Route path="/photo-credits" element={<ServerPage />} />
+        <Route path="/destinations/:hub/courses/:slug" element={<ServerPage />} />
         <Route
           path="/destinations/:hub/:slug"
           element={
@@ -220,7 +235,7 @@ const AnimatedRoutes = () => {
         />
         <Route
           path="/trip-builder"
-          element={<TripBuilder />}
+          element={<ServerPage />}
         />
         <Route
           path="/experience"
@@ -359,6 +374,7 @@ function App() {
             <AnimatedRoutes />
           </ChromeLayout>
         </BrowserRouter>
+        <CookieNotice />
       </div>
   );
 }
