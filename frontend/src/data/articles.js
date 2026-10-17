@@ -264,6 +264,87 @@ export const ARTICLES = [
     faqItems: [],
     relatedArticles: ["the-bachelor-trip-cabo"],
   },
+
+  // ------- COURSES · GUESTS-ONLY COURSES (ANSWER PAGE) -------
+  // Built from the trip builder catalog (access rules, the stay that opens each course, guest green fees). Keep the two in step.
+  {
+    slug: "guests-only-golf-courses-mexico",
+    title: "Guests-Only Golf Courses in Mexico: Which Stay Gets You On",
+    h1: "Guests-Only Golf Courses in Mexico: Which Stay Gets You On",
+    subtitle: "Ten of the country's best courses don't sell tee times to visitors. Here is each one, the hotel or villa that opens it, and what a round costs.",
+    metaTitle: "Guests-Only Golf Courses in Mexico: How to Get On | GOLF° IN MEXICO°",
+    metaDescription: "Quivira, Twin Dolphin, Diamante, Punta Mita and more only take hotel guests. Which stay gets you on each course, and the guest green fee.",
+    excerpt: "Ten of the country's best courses don't sell tee times to visitors. Here is each one, the hotel or villa that opens it, and what a round costs.",
+    heroImage: "/images/jdd69nak-punta-mita-drone.webp",
+    author: {
+      name: "Pablo De La Mora",
+      role: "Founder · GIM",
+      photo: "/founders/pablo/01.jpg",
+    },
+    destination: "planning",
+    destinationLabel: "Los Cabos · Punta Mita",
+    articleType: "courses",
+    isGIMProperty: false,
+    searchVolume: 6600,
+    readTimeMinutes: 6,
+    updated: "October 2026",
+    published: "2026-10-17",
+    modified: "2026-10-17",
+    body: [
+      { type: "lead", text: "Ten of Mexico's best golf courses can't be booked as a tee time. Quivira, Twin Dolphin, Chileno Bay, the two Diamante courses, Palmilla, Costa Palmas, Punta Mita's Pacífico and Bahía, and Nauka only take members and the guests of the hotel or residences they belong to. The way on is to book the right stay first. Below is each course, the stay that gets you on, and the guest green fee we see." },
+
+      { type: "h2", text: "Mexico's guests-only golf courses at a glance" },
+      {
+        type: "table",
+        caption: "Guests-only courses, 2026–27 season",
+        columns: ["Course", "Where", "Designer", "Who can play", "The stay that gets you on", "Guest green fee"],
+        rows: [
+          ["[Quivira Golf Club](/destinations/los-cabos/courses/quivira-golf-club)", "Los Cabos · Cabo San Lucas", "Jack Nicklaus", "Guests of the Pueblo Bonito and Quivira resorts", "Pueblo Bonito Pacifica", "$465"],
+          ["[Twin Dolphin Golf Club](/destinations/los-cabos/courses/twin-dolphin-golf-club)", "Los Cabos · Tourist Corridor", "Fred Couples and Todd Eckenrode", "Members; Montage and Maravilla guests", "Montage Los Cabos", "$700"],
+          ["[Chileno Bay Golf Club](/destinations/los-cabos/courses/chileno-bay-golf-club)", "Los Cabos · Tourist Corridor", "Tom Fazio", "Members; Chileno Bay Resort & Residences guests", "Chileno Bay Resort & Residences, Auberge Collection", "$518"],
+          ["[Diamante Dunes](/destinations/los-cabos/courses/diamante-dunes-course)", "Los Cabos · Pacific side", "Davis Love III", "Diamante guests and members", "A Diamante residence, or Nobu Hotel Los Cabos", "$500"],
+          ["[El Cardonal at Diamante](/destinations/los-cabos/courses/diamante-el-cardonal)", "Los Cabos · Pacific side", "Tiger Woods", "Diamante guests and members", "A Diamante residence, or Nobu Hotel Los Cabos", "$500"],
+          ["[Palmilla Golf Club](/destinations/los-cabos/courses/palmilla-golf-club)", "Los Cabos · San José del Cabo", "Jack Nicklaus", "Members; One&Only Palmilla guests", "One&Only Palmilla", "Quoted with the stay"],
+          ["[Costa Palmas Golf Club](/destinations/multi-city/courses/costa-palmas-golf-club)", "East Cape · Baja California Sur", "Robert Trent Jones II", "Four Seasons guests and members", "Four Seasons Costa Palmas", "$300"],
+          ["[Punta Mita Pacífico](/destinations/punta-mita/courses/punta-mita-pacifico)", "Punta Mita", "Jack Nicklaus", "Owners; Four Seasons and St. Regis guests", "Four Seasons or St. Regis Punta Mita, or a Punta Mita villa", "$388"],
+          ["[Punta Mita Bahía](/destinations/punta-mita/courses/punta-mita-bahia)", "Punta Mita", "Jack Nicklaus", "Owners; Four Seasons and St. Regis guests", "Four Seasons or St. Regis Punta Mita, or a Punta Mita villa", "$388"],
+          ["[Nauka Golf Club](/destinations/punta-mita/courses/nauka-golf-club)", "Riviera Nayarit", "Tom Fazio", "Limited access for Siari guests", "Siari, a Ritz-Carlton Reserve", "No public fee"],
+        ],
+        note: "Guest green fees per round in US dollars, as we see them for the 2026–27 season. They are estimates, not offers: your written proposal confirms the price. Access rules are set by each club and can change.",
+      },
+
+      { type: "h2", text: "How guests-only access works" },
+      { type: "p", text: "These courses earn most of their money from rooms, not tee times. That is why they keep play for guests: the room is the ticket, and the green fee is charged on top." },
+      {
+        type: "list",
+        items: [
+          { title: "Book the stay before the round", text: "tee times open to you once you hold a reservation, and the best times go to guests who ask early." },
+          { title: "The green fee is separate", text: "staying gets you access, not a free round, unless your package says rounds are included." },
+          { title: "One stay, one club", text: "a hotel opens its own course, not its neighbor's. To play two guests-only clubs, split the stay." },
+          { title: "Some courses share a gate", text: "Pacífico and Bahía sit inside the same Punta Mita community, and the two Diamante courses inside the same resort, so one stay opens both." },
+        ],
+      },
+
+      { type: "h2", text: "Los Cabos: six of the ten" },
+      { type: "p", text: "Six of the ten are in Cabo. Quivira, Twin Dolphin, Chileno Bay, Diamante's Dunes and El Cardonal, and Palmilla all sit within about 40 minutes of each other between Cabo San Lucas and San José del Cabo. Choose the stay for the course you want most, and pair it with courses that are open to visitors, such as Cabo del Sol, Solmar and Cabo Real. Our [Los Cabos guide](/destinations/los-cabos) covers all of them." },
+      { type: "p", text: "Costa Palmas is the exception: it is on the East Cape, about an hour north of Los Cabos airport, and plays as its own trip from the Four Seasons there." },
+
+      { type: "h2", text: "Punta Mita and Riviera Nayarit" },
+      { type: "p", text: "Punta Mita's two Jack Nicklaus courses, Pacífico and Bahía, are open to owners and to guests of the Four Seasons and the St. Regis. The villas we book inside Punta Mita through Punta Mita Rentals come with access too, which makes a villa the easiest way to get a group on both. Pacífico is home to the Tail of the Whale, the par 3 played to a natural island green. Up the coast, Nauka, Tom Fazio's course at Siari, a Ritz-Carlton Reserve, gives limited access to Siari guests. Our [Punta Mita guide](/destinations/punta-mita) has the rest." },
+
+      { type: "divider" },
+
+      { type: "h2", text: "Quick answers" },
+      { type: "faq", q: "Can I play Quivira without staying at Pueblo Bonito?", a: "No. Quivira is for guests of the Pueblo Bonito and Quivira resorts. Book a stay there first; the green fee, about $465 per round, is charged on top." },
+      { type: "faq", q: "Can I play Punta Mita Pacífico without staying at the Four Seasons or the St. Regis?", a: "Yes, if you rent a villa inside Punta Mita: those stays come with access to Pacífico and Bahía. Otherwise play is for owners and the two hotels' guests. The green fee is about $388 per round." },
+      { type: "faq", q: "Which guests-only course in Mexico is hardest to get on?", a: "Nauka at Siari, a Ritz-Carlton Reserve: it has no public green fee and gives limited access even to hotel guests. Twin Dolphin has the highest guest green fee on this list, about $700 per round." },
+      { type: "faq", q: "Do these courses sell one-off tee times to visitors?", a: "No. Without the stay, the only other way on is as a member's guest." },
+
+      { type: "cta", eyebrow: "Pick the course first", heading: "Build the trip around the course you can't book", text: "Choose the course in our trip builder and it prices the stay that gets you on, with a local planner to confirm your tee times.", href: "/trip-builder", label: "Build your trip" },
+    ],
+    faqItems: [],
+    relatedArticles: ["how-to-plan-a-golf-trip-to-mexico", "the-bachelor-trip-cabo"],
+  },
 ];
 
 // Helper: ordered list of destinations to render
