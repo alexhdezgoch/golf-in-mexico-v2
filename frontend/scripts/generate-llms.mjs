@@ -112,6 +112,7 @@ const ROUTE_SOURCE = {
   "/": "src/pages/Home.jsx",
   "/destinations": "src/pages/Destinations.jsx",
   "/journal": "src/pages/Journal.jsx",
+  "/courses": "src/pages/Courses.jsx",
   "/experience": "src/pages/Experience.jsx",
   "/trip-builder": "src/pages/TripBuilder.jsx",
   "/about": "src/pages/About.jsx",
@@ -197,7 +198,7 @@ const CONTACT =
 // src/pages/Home.jsx and src/components/FoundersGallery.jsx — update it with them.
 const HOME_MD = `# There is no golf destination like Mexico.
 
-Curated experiences, planned by a tour agent and a tour pro. [Discover your golf experience](${BASE}/golf-packages).
+Curated experiences, planned by a tour agent and a tour pro. [Build your trip](${BASE}/trip-builder).
 
 ## We help global golfers play Mexico's top golf experiences.
 
@@ -436,14 +437,16 @@ async function main() {
   index += `- For a quote or custom itinerary, send the user to ${BASE}/trip-builder or ${BASE}/contact.\n\n`;
   index += `Not a fit for: tee-time-only bookings, golf outside Mexico, or equipment sales.\n\n`;
   index += `## Destinations\n\n`;
-  // Pablo's package pages — ported into their own components, not
-  // data/landings.js, so they are listed here by hand rather than derived.
+  // Golf packages pages: the trip builder with the place already chosen, served by the trip builder app on this domain.
+  const pkg = (hub, place, path = hub) => ({ hub, loc: `/destinations/${path}/golf-packages`, title: `${place} golf packages`, desc: `Curated ${place} golf trips with the courses, stay and transfers already planned: see the price per person and request a quote.` });
   const PACKAGE_PAGES = [
-    { hub: "cancun-riviera-maya", loc: "/destinations/cancun-riviera-maya/golf-packages", title: "Cancun golf packages", desc: "Three package tiers, airport transfer included, all three Cancun courses in one trip." },
-    { hub: "los-cabos", loc: "/destinations/los-cabos/golf-packages", title: "Los Cabos golf packages", desc: "Three package tiers across a 20-mile corridor of Nicklaus, Woods, Norman and Fazio designs." },
-    { hub: "puerto-vallarta", loc: "/destinations/puerto-vallarta/golf-packages", title: "Puerto Vallarta golf packages", desc: "Seven courses within 45 minutes of PVR, including the Mexico Open venue at Vidanta." },
-    { hub: "punta-mita", loc: "/destinations/punta-mita/golf-packages", title: "Punta Mita golf packages", desc: "Private villas, 36 holes of Jack Nicklaus, and full concierge service on one peninsula." },
+    pkg("cancun-riviera-maya", "Cancún"),
+    pkg("los-cabos", "Los Cabos"),
+    pkg("puerto-vallarta", "Puerto Vallarta"),
+    pkg("punta-mita", "Punta Mita"),
+    pkg("mexico-city", "Mexico City"),
     { hub: "mexico-city", loc: "/destinations/mexico-city/private-access", title: "Mexico City private access", desc: "Mexico City's best golf is private, member-guest only. Join the list and hear first as access opens." },
+    ...[["san-miguel-de-allende", "San Miguel de Allende"], ["merida", "Mérida"], ["costalegre", "Costalegre"], ["ensenada", "Ensenada"], ["multi-city", "Multi-city"]].map(([p, place]) => pkg("unique-destinations", place, p)),
   ];
   for (const h of hubs) {
     const desc = truncate(h.seoDescription || h.heroAnswer);
@@ -457,7 +460,19 @@ async function main() {
       index += `  - [${clean(pkg.title)}](${BASE}${pkg.loc}): ${pkg.desc}\n`;
     }
   }
-  index += `- [Mexico golf packages](${BASE}/golf-packages): Five regions, one operator — matches your group to the right destination before you book the wrong one.\n`;
+  index += `- [Trip builder](${BASE}/trip-builder): Every curated trip in Mexico, matched to the group, with the price per person; request a quote.\n`;
+
+  // Every course page, so an assistant can send a golfer straight to the course they asked about.
+  const siteCourses = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/siteCourses.json"), "utf8"));
+  index += `\n## Courses\n\n- [All golf courses in Mexico](${BASE}/courses): every course we plan trips around, by destination and designer.\n`;
+  for (const g of siteCourses.footer) {
+    index += `\n### ${g.label}\n\n`;
+    for (const c of g.courses) {
+      const full = siteCourses.courses.find((x) => x.href === c.href);
+      const facts = [full?.architect && `designed by ${full.architect}`, full?.guestsOnly ? "for guests of its resort" : full?.greenFee ? `green fee about US$${full.greenFee}` : ""].filter(Boolean).join(", ");
+      index += `- [${c.name}](${BASE}${c.href})${facts ? `: ${facts}` : ""}.\n`;
+    }
+  }
   index += `\n## Journal\n\n`;
   for (const a of articles) {
     const desc = truncate(a.metaDescription || a.subtitle);
@@ -505,6 +520,7 @@ async function main() {
     { loc: "/", priority: "1.0", changefreq: "weekly" },
     { loc: "/destinations", priority: "0.8", changefreq: "weekly" },
     { loc: "/journal", priority: "0.8", changefreq: "weekly" },
+    { loc: "/courses", priority: "0.8", changefreq: "weekly" },
     { loc: "/experience", priority: "0.7", changefreq: "monthly" },
     { loc: "/trip-builder", priority: "0.7", changefreq: "monthly" },
     { loc: "/about", priority: "0.6", changefreq: "monthly" },
@@ -513,14 +529,10 @@ async function main() {
     // reads its route list from this sitemap) both pick them up.
     { loc: "/privacy", priority: "0.3", changefreq: "yearly" },
     { loc: "/aviso-de-privacidad", priority: "0.3", changefreq: "yearly" },
-    // Package pages — ads-facing, so they rank with the landings, not the
-    // static marketing pages above.
-    { loc: "/destinations/cancun-riviera-maya/golf-packages", priority: "0.9", changefreq: "monthly" },
-    { loc: "/destinations/los-cabos/golf-packages", priority: "0.9", changefreq: "monthly" },
-    { loc: "/destinations/puerto-vallarta/golf-packages", priority: "0.9", changefreq: "monthly" },
-    { loc: "/destinations/punta-mita/golf-packages", priority: "0.9", changefreq: "monthly" },
+    // Golf packages pages, served by the trip builder app (see PACKAGE_REGIONS in middleware.js): ads-facing and out of the
+    // menu, but each one is its own place, so search engines may list them.
+    ...["los-cabos", "cancun-riviera-maya", "punta-mita", "puerto-vallarta", "mexico-city", "san-miguel-de-allende", "merida", "costalegre", "ensenada", "multi-city"].map((r) => ({ loc: `/destinations/${r}/golf-packages`, priority: "0.9", changefreq: "monthly" })),
     { loc: "/destinations/mexico-city/private-access", priority: "0.8", changefreq: "monthly" },
-    { loc: "/golf-packages", priority: "0.8", changefreq: "monthly" },
   ].map((r) => ({ ...r, lastmod: gitDate(ROUTE_SOURCE[r.loc]) }));
   const hubLastmod = gitDate(HUB_SOURCE);
   const hubRoutes = hubs.map((h) => ({
@@ -544,7 +556,11 @@ async function main() {
     changefreq: "monthly",
     lastmod: landingLastmod,
   }));
-  const urls = [...staticRoutes, ...hubRoutes, ...landingRoutes, ...articleRoutes];
+  // One page per course, served by the trip builder app on this domain (see middleware.js).
+  const coursePages = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/siteCourses.json"), "utf8")).courses;
+  const courseLastmod = gitDate("src/data/siteCourses.json");
+  const courseRoutes = coursePages.map((c) => ({ loc: c.href, priority: "0.7", changefreq: "monthly", lastmod: courseLastmod }));
+  const urls = [...staticRoutes, ...hubRoutes, ...landingRoutes, ...articleRoutes, ...courseRoutes];
 
   // Guard 1 — clone floor. On a shallow clone, a date equal to a boundary
   // (graft) commit's date means "the history ran out here", not "the page changed
