@@ -68,7 +68,7 @@ const Nav = () => {
           : "py-5 md:py-7 bg-transparent"
       }`}
     >
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 flex items-center justify-between gap-6">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-8 xl:px-12 flex items-center justify-between gap-6">
         <Link
           to="/"
           data-testid="nav-logo"
@@ -77,14 +77,14 @@ const Nav = () => {
           <img
             src="/logo-wordmark.png"
             alt="Golf in Mexico°"
-            className={`h-8 md:h-10 w-auto transition-[filter] duration-500 ${
+            className={`h-8 xl:h-10 w-auto transition-[filter] duration-500 ${
               onDarkHero ? "" : "invert"
             }`}
           />
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-7">
+        <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
           {/* Destinations dropdown — first */}
           <div
             className="relative"
@@ -95,7 +95,7 @@ const Nav = () => {
               to="/destinations"
               data-testid="nav-link-destinations"
               className={({ isActive }) =>
-                `nav-link-modern font-mono text-[11px] uppercase tracking-wide-editorial transition-colors duration-300 inline-flex items-center gap-1.5 ${
+                `nav-link-modern font-mono text-[11px] uppercase tracking-wide-editorial lg:tracking-[0.2em] xl:tracking-wide-editorial transition-colors duration-300 inline-flex items-center gap-1.5 ${
                   onDarkHero
                     ? isActive || destOpen
                       ? "text-cream is-active"
@@ -129,12 +129,12 @@ const Nav = () => {
                           <span className="font-display text-base text-ink leading-tight">
                             {d.name}
                           </span>
-                          <span className="font-mono text-[9px] uppercase tracking-wide-editorial text-muted mt-0.5">
+                          <span className="font-mono text-[9px] uppercase tracking-wide-editorial lg:tracking-[0.2em] xl:tracking-wide-editorial text-muted mt-0.5">
                             {d.region}
                           </span>
                         </div>
                         <span
-                          className={`font-mono text-[9px] uppercase tracking-wide-editorial ${
+                          className={`font-mono text-[9px] uppercase tracking-wide-editorial lg:tracking-[0.2em] xl:tracking-wide-editorial ${
                             d.live ? "text-forest" : "text-gold"
                           }`}
                         >
@@ -148,12 +148,23 @@ const Nav = () => {
             )}
           </div>
 
+          {/* Courses — every course page, served by the trip builder app (full page load) */}
+          <a
+            href="/courses"
+            data-testid="nav-link-courses"
+            className={`nav-link-modern font-mono text-[11px] uppercase tracking-wide-editorial lg:tracking-[0.2em] xl:tracking-wide-editorial transition-colors duration-300 ${
+              onDarkHero ? "text-cream/65 hover:text-cream" : "text-muted hover:text-ink"
+            }`}
+          >
+            Courses
+          </a>
+
           {/* Journal */}
           <NavLink
             to="/journal"
             data-testid="nav-link-journal"
             className={({ isActive }) =>
-              `nav-link-modern font-mono text-[11px] uppercase tracking-wide-editorial transition-colors duration-300 ${
+              `nav-link-modern font-mono text-[11px] uppercase tracking-wide-editorial lg:tracking-[0.2em] xl:tracking-wide-editorial transition-colors duration-300 ${
                 onDarkHero
                   ? isActive
                     ? "text-cream is-active"
@@ -172,7 +183,7 @@ const Nav = () => {
             href="/#founders"
             onClick={handleAboutClick}
             data-testid="nav-link-about"
-            className={`nav-link-modern font-mono text-[11px] uppercase tracking-wide-editorial transition-colors duration-300 ${
+            className={`nav-link-modern font-mono text-[11px] uppercase tracking-wide-editorial lg:tracking-[0.2em] xl:tracking-wide-editorial transition-colors duration-300 ${
               onDarkHero ? "text-cream/65 hover:text-cream" : "text-muted hover:text-ink"
             }`}
           >
@@ -183,36 +194,36 @@ const Nav = () => {
           <Link
             to="/contact"
             data-testid="nav-link-contact"
-            className={`nav-link-modern font-mono text-[11px] uppercase tracking-wide-editorial transition-colors duration-300 ${
+            className={`nav-link-modern font-mono text-[11px] uppercase tracking-wide-editorial lg:tracking-[0.2em] xl:tracking-wide-editorial transition-colors duration-300 ${
               onDarkHero ? "text-cream/65 hover:text-cream" : "text-muted hover:text-ink"
             }`}
           >
             Contact
           </Link>
 
-          {/* Inquire CTA — premium magnetic-style button → routes to Golf Packages page */}
-          <Link
-            to="/golf-packages"
+          {/* Main CTA: every transactional button on the site leads to the trip builder (served by the trip builder app). */}
+          <a
+            href="/trip-builder"
             data-testid="nav-inquire-cta"
-            className={`group relative inline-flex items-center gap-2 rounded-full pl-4 pr-3.5 py-2 font-mono text-[11px] uppercase tracking-wide-editorial transition-all duration-500 ${
+            className={`group relative inline-flex items-center gap-2 whitespace-nowrap rounded-full pl-4 pr-3.5 py-2 font-mono text-[11px] uppercase tracking-wide-editorial lg:tracking-[0.2em] xl:tracking-wide-editorial transition-all duration-500 ${
               onDarkHero
                 ? "bg-gold text-ink hover:bg-cream hover:text-ink"
                 : "bg-ink text-cream hover:bg-gold hover:text-ink"
             }`}
           >
-            <span className="relative">Golf Packages</span>
+            <span className="relative">Build your trip</span>
             <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-ink/15 text-current transition-transform duration-500 group-hover:rotate-45">
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
             </span>
-          </Link>
+          </a>
 
           {/* Divider */}
-          <span className={`h-3 w-px ${onDarkHero ? "bg-cream/20" : "bg-ink/15"}`} />
+          <span className={`hidden xl:block h-3 w-px ${onDarkHero ? "bg-cream/20" : "bg-ink/15"}`} />
 
           {/* Socials */}
-          <div className="flex items-center gap-2.5">
+          <div className="hidden xl:flex items-center gap-2.5">
             {SOCIALS.map((s) => (
               <a
                 key={s.label}
@@ -239,7 +250,7 @@ const Nav = () => {
         <button
           data-testid="nav-mobile-toggle"
           onClick={() => setOpen((v) => !v)}
-          className={`md:hidden flex items-center gap-2 font-mono text-[11px] uppercase tracking-wide-editorial ${
+          className={`lg:hidden flex items-center gap-2 font-mono text-[11px] uppercase tracking-wide-editorial lg:tracking-[0.2em] xl:tracking-wide-editorial ${
             onDarkHero ? "text-cream" : "text-ink"
           }`}
           aria-label="Toggle menu"
@@ -255,7 +266,7 @@ const Nav = () => {
       {/* Mobile drawer */}
       <div
         data-testid="nav-mobile-drawer"
-        className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-500 ease-out ${
+        className={`lg:hidden overflow-hidden transition-[max-height,opacity] duration-500 ease-out ${
           open ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
@@ -272,6 +283,14 @@ const Nav = () => {
             Destinations
             <span className="font-display italic text-gold">°</span>
           </NavLink>
+          <a
+            href="/courses"
+            data-testid="nav-mobile-link-courses"
+            className="font-display text-4xl tracking-tight leading-none text-muted"
+          >
+            Courses
+            <span className="font-display italic text-gold"> °</span>
+          </a>
           <NavLink
             to="/journal"
             data-testid="nav-mobile-link-journal"
@@ -304,12 +323,12 @@ const Nav = () => {
             type="button"
             onClick={() => {
               setOpen(false);
-              navigate("/golf-packages");
+              window.location.assign("/trip-builder");
             }}
             data-testid="nav-mobile-inquire"
-            className="mt-3 self-start inline-flex items-center gap-2 rounded-full bg-ink text-cream pl-5 pr-4 py-3 font-mono text-[11px] uppercase tracking-wide-editorial"
+            className="mt-3 self-start inline-flex items-center gap-2 rounded-full bg-ink text-cream pl-5 pr-4 py-3 font-mono text-[11px] uppercase tracking-wide-editorial lg:tracking-[0.2em] xl:tracking-wide-editorial"
           >
-            Golf Packages
+            Build your trip
             <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-cream/15">
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
                 <path d="M5 12h14M13 6l6 6-6 6" />
