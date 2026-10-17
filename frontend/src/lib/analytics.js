@@ -16,6 +16,8 @@
 // Custom Event trigger "spa_pageview" and DISABLE GA4 Enhanced Measurement's
 // "page changes based on browser history events" to avoid duplicates.
 
+import { measurementAllowed } from "@/lib/consent";
+
 const GTM_ID = process.env.REACT_APP_GTM_ID;
 const GA4_ID = process.env.REACT_APP_GA4_ID;
 const META_PIXEL_ID = process.env.REACT_APP_META_PIXEL_ID;
@@ -30,8 +32,12 @@ const hasGTM = () => hasWindow() && Boolean(GTM_ID);
 const hasGA4Direct = () => hasWindow() && !GTM_ID && Boolean(GA4_ID);
 const hasMeta = () => hasWindow() && Boolean(META_PIXEL_ID);
 const hasClarity = () => hasWindow() && Boolean(CLARITY_ID);
+// The visitor's cookie choice decides too (lib/consent.js): with a "no", nothing loads and nothing is sent.
 const isEnabled = () =>
-  !isPrerendering() && (hasGTM() || hasGA4Direct() || hasMeta() || hasClarity());
+  !isPrerendering() && measurementAllowed() && (hasGTM() || hasGA4Direct() || hasMeta() || hasClarity());
+
+// Whether any measurement tool is set up for this deployment (only the live site sets the ids).
+export const analyticsConfigured = () => hasGTM() || hasGA4Direct() || hasMeta() || hasClarity();
 
 let initialized = false;
 
@@ -160,4 +166,15 @@ export const trackEvent = (name, params = {}) => {
   if (hasMeta() && typeof window.fbq === "function") {
     window.fbq("trackCustom", name, params);
   }
+};
+
+// After a "no" (from the cookie notice or the footer's "Cookie settings"): the tools already running stop storing and
+// sending; from the next page on, none of them loads.
+export const stopAnalytics = () => {
+  if (!hasWindow()) return;
+  if (typeof window.gtag === "function") {
+    window.gtag("consent", "update", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied" });
+  }
+  if (typeof window.fbq === "function") window.fbq("consent", "revoke");
+  if (typeof window.clarity === "function") window.clarity("consent", false);
 };
