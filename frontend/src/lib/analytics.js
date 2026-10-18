@@ -21,7 +21,8 @@ import { measurementAllowed } from "@/lib/consent";
 const GTM_ID = process.env.REACT_APP_GTM_ID;
 const GA4_ID = process.env.REACT_APP_GA4_ID;
 const META_PIXEL_ID = process.env.REACT_APP_META_PIXEL_ID;
-const CLARITY_ID = process.env.REACT_APP_CLARITY_ID;
+// The project in the GOLF° IN MEXICO° Clarity account. It replaces the REACT_APP_CLARITY_ID env var, which pointed to a project the team can't open.
+const CLARITY_ID = "yyxj0ulyns";
 
 const hasWindow = () => typeof window !== "undefined";
 // During build-time prerender (scripts/prerender.mjs sets window.__PRERENDER__),
