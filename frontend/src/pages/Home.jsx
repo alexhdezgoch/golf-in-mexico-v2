@@ -198,7 +198,7 @@ const Home = () => {
               data-testid="hero-cta-discover"
               className="group mt-10 md:mt-14 inline-flex items-center gap-3 border border-[var(--c-gold)] text-white px-7 md:px-9 py-4 md:py-[18px] rounded-sm font-mono text-[11px] md:text-[12px] uppercase tracking-[0.18em] hover:bg-[var(--c-gold)] hover:text-[var(--c-green-deep)] transition-colors duration-500"
             >
-              Build your trip
+              Explore trips
               <span className="transition-transform duration-500 group-hover:translate-x-1.5">→</span>
             </a>
           </motion.div>
