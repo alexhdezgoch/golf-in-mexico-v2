@@ -29,13 +29,14 @@ export const config = {
 
 /**
  * The trip builder (a separate Next.js app) answers some addresses of this site: the trip builder, the golf packages
- * pages, the course pages and the courses index, plus its own assets. The visitor stays on golf-in-mexico.com.
+ * pages (the national one included, where the Mexico-wide ads land), the course pages and the courses index, plus its own assets. The visitor stays on golf-in-mexico.com.
  */
 // The integration copy of the trip builder; at launch this points at its production deployment.
 export const TRIP_BUILDER = "https://gim-trip-builder-integration.vercel.app";
-const PACKAGE_REGIONS = ["los-cabos", "cancun-riviera-maya", "punta-mita", "puerto-vallarta", "mexico-city", "san-miguel-de-allende", "merida", "costalegre", "ensenada", "multi-city"];
+const PACKAGE_REGIONS = ["los-cabos", "cancun-riviera-maya", "punta-mita", "puerto-vallarta", "mexico-city", "san-miguel-de-allende", "merida", "costalegre", "ensenada", "multi-city", "loreto"];
 export const servedByTripBuilder = (p) =>
   p === "/trip-builder" ||
+  p === "/golf-packages" ||
   p === "/courses" ||
   p === "/terms" ||
   p === "/photo-credits" ||
@@ -160,8 +161,6 @@ export default async function middleware(request) {
   if (!["GET", "HEAD"].includes(request.method)) return next();
 
   const url = new URL(request.url);
-  // The old national packages page leads to the trip builder, where every booking starts now.
-  if (normalizePath(url.pathname) === "/golf-packages") return Response.redirect(new URL("/trip-builder" + url.search, url), 308);
   if (servedByTripBuilder(url.pathname)) {
     return new Response(null, { headers: { "x-middleware-rewrite": TRIP_BUILDER + url.pathname + url.search } });
   }
