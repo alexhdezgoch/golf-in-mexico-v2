@@ -92,7 +92,7 @@ const Contact = () => {
               data-testid="contact-trip-cta"
               className="group inline-flex items-center justify-between gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-7 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.2em] font-bold transition-colors"
             >
-              Build your trip
+              Explore trips
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
 

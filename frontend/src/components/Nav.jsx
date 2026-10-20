@@ -211,7 +211,7 @@ const Nav = () => {
                 : "bg-ink text-cream hover:bg-gold hover:text-ink"
             }`}
           >
-            <span className="relative">Build your trip</span>
+            <span className="relative">Explore trips</span>
             <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-ink/15 text-current transition-transform duration-500 group-hover:rotate-45">
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
                 <path d="M5 12h14M13 6l6 6-6 6" />
@@ -328,7 +328,7 @@ const Nav = () => {
             data-testid="nav-mobile-inquire"
             className="mt-3 self-start inline-flex items-center gap-2 rounded-full bg-ink text-cream pl-5 pr-4 py-3 font-mono text-[11px] uppercase tracking-wide-editorial lg:tracking-[0.2em] xl:tracking-wide-editorial"
           >
-            Build your trip
+            Explore trips
             <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-cream/15">
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
                 <path d="M5 12h14M13 6l6 6-6 6" />

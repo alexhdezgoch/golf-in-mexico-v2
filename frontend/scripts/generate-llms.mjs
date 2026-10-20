@@ -198,7 +198,7 @@ const CONTACT =
 // src/pages/Home.jsx and src/components/FoundersGallery.jsx — update it with them.
 const HOME_MD = `# There is no golf destination like Mexico.
 
-Curated experiences, planned by a tour agent and a tour pro. [Build your trip](${BASE}/trip-builder).
+Curated experiences, planned by a tour agent and a tour pro. [Explore trips](${BASE}/trip-builder).
 
 ## We help global golfers play Mexico's top golf experiences.
 

@@ -161,7 +161,7 @@ const Footer = () => {
                 ))}
                 <li>
                   <a href="/trip-builder" data-testid="footer-plan-trip" className="font-body text-[14px] text-[var(--c-gold)] hover:text-[var(--c-gold-light)] transition-colors duration-300">
-                    Build your trip →
+                    Explore trips →
                   </a>
                 </li>
               </ul>
