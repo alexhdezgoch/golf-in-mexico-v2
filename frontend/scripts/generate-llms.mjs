@@ -540,9 +540,14 @@ async function main() {
     // reads its route list from this sitemap) both pick them up.
     { loc: "/privacy", priority: "0.3", changefreq: "yearly" },
     { loc: "/aviso-de-privacidad", priority: "0.3", changefreq: "yearly" },
+    // The trip builder's own legal pages (served by it, see servedByTripBuilder in middleware.js).
+    { loc: "/terms", priority: "0.3", changefreq: "yearly" },
+    { loc: "/photo-credits", priority: "0.3", changefreq: "yearly" },
     // Golf packages pages, served by the trip builder app (see PACKAGE_REGIONS in middleware.js): ads-facing and out of the
     // menu, but each one is its own place, so search engines may list them.
-    ...["los-cabos", "cancun-riviera-maya", "punta-mita", "puerto-vallarta", "mexico-city", "san-miguel-de-allende", "merida", "costalegre", "ensenada", "multi-city"].map((r) => ({ loc: `/destinations/${r}/golf-packages`, priority: "0.9", changefreq: "monthly" })),
+    ...["los-cabos", "cancun-riviera-maya", "punta-mita", "puerto-vallarta", "mexico-city", "san-miguel-de-allende", "merida", "costalegre", "ensenada", "multi-city", "loreto"].map((r) => ({ loc: `/destinations/${r}/golf-packages`, priority: "0.9", changefreq: "monthly" })),
+    // The national packages page, where the Mexico-wide ads land; also served by the trip builder.
+    { loc: "/golf-packages", priority: "0.9", changefreq: "monthly" },
     { loc: "/destinations/mexico-city/private-access", priority: "0.8", changefreq: "monthly" },
   ].map((r) => ({ ...r, lastmod: gitDate(ROUTE_SOURCE[r.loc]) }));
   const hubLastmod = gitDate(HUB_SOURCE);

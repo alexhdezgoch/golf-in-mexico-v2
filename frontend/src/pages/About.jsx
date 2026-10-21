@@ -16,7 +16,10 @@ const About = () => {
     description:
       "GOLF° IN MEXICO° is run by Pablo De La Mora, a sports agent with five years inside PGA Tour, LIV Golf, LPGA and WTA events, and José Islas, a professional golfer with four Mexican Tour wins. We help golfers play Mexico's best: curated trips around the top courses, authentic local experiences and the best value for every group.",
     canonical: "/about",
-    jsonLd: orgSchema(),
+    jsonLd: [
+      orgSchema(),
+      { "@context": "https://schema.org", "@type": "AboutPage", name: "About GOLF° IN MEXICO°", url: "https://golf-in-mexico.com/about", about: { "@type": "Organization", name: "GOLF° IN MEXICO°", url: "https://golf-in-mexico.com" } },
+    ],
   });
   return (
   <main data-testid="page-about" className="bg-[var(--c-off-white)]">
@@ -112,6 +115,74 @@ const About = () => {
             </motion.article>
           ))}
         </div>
+      </div>
+    </section>
+
+    {/* ── THE TEAM IN SHORT ── Both people in plain text, so the page says who
+        they are without opening a tab (the bios above show one at a time). ── */}
+    <section data-testid="about-team-facts" className="bg-[var(--c-off-white)] py-20 md:py-28 border-t border-[var(--c-border)]">
+      <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+        <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-6">
+          The team
+        </span>
+        <h2 className="font-display font-light text-[var(--c-text)] text-3xl md:text-5xl leading-[1.08] mb-12 max-w-[22ch]">
+          An agent and a tour pro <em className="italic text-[var(--c-gold)]">behind every trip.</em>
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+          <article className="border-t border-[var(--c-gold)]/40 pt-6">
+            <h3 className="font-display font-normal text-[var(--c-text)] text-2xl mb-2">Pablo De La Mora</h3>
+            <p className="font-display italic text-[var(--c-gold)] text-base mb-4">Founder · the agent</p>
+            <p className="font-body font-light text-[var(--c-text-mid)] text-[15px] md:text-base leading-[1.75]">
+              A sports agent for five years, Pablo has worked inside the player areas of PGA TOUR, LPGA, LIV Golf and WTA events.
+              He plans every GOLF° IN MEXICO° trip himself and stays your one contact from the first message until you fly home.
+            </p>
+          </article>
+          <article className="border-t border-[var(--c-gold)]/40 pt-6">
+            <h3 className="font-display font-normal text-[var(--c-text)] text-2xl mb-2">José Islas</h3>
+            <p className="font-display italic text-[var(--c-gold)] text-base mb-4">Co-founder · the player</p>
+            <p className="font-body font-light text-[var(--c-text-mid)] text-[15px] md:text-base leading-[1.75]">
+              A professional golfer with four wins on the Mexican Tour, three PGA TOUR starts and one Korn Ferry Tour start. He played two
+              World Amateur Team Championships, two Latin American Amateurs and two US Amateurs. José knows which Mexican courses are worth the trip.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    {/* ── HOW A TRIP WITH US WORKS ── */}
+    <section data-testid="about-how-it-works" className="bg-[var(--c-surface)] py-20 md:py-28">
+      <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+        <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-6">
+          How it works
+        </span>
+        <h2 className="font-display font-light text-[var(--c-text)] text-3xl md:text-5xl leading-[1.08] mb-12 max-w-[22ch]">
+          From a curated trip <em className="italic text-[var(--c-gold)]">to your written quote.</em>
+        </h2>
+        <ol className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+          {[
+            { t: "Pick a trip we curated", d: "Browse trips Pablo and José put together for groups: the stay, the courses and the price per golfer, taxes included. Change the golfers, nights and room, and the price follows." },
+            { t: "Get your quote in 48 hours", d: "Request a quote for up to three trips at once. Pablo confirms availability with the hotel and the clubs, then sends a written proposal with the final price. Nothing is paid on this site." },
+            { t: "Hotels at the hotel's own rate", d: "We are an independent Fora Travel advisor: your stay is booked through Fora at the hotel's published rate, often with perks like breakfast or resort credit, and the hotel charges you directly." },
+            { t: "GIM Concierge, $100 per golfer", d: "Our planning service: every tee time booked, the trip sequenced, one contact until you are home. Non-golfers are free. If your first 36 hours aren't what we planned, we refund the fee in full." },
+          ].map((s, i) => (
+            <li key={s.t} className="border-t border-[var(--c-gold)]/40 pt-6">
+              <span className="block font-display text-[var(--c-gold)] text-3xl leading-none mb-4">{i + 1}</span>
+              <h3 className="font-display font-normal text-[var(--c-text)] text-xl md:text-2xl leading-[1.2] mb-3">{s.t}</h3>
+              <p className="font-body font-light text-[var(--c-text-mid)] text-[15px] md:text-base leading-[1.75]">{s.d}</p>
+            </li>
+          ))}
+        </ol>
+        <p className="font-body font-light text-[var(--c-text-mid)] text-base leading-[1.75] mt-14 max-w-[70ch]">
+          We plan golf trips across Mexico:{" "}
+          <Link to="/destinations/los-cabos" className="underline underline-offset-4 decoration-[var(--c-gold)]">Los Cabos</Link>,{" "}
+          <Link to="/destinations/punta-mita" className="underline underline-offset-4 decoration-[var(--c-gold)]">Punta Mita</Link>,{" "}
+          <Link to="/destinations/cancun-riviera-maya" className="underline underline-offset-4 decoration-[var(--c-gold)]">Cancún and the Riviera Maya</Link>,{" "}
+          <Link to="/destinations/puerto-vallarta" className="underline underline-offset-4 decoration-[var(--c-gold)]">Puerto Vallarta</Link> and{" "}
+          <Link to="/destinations/mexico-city" className="underline underline-offset-4 decoration-[var(--c-gold)]">Mexico City</Link>.
+          See every course in the{" "}
+          <a href="/courses" className="underline underline-offset-4 decoration-[var(--c-gold)]">course guide</a>, or{" "}
+          <a href="/trip-builder" className="underline underline-offset-4 decoration-[var(--c-gold)]">explore our trips</a>.
+        </p>
       </div>
     </section>
 
