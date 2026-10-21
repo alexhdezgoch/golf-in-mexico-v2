@@ -14,7 +14,7 @@ const About = () => {
   useSeo({
     title: "About Us: Pablo De La Mora & José Islas | GOLF° IN MEXICO°",
     description:
-      "Golf in Mexico° comes from sports agent Pablo De La Mora and professional golfer José Islas — relationships, access, and an editorial voice built inside the ropes.",
+      "GOLF° IN MEXICO° is run by Pablo De La Mora, a sports agent with five years inside PGA Tour, LIV Golf, LPGA and WTA events, and José Islas, a professional golfer with four Mexican Tour wins. We help golfers play Mexico's best: curated trips around the top courses, authentic local experiences and the best value for every group.",
     canonical: "/about",
     jsonLd: [
       orgSchema(),
