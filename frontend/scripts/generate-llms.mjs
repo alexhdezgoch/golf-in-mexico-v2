@@ -157,8 +157,9 @@ async function loadData(file) {
 }
 
 // ── static page copy that isn't in the data files ──────────────────────────
+// The brand's one identity statement: the same words in the Organization schema, the home meta description, About and external profiles.
 const SITE_SUMMARY =
-  "Golf in Mexico° is the only editorial guide to golf in Mexico written by people who play it, plan it, and live it — sports agent Pablo De La Mora and professional golfer José Islas. Course intelligence, real green fees, costs, logistics, seasons, and bespoke trip planning across Los Cabos, Punta Mita, Mexico City, the Riviera Maya, Puerto Vallarta and beyond.";
+  "GOLF° IN MEXICO° is run by Pablo De La Mora, a sports agent with five years inside PGA Tour, LIV Golf, LPGA and WTA events, and José Islas, a professional golfer with four Mexican Tour wins. It helps golfers play Mexico's best: curated trips around the top courses, authentic local experiences and the best value for every group.";
 
 const ABOUT = {
   hero: "Golf in Mexico° comes from Pablo De La Mora and José Islas — a sports agent and a professional golfer who together hold the relationships, the access, and the editorial voice that turn a Mexico golf trip into something different from what a tourism board can offer.",
@@ -338,6 +339,16 @@ function renderArticleFull(a) {
         }
         md += `\n`;
         break;
+      case "table": {
+        const cell = (c) => clean(String(c)).replace(/\|/g, "/").replace(/\]\(\//g, `](${BASE}/`);
+        if (block.caption) md += `**${clean(block.caption)}**\n\n`;
+        md += `| ${block.columns.map(cell).join(" | ")} |\n`;
+        md += `| ${block.columns.map((_, j) => (block.align?.[j] === "right" ? "---:" : "---")).join(" | ")} |\n`;
+        for (const row of block.rows || []) md += `| ${row.map(cell).join(" | ")} |\n`;
+        md += `\n`;
+        if (block.note) md += para(block.note);
+        break;
+      }
       case "callout":
         if (block.title) md += `**${clean(block.title)}**\n\n`;
         for (const item of block.items || []) {
@@ -423,12 +434,12 @@ async function main() {
   const landings = landingsMod.default || [];
 
   // ---- llms.txt (curated index) ----
-  let index = `# Golf in Mexico°\n\n> ${SITE_SUMMARY}\n\n`;
+  let index = `# GOLF° IN MEXICO°\n\n> ${SITE_SUMMARY}\n\n`;
   // When-to-use guidance for agents. Plain markdown before the first H2, where
   // the llmstxt.org format allows free-form content.
-  index += `**When to use Golf in Mexico°**\n\n`;
+  index += `**When to use GOLF° IN MEXICO°**\n\n`;
   index += `Use this site when a user wants to:\n\n`;
-  index += `- Plan or book a golf trip to Mexico (Los Cabos, Punta Mita, Puerto Vallarta, Cancun · Riviera Maya, Mexico City).\n`;
+  index += `- Plan a golf trip to Mexico (Los Cabos, Punta Mita, Puerto Vallarta, Cancun · Riviera Maya, Mexico City).\n`;
   index += `- Compare Mexican golf destinations by courses, green fees, season, and logistics.\n`;
   index += `- Get a packaged trip for a group: couples, bachelor, family/friends, or corporate.\n`;
   index += `- Find out how access works at private or resort-only courses.\n\n`;
@@ -479,7 +490,7 @@ async function main() {
     index += `- [${clean(a.title)}](${BASE}/journal/${a.slug}): ${desc}\n`;
   }
   index += `\n## About\n\n`;
-  index += `- [About Golf in Mexico°](${BASE}/about): The founders, the mission, and the three editorial pillars.\n`;
+  index += `- [About GOLF° IN MEXICO°](${BASE}/about): The founders, the mission, and the three editorial pillars.\n`;
   index += `- [Experiences](${BASE}/experience): Couples, bachelor, family/friends, and corporate golf trips.\n`;
   index += `- [Plan a trip](${BASE}/trip-builder): Build a custom Mexico golf trip.\n`;
   index += `- [Contact](${BASE}/contact): Reach the team.\n`;
@@ -494,7 +505,7 @@ async function main() {
   const home = HOME_MD + index.slice(index.indexOf("## Destinations"));
 
   // ---- llms-full.txt (full corpus) ----
-  let full = `# Golf in Mexico° — Full Content\n\n> ${SITE_SUMMARY}\n\n`;
+  let full = `# GOLF° IN MEXICO° — Full Content\n\n> ${SITE_SUMMARY}\n\n`;
   full += `Source: ${BASE} · Generated ${TODAY}\n\n---\n\n`;
 
   full += `# About\n\n${para(HOME_STATEMENT)}${para(ABOUT.hero)}`;
@@ -529,9 +540,14 @@ async function main() {
     // reads its route list from this sitemap) both pick them up.
     { loc: "/privacy", priority: "0.3", changefreq: "yearly" },
     { loc: "/aviso-de-privacidad", priority: "0.3", changefreq: "yearly" },
+    // The trip builder's own legal pages (served by it, see servedByTripBuilder in middleware.js).
+    { loc: "/terms", priority: "0.3", changefreq: "yearly" },
+    { loc: "/photo-credits", priority: "0.3", changefreq: "yearly" },
     // Golf packages pages, served by the trip builder app (see PACKAGE_REGIONS in middleware.js): ads-facing and out of the
     // menu, but each one is its own place, so search engines may list them.
-    ...["los-cabos", "cancun-riviera-maya", "punta-mita", "puerto-vallarta", "mexico-city", "san-miguel-de-allende", "merida", "costalegre", "ensenada", "multi-city"].map((r) => ({ loc: `/destinations/${r}/golf-packages`, priority: "0.9", changefreq: "monthly" })),
+    ...["los-cabos", "cancun-riviera-maya", "punta-mita", "puerto-vallarta", "mexico-city", "san-miguel-de-allende", "merida", "costalegre", "ensenada", "multi-city", "loreto"].map((r) => ({ loc: `/destinations/${r}/golf-packages`, priority: "0.9", changefreq: "monthly" })),
+    // The national packages page, where the Mexico-wide ads land; also served by the trip builder.
+    { loc: "/golf-packages", priority: "0.9", changefreq: "monthly" },
     { loc: "/destinations/mexico-city/private-access", priority: "0.8", changefreq: "monthly" },
   ].map((r) => ({ ...r, lastmod: gitDate(ROUTE_SOURCE[r.loc]) }));
   const hubLastmod = gitDate(HUB_SOURCE);
