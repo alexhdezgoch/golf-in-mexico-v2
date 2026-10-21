@@ -237,6 +237,44 @@ const Body = ({ blocks, destinationLabel }) => {
             </div>
           );
         }
+        if (block.type === "table") {
+          const align = (j) => (block.align?.[j] === "right" ? "text-right" : "text-left");
+          return (
+            <figure key={i} data-testid={`article-table-${i}`} className="my-10 md:my-12 max-w-[680px]">
+              <div className="overflow-x-auto border border-ink/15 rounded-sm">
+                <table className="w-full border-collapse text-sm">
+                  {block.caption && <caption className="sr-only">{block.caption}</caption>}
+                  <thead className="bg-ink/5">
+                    <tr>
+                      {block.columns.map((col, j) => (
+                        <th key={j} scope="col" className={`px-4 py-3 font-mono font-normal text-[10px] uppercase tracking-wide-editorial text-ink/60 whitespace-nowrap ${align(j)}`}>
+                          {col}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {block.rows.map((row, r) => (
+                      <tr key={r} className="border-t border-ink/10">
+                        {row.map((cell, j) => (
+                          <td key={j} className={`px-4 py-3 align-top font-body text-ink/85 tabular-nums ${align(j)} ${j === 0 ? "min-w-[9rem]" : ""}`}>
+                            {renderInline(cell)}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              {(block.caption || block.note) && (
+                <figcaption className="mt-3 font-body font-light text-ink/60 text-sm leading-[1.6]">
+                  {block.caption && <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-ink/55 not-italic">{block.caption}. </span>}
+                  {block.note}
+                </figcaption>
+              )}
+            </figure>
+          );
+        }
         if (block.type === "callout") {
           return (
             <aside key={i} className="my-10 md:my-12 rounded-2xl border border-ink/15 bg-ink/5 p-6 md:p-7 max-w-[680px]">
@@ -770,7 +808,7 @@ const Article = () => {
               path: `/journal/${article.slug}`,
               image: article.heroImage,
               author: authorByName(article.author?.name),
-              datePublished: "2026-05-01",
+              datePublished: article.datePublished || "2026-05-01",
             }),
             breadcrumbSchema([
               { name: "Journal", path: "/journal" },

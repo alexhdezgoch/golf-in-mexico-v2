@@ -114,7 +114,7 @@ const Home = () => {
   useSeo({
     title: "Curated Golf Trips to Mexico's Top Courses | GOLF° IN MEXICO°",
     description:
-      "We help golfers play Mexico's best: curated trips around the top courses, authentic local experiences and the best value for every group.",
+      "A sports agent and a pro golfer from Mexico help you play its best: curated trips around the top courses, local experiences and the best value for every group.",
     canonical: "/",
     image: "/og/home.jpg",
     jsonLd: [orgSchema(), webSiteSchema()],
