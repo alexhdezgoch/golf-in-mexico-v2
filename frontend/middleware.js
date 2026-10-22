@@ -42,6 +42,7 @@ export const servedByTripBuilder = (p) =>
   p === "/photo-credits" ||
   /^\/(_next|media|api)\//.test(p) ||
   /^\/destinations\/[^/]+\/courses\/[^/]+$/.test(p) ||
+    /^\/your-trip\/[^/]+$/.test(p) ||
   PACKAGE_REGIONS.some((r) => p === `/destinations/${r}/golf-packages`);
 
 const SITE = "https://golf-in-mexico.com";
