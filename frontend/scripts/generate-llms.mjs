@@ -128,7 +128,6 @@ const ROUTE_SOURCE = {
   "/destinations/los-cabos/golf-packages": "src/data/packagePages.js",
   "/destinations/puerto-vallarta/golf-packages": "src/data/packagePages.js",
   "/destinations/punta-mita/golf-packages": "src/data/packagePages.js",
-  "/destinations/mexico-city/private-access": "src/pages/packages/PackageWaitlistPage.jsx",
   "/golf-packages": "src/pages/packages/PackageNationalPage.jsx",
 };
 const HUB_SOURCE = "src/data/hubs.js";
@@ -456,8 +455,7 @@ async function main() {
     pkg("puerto-vallarta", "Puerto Vallarta"),
     pkg("punta-mita", "Punta Mita"),
     pkg("mexico-city", "Mexico City"),
-    { hub: "mexico-city", loc: "/destinations/mexico-city/private-access", title: "Mexico City private access", desc: "Mexico City's best golf is private, member-guest only. Join the list and hear first as access opens." },
-    ...[["san-miguel-de-allende", "San Miguel de Allende"], ["merida", "Mérida"], ["costalegre", "Costalegre"], ["ensenada", "Ensenada"], ["multi-city", "Multi-city"]].map(([p, place]) => pkg("unique-destinations", place, p)),
+    ...[["san-miguel-de-allende", "San Miguel de Allende"], ["merida", "Mérida"], ["costalegre", "Costalegre"], ["ensenada", "Ensenada"]].map(([p, place]) => pkg("unique-destinations", place, p)),
   ];
   for (const h of hubs) {
     const desc = truncate(h.seoDescription || h.heroAnswer);
@@ -536,19 +534,15 @@ async function main() {
     { loc: "/trip-builder", priority: "0.7", changefreq: "monthly" },
     { loc: "/about", priority: "0.6", changefreq: "monthly" },
     { loc: "/contact", priority: "0.6", changefreq: "monthly" },
-    // Legal. Low priority, but listed so crawlers (and the prerenderer, which
-    // reads its route list from this sitemap) both pick them up.
+    // Legal. Kept here because the prerenderer and the 404 check read their route list from this sitemap; the pages
+    // themselves carry noindex (the user's call, 2026-10-23), so search engines do not list them.
     { loc: "/privacy", priority: "0.3", changefreq: "yearly" },
     { loc: "/aviso-de-privacidad", priority: "0.3", changefreq: "yearly" },
-    // The trip builder's own legal pages (served by it, see servedByTripBuilder in middleware.js).
-    { loc: "/terms", priority: "0.3", changefreq: "yearly" },
-    { loc: "/photo-credits", priority: "0.3", changefreq: "yearly" },
     // Golf packages pages, served by the trip builder app (see PACKAGE_REGIONS in middleware.js): ads-facing and out of the
     // menu, but each one is its own place, so search engines may list them.
-    ...["los-cabos", "cancun-riviera-maya", "punta-mita", "puerto-vallarta", "mexico-city", "san-miguel-de-allende", "merida", "costalegre", "ensenada", "multi-city", "loreto"].map((r) => ({ loc: `/destinations/${r}/golf-packages`, priority: "0.9", changefreq: "monthly" })),
+    ...["los-cabos", "cancun-riviera-maya", "punta-mita", "puerto-vallarta", "mexico-city", "san-miguel-de-allende", "merida", "costalegre", "ensenada", "loreto"].map((r) => ({ loc: `/destinations/${r}/golf-packages`, priority: "0.9", changefreq: "monthly" })),
     // The national packages page, where the Mexico-wide ads land; also served by the trip builder.
     { loc: "/golf-packages", priority: "0.9", changefreq: "monthly" },
-    { loc: "/destinations/mexico-city/private-access", priority: "0.8", changefreq: "monthly" },
   ].map((r) => ({ ...r, lastmod: gitDate(ROUTE_SOURCE[r.loc]) }));
   const hubLastmod = gitDate(HUB_SOURCE);
   const hubRoutes = hubs.map((h) => ({

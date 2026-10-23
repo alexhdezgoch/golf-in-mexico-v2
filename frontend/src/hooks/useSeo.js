@@ -31,7 +31,7 @@ const setMeta = (attr, key, content) => {
 // a photo of their own use the brand card.
 export const DEFAULT_OG_IMAGE = "/og/default.jpg";
 
-export function useSeo({ title, description, canonical, jsonLd, alternates, image } = {}) {
+export function useSeo({ title, description, canonical, jsonLd, alternates, image, noindex = false } = {}) {
   // Serialize jsonLd for a stable dependency (callers pass fresh literals).
   const jsonLdKey = jsonLd ? JSON.stringify(jsonLd) : "";
   const alternatesKey = alternates ? JSON.stringify(alternates) : "";
@@ -61,6 +61,11 @@ export function useSeo({ title, description, canonical, jsonLd, alternates, imag
     setMeta("name", "twitter:title", title);
     setMeta("name", "twitter:description", description);
     setMeta("name", "twitter:image", ogImage);
+
+    // Pages kept out of search results (the legal ones). Removed again on the next page, since this is one document.
+    const robots = document.head.querySelector("meta[name='robots']");
+    if (noindex) setMeta("name", "robots", "noindex, follow");
+    else if (robots) robots.remove();
 
     if (canonical) {
       let link = document.querySelector("link[rel='canonical']");
@@ -106,7 +111,7 @@ export function useSeo({ title, description, canonical, jsonLd, alternates, imag
     });
     return () => [...els, ...altEls].forEach((el) => el.remove());
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [title, description, canonical, jsonLdKey, alternatesKey, image]);
+  }, [title, description, canonical, jsonLdKey, alternatesKey, image, noindex]);
 }
 
 // ── Schema builders (all URLs absolute, on golf-in-mexico.com) ──────────────
