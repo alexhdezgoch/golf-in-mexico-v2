@@ -18,6 +18,7 @@ const Privacy = ({ locale = "en" }) => {
     title: c.seoTitle,
     description: c.seoDescription,
     canonical: c.path,
+    noindex: true,
     // hreflang pair so the two language versions are read as alternates of each
     // other rather than as duplicate content.
     alternates: [
