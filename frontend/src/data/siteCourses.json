@@ -1,0 +1,1187 @@
+{
+ "courses": [
+  {
+   "slug": "amanali-country-club",
+   "name": "Amanali",
+   "region": "mexico-city",
+   "place": "Mexico City",
+   "href": "/destinations/mexico-city/courses/amanali-country-club",
+   "architect": "Schmidt-Curley",
+   "architects": [
+    "Schmidt-Curley"
+   ],
+   "label": "Championship Test",
+   "greenFee": 276,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/courses/amanali-country-club/01.jpg",
+    "credit": ""
+   }
+  },
+  {
+   "slug": "bajamar-ocean-front-golf-resort",
+   "name": "Bajamar Ocean Front Golf Resort",
+   "region": "ensenada",
+   "place": "Ensenada",
+   "href": "/destinations/ensenada/courses/bajamar-ocean-front-golf-resort",
+   "architect": "Percy Clifford",
+   "architects": [
+    "Percy Clifford",
+    "David Fleming",
+    "Robert von Hagge"
+   ],
+   "label": "Top in Mexico",
+   "greenFee": 180,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/course-refs/bajamar-ocean-front-golf-resort/01.jpg",
+    "credit": "Bajamar Ocean Front Golf Resort"
+   }
+  },
+  {
+   "slug": "bosque-real-country-club",
+   "name": "Bosque Real",
+   "region": "mexico-city",
+   "place": "Mexico City",
+   "href": "/destinations/mexico-city/courses/bosque-real-country-club",
+   "architect": "Robert von Hagge",
+   "architects": [
+    "Robert von Hagge",
+    "Mike Smelek",
+    "Rick Baril"
+   ],
+   "label": "Tour Venue",
+   "greenFee": 600,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/courses/bosque-real-country-club/01.jpg",
+    "credit": ""
+   }
+  },
+  {
+   "slug": "cabo-del-sol-golf-course",
+   "name": "Cabo del Sol Golf Course",
+   "region": "los-cabos",
+   "place": "Los Cabos",
+   "href": "/destinations/los-cabos/courses/cabo-del-sol-golf-course",
+   "architect": "Tom Weiskopf",
+   "architects": [
+    "Tom Weiskopf"
+   ],
+   "label": "Top in Mexico",
+   "greenFee": 385,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/course-refs/cabo-del-sol-golf-course/01.jpg",
+    "credit": "Cabo del Sol"
+   }
+  },
+  {
+   "slug": "cabo-real-golf-course",
+   "name": "Cabo Real Golf Course",
+   "region": "los-cabos",
+   "place": "Los Cabos",
+   "href": "/destinations/los-cabos/courses/cabo-real-golf-course",
+   "architect": "Robert Trent Jones II",
+   "architects": [
+    "Robert Trent Jones II"
+   ],
+   "label": "Signature Views",
+   "greenFee": 260,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/course-refs/cabo-real-golf-course/01.jpg",
+    "credit": "Questro Golf"
+   }
+  },
+  {
+   "slug": "chileno-bay-golf-club",
+   "name": "Chileno Bay Golf Club",
+   "region": "los-cabos",
+   "place": "Los Cabos",
+   "href": "/destinations/los-cabos/courses/chileno-bay-golf-club",
+   "architect": "Tom Fazio",
+   "architects": [
+    "Tom Fazio"
+   ],
+   "label": "Bucket List",
+   "greenFee": 518,
+   "guestsOnly": true,
+   "photo": {
+    "src": "/media/course-refs/chileno-bay-golf-club/01.jpg",
+    "credit": "Chileno Bay Club"
+   }
+  },
+  {
+   "slug": "club-campestre-san-jose",
+   "name": "Club Campestre San José",
+   "region": "los-cabos",
+   "place": "Los Cabos",
+   "href": "/destinations/los-cabos/courses/club-campestre-san-jose",
+   "architect": "Nicklaus Design",
+   "architects": [
+    "Nicklaus Design"
+   ],
+   "label": "Ocean Views",
+   "greenFee": 175,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/course-refs/club-campestre-san-jose/01.jpg",
+    "credit": "Questro Golf"
+   }
+  },
+  {
+   "slug": "club-de-golf-avandaro",
+   "name": "Club de Golf Avándaro",
+   "region": "multi-city",
+   "place": "Multi City",
+   "href": "/destinations/multi-city/courses/club-de-golf-avandaro",
+   "architect": "Percy Clifford",
+   "architects": [
+    "Percy Clifford"
+   ],
+   "label": "Playable & Relaxed",
+   "greenFee": 276,
+   "guestsOnly": false,
+   "photo": null
+  },
+  {
+   "slug": "club-de-golf-chapultepec",
+   "name": "Club de Golf Chapultepec",
+   "region": "mexico-city",
+   "place": "Mexico City",
+   "href": "/destinations/mexico-city/courses/club-de-golf-chapultepec",
+   "architect": "Willie Smith",
+   "architects": [
+    "Willie Smith",
+    "Alex Smith"
+   ],
+   "label": "Tour Venue",
+   "greenFee": 600,
+   "guestsOnly": false,
+   "photo": null
+  },
+  {
+   "slug": "club-de-golf-malanquin",
+   "name": "Club de Golf Malanquín",
+   "region": "san-miguel-de-allende",
+   "place": "San Miguel de Allende",
+   "href": "/destinations/san-miguel-de-allende/courses/club-de-golf-malanquin",
+   "architect": "Steven Newgent",
+   "architects": [
+    "Steven Newgent"
+   ],
+   "label": "Playable & Relaxed",
+   "greenFee": 146,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/course-refs/club-de-golf-malanquin/01.jpg",
+    "credit": "Club de Golf Malanquín"
+   }
+  },
+  {
+   "slug": "club-de-golf-mexico",
+   "name": "Club de Golf México",
+   "region": "mexico-city",
+   "place": "Mexico City",
+   "href": "/destinations/mexico-city/courses/club-de-golf-mexico",
+   "architect": "Lawrence Hughes",
+   "architects": [
+    "Lawrence Hughes",
+    "Percy Clifford"
+   ],
+   "label": "Bucket List",
+   "greenFee": 600,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/courses/club-de-golf-mexico/01.jpg",
+    "credit": ""
+   }
+  },
+  {
+   "slug": "el-coral",
+   "name": "Coral",
+   "region": "mexico-city",
+   "place": "Mexico City",
+   "href": "/destinations/mexico-city/courses/el-coral",
+   "architect": "Robert Hugues",
+   "architects": [
+    "Robert Hugues"
+   ],
+   "label": "Playable & Relaxed",
+   "greenFee": 100,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/courses/el-coral/01.jpg",
+    "credit": ""
+   }
+  },
+  {
+   "slug": "costa-palmas-golf-club",
+   "name": "Costa Palmas Golf Club",
+   "region": "multi-city",
+   "place": "Multi City",
+   "href": "/destinations/multi-city/courses/costa-palmas-golf-club",
+   "architect": "Robert Trent Jones II",
+   "architects": [
+    "Robert Trent Jones II"
+   ],
+   "label": "Top in Mexico",
+   "greenFee": 300,
+   "guestsOnly": true,
+   "photo": {
+    "src": "/media/course-refs/costa-palmas-golf-club/01.jpg",
+    "credit": "Costa Palmas"
+   }
+  },
+  {
+   "slug": "diamante-dunes-course",
+   "name": "Diamante Dunes Course",
+   "region": "los-cabos",
+   "place": "Los Cabos",
+   "href": "/destinations/los-cabos/courses/diamante-dunes-course",
+   "architect": "Davis Love III",
+   "architects": [
+    "Davis Love III",
+    "Mark Love",
+    "Paul Cowley"
+   ],
+   "label": "Bucket List",
+   "greenFee": 500,
+   "guestsOnly": true,
+   "photo": {
+    "src": "/media/courses/diamante-dunes-course/01.jpg",
+    "credit": ""
+   }
+  },
+  {
+   "slug": "diamante-el-cardonal",
+   "name": "Diamante El Cardonal",
+   "region": "los-cabos",
+   "place": "Los Cabos",
+   "href": "/destinations/los-cabos/courses/diamante-el-cardonal",
+   "architect": "Tiger Woods",
+   "architects": [
+    "Tiger Woods"
+   ],
+   "label": "Tour Venue",
+   "greenFee": 500,
+   "guestsOnly": true,
+   "photo": {
+    "src": "/media/courses/diamante-el-cardonal/01.jpg",
+    "credit": ""
+   }
+  },
+  {
+   "slug": "el-camaleon-mayakoba",
+   "name": "El Camaleón Mayakoba",
+   "region": "cancun-riviera-maya",
+   "place": "Cancún / Riviera Maya",
+   "href": "/destinations/cancun-riviera-maya/courses/el-camaleon-mayakoba",
+   "architect": "Greg Norman",
+   "architects": [
+    "Greg Norman"
+   ],
+   "label": "Tour Venue",
+   "greenFee": 375,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/courses/el-camaleon-mayakoba/01.jpg",
+    "credit": ""
+   }
+  },
+  {
+   "slug": "el-cortes-golf-club",
+   "name": "El Cortés Golf Club",
+   "region": "multi-city",
+   "place": "Multi City",
+   "href": "/destinations/multi-city/courses/el-cortes-golf-club",
+   "architect": "Gary Player",
+   "architects": [
+    "Gary Player",
+    "Agustín Pizá"
+   ],
+   "label": "Top in Mexico",
+   "greenFee": 270,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/courses/el-cortes-golf-club/01.jpg",
+    "credit": ""
+   }
+  },
+  {
+   "slug": "el-tamarindo-golf-course",
+   "name": "El Tamarindo Golf Course",
+   "region": "costalegre",
+   "place": "Costalegre",
+   "href": "/destinations/costalegre/courses/el-tamarindo-golf-course",
+   "architect": "David Fleming",
+   "architects": [
+    "David Fleming"
+   ],
+   "label": "",
+   "greenFee": 165,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/course-refs/el-tamarindo-golf-course/01.jpg",
+    "credit": "Four Seasons Resort Tamarindo"
+   }
+  },
+  {
+   "slug": "el-tigre-golf-club",
+   "name": "El Tigre Golf Club",
+   "region": "puerto-vallarta",
+   "place": "Puerto Vallarta",
+   "href": "/destinations/puerto-vallarta/courses/el-tigre-golf-club",
+   "architect": "Robert von Hagge",
+   "architects": [
+    "Robert von Hagge",
+    "Mike Smelek",
+    "Rick Baril"
+   ],
+   "label": "Playable & Relaxed",
+   "greenFee": 287,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/course-refs/el-tigre-golf-club/01.jpg",
+    "credit": "El Tigre Golf Club"
+   }
+  },
+  {
+   "slug": "el-tinto-cancun-country-club",
+   "name": "El Tinto",
+   "region": "cancun-riviera-maya",
+   "place": "Cancún / Riviera Maya",
+   "href": "/destinations/cancun-riviera-maya/courses/el-tinto-cancun-country-club",
+   "architect": "Nick Price",
+   "architects": [
+    "Nick Price"
+   ],
+   "label": "Top in Mexico",
+   "greenFee": 190,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/courses/el-tinto-cancun-country-club/01.jpg",
+    "credit": ""
+   }
+  },
+  {
+   "slug": "gran-coyote-golf-club",
+   "name": "Gran Coyote",
+   "region": "cancun-riviera-maya",
+   "place": "Cancún / Riviera Maya",
+   "href": "/destinations/cancun-riviera-maya/courses/gran-coyote-golf-club",
+   "architect": "Nick Price",
+   "architects": [
+    "Nick Price"
+   ],
+   "label": "Top in Mexico",
+   "greenFee": 269,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/courses/gran-coyote-golf-club/01.jpg",
+    "credit": ""
+   }
+  },
+  {
+   "slug": "higuera-golf-club",
+   "name": "Higuera Golf Club",
+   "region": "punta-mita",
+   "place": "Punta Mita / Nayarit",
+   "href": "/destinations/punta-mita/courses/higuera-golf-club",
+   "architect": "Greg Norman",
+   "architects": [
+    "Greg Norman"
+   ],
+   "label": "Signature Views",
+   "greenFee": 350,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/course-refs/higuera-golf-club/01.jpg",
+    "credit": "Higuera Golf Club"
+   }
+  },
+  {
+   "slug": "la-ceiba-golf-club",
+   "name": "La Ceiba (Club de Golf de Yucatán)",
+   "region": "merida",
+   "place": "Mérida",
+   "href": "/destinations/merida/courses/la-ceiba-golf-club",
+   "architect": "Félix Mier y Terán",
+   "architects": [
+    "Félix Mier y Terán"
+   ],
+   "label": "Hidden Gem",
+   "greenFee": 184,
+   "guestsOnly": false,
+   "photo": null
+  },
+  {
+   "slug": "madeiras-country-club",
+   "name": "Madeiras",
+   "region": "mexico-city",
+   "place": "Mexico City",
+   "href": "/destinations/mexico-city/courses/madeiras-country-club",
+   "architect": "Joe Finger",
+   "architects": [
+    "Joe Finger"
+   ],
+   "label": "Hidden Gem",
+   "greenFee": 154.49,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/courses/madeiras-country-club/01.jpg",
+    "credit": ""
+   }
+  },
+  {
+   "slug": "mandarina-golf-club",
+   "name": "Mandarina Golf Club",
+   "region": "punta-mita",
+   "place": "Punta Mita / Nayarit",
+   "href": "/destinations/punta-mita/courses/mandarina-golf-club",
+   "architect": "Greg Norman",
+   "architects": [
+    "Greg Norman"
+   ],
+   "label": "Signature Views",
+   "greenFee": 280,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/courses/mandarina-golf-club/01.jpg",
+    "credit": ""
+   }
+  },
+  {
+   "slug": "moon-palace-golf-course",
+   "name": "Moon Palace Golf Course",
+   "region": "cancun-riviera-maya",
+   "place": "Cancún / Riviera Maya",
+   "href": "/destinations/cancun-riviera-maya/courses/moon-palace-golf-course",
+   "architect": "Jack Nicklaus",
+   "architects": [
+    "Jack Nicklaus"
+   ],
+   "label": "27+ Holes",
+   "greenFee": 310,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/courses/moon-palace-golf-course/01.jpg",
+    "credit": ""
+   }
+  },
+  {
+   "slug": "nauka-golf-club",
+   "name": "Nauka Golf Club",
+   "region": "punta-mita",
+   "place": "Punta Mita / Nayarit",
+   "href": "/destinations/punta-mita/courses/nauka-golf-club",
+   "architect": "Tom Fazio",
+   "architects": [
+    "Tom Fazio"
+   ],
+   "label": "Bucket List",
+   "greenFee": null,
+   "guestsOnly": true,
+   "photo": {
+    "src": "/media/course-refs/nauka-golf-club/01.jpg",
+    "credit": "Nauka"
+   }
+  },
+  {
+   "slug": "vidanta-nayar-course",
+   "name": "Nayar Course",
+   "region": "puerto-vallarta",
+   "place": "Puerto Vallarta",
+   "href": "/destinations/puerto-vallarta/courses/vidanta-nayar-course",
+   "architect": "Jack Nicklaus",
+   "architects": [
+    "Jack Nicklaus"
+   ],
+   "label": "27+ Holes",
+   "greenFee": 249,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/course-refs/vidanta-nayar-course/01.jpg",
+    "credit": "Vidanta"
+   }
+  },
+  {
+   "slug": "oleada-golf-links",
+   "name": "Oleada Golf Links",
+   "region": "los-cabos",
+   "place": "Los Cabos",
+   "href": "/destinations/los-cabos/courses/oleada-golf-links",
+   "architect": "Ernie Els",
+   "architects": [
+    "Ernie Els",
+    "Greg Letsche"
+   ],
+   "label": "Signature Views",
+   "greenFee": 300,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/course-refs/oleada-golf-links/01.jpg",
+    "credit": "Oleada Los Cabos"
+   }
+  },
+  {
+   "slug": "palma-real-golf-club",
+   "name": "Palma Real Golf Club",
+   "region": "multi-city",
+   "place": "Multi City",
+   "href": "/destinations/multi-city/courses/palma-real-golf-club",
+   "architect": "Robert Trent Jones II",
+   "architects": [
+    "Robert Trent Jones II"
+   ],
+   "label": "Playable & Relaxed",
+   "greenFee": 110,
+   "guestsOnly": false,
+   "photo": null
+  },
+  {
+   "slug": "palmilla-golf-club",
+   "name": "Palmilla Golf Club",
+   "region": "los-cabos",
+   "place": "Los Cabos",
+   "href": "/destinations/los-cabos/courses/palmilla-golf-club",
+   "architect": "Jack Nicklaus",
+   "architects": [
+    "Jack Nicklaus"
+   ],
+   "label": "Signature Views",
+   "greenFee": null,
+   "guestsOnly": true,
+   "photo": {
+    "src": "/media/course-refs/palmilla-golf-club/01.jpg",
+    "credit": "Palmilla Golf Club"
+   }
+  },
+  {
+   "slug": "pga-riviera-maya-championship-course",
+   "name": "PGA Riviera Maya",
+   "region": "cancun-riviera-maya",
+   "place": "Cancún / Riviera Maya",
+   "href": "/destinations/cancun-riviera-maya/courses/pga-riviera-maya-championship-course",
+   "architect": "Robert Trent Jones II",
+   "architects": [
+    "Robert Trent Jones II"
+   ],
+   "label": "Tour Venue",
+   "greenFee": 200,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/courses/pga-riviera-maya-championship-course/01.jpg",
+    "credit": ""
+   }
+  },
+  {
+   "slug": "playa-mujeres-golf-club",
+   "name": "Playa Mujeres Golf Club",
+   "region": "cancun-riviera-maya",
+   "place": "Cancún / Riviera Maya",
+   "href": "/destinations/cancun-riviera-maya/courses/playa-mujeres-golf-club",
+   "architect": "Greg Norman",
+   "architects": [
+    "Greg Norman",
+    "Tad Burnett"
+   ],
+   "label": "Ocean Views",
+   "greenFee": 250,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/courses/playa-mujeres-golf-club/01.jpg",
+    "credit": ""
+   }
+  },
+  {
+   "slug": "puerto-cancun-golf-club",
+   "name": "Puerto Cancún Golf Club",
+   "region": "cancun-riviera-maya",
+   "place": "Cancún / Riviera Maya",
+   "href": "/destinations/cancun-riviera-maya/courses/puerto-cancun-golf-club",
+   "architect": "Tom Weiskopf",
+   "architects": [
+    "Tom Weiskopf"
+   ],
+   "label": "Playable & Relaxed",
+   "greenFee": null,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/course-refs/puerto-cancun-golf-club/01.jpg",
+    "credit": "Puerto Cancún"
+   }
+  },
+  {
+   "slug": "puerto-los-cabos-golf-club",
+   "name": "Puerto Los Cabos Golf Club",
+   "region": "los-cabos",
+   "place": "Los Cabos",
+   "href": "/destinations/los-cabos/courses/puerto-los-cabos-golf-club",
+   "architect": "Greg Norman",
+   "architects": [
+    "Greg Norman",
+    "Jack Nicklaus"
+   ],
+   "label": "27+ Holes",
+   "greenFee": 280,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/course-refs/puerto-los-cabos-golf-club/01.jpg",
+    "credit": "Puerto Los Cabos Golf Club"
+   }
+  },
+  {
+   "slug": "punta-mita-bahia",
+   "name": "Punta Mita Bahía",
+   "region": "punta-mita",
+   "place": "Punta Mita / Nayarit",
+   "href": "/destinations/punta-mita/courses/punta-mita-bahia",
+   "architect": "Jack Nicklaus",
+   "architects": [
+    "Jack Nicklaus"
+   ],
+   "label": "Bucket List",
+   "greenFee": 388,
+   "guestsOnly": true,
+   "photo": {
+    "src": "/media/courses/punta-mita-bahia/01.jpg",
+    "credit": ""
+   }
+  },
+  {
+   "slug": "punta-mita-pacifico",
+   "name": "Punta Mita Pacífico",
+   "region": "punta-mita",
+   "place": "Punta Mita / Nayarit",
+   "href": "/destinations/punta-mita/courses/punta-mita-pacifico",
+   "architect": "Jack Nicklaus",
+   "architects": [
+    "Jack Nicklaus"
+   ],
+   "label": "Bucket List",
+   "greenFee": 388,
+   "guestsOnly": true,
+   "photo": {
+    "src": "/media/courses/punta-mita-pacifico/01.jpg",
+    "credit": ""
+   }
+  },
+  {
+   "slug": "quivira-golf-club",
+   "name": "Quivira Golf Club",
+   "region": "los-cabos",
+   "place": "Los Cabos",
+   "href": "/destinations/los-cabos/courses/quivira-golf-club",
+   "architect": "Jack Nicklaus",
+   "architects": [
+    "Jack Nicklaus"
+   ],
+   "label": "Bucket List",
+   "greenFee": 465,
+   "guestsOnly": true,
+   "photo": {
+    "src": "/media/course-refs/quivira-golf-club/01.jpg",
+    "credit": "Quivira Los Cabos"
+   }
+  },
+  {
+   "slug": "rancho-avandaro-golf-club",
+   "name": "Rancho Avándaro",
+   "region": "multi-city",
+   "place": "Multi City",
+   "href": "/destinations/multi-city/courses/rancho-avandaro-golf-club",
+   "architect": "",
+   "architects": [],
+   "label": "Signature Views",
+   "greenFee": 276,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/course-refs/rancho-avandaro-golf-club/01.jpg",
+    "credit": "Rancho Avándaro"
+   }
+  },
+  {
+   "slug": "riviera-cancun-golf-resorts",
+   "name": "Riviera Cancún Golf & Resorts",
+   "region": "cancun-riviera-maya",
+   "place": "Cancún / Riviera Maya",
+   "href": "/destinations/cancun-riviera-maya/courses/riviera-cancun-golf-resorts",
+   "architect": "Jack Nicklaus",
+   "architects": [
+    "Jack Nicklaus"
+   ],
+   "label": "Playable & Relaxed",
+   "greenFee": 249,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/course-refs/riviera-cancun-golf-resorts/01.jpg",
+    "credit": "Le Blanc Spa Resorts"
+   }
+  },
+  {
+   "slug": "solmar-golf-links",
+   "name": "Solmar Golf Links",
+   "region": "los-cabos",
+   "place": "Los Cabos",
+   "href": "/destinations/los-cabos/courses/solmar-golf-links",
+   "architect": "Greg Norman",
+   "architects": [
+    "Greg Norman"
+   ],
+   "label": "Top in Mexico",
+   "greenFee": 400,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/courses/solmar-golf-links/01.jpg",
+    "credit": ""
+   }
+  },
+  {
+   "slug": "vidanta-the-lakes-course",
+   "name": "The Lakes Course",
+   "region": "puerto-vallarta",
+   "place": "Puerto Vallarta",
+   "href": "/destinations/puerto-vallarta/courses/vidanta-the-lakes-course",
+   "architect": "Chet Williams",
+   "architects": [
+    "Chet Williams",
+    "Nicklaus Design"
+   ],
+   "label": "Night Golf",
+   "greenFee": 75,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/courses/vidanta-the-lakes-course/01.jpg",
+    "credit": ""
+   }
+  },
+  {
+   "slug": "tpc-danzante-bay",
+   "name": "TPC Danzante Bay",
+   "region": "multi-city",
+   "place": "Multi City",
+   "href": "/destinations/multi-city/courses/tpc-danzante-bay",
+   "architect": "Rees Jones",
+   "architects": [
+    "Rees Jones",
+    "Steve Weisser"
+   ],
+   "label": "Bucket List",
+   "greenFee": 282,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/course-refs/tpc-danzante-bay/01.jpg",
+    "credit": "TPC Danzante Bay"
+   }
+  },
+  {
+   "slug": "twin-dolphin-golf-club",
+   "name": "Twin Dolphin Golf Club",
+   "region": "los-cabos",
+   "place": "Los Cabos",
+   "href": "/destinations/los-cabos/courses/twin-dolphin-golf-club",
+   "architect": "Fred Couples",
+   "architects": [
+    "Fred Couples",
+    "Todd Eckenrode"
+   ],
+   "label": "Bucket List",
+   "greenFee": 700,
+   "guestsOnly": true,
+   "photo": {
+    "src": "/media/course-refs/twin-dolphin-golf-club/01.jpg",
+    "credit": "Montage Los Cabos"
+   }
+  },
+  {
+   "slug": "ventanas-de-san-miguel",
+   "name": "Ventanas de San Miguel",
+   "region": "san-miguel-de-allende",
+   "place": "San Miguel de Allende",
+   "href": "/destinations/san-miguel-de-allende/courses/ventanas-de-san-miguel",
+   "architect": "Nick Faldo",
+   "architects": [
+    "Nick Faldo",
+    "Schmidt-Curley"
+   ],
+   "label": "Championship Test",
+   "greenFee": 204,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/course-refs/ventanas-de-san-miguel/01.jpg",
+    "credit": "Ventanas de San Miguel"
+   }
+  },
+  {
+   "slug": "vidanta-golf-los-cabos",
+   "name": "Vidanta Golf Los Cabos",
+   "region": "los-cabos",
+   "place": "Los Cabos",
+   "href": "/destinations/los-cabos/courses/vidanta-golf-los-cabos",
+   "architect": "",
+   "architects": [],
+   "label": "Signature Views",
+   "greenFee": null,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/course-refs/vidanta-golf-los-cabos/01.jpg",
+    "credit": "Vidanta"
+   }
+  },
+  {
+   "slug": "vidanta-puerto-penasco-nicklaus-course",
+   "name": "Vidanta Puerto Peñasco Nicklaus Course",
+   "region": "multi-city",
+   "place": "Multi City",
+   "href": "/destinations/multi-city/courses/vidanta-puerto-penasco-nicklaus-course",
+   "architect": "Jack Nicklaus",
+   "architects": [
+    "Jack Nicklaus",
+    "Jack Nicklaus II"
+   ],
+   "label": "Top in Mexico",
+   "greenFee": null,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/course-refs/vidanta-puerto-penasco-nicklaus-course/01.jpg",
+    "credit": "Vidanta"
+   }
+  },
+  {
+   "slug": "vidanta-vallarta-course",
+   "name": "Vidanta Vallarta Course",
+   "region": "puerto-vallarta",
+   "place": "Puerto Vallarta",
+   "href": "/destinations/puerto-vallarta/courses/vidanta-vallarta-course",
+   "architect": "Greg Norman",
+   "architects": [
+    "Greg Norman"
+   ],
+   "label": "Tour Venue",
+   "greenFee": 280,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/courses/vidanta-vallarta-course/01.jpg",
+    "credit": ""
+   }
+  },
+  {
+   "slug": "vista-vallarta-nicklaus-course",
+   "name": "Vista Vallarta Nicklaus Course",
+   "region": "puerto-vallarta",
+   "place": "Puerto Vallarta",
+   "href": "/destinations/puerto-vallarta/courses/vista-vallarta-nicklaus-course",
+   "architect": "Jack Nicklaus",
+   "architects": [
+    "Jack Nicklaus",
+    "Chet Williams"
+   ],
+   "label": "Top in Mexico",
+   "greenFee": 299,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/course-refs/vista-vallarta-nicklaus-course/01.jpg",
+    "credit": "Vista Vallarta Club de Golf"
+   }
+  },
+  {
+   "slug": "vista-vallarta-weiskopf-course",
+   "name": "Vista Vallarta Weiskopf Course",
+   "region": "puerto-vallarta",
+   "place": "Puerto Vallarta",
+   "href": "/destinations/puerto-vallarta/courses/vista-vallarta-weiskopf-course",
+   "architect": "Tom Weiskopf",
+   "architects": [
+    "Tom Weiskopf"
+   ],
+   "label": "Top in Mexico",
+   "greenFee": 299,
+   "guestsOnly": false,
+   "photo": {
+    "src": "/media/course-refs/vista-vallarta-weiskopf-course/01.jpg",
+    "credit": "Vista Vallarta Club de Golf"
+   }
+  }
+ ],
+ "footer": [
+  {
+   "label": "Mexico City",
+   "guide": "/destinations/mexico-city",
+   "courses": [
+    {
+     "name": "Amanali",
+     "href": "/destinations/mexico-city/courses/amanali-country-club"
+    },
+    {
+     "name": "Bosque Real",
+     "href": "/destinations/mexico-city/courses/bosque-real-country-club"
+    },
+    {
+     "name": "Club de Golf Chapultepec",
+     "href": "/destinations/mexico-city/courses/club-de-golf-chapultepec"
+    },
+    {
+     "name": "Club de Golf México",
+     "href": "/destinations/mexico-city/courses/club-de-golf-mexico"
+    },
+    {
+     "name": "Coral",
+     "href": "/destinations/mexico-city/courses/el-coral"
+    },
+    {
+     "name": "Madeiras",
+     "href": "/destinations/mexico-city/courses/madeiras-country-club"
+    }
+   ]
+  },
+  {
+   "label": "Los Cabos",
+   "guide": "/destinations/los-cabos",
+   "courses": [
+    {
+     "name": "Cabo del Sol Golf Course",
+     "href": "/destinations/los-cabos/courses/cabo-del-sol-golf-course"
+    },
+    {
+     "name": "Cabo Real Golf Course",
+     "href": "/destinations/los-cabos/courses/cabo-real-golf-course"
+    },
+    {
+     "name": "Chileno Bay Golf Club",
+     "href": "/destinations/los-cabos/courses/chileno-bay-golf-club"
+    },
+    {
+     "name": "Club Campestre San José",
+     "href": "/destinations/los-cabos/courses/club-campestre-san-jose"
+    },
+    {
+     "name": "Diamante Dunes Course",
+     "href": "/destinations/los-cabos/courses/diamante-dunes-course"
+    },
+    {
+     "name": "Diamante El Cardonal",
+     "href": "/destinations/los-cabos/courses/diamante-el-cardonal"
+    },
+    {
+     "name": "Oleada Golf Links",
+     "href": "/destinations/los-cabos/courses/oleada-golf-links"
+    },
+    {
+     "name": "Palmilla Golf Club",
+     "href": "/destinations/los-cabos/courses/palmilla-golf-club"
+    },
+    {
+     "name": "Puerto Los Cabos Golf Club",
+     "href": "/destinations/los-cabos/courses/puerto-los-cabos-golf-club"
+    },
+    {
+     "name": "Quivira Golf Club",
+     "href": "/destinations/los-cabos/courses/quivira-golf-club"
+    },
+    {
+     "name": "Solmar Golf Links",
+     "href": "/destinations/los-cabos/courses/solmar-golf-links"
+    },
+    {
+     "name": "Twin Dolphin Golf Club",
+     "href": "/destinations/los-cabos/courses/twin-dolphin-golf-club"
+    },
+    {
+     "name": "Vidanta Golf Los Cabos",
+     "href": "/destinations/los-cabos/courses/vidanta-golf-los-cabos"
+    }
+   ]
+  },
+  {
+   "label": "Cancún & Riviera Maya",
+   "guide": "/destinations/cancun-riviera-maya",
+   "courses": [
+    {
+     "name": "El Camaleón Mayakoba",
+     "href": "/destinations/cancun-riviera-maya/courses/el-camaleon-mayakoba"
+    },
+    {
+     "name": "El Tinto",
+     "href": "/destinations/cancun-riviera-maya/courses/el-tinto-cancun-country-club"
+    },
+    {
+     "name": "Gran Coyote",
+     "href": "/destinations/cancun-riviera-maya/courses/gran-coyote-golf-club"
+    },
+    {
+     "name": "Moon Palace Golf Course",
+     "href": "/destinations/cancun-riviera-maya/courses/moon-palace-golf-course"
+    },
+    {
+     "name": "PGA Riviera Maya",
+     "href": "/destinations/cancun-riviera-maya/courses/pga-riviera-maya-championship-course"
+    },
+    {
+     "name": "Playa Mujeres Golf Club",
+     "href": "/destinations/cancun-riviera-maya/courses/playa-mujeres-golf-club"
+    },
+    {
+     "name": "Puerto Cancún Golf Club",
+     "href": "/destinations/cancun-riviera-maya/courses/puerto-cancun-golf-club"
+    },
+    {
+     "name": "Riviera Cancún Golf & Resorts",
+     "href": "/destinations/cancun-riviera-maya/courses/riviera-cancun-golf-resorts"
+    }
+   ]
+  },
+  {
+   "label": "Punta Mita & Nayarit",
+   "guide": "/destinations/punta-mita",
+   "courses": [
+    {
+     "name": "Higuera Golf Club",
+     "href": "/destinations/punta-mita/courses/higuera-golf-club"
+    },
+    {
+     "name": "Mandarina Golf Club",
+     "href": "/destinations/punta-mita/courses/mandarina-golf-club"
+    },
+    {
+     "name": "Nauka Golf Club",
+     "href": "/destinations/punta-mita/courses/nauka-golf-club"
+    },
+    {
+     "name": "Punta Mita Bahía",
+     "href": "/destinations/punta-mita/courses/punta-mita-bahia"
+    },
+    {
+     "name": "Punta Mita Pacífico",
+     "href": "/destinations/punta-mita/courses/punta-mita-pacifico"
+    }
+   ]
+  },
+  {
+   "label": "Puerto Vallarta",
+   "guide": "/destinations/puerto-vallarta",
+   "courses": [
+    {
+     "name": "El Tigre Golf Club",
+     "href": "/destinations/puerto-vallarta/courses/el-tigre-golf-club"
+    },
+    {
+     "name": "Nayar Course",
+     "href": "/destinations/puerto-vallarta/courses/vidanta-nayar-course"
+    },
+    {
+     "name": "The Lakes Course",
+     "href": "/destinations/puerto-vallarta/courses/vidanta-the-lakes-course"
+    },
+    {
+     "name": "Vidanta Vallarta Course",
+     "href": "/destinations/puerto-vallarta/courses/vidanta-vallarta-course"
+    },
+    {
+     "name": "Vista Vallarta Nicklaus Course",
+     "href": "/destinations/puerto-vallarta/courses/vista-vallarta-nicklaus-course"
+    },
+    {
+     "name": "Vista Vallarta Weiskopf Course",
+     "href": "/destinations/puerto-vallarta/courses/vista-vallarta-weiskopf-course"
+    }
+   ]
+  },
+  {
+   "label": "More destinations",
+   "guide": "/destinations/unique-destinations",
+   "courses": [
+    {
+     "name": "Club de Golf Malanquín",
+     "href": "/destinations/san-miguel-de-allende/courses/club-de-golf-malanquin"
+    },
+    {
+     "name": "Ventanas de San Miguel",
+     "href": "/destinations/san-miguel-de-allende/courses/ventanas-de-san-miguel"
+    },
+    {
+     "name": "La Ceiba (Club de Golf de Yucatán)",
+     "href": "/destinations/merida/courses/la-ceiba-golf-club"
+    },
+    {
+     "name": "El Tamarindo Golf Course",
+     "href": "/destinations/costalegre/courses/el-tamarindo-golf-course"
+    },
+    {
+     "name": "Bajamar Ocean Front Golf Resort",
+     "href": "/destinations/ensenada/courses/bajamar-ocean-front-golf-resort"
+    },
+    {
+     "name": "Club de Golf Avándaro",
+     "href": "/destinations/multi-city/courses/club-de-golf-avandaro"
+    },
+    {
+     "name": "Costa Palmas Golf Club",
+     "href": "/destinations/multi-city/courses/costa-palmas-golf-club"
+    },
+    {
+     "name": "El Cortés Golf Club",
+     "href": "/destinations/multi-city/courses/el-cortes-golf-club"
+    },
+    {
+     "name": "Palma Real Golf Club",
+     "href": "/destinations/multi-city/courses/palma-real-golf-club"
+    },
+    {
+     "name": "Rancho Avándaro",
+     "href": "/destinations/multi-city/courses/rancho-avandaro-golf-club"
+    },
+    {
+     "name": "TPC Danzante Bay",
+     "href": "/destinations/multi-city/courses/tpc-danzante-bay"
+    },
+    {
+     "name": "Vidanta Puerto Peñasco Nicklaus Course",
+     "href": "/destinations/multi-city/courses/vidanta-puerto-penasco-nicklaus-course"
+    }
+   ]
+  }
+ ],
+ "partners": [
+  {
+   "name": "Fora Travel",
+   "logo": "/media/partners/fora.svg",
+   "role": "We are an independent Fora advisor: your stay is booked through Fora",
+   "href": "https://www.foratravel.com/"
+  },
+  {
+   "name": "PGA México",
+   "logo": "/media/partners/pga-mexico.jpg",
+   "role": "Endorsed by Mexico's association of golf professionals",
+   "href": "https://pgam.com.mx/",
+   "round": true
+  },
+  {
+   "name": "Cocobay",
+   "logo": "/media/partners/cocobay-wide.svg",
+   "role": "Our villa partner in Los Cabos, at its own direct rate",
+   "href": "https://cocobay.mx/"
+  },
+  {
+   "name": "Casita",
+   "logo": "/media/partners/casita.svg",
+   "role": "Our private-home partner in Los Cabos and the Riviera Maya",
+   "href": "https://casitahomes.com/"
+  },
+  {
+   "name": "The Palace Company",
+   "logo": "/media/partners/palace.svg",
+   "role": "Our resort partner in Cancún",
+   "href": "https://www.palaceresorts.com/",
+   "dark": true
+  },
+  {
+   "name": "Punta Mita",
+   "logo": "/media/partners/punta-mita.png",
+   "role": "Our partner in Punta Mita: villas at Punta Mita Rentals' direct rate",
+   "href": "https://www.puntamita.com/",
+   "dark": true
+  }
+ ]
+}
