@@ -19,7 +19,12 @@
     },
     {
       "source": "/cdmx/private-access",
-      "destination": "/destinations/mexico-city/private-access",
+      "destination": "/destinations/mexico-city",
+      "permanent": true
+    },
+    {
+      "source": "/destinations/mexico-city/private-access",
+      "destination": "/destinations/mexico-city",
       "permanent": true
     },
     {
