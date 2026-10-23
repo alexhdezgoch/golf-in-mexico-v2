@@ -3,9 +3,9 @@
   {
    "slug": "amanali-country-club",
    "name": "Amanali",
-   "region": "multi-city",
-   "place": "Multi City",
-   "href": "/destinations/multi-city/courses/amanali-country-club",
+   "region": "mexico-city",
+   "place": "Mexico City",
+   "href": "/destinations/mexico-city/courses/amanali-country-club",
    "architect": "Schmidt-Curley",
    "architects": [
     "Schmidt-Curley"
@@ -419,9 +419,9 @@
   {
    "slug": "madeiras-country-club",
    "name": "Madeiras",
-   "region": "multi-city",
-   "place": "Multi City",
-   "href": "/destinations/multi-city/courses/madeiras-country-club",
+   "region": "mexico-city",
+   "place": "Mexico City",
+   "href": "/destinations/mexico-city/courses/madeiras-country-club",
    "architect": "Joe Finger",
    "architects": [
     "Joe Finger"
@@ -911,6 +911,10 @@
    "guide": "/destinations/mexico-city",
    "courses": [
     {
+     "name": "Amanali",
+     "href": "/destinations/mexico-city/courses/amanali-country-club"
+    },
+    {
      "name": "Bosque Real",
      "href": "/destinations/mexico-city/courses/bosque-real-country-club"
     },
@@ -925,6 +929,10 @@
     {
      "name": "Coral",
      "href": "/destinations/mexico-city/courses/el-coral"
+    },
+    {
+     "name": "Madeiras",
+     "href": "/destinations/mexico-city/courses/madeiras-country-club"
     }
    ]
   },
@@ -1105,10 +1113,6 @@
      "href": "/destinations/ensenada/courses/bajamar-ocean-front-golf-resort"
     },
     {
-     "name": "Amanali",
-     "href": "/destinations/multi-city/courses/amanali-country-club"
-    },
-    {
      "name": "Club de Golf Avándaro",
      "href": "/destinations/multi-city/courses/club-de-golf-avandaro"
     },
@@ -1119,10 +1123,6 @@
     {
      "name": "El Cortés Golf Club",
      "href": "/destinations/multi-city/courses/el-cortes-golf-club"
-    },
-    {
-     "name": "Madeiras",
-     "href": "/destinations/multi-city/courses/madeiras-country-club"
     },
     {
      "name": "Palma Real Golf Club",
@@ -1162,6 +1162,12 @@
    "logo": "/media/partners/cocobay-wide.svg",
    "role": "Our villa partner in Los Cabos, at its own direct rate",
    "href": "https://cocobay.mx/"
+  },
+  {
+   "name": "Casita",
+   "logo": "/media/partners/casita.svg",
+   "role": "Our private-home partner in Los Cabos and the Riviera Maya",
+   "href": "https://casitahomes.com/"
   },
   {
    "name": "The Palace Company",
