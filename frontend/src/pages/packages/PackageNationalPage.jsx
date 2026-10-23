@@ -387,7 +387,7 @@ const PackageNationalPage = () => {
               <h4>Mexico City</h4>
               <p>High-altitude, private member clubs, Tour-level fairways.</p>
             </div>
-            <Link to="/destinations/mexico-city/private-access">Explore →</Link>
+            <Link to="/destinations/mexico-city">Explore →</Link>
           </div>
         </div>
         <div className="region-card">
