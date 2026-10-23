@@ -23,7 +23,6 @@ import Experience from "@/pages/Experience";
 import Contact from "@/pages/Contact";
 import Privacy from "@/pages/Privacy";
 import Landing from "@/pages/Landing";
-import PackageWaitlistPage from "@/pages/packages/PackageWaitlistPage";
 
 /**
  * Pages served by the trip builder app (see middleware.js). Reached by an in-app link, the router hands them back
@@ -195,14 +194,6 @@ const AnimatedRoutes = () => {
           path="/golf-packages"
           element={
             <ServerPage />
-          }
-        />
-        <Route
-          path="/destinations/mexico-city/private-access"
-          element={
-            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
-              <PackageWaitlistPage />
-            </motion.div>
           }
         />
         {/* Transactional landings under a hub — /destinations/:hub/:slug.
