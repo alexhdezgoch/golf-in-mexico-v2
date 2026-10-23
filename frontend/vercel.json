@@ -1,0 +1,66 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "create-react-app",
+  "redirects": [
+    {
+      "source": "/cancun/golf-packages",
+      "destination": "/destinations/cancun-riviera-maya/golf-packages",
+      "permanent": true
+    },
+    {
+      "source": "/los-cabos/golf-packages",
+      "destination": "/destinations/los-cabos/golf-packages",
+      "permanent": true
+    },
+    {
+      "source": "/vallarta/golf-packages",
+      "destination": "/destinations/puerto-vallarta/golf-packages",
+      "permanent": true
+    },
+    {
+      "source": "/cdmx/private-access",
+      "destination": "/destinations/mexico-city",
+      "permanent": true
+    },
+    {
+      "source": "/destinations/mexico-city/private-access",
+      "destination": "/destinations/mexico-city",
+      "permanent": true
+    },
+    {
+      "source": "/golf/unique-destinations",
+      "destination": "/destinations/unique-destinations",
+      "permanent": true
+    },
+    {
+      "source": "/journal/los-cabos",
+      "destination": "/destinations/los-cabos",
+      "permanent": true
+    },
+    {
+      "source": "/journal/punta-mita-golf-cost-green-fees",
+      "destination": "/destinations/punta-mita",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        {
+          "key": "Vary",
+          "value": "Accept"
+        }
+      ]
+    }
+  ]
+}
