@@ -190,7 +190,7 @@ const Experience = () => {
           <em className="italic text-[var(--c-gold)]">Tell us anyway.</em>
         </h2>
         <p className="font-body font-light text-white/80 text-base md:text-lg leading-[1.75] mb-10">
-          Start a blank proposal and Pablo will reach out within the first 48 hours to scope the trip with you.
+          Start a blank proposal and Pablo will reach out within the first 36 hours to scope the trip with you.
         </p>
         <Link
           to="/trip-builder"
