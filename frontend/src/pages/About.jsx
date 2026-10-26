@@ -161,7 +161,7 @@ const About = () => {
         <ol className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
           {[
             { t: "Pick a trip we curated", d: "Browse trips Pablo and José put together for groups: the stay, the courses and the price per golfer, taxes included. Change the golfers, nights and room, and the price follows." },
-            { t: "Get your quote in 48 hours", d: "Request a quote for up to three trips at once. Pablo confirms availability with the hotel and the clubs, then sends a written proposal with the final price. Nothing is paid on this site." },
+            { t: "Get your quote in 36 hours", d: "Request a quote for up to three trips at once. Pablo confirms availability with the hotel and the clubs, then sends a written proposal with the final price. Nothing is paid on this site." },
             { t: "Hotels at the hotel's own rate", d: "We are an independent Fora Travel advisor: your stay is booked through Fora at the hotel's published rate, often with perks like breakfast or resort credit, and the hotel charges you directly." },
             { t: "GIM Concierge, $100 per golfer", d: "Our planning service: every tee time booked, the trip sequenced, one contact until you are home. Non-golfers are free. If your first 36 hours aren't what we planned, we refund the fee in full." },
           ].map((s, i) => (

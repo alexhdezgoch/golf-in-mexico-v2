@@ -125,7 +125,7 @@ const TripBuilder = () => {
   useSeo({
     title: "Plan Your Trip — Golf in Mexico°",
     description:
-      "Build your Mexico golf trip in a few steps — destinations, dates, and budget. Pablo personally reviews every request and sends a named, itemized itinerary within 48 hours.",
+      "Build your Mexico golf trip in a few steps — destinations, dates, and budget. Pablo personally reviews every request and sends a named, itemized itinerary within 36 hours.",
     canonical: "/trip-builder",
     jsonLd: breadcrumbSchema([
       { name: "Home", path: "/" },
@@ -366,7 +366,7 @@ const TripBuilder = () => {
               Your proposal is <em className="italic text-[var(--c-gold)]">in motion.</em>
             </h1>
             <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] max-w-[560px] mx-auto">
-              Pablo is reviewing your trip now. Your named, itemized itinerary lands in your inbox within 48 hours.
+              Pablo is reviewing your trip now. Your named, itemized itinerary lands in your inbox within 36 hours.
             </p>
           </div>
 
@@ -430,7 +430,7 @@ const TripBuilder = () => {
       <section className="relative bg-[var(--c-off-white)] py-20 md:py-28">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12 text-center">
           <h1 className="font-display font-light text-[var(--c-text)] text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight max-w-[900px] mx-auto mb-8">
-            A custom Mexico golf itinerary in <em className="italic text-[var(--c-gold)]">48 hours. On us.</em>
+            A custom Mexico golf itinerary in <em className="italic text-[var(--c-gold)]">36 hours. On us.</em>
           </h1>
           <div className="flex flex-col items-center">
             {/* Minimal scroll cue */}
@@ -480,7 +480,7 @@ const TripBuilder = () => {
       <section className="bg-[var(--c-off-white)] py-20 md:py-28">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12">
           <h2 className="font-display font-light text-[var(--c-text)] text-3xl md:text-5xl leading-[1.1] tracking-tight mb-6">
-            What you get in 48 hours: <em className="italic text-[var(--c-gold)]">everything.</em>
+            What you get in 36 hours: <em className="italic text-[var(--c-gold)]">everything.</em>
           </h2>
           <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] max-w-[640px] mb-12">
             Your proposal includes the full picture. Zero guesswork.
@@ -570,7 +570,7 @@ const TripBuilder = () => {
                 <p className="font-display text-[var(--c-text)] text-xl md:text-2xl">Build it on your own</p>
               </div>
               <p className="font-body font-light text-[var(--c-text-mid)] text-[15px] md:text-base leading-[1.7] mb-8">
-                Itinerary back to your inbox in 48 hours.
+                Itinerary back to your inbox in 36 hours.
               </p>
               <span className="inline-flex items-center gap-3 bg-[var(--c-green-deep)] text-white px-6 py-3 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold group-hover:bg-[var(--c-green-mid)] transition-colors">
                 Start Trip Builder
@@ -844,7 +844,7 @@ const TripBuilder = () => {
                     <div>
                       <label htmlFor="tb-email" className="block font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--c-text-muted)] mb-2">Email *</label>
                       <input id="tb-email" type="email" value={contact.email} onChange={(e) => { setContact({ ...contact, email: e.target.value }); setErrors((er) => ({ ...er, email: null })); }} placeholder="your@email.com" data-testid="tb-email" className="w-full bg-[var(--c-surface)] border border-[var(--c-border)] focus:border-[var(--c-gold)] text-[var(--c-text)] placeholder:text-[var(--c-text-muted)] font-body text-base px-4 py-3.5 rounded-sm focus:outline-none transition-colors" />
-                      <p className="mt-2 text-[12px] text-[var(--c-text-muted)] italic">Your named itinerary lands here within 48 hours.</p>
+                      <p className="mt-2 text-[12px] text-[var(--c-text-muted)] italic">Your named itinerary lands here within 36 hours.</p>
                       {errors.email && <p className="mt-2 text-[13px] text-[#8b2020] font-mono">{errors.email}</p>}
                     </div>
                     <div>
