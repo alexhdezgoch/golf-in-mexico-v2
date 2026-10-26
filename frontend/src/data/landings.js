@@ -201,7 +201,7 @@ const STAY_AND_PLAY = {
     "Two golfers on a coastal tee at Punta Mita, with the beach curving away behind them and the Pacific to the left.",
 
   ctaPrimary: "Start a proposal",
-  ctaNote: "Pablo builds it inside 48 hours. No call required.",
+  ctaNote: "Pablo builds it inside 36 hours. No call required.",
 
   byline:
     "GIM Editorial · Field research by Pablo De La Mora & José Islas · Updated August 2026",
