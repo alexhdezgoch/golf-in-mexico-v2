@@ -89,7 +89,7 @@ const LeadForm = ({ landing, placement, dark = false }) => {
           Got it — <em className="italic text-[var(--c-gold)]">we&apos;ll be in touch.</em>
         </p>
         <p className={`mt-3 font-body font-light text-sm leading-relaxed ${label}`}>
-          Pablo reads these himself and comes back inside 48 hours with a proposal, not a brochure.
+          Pablo reads these himself and comes back inside 36 hours with a proposal, not a brochure.
         </p>
       </div>
     );
