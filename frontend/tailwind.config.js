@@ -9,25 +9,25 @@ module.exports = {
         extend: {
             colors: {
                 /* Legacy aliases — preserved so existing JSX keeps working */
-                cream: '#f8f6f1',
-                ink: '#1a1714',
+                cream: '#eef0e6',
+                ink: '#13221a',
                 gold: '#c8a96e',
-                forest: '#0f2419',
-                muted: '#8a847c',
+                forest: '#0d2018',
+                muted: '#56635a',
 
                 /* New design-system tokens */
-                'green-deep':  '#0f2419',
-                'green-mid':   '#1a3c2e',
+                'green-deep':  '#0d2018',
+                'green-mid':   '#1f5c3a',
                 'green-light': '#2d6a4f',
                 'gold-light':  '#dfc193',
-                'off-white':   '#f8f6f1',
-                surface:       '#f0ece4',
-                'border-warm': '#e2ddd5',
-                stone:         '#c9c3b8',
-                'text-warm':   '#1a1714',
-                'text-mid':    '#4a4540',
-                'text-muted':  '#8a847c',
-                'text-faint':  '#b8b3ac',
+                'off-white':   '#eef0e6',
+                surface:       '#e4e8dc',
+                'border-warm': '#cdd4c3',
+                stone:         '#b9c1ae',
+                'text-warm':   '#13221a',
+                'text-mid':    '#3f4c43',
+                'text-muted':  '#56635a',
+                'text-faint':  '#9aa494',
                 live:          '#1f5c3a',
 
                 background: 'hsl(var(--background))',
@@ -36,8 +36,8 @@ module.exports = {
                 ring: 'hsl(var(--ring))',
             },
             fontFamily: {
-                display: ['"Libre Baskerville"', 'Georgia', 'serif'],
-                body: ['"Outfit"', 'sans-serif'],
+                display: ['"Inter"', 'system-ui', 'sans-serif'],
+                body: ['"Inter"', 'system-ui', 'sans-serif'],
                 mono: ['"Space Mono"', 'monospace'],
             },
             letterSpacing: {

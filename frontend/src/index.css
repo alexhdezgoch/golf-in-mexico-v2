@@ -4,13 +4,13 @@
 
 /* ═══════════════════════════════════════════════════════════════════
    GIM Design System v2 — Editorial luxury + resort warmth
-   Fonts: Libre Baskerville · Outfit · Space Mono
+   Fonts: Inter (ExtraBold capitals for headlines) · Space Mono (capitals for labels) — brand kit 2026-10-26
    ═══════════════════════════════════════════════════════════════════ */
 
 :root {
     /* ── Brand greens ── */
-    --c-green-deep:  #0f2419;
-    --c-green-mid:   #1a3c2e;
+    --c-green-deep:  #0d2018;
+    --c-green-mid:   #1f5c3a;
     --c-green-light: #2d6a4f;
 
     /* ── Gold accents ── */
@@ -19,20 +19,21 @@
 
     /* ── Neutrals ── */
     --c-white:       #ffffff;
-    --c-off-white:   #f8f5f0;
-    --c-surface:     #f0ece3;
-    --c-border:      #e2ddd4;
-    --c-stone:       #c9c3b8;
+    --c-off-white:   #eef0e6;
+    --c-surface:     #e4e8dc;
+    --c-border:      #cdd4c3;
+    --c-stone:       #b9c1ae;
 
     /* ── Text ── */
-    --c-text:        #1a1714;
-    --c-text-mid:    #4a4540;
-    --c-text-muted:  #8a847c;
-    --c-text-faint:  #b8b3ac;
+    --c-text:        #13221a;
+    --c-text-mid:    #3f4c43;
+    --c-text-muted:  #56635a;
+    --c-text-faint:  #9aa494;
 
     /* ── Functional ── */
     --c-live:        #1f5c3a;
-    --c-coming-soon: #8a847c;
+    --c-coming-soon: #56635a;
+    --c-flag:        #b3342a;
     --c-error:       #8b2020;
 
     --overlay-dark:  rgba(10, 18, 12, 0.55);
@@ -47,8 +48,8 @@
     --muted:  var(--c-text-muted);
 
     /* ── Typography ── */
-    --font-display: 'Libre Baskerville', Georgia, serif;
-    --font-body:    'Outfit', sans-serif;
+    --font-display: 'Inter', system-ui, sans-serif;
+    --font-body:    'Inter', system-ui, sans-serif;
     --font-mono:    'Space Mono', monospace;
 
     --t-hero:    clamp(56px, 9vw, 120px);
@@ -802,3 +803,19 @@ html.lenis, html.lenis body { height: auto; }
     font-size: 16px;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   BRAND KIT (2026-10-26) — the same kit as the golf packages pages and the trip builder:
+   headlines in Inter ExtraBold capitals, no italic accent words, labels in Space Mono capitals,
+   the golf palette above (night, fairway, chalk, flag) and square corners on buttons.
+   ═══════════════════════════════════════════════════════════════════ */
+h1, h2, h3 { font-weight: 800 !important; text-transform: uppercase; letter-spacing: -0.02em; text-wrap: balance; }
+h1, h2 { line-height: 0.98 !important; }
+h3 { line-height: 1.1 !important; letter-spacing: -0.01em; }
+:is(h1, h2, h3) :is(em, i, .italic) { font-style: normal !important; }
+.font-display:not(h1):not(h2):not(h3) { font-weight: 600; letter-spacing: -0.01em; }
+.font-display :is(em, .italic), .pull-quote p, .stat-number em, .photo-slot::after { font-style: normal !important; }
+.stat-number { font-family: var(--font-mono); font-weight: 700; letter-spacing: -0.03em; }
+::selection { background-color: var(--c-gold); color: var(--c-green-deep); }
+.font-light:not(h1):not(h2):not(h3) { font-weight: 400 !important; }
+:is(h1, h2, h3):is(.font-light, .font-normal, .font-medium, .font-semibold, .font-bold) { font-weight: 800 !important; }
