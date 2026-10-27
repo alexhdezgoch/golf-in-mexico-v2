@@ -38,13 +38,38 @@ const LOS_CABOS = {
     { num: "Oct – May", label: "Best months" },
   ],
   heroAnswer:
-    "Los Cabos has 18 active championship golf courses along a 20-mile corridor between Cabo San Lucas and San José del Cabo, designed by Nicklaus, Woods, Norman, Love III and Fazio. Green fees run $95–$500 a round, the best months are October to May, and a 4-night, 3-round trip costs $2,030–$5,580 per person.",
+    "Los Cabos has 18 active championship golf courses along a 20-mile corridor between Cabo San Lucas and San José del Cabo, designed by Nicklaus, Woods, Norman, Love III and Fazio. Green fees run $95–$500 a round, the best months are October to May, and our curated 4-night, 3-round trips cost $2,043–$6,542 per golfer before flights.",
   // The question-led layout (2026-10-27): each section opens with the question people search and a short answer.
   questionLayout: true,
   coursesQ: "Which golf courses should you play in Los Cabos?",
   coursesA: "Diamante Dunes is No. 1 in Mexico on Golf Digest's list, Quivira has the most dramatic ocean holes, and Club Campestre is the best value at $135–$190. Most top courses open first to guests of a partner resort, so choose the hotel and the courses together.",
   costsQ: "How much does a golf trip to Los Cabos cost?",
-  costsA: "$2,030 to $5,580 per person for 4 nights and 3 rounds, mid-season. The hotel and the courses move the number most; afternoon tee times cut green fees by 30–50%.",
+  costsA: "Our 12 curated Los Cabos trips cost $2,043 to $6,542 per golfer for 4 nights and 3 rounds, with the stay, green fees, taxes and our $100 planning fee included. Eight of the twelve come in under $3,600. Flights are extra.",
+  // The curated trips of the trip builder, priced on one basis by its own quote engine (lib/quote.ts in the trip builder app):
+  // 4 golfers, 4 nights, 3 rounds, double rooms; per golfer. Catalog of 2026-10-15; update when the trips' rates change.
+  curatedBasis: "4 golfers · 4 nights · 3 rounds · double rooms · per golfer",
+  curatedAsOf: "October 2026",
+  curatedTrips: [
+    { stay: "Hotel El Ganzo", type: "Hotel", courses: "Puerto Los Cabos · Club Campestre · Cabo Real", room: 918, golf: 715, taxes: 310, total: 2043 },
+    { stay: "Cocobay private villas", type: "Private villa", courses: "Cabo del Sol · Cabo Real · Solmar", room: 651, golf: 1045, taxes: 305, total: 2101 },
+    { stay: "Marquis Los Cabos", type: "All inclusive", courses: "Cabo Real · Club Campestre · Puerto Los Cabos", room: 1186, golf: 575, taxes: 387, total: 2248, note: "2 rounds included in the stay" },
+    { stay: "Diamante resort residence", type: "Private villa", courses: "Diamante Dunes · El Cardonal · Solmar", room: 506, golf: 1400, taxes: 343, total: 2349 },
+    { stay: "Hilton Los Cabos", type: "Hotel", courses: "Cabo Real · Cabo del Sol · Puerto Los Cabos", room: 1106, golf: 925, taxes: 406, total: 2537 },
+    { stay: "Secrets Puerto Los Cabos", type: "All inclusive", courses: "Puerto Los Cabos · Cabo Real", room: 1624, golf: 820, taxes: 538, total: 3082 },
+    { stay: "Nobu Hotel Los Cabos", type: "Hotel", courses: "Diamante Dunes · El Cardonal · Solmar", room: 1066, golf: 1400, taxes: 888, total: 3454 },
+    { stay: "Pueblo Bonito Pacifica", type: "All inclusive", courses: "Quivira · Solmar · Oleada", room: 1778, golf: 1165, taxes: 530, total: 3573 },
+    { stay: "Chileno Bay, Auberge", type: "Hotel", courses: "Chileno Bay · Cabo del Sol · Cabo Real", room: 2500, golf: 1163, taxes: 1319, total: 5082 },
+    { stay: "One&Only Palmilla", type: "Hotel", courses: "Palmilla · Puerto Los Cabos · Cabo Real", room: 3212, golf: 810, taxes: 1448, total: 5570 },
+    { stay: "Montage Los Cabos", type: "Hotel", courses: "Twin Dolphin · Cabo del Sol · Cabo Real", room: 2904, golf: 1345, taxes: 1615, total: 5964 },
+    { stay: "Four Seasons Cabo del Sol", type: "Hotel", courses: "Cabo del Sol · Cabo Real · Solmar", room: 3692, golf: 1045, taxes: 1705, total: 6542 },
+  ],
+  // What the trip price leaves out, from the cost research above.
+  curatedExtras: [
+    ["Flights", "$280 – $550", "Direct: LAX · DFW · HOU"],
+    ["Caddie tips", "$120 – $180", "$40–$60 a bag a round"],
+    ["Ground transport", "$80 – $250", "Shuttle or private SUV"],
+    ["Meals outside the stay", "$300 – $800", "Less at the all-inclusives"],
+  ],
   seasonQ: "When is the best time to play golf in Los Cabos?",
   seasonA: "November to April for the best conditions; late October and May for better rates in good weather. Avoid August and September.",
   logisticsQ: "How do you get to Los Cabos and between courses?",
@@ -157,7 +182,7 @@ const LOS_CABOS = {
 
   faqs: [
     { q: "What is the best time of year to play golf in Los Cabos?", a: "The peak season runs November through April — dry, warm (72–82°F), almost no rain. For the best balance of weather and value, late October and May are the sharpest shoulder months: great conditions, fewer crowds, better rates. The summer window (July–October) brings dramatic discounts but also humidity, afternoon storms, and hurricane risk. August and September are the months to avoid entirely." },
-    { q: "How much does a golf trip to Los Cabos cost?", a: "A realistic 4-night, 3-round trip runs $2,030 on the lower end to $5,580 at the luxury tier, per person. The main variables are hotel choice and course selection. Green fees range from $95 at Palmilla off-season to $500 all-in at Twin Dolphin including its mandatory caddie. The Tourist Corridor luxury baseline is $795 per night. Per GIM editorial research, mid-season 2026." },
+    { q: "How much does a golf trip to Los Cabos cost?", a: "Our 12 curated Los Cabos trips cost $2,043 to $6,542 per golfer for 4 nights and 3 rounds (4 golfers sharing double rooms), with the stay, green fees, taxes and our $100 planning fee included; flights are extra. Hotel El Ganzo is the lowest and Four Seasons Cabo del Sol the highest. The main variables are hotel choice and course selection. Green fees range from $95 at Palmilla off-season to $500 all-in at Twin Dolphin including its mandatory caddie. The Tourist Corridor luxury baseline is $795 per night. Per GIM editorial research, mid-season 2026." },
     { q: "Which is the best course in Los Cabos?", a: "Diamante Dunes is ranked No. 1 in Mexico by Golf Digest — the links standard. Quivira is the most visually dramatic. Cove Club at Cabo del Sol is historically significant and Golf Digest World Top 100. Twin Dolphin has the newest tournament-level greens. For value, Club Campestre at $135–$190 delivers conditions that rival courses three times the price. The right answer depends entirely on what kind of golfer you are." },
     { q: "Do I need to bring my own golf clubs?", a: "No. Premium rental sets — TaylorMade, Callaway — are available at all major courses for $50–$80 per round. Serious golfers will still prefer their own. Airlines typically charge $35–$50 each way for a golf bag. Quivira and Twin Dolphin offer current-year sets at their pro shops. Club rental is never a reason to skip a course in Los Cabos." },
     { q: "Are the courses walkable?", a: "Most are cart-mandatory or strongly cart-recommended. Desert terrain, dramatic elevation changes, and distances between holes make walking impractical. Quivira climbs 275 feet in the first five holes — it is not walkable. Club Campestre and Palmilla have more manageable terrain. The caddie walks with you regardless of cart policy — they are your on-course guide, not optional company." },
