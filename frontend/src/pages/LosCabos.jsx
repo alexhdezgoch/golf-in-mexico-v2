@@ -266,6 +266,83 @@ const H2 = ({ children, onDark = false, className = "" }) => (
   </h2>
 );
 
+/* Question-led guides (2026-10-27): each section opens with the question people search and a two-line answer,
+   which is what search and answer engines quote; the detail follows. Used when the hub data sets questionLayout. */
+const QA = ({ q, a, onDark = false, className = "mb-12" }) => (
+  <div className={className}>
+    <H2 onDark={onDark} className="max-w-[24ch]">{q}</H2>
+    <p className={`mt-6 max-w-[62ch] font-body text-[17px] md:text-[19px] leading-[1.55] ${onDark ? "text-white" : "text-[var(--c-text)]"}`}>
+      <strong className="font-bold">Short answer:</strong> {a}
+    </p>
+  </div>
+);
+
+const ACCESS = { public: "Open to the public", resort: "Resort guests first", private: "Private access" };
+
+/* The destinations side by side for readers still choosing; each row links to its own guide. */
+const CompareDestinations = ({ name, rows }) => (
+  <section data-testid="lc-compare" id="compare" className="bg-[var(--c-off-white)] py-20 md:py-28">
+    <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+      <H2 className="max-w-[24ch]">{name} or somewhere else?</H2>
+      <p className="mt-6 mb-10 max-w-[62ch] font-body text-[var(--c-text)] text-base md:text-lg leading-[1.6]">How {name} compares with Mexico's other golf destinations, from each one's own guide.</p>
+      <div className="border-[1.5px] border-[var(--c-text)] bg-[var(--c-surface)]">
+        <div className="hidden md:grid grid-cols-[1.1fr_2fr_0.6fr_1fr_0.9fr_0.6fr] gap-5 bg-[var(--c-green-deep)] px-5 py-3.5 font-mono text-[12px] uppercase tracking-[0.1em] text-white/85">
+          <span>Destination</span><span>Best for</span><span>Courses</span><span>Green fees</span><span>Best months</span><span>Airport</span>
+        </div>
+        {rows.map((r, i) => {
+          const here = r.name === name;
+          const Row = here ? "div" : Link;
+          return (
+            <Row key={r.slug} {...(here ? {} : { to: `/destinations/${r.slug}` })} data-testid={`lc-compare-${r.slug}`} className={`grid grid-cols-2 md:grid-cols-[1.1fr_2fr_0.6fr_1fr_0.9fr_0.6fr] gap-x-5 gap-y-2 px-5 py-4 ${i ? "border-t border-[var(--c-border)]" : ""} ${here ? "bg-[var(--c-off-white)]" : "group hover:bg-[var(--c-off-white)] transition-colors"}`}>
+              <span className="col-span-2 md:col-span-1 font-display font-extrabold uppercase text-[16px] text-[var(--c-text)] group-hover:text-[var(--c-live)]">{r.name}{here && <span className="block mt-1 font-mono text-[12px] font-normal tracking-[0.08em] text-[var(--c-live)]">This guide</span>}</span>
+              <span className="col-span-2 md:col-span-1 text-[15px] text-[var(--c-text)] leading-[1.5]">{r.bestFor}</span>
+              <span className="font-mono text-[14px] text-[var(--c-text)]"><span className="md:hidden text-[var(--c-text-mid)]">Courses </span>{r.courses}</span>
+              <span className="font-mono text-[14px] font-bold text-[var(--c-live)] whitespace-nowrap">{r.fees}</span>
+              <span className="font-mono text-[14px] text-[var(--c-text)]">{r.months}</span>
+              <span className="font-mono text-[14px] text-[var(--c-text)]">{r.airport}</span>
+            </Row>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+);
+
+/* Every course on one scorecard; each row opens to the full field note, signature hole and photo. */
+const CourseScorecard = ({ courses }) => (
+  <div className="border-[1.5px] border-white/80">
+    <div className="hidden md:grid grid-cols-[1.6fr_1.4fr_1fr_1.1fr_1.6fr_24px] gap-5 bg-white/[0.08] px-5 py-3.5 font-mono text-[12px] uppercase tracking-[0.1em] text-white/85">
+      <span>Course</span><span>Designer</span><span>Green fee</span><span>Access</span><span>Best for</span><span />
+    </div>
+    {courses.map((c, i) => (
+      <details key={c.name} data-testid={`lc-course-row-${i}`} className={`group ${i ? "border-t border-white/15" : ""}`}>
+        <summary className="list-none [&::-webkit-details-marker]:hidden cursor-pointer grid grid-cols-[1fr_24px] md:grid-cols-[1.6fr_1.4fr_1fr_1.1fr_1.6fr_24px] gap-x-5 gap-y-1.5 px-5 py-4 hover:bg-white/[0.04] transition-colors">
+          <span className="font-display font-extrabold uppercase text-[16px] text-white">{c.name}</span>
+          <span aria-hidden className="md:order-last justify-self-end text-[var(--c-gold)] text-xl leading-none transition-transform group-open:rotate-45">+</span>
+          <span className="col-span-2 md:col-span-1 text-[14px] text-white/85">{c.specs.split(" · ")[0]}</span>
+          <span className="col-span-2 md:col-span-1 font-mono text-[14px] font-bold text-[var(--c-gold)]">{c.fee}</span>
+          <span className="col-span-2 md:col-span-1 font-mono text-[12px] uppercase tracking-[0.06em] text-white/85 pt-0.5">{ACCESS[c.tier] || ""}</span>
+          <span className="col-span-2 md:col-span-1 text-[14px] text-white/85">{c.bestFor}</span>
+        </summary>
+        <div className="px-5 pb-8 pt-2 grid gap-8 md:grid-cols-12">
+          <div className="md:col-span-7 space-y-4">
+            <p className="font-mono text-[12px] uppercase tracking-[0.08em] text-white/70">{c.specs} · Difficulty {c.difficulty}</p>
+            <p className="text-[16px] text-white leading-[1.65]">{c.note}</p>
+            {c.standout && <p className="text-[15px] text-white/85 leading-[1.6]"><span className="font-mono text-[12px] uppercase tracking-[0.08em] text-[var(--c-gold)] mr-2">Signature hole</span>{c.standout}</p>}
+            {c.page && <a href={c.page} className="inline-block font-mono text-[13px] uppercase tracking-[0.08em] text-[var(--c-gold)] underline underline-offset-4 hover:text-white">Full {c.name} guide</a>}
+          </div>
+          {c.photos?.[0] && (
+            <figure className="md:col-span-5">
+              <img src={c.photos[0]} alt={c.name} loading="lazy" className="w-full aspect-[4/3] object-cover" />
+              {c.photoSource && <figcaption className="mt-2 font-mono text-[11px] uppercase tracking-[0.06em] text-white/60">{c.photoSource}</figcaption>}
+            </figure>
+          )}
+        </div>
+      </details>
+    ))}
+  </div>
+);
+
 /* ═══════════════════════════════════════════════════════════════════
    HERO SLIDER — self-scrolling film strip with arrow controls.
 
@@ -743,6 +820,8 @@ const LosCabos = ({ slug = "los-cabos" }) => {
       </section>
       )}
 
+      {data.questionLayout && data.compare && <CompareDestinations name={data.name} rows={data.compare} />}
+
       {/* ═════════ S1.5  HERO PHOTO SLIDER — Before Quick Facts ═════════ */}
       {!data.isDestinationList && (
         <HeroSlider
@@ -760,11 +839,15 @@ const LosCabos = ({ slug = "los-cabos" }) => {
       {/* ═════════ S5. COURSE ROSTER — DARK · EDITORIAL LIST ═════════ */}
       <section data-testid="lc-courses" id="courses" className="bg-[var(--c-green-deep)] text-white py-24 md:py-32">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+          {data.questionLayout ? (
+            <QA onDark q={data.coursesQ} a={data.coursesA} />
+          ) : (<>
           <Label onDark>{data.coursesLabel}</Label>
           <H2 onDark className="mb-5">{data.coursesH2Pre} <em className="italic text-[var(--c-gold)]">{data.coursesH2Em}</em></H2>
           <p className="font-body font-light text-white/65 text-base md:text-lg max-w-2xl mb-16 leading-[1.7]">
             {data.coursesIntro}
           </p>
+          </>)}
 
           {/* Destination list (Unique hub) — minimal editorial list, no specs */}
           {data.isDestinationList && data.destinations ? (
@@ -799,6 +882,8 @@ const LosCabos = ({ slug = "los-cabos" }) => {
             <div className="mt-16">
               <CourseSlider hubSlug={slug} hubCourses={COURSES} />
             </div></>
+          ) : data.questionLayout ? (
+          <CourseScorecard courses={COURSES} />
           ) : (
           <CourseSlider hubSlug={slug} hubCourses={COURSES} />
           )}
@@ -809,11 +894,15 @@ const LosCabos = ({ slug = "los-cabos" }) => {
       {!data.isDestinationList && (
       <section data-testid="lc-costs" id="costs" className="bg-[var(--c-off-white)] py-24 md:py-32">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+          {data.questionLayout ? (
+            <QA q={data.costsQ} a={data.costsA} className="mb-10" />
+          ) : (<>
           <Label>{data.costsLabel}</Label>
           <H2 className="mb-8">{data.costsH2Pre} <em className="italic text-[var(--c-gold)]">{data.costsH2Em}</em></H2>
           <p className="max-w-[680px] font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] mb-12">
             {data.costsIntro}
           </p>
+          </>)}
 
           <div className="overflow-x-auto border-[1.5px] border-[var(--c-text)] bg-[var(--c-surface)]">
             <table className="w-full text-sm min-w-[640px]">
@@ -864,8 +953,10 @@ const LosCabos = ({ slug = "los-cabos" }) => {
       {!data.isDestinationList && (
       <section data-testid="lc-season" id="season" className="bg-[var(--c-green-deep)] text-white py-24 md:py-32">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+          {data.questionLayout ? <QA onDark q={data.seasonQ} a={data.seasonA} /> : (<>
           <Label onDark>{data.seasonLabel}</Label>
           <H2 onDark className="mb-14">{data.seasonH2Pre} <em className="italic text-[var(--c-gold)]">{data.seasonH2Em}</em></H2>
+          </>)}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-[2px]">
             {data.seasonBlocks.map((s, idx) => {
               const borderClass = idx === 0 ? "border-[var(--c-gold)]" : idx === 1 ? "border-[var(--c-gold)]/50" : "border-[var(--c-gold)]/20";
@@ -886,8 +977,10 @@ const LosCabos = ({ slug = "los-cabos" }) => {
       {!data.isDestinationList && (
       <section data-testid="lc-logistics" id="logistics" className="bg-[var(--c-off-white)] py-24 md:py-32">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+          {data.questionLayout ? <QA q={data.logisticsQ} a={data.logisticsA} /> : (<>
           <Label>{data.logisticsLabel}</Label>
           <H2 className="mb-14">{data.logisticsH2Pre} <em className="italic text-[var(--c-gold)]">{data.logisticsH2Em}</em></H2>
+          </>)}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 max-w-[1100px]">
             {data.logistics.map((c) => (
               <div key={c.title} className="bg-[var(--c-surface)] p-6 md:p-7 flex flex-col gap-3">
@@ -904,11 +997,23 @@ const LosCabos = ({ slug = "los-cabos" }) => {
       {/* ═════════ S3. OVERVIEW — PAPER ═════════ */}
       <section data-testid="lc-overview" id="overview" className="bg-[var(--c-off-white)] py-24 md:py-32">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+          {data.questionLayout ? (<>
+            <QA q={data.overviewQ} a={data.overviewA} className="mb-8" />
+            <details className="group max-w-[680px] border-t border-b border-[var(--c-border)]">
+              <summary className="list-none [&::-webkit-details-marker]:hidden cursor-pointer flex items-center justify-between gap-4 py-5 font-mono text-[13px] uppercase tracking-[0.1em] text-[var(--c-live)] font-bold">
+                Read the full guide <span aria-hidden className="text-xl leading-none transition-transform group-open:rotate-45">+</span>
+              </summary>
+              <div className="pb-8 space-y-6 text-[var(--c-text)] text-base md:text-lg leading-[1.75]">
+                {data.overviewParagraphs.map((p, i) => (<p key={i}>{p}</p>))}
+              </div>
+            </details>
+          </>) : (<>
           <Label>{data.overviewLabel}</Label>
           <H2 className="mb-12">{data.overviewH2Pre} <em className="italic text-[var(--c-gold)]">{data.overviewH2Em}</em></H2>
           <div className="max-w-[680px] space-y-6 text-[var(--c-text)] text-base md:text-lg leading-[1.75]" style={{ fontFamily: "var(--font-body)" }}>
             {data.overviewParagraphs.map((p, i) => (<p key={i}>{p}</p>))}
           </div>
+          </>)}
 
           {/* Data strip */}
           <div className="mt-14 max-w-[860px] border-t border-[var(--c-gold)] pt-8 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
