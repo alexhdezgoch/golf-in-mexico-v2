@@ -819,3 +819,6 @@ h3 { line-height: 1.1 !important; letter-spacing: -0.01em; }
 ::selection { background-color: var(--c-gold); color: var(--c-green-deep); }
 .font-light:not(h1):not(h2):not(h3) { font-weight: 400 !important; }
 :is(h1, h2, h3):is(.font-light, .font-normal, .font-medium, .font-semibold, .font-bold) { font-weight: 800 !important; }
+
+/* Homepage pass (2026-10-27): kit labels at a readable size; no pill corners on the site's own buttons. */
+.nav-link-modern { font-size: 12px !important; letter-spacing: 0.1em !important; }
