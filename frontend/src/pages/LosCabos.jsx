@@ -308,6 +308,84 @@ const CompareDestinations = ({ name, rows }) => (
   </section>
 );
 
+/* What a trip costs, from our own curated trips priced on one basis: each stay with its golf, taxes and our fee, cheapest
+   first, then what the price leaves out. Replaces the generic cost estimate where the hub has curated trips (2026-10-27). */
+const usd = (n) => "$" + n.toLocaleString("en-US");
+const CuratedCosts = ({ data }) => (
+  <>
+    <p className="mb-4 font-mono text-[12px] uppercase tracking-[0.08em] text-[var(--c-text-mid)]">{data.curatedBasis} · {data.curatedAsOf}</p>
+    {/* Phones: one card per stay, the total first; the full breakdown table from tablets up. */}
+    <ul className="md:hidden border-[1.5px] border-[var(--c-text)] bg-[var(--c-surface)]">
+      {data.curatedTrips.map((t, i) => (
+        <li key={t.stay} className={`px-4 py-4 ${i ? "border-t border-[var(--c-border)]" : ""}`}>
+          <div className="flex items-baseline justify-between gap-3">
+            <span className="font-display font-extrabold uppercase text-[15px] text-[var(--c-text)]">{t.stay}</span>
+            <span className="font-mono text-[16px] font-bold text-[var(--c-live)] whitespace-nowrap">{usd(t.total)}</span>
+          </div>
+          <p className="mt-1 font-mono text-[12px] uppercase tracking-[0.06em] text-[var(--c-text-mid)]">{t.type}{t.note ? ` · ${t.note}` : ""}</p>
+          <p className="mt-1.5 text-[14px] text-[var(--c-text)] leading-[1.5]">{t.courses}</p>
+          <p className="mt-1.5 font-mono text-[12px] text-[var(--c-text-mid)]">Stay {usd(t.room)} · Golf {usd(t.golf)} · Taxes {usd(t.taxes)} · Fee $100</p>
+        </li>
+      ))}
+    </ul>
+    <div className="hidden md:block overflow-x-auto border-[1.5px] border-[var(--c-text)] bg-[var(--c-surface)]">
+      <table className="w-full min-w-[760px] text-left" data-testid="lc-curated-costs">
+        <thead>
+          <tr className="bg-[var(--c-green-deep)] font-mono text-[12px] uppercase tracking-[0.1em] text-white/85">
+            <th scope="col" className="font-normal py-3.5 px-4">Stay</th>
+            <th scope="col" className="font-normal py-3.5 px-4">Courses</th>
+            <th scope="col" className="font-normal py-3.5 px-4 text-right">Stay</th>
+            <th scope="col" className="font-normal py-3.5 px-4 text-right">Golf</th>
+            <th scope="col" className="font-normal py-3.5 px-4 text-right">Taxes</th>
+            <th scope="col" className="font-normal py-3.5 px-4 text-right">Our fee</th>
+            <th scope="col" className="font-normal py-3.5 px-4 text-right text-[var(--c-gold)]">Per golfer</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.curatedTrips.map((t) => (
+            <tr key={t.stay} className="border-t border-[var(--c-border)] align-top">
+              <th scope="row" className="py-3.5 px-4 font-normal">
+                <span className="block font-display font-extrabold uppercase text-[15px] text-[var(--c-text)]">{t.stay}</span>
+                <span className="block font-mono text-[12px] uppercase tracking-[0.06em] text-[var(--c-text-mid)] mt-1">{t.type}{t.note ? ` · ${t.note}` : ""}</span>
+              </th>
+              <td className="py-3.5 px-4 text-[14px] text-[var(--c-text)] leading-[1.5]">{t.courses}</td>
+              <td className="py-3.5 px-4 font-mono text-[14px] text-right text-[var(--c-text)]">{usd(t.room)}</td>
+              <td className="py-3.5 px-4 font-mono text-[14px] text-right text-[var(--c-text)]">{usd(t.golf)}</td>
+              <td className="py-3.5 px-4 font-mono text-[14px] text-right text-[var(--c-text)]">{usd(t.taxes)}</td>
+              <td className="py-3.5 px-4 font-mono text-[14px] text-right text-[var(--c-text)]">$100</td>
+              <td className="py-3.5 px-4 font-mono text-[15px] font-bold text-right text-[var(--c-live)] border-l-4 border-double border-[var(--c-text)]">{usd(t.total)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p className="mt-4 max-w-[80ch] text-[14px] text-[var(--c-text-mid)] leading-[1.6]">Planning estimates at published rates, taxes included, not offers: your written proposal confirms the price. Hotels and villas charge you directly; our fee is the planning.</p>
+
+    <div className="mt-12 grid gap-8 md:grid-cols-12 items-start">
+      <div className="md:col-span-5">
+        <h3 className="font-display text-[var(--c-text)] text-xl md:text-2xl">Not in the trip price</h3>
+        <p className="mt-3 text-[15px] text-[var(--c-text)] leading-[1.6]">Budget these on top, per person, for the same 4 nights.</p>
+      </div>
+      <ul className="md:col-span-7 border-[1.5px] border-[var(--c-text)] bg-[var(--c-surface)]">
+        {data.curatedExtras.map(([l, v, n], i) => (
+          <li key={l} className={`grid grid-cols-[1fr_auto] gap-x-4 gap-y-0.5 px-5 py-3.5 ${i ? "border-t border-[var(--c-border)]" : ""}`}>
+            <span className="text-[15px] text-[var(--c-text)]">{l}</span>
+            <span className="font-mono text-[14px] text-[var(--c-text)] text-right">{v}</span>
+            <span className="col-span-2 text-[13px] text-[var(--c-text-mid)]">{n}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div className="mt-10 flex flex-wrap items-center gap-4">
+      <a href={PLAN_HREF[data.slug] || "/trip-builder"} data-testid="lc-costs-plan" className="inline-flex items-center justify-center min-h-[52px] px-7 bg-[var(--c-green-deep)] hover:bg-[var(--c-live)] text-white font-body font-extrabold text-[14px] uppercase tracking-[0.03em] transition-colors duration-300">
+        Price my group's trip
+      </a>
+      <span className="text-[14px] text-[var(--c-text-mid)]">Your dates, your group size, any of these stays.</span>
+    </div>
+  </>
+);
+
 /* Every course on one scorecard; each row opens to the full field note, signature hole and photo. */
 const CourseScorecard = ({ courses }) => (
   <div className="border-[1.5px] border-white/80">
@@ -904,6 +982,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
           </p>
           </>)}
 
+          {data.curatedTrips ? <CuratedCosts data={data} /> : (<>
           <div className="overflow-x-auto border-[1.5px] border-[var(--c-text)] bg-[var(--c-surface)]">
             <table className="w-full text-sm min-w-[640px]">
               <thead>
@@ -936,6 +1015,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
               </tbody>
             </table>
           </div>
+          </>)}
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5">
             {data.callouts.map((c) => (
