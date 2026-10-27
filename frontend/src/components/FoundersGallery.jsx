@@ -57,7 +57,7 @@ const StillSlider = ({ photos, name, testid }) => {
         />
         <span
           data-testid={`${testid}-counter`}
-          className="absolute top-4 left-4 font-mono text-[10px] uppercase tracking-[0.18em] text-white/95 bg-black/35 backdrop-blur-sm px-2.5 py-1 rounded-sm"
+          className="absolute top-4 left-4 font-mono text-[12px] uppercase tracking-[0.1em] text-white bg-[var(--c-green-deep)] px-2.5 py-1"
         >
           {String(idx + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}
         </span>
@@ -113,11 +113,11 @@ const FoundersGallery = () => (
   >
     <div className="max-w-[1240px] mx-auto px-6 md:px-12">
       <div className="text-center mb-14 md:mb-20">
-        <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-[var(--c-gold)]">
+        <span className="font-mono text-[13px] uppercase tracking-[0.12em] text-[var(--c-live)]">
           The team
         </span>
         <h2 className="mt-5 font-display font-light text-[var(--c-text)] text-3xl md:text-5xl lg:text-[3.5rem] leading-[1.05] tracking-tight max-w-[22ch] mx-auto">
-          An agent and a tour pro <em className="italic text-[var(--c-gold)]">behind every itinerary.</em>
+          An agent and a tour pro behind every itinerary.
         </h2>
         {/* Plain <p>, not a motion element, so the prerendered HTML ships it visible. */}
         <p
@@ -153,7 +153,7 @@ const FoundersGallery = () => (
               {f.name}
             </h3>
             <p
-              className="font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--c-gold)]"
+              className="font-mono text-[13px] uppercase tracking-[0.1em] text-[var(--c-live)]"
               itemProp="jobTitle"
             >
               {f.role}
