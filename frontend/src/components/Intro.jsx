@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 const LINES = [
   { text: "Curating the best", italic: false },
   { text: "golf experiences", italic: false },
-  { text: "in Mexico.", italic: true },
+  { text: "in Mexico.", italic: false },
 ];
 
 const Intro = ({ onDone }) => {
@@ -22,10 +22,10 @@ const Intro = ({ onDone }) => {
     } catch (e) {
       // ignore storage errors
     }
-    const t1 = setTimeout(() => setPhase("out"), 3600);
+    const t1 = setTimeout(() => setPhase("out"), 2600);
     const t2 = setTimeout(() => {
       onDone && onDone();
-    }, 4400);
+    }, 3300);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
@@ -77,7 +77,7 @@ const Intro = ({ onDone }) => {
                   delay: 0.55 + i * 0.55,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className={`font-display font-light text-ink text-5xl md:text-7xl lg:text-[7.5rem] tracking-tight leading-[0.95] ${
+                className={`font-display font-extrabold uppercase text-ink text-5xl md:text-7xl lg:text-[7.5rem] tracking-[-0.04em] leading-[0.9] ${
                   line.italic ? "italic" : ""
                 }`}
               >
