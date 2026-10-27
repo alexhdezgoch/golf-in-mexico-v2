@@ -48,9 +48,9 @@ const SOCIALS = [
   { href: "https://www.linkedin.com/company/golfinmexico/", label: "LinkedIn", path: "M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05A3.74 3.74 0 0 1 16.2 8.7c3.6 0 4.26 2.37 4.26 5.45v6.3ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z" },
 ];
 
-const LABEL = "font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-gold)]";
-const LINK = "font-body font-light text-[14px] text-white/75 hover:text-[var(--c-gold)] transition-colors duration-300";
-const MICRO = "font-mono text-[10px] uppercase tracking-[0.18em] text-white/35 hover:text-[var(--c-gold)] transition-colors duration-300";
+const LABEL = "font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-gold)]";
+const LINK = "font-body text-[15px] text-white/85 hover:text-[var(--c-gold)] transition-colors duration-300";
+const MICRO = "font-mono text-[12px] uppercase tracking-[0.1em] text-white/60 hover:text-[var(--c-gold)] transition-colors duration-300";
 
 const NavItem = ({ l, className, testId }) =>
   l.href ? (
@@ -79,13 +79,13 @@ const Footer = () => {
   };
 
   return (
-    <footer data-testid="site-footer" className="relative z-10 bg-[#0a0a0a] text-white">
+    <footer data-testid="site-footer" className="relative z-10 bg-[var(--c-green-deep)] text-white">
       <div className="max-w-[1240px] mx-auto px-6 md:px-12">
         <div data-testid="footer-grid" className="grid gap-10 md:grid-cols-12 md:gap-8 py-12 md:py-14 border-b border-white/[0.08]">
           <div data-testid="footer-col-newsletter" className="md:col-span-5 flex flex-col gap-4">
             <img src="/logo-wordmark.png" alt="GOLF° IN MEXICO°" loading="lazy" className="h-7 w-auto self-start" />
             <h2 data-testid="footer-newsletter-headline" className="mt-2 font-display font-normal text-white text-lg leading-[1.2]">
-              Stay <em className="italic text-[var(--c-gold)]">inside</em> the ropes.
+              Stay inside the ropes.
             </h2>
             {!submitted ? (
               <form data-testid="newsletter-form" onSubmit={onSubmit} className="flex flex-col gap-2 max-w-sm">
@@ -107,7 +107,7 @@ const Footer = () => {
                     type="submit"
                     disabled={submitting}
                     data-testid="newsletter-submit-button"
-                    className="group inline-flex items-center justify-center bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-4 ml-2 rounded-sm font-mono text-[10px] uppercase tracking-[0.16em] transition-colors duration-300 whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="group inline-flex items-center justify-center bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-4 ml-2 font-body font-extrabold text-[13px] uppercase tracking-[0.03em] transition-colors duration-300 whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     {submitting ? "…" : "Subscribe"}
                     <span className="ml-2 inline-block transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true">→</span>
@@ -161,7 +161,7 @@ const Footer = () => {
                 ))}
                 <li>
                   <a href="/trip-builder" data-testid="footer-plan-trip" className="font-body text-[14px] text-[var(--c-gold)] hover:text-[var(--c-gold-light)] transition-colors duration-300">
-                    Explore trips →
+                    Plan my trip
                   </a>
                 </li>
               </ul>
@@ -216,7 +216,7 @@ const Footer = () => {
         </div>
 
         <div className="py-7 flex flex-col gap-3">
-          <p data-testid="footer-role" className="max-w-[110ch] font-body font-light text-[11px] leading-[1.6] text-white/40">
+          <p data-testid="footer-role" className="max-w-[110ch] font-body text-[13px] leading-[1.6] text-white/60">
             GOLF° IN MEXICO° is a golf trip planning service, not a travel agency: we do not sell travel or take payment for it. Hotel stays are booked through {FORA.name}, of which we are an independent advisor, and villas with the
             properties that operate them; each one charges you directly. We charge only for planning. Prices on this site are planning estimates at published rates, taxes included, not offers: your written proposal confirms the
             price. Nothing is paid on this site. Course names, tournaments and rankings belong to their owners and are cited as facts; we are not affiliated with or endorsed by them. {FORA.name} is registered as a seller of travel:{" "}
