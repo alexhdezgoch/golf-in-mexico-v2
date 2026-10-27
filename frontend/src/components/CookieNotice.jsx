@@ -50,7 +50,7 @@ const CookieNotice = () => {
           type="button"
           onClick={() => choose("yes")}
           data-testid="cookie-accept"
-          className="inline-flex min-h-[2.5rem] items-center rounded-sm bg-[var(--c-green-deep)] px-4 font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--c-off-white)]"
+          className="inline-flex min-h-[2.5rem] items-center rounded-sm bg-[var(--c-green-deep)] px-4 font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-off-white)]"
         >
           {ask === "ask" ? "Accept" : "OK"}
         </button>
@@ -58,7 +58,7 @@ const CookieNotice = () => {
           type="button"
           onClick={() => choose("no")}
           data-testid="cookie-decline"
-          className="inline-flex min-h-[2.5rem] items-center rounded-sm border border-[var(--c-text)]/40 px-4 font-mono text-[11px] uppercase tracking-[0.12em] hover:border-[var(--c-text)]"
+          className="inline-flex min-h-[2.5rem] items-center rounded-sm border border-[var(--c-text)]/40 px-4 font-mono text-[12px] uppercase tracking-[0.12em] hover:border-[var(--c-text)]"
         >
           {ask === "ask" ? "Decline" : "Turn off"}
         </button>

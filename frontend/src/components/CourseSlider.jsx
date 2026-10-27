@@ -62,16 +62,16 @@ const CourseSlider = ({ hubSlug, hubCourses = [] }) => {
             <a href={c.href} className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white/[0.06] ring-1 ring-white/10 transition hover:bg-white/[0.1]" data-testid={`lc-course-card-${c.slug}`}>
               <span className="relative block aspect-[4/3] overflow-hidden bg-white/5">
                 {c.photo && <img src={c.photo.src} alt={c.name} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />}
-                {c.label && <span className="absolute left-3 top-3 rounded-full bg-[var(--c-gold)] px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--c-green-deep)]">{c.label}</span>}
+                {c.label && <span className="absolute left-3 top-3 bg-[var(--c-gold)] px-2.5 py-1 font-body font-extrabold text-[14px] uppercase tracking-[0.03em] text-[var(--c-green-deep)]">{c.label}</span>}
               </span>
-              <span className="block min-h-[1.5rem] px-5 pt-2 font-mono text-[9px] uppercase tracking-[0.14em] text-white/40">{c.photo?.credit ? `Photo: ${c.photo.credit}` : ""}</span>
+              <span className="block min-h-[1.5rem] px-5 pt-2 font-mono text-[9px] uppercase tracking-[0.12em] text-white/40">{c.photo?.credit ? `Photo: ${c.photo.credit}` : ""}</span>
               <span className="flex flex-1 flex-col px-5 pb-5 pt-1">
                 <span className="course-name block text-lg uppercase leading-tight tracking-wide text-white">{c.name}</span>
-                <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--c-gold)]/85">{c.architect}</span>
+                <span className="mt-1 block font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-gold)]/85">{c.architect}</span>
                 {c.note && <span className="mt-3 block text-[13px] leading-[1.6] text-white/70 line-clamp-3">{c.note}</span>}
                 <span className="mt-auto flex items-center justify-between gap-3 pt-5">
                   <span className="font-mono text-[12px] font-bold text-[var(--c-gold)]">{c.guestsOnly ? "Hotel guests" : c.greenFee != null ? `${usd(c.greenFee)} green fee` : "Fee on request"}</span>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/70 group-hover:text-white">View course →</span>
+                  <span className="font-mono text-[12px] uppercase tracking-[0.12em] text-white/70 group-hover:text-white">View course →</span>
                 </span>
               </span>
             </a>

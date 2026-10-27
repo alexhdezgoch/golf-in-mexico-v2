@@ -122,7 +122,7 @@ const TeamEditorial = () => {
                 </span>
                 <span className="flex flex-col leading-tight min-w-0">
                   <span
-                    className={`font-mono text-[8px] md:text-[10px] uppercase tracking-[0.16em] ${
+                    className={`font-mono text-[11px] md:text-[12px] uppercase tracking-[0.1em] ${
                       isActive ? "" : "text-[var(--c-text-muted)]"
                     }`}
                     style={isActive ? { color: t.accent } : {}}
@@ -148,7 +148,7 @@ const TeamEditorial = () => {
             <motion.div key={active.id} {...fadeUp} className="grid grid-cols-12 gap-6 md:gap-10">
               {/* Left meta */}
               <div className="col-span-12 md:col-span-3">
-                <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-text-muted)]">
+                <span className="font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-text-muted)]">
                   {active.number} — {active.label}
                 </span>
                 <h3 className="mt-3 font-display text-xl md:text-2xl font-normal text-[var(--c-text)] tracking-tight">
@@ -162,7 +162,7 @@ const TeamEditorial = () => {
                     {active.credentials.map((c) => (
                       <li
                         key={c}
-                        className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--c-gold)] leading-[1.6]"
+                        className="font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-live)] leading-[1.6]"
                       >
                         {c}
                       </li>
@@ -170,9 +170,9 @@ const TeamEditorial = () => {
                   </ul>
                 )}
                 {active.roleParts && (
-                  <span className="block mt-1 font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: active.accent }}>
+                  <span className="block mt-1 font-mono text-[12px] uppercase tracking-[0.12em]" style={{ color: active.accent }}>
                     {active.roleParts.map((p, idx) => (
-                      <span key={idx} className={p.gold ? "text-[var(--c-gold)]" : ""}>
+                      <span key={idx} className={p.gold ? "text-[var(--c-live)]" : ""}>
                         {p.text}
                       </span>
                     ))}
@@ -186,7 +186,7 @@ const TeamEditorial = () => {
                 {isPablo && (
                   <blockquote
                     data-testid="pablo-quote"
-                    className="border-l-2 border-[var(--c-gold)] pl-6 md:pl-8 font-display italic font-normal text-[var(--c-text)] text-2xl md:text-4xl leading-[1.3] max-w-3xl"
+                    className="border-l-2 border-[var(--c-gold)] pl-6 md:pl-8 font-display font-normal text-[var(--c-text)] text-2xl md:text-4xl leading-[1.3] max-w-3xl"
                   >
                     &ldquo;{active.quote.join(" ")}&rdquo;
                   </blockquote>
@@ -198,7 +198,7 @@ const TeamEditorial = () => {
                     data-testid={`manifesto-headline-${active.id}`}
                     className="font-display font-normal text-[var(--c-text)] text-2xl md:text-4xl leading-[1.2] tracking-tight max-w-3xl"
                   >
-                    The game is played <em className="italic text-[var(--c-gold)]">differently here.</em>
+                    The game is played differently here.
                   </h3>
                 )}
 
@@ -207,7 +207,7 @@ const TeamEditorial = () => {
                     data-testid="gim-result-heading"
                     className="font-display font-normal text-[var(--c-text)] text-2xl md:text-4xl leading-[1.2] tracking-tight max-w-3xl"
                   >
-                    The <em className="italic text-[var(--c-gold)]">result.</em>
+                    The result.
                   </h3>
                 )}
 
@@ -225,7 +225,7 @@ const TeamEditorial = () => {
                     {active.signature && (
                       <p
                         data-testid={`signature-${active.id}`}
-                        className="mt-6 md:mt-8 font-display italic font-normal text-[var(--c-text)] text-lg md:text-xl"
+                        className="mt-6 md:mt-8 font-display font-normal text-[var(--c-text)] text-lg md:text-xl"
                       >
                         {active.signature}
                       </p>
@@ -258,7 +258,7 @@ const TeamEditorial = () => {
 
                 {isGIM && (
                   <div data-testid="gim-result-body" className="mt-7 md:mt-9 max-w-2xl">
-                    <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75]">
+                    <p className="font-body text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75]">
                       We built this platform to amplify the voices of the ultimate insiders. Caddies, course directors, designers, and the culinary minds shaping every premium itinerary in Mexico.{" "}
                       <em className="not-italic font-normal text-[var(--c-text)]">
                         Their stories. Their execution. Their perspective.
