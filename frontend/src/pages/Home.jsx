@@ -32,7 +32,7 @@ const StatementAndVideo = () => (
         data-testid="home-section-heading"
         className="font-display font-normal text-[var(--c-text)] leading-[1.05] tracking-tight text-3xl md:text-5xl lg:text-6xl max-w-[24ch] mb-10 md:mb-14"
       >
-        We help global golfers play Mexico&apos;s <em className="italic text-[var(--c-gold)]">top golf experiences.</em>
+        We help global golfers play Mexico&apos;s top golf experiences.
       </motion.h2>
 
       <motion.p
@@ -41,7 +41,7 @@ const StatementAndVideo = () => (
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 0.95, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         data-testid="home-statement"
-        className="font-body font-light text-[var(--c-text-mid)] leading-[1.7] text-lg md:text-xl max-w-[52ch] mb-6 md:mb-8"
+        className="font-body text-[var(--c-text)] leading-[1.6] text-lg md:text-xl max-w-[46ch] mb-10 md:mb-14"
       >
         Powered by our professional golf experience, we curate trips around
         the best courses, authentic local experiences, and optimized value
@@ -54,7 +54,7 @@ const StatementAndVideo = () => (
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
         data-testid="home-video-frame"
-        className="relative aspect-[16/9] w-full overflow-hidden bg-[var(--c-green-deep)] rounded-sm shadow-[0_40px_100px_-40px_rgba(15,36,25,0.5)]"
+        className="relative aspect-[16/9] w-full overflow-hidden bg-[var(--c-green-deep)]"
       >
         <video
           data-testid="home-video"
@@ -63,20 +63,12 @@ const StatementAndVideo = () => (
           muted
           playsInline
           preload="metadata"
+          poster={HOME_DIVIDER_IMG}
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src={HOME_VIDEO_SRC_WEBM} type="video/webm" />
           <source src={HOME_VIDEO_SRC} type="video/mp4" />
         </video>
-        {/* Subtle gradient frame so the video doesn't fight the cream background */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(120% 100% at 50% 50%, rgba(0,0,0,0) 60%, rgba(15,36,25,0.18) 100%)",
-          }}
-        />
       </motion.div>
     </div>
   </section>
@@ -174,7 +166,7 @@ const Home = () => {
             className="font-display font-normal text-white leading-[1.02] tracking-tight text-[9vw] md:text-[6.2vw] lg:text-[5.6rem] max-w-[18ch] mx-auto"
           >
             There is no golf destination{" "}
-            <span className="italic text-[var(--c-gold)]">like Mexico.</span>
+            <span>like Mexico.</span>
           </motion.h1>
 
           {/* Deliberately a plain <p>, not a motion element: the prerenderer captures
@@ -196,9 +188,9 @@ const Home = () => {
             <a
               href="/trip-builder"
               data-testid="hero-cta-discover"
-              className="group mt-10 md:mt-14 inline-flex items-center gap-3 border border-[var(--c-gold)] text-white px-7 md:px-9 py-4 md:py-[18px] rounded-sm font-mono text-[11px] md:text-[12px] uppercase tracking-[0.18em] hover:bg-[var(--c-gold)] hover:text-[var(--c-green-deep)] transition-colors duration-500"
+              className="group mt-10 md:mt-14 inline-flex items-center gap-3 bg-[var(--c-gold)] text-[var(--c-green-deep)] px-8 md:px-10 min-h-[56px] font-body font-extrabold text-[14px] md:text-[15px] uppercase tracking-[0.03em] hover:bg-[var(--c-gold-light)] transition-colors duration-300"
             >
-              Explore trips
+              Plan my trip
               <span className="transition-transform duration-500 group-hover:translate-x-1.5">→</span>
             </a>
           </motion.div>
