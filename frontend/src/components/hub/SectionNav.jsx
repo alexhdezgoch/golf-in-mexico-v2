@@ -8,11 +8,11 @@ import { useEffect, useState, useCallback } from "react";
    ═══════════════════════════════════════════════════════════════════ */
 
 const LINKS = [
-  { id: "overview",  label: "Overview" },
   { id: "courses",   label: "Courses" },
   { id: "costs",     label: "Costs" },
-  { id: "logistics", label: "Logistics" },
-  { id: "season",    label: "Season" },
+  { id: "season",    label: "When to play" },
+  { id: "logistics", label: "Getting there" },
+  { id: "overview",  label: "The guide" },
   { id: "faq",       label: "FAQ" },
 ];
 
