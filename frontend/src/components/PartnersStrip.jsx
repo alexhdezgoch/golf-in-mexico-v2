@@ -14,7 +14,7 @@ const PartnersStrip = ({ only, className = "" }) => {
       className={`bg-[var(--c-off-white)] border-y border-[var(--c-border)] py-14 md:py-16 ${className}`}
     >
       <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-        <h2 id="partners-title" className="font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--c-gold)] mb-8">
+        <h2 id="partners-title" className="font-mono text-[13px] uppercase tracking-[0.12em] text-[var(--c-live)] mb-8">
           Who we work with
         </h2>
         <ul className={`grid gap-8 sm:grid-cols-2 ${list.length > 3 ? "lg:grid-cols-5" : "lg:grid-cols-3"}`}>
