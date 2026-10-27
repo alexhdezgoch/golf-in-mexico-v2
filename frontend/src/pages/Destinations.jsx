@@ -104,17 +104,48 @@ const DestinationsHeader = () => (
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         className="font-display font-normal text-white leading-[0.96] tracking-tight text-5xl md:text-7xl lg:text-[5.5rem] max-w-[16ch]"
       >
-        Golf destinations in Mexico<span className="text-[var(--c-gold)]">.</span>
+        Golf destinations in Mexico.
       </motion.h1>
       <motion.p
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        className="mt-8 md:mt-10 font-body font-light text-white/65 text-base md:text-lg leading-[1.7] max-w-xl"
+        className="mt-8 md:mt-10 font-body text-white/85 text-base md:text-lg leading-[1.6] max-w-xl"
       >
         Curated destination guides and fact-based intelligence for Mexico&apos;s
         premier golf regions.
       </motion.p>
+    </div>
+  </section>
+);
+
+/* ─────────────── AT A GLANCE ───────────────
+   The six destinations side by side before the long cards (2026-10-27): courses, green fees and character on one
+   scorecard, each row a link to its guide. Same data as the cards below. */
+const DestinationsAtAGlance = () => (
+  <section data-testid="destinations-glance" aria-labelledby="glance-title" className="bg-[var(--c-off-white)] py-20 md:py-28">
+    <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+      <h2 id="glance-title" className="font-display text-[var(--c-text)] text-3xl md:text-5xl">Six places to play, side by side</h2>
+      <div className="mt-10 border-[1.5px] border-[var(--c-text)] bg-[var(--c-surface)]">
+        <div aria-hidden="true" className="hidden md:grid grid-cols-[1.4fr_1fr_0.9fr_1.7fr] gap-6 bg-[var(--c-green-deep)] px-5 py-3.5 font-mono text-[12px] uppercase tracking-[0.1em] text-white/80">
+          <span>Destination</span><span>Courses</span><span>Green fees</span><span>What it is</span>
+        </div>
+        <ul>
+          {REGIONS.map((d, i) => (
+            <li key={d.slug} className={`${i ? "border-t border-[var(--c-border)]" : ""}`}>
+              <Link to={d.href} className="group grid gap-2 md:gap-6 md:grid-cols-[1.4fr_1fr_0.9fr_1.7fr] px-5 py-4 md:items-baseline hover:bg-[var(--c-off-white)] transition-colors">
+                <span>
+                  <span className="block font-display font-extrabold uppercase text-[var(--c-text)] text-[17px] group-hover:text-[var(--c-live)]">{d.name}</span>
+                  <span className="block font-mono text-[12px] uppercase tracking-[0.08em] text-[var(--c-text-mid)] mt-1">{d.region}</span>
+                </span>
+                <span className="font-mono text-[14px] text-[var(--c-text)]">{d.courses}</span>
+                <span className="font-mono text-[14px] font-bold text-[var(--c-live)]">{d.greenFees}</span>
+                <span className="text-[15px] text-[var(--c-text)] leading-[1.5]">{d.tagline}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   </section>
 );
@@ -154,7 +185,7 @@ const DestinationCard = ({ d, index }) => {
         ease: [0.16, 1, 0.3, 1],
       }}
       data-testid={`region-card-${d.slug}`}
-      className="relative w-full overflow-hidden bg-[var(--c-green-deep)] min-h-[100svh] sm:min-h-[100svh] md:min-h-0 md:h-[780px] lg:h-[860px]"
+      className="relative w-full overflow-hidden bg-[var(--c-green-deep)] min-h-[88svh] md:min-h-0 md:h-[680px] lg:h-[720px]"
     >
       {/* Background image */}
       <Link
@@ -178,7 +209,7 @@ const DestinationCard = ({ d, index }) => {
       <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 pb-10 md:p-12 lg:p-16 pointer-events-none">
         <div className="max-w-[1100px] w-full mx-auto pointer-events-none">
           {/* Top meta */}
-          <div className="mb-4 md:mb-5 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.18em]">
+          <div className="mb-4 md:mb-5 font-mono text-[12px] uppercase tracking-[0.12em]">
             <span className="text-[var(--c-gold)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">{d.region}</span>
           </div>
 
@@ -188,12 +219,12 @@ const DestinationCard = ({ d, index }) => {
           </h2>
 
           {/* Tagline */}
-          <p className="mt-3 md:mt-4 font-display italic font-normal text-[var(--c-gold)] text-lg md:text-2xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">
+          <p className="mt-3 md:mt-4 font-mono uppercase tracking-[0.06em] text-[var(--c-gold)] text-[14px] md:text-[16px] drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">
             {d.tagline}
           </p>
 
           {/* Description */}
-          <p className="mt-6 md:mt-7 font-body font-light text-white/90 text-sm md:text-[15px] leading-[1.7] max-w-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)]">
+          <p className="mt-6 md:mt-7 font-body text-white text-[15px] md:text-[17px] leading-[1.6] max-w-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)]">
             {d.description}
           </p>
 
@@ -202,10 +233,9 @@ const DestinationCard = ({ d, index }) => {
               <Link
                 to={d.href}
                 data-testid={`region-cta-explore-${d.slug}`}
-                className="group inline-flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm border border-white text-white hover:bg-white hover:text-[var(--c-green-deep)] px-6 md:px-8 py-3 md:py-[14px] rounded-sm font-mono text-[10px] md:text-[11px] uppercase tracking-[0.18em] transition-colors duration-500"
+                className="inline-flex items-center justify-center min-h-[52px] px-7 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] font-body font-extrabold text-[14px] uppercase tracking-[0.03em] transition-colors duration-300"
               >
-                Explore
-                <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
+                Explore {d.name}
               </Link>
 
               {!open && !sent && (
@@ -213,9 +243,9 @@ const DestinationCard = ({ d, index }) => {
                   type="button"
                   onClick={(e) => { e.stopPropagation(); setOpen(true); }}
                   data-testid={`region-cta-capture-${d.slug}`}
-                  className="group inline-flex items-center justify-center gap-2 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-5 md:px-7 py-3 md:py-[14px] rounded-sm font-mono text-[10px] md:text-[11px] uppercase tracking-[0.16em] font-bold transition-colors duration-300 whitespace-nowrap shadow-[0_8px_24px_rgba(0,0,0,0.35)]"
+                  className="inline-flex items-center justify-center min-h-[52px] px-7 border border-white/70 text-white hover:bg-white hover:text-[var(--c-green-deep)] font-body font-extrabold text-[14px] uppercase tracking-[0.03em] transition-colors duration-300 whitespace-nowrap"
                 >
-                  <span>[ Keep me in the loop ]</span>
+                  <span>Keep me in the loop</span>
                 </button>
               )}
 
@@ -301,6 +331,7 @@ const Destinations = () => {
   return (
     <main data-testid="page-destinations" className="relative bg-[var(--c-off-white)]">
       <DestinationsHeader />
+      <DestinationsAtAGlance />
 
       <section
         id="regions"

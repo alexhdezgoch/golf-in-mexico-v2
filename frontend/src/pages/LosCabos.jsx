@@ -17,6 +17,22 @@ const LOCAL_PARTNER = { "los-cabos": "Cocobay", "cancun-riviera-maya": "The Pala
 import ConsentNotice from "@/components/ConsentNotice";
 
 /* Hero photo per destination */
+// Where "Plan my trip" and "See golf packages" go from each guide (the trip builder picks the place; 2026-10-27).
+const PLAN_HREF = {
+  "los-cabos": "/trip-builder?place=los-cabos",
+  "punta-mita": "/trip-builder?place=punta-mita",
+  "mexico-city": "/trip-builder?place=mexico-city",
+  "puerto-vallarta": "/trip-builder?place=puerto-vallarta",
+  "cancun-riviera-maya": "/trip-builder?place=cancun-riviera-maya",
+};
+const PACKAGES_HREF = {
+  "los-cabos": "/destinations/los-cabos/golf-packages",
+  "punta-mita": "/destinations/punta-mita/golf-packages",
+  "mexico-city": "/destinations/mexico-city/golf-packages",
+  "puerto-vallarta": "/destinations/puerto-vallarta/golf-packages",
+  "cancun-riviera-maya": "/destinations/cancun-riviera-maya/golf-packages",
+};
+
 const HERO_PHOTOS = {
   "los-cabos":            "/images/w5pux6b7-golfinmexico-156.webp",
   "punta-mita":           "/images/0wmultbm-dji-0048.webp",
@@ -239,7 +255,7 @@ const KEEP_EXPLORING = [
    ═══════════════════════════════════════════════════════════════════ */
 
 const Label = ({ children, onDark = false }) => (
-  <span className={`block font-mono text-[11px] uppercase tracking-[0.14em] mb-3 ${onDark ? "text-[var(--c-gold)]" : "text-[var(--c-gold)]"}`}>
+  <span className={`block font-mono text-[12px] uppercase tracking-[0.12em] font-bold mb-3 ${onDark ? "text-[var(--c-gold)]" : "text-[var(--c-live)]"}`}>
     {children}
   </span>
 );
@@ -684,24 +700,48 @@ const LosCabos = ({ slug = "los-cabos" }) => {
             className="hub-h1 font-display text-white text-5xl md:text-7xl lg:text-[5.25rem] max-w-[18ch]"
             style={{ textShadow: "0 2px 24px rgba(10,21,16,0.45)" }}
           >
-            {data.h1Pre} <em className="italic text-[var(--c-gold)]">{data.h1Em}</em>
+            {data.h1Pre} {data.h1Em}
           </motion.h1>
-          <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--c-gold)]">
+          <p className="mt-8 max-w-[62ch] font-body text-white text-base md:text-lg leading-[1.6]" style={{ textShadow: "0 1px 12px rgba(10,21,16,0.6)" }}>
+            {data.heroAnswer}
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <a href={PLAN_HREF[data.slug] || "/trip-builder"} data-testid="lc-hero-plan" className="inline-flex items-center justify-center min-h-[52px] px-7 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] font-body font-extrabold text-[14px] uppercase tracking-[0.03em] transition-colors duration-300">
+              Plan my {data.name} trip
+            </a>
+            {PACKAGES_HREF[data.slug] && (
+              <a href={PACKAGES_HREF[data.slug]} data-testid="lc-hero-packages" className="inline-flex items-center justify-center min-h-[52px] px-7 border border-white/70 text-white hover:bg-white hover:text-[var(--c-green-deep)] font-body font-extrabold text-[14px] uppercase tracking-[0.03em] transition-colors duration-300">
+                See golf packages
+              </a>
+            )}
+          </div>
+          <p className="mt-6 font-mono text-[12px] uppercase tracking-[0.12em] text-white/70">
             Updated May 2026
           </p>
         </div>
       </header>
 
-      {/* Hero answer block — sits on light surface, full-width readability */}
-      <section data-testid="lc-hero-answer" className="bg-[var(--c-off-white)] py-14 md:py-20 border-b border-[var(--c-border)]">
-        <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-          <blockquote className="border-l-2 border-[var(--c-gold)] pl-6 md:pl-10 max-w-[820px]">
-            <p className="font-display italic font-light text-[var(--c-text)] text-xl md:text-3xl leading-[1.45]">
-              {data.heroAnswer}
-            </p>
-          </blockquote>
+      {/* ═════════ 2. QUICK FACTS — SURFACE (hidden on destination-list hubs) ═════════ */}
+      {!data.isDestinationList && (
+      <section data-testid="lc-quickfacts" className="bg-[var(--c-surface)] py-20 md:py-28">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+          <div className="grid gap-10 md:grid-cols-12 md:gap-12 items-start">
+            <div className="md:col-span-4">
+              <H2>{data.name} at a glance</H2>
+              <p className="mt-5 font-body text-[var(--c-text)] text-base md:text-lg leading-[1.6] max-w-[36ch]">Everything you need to know before you book, on one card.</p>
+            </div>
+            <div className="md:col-span-8 bg-[var(--c-off-white)] border-[1.5px] border-[var(--c-text)]">
+              {QUICK_FACTS.map((f, i) => (
+                <div key={f.label + f.value} className={`grid grid-cols-1 sm:grid-cols-[170px_1fr] gap-x-6 gap-y-1 px-5 py-4 ${i ? "border-t border-[var(--c-border)]" : ""}`}>
+                  <div className="font-mono text-[12px] uppercase tracking-[0.1em] text-[var(--c-live)] font-bold pt-0.5">{f.label}</div>
+                  <div className="text-[15px] md:text-[16px] text-[var(--c-text)] leading-[1.5]">{f.value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
+      )}
 
       {/* ═════════ S1.5  HERO PHOTO SLIDER — Before Quick Facts ═════════ */}
       {!data.isDestinationList && (
@@ -715,83 +755,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
         />
       )}
 
-      {/* ═════════ 2. QUICK FACTS — SURFACE (hidden on destination-list hubs) ═════════ */}
-      {!data.isDestinationList && (
-      <section data-testid="lc-quickfacts" className="bg-[var(--c-surface)] py-20 md:py-28">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-          <Label>At a glance</Label>
-          <H2 className="mb-14">Everything you need to know <em className="italic text-[var(--c-gold)]">before you book.</em></H2>
-          <div className="max-w-[820px]">
-            <div className="divide-y divide-[var(--c-border)]">
-              {QUICK_FACTS.map((f) => (
-                <div key={f.label + f.value} className="grid grid-cols-[24px_1fr] md:grid-cols-[28px_180px_1fr] gap-x-3 gap-y-1 md:gap-3 items-start py-4">
-                  <div className="text-[var(--c-gold)] pt-0.5"><Icon name={f.icon} /></div>
-                  <div className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.1em] text-[var(--c-text-muted)] pt-0.5">{f.label}</div>
-                  <div className="col-start-2 md:col-start-3 text-[14px] md:text-[15px] text-[var(--c-text)] leading-[1.5]">{f.value}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-      )}
-
-      {/* ═════════ S3. OVERVIEW — PAPER ═════════ */}
       {!data.isDestinationList && <SectionNav />}
-      <section data-testid="lc-overview" id="overview" className="bg-[var(--c-off-white)] py-24 md:py-32">
-        <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-          <Label>{data.overviewLabel}</Label>
-          <H2 className="mb-12">{data.overviewH2Pre} <em className="italic text-[var(--c-gold)]">{data.overviewH2Em}</em></H2>
-          <div className="max-w-[680px] space-y-6 text-[var(--c-text-mid)] text-base md:text-lg leading-[1.8]" style={{ fontFamily: "var(--font-body)", fontWeight: 300 }}>
-            {data.overviewParagraphs.map((p, i) => (<p key={i}>{p}</p>))}
-          </div>
-
-          {/* Data strip */}
-          <div className="mt-14 max-w-[860px] border-t border-[var(--c-gold)] pt-8 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {data.overviewStats.map((s) => (
-              <div key={s.label}>
-                <div className="font-display font-light text-[var(--c-text)] text-3xl md:text-4xl leading-none mb-2 tracking-tight">{s.num}</div>
-                <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--c-text-muted)]">{s.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═════════ S3.5  FREE BRIEF — STANDALONE DIVIDER w/ PHOTO BG ═════════ */}
-      {!data.isDestinationList && (
-        <section
-          data-testid="lc-free-brief"
-          aria-label={`Stay in the loop on ${data.name} golf`}
-          className="relative overflow-hidden text-white"
-        >
-          {/* Background photo */}
-          <img
-            src={heroPhoto}
-            alt=""
-            aria-hidden="true"
-            loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover object-center"
-            style={{ filter: "brightness(0.55) saturate(0.95)" }}
-          />
-          {/* Dark gradient for legibility */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a1510]/65 via-[#0a1510]/85 to-[#0a1510]/95" />
-          {/* Hairline top/bottom borders for divider feel */}
-          <div className="absolute top-0 left-0 right-0 h-px bg-[var(--c-gold)]/35" />
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-[var(--c-gold)]/35" />
-
-          <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-12 py-24 md:py-32">
-            <PlaybookCTA
-              variant="standalone"
-              testid="lc-playbook-1"
-              region={data.name}
-              h3Pre={data.playbookH3Pre}
-              h3Em={data.playbookH3Em}
-              body={data.playbookBody}
-            />
-          </div>
-        </section>
-      )}
 
       {/* ═════════ S5. COURSE ROSTER — DARK · EDITORIAL LIST ═════════ */}
       <section data-testid="lc-courses" id="courses" className="bg-[var(--c-green-deep)] text-white py-24 md:py-32">
@@ -841,9 +805,6 @@ const LosCabos = ({ slug = "los-cabos" }) => {
         </div>
       </section>
 
-      {/* ═════════ S5.5 WHO WE WORK WITH — Fora and PGA México everywhere, plus the partner of this destination ═════════ */}
-      <PartnersStrip only={["Fora Travel", "PGA México", ...(LOCAL_PARTNER[slug] ? [LOCAL_PARTNER[slug]] : [])]} />
-
       {/* ═════════ S6. COST — PAPER (hidden on destination-list hubs) ═════════ */}
       {!data.isDestinationList && (
       <section data-testid="lc-costs" id="costs" className="bg-[var(--c-off-white)] py-24 md:py-32">
@@ -854,7 +815,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
             {data.costsIntro}
           </p>
 
-          <div className="overflow-x-auto border border-[var(--c-border)] rounded-sm">
+          <div className="overflow-x-auto border-[1.5px] border-[var(--c-text)] bg-[var(--c-surface)]">
             <table className="w-full text-sm min-w-[640px]">
               <thead>
                 <tr className="bg-[var(--c-green-deep)]">
@@ -875,7 +836,7 @@ const LosCabos = ({ slug = "los-cabos" }) => {
                 {COSTS.length > 0 && (() => {
                   const total = COSTS[COSTS.length - 1];
                   return (
-                    <tr className="bg-[var(--c-surface)] border-t-2 border-[var(--c-green-mid)]">
+                    <tr className="bg-[var(--c-surface)] border-t-4 border-double border-[var(--c-text)]">
                       <td className="py-4 px-4 font-display text-base font-bold text-[var(--c-text)]">{total[0]}</td>
                       <td className="py-4 px-4 font-mono font-bold text-[#2d6a4f] text-[15px]">{total[1]}</td>
                       <td className="py-4 px-4 font-mono font-bold text-[var(--c-text)] text-[15px]">{total[2]}</td>
@@ -889,28 +850,9 @@ const LosCabos = ({ slug = "los-cabos" }) => {
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5">
             {data.callouts.map((c) => (
-              <div key={c.label} className="bg-[var(--c-surface)] border-l-[3px] border-[var(--c-gold)] rounded-sm p-6">
-                <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--c-gold)] mb-3">{c.icon} {c.label}</div>
-                <p className="text-sm text-[var(--c-text-mid)] leading-[1.7]">{c.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      )}
-
-      {/* ═════════ S7. LOGISTICS — PAPER (hidden on destination-list hubs) ═════════ */}
-      {!data.isDestinationList && (
-      <section data-testid="lc-logistics" id="logistics" className="bg-[var(--c-off-white)] py-24 md:py-32">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-          <Label>{data.logisticsLabel}</Label>
-          <H2 className="mb-14">{data.logisticsH2Pre} <em className="italic text-[var(--c-gold)]">{data.logisticsH2Em}</em></H2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 max-w-[1100px]">
-            {data.logistics.map((c) => (
-              <div key={c.title} className="bg-[var(--c-surface)] rounded-sm p-6 md:p-7 flex flex-col gap-3">
-                <div className="text-[var(--c-gold)]"><Icon name={c.icon} className="w-6 h-6" /></div>
-                <h3 className="font-mono text-[11px] uppercase tracking-[0.14em] font-bold text-[var(--c-text)]">{c.title}</h3>
-                <p className="text-sm text-[var(--c-text-mid)] leading-[1.7]">{c.body}</p>
+              <div key={c.label} className="bg-[var(--c-surface)] border-l-[3px] border-[var(--c-live)] p-6">
+                <div className="font-mono text-[12px] uppercase tracking-[0.1em] text-[var(--c-live)] font-bold mb-3">{c.label}</div>
+                <p className="text-[15px] text-[var(--c-text)] leading-[1.65]">{c.body}</p>
               </div>
             ))}
           </div>
@@ -929,9 +871,9 @@ const LosCabos = ({ slug = "los-cabos" }) => {
               const borderClass = idx === 0 ? "border-[var(--c-gold)]" : idx === 1 ? "border-[var(--c-gold)]/50" : "border-[var(--c-gold)]/20";
               return (
                 <div key={s.title} className={`bg-white/[0.03] p-7 md:p-8 border-t-[3px] ${borderClass}`}>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--c-gold)] mb-2">{s.title}</div>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-white/55 mb-5">{s.sub}</p>
-                  <p className="text-sm text-white/70 leading-[1.7]">{s.body}</p>
+                  <div className="font-mono text-[13px] uppercase tracking-[0.1em] text-[var(--c-gold)] font-bold mb-2">{s.title}</div>
+                  <p className="font-mono text-[12px] uppercase tracking-[0.08em] text-white/70 mb-5">{s.sub}</p>
+                  <p className="text-[15px] text-white/85 leading-[1.65]">{s.body}</p>
                 </div>
               );
             })}
@@ -940,8 +882,63 @@ const LosCabos = ({ slug = "los-cabos" }) => {
       </section>
       )}
 
+      {/* ═════════ S7. LOGISTICS — PAPER (hidden on destination-list hubs) ═════════ */}
+      {!data.isDestinationList && (
+      <section data-testid="lc-logistics" id="logistics" className="bg-[var(--c-off-white)] py-24 md:py-32">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+          <Label>{data.logisticsLabel}</Label>
+          <H2 className="mb-14">{data.logisticsH2Pre} <em className="italic text-[var(--c-gold)]">{data.logisticsH2Em}</em></H2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 max-w-[1100px]">
+            {data.logistics.map((c) => (
+              <div key={c.title} className="bg-[var(--c-surface)] p-6 md:p-7 flex flex-col gap-3">
+                <div className="text-[var(--c-gold)]"><Icon name={c.icon} className="w-6 h-6" /></div>
+                <h3 className="font-mono text-[12px] uppercase tracking-[0.1em] font-bold text-[var(--c-live)]">{c.title}</h3>
+                <p className="text-[15px] text-[var(--c-text)] leading-[1.65]">{c.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      )}
+
+      {/* ═════════ S3. OVERVIEW — PAPER ═════════ */}
+      <section data-testid="lc-overview" id="overview" className="bg-[var(--c-off-white)] py-24 md:py-32">
+        <div className="max-w-[1100px] mx-auto px-6 md:px-12">
+          <Label>{data.overviewLabel}</Label>
+          <H2 className="mb-12">{data.overviewH2Pre} <em className="italic text-[var(--c-gold)]">{data.overviewH2Em}</em></H2>
+          <div className="max-w-[680px] space-y-6 text-[var(--c-text)] text-base md:text-lg leading-[1.75]" style={{ fontFamily: "var(--font-body)" }}>
+            {data.overviewParagraphs.map((p, i) => (<p key={i}>{p}</p>))}
+          </div>
+
+          {/* Data strip */}
+          <div className="mt-14 max-w-[860px] border-t border-[var(--c-gold)] pt-8 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            {data.overviewStats.map((s) => (
+              <div key={s.label}>
+                <div className="font-mono font-bold text-[var(--c-text)] text-3xl md:text-4xl leading-none mb-2 tracking-[-0.03em]">{s.num}</div>
+                <div className="font-mono text-[12px] uppercase tracking-[0.1em] text-[var(--c-text-mid)]">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ═════════ FAQ — SURFACE (hidden on destination-list hubs) ═════════ */}
       {!data.isDestinationList && <FAQ faqs={FAQS} />}
+
+      {/* ═════════ PLAN — the one next step, before the newsletter ═════════ */}
+      <section data-testid="lc-plan" className="bg-[var(--c-green-deep)] text-white py-20 md:py-28">
+        <div className="max-w-[1100px] mx-auto px-6 md:px-12 grid gap-8 md:grid-cols-12 md:items-end">
+          <div className="md:col-span-8">
+            <H2 onDark>Your {data.name} trip, planned in 36 hours</H2>
+            <p className="mt-5 font-body text-white/85 text-base md:text-lg leading-[1.6] max-w-[52ch]">Six questions, your best match on screen, and a written plan with courses, stay and tee times from Pablo. Free, with no commitment.</p>
+          </div>
+          <div className="md:col-span-4 flex md:justify-end">
+            <a href={PLAN_HREF[data.slug] || "/trip-builder"} data-testid="lc-plan-cta" className="inline-flex items-center justify-center min-h-[56px] px-8 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] font-body font-extrabold text-[15px] uppercase tracking-[0.03em] transition-colors duration-300">
+              Plan my trip
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* ═════════ END PLAYBOOK CTA — SURFACE ═════════ */}
       <section data-testid="lc-playbook-end" className="bg-[var(--c-surface)] py-20 md:py-28">
@@ -960,6 +957,9 @@ const LosCabos = ({ slug = "los-cabos" }) => {
           </div>
         </div>
       </section>
+
+      {/* ═════════ S5.5 WHO WE WORK WITH — Fora and PGA México everywhere, plus the partner of this destination ═════════ */}
+      <PartnersStrip only={["Fora Travel", "PGA México", ...(LOCAL_PARTNER[slug] ? [LOCAL_PARTNER[slug]] : [])]} />
 
       {/* ═════════ SOURCES (hidden on destination-list hubs) ═════════ */}
       {!data.isDestinationList && Array.isArray(data.sources) && data.sources.length > 0 && (
