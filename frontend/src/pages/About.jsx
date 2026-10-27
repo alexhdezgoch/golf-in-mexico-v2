@@ -26,19 +26,19 @@ const About = () => {
     {/* ── HERO ── */}
     <header className="relative bg-[var(--c-off-white)] pt-32 md:pt-40 pb-16 md:pb-24 border-b border-[var(--c-border)]">
       <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-        <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-6">
+        <span className="block font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-live)] mb-6">
           About Golf in Mexico°
         </span>
         <motion.h1
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display font-light text-[var(--c-text)] text-4xl md:text-6xl lg:text-[5rem] leading-[1.04] tracking-tight max-w-[18ch] mb-8"
+          className="font-display text-[var(--c-text)] text-4xl md:text-6xl lg:text-[5rem] leading-[1.04] tracking-tight max-w-[18ch] mb-8"
         >
           Built by the people{" "}
-          <em className="italic text-[var(--c-gold)]">inside the ropes.</em>
+          inside the ropes.
         </motion.h1>
-        <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] max-w-[680px]">
+        <p className="font-body text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] max-w-[680px]">
           Golf in Mexico° comes from{" "}
           <strong className="font-normal text-[var(--c-text)]">Pablo De La Mora</strong>{" "}
           and{" "}
@@ -62,11 +62,11 @@ const About = () => {
       className="bg-[var(--c-surface)] py-20 md:py-32"
     >
       <div className="max-w-[1240px] mx-auto px-6 md:px-12">
-        <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-6">
+        <span className="block font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-live)] mb-6">
           Three Pillars
         </span>
-        <h2 className="font-display font-light text-[var(--c-text)] text-3xl md:text-5xl lg:text-[3.5rem] leading-[1.05] mb-12 md:mb-16 max-w-[22ch]">
-          Our values<span className="text-[var(--c-gold)]">.</span>
+        <h2 className="font-display text-[var(--c-text)] text-3xl md:text-5xl lg:text-[3.5rem] leading-[1.05] mb-12 md:mb-16 max-w-[22ch]">
+          Our values.
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 lg:gap-16">
@@ -102,14 +102,14 @@ const About = () => {
               transition={{ duration: 0.7, delay: 0.08 * i, ease: [0.16, 1, 0.3, 1] }}
               className="border-t border-[var(--c-gold)]/40 pt-6"
             >
-              <div className="font-display font-light text-[var(--c-gold)] text-3xl md:text-4xl mb-5 leading-none">{p.n}</div>
+              <div className="font-display text-[var(--c-live)] text-3xl md:text-4xl mb-5 leading-none">{p.n}</div>
               <h3 className="font-display font-normal text-[var(--c-text)] text-xl md:text-2xl leading-[1.15] mb-2">
                 {p.title}
               </h3>
-              <p className="font-display italic text-[var(--c-gold)] text-sm md:text-base leading-[1.4] mb-5">
+              <p className="font-display text-[var(--c-live)] text-sm md:text-base leading-[1.4] mb-5">
                 {p.subtitle}
               </p>
-              <p className="font-body font-light text-[var(--c-text-mid)] text-sm md:text-[15px] leading-[1.7]">
+              <p className="font-body text-[var(--c-text-mid)] text-sm md:text-[15px] leading-[1.7]">
                 {p.body}
               </p>
             </motion.article>
@@ -122,25 +122,25 @@ const About = () => {
         they are without opening a tab (the bios above show one at a time). ── */}
     <section data-testid="about-team-facts" className="bg-[var(--c-off-white)] py-20 md:py-28 border-t border-[var(--c-border)]">
       <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-        <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-6">
+        <span className="block font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-live)] mb-6">
           The team
         </span>
-        <h2 className="font-display font-light text-[var(--c-text)] text-3xl md:text-5xl leading-[1.08] mb-12 max-w-[22ch]">
-          An agent and a tour pro <em className="italic text-[var(--c-gold)]">behind every trip.</em>
+        <h2 className="font-display text-[var(--c-text)] text-3xl md:text-5xl leading-[1.08] mb-12 max-w-[22ch]">
+          An agent and a tour pro behind every trip.
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
           <article className="border-t border-[var(--c-gold)]/40 pt-6">
             <h3 className="font-display font-normal text-[var(--c-text)] text-2xl mb-2">Pablo De La Mora</h3>
-            <p className="font-display italic text-[var(--c-gold)] text-base mb-4">Founder · the agent</p>
-            <p className="font-body font-light text-[var(--c-text-mid)] text-[15px] md:text-base leading-[1.75]">
+            <p className="font-display text-[var(--c-live)] text-base mb-4">Founder · the agent</p>
+            <p className="font-body text-[var(--c-text-mid)] text-[15px] md:text-base leading-[1.75]">
               A sports agent for five years, Pablo has worked inside the player areas of PGA TOUR, LPGA, LIV Golf and WTA events.
               He plans every GOLF° IN MEXICO° trip himself and stays your one contact from the first message until you fly home.
             </p>
           </article>
           <article className="border-t border-[var(--c-gold)]/40 pt-6">
             <h3 className="font-display font-normal text-[var(--c-text)] text-2xl mb-2">José Islas</h3>
-            <p className="font-display italic text-[var(--c-gold)] text-base mb-4">Co-founder · the player</p>
-            <p className="font-body font-light text-[var(--c-text-mid)] text-[15px] md:text-base leading-[1.75]">
+            <p className="font-display text-[var(--c-live)] text-base mb-4">Co-founder · the player</p>
+            <p className="font-body text-[var(--c-text-mid)] text-[15px] md:text-base leading-[1.75]">
               A professional golfer with four wins on the Mexican Tour, three PGA TOUR starts and one Korn Ferry Tour start. He played two
               World Amateur Team Championships, two Latin American Amateurs and two US Amateurs. José knows which Mexican courses are worth the trip.
             </p>
@@ -152,11 +152,11 @@ const About = () => {
     {/* ── HOW A TRIP WITH US WORKS ── */}
     <section data-testid="about-how-it-works" className="bg-[var(--c-surface)] py-20 md:py-28">
       <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-        <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-6">
+        <span className="block font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-live)] mb-6">
           How it works
         </span>
-        <h2 className="font-display font-light text-[var(--c-text)] text-3xl md:text-5xl leading-[1.08] mb-12 max-w-[22ch]">
-          From a curated trip <em className="italic text-[var(--c-gold)]">to your written quote.</em>
+        <h2 className="font-display text-[var(--c-text)] text-3xl md:text-5xl leading-[1.08] mb-12 max-w-[22ch]">
+          From a curated trip to your written quote.
         </h2>
         <ol className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
           {[
@@ -166,13 +166,13 @@ const About = () => {
             { t: "GIM Concierge, $100 per golfer", d: "Our planning service: every tee time booked, the trip sequenced, one contact until you are home. Non-golfers are free. If your first 36 hours aren't what we planned, we refund the fee in full." },
           ].map((s, i) => (
             <li key={s.t} className="border-t border-[var(--c-gold)]/40 pt-6">
-              <span className="block font-display text-[var(--c-gold)] text-3xl leading-none mb-4">{i + 1}</span>
+              <span className="block font-display text-[var(--c-live)] text-3xl leading-none mb-4">{i + 1}</span>
               <h3 className="font-display font-normal text-[var(--c-text)] text-xl md:text-2xl leading-[1.2] mb-3">{s.t}</h3>
-              <p className="font-body font-light text-[var(--c-text-mid)] text-[15px] md:text-base leading-[1.75]">{s.d}</p>
+              <p className="font-body text-[var(--c-text-mid)] text-[15px] md:text-base leading-[1.75]">{s.d}</p>
             </li>
           ))}
         </ol>
-        <p className="font-body font-light text-[var(--c-text-mid)] text-base leading-[1.75] mt-14 max-w-[70ch]">
+        <p className="font-body text-[var(--c-text-mid)] text-base leading-[1.75] mt-14 max-w-[70ch]">
           We plan golf trips across Mexico:{" "}
           <Link to="/destinations/los-cabos" className="underline underline-offset-4 decoration-[var(--c-gold)]">Los Cabos</Link>,{" "}
           <Link to="/destinations/punta-mita" className="underline underline-offset-4 decoration-[var(--c-gold)]">Punta Mita</Link>,{" "}
@@ -192,21 +192,21 @@ const About = () => {
     {/* ── GET IN TOUCH FOOTER ── */}
     <section className="bg-[var(--c-green-deep)] text-white py-20 md:py-28">
       <div className="max-w-[820px] mx-auto px-6 md:px-12 text-center">
-        <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--c-gold)] mb-6">
+        <span className="block font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-gold)] mb-6">
           Get in touch
         </span>
-        <h2 className="font-display font-light text-white text-3xl md:text-5xl leading-[1.1] tracking-tight mb-8">
+        <h2 className="font-display text-white text-3xl md:text-5xl leading-[1.1] tracking-tight mb-8">
           Want to collaborate, share a story,{" "}
-          <em className="italic text-[var(--c-gold)]">or just talk golf?</em>
+          or just talk golf?
         </h2>
-        <p className="font-body font-light text-white/75 text-base md:text-lg leading-[1.75] mb-10">
+        <p className="font-body text-white/75 text-base md:text-lg leading-[1.75] mb-10">
           We&apos;re always looking for new courses to cover, people to
           interview, and stories worth telling.
         </p>
         <a
           href="mailto:hello@golf-in-mexico.com"
           data-testid="about-contact-cta"
-          className="group inline-flex items-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-8 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] font-bold transition-colors"
+          className="group inline-flex items-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-8 py-4 font-body font-extrabold text-[14px] uppercase tracking-[0.03em] transition-colors"
         >
           Connect with us
           <span className="transition-transform duration-300 group-hover:translate-x-1">

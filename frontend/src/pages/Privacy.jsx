@@ -53,7 +53,7 @@ const Privacy = ({ locale = "en" }) => {
       {/* ─────────── HERO ─────────── */}
       <section className="pt-32 md:pt-40 pb-10 md:pb-14">
         <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--c-gold)]">
+          <span className="font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-live)]">
             {c.eyebrow}
           </span>
 
@@ -64,20 +64,20 @@ const Privacy = ({ locale = "en" }) => {
             data-testid="privacy-h1"
             className="mt-5 font-display font-normal text-[var(--c-text)] leading-[1.05] tracking-tight text-4xl md:text-6xl lg:text-7xl max-w-[20ch]"
           >
-            {c.title} <em className="italic text-[var(--c-gold)]">{c.titleEm}</em>
+            {c.title} <em className="text-[var(--c-live)]">{c.titleEm}</em>
           </motion.h1>
 
           <div className="mt-8 md:mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-[var(--c-border)] pt-6">
             <span
               data-testid="privacy-updated"
-              className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-text-mid)]"
+              className="font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-text-mid)]"
             >
               {c.updatedLabel} — <time dateTime={PRIVACY_UPDATED}>{c.updated}</time>
             </span>
             <Link
               to={c.altPath}
               data-testid="privacy-lang-switch"
-              className="group inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-gold)] hover:text-[var(--c-green-deep)] transition-colors duration-300"
+              className="group inline-flex items-center gap-2 font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-live)] hover:text-[var(--c-green-deep)] transition-colors duration-300"
             >
               {c.altLabel}
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -89,7 +89,7 @@ const Privacy = ({ locale = "en" }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             data-testid="privacy-intro"
-            className="mt-10 font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.8] max-w-[64ch]"
+            className="mt-10 font-body text-[var(--c-text-mid)] text-base md:text-lg leading-[1.8] max-w-[64ch]"
           >
             {c.intro}
           </motion.p>
@@ -105,18 +105,18 @@ const Privacy = ({ locale = "en" }) => {
             data-testid="privacy-toc"
             className="hidden lg:block self-start sticky top-32"
           >
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-gold)]">
+            <span className="font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-live)]">
               {c.tocLabel}
             </span>
             <ol className="mt-5 flex flex-col gap-2.5">
               {c.sections.map((s, i) => (
                 <li key={s.id} className="flex gap-3">
-                  <span className="font-mono text-[10px] text-[var(--c-text-mid)]/50 pt-[3px]">
+                  <span className="font-mono text-[12px] text-[var(--c-text-mid)]/50 pt-[3px]">
                     {two(i + 1)}
                   </span>
                   <a
                     href={`#${s.id}`}
-                    className="font-body font-light text-[13px] leading-[1.5] text-[var(--c-text-mid)] hover:text-[var(--c-gold)] transition-colors duration-300"
+                    className="font-body text-[13px] leading-[1.5] text-[var(--c-text-mid)] hover:text-[var(--c-gold)] transition-colors duration-300"
                   >
                     {s.heading}
                   </a>
@@ -133,7 +133,7 @@ const Privacy = ({ locale = "en" }) => {
                 data-testid={`privacy-section-${s.id}`}
                 className="scroll-mt-28 pt-10 mt-10 first:mt-0 first:pt-0 border-t first:border-t-0 border-[var(--c-border)]"
               >
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-gold)]">
+                <span className="font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-live)]">
                   {two(i + 1)}
                 </span>
                 <h2 className="mt-4 font-display font-normal text-[var(--c-text)] text-2xl md:text-[32px] leading-[1.2] tracking-tight">
@@ -143,7 +143,7 @@ const Privacy = ({ locale = "en" }) => {
                 {s.body?.map((p, j) => (
                   <p
                     key={j}
-                    className="mt-5 font-body font-light text-[var(--c-text-mid)] text-[15px] md:text-base leading-[1.8]"
+                    className="mt-5 font-body text-[var(--c-text-mid)] text-[15px] md:text-base leading-[1.8]"
                   >
                     {p}
                   </p>
@@ -160,7 +160,7 @@ const Privacy = ({ locale = "en" }) => {
                         <dt className="font-display font-normal text-[var(--c-text)] text-base md:text-lg leading-[1.35]">
                           {item.term}
                         </dt>
-                        <dd className="mt-2 font-body font-light text-[var(--c-text-mid)] text-[15px] leading-[1.75]">
+                        <dd className="mt-2 font-body text-[var(--c-text-mid)] text-[15px] leading-[1.75]">
                           {item.def}
                         </dd>
                       </div>
@@ -173,7 +173,7 @@ const Privacy = ({ locale = "en" }) => {
                     {s.list.map((item) => (
                       <li
                         key={item}
-                        className="relative pl-6 font-body font-light text-[var(--c-text-mid)] text-[15px] leading-[1.75] before:content-['—'] before:absolute before:left-0 before:text-[var(--c-gold)]"
+                        className="relative pl-6 font-body text-[var(--c-text-mid)] text-[15px] leading-[1.75] before:content-['—'] before:absolute before:left-0 before:text-[var(--c-gold)]"
                       >
                         {item}
                       </li>
@@ -184,7 +184,7 @@ const Privacy = ({ locale = "en" }) => {
                 {s.after?.map((p, j) => (
                   <p
                     key={j}
-                    className="mt-6 font-body font-light text-[var(--c-text)] text-[15px] md:text-base leading-[1.8]"
+                    className="mt-6 font-body text-[var(--c-text)] text-[15px] md:text-base leading-[1.8]"
                   >
                     {p}
                   </p>
@@ -205,11 +205,11 @@ const Privacy = ({ locale = "en" }) => {
             <p className="font-display font-normal text-white text-xl md:text-2xl leading-[1.3] tracking-tight max-w-[34ch]">
               {locale === "es" ? (
                 <>
-                  ¿Quieres ver, corregir o <em className="italic text-[var(--c-gold)]">borrar</em> tus datos?
+                  ¿Quieres ver, corregir o borrar tus datos?
                 </>
               ) : (
                 <>
-                  Want to see, correct, or <em className="italic text-[var(--c-gold)]">delete</em> your data?
+                  Want to see, correct, or delete your data?
                 </>
               )}
             </p>
@@ -217,7 +217,7 @@ const Privacy = ({ locale = "en" }) => {
             <a
               href={`mailto:${PRIVACY_EMAIL}`}
               data-testid="privacy-contact-email"
-              className="group shrink-0 inline-flex items-center justify-between md:justify-start gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-6 md:px-7 py-4 rounded-sm font-mono text-[10px] md:text-[11px] uppercase tracking-[0.12em] md:tracking-[0.18em] font-bold transition-colors duration-300"
+              className="group shrink-0 inline-flex items-center justify-between md:justify-start gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-6 md:px-7 py-4 font-body font-extrabold text-[14px] uppercase tracking-[0.03em] md:tracking-[0.12em] transition-colors duration-300"
             >
               {PRIVACY_EMAIL}
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>

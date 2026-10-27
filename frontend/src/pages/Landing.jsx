@@ -31,12 +31,12 @@ const fadeUp = {
 const SectionHead = ({ label, pre, em }) => (
   <motion.div {...fadeUp} className="mb-8 md:mb-12">
     {label && (
-      <p className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-[var(--c-gold)] mb-4">
+      <p className="font-mono text-[12px] md:text-[12px] uppercase tracking-[0.12em] text-[var(--c-gold)] mb-4">
         {label}
       </p>
     )}
     <h2 className="font-display font-normal text-[var(--c-text)] text-2xl md:text-4xl lg:text-[2.75rem] leading-[1.2] md:leading-[1.2] tracking-tight max-w-[24ch]">
-      {pre} <em className="italic text-[var(--c-gold)]">{em}</em>
+      {pre} <em className="text-[var(--c-gold)]">{em}</em>
     </h2>
   </motion.div>
 );
@@ -86,7 +86,7 @@ const LeadForm = ({ landing, placement, dark = false }) => {
             dark ? "text-white" : "text-[var(--c-text)]"
           }`}
         >
-          Got it — <em className="italic text-[var(--c-gold)]">we&apos;ll be in touch.</em>
+          Got it — we&apos;ll be in touch.
         </p>
         <p className={`mt-3 font-body font-light text-sm leading-relaxed ${label}`}>
           Pablo reads these himself and comes back inside 36 hours with a proposal, not a brochure.
@@ -138,7 +138,7 @@ const LeadForm = ({ landing, placement, dark = false }) => {
         type="submit"
         disabled={submitting}
         data-testid={`landing-submit-${placement}`}
-        className="group mt-4 w-full inline-flex items-center justify-between gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] disabled:opacity-60 text-[var(--c-green-deep)] px-8 py-4 rounded-full font-mono text-[11px] uppercase tracking-[0.2em] font-bold transition-colors"
+        className="group mt-4 w-full inline-flex items-center justify-between gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] disabled:opacity-60 text-[var(--c-green-deep)] px-8 py-4 font-body font-extrabold text-[14px] uppercase tracking-[0.03em] transition-colors"
       >
         {submitting ? "Sending…" : landing.ctaPrimary}
         <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -171,7 +171,7 @@ const Figure = ({ photo, eager = false }) => (
       />
     </div>
     {(photo.caption || photo.photoSource) && (
-      <figcaption className="mt-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-text-mid)]">
+      <figcaption className="mt-3 font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-text-mid)]">
         {photo.caption}
         {photo.caption && photo.photoSource && " · "}
         {photo.photoSource}
@@ -290,7 +290,7 @@ const Landing = () => {
           <p className="font-display text-2xl text-[var(--c-text)]">Page not found.</p>
           <Link
             to="/destinations"
-            className="mt-4 inline-block font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--c-gold)]"
+            className="mt-4 inline-block font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-live)]"
           >
             Back to destinations →
           </Link>
@@ -330,7 +330,7 @@ const Landing = () => {
           <nav aria-label="Breadcrumb" className="mb-6">
             <Link
               to={`/destinations/${landing.hub}`}
-              className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/70 hover:text-[var(--c-gold-light)] transition-colors"
+              className="font-mono text-[12px] uppercase tracking-[0.12em] text-white/70 hover:text-[var(--c-gold-light)] transition-colors"
             >
               ← {landing.hubName}
             </Link>
@@ -342,7 +342,7 @@ const Landing = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: EASE }}
-                className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-[var(--c-gold-light)] mb-5"
+                className="font-mono text-[12px] md:text-[12px] uppercase tracking-[0.12em] text-[var(--c-gold-light)] mb-5"
               >
                 {landing.heroLabel}
               </motion.p>
@@ -354,7 +354,7 @@ const Landing = () => {
                 data-testid="landing-h1"
                 className="font-display font-normal text-white leading-[1.1] md:leading-[1.1] tracking-tight text-4xl md:text-6xl max-w-[16ch]"
               >
-                {landing.h1Pre} <em className="italic text-[var(--c-gold-light)]">{landing.h1Em}</em>
+                {landing.h1Pre} <em className="text-[var(--c-gold-light)]">{landing.h1Em}</em>
               </motion.h1>
 
               {/* Answer-first: the title question is settled in the first 50 words. */}
@@ -363,7 +363,7 @@ const Landing = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.12, ease: EASE }}
                 data-testid="landing-answer"
-                className="mt-7 md:mt-9 font-body font-light text-white/85 text-base md:text-lg leading-[1.75] max-w-[58ch]"
+                className="mt-7 md:mt-9 font-body text-white/85 text-base md:text-lg leading-[1.75] max-w-[58ch]"
               >
                 {landing.heroAnswer}
               </motion.p>
@@ -375,7 +375,7 @@ const Landing = () => {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.9, delay: 0.25, ease: EASE }}
                   data-testid="landing-byline"
-                  className="mt-6 font-mono text-[10px] uppercase tracking-[0.18em] text-white/60"
+                  className="mt-6 font-mono text-[12px] uppercase tracking-[0.12em] text-white/80"
                 >
                   {landing.byline}
                 </motion.p>
@@ -417,7 +417,7 @@ const Landing = () => {
                           className={[
                             "py-4 pr-6 align-top",
                             j === 0
-                              ? "font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--c-text-mid)] w-[34%]"
+                              ? "font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-text-mid)] w-[34%]"
                               : "font-body font-light text-sm md:text-base text-[var(--c-text)]",
                             i === 0 && j > 0
                               ? "font-display text-base md:text-lg text-[var(--c-gold)]"
@@ -435,7 +435,7 @@ const Landing = () => {
             {landing.specsNote && (
               <motion.p
                 {...fadeUp}
-                className="mt-6 font-body font-light text-sm leading-relaxed text-[var(--c-text-mid)] max-w-[70ch]"
+                className="mt-6 font-body text-sm leading-relaxed text-[var(--c-text-mid)] max-w-[70ch]"
               >
                 {landing.specsNote}
               </motion.p>
@@ -458,7 +458,7 @@ const Landing = () => {
                 <motion.p
                   key={i}
                   {...fadeUp}
-                  className="font-body font-light text-[var(--c-text-mid)] text-base leading-[1.8]"
+                  className="font-body text-[var(--c-text-mid)] text-base leading-[1.8]"
                 >
                   {p}
                 </motion.p>
@@ -488,10 +488,10 @@ const Landing = () => {
               data-testid="landing-callout"
               className="bg-[var(--c-green-deep)] text-white rounded-sm p-8 md:p-12"
             >
-              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--c-gold)] mb-4">
+              <p className="font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-gold)] mb-4">
                 {landing.calloutLabel}
               </p>
-              <p className="font-body font-light text-white/85 text-base md:text-lg leading-[1.8] max-w-[70ch]">
+              <p className="font-body text-white/85 text-base md:text-lg leading-[1.8] max-w-[70ch]">
                 {landing.calloutBody}
               </p>
             </motion.div>
@@ -519,12 +519,12 @@ const Landing = () => {
         <section className="py-14 md:py-24 bg-[var(--c-green-deep)]">
           <div className="max-w-[1200px] mx-auto px-6 md:px-12">
             <motion.div {...fadeUp} className="mb-10 md:mb-14">
-              <p className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-[var(--c-gold-light)] mb-4">
+              <p className="font-mono text-[12px] md:text-[12px] uppercase tracking-[0.12em] text-[var(--c-gold-light)] mb-4">
                 {landing.includedLabel}
               </p>
               <h2 className="font-display font-normal text-white text-2xl md:text-4xl lg:text-[2.75rem] leading-[1.2] md:leading-[1.2] tracking-tight max-w-[24ch]">
                 {landing.includedH2Pre}{" "}
-                <em className="italic text-[var(--c-gold-light)]">{landing.includedH2Em}</em>
+                <em className="text-[var(--c-gold-light)]">{landing.includedH2Em}</em>
               </h2>
             </motion.div>
 
@@ -546,28 +546,28 @@ const Landing = () => {
                   </div>
                   <div className="flex flex-col flex-1 p-6 md:p-7">
                     <h3 className="font-display text-white text-xl md:text-2xl mb-2">{pkg.name}</h3>
-                    <p className="font-body font-light text-white/70 text-sm leading-[1.7] mb-5">
+                    <p className="font-body text-white/70 text-sm leading-[1.7] mb-5">
                       {pkg.blurb}
                     </p>
                     <ul className="space-y-2 mb-6">
                       {pkg.includes.map((item) => (
-                        <li key={item} className="flex gap-2.5 font-body font-light text-white/85 text-sm leading-snug">
+                        <li key={item} className="flex gap-2.5 font-body text-white/85 text-sm leading-snug">
                           <span aria-hidden="true" className="text-[var(--c-gold)] shrink-0">✓</span>
                           {item}
                         </li>
                       ))}
                     </ul>
                     <div className="mt-auto">
-                      <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-[var(--c-gold-light)]">
+                      <p className="font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-gold-light)]">
                         {pkg.price}
                       </p>
                       {pkg.priceNote && (
-                        <p className="mt-1 font-body font-light text-white/50 text-xs">{pkg.priceNote}</p>
+                        <p className="mt-1 font-body text-white/80 text-xs">{pkg.priceNote}</p>
                       )}
                       <button
                         type="button"
                         onClick={scrollToProposal}
-                        className="mt-5 w-full inline-flex items-center justify-center border border-white/30 hover:border-[var(--c-gold)] hover:text-[var(--c-gold-light)] text-white px-6 py-3.5 rounded-full font-mono text-[11px] uppercase tracking-[0.2em] transition-colors"
+                        className="mt-5 w-full inline-flex items-center justify-center border border-white/30 hover:border-[var(--c-gold)] hover:text-[var(--c-gold-light)] text-white px-6 py-3.5 rounded-full font-mono text-[12px] uppercase tracking-[0.12em] transition-colors"
                       >
                         Request this trip
                       </button>
@@ -587,7 +587,7 @@ const Landing = () => {
             <SectionHead label={landing.addOnLabel} pre={landing.addOnH2Pre} em={landing.addOnH2Em} />
             <motion.p
               {...fadeUp}
-              className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.8] max-w-[70ch]"
+              className="font-body text-[var(--c-text-mid)] text-base md:text-lg leading-[1.8] max-w-[70ch]"
             >
               {landing.addOnBody}
             </motion.p>
@@ -609,7 +609,7 @@ const Landing = () => {
                 <motion.p
                   key={i}
                   {...fadeUp}
-                  className="font-body font-light text-[var(--c-text-mid)] text-base leading-[1.8]"
+                  className="font-body text-[var(--c-text-mid)] text-base leading-[1.8]"
                 >
                   {p}
                 </motion.p>
@@ -635,10 +635,10 @@ const Landing = () => {
                   {...fadeUp}
                   className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 border-t border-[var(--c-border)] pt-6"
                 >
-                  <p className="md:col-span-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-gold)]">
+                  <p className="md:col-span-3 font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-gold)]">
                     {d.day}
                   </p>
-                  <p className="md:col-span-9 font-body font-light text-[var(--c-text-mid)] text-base leading-[1.8]">
+                  <p className="md:col-span-9 font-body text-[var(--c-text-mid)] text-base leading-[1.8]">
                     {d.body}
                   </p>
                 </motion.div>
@@ -655,7 +655,7 @@ const Landing = () => {
             <SectionHead label={landing.accessLabel} pre={landing.accessH2Pre} em={landing.accessH2Em} />
             <motion.p
               {...fadeUp}
-              className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.8] max-w-[72ch]"
+              className="font-body text-[var(--c-text-mid)] text-base md:text-lg leading-[1.8] max-w-[72ch]"
             >
               {landing.accessBody}
             </motion.p>
@@ -671,10 +671,10 @@ const Landing = () => {
               {...fadeUp}
               className="border-l-2 border-[var(--c-gold)] pl-6 md:pl-8 max-w-[72ch]"
             >
-              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--c-gold)] mb-3">
+              <p className="font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-gold)] mb-3">
                 {landing.honestyLabel}
               </p>
-              <p className="font-body font-light text-[var(--c-text-mid)] text-base leading-[1.8]">
+              <p className="font-body text-[var(--c-text-mid)] text-base leading-[1.8]">
                 {landing.honestyBody}
               </p>
             </motion.div>
@@ -693,7 +693,7 @@ const Landing = () => {
                 <h3 className="font-display text-lg md:text-xl text-[var(--c-text)] mb-3 max-w-[60ch]">
                   {f.q}
                 </h3>
-                <p className="font-body font-light text-[var(--c-text-mid)] text-base leading-[1.8] max-w-[72ch]">
+                <p className="font-body text-[var(--c-text-mid)] text-base leading-[1.8] max-w-[72ch]">
                   {f.a}
                 </p>
               </motion.div>
@@ -713,9 +713,9 @@ const Landing = () => {
             <div>
               <h2 className="font-display font-normal text-white text-2xl md:text-4xl leading-[1.2] md:leading-[1.2] tracking-tight">
                 {landing.closingH2Pre}{" "}
-                <em className="italic text-[var(--c-gold)]">{landing.closingH2Em}</em>
+                <em className="text-[var(--c-gold)]">{landing.closingH2Em}</em>
               </h2>
-              <p className="mt-6 font-body font-light text-white/75 text-base leading-[1.8] max-w-[52ch]">
+              <p className="mt-6 font-body text-white/75 text-base leading-[1.8] max-w-[52ch]">
                 {landing.closingBody}
               </p>
             </div>
@@ -728,14 +728,14 @@ const Landing = () => {
       {landing.sources && (
         <section className="pb-12 md:pb-16">
           <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--c-gold)] mb-4">
+            <p className="font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-gold)] mb-4">
               Sources
             </p>
             <ul data-testid="landing-sources" className="space-y-1.5">
               {landing.sources.map((s) => (
                 <li
                   key={s}
-                  className="font-body font-light text-[13px] leading-relaxed text-[var(--c-text-mid)]"
+                  className="font-body text-[13px] leading-relaxed text-[var(--c-text-mid)]"
                 >
                   {s}
                 </li>
@@ -749,7 +749,7 @@ const Landing = () => {
       {landing.relatedReads && (
         <section className="pb-4">
           <div className="max-w-[1100px] mx-auto px-6 md:px-12">
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--c-gold)] mb-6">
+            <p className="font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-gold)] mb-6">
               Read next
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
@@ -765,7 +765,7 @@ const Landing = () => {
                       →
                     </span>
                   </p>
-                  <p className="mt-2 font-body font-light text-sm text-[var(--c-text-mid)] leading-relaxed">
+                  <p className="mt-2 font-body text-sm text-[var(--c-text-mid)] leading-relaxed">
                     {r.note}
                   </p>
                 </Link>

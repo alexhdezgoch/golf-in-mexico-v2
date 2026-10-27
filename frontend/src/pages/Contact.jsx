@@ -34,13 +34,13 @@ const Contact = () => {
           data-testid="contact-h1"
           className="font-display font-normal text-[var(--c-text)] leading-[1.05] tracking-tight text-4xl md:text-6xl lg:text-7xl max-w-[18ch]"
         >
-          Let&apos;s talk <em className="italic text-[var(--c-gold)]">golf.</em>
+          Let&apos;s talk golf.
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-8 md:mt-10 font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] max-w-[58ch]"
+          className="mt-8 md:mt-10 font-body text-[var(--c-text-mid)] text-base md:text-lg leading-[1.75] max-w-[58ch]"
         >
           Drop us a line or book a 30-minute call. We answer every message ourselves — no assistants, no help desk.
         </motion.p>
@@ -58,14 +58,14 @@ const Contact = () => {
           <h2 className="font-display font-normal text-[var(--c-text)] text-2xl md:text-3xl leading-[1.2] tracking-tight mb-4">
             Write us an email.
           </h2>
-          <p className="font-body font-light text-[var(--c-text-mid)] text-base leading-[1.7] mb-8">
+          <p className="font-body text-[var(--c-text-mid)] text-base leading-[1.7] mb-8">
             For collaborations, story ideas, course recommendations, or anything else worth a thoughtful reply.
           </p>
           <div className="mt-auto">
             <a
               href={`mailto:${EMAIL_ADDRESS}`}
               data-testid="contact-email-link"
-              className="group inline-flex items-center gap-3 bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-8 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.2em] font-bold transition-colors"
+              className="group inline-flex items-center gap-3 bg-[var(--c-green-deep)] hover:bg-[var(--c-green-mid)] text-white px-8 py-4 rounded-sm font-mono text-[12px] uppercase tracking-[0.12em] font-bold transition-colors"
             >
               {EMAIL_ADDRESS}
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -79,9 +79,9 @@ const Contact = () => {
           className="bg-[var(--c-green-deep)] text-white rounded-sm p-8 md:p-10 flex flex-col"
         >
           <h2 className="font-display font-normal text-white text-2xl md:text-3xl leading-[1.2] tracking-tight mb-4">
-            Schedule a <em className="italic text-[var(--c-gold)]">call.</em>
+            Schedule a call.
           </h2>
-          <p className="font-body font-light text-white/80 text-base leading-[1.7] mb-8">
+          <p className="font-body text-white/80 text-base leading-[1.7] mb-8">
             Planning a trip? Build it first: see the trips that fit your group, with the price per person, and request a quote. Rather talk it through? Book 15 minutes with Pablo.
           </p>
 
@@ -90,7 +90,7 @@ const Contact = () => {
             <a
               href="/trip-builder"
               data-testid="contact-trip-cta"
-              className="group inline-flex items-center justify-between gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-7 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.2em] font-bold transition-colors"
+              className="group inline-flex items-center justify-between gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-7 py-4 font-body font-extrabold text-[14px] uppercase tracking-[0.03em] transition-colors"
             >
               Explore trips
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -104,7 +104,7 @@ const Contact = () => {
               data-testid="contact-call-cta"
               data-track="planner_call"
               data-track-id="contact"
-              className="group inline-flex items-center justify-between gap-3 border border-white/30 hover:border-white text-white px-7 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.2em] transition-colors"
+              className="group inline-flex items-center justify-between gap-3 border border-white/30 hover:border-white text-white px-7 py-4 rounded-sm font-mono text-[12px] uppercase tracking-[0.12em] transition-colors"
             >
               Book 15 minutes with Pablo
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>

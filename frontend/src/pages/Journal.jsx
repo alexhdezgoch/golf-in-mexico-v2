@@ -44,8 +44,8 @@ const JournalIntro = ({ category, setCategory }) => {
       className="bg-[var(--c-off-white)] pt-32 md:pt-40 pb-12 md:pb-16 border-b border-[var(--c-border)]"
     >
       <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-        <h1 className="font-display font-light text-[var(--c-text)] leading-[1.02] tracking-tight text-5xl md:text-7xl mb-10 md:mb-12">
-          The Journal<span className="text-[var(--c-gold)]">.</span>
+        <h1 className="font-display text-[var(--c-text)] leading-[1.02] tracking-tight text-5xl md:text-7xl mb-10 md:mb-12">
+          The Journal.
         </h1>
         {/* CATEGORY FILTERS */}
         <div className="flex flex-wrap gap-2 md:gap-3 mb-10 md:mb-12" data-testid="journal-categories">
@@ -80,9 +80,9 @@ const JournalIntro = ({ category, setCategory }) => {
                 exit={{ opacity: 0, y: -6 }}
                 transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 data-testid="category-context"
-                className="font-body font-light text-[var(--c-text-mid)] text-lg md:text-xl leading-[1.7] max-w-[58ch]"
+                className="font-body text-[var(--c-text-mid)] text-lg md:text-xl leading-[1.7] max-w-[58ch]"
               >
-                <span className="font-display italic text-[var(--c-gold)] not-italic-em">
+                <span className="font-display text-[var(--c-live)] not-italic-em">
                   {activeLabel}.
                 </span>{" "}
                 {context}
@@ -108,18 +108,18 @@ const FeaturedCard = ({ a }) => (
             loading="eager"
             className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[1600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
           />
-          <span className="absolute top-4 left-4 inline-flex items-center gap-2 bg-[var(--c-gold)] text-[var(--c-green-deep)] font-mono text-[11px] uppercase tracking-[0.18em] font-bold px-3 py-1.5 rounded-sm">
+          <span className="absolute top-4 left-4 inline-flex items-center gap-2 bg-[var(--c-gold)] text-[var(--c-green-deep)] font-body font-extrabold text-[14px] uppercase tracking-[0.03em] px-3 py-1.5">
             Featured · Founders Journal
           </span>
         </div>
         <div className="lg:col-span-5">
-          <h2 className="font-display font-light text-[var(--c-text)] leading-[1.05] tracking-tight text-3xl md:text-5xl lg:text-[3.25rem] mb-5 group-hover:text-[var(--c-green-mid)] transition-colors duration-500">
-            {a.title}<span className="text-[var(--c-gold)]">.</span>
+          <h2 className="font-display text-[var(--c-text)] leading-[1.05] tracking-tight text-3xl md:text-5xl lg:text-[3.25rem] mb-5 group-hover:text-[var(--c-green-mid)] transition-colors duration-500">
+            {a.title}.
           </h2>
-          <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.7] mb-7 max-w-[44ch]">
+          <p className="font-body text-[var(--c-text-mid)] text-base md:text-lg leading-[1.7] mb-7 max-w-[44ch]">
             {a.excerpt}
           </p>
-          <span className="inline-flex items-center gap-3 font-display italic text-[var(--c-green-deep)] text-lg group-hover:gap-4 transition-all">
+          <span className="inline-flex items-center gap-3 font-display text-[var(--c-green-deep)] text-lg group-hover:gap-4 transition-all">
             Read the journal entry
             <span className="transition-transform group-hover:translate-x-1">→</span>
           </span>
@@ -149,10 +149,10 @@ const Card = ({ a }) => (
         <h3 className="font-display font-normal text-[var(--c-text)] leading-[1.2] tracking-tight text-xl md:text-2xl group-hover:text-[var(--c-green-mid)] transition-colors duration-500">
           {a.title}
         </h3>
-        <p className="mt-4 font-body font-light text-[var(--c-text-mid)] text-base leading-[1.65]">
+        <p className="mt-4 font-body text-[var(--c-text-mid)] text-base leading-[1.65]">
           {a.excerpt}
         </p>
-        <span className="mt-5 inline-flex items-center gap-2 font-display italic text-[var(--c-green-deep)] text-base group-hover:gap-3 transition-all">
+        <span className="mt-5 inline-flex items-center gap-2 font-display text-[var(--c-green-deep)] text-base group-hover:gap-3 transition-all">
           Read
           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
         </span>
@@ -198,10 +198,10 @@ const Journal = () => {
               data-testid="journal-empty"
               className="py-24 md:py-32 text-center max-w-xl mx-auto"
             >
-              <h3 className="font-display italic font-normal text-[var(--c-text)] text-2xl md:text-3xl leading-[1.3] mb-4">
+              <h3 className="font-display font-normal text-[var(--c-text)] text-2xl md:text-3xl leading-[1.3] mb-4">
                 The first entries are being polished.
               </h3>
-              <p className="font-body font-light text-[var(--c-text-mid)] text-base md:text-lg leading-[1.7]">
+              <p className="font-body text-[var(--c-text-mid)] text-base md:text-lg leading-[1.7]">
                 New articles publish weekly, written by Pablo and José. Subscribe below and you&apos;ll be the first to know.
               </p>
             </div>
@@ -237,19 +237,19 @@ const Journal = () => {
       {/* GET IN TOUCH CTA */}
       <section data-testid="journal-get-in-touch" className="bg-[var(--c-green-deep)] text-white py-20 md:py-28">
         <div className="max-w-[900px] mx-auto px-6 md:px-12 text-center">
-          <h2 className="font-display font-light text-white text-3xl md:text-5xl leading-[1.1] tracking-tight mb-6">
-            Get in <em className="italic text-[var(--c-gold)]">touch.</em>
+          <h2 className="font-display text-white text-3xl md:text-5xl leading-[1.1] tracking-tight mb-6">
+            Get in touch.
           </h2>
-          <p className="font-body font-light text-white/85 text-base md:text-lg leading-[1.75] mb-4 max-w-2xl mx-auto">
+          <p className="font-body text-white/85 text-base md:text-lg leading-[1.75] mb-4 max-w-2xl mx-auto">
             Want to collaborate, share a story, or just talk golf?
           </p>
-          <p className="font-body font-light text-white/85 text-base md:text-lg leading-[1.75] mb-10 max-w-2xl mx-auto">
+          <p className="font-body text-white/85 text-base md:text-lg leading-[1.75] mb-10 max-w-2xl mx-auto">
             We&apos;re always looking for new courses to cover, people to interview, and stories worth telling.
           </p>
           <Link
             to="/contact"
             data-testid="journal-connect-cta"
-            className="group inline-flex items-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-9 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.2em] font-bold transition-colors"
+            className="group inline-flex items-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-9 py-4 font-body font-extrabold text-[14px] uppercase tracking-[0.03em] transition-colors"
           >
             Connect with us
             <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>

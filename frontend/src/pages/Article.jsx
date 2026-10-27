@@ -22,7 +22,7 @@ const Badge = ({ children, variant = "default" }) => {
       ? "bg-ink text-cream"
       : "bg-ink/8 text-ink";
   return (
-    <span className={`inline-flex items-center px-2.5 py-1 rounded-full font-mono text-[9px] uppercase tracking-wide-editorial ${cls}`}>
+    <span className={`inline-flex items-center px-2.5 py-1 font-mono text-[12px] uppercase tracking-wide-editorial ${cls}`}>
       {children}
     </span>
   );
@@ -34,7 +34,7 @@ const Breadcrumb = ({ destination, destinationLabel, title }) => (
   <nav
     aria-label="Breadcrumb"
     data-testid="article-breadcrumb"
-    className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted"
+    className="font-mono text-[12px] uppercase tracking-wide-editorial text-muted"
   >
     <ol className="flex flex-wrap items-center gap-2">
       <li>
@@ -57,21 +57,21 @@ const Breadcrumb = ({ destination, destinationLabel, title }) => (
 const InlineCTA = ({ destinationLabel, testId }) => (
   <aside
     data-testid={testId}
-    className="my-10 md:my-14 rounded-3xl border border-ink/15 bg-cream p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+    className="my-10 md:my-14 border border-ink/15 bg-cream p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4"
   >
     <div>
-      <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
+      <span className="font-mono text-[12px] uppercase tracking-wide-editorial text-forest">
         — Ready to play
       </span>
-      <h4 className="mt-2 font-display font-light text-ink text-2xl md:text-3xl leading-tight tracking-tight">
-        Ready to plan your <span className="italic">{destinationLabel}</span> trip?
+      <h4 className="mt-2 font-display text-ink text-2xl md:text-3xl leading-tight tracking-tight">
+        Ready to plan your <span className="">{destinationLabel}</span> trip?
       </h4>
     </div>
     <div className="flex flex-col sm:flex-row gap-3 shrink-0">
       <button
         type="button"
         data-testid={`${testId}-whatsapp`}
-        className="inline-flex items-center justify-center gap-2 rounded-full bg-forest text-cream px-5 py-3 font-mono text-[10px] uppercase tracking-wide-editorial hover:bg-ink transition-colors"
+        className="inline-flex items-center justify-center gap-2 bg-forest text-cream px-5 py-3 font-mono text-[12px] uppercase tracking-wide-editorial hover:bg-ink transition-colors"
       >
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
           <path d="M20.52 3.48A11.78 11.78 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.6 5.96L0 24l6.32-1.66a11.9 11.9 0 0 0 5.74 1.46h.01c6.55 0 11.89-5.34 11.89-11.9 0-3.18-1.24-6.17-3.44-8.42ZM12.07 21.79h-.01a9.89 9.89 0 0 1-5.04-1.38l-.36-.21-3.75.98 1-3.66-.24-.38a9.85 9.85 0 0 1-1.5-5.24c0-5.45 4.43-9.88 9.9-9.88 2.64 0 5.13 1.03 7 2.9a9.83 9.83 0 0 1 2.9 7c0 5.45-4.45 9.87-9.9 9.87Z" />
@@ -81,7 +81,7 @@ const InlineCTA = ({ destinationLabel, testId }) => (
       <button
         type="button"
         data-testid={`${testId}-tripplanner`}
-        className="inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-5 py-3 font-mono text-[10px] uppercase tracking-wide-editorial hover:bg-gold hover:text-ink transition-colors"
+        className="inline-flex items-center justify-center gap-2 bg-ink text-cream px-5 py-3 font-mono text-[12px] uppercase tracking-wide-editorial hover:bg-gold hover:text-ink transition-colors"
       >
         Trip Planner →
       </button>
@@ -158,7 +158,7 @@ const Body = ({ blocks, destinationLabel }) => {
                 />
               </div>
               {block.caption && (
-                <figcaption className="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-ink/55 italic">
+                <figcaption className="mt-3 font-mono text-[12px] uppercase tracking-[0.12em] text-ink/55">
                   {block.caption}
                 </figcaption>
               )}
@@ -192,7 +192,7 @@ const Body = ({ blocks, destinationLabel }) => {
             <div key={i} className="my-10 md:my-14 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 max-w-[680px]">
               {block.columns.map((col, j) => (
                 <div key={j}>
-                  <h4 className="pb-3 mb-4 border-b-2 border-gold font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
+                  <h4 className="pb-3 mb-4 border-b-2 border-forest font-mono text-[12px] uppercase tracking-wide-editorial text-forest">
                     {col.heading}
                   </h4>
                   <ul className="space-y-4">
@@ -200,7 +200,7 @@ const Body = ({ blocks, destinationLabel }) => {
                       <li key={k}>
                         <p className="font-display text-ink text-base leading-snug">{item.title}</p>
                         {item.note && (
-                          <p className="mt-0.5 font-body font-light text-ink/60 text-sm leading-snug">{item.note}</p>
+                          <p className="mt-0.5 font-body text-ink/60 text-sm leading-snug">{item.note}</p>
                         )}
                       </li>
                     ))}
@@ -217,20 +217,20 @@ const Body = ({ blocks, destinationLabel }) => {
                 <div key={j} className="rounded-2xl border border-ink/15 bg-cream border-t-2 border-t-gold p-5 md:p-6">
                   <p className="font-display text-ink text-lg leading-snug">{item.title}</p>
                   {item.tag && (
-                    <span className="mt-2 inline-flex items-center px-2.5 py-1 rounded-full bg-ink/8 text-ink font-mono text-[9px] uppercase tracking-wide-editorial">
+                    <span className="mt-2 inline-flex items-center px-2.5 py-1 bg-ink/8 text-ink font-mono text-[12px] uppercase tracking-wide-editorial">
                       {item.tag}
                     </span>
                   )}
                   {item.price && (
-                    <p className="mt-3 font-display font-light text-ink text-2xl md:text-[26px] leading-none tracking-tight">
+                    <p className="mt-3 font-display text-ink text-2xl md:text-[26px] leading-none tracking-tight">
                       {item.price}
                     </p>
                   )}
                   {item.unit && (
-                    <p className="mt-1.5 font-mono text-[9px] uppercase tracking-wide-editorial text-ink/55">{item.unit}</p>
+                    <p className="mt-1.5 font-mono text-[12px] uppercase tracking-wide-editorial text-ink/55">{item.unit}</p>
                   )}
                   {item.note && (
-                    <p className="mt-3 font-body font-light text-ink/70 text-sm leading-[1.6]">{item.note}</p>
+                    <p className="mt-3 font-body text-ink/70 text-sm leading-[1.6]">{item.note}</p>
                   )}
                 </div>
               ))}
@@ -267,8 +267,8 @@ const Body = ({ blocks, destinationLabel }) => {
                 </table>
               </div>
               {(block.caption || block.note) && (
-                <figcaption className="mt-3 font-body font-light text-ink/60 text-sm leading-[1.6]">
-                  {block.caption && <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-ink/55 not-italic">{block.caption}. </span>}
+                <figcaption className="mt-3 font-body text-ink/60 text-sm leading-[1.6]">
+                  {block.caption && <span className="font-mono text-[12px] uppercase tracking-[0.12em] text-ink/55 not-italic">{block.caption}. </span>}
                   {block.note}
                 </figcaption>
               )}
@@ -277,22 +277,22 @@ const Body = ({ blocks, destinationLabel }) => {
         }
         if (block.type === "callout") {
           return (
-            <aside key={i} className="my-10 md:my-12 rounded-2xl border border-ink/15 bg-ink/5 p-6 md:p-7 max-w-[680px]">
+            <aside key={i} className="my-10 md:my-12 border border-ink/15 bg-ink/5 p-6 md:p-7 max-w-[680px]">
               {block.title && (
-                <h4 className="mb-4 font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
+                <h4 className="mb-4 font-mono text-[12px] uppercase tracking-wide-editorial text-forest">
                   {block.title}
                 </h4>
               )}
               <ul className="space-y-3">
                 {block.items.map((item, j) => (
                   <li key={j} className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-3">
-                    <span className="font-display italic text-ink text-base shrink-0">{item.term}</span>
-                    <span className="font-body font-light text-ink/65 text-sm">— {item.def}</span>
+                    <span className="font-display text-ink text-base shrink-0">{item.term}</span>
+                    <span className="font-body text-ink/65 text-sm">— {item.def}</span>
                   </li>
                 ))}
               </ul>
               {block.note && (
-                <p className="mt-5 font-body font-light italic text-ink/60 text-sm leading-[1.6]">{block.note}</p>
+                <p className="mt-5 font-body text-ink/60 text-sm leading-[1.6]">{block.note}</p>
               )}
             </aside>
           );
@@ -300,11 +300,11 @@ const Body = ({ blocks, destinationLabel }) => {
         if (block.type === "pullquote") {
           return (
             <blockquote key={i} className="my-12 md:my-16 border-l-2 border-gold pl-6 md:pl-8 max-w-[640px]">
-              <p className="font-display italic font-light text-ink text-2xl md:text-3xl leading-[1.4]">
+              <p className="font-display text-ink text-2xl md:text-3xl leading-[1.4]">
                 {block.text}
               </p>
               {block.cite && (
-                <cite className="block mt-4 font-mono not-italic text-[10px] uppercase tracking-[0.16em] text-ink/55">
+                <cite className="block mt-4 font-mono not-italic text-[12px] uppercase tracking-[0.12em] text-ink/55">
                   — {block.cite}
                 </cite>
               )}
@@ -314,7 +314,7 @@ const Body = ({ blocks, destinationLabel }) => {
         if (block.type === "lead") {
           return (
             <div key={i} data-testid="article-lead" className="my-8 md:my-10 p-6 md:p-7 border-l-2 border-gold bg-ink/5 max-w-[680px]">
-              <p className="font-display italic font-light text-ink text-lg md:text-xl leading-[1.55]">
+              <p className="font-display text-ink text-lg md:text-xl leading-[1.55]">
                 {renderInline(block.text)}
               </p>
             </div>
@@ -326,7 +326,7 @@ const Body = ({ blocks, destinationLabel }) => {
               <h3 className="font-display font-normal text-ink text-xl md:text-2xl leading-[1.25] mb-3">
                 {block.q}
               </h3>
-              <p className="font-body font-light text-ink/80 text-base md:text-lg leading-[1.75]">
+              <p className="font-body text-ink/80 text-base md:text-lg leading-[1.75]">
                 {block.a}
               </p>
             </div>
@@ -336,7 +336,7 @@ const Body = ({ blocks, destinationLabel }) => {
           return (
             <div key={i} data-testid="article-cta" className="my-14 md:my-20 p-8 md:p-12 bg-ink text-cream max-w-[760px] rounded-sm">
               {block.eyebrow && (
-                <span className="block font-mono text-[10px] uppercase tracking-[0.22em] text-gold mb-4">
+                <span className="block font-mono text-[12px] uppercase tracking-[0.12em] text-gold mb-4">
                   {block.eyebrow}
                 </span>
               )}
@@ -346,7 +346,7 @@ const Body = ({ blocks, destinationLabel }) => {
                 </h3>
               )}
               {block.text && (
-                <p className="font-body font-light text-cream/80 text-base md:text-lg leading-[1.7] mb-7 max-w-[58ch]">
+                <p className="font-body text-cream/80 text-base md:text-lg leading-[1.7] mb-7 max-w-[58ch]">
                   {block.text}
                 </p>
               )}
@@ -354,7 +354,7 @@ const Body = ({ blocks, destinationLabel }) => {
                 <Link
                   to={block.href}
                   data-testid="article-cta-link"
-                  className="inline-flex items-center gap-3 bg-gold text-ink pl-6 pr-5 py-3 rounded-full font-mono text-[11px] uppercase tracking-[0.18em] hover:bg-cream transition-colors"
+                  className="inline-flex items-center gap-3 bg-gold text-ink pl-6 pr-5 py-3 font-mono text-[12px] uppercase tracking-[0.12em] hover:bg-cream transition-colors"
                 >
                   {block.label}
                   <span>→</span>
@@ -417,7 +417,7 @@ const FAQ = ({ items }) => {
                     transition={{ duration: 0.3 }}
                     className="overflow-hidden"
                   >
-                    <p className="pb-5 font-body font-light text-ink/75 text-base leading-relaxed">
+                    <p className="pb-5 font-body text-ink/75 text-base leading-relaxed">
                       {it.a}
                     </p>
                   </motion.div>
@@ -435,23 +435,23 @@ const FAQ = ({ items }) => {
 
 const ContinueReading = ({ related, hubLabel }) => (
   <section data-testid="continue-reading" className="max-w-[1100px] mx-auto px-6 md:px-12 mt-16 md:mt-24">
-    <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-muted">
+    <span className="font-mono text-[12px] uppercase tracking-wide-editorial text-muted">
       — Continue reading
     </span>
     <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
       <Link
         to="/journal"
         data-testid="continue-hub"
-        className="group block rounded-2xl border-2 border-ink bg-ink text-cream p-6 hover:border-gold transition-all duration-300"
+        className="group block border-2 border-ink bg-ink text-cream p-6 hover:border-gold transition-all duration-300"
       >
-        <span className="font-mono text-[9px] uppercase tracking-wide-editorial text-gold">Hub</span>
-        <h3 className="mt-3 font-display font-light text-cream text-2xl md:text-3xl leading-tight tracking-tight group-hover:text-gold transition-colors">
+        <span className="font-mono text-[12px] uppercase tracking-wide-editorial text-gold">Hub</span>
+        <h3 className="mt-3 font-display text-cream text-2xl md:text-3xl leading-tight tracking-tight group-hover:text-gold transition-colors">
           {hubLabel}°
         </h3>
-        <p className="mt-2 font-body font-light text-cream/65 text-sm">
+        <p className="mt-2 font-body text-cream/65 text-sm">
           All articles in this destination.
         </p>
-        <span className="mt-4 inline-block font-mono text-[10px] uppercase tracking-wide-editorial text-cream/70 group-hover:text-gold transition-colors">
+        <span className="mt-4 inline-block font-mono text-[12px] uppercase tracking-wide-editorial text-cream/70 group-hover:text-gold transition-colors">
           Browse all →
         </span>
       </Link>
@@ -460,7 +460,7 @@ const ContinueReading = ({ related, hubLabel }) => (
           key={a.slug}
           to={`/journal/${a.slug}`}
           data-testid={`continue-article-${a.slug}`}
-          className="group block rounded-2xl border border-ink/15 bg-cream overflow-hidden hover:border-ink/40 transition-all duration-300"
+          className="group block border border-ink/15 bg-cream overflow-hidden hover:border-ink/40 transition-all duration-300"
         >
           <div className="relative aspect-[16/10] w-full overflow-hidden bg-ink">
             <img
@@ -471,10 +471,10 @@ const ContinueReading = ({ related, hubLabel }) => (
           </div>
           <div className="p-5">
             <Badge>{a.articleType}</Badge>
-            <h3 className="mt-3 font-display font-light text-ink text-xl leading-tight tracking-tight line-clamp-2 group-hover:text-gold transition-colors">
+            <h3 className="mt-3 font-display text-ink text-xl leading-tight tracking-tight line-clamp-2 group-hover:text-gold transition-colors">
               {a.title}
             </h3>
-            <span className="mt-3 inline-block font-mono text-[9px] uppercase tracking-wide-editorial text-muted">
+            <span className="mt-3 inline-block font-mono text-[12px] uppercase tracking-wide-editorial text-muted">
               {a.readTimeMinutes} min read
             </span>
           </div>
@@ -489,27 +489,27 @@ const ContinueReading = ({ related, hubLabel }) => (
 const FooterCTA = ({ destinationLabel }) => (
   <section data-testid="article-footer-cta" className="mt-20 md:mt-32 bg-ink text-cream py-20 md:py-32">
     <div className="max-w-[1100px] mx-auto px-6 md:px-12 text-center">
-      <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
+      <span className="font-mono text-[12px] uppercase tracking-wide-editorial text-gold">
         — Your move
       </span>
-      <h2 className="mt-5 font-display font-light text-cream leading-[1] tracking-tight text-4xl md:text-6xl lg:text-7xl max-w-3xl mx-auto">
-        Plan your <span className="italic text-gold">{destinationLabel}</span> golf trip.
+      <h2 className="mt-5 font-display text-cream leading-[1] tracking-tight text-4xl md:text-6xl lg:text-7xl max-w-3xl mx-auto">
+        Plan your <span className="text-gold">{destinationLabel}</span> golf trip.
       </h2>
-      <p className="mt-6 font-body font-light text-cream/65 text-base md:text-lg max-w-xl mx-auto">
+      <p className="mt-6 font-body text-cream/65 text-base md:text-lg max-w-xl mx-auto">
         Built around the courses you want to play and the tables you don&apos;t yet know.
       </p>
       <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
         <button
           type="button"
           data-testid="footer-cta-tripplanner"
-          className="inline-flex items-center gap-2 rounded-full bg-gold text-ink px-7 py-4 font-mono text-[11px] uppercase tracking-wide-editorial hover:bg-cream transition-colors"
+          className="inline-flex items-center gap-2 bg-gold text-ink px-7 py-4 font-mono text-[12px] uppercase tracking-wide-editorial hover:bg-cream transition-colors"
         >
           Start planning →
         </button>
         <button
           type="button"
           data-testid="footer-cta-whatsapp"
-          className="inline-flex items-center gap-2 rounded-full border border-cream/30 text-cream px-7 py-4 font-mono text-[11px] uppercase tracking-wide-editorial hover:bg-cream hover:text-ink transition-colors"
+          className="inline-flex items-center gap-2 border border-cream/30 text-cream px-7 py-4 font-mono text-[12px] uppercase tracking-wide-editorial hover:bg-cream hover:text-ink transition-colors"
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
             <path d="M20.52 3.48A11.78 11.78 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.6 5.96L0 24l6.32-1.66a11.9 11.9 0 0 0 5.74 1.46h.01c6.55 0 11.89-5.34 11.89-11.9 0-3.18-1.24-6.17-3.44-8.42ZM12.07 21.79h-.01a9.89 9.89 0 0 1-5.04-1.38l-.36-.21-3.75.98 1-3.66-.24-.38a9.85 9.85 0 0 1-1.5-5.24c0-5.45 4.43-9.88 9.9-9.88 2.64 0 5.13 1.03 7 2.9a9.83 9.83 0 0 1 2.9 7c0 5.45-4.45 9.87-9.9 9.87Z" />
@@ -601,7 +601,7 @@ const ScrollEmailCapture = ({ slug }) => {
           exit={{ y: 40, opacity: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           data-testid="scroll-email-capture"
-          className="fixed bottom-20 right-4 md:right-8 z-40 w-[calc(100%-2rem)] md:w-[400px] bg-cream rounded-2xl border border-ink/15 shadow-2xl p-5 md:p-6"
+          className="fixed bottom-20 right-4 md:right-8 z-40 w-[calc(100%-2rem)] md:w-[400px] bg-cream border border-ink/15 shadow-2xl p-5 md:p-6"
         >
           <button
             type="button"
@@ -614,13 +614,13 @@ const ScrollEmailCapture = ({ slug }) => {
           </button>
           {!submitted ? (
             <>
-              <span className="font-mono text-[10px] uppercase tracking-wide-editorial text-gold">
+              <span className="font-mono text-[12px] uppercase tracking-wide-editorial text-forest">
                 Stay in the loop
               </span>
-              <h4 className="mt-2 font-display font-light text-ink text-xl md:text-2xl leading-tight tracking-tight">
-                Golf in Mexico, <span className="italic">in your inbox</span>.
+              <h4 className="mt-2 font-display text-ink text-xl md:text-2xl leading-tight tracking-tight">
+                Golf in Mexico, <span className="">in your inbox</span>.
               </h4>
-              <p className="mt-2 font-body font-light text-ink/65 text-sm">
+              <p className="mt-2 font-body text-ink/65 text-sm">
                 No spam. Only content worth your time.
               </p>
               <form onSubmit={onSubmit} className="mt-4 flex gap-2">
@@ -633,12 +633,12 @@ const ScrollEmailCapture = ({ slug }) => {
                   placeholder="your@email.com"
                   className="flex-1 bg-cream border-b border-ink/25 focus:border-gold focus:outline-none font-body text-sm py-1.5 text-ink placeholder:text-ink/35"
                 />
-                <button type="submit" disabled={submitting} className="rounded-full bg-ink text-cream px-4 py-2 font-mono text-[10px] uppercase tracking-wide-editorial hover:bg-gold hover:text-ink transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+                <button type="submit" disabled={submitting} className="rounded-full bg-ink text-cream px-4 py-2 font-mono text-[12px] uppercase tracking-wide-editorial hover:bg-gold hover:text-ink transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
                   {submitting ? "…" : "Send →"}
                 </button>
               </form>
               {error && (
-                <p className="mt-2 font-mono text-[10px] uppercase tracking-wide-editorial text-red-700">
+                <p className="mt-2 font-mono text-[12px] uppercase tracking-wide-editorial text-red-700">
                   {error}
                 </p>
               )}
@@ -646,7 +646,7 @@ const ScrollEmailCapture = ({ slug }) => {
             </>
           ) : (
             <div className="py-3">
-              <p className="font-display italic text-gold text-lg">
+              <p className="font-display text-forest text-lg">
                 You're on the list.
               </p>
             </div>
@@ -699,16 +699,16 @@ const RecommendedReads = () => {
       <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-12 lg:gap-16 items-start">
         {/* Heading column */}
         <div className="px-6 md:px-12 lg:pl-12 lg:pr-0">
-          <h2 className="font-display font-light text-ink text-3xl md:text-4xl lg:text-[2.5rem] leading-[1.1] tracking-tight mb-6">
+          <h2 className="font-display text-ink text-3xl md:text-4xl lg:text-[2.5rem] leading-[1.1] tracking-tight mb-6">
             Explore by Pillar
           </h2>
-          <p className="font-body font-light text-ink/70 text-sm md:text-base leading-[1.65] mb-8 max-w-[28ch]">
+          <p className="font-body text-ink/70 text-sm md:text-base leading-[1.65] mb-8 max-w-[28ch]">
             Five editorial pillars guide everything we publish. Pick a thread and follow it.
           </p>
           <Link
             to="/journal"
             data-testid="rr-view-all"
-            className="inline-flex items-center gap-2 bg-ink text-cream pl-6 pr-5 py-3 rounded-full font-mono text-[11px] uppercase tracking-[0.18em] hover:bg-gold hover:text-ink transition-colors"
+            className="inline-flex items-center gap-2 bg-ink text-cream pl-6 pr-5 py-3 font-mono text-[12px] uppercase tracking-[0.12em] hover:bg-gold hover:text-ink transition-colors"
           >
             View All
           </Link>
@@ -765,10 +765,10 @@ const RecommendedReads = () => {
                     className="absolute inset-0 w-full h-full object-cover editorial-img transition-transform duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
                   />
                 </div>
-                <h3 className="font-display font-light text-ink text-xl md:text-2xl leading-[1.15] tracking-tight mb-3 group-hover:text-gold transition-colors">
+                <h3 className="font-display text-ink text-xl md:text-2xl leading-[1.15] tracking-tight mb-3 group-hover:text-gold transition-colors">
                   {r.title}
                 </h3>
-                <p className="font-body font-light text-ink/65 text-sm md:text-base leading-[1.55] max-w-[30ch]">
+                <p className="font-body text-ink/65 text-sm md:text-base leading-[1.55] max-w-[30ch]">
                   {r.excerpt}
                 </p>
               </Link>
@@ -865,7 +865,7 @@ const Article = () => {
           data-testid="article-breadcrumb"
           className="relative z-10 pt-32 md:pt-36 max-w-[1200px] mx-auto px-6 md:px-12 pb-6"
         >
-          <ol className="flex flex-wrap items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-white/70">
+          <ol className="flex flex-wrap items-center gap-2 font-mono text-[12px] uppercase tracking-[0.12em] text-white/70">
             <li><Link to="/" className="hover:text-[var(--c-gold)] transition-colors">Home</Link></li>
             <li aria-hidden>›</li>
             <li><Link to="/journal" className="hover:text-[var(--c-gold)] transition-colors">Journal</Link></li>
@@ -879,7 +879,7 @@ const Article = () => {
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display font-light text-white tracking-tight text-3xl md:text-5xl lg:text-[3.75rem] leading-[1.08] max-w-[22ch]"
+            className="font-display text-white tracking-tight text-3xl md:text-5xl lg:text-[3.75rem] leading-[1.08] max-w-[22ch]"
             style={{ textShadow: "0 2px 24px rgba(10,21,16,0.45)" }}
           >
             {article.h1}
@@ -889,13 +889,13 @@ const Article = () => {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-6 md:mt-8 font-body font-light text-white/85 text-base md:text-xl leading-[1.6] max-w-[640px]"
+              className="mt-6 md:mt-8 font-body text-white/85 text-base md:text-xl leading-[1.6] max-w-[640px]"
               style={{ textShadow: "0 1px 12px rgba(10,21,16,0.5)" }}
             >
               {article.subtitle}
             </motion.p>
           )}
-          <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--c-gold)]">
+          <p className="mt-8 font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-gold)]">
             {article.readTimeMinutes} min read · Updated {article.updated}
           </p>
 
@@ -912,10 +912,10 @@ const Article = () => {
                 alt={article.author.name}
                 loading="lazy"
                 data-testid="article-byline-photo"
-                className="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover border border-white/30 shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
+                className="w-12 h-12 md:w-14 md:h-14 object-cover border border-white/30 shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
               />
               <div className="leading-tight">
-                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/55 mb-1">
+                <p className="font-mono text-[12px] uppercase tracking-[0.12em] text-white/80 mb-1">
                   Words by
                 </p>
                 <p
@@ -925,7 +925,7 @@ const Article = () => {
                   {article.author.name}
                 </p>
                 {article.author.role && (
-                  <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--c-gold)] mt-0.5">
+                  <p className="font-mono text-[12px] uppercase tracking-[0.12em] text-[var(--c-gold)] mt-0.5">
                     {article.author.role}
                   </p>
                 )}

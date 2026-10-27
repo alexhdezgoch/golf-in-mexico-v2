@@ -77,13 +77,13 @@ const ExperienceHero = () => (
         className="font-display font-normal text-white leading-[0.96] tracking-tight text-5xl md:text-7xl lg:text-[5.5rem] max-w-[18ch]"
       >
         Pick your{" "}
-        <em className="italic text-[var(--c-gold)]">experience.</em>
+        experience.
       </motion.h1>
       <motion.p
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        className="mt-8 md:mt-10 font-body font-light text-white/75 text-base md:text-lg leading-[1.7] max-w-xl"
+        className="mt-8 md:mt-10 font-body text-white/75 text-base md:text-lg leading-[1.7] max-w-xl"
       >
         We build four kinds of Mexico golf trips. Pick the one that fits — your
         next step opens with the right itinerary already shaping up.
@@ -131,11 +131,11 @@ const ExperienceCard = ({ e, index }) => (
           {e.name}
         </h2>
 
-        <p className="mt-4 md:mt-5 font-display italic font-normal text-[var(--c-gold)] text-lg md:text-2xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">
+        <p className="mt-4 md:mt-5 font-display font-normal text-[var(--c-gold)] text-lg md:text-2xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">
           {e.tagline}
         </p>
 
-        <p className="mt-6 md:mt-7 font-body font-light text-white/90 text-sm md:text-[15px] leading-[1.7] max-w-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)]">
+        <p className="mt-6 md:mt-7 font-body text-white/90 text-sm md:text-[15px] leading-[1.7] max-w-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)]">
           {e.description}
         </p>
 
@@ -143,7 +143,7 @@ const ExperienceCard = ({ e, index }) => (
           <Link
             to={`/trip-builder?type=${e.type}`}
             data-testid={`experience-cta-${e.slug}`}
-            className="group inline-flex items-center justify-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-6 md:px-8 py-3 md:py-[14px] rounded-sm font-mono text-[10px] md:text-[11px] uppercase tracking-[0.18em] font-bold transition-colors"
+            className="group inline-flex items-center justify-center gap-3 bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-6 md:px-8 py-3 md:py-[14px] font-body font-extrabold text-[14px] uppercase tracking-[0.03em] transition-colors"
           >
             Start a {e.name} proposal
             <span className="transition-transform duration-500 group-hover:translate-x-1.5">
@@ -185,17 +185,17 @@ const Experience = () => {
     {/* Outro */}
     <section className="bg-[var(--c-green-deep)] text-white py-20 md:py-28 border-t border-white/10">
       <div className="max-w-[820px] mx-auto px-6 md:px-12 text-center">
-        <h2 className="font-display font-light text-white text-3xl md:text-5xl leading-[1.1] mb-8">
+        <h2 className="font-display text-white text-3xl md:text-5xl leading-[1.1] mb-8">
           Not sure which fits?{" "}
-          <em className="italic text-[var(--c-gold)]">Tell us anyway.</em>
+          Tell us anyway.
         </h2>
-        <p className="font-body font-light text-white/80 text-base md:text-lg leading-[1.75] mb-10">
+        <p className="font-body text-white/80 text-base md:text-lg leading-[1.75] mb-10">
           Start a blank proposal and Pablo will reach out within the first 36 hours to scope the trip with you.
         </p>
         <Link
           to="/trip-builder"
           data-testid="experience-skip-cta"
-          className="group inline-flex items-center gap-3 border border-[var(--c-gold)] text-white hover:bg-[var(--c-gold)] hover:text-[var(--c-green-deep)] px-8 py-4 rounded-sm font-mono text-[11px] uppercase tracking-[0.18em] transition-colors"
+          className="group inline-flex items-center gap-3 border border-[var(--c-gold)] text-white hover:bg-[var(--c-gold)] hover:text-[var(--c-green-deep)] px-8 py-4 rounded-sm font-mono text-[12px] uppercase tracking-[0.12em] transition-colors"
         >
           Start a blank proposal
           <span className="transition-transform duration-300 group-hover:translate-x-1">
