@@ -29,6 +29,10 @@ module.exports = {
                 'text-muted':  '#8a847c',
                 'text-faint':  '#b8b3ac',
                 live:          '#1f5c3a',
+                night:         '#0d2018',
+                fairway:       '#1f5c3a',
+                chalk:         '#eef0e6',
+                paper:         '#fbfbf6',
 
                 background: 'hsl(var(--background))',
                 foreground: 'hsl(var(--foreground))',
@@ -36,8 +40,8 @@ module.exports = {
                 ring: 'hsl(var(--ring))',
             },
             fontFamily: {
-                display: ['"Libre Baskerville"', 'Georgia', 'serif'],
-                body: ['"Outfit"', 'sans-serif'],
+                display: ['"Inter"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                body: ['"Inter"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
                 mono: ['"Space Mono"', 'monospace'],
             },
             letterSpacing: {
