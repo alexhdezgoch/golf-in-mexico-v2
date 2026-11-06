@@ -4,28 +4,10 @@ import { trackLead } from "@/lib/analytics";
 import { useHubspotForm } from "@/hooks/useHubspotForm";
 import ConsentNotice from "@/components/ConsentNotice";
 import siteCourses from "@/data/siteCourses.json";
+import { DESTINATIONS, TRIP_LINKS, COMPANY_LINKS, CONCIERGE_CALL_URL, START_PLANNING_URL, EMAIL, PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL } from "@/data/siteNav";
 
-/* The one footer of golf-in-mexico.com, kept compact. Its twin in the trip builder app (components/site/SiteFooter.tsx)
-   renders the same markup on the pages that app serves, so it never changes as a visitor moves between them. Course lists
-   and partners come from src/data/siteCourses.json, exported from the trip builder. */
-
-const DESTINATIONS = [
-  { label: "Los Cabos", to: "/destinations/los-cabos" },
-  { label: "Punta Mita", to: "/destinations/punta-mita" },
-  { label: "Mexico City", to: "/destinations/mexico-city" },
-  { label: "Puerto Vallarta", to: "/destinations/puerto-vallarta" },
-  { label: "Cancun · Riviera Maya", to: "/destinations/cancun-riviera-maya" },
-  { label: "Unique Destinations", to: "/destinations/unique-destinations" },
-];
-
-// `href` = served by the trip builder app (a full page load); `to` = a page of this app.
-const NAV_LINKS = [
-  { label: "Home", to: "/" },
-  { label: "Courses", href: "/courses" },
-  { label: "Journal", to: "/journal" },
-  { label: "About", to: "/about" },
-  { label: "Contact", to: "/contact" },
-];
+/* The one footer, in the Reverie system: deep green, four link columns and the guide sign-up, trusted partners, the name set
+   across the full width, then the legal block. Its twin in the trip builder app (components/site/SiteFooter.tsx) still has the previous layout. */
 
 const LEGAL_LINKS = [
   { label: "Privacy", to: "/privacy", testId: "footer-link-privacy" },
@@ -34,7 +16,6 @@ const LEGAL_LINKS = [
   { label: "Photo credits", href: "/photo-credits", testId: "footer-photo-credits" },
 ];
 
-const PLANNER_CALL_URL = "https://calendly.com/pablo-golf-in-mexico/trip-builder";
 const FORA = {
   name: "Fora Travel, Inc.",
   registrations:
@@ -48,9 +29,9 @@ const SOCIALS = [
   { href: "https://www.linkedin.com/company/golfinmexico/", label: "LinkedIn", path: "M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05A3.74 3.74 0 0 1 16.2 8.7c3.6 0 4.26 2.37 4.26 5.45v6.3ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z" },
 ];
 
-const LABEL = "font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--c-gold)]";
-const LINK = "font-body font-light text-[14px] text-white/75 hover:text-[var(--c-gold)] transition-colors duration-300";
-const MICRO = "font-mono text-[10px] uppercase tracking-[0.18em] text-white/35 hover:text-[var(--c-gold)] transition-colors duration-300";
+const LABEL = "r-eyebrow text-[rgba(251,249,243,0.70)]";
+const LINK = "r-body text-[14px] text-[var(--r-cream)] hover:opacity-65 transition-opacity duration-200";
+const MICRO = "text-[12px] text-[rgba(251,249,243,0.55)] hover:text-[var(--r-cream)] transition-colors duration-200";
 
 const NavItem = ({ l, className, testId }) =>
   l.href ? (
@@ -79,166 +60,109 @@ const Footer = () => {
   };
 
   return (
-    <footer data-testid="site-footer" className="relative z-10 bg-[#0a0a0a] text-white">
-      <div className="max-w-[1240px] mx-auto px-6 md:px-12">
-        <div data-testid="footer-grid" className="grid gap-10 md:grid-cols-12 md:gap-8 py-12 md:py-14 border-b border-white/[0.08]">
-          <div data-testid="footer-col-newsletter" className="md:col-span-5 flex flex-col gap-4">
-            <img src="/logo-wordmark.png" alt="GOLF° IN MEXICO°" loading="lazy" className="h-7 w-auto self-start" />
-            <h2 data-testid="footer-newsletter-headline" className="mt-2 font-display font-normal text-white text-lg leading-[1.2]">
-              Stay <em className="italic text-[var(--c-gold)]">inside</em> the ropes.
-            </h2>
+    <footer data-testid="site-footer" className="relative z-10 bg-[var(--r-green)] text-[var(--r-cream)]">
+      <div className="px-5 md:px-10 pt-16 md:pt-20">
+        <nav aria-label="Footer" data-testid="footer-grid" className="grid gap-12 grid-cols-2 lg:grid-cols-5">
+          <div data-testid="footer-col-nav" className="flex flex-col gap-4">
+            <span className={LABEL}>GOLF° IN MEXICO°</span>
+            <ul className="flex flex-col gap-2">
+              {COMPANY_LINKS.map((l) => (
+                <li key={l.label}><NavItem l={l} className={LINK} testId={`footer-link-${l.label.toLowerCase()}`} /></li>
+              ))}
+              <li><a href="/trip-builder" data-testid="footer-plan-trip" className={LINK}>Plan my trip</a></li>
+            </ul>
+          </div>
+          <div data-testid="footer-col-destinations" className="flex flex-col gap-4">
+            <span className={LABEL}>Destinations</span>
+            <ul className="flex flex-col gap-2">
+              {DESTINATIONS.map((d) => (
+                <li key={d.label}><NavItem l={d} className={LINK} /></li>
+              ))}
+            </ul>
+          </div>
+          <div data-testid="footer-col-trips" className="flex flex-col gap-4">
+            <span className={LABEL}>Curated Trips</span>
+            <ul className="flex flex-col gap-2">
+              {TRIP_LINKS.map((e) => (
+                <li key={e.label}><NavItem l={e} className={LINK} /></li>
+              ))}
+            </ul>
+          </div>
+          <div data-testid="footer-col-contact" className="flex flex-col gap-4">
+            <span className={LABEL}>Talk to us</span>
+            <ul className="flex flex-col gap-2">
+              <li><a href={START_PLANNING_URL} className={LINK} data-track="landing_explore" data-track-id="start-planning-footer" data-testid="footer-planner-link">Book with Golf Concierge</a></li>
+              <li><a href={`mailto:${EMAIL}`} className={LINK} data-track="contact_email" data-track-id="footer">{EMAIL}</a></li>
+              <li><a href={`tel:${PHONE_TEL}`} className={LINK} data-track="contact_phone" data-track-id="footer">{PHONE_DISPLAY}</a></li>
+              <li><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className={LINK} data-track="whatsapp" data-track-id="footer">WhatsApp</a></li>
+              {SOCIALS.map((s) => (
+                <li key={s.label}><a href={s.href} target="_blank" rel="noopener noreferrer" data-testid={`footer-social-${s.label.toLowerCase()}`} className={LINK}>{s.label}</a></li>
+              ))}
+            </ul>
+          </div>
+          <div data-testid="footer-guide" className="col-span-2 lg:col-span-1 flex flex-col gap-4">
+            <span className={LABEL}>The Mexico golf guide</span>
             {!submitted ? (
-              <form data-testid="newsletter-form" onSubmit={onSubmit} className="flex flex-col gap-2 max-w-sm">
+              <form data-testid="newsletter-form" onSubmit={onSubmit} className="flex flex-col gap-3">
                 <input {...honeypotProps} name="company_website" />
-                <div className="flex">
-                  <label htmlFor="newsletter-email" className="sr-only">Email</label>
+                <label htmlFor="newsletter-email" className="sr-only">Email</label>
+                <div className="flex border-b border-[rgba(251,249,243,0.50)] focus-within:border-[var(--r-cream)]">
                   <input
                     id="newsletter-email"
                     type="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="your@email.com"
+                    placeholder="Enter your email"
                     autoComplete="email"
                     data-testid="newsletter-email-input"
-                    className="flex-1 min-w-0 bg-white/[0.04] border border-white/15 focus:border-[var(--c-gold)] transition-colors duration-300 text-white placeholder:text-white/35 font-body text-sm px-3.5 py-2.5 rounded-sm focus:outline-none"
+                    className="flex-1 min-w-0 bg-transparent py-2 text-[14px] font-light placeholder:text-[rgba(251,249,243,0.55)] focus:outline-none"
                   />
-                  <button
-                    type="submit"
-                    disabled={submitting}
-                    data-testid="newsletter-submit-button"
-                    className="group inline-flex items-center justify-center bg-[var(--c-gold)] hover:bg-[var(--c-gold-light)] text-[var(--c-green-deep)] px-4 ml-2 rounded-sm font-mono text-[10px] uppercase tracking-[0.16em] transition-colors duration-300 whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
-                  >
-                    {submitting ? "…" : "Subscribe"}
-                    <span className="ml-2 inline-block transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true">→</span>
+                  <button type="submit" disabled={submitting} data-testid="newsletter-submit-button" className="r-eyebrow disabled:opacity-60">
+                    {submitting ? "…" : "Send"}
                   </button>
                 </div>
-                {error && <span role="alert" className="font-mono text-[10px] uppercase tracking-[0.16em] text-red-400">{error}</span>}
+                {error && <span role="alert" className="text-[13px] text-red-300">{error}</span>}
                 <ConsentNotice tone="dark" testid="consent-notice-footer" className="mt-1" />
               </form>
             ) : (
-              <p data-testid="newsletter-success" role="status" className="font-display italic font-normal text-[var(--c-gold)] text-base">
-                On its way. Welcome to the room.
-              </p>
+              <p data-testid="newsletter-success" role="status" className="r-body">On its way. Welcome to the room.</p>
             )}
-            <div className="mt-1 flex items-center gap-2">
-              {SOCIALS.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  data-testid={`footer-social-${s.label.toLowerCase()}`}
-                  className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/15 text-white/70 hover:bg-[var(--c-gold)] hover:border-[var(--c-gold)] hover:text-[var(--c-green-deep)] transition-all duration-300"
-                >
-                  <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor" aria-hidden="true">
-                    <path d={s.path} />
-                  </svg>
-                </a>
-              ))}
-            </div>
           </div>
+        </nav>
 
-          <nav aria-label="Footer" className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
-            <div data-testid="footer-col-destinations" className="flex flex-col gap-3">
-              <span className={LABEL}>Destinations</span>
-              <ul className="flex flex-col gap-2">
-                {DESTINATIONS.map((d) => (
-                  <li key={d.label}>
-                    <NavItem l={d} className={LINK} testId={`footer-dest-${d.label.toLowerCase().replace(/\s+/g, "-")}`} />
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div data-testid="footer-col-nav" className="flex flex-col gap-3">
-              <span className={LABEL}>Navigate</span>
-              <ul className="flex flex-col gap-2">
-                {NAV_LINKS.map((l) => (
-                  <li key={l.label}>
-                    <NavItem l={l} className={LINK} testId={`footer-link-${l.label.toLowerCase()}`} />
-                  </li>
-                ))}
-                <li>
-                  <a href="/trip-builder" data-testid="footer-plan-trip" className="font-body text-[14px] text-[var(--c-gold)] hover:text-[var(--c-gold-light)] transition-colors duration-300">
-                    Explore trips →
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="col-span-2 sm:col-span-1 flex flex-col gap-3">
-              <span className={LABEL}>Talk to us</span>
-              <ul className="flex flex-col gap-2">
-                <li>
-                  <a href={PLANNER_CALL_URL} target="_blank" rel="noopener noreferrer" className={LINK} data-track="planner_call" data-track-id="footer" data-testid="footer-planner-link">
-                    Book 15 minutes with Pablo
-                  </a>
-                </li>
-                <li>
-                  <a href="mailto:hello@golf-in-mexico.com" className={LINK}>hello@golf-in-mexico.com</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-
-        <div data-testid="footer-courses" className="py-10 border-b border-white/[0.08]">
-          <h2 className={`${LABEL} mb-5`}>
-            <a href="/courses" className="hover:text-[var(--c-gold-light)]">Courses°</a>
-          </h2>
-          <div className="grid gap-x-10 gap-y-5 md:grid-cols-2 lg:grid-cols-3">
-            {siteCourses.footer.map((g) => (
-              <p key={g.label} className="font-body font-light text-[13px] leading-[1.75] text-white/55">
-                <Link to={g.guide} className="mr-1.5 font-display text-[14px] font-normal text-white hover:text-[var(--c-gold)] transition-colors duration-300">
-                  {g.label}
-                </Link>
-                {g.courses.map((c, i) => (
-                  <span key={c.href}>
-                    {i > 0 && <span aria-hidden="true"> · </span>}
-                    <a href={c.href} className="hover:text-[var(--c-gold)] transition-colors duration-300">{c.name}</a>
-                  </span>
-                ))}
-              </p>
-            ))}
-          </div>
-        </div>
-
-        <div data-testid="footer-partners" className="py-8 border-b border-white/[0.08]">
-          <ul className="flex flex-wrap items-center gap-x-8 gap-y-4" aria-label="Who we work with">
+        <div data-testid="footer-partners" className="mt-16 pt-12 border-t border-[rgba(251,249,243,0.15)] flex flex-col items-center gap-8">
+          <span className={LABEL}>Trusted partners</span>
+          <ul className="flex flex-wrap items-center justify-center gap-x-12 gap-y-8" aria-label="Trusted partners">
             {siteCourses.partners.map((p) => (
               <li key={p.name}>
-                <a href={p.href} target="_blank" rel="noopener" aria-label={`${p.name}: ${p.role}`} title={p.role} className="block opacity-70 hover:opacity-100 transition-opacity duration-300">
-                  <img src={p.logo} alt={p.name} loading="lazy" className={p.round ? "h-9 w-9 rounded-full grayscale" : "h-6 w-auto max-w-[7rem] object-contain brightness-0 invert"} />
+                <a href={p.href} target="_blank" rel="noopener" aria-label={`${p.name}: ${p.role}`} title={p.role} className="block opacity-75 hover:opacity-100 transition-opacity duration-300">
+                  <img src={p.logo} alt={p.name} loading="lazy" className={p.round ? "h-10 w-10 rounded-full grayscale" : "h-7 w-auto max-w-[8rem] object-contain brightness-0 invert"} />
                 </a>
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="py-7 flex flex-col gap-3">
-          <p data-testid="footer-role" className="max-w-[110ch] font-body font-light text-[11px] leading-[1.6] text-white/40">
-            GOLF° IN MEXICO° is a golf trip planning service, not a travel agency: we do not sell travel or take payment for it. Hotel stays are booked through {FORA.name}, of which we are an independent advisor, and villas with the
-            properties that operate them; each one charges you directly. We charge only for planning. Prices on this site are planning estimates at published rates, taxes included, not offers: your written proposal confirms the
-            price. Nothing is paid on this site. Course names, tournaments and rankings belong to their owners and are cited as facts; we are not affiliated with or endorsed by them. {FORA.name} is registered as a seller of travel:{" "}
-            {FORA.registrations}.
+        <img src="/logo-wordmark.png" alt="" aria-hidden="true" width="1280" height="200" className="mt-16 w-full h-auto opacity-[0.12] select-none" />
+
+        <div className="py-8 flex flex-col items-center gap-4 text-center">
+          <p data-testid="footer-role" className="max-w-[110ch] font-light text-[12px] leading-[1.7] text-[rgba(251,249,243,0.55)]">
+            GOLF° IN MEXICO° works with licensed partners for hotels, villas, golf and transfers. Hotel stays are arranged through our travel partner {FORA.name}, of which we are an independent advisor ({FORA.registrations}). Villas, tee times and transfers are booked with the companies that operate them. Each is paid directly to that partner; we charge only for planning. Prices are estimates in USD, taxes included; your written proposal confirms the final price. Course names and tournaments belong to their owners, who do not endorse us.
           </p>
-          <div data-testid="footer-copyright" className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-            <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/35">
-              © {year} Golf<span className="text-[var(--c-gold)]">°</span> in Mexico<span className="text-[var(--c-gold)]">°</span>, operated by {COMPANY}
-            </span>
-            <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
-              {LEGAL_LINKS.map((l) => (
-                <li key={l.label}>
-                  <NavItem l={l} className={MICRO} testId={l.testId} />
-                </li>
-              ))}
-              <li>
-                <button type="button" className={MICRO} onClick={() => window.dispatchEvent(new Event("gim-cookie-settings"))} data-testid="footer-cookie-settings">
-                  Cookie settings
-                </button>
-              </li>
-            </ul>
-          </div>
+          <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            {LEGAL_LINKS.map((l) => (
+              <li key={l.label}><NavItem l={l} className={MICRO} testId={l.testId} /></li>
+            ))}
+            <li>
+              <button type="button" className={MICRO} onClick={() => window.dispatchEvent(new Event("gim-cookie-settings"))} data-testid="footer-cookie-settings">
+                Cookie settings
+              </button>
+            </li>
+          </ul>
+          <span data-testid="footer-copyright" className="text-[12px] text-[rgba(251,249,243,0.45)]">
+            © {year} GOLF° IN MEXICO°, operated by {COMPANY}
+          </span>
         </div>
       </div>
     </footer>
