@@ -10,6 +10,8 @@ const Cursor = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    // Never in the prerendered HTML: the cursor appears only after hydration (React #418 fix, 2026-11-02).
+    if (typeof window !== "undefined" && window.__PRERENDER__) return undefined;
     // Hide on touch devices
     const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     if (!fine) return;

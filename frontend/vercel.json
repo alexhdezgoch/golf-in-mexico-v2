@@ -3,6 +3,16 @@
   "framework": "create-react-app",
   "redirects": [
     {
+      "source": "/destinations/los-cabos/courses/vidanta-golf-los-cabos",
+      "destination": "/destinations/los-cabos",
+      "permanent": true
+    },
+    {
+      "source": "/experience",
+      "destination": "/trips",
+      "permanent": true
+    },
+    {
       "source": "/cancun/golf-packages",
       "destination": "/destinations/cancun-riviera-maya/golf-packages",
       "permanent": true
@@ -59,6 +69,33 @@
         {
           "key": "Vary",
           "value": "Accept"
+        }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=2592000"
+        }
+      ]
+    },
+    {
+      "source": "/founders/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=2592000"
+        }
+      ]
+    },
+    {
+      "source": "/images/g/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000, stale-while-revalidate=31536000"
         }
       ]
     }

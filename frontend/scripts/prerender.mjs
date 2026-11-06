@@ -71,7 +71,9 @@ function readRoutes() {
   // Paths the trip builder serves (see servedByTripBuilder in middleware.js) or that redirect to it have no page here to capture.
   const elsewhere = (p) => p === "/trip-builder" || p === "/golf-packages" || p === "/courses" || p === "/terms" || p === "/photo-credits" || /^\/destinations\/[^/]+\/(golf-packages|courses\/[^/]+)$/.test(p);
   // De-dupe, ensure "/" is present, keep deterministic order.
-  return [...new Set(routes.length ? routes.filter((p) => !elsewhere(p)) : ["/"])];
+  // Pages kept out of the sitemap (noindex ad landings) still need their own HTML, or they would hydrate over the home page's.
+  const NOINDEX = ["/start-planning"];
+  return [...new Set([...(routes.length ? routes.filter((p) => !elsewhere(p)) : ["/"]), ...NOINDEX])];
 }
 
 // ── tiny static server with SPA fallback ─────────────────────────────────────
@@ -163,6 +165,18 @@ async function prerenderRoute(browser, base, route) {
 
   await new Promise((r) => setTimeout(r, SETTLE_MS));
 
+  // React #418 fix (memory hydration-418-fix, 2026-11-02): outerHTML merges adjacent text nodes, so keep them apart with an
+  // empty comment as React's own server render does, and ship `muted` on videos (React sets it as a property, never as markup,
+  // so a hydrating page would otherwise keep the hero film from autoplaying).
+  await page.evaluate(() => {
+    const root = document.getElementById("root");
+    if (!root) return;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    const texts = [];
+    while (walker.nextNode()) texts.push(walker.currentNode);
+    for (const t of texts) if (t.nextSibling && t.nextSibling.nodeType === Node.TEXT_NODE) t.parentNode.insertBefore(document.createComment(""), t.nextSibling);
+    root.querySelectorAll("video").forEach((v) => v.setAttribute("muted", ""));
+  });
   const html = await page.evaluate(() => "<!doctype html>\n" + document.documentElement.outerHTML);
   await page.close();
 

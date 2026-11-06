@@ -14,15 +14,19 @@ import { initAnalytics, trackEvent, trackPageView } from "@/lib/analytics";
 import { captureAttribution } from "@/lib/attribution";
 
 import Home from "@/pages/Home";
-import Journal from "@/pages/Journal";
-import Article from "@/pages/Article";
-import About from "@/pages/About";
-import Destinations from "@/pages/Destinations";
+import RAbout from "@/pages/r/RAbout";
+import RDestinations from "@/pages/r/RDestinations";
 import LosCabos from "@/pages/LosCabos";
-import Experience from "@/pages/Experience";
-import Contact from "@/pages/Contact";
-import Privacy from "@/pages/Privacy";
-import Landing from "@/pages/Landing";
+import Privacy from "@/pages/r/RPrivacy";
+import RGallery from "@/pages/r/RGallery";
+import RStartPlanning from "@/pages/r/RStartPlanning";
+import RHubLanding from "@/pages/r/RHubLanding";
+import RGuideLosCabos from "@/pages/r/RGuideLosCabos";
+import RGuide from "@/pages/r/RGuide";
+import RTrip from "@/pages/r/RTrip";
+import RTrips from "@/pages/r/RTrips";
+import { RJournal, RArticle } from "@/pages/r/RJournal";
+import RContact from "@/pages/r/RContact";
 
 /**
  * Pages served by the trip builder app (see middleware.js). Reached by an in-app link, the router hands them back
@@ -38,9 +42,11 @@ function ServerPage() {
 }
 
 // Generic destination hub — routes /destinations/:slug through the LosCabos layout with the matching data
+// The short guides (2026-11-03) for the five guides besides Los Cabos; any other hub keeps the earlier layout.
+const SHORT_GUIDES = ["punta-mita", "mexico-city", "cancun-riviera-maya", "puerto-vallarta", "unique-destinations"];
 const HubBySlug = () => {
   const { slug } = useParams();
-  return <LosCabos slug={slug} />;
+  return SHORT_GUIDES.includes(slug) ? <RGuide slug={slug} /> : <LosCabos slug={slug} />;
 };
 
 // True both while the build-time prerenderer captures a route (window.__PRERENDER__,
@@ -68,6 +74,14 @@ const pageVariants = {
   },
 };
 
+// Each contact channel is measured on its own, so we learn which one clients prefer.
+const CONTACT_EVENTS = {
+  planner_call: "book_call_click",
+  contact_email: "contact_email_click",
+  contact_phone: "contact_phone_click",
+  whatsapp: "whatsapp_click",
+};
+
 const AnimatedRoutes = () => {
   const location = useLocation();
 
@@ -84,8 +98,10 @@ const AnimatedRoutes = () => {
   // book_call_click conversion, the same event the trip builder pages send.
   useEffect(() => {
     const onClick = (e) => {
-      const el = e.target.closest && e.target.closest('[data-track="planner_call"]');
-      if (el) trackEvent("book_call_click", { source: el.getAttribute("data-track-id") || "site" });
+      const el = e.target.closest && e.target.closest("[data-track]");
+      if (!el) return;
+      const event = CONTACT_EVENTS[el.getAttribute("data-track")];
+      if (event) trackEvent(event, { source: el.getAttribute("data-track-id") || "site" });
     };
     document.addEventListener("click", onClick);
     return () => document.removeEventListener("click", onClick);
@@ -134,7 +150,7 @@ const AnimatedRoutes = () => {
           path="/journal"
           element={
             <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
-              <Journal />
+              <RJournal />
             </motion.div>
           }
         />
@@ -142,7 +158,7 @@ const AnimatedRoutes = () => {
           path="/destinations"
           element={
             <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
-              <Destinations />
+              <RDestinations />
             </motion.div>
           }
         />
@@ -150,7 +166,7 @@ const AnimatedRoutes = () => {
           path="/destinations/los-cabos"
           element={
             <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
-              <LosCabos slug="los-cabos" />
+              <RGuideLosCabos />
             </motion.div>
           }
         />
@@ -174,9 +190,7 @@ const AnimatedRoutes = () => {
         />
         <Route
           path="/destinations/los-cabos/golf-packages"
-          element={
-            <ServerPage />
-          }
+          element={<ServerPage />}
         />
         <Route
           path="/destinations/puerto-vallarta/golf-packages"
@@ -203,12 +217,14 @@ const AnimatedRoutes = () => {
         <Route path="/courses" element={<ServerPage />} />
         <Route path="/terms" element={<ServerPage />} />
         <Route path="/photo-credits" element={<ServerPage />} />
+        <Route path="/trips" element={<RTrips />} />
+        <Route path="/trips/:slug" element={<RTrip />} />
         <Route path="/destinations/:hub/courses/:slug" element={<ServerPage />} />
         <Route
           path="/destinations/:hub/:slug"
           element={
             <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
-              <Landing />
+              <RHubLanding />
             </motion.div>
           }
         />
@@ -220,7 +236,7 @@ const AnimatedRoutes = () => {
           path="/journal/:slug"
           element={
             <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
-              <Article />
+              <RArticle />
             </motion.div>
           }
         />
@@ -228,19 +244,12 @@ const AnimatedRoutes = () => {
           path="/trip-builder"
           element={<ServerPage />}
         />
-        <Route
-          path="/experience"
-          element={
-            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
-              <Experience />
-            </motion.div>
-          }
-        />
+        <Route path="/experience" element={<Navigate to="/trips" replace />} />
         <Route
           path="/about"
           element={
             <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
-              <About />
+              <RAbout />
             </motion.div>
           }
         />
@@ -248,7 +257,23 @@ const AnimatedRoutes = () => {
           path="/contact"
           element={
             <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
-              <Contact />
+              <RContact />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/gallery"
+          element={
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
+              <RGallery />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/start-planning"
+          element={
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
+              <RStartPlanning />
             </motion.div>
           }
         />
@@ -281,9 +306,13 @@ const ChromeLayout = ({ children }) => {
   if (minimal) return <>{children}</>;
   return (
     <>
+      {/* Hidden until focused: lets keyboard and screen-reader users jump past the menu (UI audit 2026-11-04). */}
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-[var(--r-cream)] focus:text-[var(--r-green)] focus:px-4 focus:py-3">
+        Skip to content
+      </a>
       <Nav />
       <ReadingProgress />
-      {children}
+      <div id="main" tabIndex={-1} className="outline-none">{children}</div>
       <Footer />
     </>
   );
@@ -296,14 +325,9 @@ function App() {
   // the gap so there's no flash. That inline script sets data-gim-intro="pending"
   // only for first-time visitors (session flag unset, no ?skipIntro) and never
   // during prerender (puppeteer pre-seeds the flag), so bots capture clean content.
+  // Removed (user, 2026-11-04): no intro splash; its line "Curating the best golf experiences in Mexico." is now the
+  // home H1. public/index.html no longer sets data-gim-intro, so showIntro stays false.
   const [showIntro, setShowIntro] = useState(false);
-
-  useEffect(() => {
-    if (typeof document === "undefined") return;
-    if (document.documentElement.getAttribute("data-gim-intro") === "pending") {
-      setShowIntro(true);
-    }
-  }, []);
 
   // Once the Intro is mounted and covering the viewport, drop the pre-paint
   // curtain beneath it on the next frame (so there's never an uncovered gap).

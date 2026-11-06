@@ -105,6 +105,9 @@ export const parseSitemap = (xml) =>
   );
 
 // A deployment's static files never change, so each is read once per instance.
+// Real pages kept out of the sitemap on purpose (noindex): the planning page after a quote request (2026-11-06).
+const PAGES_OUTSIDE_SITEMAP = new Set(["/start-planning"]);
+
 let routesPromise;
 let notFoundHtmlPromise;
 
@@ -169,7 +172,7 @@ export default async function middleware(request) {
 
   try {
     const routes = await loadRoutes(url);
-    if (routes && !routes.has(normalizePath(url.pathname))) {
+    if (routes && !routes.has(normalizePath(url.pathname)) && !PAGES_OUTSIDE_SITEMAP.has(normalizePath(url.pathname))) {
       return markdown
         ? respond(NOT_FOUND_MARKDOWN, 404, MARKDOWN)
         : respond(await loadNotFoundHtml(url), 404, "text/html; charset=utf-8");

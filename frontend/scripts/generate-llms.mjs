@@ -113,9 +113,10 @@ const ROUTE_SOURCE = {
   "/destinations": "src/pages/Destinations.jsx",
   "/journal": "src/pages/Journal.jsx",
   "/courses": "src/pages/Courses.jsx",
-  "/experience": "src/pages/Experience.jsx",
+  "/trips": "src/data/rtrips.json",
   "/trip-builder": "src/pages/TripBuilder.jsx",
   "/about": "src/pages/About.jsx",
+  "/gallery": "src/data/gallery.json",
   "/contact": "src/pages/Contact.jsx",
   // Both legal routes render from one bilingual content module, so they share
   // its date — the policy text is what changes, not the component.
@@ -158,28 +159,35 @@ async function loadData(file) {
 // ── static page copy that isn't in the data files ──────────────────────────
 // The brand's one identity statement: the same words in the Organization schema, the home meta description, About and external profiles.
 const SITE_SUMMARY =
-  "GOLF° IN MEXICO° is run by Pablo De La Mora, a sports agent with five years inside PGA Tour, LIV Golf, LPGA and WTA events, and José Islas, a professional golfer with four Mexican Tour wins. It helps golfers play Mexico's best: curated trips around the top courses, authentic local experiences and the best value for every group.";
+  "GOLF° IN MEXICO° plans golf trips to Mexico. It is run by Pablo De La Mora, a sports agent with five years inside PGA Tour, LIV Golf, LPGA and WTA events, and José Islas, a professional golfer with four Mexican Tour wins. Pablo plans every trip personally and curates them with José. It builds each trip around the top courses with the best value for every group. Planning is free until the trip is right; hotels, villas and courses are booked with the partners that run them and paid to them directly.";
 
 const ABOUT = {
-  hero: "Golf in Mexico° comes from Pablo De La Mora and José Islas — a sports agent and a professional golfer who together hold the relationships, the access, and the editorial voice that turn a Mexico golf trip into something different from what a tourism board can offer.",
+  hero: "GOLF° IN MEXICO° comes from Pablo De La Mora and José Islas — a sports agent and a professional golfer who together hold the relationships, the access, and the editorial voice that turn a Mexico golf trip into something different from what a tourism board can offer.",
   pillars: [
     {
       title: "Precision — in every itinerary.",
       body: "Our standards were forged on professional tours. From the first tee time to the final ride home, every course, hotel, and transfer is vetted, sequenced, and confirmed in writing — the same rigor expected by the world's best players, applied to your trip.",
     },
     {
-      title: "Destination Intelligence — over a decade in the field.",
-      body: "Over a decade spent scouting Mexico's most exclusive regions. We rely on genuine, boots-on-the-ground relationships to bypass the tourist noise and unlock the country's true hidden gems.",
+      title: "Destination Intelligence — boots on the ground.",
+      body: "We scout Mexico's golf regions in person and keep a network on the ground: caddies, course directors, head pros and resort operators. That is how we skip the tourist noise and open tee times, suites and introductions you won't find on a booking platform.",
     },
     {
-      title: "Relationships That Open Doors — insider access, built over decades.",
-      body: "Real access is relational, not transactional. Years of direct work with caddies, course directors, head pros, and resort operators means our clients get tee times, suites, and introductions that are not on any public booking platform. That network is the trip.",
+      title: "Relationship First — trust, for life.",
+      body: "We want you to trust our judgment and our process. Every quote is transparent, with no hidden amounts, and every trip is built to start a relationship that lasts well beyond one round.",
     },
+  ],
+  // The booking process, as on /about (user, 2026-11-06).
+  steps: [
+    "Tell us about your trip: send a message, an email or a WhatsApp, or start in the trip builder.",
+    "A 10-minute call: a short face-to-face call is the best way to personalize the trip — who is going, how you like to play and what matters most.",
+    "Your proposal in 36 hours: Pablo sends a written proposal with the stay, the courses and the final price.",
+    "We run the trip, with perks you won't get booking direct: hotels are booked through Fora, with perks like breakfast or resort credit; private villas through our national and local partners. One contact from the first tee time until you are home.",
   ],
   founders: [
     {
       name: "Pablo De La Mora — The Agent (Sports Agent, 5+ years)",
-      body: "Over the past 5 years my career has taken me inside the player-only areas of the PGA Tour, LIV Golf, and WTA events. Listen to almost any post-round interview and players say the same thing: the people driving Mexican hospitality are world-class. Add 50+ world-class designer golf courses, each shaped by its region's landscape, and no other country offers this exact blend. That is why I founded Golf in Mexico — to give you the experience I've enjoyed for 5 years: no generic itineraries, no opaque pricing, just honest opinions, genuine hidden gems, professional delivery, and the keys to bespoke experiences you won't find online.",
+      body: "Over the past 5 years my career has taken me inside the player-only areas of the PGA Tour, LIV Golf, and WTA events. Listen to almost any post-round interview and players say the same thing: the people driving Mexican hospitality are exceptional. Add dozens of signature-designer golf courses, each shaped by its region's landscape, and no other country offers this exact blend. That is why I founded GOLF° IN MEXICO° — to give you the experience I've enjoyed for 5 years: no generic itineraries, no opaque pricing, just honest opinions, genuine hidden gems, professional delivery, and the keys to bespoke experiences you won't find online.",
     },
     {
       name: "José Islas — The Player (professional golfer)",
@@ -189,24 +197,20 @@ const ABOUT = {
 };
 
 const HOME_STATEMENT =
-  "We help global golfers play Mexico's top golf experiences. Powered by our professional golf experience, we curate trips around the best courses, authentic local experiences, and optimized value for every group.";
+  "Curating the best golf experiences in Mexico. Golf trips personalized for any kind of trip, designed around Mexico's top courses and experiences. A golf agent and a pro golfer from Mexico, with the best value for every group.";
 
 const CONTACT =
   "Talk golf with us. Reach the team by email for trip planning, press, or partnerships, or book a call to plan a trip directly. Plan a trip via the Trip Builder at /trip-builder.";
 
 // The homepage as markdown (public/index.md). Mirrors the copy in
 // src/pages/Home.jsx and src/components/FoundersGallery.jsx — update it with them.
-const HOME_MD = `# There is no golf destination like Mexico.
+const HOME_MD = `# Curating the best golf experiences in Mexico.
 
-Curated experiences, planned by a tour agent and a tour pro. [Explore trips](${BASE}/trip-builder).
-
-## We help global golfers play Mexico's top golf experiences.
-
-Powered by our professional golf experience, we curate trips around the best courses, authentic local experiences, and optimized value for every group.
+Golf trips personalized for any kind of trip, designed around Mexico's top courses and experiences. A golf agent and a pro golfer from Mexico, with the best value for every group. [Plan my trip](${BASE}/trip-builder).
 
 ## An agent and a tour pro behind every itinerary.
 
-What began inside professional tours and global fairways has grown into a bridge to Mexico's finest golf experiences. Today, we combine years of golf insights to bring you world-class courses, hidden gems, and the hospitality that makes this country unmatched.
+What began inside professional tours and global fairways has grown into a bridge to Mexico's finest golf experiences. Today, we combine years of golf insights to bring you the top courses, hidden gems and the hospitality this country is known for.
 
 - Pablo De La Mora — The Agent
 - José Islas — The Pro Player
@@ -225,6 +229,13 @@ const truncate = (s, n = 170) => {
   return c.slice(0, c.lastIndexOf(" ", n)).trim() + "…";
 };
 
+// Each guide course in llms-full.txt shows what its course page says (src/data/courseFacts.json): fee, access, note and
+// standout hole, not the guide's older research (2026-11-04). Courses without a page keep their name and specs, no fee.
+const FACTS = JSON.parse(fs.readFileSync(path.join(DATA, "courseFacts.json"), "utf8"));
+let GUIDE_SLUG = {};
+let GUIDE_VOICES = {};
+const pageFacts = (h, c) => { const slug = GUIDE_SLUG[c.name]; return slug ? FACTS[slug] : null; };
+
 function renderHubFull(h) {
   const url = `${BASE}/destinations/${h.slug}`;
   let md = `## ${clean(h.name)} — ${clean(h.region)}\n\n`;
@@ -238,6 +249,13 @@ function renderHubFull(h) {
     md += `\n`;
   }
 
+  // The agent and the player, as on the guide page (2026-11-05).
+  const voices = GUIDE_VOICES[h.slug] || [];
+  if (voices.length) {
+    md += `### The agent and the player\n\n`;
+    for (const v of voices) md += para(`${v.role}, ${v.name}: "${v.text}"`);
+  }
+
   if (Array.isArray(h.overviewParagraphs) && h.overviewParagraphs.length) {
     md += `### Overview\n\n`;
     for (const p of h.overviewParagraphs) md += para(p);
@@ -247,26 +265,21 @@ function renderHubFull(h) {
     md += `### Courses\n\n`;
     if (h.coursesIntro) md += para(h.coursesIntro);
     for (const c of h.courses) {
-      const meta = [c.specs, c.fee && `Green fee: ${c.fee}`, c.difficulty && `Difficulty ${c.difficulty}`, c.bestFor && `Best for: ${c.bestFor}`]
+      const f = pageFacts(h, c);
+      const fee = f ? f.fee || "no public rate" : "";
+      const meta = [c.specs, fee && `Green fee: ${fee}`, f?.access && `Access: ${f.access}`, c.difficulty && `Difficulty ${c.difficulty}`, c.bestFor && `Best for: ${c.bestFor}`]
         .filter(Boolean)
         .map(clean)
         .join(" · ");
       md += `**${clean(c.name)}**` + (meta ? ` — ${meta}` : "") + `\n\n`;
-      if (c.note) md += para(c.note);
-      if (c.standout) md += para(`Standout: ${c.standout}`);
+      const note = f?.note || c.note, standout = f?.standout || c.standout;
+      if (note) md += para(note);
+      if (standout) md += para(`Standout: ${standout}`);
     }
   }
 
-  if (Array.isArray(h.costs) && h.costs.length) {
-    md += `### Costs\n\n`;
-    if (h.costsIntro) md += para(h.costsIntro);
-    for (const row of h.costs) {
-      // row = [label, low, high, note]
-      const [label, low, high, note] = row;
-      md += `- ${clean(label)}: ${clean(low)}–${clean(high)}${note ? ` (${clean(note)})` : ""}\n`;
-    }
-    md += `\n`;
-  }
+  // No guide page shows a trip budget any more (budgets belong to the packages pages), so h.costs is not written to the AI
+  // file: the old tables mixed courses without a page and fees that no longer match the course pages (2026-11-05).
 
   if (Array.isArray(h.callouts) && h.callouts.length) {
     md += `### Local knowledge\n\n`;
@@ -285,7 +298,8 @@ function renderHubFull(h) {
 
   if (Array.isArray(h.faqs) && h.faqs.length) {
     md += `### FAQ\n\n`;
-    for (const f of h.faqs) md += `**${clean(f.q)}**\n\n${para(f.a)}`;
+    // The trip-budget question goes with the budget tables above: no guide page answers it any more (2026-11-04).
+    for (const f of h.faqs.filter((f) => !/^How much does a (golf )?trip/i.test(f.q))) md += `**${clean(f.q)}**\n\n${para(f.a)}`;
   }
 
   return md.trim() + "\n";
@@ -426,10 +440,13 @@ function renderLandingFull(l) {
 // ── build the three files ──────────────────────────────────────────────────
 async function main() {
   const hubsMod = await loadData("hubs.js");
+  GUIDE_SLUG = (await loadData("rguides.js")).GUIDE_SLUG || {};
+  GUIDE_VOICES = (await loadData("guideVoices.js")).GUIDE_VOICES || {};
   const articlesMod = await loadData("articles.js");
   const landingsMod = await loadData("landings.js");
   const hubs = hubsMod.default || [];
   const articles = articlesMod.ARTICLES || [];
+  // Both Punta Mita landings live again at their URLs, in the new design (user, 2026-11-05).
   const landings = landingsMod.default || [];
 
   // ---- llms.txt (curated index) ----
@@ -489,7 +506,7 @@ async function main() {
   }
   index += `\n## About\n\n`;
   index += `- [About GOLF° IN MEXICO°](${BASE}/about): The founders, the mission, and the three editorial pillars.\n`;
-  index += `- [Experiences](${BASE}/experience): Couples, bachelor, family/friends, and corporate golf trips.\n`;
+  index += `- [Curated Trips](${BASE}/trips): Golf trips by type (couples, friends, corporate, family, Top in Mexico) across Mexico.\n`;
   index += `- [Plan a trip](${BASE}/trip-builder): Build a custom Mexico golf trip.\n`;
   index += `- [Contact](${BASE}/contact): Reach the team.\n`;
   index += `\n## Legal\n\n`;
@@ -509,6 +526,7 @@ async function main() {
   full += `# About\n\n${para(HOME_STATEMENT)}${para(ABOUT.hero)}`;
   full += `## The three pillars\n\n`;
   for (const p of ABOUT.pillars) full += para(`${p.title} ${p.body}`);
+  full += `## How booking with us works\n\n${ABOUT.steps.map((x, i) => `${i + 1}. ${x}`).join("\n")}\n\n`;
   full += `## The founders\n\n`;
   for (const f of ABOUT.founders) full += `### ${f.name}\n\n${para(f.body)}`;
   full += `## Contact\n\n${para(CONTACT)}---\n\n`;
@@ -530,8 +548,11 @@ async function main() {
     { loc: "/destinations", priority: "0.8", changefreq: "weekly" },
     { loc: "/journal", priority: "0.8", changefreq: "weekly" },
     { loc: "/courses", priority: "0.8", changefreq: "weekly" },
-    { loc: "/experience", priority: "0.7", changefreq: "monthly" },
+    { loc: "/trips", priority: "0.8", changefreq: "monthly" },
+    // The curated trips (src/data/rtrips.json), one page each since the redesign (2026-11-03).
+    ...JSON.parse(fs.readFileSync(new URL("../src/data/rtrips.json", import.meta.url), "utf8")).map((t) => ({ loc: `/trips/${t.slug}`, priority: "0.7", changefreq: "monthly" })),
     { loc: "/trip-builder", priority: "0.7", changefreq: "monthly" },
+    { loc: "/gallery", priority: "0.5", changefreq: "monthly" },
     { loc: "/about", priority: "0.6", changefreq: "monthly" },
     { loc: "/contact", priority: "0.6", changefreq: "monthly" },
     // Legal. Kept here because the prerenderer and the 404 check read their route list from this sitemap; the pages
@@ -616,10 +637,12 @@ async function main() {
       .join("\n") +
     `\n</urlset>\n`;
 
-  fs.writeFileSync(path.join(PUBLIC, "llms.txt"), index.trim() + "\n");
-  fs.writeFileSync(path.join(PUBLIC, "llms-full.txt"), full.trim() + "\n");
+  // No Golf Digest rankings anywhere on the site (the user's call, 2026-11-03): drop every sentence that cites one.
+  const noGD = (t) => t.split("\n").map((line) => line.split(/(?<!\bNo\.)(?<=[.!?])\s+/).filter((s) => !/Golf Digest/i.test(s)).join(" ")).join("\n");
+  fs.writeFileSync(path.join(PUBLIC, "llms.txt"), noGD(index.trim()) + "\n");
+  fs.writeFileSync(path.join(PUBLIC, "llms-full.txt"), noGD(full.trim()) + "\n");
   fs.writeFileSync(path.join(PUBLIC, "sitemap.xml"), sitemap);
-  fs.writeFileSync(path.join(PUBLIC, "index.md"), home.trim() + "\n");
+  fs.writeFileSync(path.join(PUBLIC, "index.md"), noGD(home.trim()) + "\n");
 
   const words = full.split(/\s+/).filter(Boolean).length;
   console.log(

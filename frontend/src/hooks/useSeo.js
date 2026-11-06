@@ -119,12 +119,13 @@ export function useSeo({ title, description, canonical, jsonLd, alternates, imag
 export const orgSchema = () => ({
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": `${SITE_URL}/#org`,
   name: SITE_NAME,
   alternateName: "Golf in Mexico",
   url: SITE_URL,
   logo: `${SITE_URL}/logo-wordmark.png`,
   description:
-    "GOLF° IN MEXICO° is run by Pablo De La Mora, a sports agent with five years inside PGA Tour, LIV Golf, LPGA and WTA events, and José Islas, a professional golfer with four Mexican Tour wins. It helps golfers play Mexico's best: curated trips around the top courses, authentic local experiences and the best value for every group.",
+    "GOLF° IN MEXICO° plans golf trips to Mexico. It is run by Pablo De La Mora, a sports agent with five years inside PGA Tour, LIV Golf, LPGA and WTA events, and José Islas, a professional golfer with four Mexican Tour wins. Pablo plans every trip personally and curates them with José. It builds each trip around the top courses with the best value for every group. Planning is free until the trip is right; hotels, villas and courses are booked with the partners that run them and paid to them directly.",
   founder: [
     {
       "@type": "Person",
@@ -148,7 +149,7 @@ export const orgSchema = () => ({
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",
-    email: "contact@golf-in-mexico.com",
+    email: "hello@golf-in-mexico.com",
     telephone: "+52 720 677 4653",
   },
   address: {

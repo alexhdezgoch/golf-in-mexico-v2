@@ -17,7 +17,7 @@ export const REGIONS = [
     courses: "12+ Championship Courses",
     tagline: "The Championship Corridor.",
     description:
-      "The absolute best golf in Latin America. Massive desert dunes meeting the Sea of Cortez—a landscape that comes with a premium price tag, but is worth every single penny.",
+      "Elegant desert golf where the dunes meet the Sea of Cortez. A premium destination with the highest level of logistics, and the most dramatic golf in Mexico.",
     greenFees: "$250 – $450",
     image: "/images/rg2d4m8m-gim-stills-41.webp",
     live: true,
@@ -30,7 +30,7 @@ export const REGIONS = [
     courses: "7+ Championship Courses",
     tagline: "Soft Luxury & Restricted Enclaves.",
     description:
-      "Where the Sierra Madre jungle meets the Pacific. Five-star hospitality, exclusive gated communities, and some of the best oceanfront holes on the coast.",
+      "A private, gated peninsula on the Pacific that lives slowly. Soft luxury, great food and oceanfront golf, with something for everyone in the group.",
     greenFees: "$280 – $420",
     image: "/images/0wmultbm-dji-0048.webp",
     live: true,
@@ -43,7 +43,7 @@ export const REGIONS = [
     courses: "8+ Historic Clubs",
     tagline: "Heritage & Altitude.",
     description:
-      "Historic, private clubs at 7,350 feet. The ball flies 10% further here, and the golf culture goes back decades before the beach resorts even existed. You just need the right connection to play.",
+      "Historic private clubs at 7,350 feet, and a city with a life of its own: art, food, music and sport around every round. Here you play with the right introduction.",
     greenFees: "Members & guests",
     image: "/images/g6r7fp45-golfinmexico-062.webp",
     live: true,
@@ -56,7 +56,7 @@ export const REGIONS = [
     courses: "6+ Courses",
     tagline: "Jungle Topography & Elevation.",
     description:
-      "Where the mountains drop into Banderas Bay. Fun, technical courses carved through the tropical jungle, offering some of the best elevation changes you'll ever play.",
+      "Where the mountains drop into Banderas Bay. An easy, dependable trip: a small town with Mexican character, a marina, and generous resort golf close by.",
     greenFees: "$180 – $320",
     image: "/images/gyf4bofm-d104455e-21a3-4a8e-8a51-72fdb3b5b227-1-105-c.webp",
     live: true,
@@ -69,7 +69,7 @@ export const REGIONS = [
     courses: "10+ Resort Courses",
     tagline: "Limestone Fairways & Caribbean Trade Winds.",
     description:
-      "Courses carved straight through the Yucatán mangroves. This region has the largest concentration of resort golf in the country, right next to the Caribbean Sea.",
+      "Golf carved through jungle and mangroves by the Caribbean. It works like clockwork: transfers, hotels and tee times built around the traveler.",
     greenFees: "$220 – $380",
     image: "/images/xg8drvr6-img-3947.webp",
     live: true,
@@ -82,7 +82,7 @@ export const REGIONS = [
     courses: "8+ Hidden Routings",
     tagline: "The Uncharted Routings.",
     description:
-      "Real info on the country's lesser-known courses. From colonial towns to quiet Pacific bays. Perfect if you've already played the major spots and want something different for your next trip.",
+      "Colonial towns, wine country and quiet bays beyond the headline corridors. Some take more getting to, and that is part of the reward.",
     greenFees: "Varies by region",
     image: "/images/dhz92vfa-golfinmexico-001-2.webp",
     live: true,

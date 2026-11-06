@@ -18,8 +18,8 @@ const LOS_CABOS = {
   ],
   // SEO — matched to live GSC query phrasing ("golf in los cabos",
   // "cabo san lucas golf prices"): destination first, then the price/access angle.
-  seoTitle: "Cabo San Lucas Golf Courses: Prices & Access | GOLF° IN MEXICO°",
-  seoDescription: "18 championship courses from Cabo San Lucas to San José del Cabo, green fees $95–$500 a round, and how access actually works.",
+  seoTitle: "Cabo San Lucas Golf Courses | Diamante, Quivira & Cabo del Sol",
+  seoDescription: "Tiger Woods's El Cardonal and the dunes at Diamante, Nicklaus on the cliffs at Quivira: 18 Los Cabos courses, and which open to visitors or need a room key.",
   sources: [
     "Golf Digest — World's 100 Greatest Courses (2024 list)",
     "Los Cabos Tourism Board — 350 sunny days statistic, visitor data",
@@ -30,20 +30,20 @@ const LOS_CABOS = {
   heroLabel: "Destination Guide · Los Cabos",
   h1Pre: "Golf in",
   h1Em: "Los Cabos.",
-  byline: "GIM Editorial · Field research by Pablo De La Mora & José Islas · Updated May 2026",
+  byline: "GOLF° IN MEXICO° Editorial · Field research by Pablo De La Mora & José Islas · Updated May 2026",
   stats: [
     { num: "18",        label: "Active courses" },
     { num: "23 by 2026",     label: "With 5 under construction" },
-    { num: "$95–$500", label: "Green fees" },
+    { num: "$260–$700", label: "Green fees" },
     { num: "Oct – May", label: "Best months" },
   ],
   heroAnswer:
-    "Los Cabos has 18 active championship golf courses — with 5 more under construction — along a dramatic 20-mile stretch where the Sonoran Desert meets the Sea of Cortez. Green fees range from $95 to $500 USD per round depending on course and season, with October through May delivering peak conditions. This is the most concentrated collection of signature-architect designs in Mexico, and navigating it requires an insider's map.",
+    "Los Cabos has 18 active championship golf courses — with 5 more under construction — along a dramatic 20-mile stretch where the Sonoran Desert meets the Sea of Cortez. Green fees range from $260 to $700 USD per round depending on course and season, with October through May delivering peak conditions. This is the most concentrated collection of signature-architect designs in Mexico, and navigating it requires an insider's map.",
 
   quickFacts: [
     { icon: "flag",      label: "Courses",        value: "18 active · 5 under construction · 23 by 2026" },
     { icon: "pencil",    label: "Designers",      value: "Nicklaus · Woods · Norman · Love III · Weiskopf · Fazio · Couples · Eckenrode · RTJ Jr." },
-    { icon: "dollar",    label: "Green fees",     value: "$95 – $500 USD per round (varies by course and season)" },
+    { icon: "dollar",    label: "Green fees",     value: "$260 – $700 USD per round (varies by course and season)" },
     { icon: "calendar",  label: "Best months",    value: "October – May" },
     { icon: "alert",     label: "Avoid",          value: "August – September (hurricane + rain peak)" },
     { icon: "plane",     label: "Airport",        value: "Los Cabos International (SJD)" },
@@ -86,7 +86,7 @@ const LOS_CABOS = {
   courses: [
     { tier: "resort",  verified: false, fee: "$233 – $380", name: "Quivira Golf Club",            difficulty: "4/5", bestFor: "Cliffside ocean holes",         specs: "Jack Nicklaus · Par 72 · Championship",                  note: "The crown jewel of the corridor. Quivira plays along the Pacific cliffs above Cabo San Lucas — every hole delivers an ocean view, climbing out of desert canyons to finish with one of the most photographed closing stretches in North America. Rates include cart, practice facility, and all food and refreshments at four comfort stations. Accessible to guests of Pueblo Bonito Oceanfront Resorts: Pacifica · Sunset Beach · Rosé · Los Cabos.",   standout: "#13 — Par 3 returning to the cliffs, 150 feet above the Pacific. The most photographed hole on the course. The par-4 fifth climbs 275 feet up the mountain — one of the most dramatic tee shots in Mexico." },
     { tier: "private", verified: true, fee: "$315 – $385", name: "Cove Club at Cabo del Sol",    difficulty: "4/5", bestFor: "Iconic back nine, sea views",   specs: "Jack Nicklaus · Par 72 · Championship", photos: ["/images/thg0cb44-cove-club.webp"], photoSource: "Source: Cove Club press kit",                  note: "The course that put Los Cabos on the global golf map. Reopened in 2019 as the Cove Club with redesigned holes by Nicklaus, including a new par-3 17th that drops to a green backdropped by the sea. Golf Digest World Top 100.",                                                                                                                                                                                                                            standout: "#18 — Peninsula-style green that appears to float on the ocean. The previous par-4 16th, remodeled as the closing hole, plunges 100 feet down the side of a mountain." },
-    { tier: "private", verified: true, fee: "$320 (taxes incl.)", name: "Diamante — Dunes Course",       difficulty: "3/5", bestFor: "Links experience, dunes",       specs: "Davis Love III · Par 72 · Championship", photos: ["/images/4mxnh2t1-3dcb3e97-f719-4528-8a39-56921f816cf9-1-105-c.webp"],                 note: "A true links experience framed by massive white sand dunes on the Pacific side of Cabo San Lucas. Walks and plays like a classic British course — with 340 days of sunshine. Ranked #1 golf course in Mexico by Golf Digest. World Top 100. The standard by which all Cabo courses are measured.",                                                                                                                                                                                                                                                                                                                                                                       standout: "#17 — Par 3 with target semi-obscured by sand and scrub. The 590-yard par-5 18th plays to a shelf green perched 50 feet above the fairway." },
+    { tier: "private", verified: true, fee: "$320 (taxes incl.)", name: "Diamante — Dunes Course",       difficulty: "3/5", bestFor: "Links experience, dunes",       specs: "Davis Love III · Par 72 · Championship", photos: ["/images/4mxnh2t1-3dcb3e97-f719-4528-8a39-56921f816cf9-1-105-c.webp"],                 note: "A true links experience framed by massive white sand dunes on the Pacific side of Cabo San Lucas. Walks and plays like a classic British course — with 340 days of sunshine. On Golf Digest's World's 100 Greatest Courses list. The standard by which all Cabo courses are measured.",                                                                                                                                                                                                                                                                                                                                                                       standout: "#17 — Par 3 with target semi-obscured by sand and scrub. The 590-yard par-5 18th plays to a shelf green perched 50 feet above the fairway." },
     { tier: "private", verified: true, fee: "$320 (taxes incl.)", name: "El Cardonal at Diamante",       difficulty: "3/5", bestFor: "Mixed groups, desert design",   specs: "Tiger Woods · Par 72 · Resort-Friendly", photos: ["/images/zrbeas6e-d090368d-c498-4ed4-9ca3-139553cd571d-1-105-c.webp"],                 note: "Tiger Woods' first solo design outside the United States. Wide, forgiving fairways through desert arroyos — highly playable for mixed-handicap groups, with panoramic Pacific views throughout. Host of the PGA Tour World Wide Technology Championship. Inspired by the classic West Coast courses Tiger grew up playing — Riviera, Bel-Air — with bold bunkers and wide fairway corridors.",                                                                                                                                                                                                                                                                                                                                                       standout: "#5 — The layout meanders through sand dunes on the outgoing holes; the back nine crisscrosses desert arroyos. Bold, flashed-face bunkers signpost the strategic options." },
     { tier: "public",  verified: true, fee: "$95 – $245",  name: "Palmilla Golf Club",            difficulty: "3/5", bestFor: "Three nines, historic",         specs: "Jack Nicklaus · Par 72 · 27 holes", photos: ["/images/w9zxd211-palmilla.webp"], photoSource: "Source: One&Only Palmilla press kit",                      note: "The course that started the modern Tourist Corridor in 1992. Three interchangeable nines (Mountain, Arroyo, Ocean) — the first Jack Nicklaus Signature Design in Latin America. The Ocean nine, added in 1997, features a 600-foot elevation drop from tee to green. Golf Digest Top 10 in Mexico. Outside play season- and time-dependent; preferred rates for One&Only Palmilla guests.",                                                                                                                                                                                                                                                                                                                                                                       standout: "Ocean #3 — Par 4 dropping 150 feet to a beachfront green steps from the crashing Sea of Cortez. The most photographed hole at Palmilla." },
     { tier: "public",  verified: false, fee: "$205 – $285", name: "Puerto Los Cabos",              difficulty: "2/5", bestFor: "Nicklaus + Norman 27 holes",    specs: "Jack Nicklaus + Greg Norman · Par 72 · 27 holes",        note: "Now a 27-hole facility with three 18-hole combinations. Nicklaus returned in 2017 to build a second nine, opened in 2018. Norman's course has 400+ feet of elevation change. The only Nicklaus + Norman collaboration in Mexico. Fee includes practice balls, cart, food + beverages.",                                                                                                                                                                                                                                                                                                                                                                                                            standout: "#18 — Norman's finishing hole running parallel to the marina and coastline." },
@@ -137,21 +137,21 @@ const LOS_CABOS = {
 
   faqs: [
     { q: "What is the best time of year to play golf in Los Cabos?", a: "The peak season runs November through April — dry, warm (72–82°F), almost no rain. For the best balance of weather and value, late October and May are the sharpest shoulder months: great conditions, fewer crowds, better rates. The summer window (July–October) brings dramatic discounts but also humidity, afternoon storms, and hurricane risk. August and September are the months to avoid entirely." },
-    { q: "How much does a golf trip to Los Cabos cost?", a: "A realistic 4-night, 3-round trip runs $2,030 on the lower end to $5,580 at the luxury tier, per person. The main variables are hotel choice and course selection. Green fees range from $95 at Palmilla off-season to $500 all-in at Twin Dolphin including its mandatory caddie. The Tourist Corridor luxury baseline is $795 per night. Per GIM editorial research, mid-season 2026." },
-    { q: "Which is the best course in Los Cabos?", a: "Diamante Dunes is ranked No. 1 in Mexico by Golf Digest — the links standard. Quivira is the most visually dramatic. Cove Club at Cabo del Sol is historically significant and Golf Digest World Top 100. Twin Dolphin has the newest tournament-level greens. For value, Club Campestre at $135–$190 delivers conditions that rival courses three times the price. The right answer depends entirely on what kind of golfer you are." },
+    { q: "How much does a golf trip to Los Cabos cost?", a: "A realistic 4-night, 3-round trip runs $2,030 on the lower end to $5,580 at the luxury tier, per person. The main variables are hotel choice and course selection. Green fees range from $260 at Cabo Real and Club Campestre San José to $700 at Twin Dolphin, caddie included. The Tourist Corridor luxury baseline is $795 per night. Per our editorial research, mid-season 2026." },
+    { q: "Which is the best course in Los Cabos?", a: "Diamante Dunes is on Golf Digest's World's 100 Greatest Courses list — the links standard. Quivira is the most visually dramatic. Cove Club at Cabo del Sol is historically significant and Golf Digest World Top 100. Twin Dolphin has the newest tournament-level greens. For value, Club Campestre at $260 in high season delivers conditions that rival courses three times the price. The right answer depends entirely on what kind of golfer you are." },
     { q: "Do I need to bring my own golf clubs?", a: "No. Premium rental sets — TaylorMade, Callaway — are available at all major courses for $50–$80 per round. Serious golfers will still prefer their own. Airlines typically charge $35–$50 each way for a golf bag. Quivira and Twin Dolphin offer current-year sets at their pro shops. Club rental is never a reason to skip a course in Los Cabos." },
     { q: "Are the courses walkable?", a: "Most are cart-mandatory or strongly cart-recommended. Desert terrain, dramatic elevation changes, and distances between holes make walking impractical. Quivira climbs 275 feet in the first five holes — it is not walkable. Club Campestre and Palmilla have more manageable terrain. The caddie walks with you regardless of cart policy — they are your on-course guide, not optional company." },
     { q: "Is it safe to travel to Los Cabos?", a: "Yes. Los Cabos is one of the safest tourist destinations in Mexico. The resort corridor and courses have excellent security infrastructure. The destination has invested close to $50 million in security upgrades and operates a real-time network with local hotels. Standard travel precautions apply as with any international destination. The 38% repeat-visitor rate among luxury travelers is one of the strongest signals of destination confidence." },
     { q: "Why do so many golfers choose Los Cabos?", a: "Three courses on Golf Digest's World 100 Greatest list. Seven of Mexico's top 10 courses. Championship designs by Nicklaus, Woods, Norman, Love III, and Fazio — in one 20-mile corridor. 350 sunny days per year (Los Cabos Tourism Board). Direct flights from 30+ US cities. The flight from LAX is under three hours — shorter than driving from Los Angeles to Palm Springs." },
-    { q: "What are the best golf courses in Cabo San Lucas?", a: "Within Cabo San Lucas itself, Quivira Golf Club (Jack Nicklaus) leads on visual drama — every hole has a Pacific view and the 13th par-3 sits 150 feet above the ocean. Solmar Golf Links (Greg Norman) delivers a genuine links experience with revetted pot bunkers — the only ones in Mexico. Diamante's Dunes Course (Davis Love III), 15 minutes north of downtown Cabo San Lucas, is ranked No. 1 in Mexico by Golf Digest and El Cardonal (Tiger Woods) hosts the PGA Tour World Wide Technology Championship. Together these four define Cabo San Lucas golf at the top tier." },
-    { q: "How do I get access to private golf courses in Los Cabos?", a: "Private access here works on two routes: stay at the right hotel, or know the right member. Cove Club at Cabo del Sol opens to Solaz, a Luxury Collection Resort guests. Twin Dolphin requires a Montage Los Cabos reservation. Chileno Bay is exclusive to Auberge Chileno Bay guests. El Dorado is members and member-sponsored guests only — no public route. Quivira opens to Pueblo Bonito Oceanfront guests. The fastest way in is to book the matching resort. GIM coordinates the resort + tee time as a package — that is the entire model." },
+    { q: "What are the best golf courses in Cabo San Lucas?", a: "Within Cabo San Lucas itself, Quivira Golf Club (Jack Nicklaus) leads on visual drama — every hole has a Pacific view and the 13th par-3 sits 150 feet above the ocean. Solmar Golf Links (Greg Norman) delivers a genuine links experience with revetted pot bunkers — the only ones in Mexico. Diamante's Dunes Course (Davis Love III), 15 minutes north of downtown Cabo San Lucas, is on Golf Digest's World's 100 Greatest Courses list, and El Cardonal (Tiger Woods) hosts the PGA Tour World Wide Technology Championship. Together these four define Cabo San Lucas golf at the top tier." },
+    { q: "How do I get access to private golf courses in Los Cabos?", a: "Private access here works on two routes: stay at the right hotel, or know the right member. Cove Club at Cabo del Sol opens to Solaz, a Luxury Collection Resort guests. Twin Dolphin requires a Montage Los Cabos reservation. Chileno Bay is exclusive to Auberge Chileno Bay guests. El Dorado is members and member-sponsored guests only — no public route. Quivira opens to Pueblo Bonito Oceanfront guests. The fastest way in is to book the matching resort. GOLF° IN MEXICO° coordinates the resort + tee time as a package — that is the entire model." },
     { q: "Do I need to tip caddies?", a: "Yes — tipping is expected and an important part of their income. Standard: $40–$60 USD per bag per round. At Twin Dolphin, the $50 caddie fee is mandatory and built into the booking price. At elite courses, the caddie is the difference between a good round and a great one — they know the ocean breaks, the wind patterns, and the pin positions. Tip accordingly." },
   ],
 
   // Descriptive internal links out of this hub (see the "Read next" section).
   relatedReads: [
-    { to: "/destinations/mexico-city", anchor: "golf in Mexico City", note: "20+ courses within 90 minutes of the center, nearly all private — and the lowest all-in trip cost of any GIM destination." },
-    { to: "/destinations/cancun-riviera-maya", anchor: "Riviera Maya golf courses", note: "12+ championship courses along 80 miles of Caribbean coast, with green fees from $109." },
+    { to: "/destinations/mexico-city", anchor: "golf in Mexico City", note: "20+ courses within 90 minutes of the center, nearly all private — and the lowest all-in trip cost of any of our destinations." },
+    { to: "/destinations/cancun-riviera-maya", anchor: "Riviera Maya golf courses", note: "12+ championship courses along 80 miles of Caribbean coast, with green fees from $190." },
   ],
   credentials,
 };
@@ -170,8 +170,8 @@ const PUNTA_MITA = {
     "/images/b3h22ocy-mandarina-bunker.webp",
     "/images/jkdh05kp-mandarina-drone.webp",
   ],
-  seoTitle: "Punta Mita Golf: Courses & Green Fees | GOLF° IN MEXICO°",
-  seoDescription: "Five championship courses within 75 km of PVR: Pacifico's Tail of the Whale, the only natural island green in golf, plus Mandarina (Norman) and Nauka (Fazio).",
+  seoTitle: "Punta Mita Golf: Pacífico, Bahía & the Tail of the Whale",
+  seoDescription: "Two Jack Nicklaus courses on a private peninsula and the Tail of the Whale, golf's only natural island green. Four of the five courses need a room key.",
   sources: [
     "Pacifico Golf Course — Punta Mita pro shop and resort archives",
     "Greg Norman Golf Course Design — Mandarina Golf Club design notes",
@@ -183,20 +183,20 @@ const PUNTA_MITA = {
   heroLabel: "Destination Guide · Punta Mita",
   h1Pre: "Golf in",
   h1Em: "Punta Mita & Nayarit.",
-  byline: "GIM Editorial · Field research by Pablo De La Mora & José Islas · Updated May 2026",
+  byline: "GOLF° IN MEXICO° Editorial · Field research by Pablo De La Mora & José Islas · Updated May 2026",
   stats: [
     { num: "5",          label: "Courses on the corridor" },
     { num: "Nicklaus",   label: "Norman · Fazio" },
-    { num: "$150–$400",  label: "Green fees" },
+    { num: "$280–$750",  label: "Green fees" },
     { num: "Nov – May",  label: "Best months" },
   ],
   heroAnswer:
-    "Riviera Nayarit holds five championship golf courses within a 75-kilometer corridor north of Puerto Vallarta International (PVR) — anchored by the private Punta Mita peninsula and extending to Mandarina and Siari. Designs by Jack Nicklaus, Greg Norman, and Tom Fazio. Green fees run $150 to $400 per round. Four of the five courses require a room key or membership. This guide covers all five, what each costs, and exactly how to get on.",
+    "Riviera Nayarit holds five championship golf courses within a 75-kilometer corridor north of Puerto Vallarta International (PVR) — anchored by the private Punta Mita peninsula and extending to Mandarina and Siari. Designs by Jack Nicklaus, Greg Norman, and Tom Fazio. Green fees run $280 to $750 per round. Four of the five courses require a room key or membership. This guide covers all five, what each costs, and exactly how to get on.",
 
   quickFacts: [
     { icon: "flag",      label: "Courses",      value: "5 active (3 resort · 1 public · 1 private community)" },
     { icon: "pencil",    label: "Designers",    value: "Jack Nicklaus · Greg Norman · Tom Fazio" },
-    { icon: "dollar",    label: "Green fees",   value: "$150 – $400 USD per round" },
+    { icon: "dollar",    label: "Green fees",   value: "$280 – $750 USD per round" },
     { icon: "calendar",  label: "Best months",  value: "November – May" },
     { icon: "alert",     label: "Avoid",        value: "August – October (rain + hurricane window)" },
     { icon: "plane",     label: "Airport",      value: "Puerto Vallarta International (PVR)" },
@@ -209,7 +209,7 @@ const PUNTA_MITA = {
   overviewH2Pre: "Riviera Nayarit golf —",
   overviewH2Em: "anchored by Punta Mita.",
   overviewParagraphs: [
-    "Punta Mita is a luxury destination on the Riviera Nayarit coastline that happens to have world-class golf. Four Seasons, St. Regis, One&Only, Rosewood, and Ritz-Carlton Reserve built here for the coastline, not the courses — and that sequence defines everything from the caddie program to the quality of the greens.",
+    "Punta Mita is a luxury destination on the Riviera Nayarit coastline that happens to have championship golf. Four Seasons, St. Regis, One&Only, Rosewood, and Ritz-Carlton Reserve built here for the coastline, not the courses — and that sequence defines everything from the caddie program to the quality of the greens.",
     "Punta Mita anchors the corridor. The 1,500-acre private peninsula 45 minutes north of Puerto Vallarta International (PVR) holds two Jack Nicklaus Signature courses — Pacifico and Bahia — both restricted to Four Seasons and St. Regis guests, villa renters, and property owners. Pacifico features an optional island green — the Tail of the Whale (hole 3B) — reached across a natural stone causeway at low tide. It is the only natural island green in golf and the single most photographed hole in Mexico.",
     "Punta Mita has spent almost three decades perfecting the stay — private villas, in-home dining, airport transport, full service, all inside the property. That's what the peninsula is actually built around. We build the trip around the golfer who notices those details, so the stay and the game arrive as one experience instead of two bookings.",
     "The reputation has receipts. Punta Mita's own partnerships run to golf.com, American Express and the Punta Mita Invitational, and the ambassador list reads like a leaderboard: Lorena Ochoa, Carlos Ortiz, Abraham Ancer, Checo Pérez. We've worked with them before — a few years back Pablo connected Punta Mita with players including Abraham Ancer and Isabella Fierro, both now on the PGA Tour and LPGA.",
@@ -242,7 +242,7 @@ const PUNTA_MITA = {
     { tier: "resort",  verified: true, fee: "$325 – $400", name: "Bahia Course",             difficulty: "3/5", bestFor: "Ocean-carry par 5 finish",            specs: "Jack Nicklaus · Par 72", photos: ["/images/uibfbgsu-punta-mita.webp"], photoSource: "Riviera Nayarit Field Photography",             note: "Same peninsula. Caddie included. More forgiving off the tee. Bahia moves through tropical jungle before finding the ocean on the closing holes. The last shot of the round is a forced carry over water — the only ocean-carry par 5 in Mexico. You make the decision before you take the club back. Resort access only — Four Seasons, St. Regis, private residences.",                                                                                                                                                                  standout: "#18 — commit or lay up. The round ends with a choice." },
     { tier: "public",  verified: true, fee: "$250 – $280", name: "Mandarina Golf Club",      difficulty: "3/5", bestFor: "Short-course concept · no key needed", specs: "Greg Norman · 9 par 3s + 1 challenge hole", photos: ["/images/iwvp4z04-mandarina-course.webp"], photoSource: "Riviera Nayarit Field Photography",    note: "Not a full 18. Nine par 3s, each with a name and a concept: The Redan, The Devil's Hole, The Queen, The Theater, The Bell. Plus one challenge hole — The Kraken — a near-island green with a pot bunker as the only escape. Norman: \"El campo de Mandarina no tendrá parangón.\" (\"Mandarina will have no equal.\") Fee includes two rounds of 10 holes, cart with GPS, unlimited practice, and all food and beverages. No membership required. Transportation to the property needed from outside the Mandarina community.",                                       standout: "The Theater — Norman described it as one of the best medium-distance par 3s in the world." },
     { tier: "public",  verified: false, fee: "$150 – $285", name: "Higuera Golf Club",        difficulty: "3/5", bestFor: "Only publicly bookable · best value",  specs: "Greg Norman · Par 72 · 7,022 yards · 2010",   note: "The only course in this corridor bookable without a room key. 18 holes between virgin jungle and Pacific beach. 7 links-style holes along the coast, 8 through jungle, 2 signature holes directly on the beach. The #8 green is surrounded by water on three sides. Two snack bars on the course. Open 7:30am to 3:00pm. The honest entry point to the Punta Mita golf region. Direct booking at higueragolfclub.com.",                                                                                                              standout: "#8 — peninsula green, water on three sides." },
-    { tier: "private", verified: false, fee: "Members only", name: "Nauka Golf Club",         difficulty: "4/5", bestFor: "Ultimate exclusivity · 2025 opening",   specs: "Tom Fazio · 18 + 9-hole short course · 2025", note: "920 acres. 400 memberships. One Tom Fazio course. Set against tropical jungle overlooking the Pacific. Undulating greens, challenging elevations, natural bunkering. A 9-hole short course runs alongside the championship layout for members of all levels. The community: 197-foot infinity pool, fresh seafood, firepits, a tequila room, a marina and yacht club, a wellness village, a beach racquet club. Siari, a Ritz-Carlton Reserve: 91 suites, 34 residences, five restaurants. No public access. No day-pass.",     standout: "Four ecosystems in 18 holes — jungle, cliff, mangrove, beach. No two consecutive holes share a view." },
+    { tier: "private", verified: false, fee: "Members only", name: "Nauka Golf Club",         difficulty: "4/5", bestFor: "Exclusivity · 2025 opening",   specs: "Tom Fazio · 18 + 9-hole short course · 2025", note: "920 acres. 400 memberships. One Tom Fazio course. Set against tropical jungle overlooking the Pacific. Undulating greens, challenging elevations, natural bunkering. A 9-hole short course runs alongside the championship layout for members of all levels. The community: 197-foot infinity pool, fresh seafood, firepits, a tequila room, a marina and yacht club, a wellness village, a beach racquet club. Siari, a Ritz-Carlton Reserve: 91 suites, 34 residences, five restaurants. No public access. No day-pass.",     standout: "Four ecosystems in 18 holes — jungle, cliff, mangrove, beach. No two consecutive holes share a view." },
   ],
 
   costsLabel: "The math",
@@ -286,7 +286,7 @@ const PUNTA_MITA = {
   faqs: [
     { q: "What golf courses are in Punta Mita?", a: "Two Jack Nicklaus Signature courses inside the private enclave (Pacifico and Bahia), one public Greg Norman layout 20 minutes south (Higuera Golf Club), one new public Greg Norman short course 30 minutes north (Mandarina Golf Club, opened 2025), and Nauka Golf Club (Tom Fazio, exclusive to Siari Ritz-Carlton Reserve guests)." },
     { q: "Can anyone play golf in Punta Mita?", a: "Not at Pacifico or Bahia. Both are restricted to Four Seasons and St. Regis resort guests, Punta Mita villa renters, and property owners. Higuera Golf Club and Mandarina Golf Club accept public bookings with no resort affiliation required." },
-    { q: "How much does it cost to play golf in Punta Mita?", a: "Pacifico and Bahia run $325–$400 USD per round for resort guests, varying by season and course. Higuera Golf Club is $150–$285 USD rack rate, with packages available around $180 per round. Mandarina requires contacting the resort directly for current rates." },
+    { q: "How much does it cost to play golf in Punta Mita?", a: "Pacifico and Bahia run $388 USD per round for resort guests. Higuera Golf Club is $350 USD. Mandarina is $280 USD and Nauka $750 USD." },
     { q: "What is the Tail of the Whale?", a: "Hole 3B on Pacifico — the world's only natural island green, reachable by a submerged stone path at low tide. At 194 yards over open Pacific with ocean wind, it is one of the most photographed and memorable par-3s in golf. Only playable at low tide. Confirm tidal conditions before your round." },
     { q: "What is the best time of year to golf in Riviera Nayarit?", a: "November through May. Temperatures hold at 75–85°F with dry, clear skies. Humpback whale migrations run December through April — visible from several holes on Pacifico and Bahia. Avoid August through October." },
     { q: "How far is Punta Mita from Puerto Vallarta airport?", a: "28 miles — approximately 45 minutes in normal traffic, up to 90 minutes during peak periods. Pre-arranged private transfers are required. Uber cannot enter the Punta Mita gated enclave. The gate requires a confirmed resort reservation." },
@@ -297,7 +297,7 @@ const PUNTA_MITA = {
   // Descriptive internal links out of this hub (see the "Read next" section).
   relatedReads: [
     { to: "/destinations/mexico-city", anchor: "golf in Mexico City", note: "Historic private clubs at 2,240 m, where the ball carries 10–12% farther — and how visiting golfers get on." },
-    { to: "/destinations/los-cabos", anchor: "Los Cabos green fees and access", note: "18 championship courses on a 20-mile corridor, $95–$500 a round." },
+    { to: "/destinations/los-cabos", anchor: "Los Cabos green fees and access", note: "18 championship courses on a 20-mile corridor, $260–$700 a round." },
   ],
   credentials,
 };
@@ -317,8 +317,8 @@ const MEXICO_CITY = {
   ],
   // SEO — matched to live GSC query phrasing ("golf mexico city"): the course
   // count answers the query in the title, access + cost carry the click.
-  seoTitle: "Mexico City Golf Courses: Access & Fees | GOLF° IN MEXICO°",
-  seoDescription: "20+ golf courses within 90 minutes of the center, nearly all private. Green fees $150–$400 a round, and how altitude plays.",
+  seoTitle: "Mexico City Golf Courses | Chapultepec & Club de Golf México",
+  seoDescription: "Golf at 2,240 meters: Chapultepec, home of the Mexican Open, Club de Golf México and Bosque Real. Private clubs, reached through a member or an introduction.",
   sources: [
     "Club de Golf Chapultepec — Mexican Open, WGC-Mexico Championship (2017–2020), LIV Golf Mexico City (2025, 2026) records",
     "LPGA Tour — MasterCard Classic at Bosque Real (2005–2009) records",
@@ -329,23 +329,23 @@ const MEXICO_CITY = {
   heroLabel: "Destination Guide · Mexico City",
   h1Pre: "Golf in",
   h1Em: "Mexico City.",
-  byline: "GIM Editorial · Field research by Pablo De La Mora & José Islas · Updated May 2026",
+  byline: "GOLF° IN MEXICO° Editorial · Field research by Pablo De La Mora & José Islas · Updated May 2026",
   stats: [
     { num: "20+",        label: "Metro courses" },
     { num: "2,240 m",    label: "Altitude (CDMX)" },
-    { num: "$150–$400",  label: "Green fees" },
+    { num: "$100–$600",  label: "Green fees" },
     { num: "Year-round", label: "Playable" },
   ],
   // Answer-first lead: courses, access and cost, then altitude — all inside the
   // first ~45 words, because these are the three things the search queries ask.
   heroAnswer:
-    "Mexico City has 20+ golf courses within 90 minutes of the center, nearly all private — access comes through a member, a hotel, or advance coordination. Green fees run $150–$400 USD a round at the private clubs. At 2,240 m (7,350 ft) the ball carries 10–12% farther, and the golf is playable year-round. Chapultepec — Mexican Open, WGC and LIV host — is invitation only; Los Tabachines in Cuernavaca is the most accessible semi-public round and the one exception on price, quoted in pesos from $1,000 MXN.",
+    "Mexico City has 20+ golf courses within 90 minutes of the center, nearly all private — access comes through a member, a hotel, or advance coordination. Green fees run from $100 at El Coral, a public course, to $600 at the private clubs. At 2,240 m (7,350 ft) the ball carries 10–12% farther, and the golf is playable year-round. Chapultepec — Mexican Open, WGC and LIV host — is invitation only; Los Tabachines in Cuernavaca is the most accessible semi-public round and the one exception on price, quoted in pesos from $1,000 MXN.",
 
   quickFacts: [
     { icon: "flag",      label: "Courses",       value: "8 featured (CDMX + Estado de Mexico + Morelos + Hidalgo + Valle de Bravo)" },
     { icon: "pencil",    label: "Designers",     value: "Willie & Alex Smith · Percy Clifford · Von Hagge · Joe Finger · Schmidt & Curley · Gary Nicklaus" },
     { icon: "alert",     label: "Altitude",      value: "2,240 m (7,350 ft) in CDMX — ball travels 10–12% farther than at sea level" },
-    { icon: "dollar",    label: "Green fees",    value: "$150 – $400 USD per round (varies by access)" },
+    { icon: "dollar",    label: "Green fees",    value: "$100 – $600 USD per round (varies by access)" },
     { icon: "calendar",  label: "Best months",   value: "Year-round — no hurricane or rain peak" },
     { icon: "alert",     label: "Avoid",         value: "Weekend mornings (members-only priority)" },
     { icon: "plane",     label: "Airport",       value: "AICM (Benito Juárez) · Felipe Ángeles (AIFA)" },
@@ -395,7 +395,7 @@ const MEXICO_CITY = {
   costsLabel: "The math",
   costsH2Pre: "In Mexico City,",
   costsH2Em: "access — not green fees — is the variable.",
-  costsIntro: "The green fees here are among the lowest of any GIM destination. What costs money is staying in the right hotel, knowing the right member, or booking the right resort package to unlock the tee time.",
+  costsIntro: "The green fees here are among the lowest of any of our destinations. What costs money is staying in the right hotel, knowing the right member, or booking the right resort package to unlock the tee time.",
   costs: [
     ["Flights (commercial)",     "$180",   "$480",    "Direct: LAX · DFW · MIA · ORD · JFK"],
     ["Accommodation (4 nights)", "$200",   "$800",    "Polanco / Santa Fe / Valle de Bravo"],
@@ -407,8 +407,8 @@ const MEXICO_CITY = {
     ["Total all-in (per person)","$1,170", "$3,500",  "Mid-season · 4 nights · 3 rounds"],
   ],
   callouts: [
-    { icon: "⛰️", label: "The altitude effect",     body: "At 2,240 meters above sea level, the air is 20–25% thinner than at sea level. The ball flies 10–12% farther. A standard 150-yard shot here is a 135-yard shot everywhere else. Club selection shifts by one to two clubs on approach. Putts break later and roll faster on the greens. The advantage goes to the local member — every time. GIM recommendation: arrive one day early if you are flying in from a coastal destination. Play nine holes on day one. Eighteen on day two." },
-    { icon: "🔑", label: "The access reality",      body: "Almost every course in this corridor is private. The green fee is rarely the issue. Getting on the course is. GIM's approach: coordinate Chapultepec through a member contact, book Amanali or Avandaro through the resort, and use Tabachines as the flexible public-access option. That structure produces 3 rounds at 3 completely different types of course for under $1,500 per person all-in." },
+    { icon: "⛰️", label: "The altitude effect",     body: "At 2,240 meters above sea level, the air is 20–25% thinner than at sea level. The ball flies 10–12% farther. A standard 150-yard shot here is a 135-yard shot everywhere else. Club selection shifts by one to two clubs on approach. Putts break later and roll faster on the greens. The advantage goes to the local member — every time. Our recommendation: arrive one day early if you are flying in from a coastal destination. Play nine holes on day one. Eighteen on day two." },
+    { icon: "🔑", label: "The access reality",      body: "Almost every course in this corridor is private. The green fee is rarely the issue. Getting on the course is. Our approach: coordinate Chapultepec through a member contact, book Amanali or Avandaro through the resort, and use Tabachines as the flexible public-access option. That structure produces 3 rounds at 3 completely different types of course for under $1,500 per person all-in." },
   ],
 
   logisticsLabel: "On the ground",
@@ -433,11 +433,11 @@ const MEXICO_CITY = {
   faqs: [
     { q: "How many golf courses are in Mexico City?", a: "Mexico City and its surrounding metropolitan area have more than 20 golf courses within 90 minutes of the city center. Of these, eight are considered tournament-caliber venues. Club de Golf Chapultepec in Naucalpan — 20 minutes from Polanco — is the most historically significant, having hosted the Mexican Open 18 times, the WGC-Mexico Championship 4 times, and LIV Golf Mexico City. Almost all courses are private; access requires a member invitation or hotel reservation." },
     { q: "Can tourists play golf in Mexico City?", a: "Yes, with advance coordination. Chapultepec requires a member invitation and is not accessible to the public directly. Bosque Real Country Club offers limited public booking on weekdays with advance notice. Amanali Country Club in Hidalgo (50 minutes from Polanco) is accessible as a day-trip for outside visitors with a reservation. Club de Golf Los Tabachines in Cuernavaca (45 minutes south) is the most accessible semi-public option, with green fees from $1,000–$1,800 MXN." },
-    { q: "Is Club de Golf Chapultepec open to visitors?", a: "Not directly. Club de Golf Chapultepec is a private club in Naucalpan, Estado de México, 20 minutes from Polanco, with access by member invitation only — there is no public booking, hotel resort affiliation, or day-pass route. Mexico's most historically significant course, designed in 1921 by U.S. Open champions Willie and Alex Smith, redesigned by Percy Clifford in 1972. Par 71, 7,345 yards, at 7,800 feet above sea level. Host of the Mexican Open 18 times, WGC-Mexico Championship 4 times, and LIV Golf Mexico City in 2025 and 2026. Visitors gain access only through a member contact. GIM coordinates introductions where possible." },
-    { q: "What does altitude do to your golf game in Mexico City?", a: "At 2,240 meters (7,350 feet) above sea level, the ball travels 10–12% farther than at sea level because the air is significantly thinner. A 150-yard approach shot plays like a 130-to-135-yard shot. Club selection shifts by one to two clubs. Putts roll faster and break slightly later than at lower elevations. Stamina is affected in the first round — unacclimatized golfers should plan at least one day of adjustment before a competitive round. GIM recommendation: arrive one day early." },
+    { q: "Is Club de Golf Chapultepec open to visitors?", a: "Not directly. Club de Golf Chapultepec is a private club in Naucalpan, Estado de México, 20 minutes from Polanco, with access by member invitation only — there is no public booking, hotel resort affiliation, or day-pass route. Mexico's most historically significant course, designed in 1921 by U.S. Open champions Willie and Alex Smith, redesigned by Percy Clifford in 1972. Par 71, 7,345 yards, at 7,800 feet above sea level. Host of the Mexican Open 18 times, WGC-Mexico Championship 4 times, and LIV Golf Mexico City in 2025 and 2026. Visitors gain access only through a member contact. GOLF° IN MEXICO° coordinates introductions where possible." },
+    { q: "What does altitude do to your golf game in Mexico City?", a: "At 2,240 meters (7,350 feet) above sea level, the ball travels 10–12% farther than at sea level because the air is significantly thinner. A 150-yard approach shot plays like a 130-to-135-yard shot. Club selection shifts by one to two clubs. Putts roll faster and break slightly later than at lower elevations. Stamina is affected in the first round — unacclimatized golfers should plan at least one day of adjustment before a competitive round. Our recommendation: arrive one day early." },
     { q: "How far is Amanali Country Club from Mexico City?", a: "Amanali Country Club is located in Tepeji del Río, Hidalgo, approximately 50 minutes north of Polanco via the Autopista México-Querétaro. It is the best day-trip course in the Mexico City corridor for golfers without a local club membership. Schmidt & Curley designed the 18-hole, par-72 layout in 2010. At 7,400 yards, with canyon and lake views throughout, it is considered one of the 10 best courses in Mexico. Advance booking required." },
     { q: "What is the best time of year to play golf near Mexico City?", a: "Mexico City golf is playable year-round — there is no hurricane season and no extreme weather window to avoid. The dry season (November through April) offers clearer skies and cooler morning temperatures, making it the preferred window for visitors. The rainy season (May through October) typically brings afternoon showers of 1–2 hours that do not usually cancel morning tee times. Weekend mornings prioritize club members at most courses. Tuesday through Thursday is the best window for outside visitors." },
-    { q: "How much does a golf trip to Mexico City cost?", a: "A 4-night, 3-round golf trip to Mexico City runs $1,170 on the lower end to $3,500 at the higher tier, per person — the lowest all-in cost of any GIM destination. Green fees range from $1,000 MXN at Tabachines to $7,000 MXN weekend rates at Bosque Real. The constraint is rarely the green fee. It is access. Coordinating a round at Chapultepec requires a member contact; a round at Amanali or Avandaro requires a resort booking. Per GIM editorial research, 2026." },
+    { q: "How much does a golf trip to Mexico City cost?", a: "A 4-night, 3-round golf trip to Mexico City runs $1,170 on the lower end to $3,500 at the higher tier, per person — the lowest all-in cost of any of our destinations. Green fees range from $1,000 MXN at Tabachines to $7,000 MXN weekend rates at Bosque Real. The constraint is rarely the green fee. It is access. Coordinating a round at Chapultepec requires a member contact; a round at Amanali or Avandaro requires a resort booking. Per our editorial research, 2026." },
   ],
 
   credentials,
@@ -459,8 +459,8 @@ const CANCUN = {
   // SEO — this page draws two query families: "riviera maya golf courses" (most
   // impressions) and the better-ranking "cancun golf prices / green fees" set.
   // The title holds both, then the fee/access angle carries the click.
-  seoTitle: "Cancún & Riviera Maya Golf Courses: Green Fees | GOLF° IN MEXICO°",
-  seoDescription: "12+ championship courses along 80 miles of Caribbean coast, which ones you can play without a resort stay, and green fees from $109.",
+  seoTitle: "Cancún & Riviera Maya Golf | El Camaleón & Moon Palace",
+  seoDescription: "Greg Norman's El Camaleón through jungle, cenotes and mangroves, Nicklaus's 27 holes at Moon Palace, and the Caribbean courses that open without a resort stay.",
   sources: [
     "PGA Tour — Mayakoba Golf Classic records (2007–2022)",
     "Korn Ferry Tour — PGA Riviera Maya 2025 event records",
@@ -471,20 +471,20 @@ const CANCUN = {
   heroLabel: "Destination Guide · Riviera Maya",
   h1Pre: "Golf in",
   h1Em: "Cancún & the Riviera Maya.",
-  byline: "GIM Editorial · Field research by Pablo De La Mora & José Islas · Updated May 2026",
+  byline: "GOLF° IN MEXICO° Editorial · Field research by Pablo De La Mora & José Islas · Updated May 2026",
   stats: [
     { num: "12+",        label: "Courses" },
     { num: "80 mi",      label: "Coastline" },
-    { num: "$109–$353",  label: "Green fees" },
+    { num: "$190–$375",  label: "Green fees" },
     { num: "Dec – Apr",  label: "Best months" },
   ],
   heroAnswer:
-    "Cancun and the Riviera Maya have more than 12 championship golf courses along 80 miles of Caribbean coastline — designed by Greg Norman, Jack Nicklaus, Tom Weiskopf, Nick Price, and Robert Trent Jones Jr. Green fees run $109 to $353 per round. Cancun International (CUN) is the most-served Mexican airport by US carriers. This is the easiest golf trip in Mexico to book.",
+    "Cancun and the Riviera Maya have more than 12 championship golf courses along 80 miles of Caribbean coastline — designed by Greg Norman, Jack Nicklaus, Tom Weiskopf, Nick Price, and Robert Trent Jones Jr. Green fees run $190 to $375 per round. Cancun International (CUN) is the most-served Mexican airport by US carriers. This is the easiest golf trip in Mexico to book.",
 
   quickFacts: [
     { icon: "flag",      label: "Courses",        value: "12+ along the corridor (Cancun → Tulum)" },
     { icon: "pencil",    label: "Designers",      value: "Greg Norman · Jack Nicklaus · Tom Weiskopf · Nick Price · Robert Trent Jones Jr. · Isao Aoki" },
-    { icon: "dollar",    label: "Green fees",     value: "$109 – $353 USD per round" },
+    { icon: "dollar",    label: "Green fees",     value: "$190 – $375 USD per round" },
     { icon: "calendar",  label: "Best months",    value: "December – April" },
     { icon: "alert",     label: "Avoid",          value: "August – October (hurricane peak)" },
     { icon: "plane",     label: "Airport",        value: "Cancun International (CUN) — 25+ direct US cities" },
@@ -577,18 +577,18 @@ const CANCUN = {
     { q: "How many golf courses are in Cancun and the Riviera Maya?", a: "Cancun and the Riviera Maya have more than 12 championship golf courses along 80 miles of Caribbean coastline, from Playa Mujeres north of Cancun all the way to PGA Riviera Maya near Tulum. Key designers include Greg Norman (Playa Mujeres, El Camaleón), Jack Nicklaus (Moon Palace, Riviera Cancun Golf Club), Tom Weiskopf (Puerto Cancun), Nick Price (El Tinto, Gran Coyote), and Robert Trent Jones Jr. (PGA Riviera Maya). Most courses are resort-affiliated but publicly accessible with advance booking." },
     { q: "What is El Camaleón at Mayakoba?", a: "El Camaleón at Mayakoba is a Greg Norman-designed championship course at the Mayakoba resort complex in Playa del Carmen, Mexico. It hosted the PGA Tour Mayakoba Golf Classic from 2007 to 2022 — the only PGA Tour event in Mexico during that period. The course routes through three ecosystems: mangrove, jungle, and beach, with the famous par-3 7th hole playing over a natural limestone cenote. Access is limited to guests of the Mayakoba resort hotels: Andaz, Banyan Tree, Fairmont, and Rosewood." },
     { q: "What is the best golf course in Cancun?", a: "El Camaleón at Mayakoba is the most historically significant — PGA Tour host for 15 years. Puerto Cancun Golf Club is the most consistently ranked by Golf Advisor (#2 in Mexico in 2020, #8 in 2024). Playa Mujeres offers the best combination of ocean views and public access. PGA Riviera Maya (near Tulum) won Best Golf Course in Mexico at the 2024 World Golf Awards. The right answer depends on where you are staying and whether you prioritize access, tournament pedigree, or scenery." },
-    { q: "Can tourists play El Camaleón at Mayakoba?", a: "Yes, but only as guests of the four Mayakoba resort hotels — Andaz, Banyan Tree, Fairmont, or Rosewood Mayakoba. There is no public day-pass. The green fee runs $250–$353 USD including transportation. For publicly accessible courses in the Playa del Carmen area, Playa Mujeres, Puerto Cancun, Gran Coyote, and PGA Riviera Maya all offer direct booking without a resort stay." },
-    { q: "What is the all-inclusive golf option in Cancun?", a: "Moon Palace Golf Club offers the strongest all-inclusive golf package in Cancun. All-inclusive guests pay only $38 for the first round and $19 for subsequent rounds (plus cart fee) — instead of the $310 standard green fee. Iberostar Cancun Golf Club offers unlimited golf at $109 per day for the 2025–2026 season for Iberostar guests. Hard Rock Riviera Maya also bundles golf into the room rate. The all-inclusive math works for golfers playing 3+ rounds during a stay." },
+    { q: "Can tourists play El Camaleón at Mayakoba?", a: "Yes. The club takes visiting golfers through its own booking form: $375 in prime time, with special rates for guests of the four Mayakoba hotels (Andaz, Banyan Tree, Fairmont and Rosewood Mayakoba). Nearby, Playa Mujeres, Puerto Cancun, Gran Coyote, and PGA Riviera Maya all offer direct booking without a resort stay." },
+    { q: "What is the all-inclusive golf option in Cancun?", a: "Moon Palace Golf Club offers the strongest all-inclusive golf package in Cancun. All-inclusive guests pay only $38 for the first round and $19 for subsequent rounds (plus cart fee) — instead of the $310 standard green fee. Hard Rock Riviera Maya also bundles golf into the room rate. The all-inclusive math works for golfers playing 3+ rounds during a stay." },
     { q: "Is Puerto Cancun Golf Club open to the public?", a: "Yes. Puerto Cancun Golf Club is a public-access course with direct booking — no resort affiliation required. Tom Weiskopf designed the 7,241-yard, par-72 layout in 2013 between Cancun's Hotel Zone and downtown. Green fees run $270 ($165 twilight). Several holes play along the Caribbean shoreline and the Puerto Cancun marina, and the closing par-4 18th finishes on an island green in the property's main canal. Ranked top 10 in Mexico by Golf Advisor every year from 2020 to 2024." },
     { q: "Is PGA Riviera Maya open to the public?", a: "Yes. PGA Riviera Maya offers direct public booking with no resort stay required. Located 90 minutes south of Cancun at Tulum Country Club, the Robert Trent Jones Jr. design opened in 2010 and became the first PGA of America partner destination in Latin America in 2019. Won Best Golf Course in Mexico at the 2024 World Golf Awards and hosted Mexico's first Korn Ferry Tour event in 2025. The course routes through cenotes, limestone terrain, and dense jungle — a Korn Ferry-level layout open to outside players." },
     { q: "What is the best time to play golf in Cancun?", a: "December through April — dry, 75–85°F, low humidity, manageable trade winds. For the best value, May and early July deliver near-peak conditions with rooms 25–40% off peak rates. Avoid August through October: the highest hurricane-risk window on the Caribbean coast. Late November transitions back toward peak as the hurricane season closes — the sharpest end-of-off-season rates on the corridor. Travel insurance with hurricane coverage is standard for any trip booked in the off-season window." },
-    { q: "How much does a golf trip to Cancun cost?", a: "A 4-night, 3-round trip to Cancun and the Riviera Maya runs $2,200 on the lower end (all-inclusive resort with bundled golf) to $6,590 at the luxury tier (Mayakoba-level accommodation plus standalone green fees). The all-inclusive arbitrage is the key variable: Moon Palace guests can play 3 rounds for under $100 total — a fraction of the $870 standalone cost for the same number of rounds at premium courses. Green fees alone range from $109 (Iberostar guest rate) to $353 at El Camaleón at Mayakoba." },
+    { q: "How much does a golf trip to Cancun cost?", a: "A 4-night, 3-round trip to Cancun and the Riviera Maya runs $2,200 on the lower end (all-inclusive resort with bundled golf) to $6,590 at the luxury tier (Mayakoba-level accommodation plus standalone green fees). The all-inclusive arbitrage is the key variable: Moon Palace guests can play 3 rounds for under $100 total — a fraction of the $870 standalone cost for the same number of rounds at premium courses. Green fees alone range from $190 at El Tinto to $375 at El Camaleón at Mayakoba." },
   ],
 
   // Descriptive internal links out of this hub (see the "Read next" section).
   relatedReads: [
-    { to: "/destinations/mexico-city", anchor: "Mexico City golf courses", note: "The inland counterpoint: 20+ courses at altitude, invitation-led access, green fees $150–$400." },
-    { to: "/destinations/los-cabos", anchor: "golf in Los Cabos", note: "18 courses between Cabo San Lucas and San José del Cabo, $95–$500 a round." },
+    { to: "/destinations/mexico-city", anchor: "Mexico City golf courses", note: "The inland counterpoint: 20+ courses at altitude, invitation-led access, green fees $100–$600." },
+    { to: "/destinations/los-cabos", anchor: "golf in Los Cabos", note: "18 courses between Cabo San Lucas and San José del Cabo, $260–$700 a round." },
   ],
   credentials,
 };
@@ -607,8 +607,8 @@ const PUERTO_VALLARTA = {
     "/images/wqf7n1js-fa4fd2fc-6222-4e3b-ad57-f9cc947b5aeb-1-105-c.webp",
     "/images/6ntevszb-5573a261-fa98-47f9-9cb4-afc720500ad7-1-105-c.webp",
   ],
-  seoTitle: "Golf in Puerto Vallarta: Courses, Fees & Access | GOLF° IN MEXICO°",
-  seoDescription: "Eight championship courses around Banderas Bay, including Vidanta, the region's only PGA Tour venue, and Nicklaus and Weiskopf designs for less than in Cabo.",
+  seoTitle: "Golf in Puerto Vallarta | Vista Vallarta, Vidanta & El Tigre",
+  seoDescription: "Nicklaus and Weiskopf at Vista Vallarta, host of the 2002 World Cup, Vidanta along the Ameca River and El Tigre: Banderas Bay golf, and who gets on each.",
   sources: [
     "PGA Tour — Mexico Open at VidantaWorld official records",
     "Vista Vallarta Golf Club — course records and 2002 WGC-World Cup archive",
@@ -619,20 +619,20 @@ const PUERTO_VALLARTA = {
   heroLabel: "Destination Guide · Puerto Vallarta",
   h1Pre: "Golf in",
   h1Em: "Puerto Vallarta.",
-  byline: "GIM Editorial · Field research by Pablo De La Mora & José Islas · Updated May 2026",
+  byline: "GOLF° IN MEXICO° Editorial · Field research by Pablo De La Mora & José Islas · Updated May 2026",
   stats: [
     { num: "8",          label: "Courses around the bay" },
     { num: "PGA Tour",   label: "Vidanta Norman (since 2022)" },
-    { num: "$149–$285",  label: "Green fees" },
+    { num: "$75–$319",  label: "Green fees" },
     { num: "Nov – May",  label: "Best months" },
   ],
   heroAnswer:
-    "Puerto Vallarta and Banderas Bay have eight championship golf courses within 45 minutes of the airport — designed by Jack Nicklaus, Tom Weiskopf, Greg Norman, Robert von Hagge, and Joe Finger. Green fees run $149 to $285 per round. The Vidanta Norman Course is the only active PGA Tour venue in the region. This is Mexico's most underrated golf destination.",
+    "Puerto Vallarta and Banderas Bay have eight championship golf courses within 45 minutes of the airport — designed by Jack Nicklaus, Tom Weiskopf, Greg Norman, Robert von Hagge, and Joe Finger. Green fees run $75 to $319 per round. The Vidanta Norman Course is the only active PGA Tour venue in the region. This is Mexico's most underrated golf destination.",
 
   quickFacts: [
     { icon: "flag",      label: "Courses",       value: "8 around Banderas Bay" },
     { icon: "pencil",    label: "Designers",     value: "Jack Nicklaus · Tom Weiskopf · Greg Norman · Robert von Hagge · Joe Finger · Percy Clifford" },
-    { icon: "dollar",    label: "Green fees",    value: "$149 – $285 USD per round" },
+    { icon: "dollar",    label: "Green fees",    value: "$75 – $319 USD per round" },
     { icon: "calendar",  label: "Best months",   value: "November – May" },
     { icon: "alert",     label: "Avoid",         value: "July – October (rain + humidity)" },
     { icon: "plane",     label: "Airport",       value: "Puerto Vallarta International (PVR)" },
@@ -648,7 +648,7 @@ const PUERTO_VALLARTA = {
   overviewParagraphs: [
     "Eight Puerto Vallarta golf courses ring the bay — all within 45 minutes of Puerto Vallarta International Airport (PVR). Banderas Bay is the largest bay on Mexico's Pacific coast. Puerto Vallarta sits on the south arm in Jalisco. Riviera Nayarit wraps the north arm, with Nuevo Vallarta, Bucerías, and Punta Mita carrying the resort load.",
     "The two anchors are Vista Vallarta (Jack Nicklaus + Tom Weiskopf, both opened April–November 2001, World Cup host 2002) on the hillsides above the city, and the Vidanta Norman Course (Greg Norman, PGA Tour Mexico Open venue since 2022) in Nuevo Nayarit just north of the Ameca River. Both sit within 20 minutes of PVR.",
-    "The Banderas Bay corridor makes an honest case for best value in Mexican golf. The same design pedigrees — Nicklaus, Norman, Weiskopf — that command $400+ in Los Cabos and Punta Mita run $150–$285 in Puerto Vallarta. Vista Vallarta hosted the 2002 WGC-World Cup on the same Nicklaus greens. The Vidanta Norman Course hosts the PGA Tour annually. The value is structural, not seasonal. The city amplifies everything: old-town Zona Romántica, the Malecón, the bay restaurants. Puerto Vallarta is the golf destination you bring non-golfers to and they don't notice they're at a golf destination.",
+    "The Banderas Bay corridor makes an honest case for best value in Mexican golf. The same design pedigrees — Nicklaus, Norman, Weiskopf — that command $400+ in Los Cabos and Punta Mita run $280–$319 in Puerto Vallarta. Vista Vallarta hosted the 2002 WGC-World Cup on the same Nicklaus greens. The Vidanta Norman Course hosts the PGA Tour annually. The value is structural, not seasonal. The city amplifies everything: old-town Zona Romántica, the Malecón, the bay restaurants. Puerto Vallarta is the golf destination you bring non-golfers to and they don't notice they're at a golf destination.",
   ],
   overviewStats: [
     { num: "8",       label: "Courses around Banderas Bay" },
@@ -713,25 +713,25 @@ const PUERTO_VALLARTA = {
   seasonH2Pre: "When",
   seasonH2Em: "to play.",
   seasonBlocks: [
-    { title: "Peak Season",       sub: "Nov – Apr · 72–85°F · High · $$$",   body: "Dry, warm, low humidity. The window every visiting golfer should target. Vista Vallarta and El Tigre fill 4–8 weeks in advance during Christmas through Easter. Flamingos high-season rate (Nov 1 – Apr 30): $149. Book early." },
+    { title: "Peak Season",       sub: "Nov – Apr · 72–85°F · High · $$$",   body: "Dry, warm, low humidity. The window every visiting golfer should target. Vista Vallarta and El Tigre fill 4–8 weeks in advance during Christmas through Easter. Book early." },
     { title: "Shoulder Season",   sub: "May – Jun · 80–90°F · Moderate · $$", body: "Warmer, slightly more humid. Rooms drop 25–35% off peak. Course conditions remain strong through May before the rains arrive. The value window." },
     { title: "Rain / Hurricane",  sub: "Jul – Oct · 82–92°F · Low · $",       body: "Tropical storms and afternoon thunder. Mornings still playable. October is the sharpest value window as the hurricane season closes mid-month. 2026 PGA Tour Mexico Open: October 29 – November 1." },
   ],
 
   faqs: [
-    { q: "How many golf courses are in Puerto Vallarta?", a: "Eight championship golf courses ring Banderas Bay within 45 minutes of Puerto Vallarta International Airport. They are divided between the south arm (Jalisco: Vista Vallarta Nicklaus, Vista Vallarta Weiskopf, Marina Vallarta) and the north arm (Nayarit: El Tigre, Flamingos, Vidanta Norman, and the Punta Mita peninsula courses). All eight are within a 45-minute drive of PVR. Green fees range from $149 at Flamingos to $285 at Vista Vallarta." },
+    { q: "How many golf courses are in Puerto Vallarta?", a: "Eight championship golf courses ring Banderas Bay within 45 minutes of Puerto Vallarta International Airport. They are divided between the south arm (Jalisco: Vista Vallarta Nicklaus, Vista Vallarta Weiskopf, Marina Vallarta) and the north arm (Nayarit: El Tigre, Flamingos, Vidanta Norman, and the Punta Mita peninsula courses). All eight are within a 45-minute drive of PVR. Green fees range from $75 at The Lakes to $319 at Vista Vallarta Nicklaus." },
     { q: "Can the public play the Vidanta Norman course?", a: "Yes — open to Vidanta resort guests and the public with advance booking. The Vidanta Norman Course at VidantaWorld in Nuevo Vallarta is a Greg Norman-designed championship layout and the only active PGA Tour venue in the Puerto Vallarta corridor. It has hosted the Mexico Open at VidantaWorld since 2022. Past winners include Jon Rahm (2022), Tony Finau (2023), and Jake Knapp (2024). The course plays par 73 for resort guests and converts to par 71 for the PGA Tour event. Caddies are mandatory and paid in cash at the course ($28–$67 depending on group size)." },
-    { q: "Is Vista Vallarta Golf Club open to the public?", a: "Yes — both Vista Vallarta courses are fully public with direct booking. The 478-acre property in Puerto Vallarta offers two championship courses opened in 2001: the Jack Nicklaus Signature course (par 72, 7,074 yards, $235–$285) and the Tom Weiskopf design (par 72, 6,993 yards, $210–$265). No resort affiliation required. The Nicklaus course hosted the 2002 WGC-World Cup — the 24-team international competition that included Tiger Woods and Ernie Els. Course record is 62, held by Phil Mickelson. Located 15 minutes from PVR." },
-    { q: "Is golf in Puerto Vallarta cheaper than in Los Cabos?", a: "Yes, consistently 30–40% less expensive. Vista Vallarta offers Jack Nicklaus and Tom Weiskopf championship designs for $210–$285 per round. Comparable Nicklaus designs in Los Cabos run $315–$500. Flamingos Golf, Percy Clifford's 1978 design, is $149 high-season — the lowest championship green fee on any corridor covered by GIM. The Vidanta Norman PGA Tour venue is publicly accessible with mandatory caddies at $28–$67, added separately to the green fee." },
+    { q: "Is Vista Vallarta Golf Club open to the public?", a: "Yes — both Vista Vallarta courses are fully public with direct booking. The 478-acre property in Puerto Vallarta offers two championship courses opened in 2001: the Jack Nicklaus Signature course (par 72, 7,074 yards, $319) and the Tom Weiskopf design (par 72, 6,993 yards, $299). No resort affiliation required. The Nicklaus course hosted the 2002 WGC-World Cup — the 24-team international competition that included Tiger Woods and Ernie Els. Course record is 62, held by Phil Mickelson. Located 15 minutes from PVR." },
+    { q: "Is golf in Puerto Vallarta cheaper than in Los Cabos?", a: "Yes, consistently 30–40% less expensive. Vista Vallarta offers Jack Nicklaus and Tom Weiskopf championship designs for $299–$319 per round. Comparable Nicklaus designs in Los Cabos run $315–$500. The Vidanta Norman PGA Tour venue is publicly accessible with mandatory caddies at $28–$67, added separately to the green fee." },
     { q: "What is the best time to play golf in Puerto Vallarta?", a: "November through April — dry, 72–85°F, low humidity. For best value, May delivers near-peak conditions with rooms 25–35% off peak rates. Avoid July through October: tropical storms and afternoon rain. October is the sharpest off-season value window, and the 2026 PGA Tour Mexico Open at Vidanta takes place October 29 – November 1, making late October an ideal time to combine a tournament visit with your own rounds." },
     { q: "Are the golf courses in Puerto Vallarta walkable?", a: "Most courses are cart-mandatory due to terrain — Vista Vallarta climbs significant elevation, El Tigre stretches across a property with long transitions between holes, and Vidanta Norman includes a 560-foot cart suspension bridge over the Ameca River. Marina Vallarta and Flamingos are flatter and theoretically walkable, but caddies and carts are the local standard and green fees typically include cart rental. Bring shoes that work for both walking the city in the afternoon and 18 holes in the morning — Puerto Vallarta does both in one day." },
-    { q: "How much does a golf trip to Puerto Vallarta Mexico cost?", a: "A 4-night, 3-round trip to Puerto Vallarta runs $1,920 on the accessible end (old-town hotel + Flamingos + Vista Vallarta + Marina Vallarta) to $5,675 at the premium tier (Grand Velas or equivalent + Vista Nicklaus + Vidanta Norman + El Tigre). The primary variable is accommodation. Green fees run 30–40% below Cabo or Punta Mita for comparable design pedigrees — making Puerto Vallarta the strongest value proposition in championship golf along Mexico's Pacific coast." },
+    { q: "How much does a golf trip to Puerto Vallarta Mexico cost?", a: "A 4-night, 3-round trip to Puerto Vallarta runs up to $5,675 at the premium tier (Grand Velas or equivalent + Vista Nicklaus + Vidanta Norman + El Tigre). The primary variable is accommodation. Green fees run 30–40% below Cabo or Punta Mita for comparable design pedigrees — making Puerto Vallarta the strongest value proposition in championship golf along Mexico's Pacific coast." },
   ],
 
   // Descriptive internal links out of this hub (see the "Read next" section).
   relatedReads: [
     { to: "/destinations/mexico-city", anchor: "golf in Mexico City", note: "20+ courses within 90 minutes of the center — Chapultepec's tournament history, and the semi-public round you can actually book." },
-    { to: "/destinations/cancun-riviera-maya", anchor: "Riviera Maya golf courses", note: "12+ courses along 80 miles of Caribbean coast, green fees $109–$353." },
+    { to: "/destinations/cancun-riviera-maya", anchor: "Riviera Maya golf courses", note: "12+ courses along 80 miles of Caribbean coast, green fees $190–$375." },
   ],
   credentials,
 };
@@ -744,19 +744,19 @@ const UNIQUE = {
   region: "Across Mexico",
   heroPhoto: null,
   heroLabel: "Destination Guide · Unique",
-  seoTitle: "Hidden Golf Destinations in Mexico | GOLF° IN MEXICO°",
-  seoDescription: "Beyond the headline corridors: a dozen more golf destinations in Mexico, from colonial towns and quiet Pacific bays to lakeside highlands.",
+  seoTitle: "Hidden Golf Destinations in Mexico | San Miguel & Loreto",
+  seoDescription: "Colonial San Miguel, TPC Danzante Bay above the Sea of Cortez, El Tamarindo on Costalegre: Mexico's golf beyond the headline corridors, and who gets on each.",
   h1Pre: "Golf in",
   h1Em: "hidden Mexico.",
-  byline: "GIM Editorial · Field research by Pablo De La Mora & José Islas · Updated May 2026",
+  byline: "GOLF° IN MEXICO° Editorial · Field research by Pablo De La Mora & José Islas · Updated May 2026",
   stats: [
     { num: "12+",        label: "Hidden destinations" },
     { num: "Off-grid",   label: "Routings" },
-    { num: "$120–$280",  label: "Green fees" },
+    { num: "$110–$595",  label: "Green fees" },
     { num: "Year-round", label: "Selective windows" },
   ],
   heroAnswer:
-    "Beyond the headline corridors, Mexico hides another dozen destinations worth the detour — colonial towns, quiet Pacific bays, lakeside highlands, Caribbean limestone. Each one is a complete trip on its own. Each one is worth a week.",
+    "Beyond the headline corridors, Mexico hides another dozen golf destinations: San Miguel de Allende, Loreto, Costalegre, Mérida, Valle de Bravo and Mazatlán. Each one is a complete trip on its own. Each one is worth a week.",
 
   quickFacts: [
     { icon: "flag",      label: "Destinations",  value: "12+ hidden regional rounds" },
@@ -846,7 +846,7 @@ const UNIQUE = {
   // Descriptive internal links out of this hub (see the "Read next" section).
   relatedReads: [
     { to: "/destinations/mexico-city", anchor: "golf in Mexico City", note: "The city circuit behind the escapes: 20+ courses, altitude that adds 10–12% of carry, access through a member or a hotel." },
-    { to: "/destinations/los-cabos", anchor: "Los Cabos course prices", note: "18 championship courses, green fees $95–$500 a round." },
+    { to: "/destinations/los-cabos", anchor: "Los Cabos course prices", note: "18 championship courses, green fees $260–$700 a round." },
   ],
   credentials,
 };
