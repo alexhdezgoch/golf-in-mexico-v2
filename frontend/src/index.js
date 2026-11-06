@@ -19,7 +19,9 @@ const tree = (
 // clean. Empty #root (SPA fallback / dev) takes the normal client-render path.
 if (rootEl.hasChildNodes()) {
   window.__WAS_PRERENDERED__ = true;
-  hydrateRoot(rootEl, tree);
+  // ?hydrate-debug prints where a hydration mismatch happens (component stack), for checking prerendered pages.
+  const debug = /[?&]hydrate-debug\b/.test(window.location.search);
+  hydrateRoot(rootEl, tree, debug ? { onRecoverableError: (error, info) => console.warn("[hydrate-debug]", error?.message, info?.componentStack) } : undefined);
 } else {
   createRoot(rootEl).render(tree);
 }
