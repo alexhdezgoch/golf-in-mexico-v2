@@ -12,12 +12,12 @@
 
    SOURCES for the Punta Mita copy below:
      - "Punta Mita — Inputs + E-E-A-T (v4)", Pablo De La Mora, 2026-08-12
-     - GIM field research, Pablo De La Mora & José Islas
-     - Green fee $325–$400 confirmed by Alex/GIM 2026-08-12 (supersedes the
-       $345–$395 and $300–$380 figures that were on the site before).
+     - GOLF° IN MEXICO° field research, Pablo De La Mora & José Islas
+     - Green fee $388, the Pacífico and Bahía course pages (2026-11-05; supersedes the $325–$400
+       range of 2026-08-12). No $100 add-on fee before the call (2026-11-03).
 
    FACT NOTES — deliberate omissions, do not "fix" without a source:
-     - Bahia's opening year is omitted. The site said 2005; GIM research says
+     - Bahia's opening year is omitted. The site said 2005; GOLF° IN MEXICO° research says
        2008 or 2009 with sources in conflict. Omitted until settled.
      - Hole 3B is "the only NATURAL island green in golf". Not "the only island
        green in the world" — TPC Sawgrass 17 is an island green too.
@@ -48,7 +48,7 @@ const PACIFICO_BAHIA = {
   seoTitle:
     "Punta Mita Pacifico vs Bahia: Which to Play | GOLF° IN MEXICO°",
   seoDescription:
-    "Two Jack Nicklaus Signature courses on the same peninsula, and they do not play alike. Specs, green fees $325–$400, the Tail of the Whale tide window, and how to get on.",
+    "Two Jack Nicklaus Signature courses on the same peninsula, and they do not play alike. Specs, green fees $388, the Tail of the Whale tide window, and how to get on.",
 
   heroLabel: "Punta Mita · Course Comparison",
   h1Pre: "Pacifico or Bahia —",
@@ -56,22 +56,22 @@ const PACIFICO_BAHIA = {
 
   // Answer-first. The question in the title is settled inside 50 words.
   heroAnswer:
-    "Play Pacifico for the ocean and the island green at 3B. Play Bahia for the tighter, more technical round through jungle. Both are Jack Nicklaus Signature courses on the same peninsula, both run $325–$400 for resort guests, and most golfers here play one of each.",
+    "Play Pacifico for the ocean and the island green at 3B. Play Bahia for the tighter, more technical round through jungle. Both are Jack Nicklaus Signature courses on the same peninsula, both run $388 per round, and most golfers here play one of each.",
 
   heroPhoto: "/images/punta-mita/punta-mita-pacifico-tail-of-the-whale-island-green-aerial.webp",
   heroAlt:
     "Aerial view of the Tail of the Whale, hole 3B at Pacifico Course in Punta Mita — a natural island green ringed by surf, with the stone causeway visible at low tide.",
 
   ctaPrimary: "Plan the round",
-  ctaNote: "Pablo answers himself. No call required to get a proposal.",
+  ctaNote: "",
 
   byline:
-    "GIM Editorial · Field research by Pablo De La Mora & José Islas · Updated August 2026",
+    "GOLF° IN MEXICO° Editorial · Field research by Pablo De La Mora & José Islas · Updated August 2026",
   sources: [
     "Pacifico Golf Course — Punta Mita pro shop and resort archives",
     "Nicklaus Design — Pacifico course specifications (par, yardage, opening year)",
-    "GIM field research — Riviera Nayarit, May 2026",
-    "Green fee range confirmed with Golf in Mexico, August 2026",
+    "GOLF° IN MEXICO° field research — Riviera Nayarit, May 2026",
+    "Green fee: $388 per round, as published on the Pacífico and Bahía course pages (November 2026)",
   ],
 
   /* Side-by-side specs. Every row is sourced; a cell we cannot source is "—". */
@@ -86,7 +86,7 @@ const PACIFICO_BAHIA = {
     ["Yardage", "7,014", "—"],
     ["Holes on the Pacific", "8", "6"],
     ["The round", "Ocean wind, longer clubs", "Jungle corridors, shot-shaping"],
-    ["Green fee", "$325 – $400", "$325 – $400"],
+    ["Green fee", "$388", "$388"],
     ["Caddie", "Included at Four Seasons", "Included at Four Seasons"],
   ],
   specsNote:
@@ -130,7 +130,7 @@ const PACIFICO_BAHIA = {
   accessLabel: "Getting on",
   accessH2Pre: "Neither course",
   accessH2Em: "sells a public tee time.",
-  accessBody: `Pacifico and Bahia are restricted to ${PENINSULA_ACCESS} There is no day-pass and no walk-up rate. The usual route in is the room — or the villa, which is the part most golfers don't know about. Green fees run $325 to $400 per round for resort guests, varying by season and course. Caddies are included at Four Seasons and billed separately at St. Regis.`,
+  accessBody: `Pacifico and Bahia are restricted to ${PENINSULA_ACCESS} There is no day-pass and no walk-up rate. The usual route in is the room — or the villa, which is the part most golfers don't know about. Green fees run $388 per round. Caddies are included at Four Seasons and billed separately at St. Regis.`,
 
   faqs: [
     {
@@ -143,15 +143,15 @@ const PACIFICO_BAHIA = {
     },
     {
       q: "Can I play both Pacifico and Bahia on one trip?",
-      a: "Yes, and most golfers do. The two courses are about five minutes apart by cart inside the peninsula, so a two-round trip usually means one at each. Golf in Mexico books both rounds as part of one reservation rather than two separate calls.",
+      a: "Yes, and most golfers do. The two courses are about five minutes apart by cart inside the peninsula, so a two-round trip usually means one at each. GOLF° IN MEXICO° books both rounds as part of one reservation rather than two separate calls.",
     },
     {
       q: "Do I need to be a hotel guest to play Pacifico or Bahia?",
-      a: "Not a hotel guest specifically. Access also runs through Punta Mita villa rentals and group bookings, which Golf in Mexico coordinates. What you can't do is drive up from Puerto Vallarta and buy a tee time — the peninsula gate requires a confirmed stay.",
+      a: "Not a hotel guest specifically. Access also runs through Punta Mita villa rentals and group bookings, which GOLF° IN MEXICO° coordinates. What you can't do is drive up from Puerto Vallarta and buy a tee time — the peninsula gate requires a confirmed stay.",
     },
     {
       q: "How much does it cost to play golf in Punta Mita?",
-      a: "Green fees at Pacifico and Bahia run $325 to $400 USD per round for resort guests, varying by season and course. Caddies are included at Four Seasons and billed separately at St. Regis. Caddie tips run $40–$60 per bag per round and are expected.",
+      a: "Green fees at Pacifico and Bahia run $388 USD per round. Caddies are included at Four Seasons and billed separately at St. Regis. Caddie tips run $40–$60 per bag per round and are expected.",
     },
   ],
 
@@ -201,15 +201,15 @@ const STAY_AND_PLAY = {
     "Two golfers on a coastal tee at Punta Mita, with the beach curving away behind them and the Pacific to the left.",
 
   ctaPrimary: "Start a proposal",
-  ctaNote: "Pablo builds it inside 36 hours. No call required.",
+  ctaNote: "",
 
   byline:
-    "GIM Editorial · Field research by Pablo De La Mora & José Islas · Updated August 2026",
+    "GOLF° IN MEXICO° Editorial · Field research by Pablo De La Mora & José Islas · Updated August 2026",
   sources: [
     "Punta Mita Properties — villa access and group booking terms (2026)",
     "Pacifico Golf Course — Punta Mita pro shop and resort archives",
-    "GIM field research — Riviera Nayarit, May 2026",
-    "Green fee range confirmed with Golf in Mexico, August 2026",
+    "GOLF° IN MEXICO° field research — Riviera Nayarit, May 2026",
+    "Green fee: $388 per round, as published on the Pacífico and Bahía course pages (November 2026)",
   ],
 
   /* Pablo's 34-second brand film. Its description is this page's argument
@@ -226,14 +226,14 @@ const STAY_AND_PLAY = {
     videoId: "PGII_IMCWmM",
     title: "Punta Mita — the stay and the game as one experience",
     description:
-      "Punta Mita has spent almost three decades perfecting the stay: private villas, in-home dining, airport transport, full service, all within the property. Golf in Mexico builds the trip around the golfer who notices the details.",
+      "Punta Mita has spent almost three decades perfecting the stay: private villas, in-home dining, airport transport, full service, all within the property. GOLF° IN MEXICO° builds the trip around the golfer who notices the details.",
     uploadDate: "2026-08-12",
     durationSec: 34,
     // Local poster, so the facade costs one request to our own origin instead
     // of a round trip to i.ytimg.com before anything paints.
     poster: "/images/punta-mita/punta-mita-oceanfront-green-palms.webp",
     posterAlt:
-      "An oceanfront green on the Punta Mita peninsula, framed by palms — the opening frame of the Golf in Mexico film.",
+      "An oceanfront green on the Punta Mita peninsula, framed by palms — the opening frame of the GOLF° IN MEXICO° film.",
   },
   videoLabel: "The film",
   videoH2Pre: "Thirty seconds",
@@ -266,7 +266,7 @@ const STAY_AND_PLAY = {
         "A private chef when you want the night back",
         "Carts — included with some villas, ~$20 USD/day where not",
       ],
-      price: "Green fees $325 – $400 per round",
+      price: "Green fees $388 per round",
       priceNote: "Villa priced per group and season",
     },
     {
@@ -293,8 +293,8 @@ const STAY_AND_PLAY = {
         "Higuera — the corridor's public Norman 18",
         "Transport between courses",
       ],
-      price: "Public green fee + $100 USD per player",
-      priceNote: "No markup buried in the room rate",
+      price: "The public green fee",
+      priceNote: "Booked direct with each club",
     },
   ],
 
@@ -302,7 +302,7 @@ const STAY_AND_PLAY = {
   addOnH2Pre: "Want more",
   addOnH2Em: "than two rounds?",
   addOnBody:
-    "Mandarina and Higuera sit just beyond the peninsula, and both are bookable without a Punta Mita key. We price them simply: the public green fee plus a $100 USD service fee per player. No markup buried in the room rate.",
+    "Mandarina and Higuera sit just beyond the peninsula, and both are bookable without a Punta Mita key. You pay the public green fee, booked direct with each club.",
 
   tournamentLabel: "The format",
   tournamentH2Pre: "Eight players",
@@ -358,8 +358,8 @@ const STAY_AND_PLAY = {
       a: "Yes. Pacifico and Bahia accept outside players through Punta Mita villa rentals, typically coordinated by a golf concierge rather than by the resort directly. What doesn't work is arriving without a confirmed stay — the peninsula gate requires one.",
     },
     {
-      q: "What is included in a Punta Mita golf package with Golf in Mexico?",
-      a: "Green fees at both courses, villa accommodation, ground transport, and a private chef — coordinated as one booking instead of separate reservations. Add-on rounds at Mandarina or Higuera are the public green fee plus a $100 USD service fee per player.",
+      q: "What is included in a Punta Mita golf package with GOLF° IN MEXICO°?",
+      a: "Green fees at both courses, villa accommodation, ground transport, and a private chef — coordinated as one booking instead of separate reservations.",
     },
     {
       q: "How many players do I need for group pricing at Punta Mita?",
@@ -371,7 +371,7 @@ const STAY_AND_PLAY = {
     },
     {
       q: "How much does it cost to play golf in Punta Mita?",
-      a: "Green fees at Pacifico and Bahia run $325 to $400 USD per round for resort guests, varying by season and course. Villa-based group bookings typically cost less per person than booking rooms individually, which is the reason the eight-player number keeps coming up.",
+      a: "Green fees at Pacifico and Bahia run $388 USD per round. Villa-based group bookings typically cost less per person than booking rooms individually, which is the reason the eight-player number keeps coming up.",
     },
   ],
 

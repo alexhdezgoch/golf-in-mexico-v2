@@ -1,0 +1,122 @@
+{
+  "cabo-del-sol-golf-course": {
+    "name": "Cabo del Sol Golf Course",
+    "specs": "Tom Weiskopf, par 72, 7,008 yds",
+    "lead": "Tom Weiskopf desert-and-canyon course with Sea of Cortez views, renovated with six new Fry/Straka holes in 2023.",
+    "access": "Resort (visitor tee times)",
+    "fee": "$385",
+    "rank": "13",
+    "note": "Tom Weiskopf's desert course, opened in 2001, with six new holes introduced in November 2023. A strong desert-course option that must not be confused with Cove Club.",
+    "standout": ""
+  },
+  "cabo-real-golf-course": {
+    "name": "Cabo Real Golf Course",
+    "specs": "Robert Trent Jones II, par 71, 6,848 yds",
+    "lead": "Robert Trent Jones II design with elevated tees and greens that climb from the sea toward the foothills, and panoramic ocean views.",
+    "access": "Public / resort",
+    "fee": "$260",
+    "rank": null,
+    "note": "",
+    "standout": ""
+  },
+  "chileno-bay-golf-club": {
+    "name": "Chileno Bay Golf Club",
+    "specs": "Tom Fazio, par 72, 7,260 yds",
+    "lead": "Private Tom Fazio course above the Sea of Cortez at Chileno Bay, with sea views from every hole. Resort guests book through the concierge; the resort's 2025 guide lists MXN 9,400 Monday to Thursday and MXN 11,500 Friday to Sunday, plus tax, with a caddie.",
+    "access": "Private (members and guests of Chileno Bay Resort & Residences)",
+    "fee": "Hotel guests",
+    "rank": null,
+    "note": "Tom Fazio's only Cabo design — built on graceful, flowing landforms intended to simulate rolling ocean waves. An ocean view from every hole. Back-to-back par 5s at holes 6 and 7. Two driveable short par 4s. The par-4 18th tumbles downhill to an infinity-edge green at 512 yards from the tips. Auberge Chileno Bay resort guests only.",
+    "standout": "#18 — 512 yards downhill to an infinity-edge green."
+  },
+  "club-campestre-san-jose": {
+    "name": "Club Campestre San José",
+    "specs": "Nicklaus Design, par 71, 6,966 yds",
+    "lead": "Nicklaus Design course in the Sierra de la Laguna foothills with contoured greens and Sea of Cortez views.",
+    "access": "Semi-private / resort",
+    "fee": "$260",
+    "rank": null,
+    "note": "Best value on the corridor. Weaves through rugged desert arroyos with the Sierra de la Laguna mountains framing every shot. The truest sense of Baja's inland topography. Always described as the best value on the corridor — and consistently in top condition. Partner courses with Puerto Los Cabos and Cabo Real for combo packages. Fee includes practice balls, cart, water.",
+    "standout": "#7 — Demanding approach over a deep arroyo crossing."
+  },
+  "diamante-dunes-course": {
+    "name": "Diamante Dunes Course",
+    "specs": "Davis Love III, Mark Love and Paul Cowley, par 72, 7,160 yds",
+    "lead": "Mexico's first true links, routed through white sand dunes along the Pacific. Private club.",
+    "access": "Resort-private (Diamante guests and members)",
+    "fee": "Hotel guests",
+    "rank": "1",
+    "note": "A true links experience framed by massive white sand dunes on the Pacific side of Cabo San Lucas. Walks and plays like a classic British course — with 340 days of sunshine. No. 64 on Golf Digest's World's 100 Greatest Courses 2026–2027. The standard by which all Cabo courses are measured.",
+    "standout": "#17 — Par 3 with target semi-obscured by sand and scrub. The 590-yard par-5 18th plays to a shelf green perched 50 feet above the fairway."
+  },
+  "diamante-el-cardonal": {
+    "name": "Diamante El Cardonal",
+    "specs": "Tiger Woods, par 72, 7,363 yds",
+    "lead": "Tiger Woods' first completed design, set in desert uplands with Pacific views and host of the PGA TOUR's World Wide Technology Championship.",
+    "access": "Resort-private (Diamante guests and members)",
+    "fee": "Hotel guests",
+    "rank": "11",
+    "note": "Tiger Woods' first solo design outside the United States. Wide, forgiving fairways through desert arroyos — highly playable for mixed-handicap groups, with panoramic Pacific views throughout. Host of the PGA Tour World Wide Technology Championship. Inspired by the classic West Coast courses Tiger grew up playing — Riviera, Bel-Air — with bold bunkers and wide fairway corridors.",
+    "standout": "#5 — The layout meanders through sand dunes on the outgoing holes; the back nine crisscrosses desert arroyos. Bold, flashed-face bunkers signpost the strategic options."
+  },
+  "oleada-golf-links": {
+    "name": "Oleada Golf Links",
+    "specs": "Ernie Els with Greg Letsche, par 72, 7,336 yds",
+    "lead": "Pacific-side round in Los Cabos, subject to outside-player availability.",
+    "access": "Resort community (limited public play at opening; expected to go private)",
+    "fee": "$300",
+    "rank": null,
+    "note": "Pacific-side round in Los Cabos, subject to outside-player availability.",
+    "standout": ""
+  },
+  "palmilla-golf-club": {
+    "name": "Palmilla Golf Club",
+    "specs": "Jack Nicklaus, 18 holes",
+    "lead": "The first Jack Nicklaus Signature course in Latin America, at One&Only Palmilla in San José del Cabo. In 2026 Fry Straka is renovating the Mountain and Arroyo courses; during the first phase the Arroyo course stays open, played as 9 holes or as an 18-hole loop.",
+    "access": "Resort (One&Only Palmilla guests; the Arroyo nine stays open during the 2026 renovation)",
+    "fee": "Hotel guests",
+    "rank": "17",
+    "note": "The course that started the modern Tourist Corridor in 1992. Three interchangeable nines (Mountain, Arroyo, Ocean) — the first Jack Nicklaus Signature Design in Latin America. The Ocean nine, added in 1997, features a 600-foot elevation drop from tee to green. Outside play season- and time-dependent; preferred rates for One&Only Palmilla guests.",
+    "standout": "Ocean #3 — Par 4 dropping 150 feet to a beachfront green steps from the crashing Sea of Cortez. The most photographed hole at Palmilla."
+  },
+  "puerto-los-cabos-golf-club": {
+    "name": "Puerto Los Cabos Golf Club",
+    "specs": "Greg Norman and Jack Nicklaus, 27 holes",
+    "lead": "27 holes above the Sea of Cortez: Greg Norman's Mission nine and Jack Nicklaus's Ocean and Vista nines.",
+    "access": "Resort (visitor tee times)",
+    "fee": "$395",
+    "rank": null,
+    "note": "Now a 27-hole facility with three 18-hole combinations. Nicklaus returned in 2017 to build a second nine, opened in 2018. Norman's course has 400+ feet of elevation change. The only Nicklaus + Norman collaboration in Mexico. Fee includes practice balls, cart, food + beverages.",
+    "standout": "#18 — Norman's finishing hole running parallel to the marina and coastline."
+  },
+  "quivira-golf-club": {
+    "name": "Quivira Golf Club",
+    "specs": "Jack Nicklaus, par 72, 7,085 yds",
+    "lead": "Jack Nicklaus Signature design on cliffs above the Pacific, opened in 2014, with a 6th green cantilevered over the ocean.",
+    "access": "Resort (Pueblo Bonito / Quivira)",
+    "fee": "$360–$465 Oct–May · $306–$395 Jun–Sep",
+    "rank": "6",
+    "note": "The crown jewel of the corridor. Quivira plays along the Pacific cliffs above Cabo San Lucas — every hole delivers an ocean view, climbing out of desert canyons to finish with one of the most photographed closing stretches in North America. Rates include cart, practice facility, and all food and refreshments at four comfort stations. Accessible to guests of Pueblo Bonito Oceanfront Resorts: Pacifica · Sunset Beach · Rosé · Los Cabos.",
+    "standout": "#13 — Par 3 returning to the cliffs, 150 feet above the Pacific. The most photographed hole on the course. The par-4 fifth climbs 275 feet up the mountain — one of the most dramatic tee shots in Mexico."
+  },
+  "solmar-golf-links": {
+    "name": "Solmar Golf Links",
+    "specs": "Greg Norman, par 72, 7,240 yds",
+    "lead": "Greg Norman links-style design with Pacific-facing holes and an island-green par-3 17th.",
+    "access": "Resort (open to the public)",
+    "fee": "$400",
+    "rank": null,
+    "note": "A genuine links course with revetted pot bunkers identical to British seaside links — the only ones in Mexico. Three ecosystems: Pacific dunes, cactus forest, coastal finish. Several holes play directly toward the beach. Greg Norman's least-disturbance design approach preserved the natural contours entirely. And yes — Troy was filmed on these cliffs. Solmar Group hotel guests preferred rates; rates include cart, water, practice facility, and two on-course comfort stations.",
+    "standout": "Pacific stretch — links holes hanging directly over the Pacific Ocean."
+  },
+  "twin-dolphin-golf-club": {
+    "name": "Twin Dolphin Golf Club",
+    "specs": "Fred Couples and Todd Eckenrode, par 72, 7,156 yds",
+    "lead": "Private Fred Couples and Todd Eckenrode design routed around desert arroyos with Sea of Cortez views; ranked #5 in Mexico by Golf Digest.",
+    "access": "Private (members; Montage and Maravilla guests)",
+    "fee": "$700 (incl. caddie)",
+    "rank": "5",
+    "note": "Built on the historic grounds of the original Twin Dolphin Hotel. Incredible elevation changes and tournament-level greens — the Sea of Cortez visible from almost every tee. Includes practice facilities + two on-course comfort stations. Accessible to guests of Montage Los Cabos (122-room hotel) and Montage Residences.",
+    "standout": "Perched 180 meters above sea level on a broad plateau bisected by three major arroyos. Sea of Cortes visible from every hole. The par-3 third plays across a jagged canyon — one of the most dramatic par 3s on the corridor."
+  }
+}

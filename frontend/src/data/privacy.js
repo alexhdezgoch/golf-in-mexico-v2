@@ -45,13 +45,13 @@ const EN = {
   updated: formatUpdated("en"),
   tocLabel: "On this page",
   intro:
-    "Golf in Mexico° is an editorial guide and a bespoke trip-planning service. We collect personal data in two places only: the forms you choose to fill in, and the analytics that measure how the site is used. This page explains exactly what is collected, who receives it, how long we keep it, and how to make us delete it.",
+    "GOLF° IN MEXICO° is an editorial guide and a bespoke trip-planning service. We collect personal data in two places only: the forms you choose to fill in, and the analytics that measure how the site is used. This page explains exactly what is collected, who receives it, how long we keep it, and how to make us delete it.",
   sections: [
     {
       id: "controller",
       heading: "Who is responsible for your data",
       body: [
-        "Golf in Mexico° (“Golf in Mexico”, “we”, “us”) is the data controller — the responsable in the sense of Mexico's Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) — for the personal data collected through golf-in-mexico.com.",
+        "GOLF° IN MEXICO° (“we”, “us”) is the data controller — the responsable in the sense of Mexico's Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) — for the personal data collected through golf-in-mexico.com.",
         `You can reach us about anything on this page at ${PRIVACY_EMAIL}. We answer privacy requests ourselves; there is no help desk in between.`,
       ],
     },
@@ -236,13 +236,13 @@ const ES = {
   updated: formatUpdated("es"),
   tocLabel: "En esta página",
   intro:
-    "Golf in Mexico° es una guía editorial y un servicio de planeación de viajes de golf a la medida. Recabamos datos personales únicamente en dos lugares: los formularios que tú decides llenar y las herramientas que miden el uso del sitio. Aquí te explicamos qué se recaba, quién lo recibe, cuánto tiempo lo conservamos y cómo pedirnos que lo eliminemos.",
+    "GOLF° IN MEXICO° es una guía editorial y un servicio de planeación de viajes de golf a la medida. Recabamos datos personales únicamente en dos lugares: los formularios que tú decides llenar y las herramientas que miden el uso del sitio. Aquí te explicamos qué se recaba, quién lo recibe, cuánto tiempo lo conservamos y cómo pedirnos que lo eliminemos.",
   sections: [
     {
       id: "controller",
       heading: "Quién es el responsable de tus datos",
       body: [
-        "Golf in Mexico° (“Golf in Mexico”, “nosotros”) es el responsable del tratamiento de los datos personales recabados a través de golf-in-mexico.com, en términos de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) y su Reglamento.",
+        "GOLF° IN MEXICO° (“nosotros”) es el responsable del tratamiento de los datos personales recabados a través de golf-in-mexico.com, en términos de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) y su Reglamento.",
         `Para cualquier tema de este aviso escríbenos a ${PRIVACY_EMAIL}. Las solicitudes de privacidad las atendemos nosotros mismos; no hay mesa de ayuda de por medio.`,
       ],
     },
