@@ -24,7 +24,7 @@ const EXPERIENCES = [
     slug: "bachelor-trip",
     type: "bachelor",
     name: "Bachelor Trip",
-    tagline: "The bucket-list group event.",
+    tagline: "The Top in Mexico group event.",
     description:
       "Tournament-format itineraries for a group of friends. Members-only courses, private homes, group transport, and off-course experiences.",
     image:
