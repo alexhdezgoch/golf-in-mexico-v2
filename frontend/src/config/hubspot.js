@@ -42,7 +42,7 @@ export const HUBSPOT_ENDPOINT_BASE =
 // same sentence with the link resolved to an absolute URL, because a stored
 // consent record is plain text and has to stand on its own years later.
 export const CONSENT_NOTICE = Object.freeze({
-  lead: "By submitting, you agree to hear from Golf in Mexico by email. Unsubscribe anytime. See our",
+  lead: "By submitting, you agree to hear from GOLF° IN MEXICO° by email. Unsubscribe anytime. See our",
   linkLabel: "Privacy Policy",
   linkPath: "/privacy",
   // Kept literal (not imported from hooks/useSeo) so this config stays
