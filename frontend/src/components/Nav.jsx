@@ -125,6 +125,9 @@ const Nav = () => {
             <Wordmark dark={overFilm} />
           </Link>
           <div className="justify-self-end flex items-center gap-5">
+            <button type="button" onClick={() => (setSearchQ(""), setSearchOpen(true))} aria-label="Search" data-testid="nav-search-mobile" className="r-hit md:hidden flex items-center justify-center w-10 h-10 -mr-2">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><circle cx="10.5" cy="10.5" r="6.5" /><path d="M15.5 15.5 21 21" /></svg>
+            </button>
             <button type="button" onClick={() => (setSearchQ(""), setSearchOpen(true))} data-testid="nav-search" className="r-hit hidden md:inline r-eyebrow">Search</button>
             <a
               href={START_PLANNING_URL}

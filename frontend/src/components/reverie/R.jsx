@@ -75,7 +75,7 @@ export const CardRail = ({ label, children }) => {
   }, []);
   return (
     <div>
-      <div ref={ref} data-lenis-prevent-horizontal role="list" aria-label={label} className="flex gap-[30px] overflow-x-auto snap-x snap-mandatory scrollbar-hide px-5 md:px-[80px] scroll-px-5 md:scroll-px-[80px]">
+      <div ref={ref} data-lenis-prevent-horizontal role="list" aria-label={label} className="flex gap-[30px] overflow-x-auto overflow-y-hidden overscroll-x-contain snap-x snap-mandatory scrollbar-hide px-5 md:px-[80px] scroll-px-5 md:scroll-px-[80px]">
         {children}
       </div>
       <div aria-hidden="true" className="mx-auto mt-14 w-[180px] h-[2px] bg-[rgba(30,57,43,0.15)]">

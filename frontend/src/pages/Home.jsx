@@ -39,7 +39,7 @@ const CardRail = ({ label, children }) => {
   }, []);
   return (
     <div>
-      <div ref={ref} data-lenis-prevent-horizontal role="list" aria-label={label} className="flex gap-[30px] overflow-x-auto snap-x snap-mandatory scrollbar-hide px-5 md:px-[80px] scroll-px-5 md:scroll-px-[80px]">
+      <div ref={ref} data-lenis-prevent-horizontal role="list" aria-label={label} className="flex gap-[30px] overflow-x-auto overflow-y-hidden overscroll-x-contain snap-x snap-mandatory scrollbar-hide px-5 md:px-[80px] scroll-px-5 md:scroll-px-[80px]">
         {children}
       </div>
       <div aria-hidden="true" className="mx-auto mt-14 w-[180px] h-[2px] bg-[rgba(30,57,43,0.15)]">
@@ -131,9 +131,10 @@ const Home = () => {
     <main data-testid="page-home" className="relative bg-[var(--r-cream)] text-[var(--r-ink)]">
       {/* 1 · The film, alone */}
       <section data-testid="hero-section" className="relative h-[100svh] min-h-[560px] overflow-hidden bg-[var(--r-green)]">
-        <video ref={film} data-testid="hero-video" className="absolute inset-0 w-full h-full object-cover" poster="/images/e60z74y2-golf-in-mexico-5.webp" autoPlay muted loop playsInline preload="auto">
-          <source src="/video/hero.webm" type="video/webm" />
-          <source src="/video/hero.mp4" type="video/mp4" />
+        <video ref={film} data-testid="hero-video" className="absolute inset-0 w-full h-full object-cover" poster="/images/cover-poster.webp" autoPlay muted loop playsInline preload="auto">
+          {/* COVER SILENT LAUNCH (user, 2026-11-12): 1080p on desktop, 720p on phones; the 4K master would be ~35 MB. */}
+          <source src="/video/cover-1080.mp4" type="video/mp4" media="(min-width: 768px)" />
+          <source src="/video/cover-720.mp4" type="video/mp4" />
         </video>
       </section>
 

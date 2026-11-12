@@ -2,11 +2,11 @@
    pages ship (the five smaller destinations still live inside Unique Destinations). */
 
 export const DESTINATIONS = [
+  { label: "Mexico City", region: "Valle de México", to: "/destinations/mexico-city", image: "/images/g6r7fp45-golfinmexico-062.webp" },
   { label: "Los Cabos", region: "Baja California Sur", to: "/destinations/los-cabos", image: "/images/rg2d4m8m-gim-stills-41.webp" },
   { label: "Cancún · Riviera Maya", region: "Quintana Roo", to: "/destinations/cancun-riviera-maya", image: "/images/xg8drvr6-img-3947.webp" },
   { label: "Punta Mita", region: "Riviera Nayarit", to: "/destinations/punta-mita", image: "/images/0wmultbm-dji-0048.webp" },
   { label: "Puerto Vallarta", region: "Bahía de Banderas", to: "/destinations/puerto-vallarta", image: "/images/gyf4bofm-d104455e-21a3-4a8e-8a51-72fdb3b5b227-1-105-c.webp" },
-  { label: "Mexico City", region: "Valle de México", to: "/destinations/mexico-city", image: "/images/g6r7fp45-golfinmexico-062.webp" },
   { label: "Unique Destinations", region: "San Miguel · Mérida · Costalegre · Ensenada · Loreto", to: "/destinations/unique-destinations", image: "/images/dhz92vfa-golfinmexico-001-2.webp" },
 ];
 
