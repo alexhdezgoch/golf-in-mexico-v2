@@ -22,10 +22,10 @@ const CALENDAR_SRC = `${CONCIERGE_CALL_URL}?${new URLSearchParams({
 const QUOTE = "No two trips are alike, so we don’t send copy-paste quotes. In a short call we get to know you and the trip you have in mind, and you see how we work: our judgment, our process and every number, with nothing hidden. That is where the relationship starts.";
 
 const Calendar = () => {
-  // A booked time is the conversion: the same event the site's call buttons send, with this page as its source.
+  // A booked time is the conversion: call_scheduled, with this page as its source (the call buttons send book_call_click on click).
   useEffect(() => {
     const booked = (e) => {
-      if (typeof e.origin === "string" && e.origin.endsWith("calendly.com") && e.data?.event === "calendly.event_scheduled") trackEvent("book_call_click", { source: "start_planning_booked" });
+      if (typeof e.origin === "string" && e.origin.endsWith("calendly.com") && e.data?.event === "calendly.event_scheduled") trackEvent("call_scheduled", { source: "start_planning_booked" });
     };
     window.addEventListener("message", booked);
     return () => window.removeEventListener("message", booked);

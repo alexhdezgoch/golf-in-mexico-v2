@@ -5,14 +5,14 @@ import { trackEvent } from "@/lib/analytics";
 import { TitleBlock } from "@/components/reverie/R";
 
 /* The call is booked on the page: Calendly inline, in the page's colours. A booked time is the conversion, so it is
-   sent as book_call_click (source contact_booked), the same event the site's call buttons send. */
+   sent as call_scheduled (source contact_booked), apart from book_call_click, which the call buttons send on click. */
 const CALENDAR_SRC = `${CONCIERGE_CALL_URL}?${new URLSearchParams({ embed_domain: "golf-in-mexico.com", embed_type: "Inline", hide_gdpr_banner: "1", background_color: "fbf9f3", text_color: "3d392c", primary_color: "1e392b" })}`;
 
 const Calendar = () => {
   // The same markup on the server (prerender) and on the first client render, so the page hydrates cleanly.
   useEffect(() => {
     const booked = (e) => {
-      if (typeof e.origin === "string" && e.origin.endsWith("calendly.com") && e.data?.event === "calendly.event_scheduled") trackEvent("book_call_click", { source: "contact_booked" });
+      if (typeof e.origin === "string" && e.origin.endsWith("calendly.com") && e.data?.event === "calendly.event_scheduled") trackEvent("call_scheduled", { source: "contact_booked" });
     };
     window.addEventListener("message", booked);
     return () => window.removeEventListener("message", booked);
