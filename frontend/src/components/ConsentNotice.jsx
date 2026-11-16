@@ -1,4 +1,5 @@
-import { CONSENT_NOTICE } from "@/config/hubspot";
+import { CONSENT_NOTICE, CONSENT_NOTICE_ES } from "@/config/hubspot";
+import { isEsPath } from "@/i18n";
 
 /* ═══════════════════════════════════════════════════════════════════
    ConsentNotice — the line a visitor reads before handing over an email.
@@ -54,20 +55,22 @@ const TONES = {
 
 const ConsentNotice = ({ tone = "light", className = "", testid = "consent-notice" }) => {
   const t = TONES[tone] || TONES.light;
+  // Read from the address, not the router, so the notice still works outside a Router (see above).
+  const c = typeof window !== "undefined" && isEsPath(window.location.pathname) ? CONSENT_NOTICE_ES : CONSENT_NOTICE;
 
   return (
     <p
       data-testid={testid}
       className={`font-body font-light text-[11px] md:text-[12px] leading-[1.55] ${t.text} ${className}`}
     >
-      {CONSENT_NOTICE.lead}{" "}
+      {c.lead}{" "}
       <a
-        href={CONSENT_NOTICE.linkPath}
+        href={c.linkPath}
         target="_blank"
         rel="noopener noreferrer"
         className={`underline underline-offset-2 decoration-1 rounded-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${t.link}`}
       >
-        {CONSENT_NOTICE.linkLabel}
+        {c.linkLabel}
       </a>
       .
     </p>

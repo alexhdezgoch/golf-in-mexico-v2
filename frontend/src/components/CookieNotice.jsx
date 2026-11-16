@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { analyticsConfigured, initAnalytics, stopAnalytics, trackPageView } from "@/lib/analytics";
 import { askFirst, optedOutByBrowser, saveChoice, storedChoice } from "@/lib/consent";
+import { isEsPath } from "@/i18n";
 
 /* The cookie notice, the same as on the trip builder pages (same words, same choice, same key). Outside Europe the tools
    load with the page and the notice offers a way out; in Europe nothing loads until the visitor accepts. The footer's
    "Cookie settings" opens it again. It never shows during the build-time prerender. */
 const CookieNotice = () => {
   const [ask, setAsk] = useState(null); // null | "notice" | "ask"
+  // Outside the Router (App.js), so the language comes from the address; the notice opens on a page load or from the footer.
+  const es = typeof window !== "undefined" && isEsPath(window.location.pathname);
 
   useEffect(() => {
     // Nothing to ask where nothing measures (previews), nor during the prerender.
@@ -39,10 +42,10 @@ const CookieNotice = () => {
       className="fixed inset-x-3 bottom-3 z-[150] max-w-[22rem] bg-[var(--r-cream)] p-4 text-[var(--r-ink)] shadow-[0_10px_40px_-15px_rgba(0,0,0,0.35)] md:left-auto md:right-5 md:bottom-5"
     >
       <p className="font-body font-light text-[13px] leading-[1.5]">
-        We use cookies to see how the site is used and to measure our advertising.{" "}
-        {ask === "ask" ? "They stay off unless you accept." : "You can turn them off."}{" "}
-        <a className="underline underline-offset-2" href="/privacy" target="_blank" rel="noopener noreferrer">
-          Privacy notice
+        {es ? "Usamos cookies para ver cómo se usa el sitio y medir nuestra publicidad." : "We use cookies to see how the site is used and to measure our advertising."}{" "}
+        {ask === "ask" ? (es ? "Quedan apagadas a menos que las aceptes." : "They stay off unless you accept.") : es ? "Puedes apagarlas." : "You can turn them off."}{" "}
+        <a className="underline underline-offset-2" href={es ? "/aviso-de-privacidad" : "/privacy"} target="_blank" rel="noopener noreferrer">
+          {es ? "Aviso de privacidad" : "Privacy notice"}
         </a>
       </p>
       <div className="mt-3 flex flex-wrap gap-2">
@@ -52,7 +55,7 @@ const CookieNotice = () => {
           data-testid="cookie-accept"
           className="inline-flex min-h-[2.5rem] items-center bg-[var(--r-green)] px-4 text-[12px] font-medium text-[var(--r-cream)]"
         >
-          {ask === "ask" ? "Accept" : "OK"}
+          {ask === "ask" ? (es ? "Aceptar" : "Accept") : "OK"}
         </button>
         <button
           type="button"
@@ -60,7 +63,7 @@ const CookieNotice = () => {
           data-testid="cookie-decline"
           className="inline-flex min-h-[2.5rem] items-center px-4 text-[12px] font-medium underline underline-offset-4"
         >
-          {ask === "ask" ? "Decline" : "Turn off"}
+          {ask === "ask" ? (es ? "Rechazar" : "Decline") : es ? "Apagar" : "Turn off"}
         </button>
       </div>
     </div>
