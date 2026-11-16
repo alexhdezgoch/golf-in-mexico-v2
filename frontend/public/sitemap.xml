@@ -6,6 +6,11 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://golf-in-mexico.com/es</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://golf-in-mexico.com/destinations</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -439,5 +444,90 @@
     <loc>https://golf-in-mexico.com/destinations/puerto-vallarta/courses/vista-vallarta-weiskopf-course</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://golf-in-mexico.com/es/destinations</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://golf-in-mexico.com/es/trips</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://golf-in-mexico.com/es/trips/mexico-city-four-seasons-golf</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://golf-in-mexico.com/es/trips/los-cabos-nobu</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://golf-in-mexico.com/es/trips/punta-mita-by-golfinmexico</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://golf-in-mexico.com/es/trips/playa-del-carmen-alila-mayakoba-golf</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://golf-in-mexico.com/es/trips/cancun-moon-palace-all-inclusive-golf</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://golf-in-mexico.com/es/trips/san-miguel-luxury-hotel-golf</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://golf-in-mexico.com/es/trips/los-cabos-cocobay</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://golf-in-mexico.com/es/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://golf-in-mexico.com/es/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://golf-in-mexico.com/es/destinations/los-cabos</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://golf-in-mexico.com/es/destinations/punta-mita</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://golf-in-mexico.com/es/destinations/mexico-city</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://golf-in-mexico.com/es/destinations/cancun-riviera-maya</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://golf-in-mexico.com/es/destinations/puerto-vallarta</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://golf-in-mexico.com/es/destinations/unique-destinations</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
