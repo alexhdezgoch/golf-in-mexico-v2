@@ -15,3 +15,12 @@ export const TOURNAMENTS = {
 
 /** Removes every sentence that cites a Golf Digest ranking. */
 export const noGD = (t = "") => t.split(/(?<!\bNo\.)(?<=[.!?])\s+/).filter((s) => !/Golf Digest/i.test(s)).join(" ").trim();
+
+/** The same list in Spanish (user, 2026-11-16); event names stay as they are. */
+export const TOURNAMENTS_ES = {
+  ...TOURNAMENTS,
+  "club-de-golf-chapultepec": "Abierto Mexicano (18 veces) · WGC-Mexico Championship 2017–2020 · LIV Golf Mexico City 2025–2026",
+  "club-de-golf-mexico": "World Cup of Golf 1967, ganada por Jack Nicklaus y Arnold Palmer",
+  "pga-riviera-maya-championship-course": "Korn Ferry Tour 2025, su primer evento en México",
+  "vidanta-vallarta-course": "PGA TOUR · Mexico Open at VidantaWorld, desde 2022",
+};
