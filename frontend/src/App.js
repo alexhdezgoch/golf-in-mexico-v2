@@ -6,6 +6,7 @@ import Lenis from "lenis";
 
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import { isEsPath } from "@/i18n";
 import Cursor from "@/components/Cursor";
 import Intro from "@/components/Intro";
 import CookieNotice from "@/components/CookieNotice";
@@ -277,6 +278,65 @@ const AnimatedRoutes = () => {
             </motion.div>
           }
         />
+        {/* Spanish versions (user, 2026-11-16): the same pages under /es, the copy in Spanish (src/i18n.js lists them). */}
+        <Route
+          path="/es"
+          element={
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
+              <Home />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/es/start-planning"
+          element={
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
+              <RStartPlanning />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/es/about"
+          element={
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
+              <RAbout />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/es/contact"
+          element={
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
+              <RContact />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/es/destinations"
+          element={
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
+              <RDestinations />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/es/destinations/los-cabos"
+          element={
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
+              <RGuideLosCabos />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/es/destinations/:slug"
+          element={
+            <motion.div variants={pageVariants} initial={routeInitial} animate="animate" exit="exit">
+              <HubBySlug />
+            </motion.div>
+          }
+        />
+        <Route path="/es/trips" element={<RTrips />} />
+        <Route path="/es/trips/:slug" element={<RTrip />} />
         {/* Privacy policy — same component, one route per language */}
         <Route
           path="/privacy"
@@ -302,13 +362,17 @@ const AnimatedRoutes = () => {
 // Hide global Nav + Footer on trip-builder (lead capture page)
 const ChromeLayout = ({ children }) => {
   const location = useLocation();
+  const lang = isEsPath(location.pathname) ? "es" : "en";
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
   const minimal = location.pathname.startsWith("/trip-builder");
   if (minimal) return <>{children}</>;
   return (
     <>
       {/* Hidden until focused: lets keyboard and screen-reader users jump past the menu (UI audit 2026-11-04). */}
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-[var(--r-cream)] focus:text-[var(--r-green)] focus:px-4 focus:py-3">
-        Skip to content
+        {lang === "es" ? "Ir al contenido" : "Skip to content"}
       </a>
       <Nav />
       <ReadingProgress />
