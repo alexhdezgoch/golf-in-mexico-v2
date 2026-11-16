@@ -1,5 +1,6 @@
 import { SITE_URL } from "@/hooks/useSeo";
-import { GUIDE_VOICES } from "@/data/guideVoices";
+import { GUIDE_VOICES, GUIDE_VOICES_ES } from "@/data/guideVoices";
+import { useLang } from "@/i18n";
 
 /* Each line as a Quotation spoken by its author, part of the guide page, so answer engines can attribute it. */
 export const voicesSchema = (slug) =>
@@ -14,7 +15,7 @@ export const voicesSchema = (slug) =>
 
 /* The two lines under the guide's answer: quiet, side by side on wide screens, no boxes (keep the redesign minimal). */
 export const GuideVoices = ({ slug }) => {
-  const voices = GUIDE_VOICES[slug] || [];
+  const voices = (useLang() === "es" ? GUIDE_VOICES_ES : GUIDE_VOICES)[slug] || [];
   if (!voices.length) return null;
   return (
     <section data-testid="guide-voices" className="px-5 md:px-10 pb-[90px]">

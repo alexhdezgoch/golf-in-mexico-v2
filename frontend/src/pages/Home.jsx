@@ -1,13 +1,26 @@
 import { useEffect, useRef, useState } from "react";
 import { useSeo, orgSchema, webSiteSchema } from "@/hooks/useSeo";
 import { DESTINATIONS, CONCIERGE_CALL_URL, START_PLANNING_URL } from "@/data/siteNav";
+import { useLang, localize, altLinks, placeLabel, cdmx } from "@/i18n";
+
+/* The home in Spanish (user, 2026-11-16): the same blocks, the production copy in Spanish. Names of trips, hotels and
+   places stay as they are. */
+const ES_TRIPS = {
+  "mexico-city-four-seasons-golf": { where: "Ciudad de México", stay: "Experiencia de golf en la Ciudad de México", line: "Ciudad, comida y golf en clubes privados en un solo viaje." },
+  "los-cabos-nobu": { line: "Cómo jugar el campo #1 y un campo del PGA Tour." },
+  "punta-mita-by-golfinmexico": { line: "Villas privadas con servicio completo de resort, de principio a fin." },
+  "playa-del-carmen-alila-mayakoba-golf": { line: "Golf de campeonato en la Riviera Maya." },
+  "cancun-moon-palace-all-inclusive-golf": { line: "Un paraíso todo incluido." },
+  "san-miguel-luxury-hotel-golf": { line: "Ciudad destino #1: golf, vino y arte." },
+  "los-cabos-cocobay": { line: "Villas para grupos grandes, con servicio." },
+};
 
 /* Home · rediseño 2026 · v7, in the reveriesafaris.com system, cut to six blocks: the film, the claim, the team, trips,
    destinations and the closing call. Every line is production copy, catalog data or the offer the user approved. */
 
-const Concierge = ({ id, className = "r-btn" }) => (
-  <a href={START_PLANNING_URL} data-track="landing_explore" data-track-id={`start-planning-${id}`} className={className}>
-    Book with Golf Concierge
+const Concierge = ({ id, className = "r-btn", lang = "en" }) => (
+  <a href={localize(START_PLANNING_URL, lang)} data-track="landing_explore" data-track-id={`start-planning-${id}`} className={className}>
+    {lang === "es" ? "Agenda con Golf Concierge" : "Book with Golf Concierge"}
   </a>
 );
 
@@ -111,11 +124,15 @@ const TRIPS = [
 ];
 
 const Home = () => {
+  const lang = useLang();
+  const es = lang === "es";
   useSeo({
-    title: "Curated Golf Trips & Top Experiences in Mexico | GOLF° IN MEXICO°",
-    description:
-      "Mexico's top courses and experiences, curated firsthand by a golf agent and a pro golfer from Mexico, with the best value for every group.",
-    canonical: "/",
+    title: es ? "Viajes de golf curados y las mejores experiencias en México | GOLF° IN MEXICO°" : "Curated Golf Trips & Top Experiences in Mexico | GOLF° IN MEXICO°",
+    description: es
+      ? "Los mejores campos y experiencias de México, curados en persona por un agente de golf y un golfista profesional mexicanos, con el mejor valor para cada grupo."
+      : "Mexico's top courses and experiences, curated firsthand by a golf agent and a pro golfer from Mexico, with the best value for every group.",
+    canonical: es ? "/es" : "/",
+    alternates: altLinks("/"),
     image: "/og/home.jpg",
     jsonLd: [orgSchema(), webSiteSchema()],
   });
@@ -143,23 +160,25 @@ const Home = () => {
         <div className="max-w-[700px] mx-auto flex flex-col items-center text-center gap-6">
           {/* What it is, then the use case in gold; the service, then who plans it; one clear action (user, 2026-11-04). */}
           <h1 data-testid="hero-wordmark" className="r-title text-[28px] md:text-[38px] leading-[1.15]">
-            Curating the best golf experiences<br />
-            <span className="text-[var(--g-gold)]">in Mexico.</span>
+            {es ? "Curamos las mejores experiencias de golf" : "Curating the best golf experiences"}<br />
+            <span className="text-[var(--g-gold)]">{es ? "en México." : "in Mexico."}</span>
           </h1>
           <p className="r-body text-[14px] max-w-[600px] opacity-90">
-            Golf trips personalized for any kind of trip, designed around Mexico&apos;s top courses and experiences. A golf agent and a pro golfer from Mexico, with the best value for every group.
+            {es
+              ? "Viajes de golf a la medida de cualquier tipo de viaje, diseñados alrededor de los mejores campos y experiencias de México. Un agente de golf y un golfista profesional mexicanos, con el mejor valor para cada grupo."
+              : "Golf trips personalized for any kind of trip, designed around Mexico's top courses and experiences. A golf agent and a pro golfer from Mexico, with the best value for every group."}
           </p>
-          <a href="/trip-builder" data-track="trip_builder_click" data-track-id="home-intro" className="r-btn r-btn-light mt-3">Plan my trip</a>
+          <a href="/trip-builder" data-track="trip_builder_click" data-track-id="home-intro" className="r-btn r-btn-light mt-3">{es ? "Planea mi viaje" : "Plan my trip"}</a>
         </div>
       </section>
 
       {/* 3 · Destinations (production /destinations title), right under the claim (user, 2026-11-04) */}
       <section data-testid="home-destinations" className="py-[100px] md:py-[120px]">
-        <SectionIntro title="Golf destinations in Mexico." link={<a href="/destinations" className="r-link text-[var(--r-green)]">Destinations</a>} />
+        <SectionIntro title={es ? "Destinos de golf en México." : "Golf destinations in Mexico."} link={<a href={localize("/destinations", lang)} className="r-link text-[var(--r-green)]">{es ? "Destinos" : "Destinations"}</a>} />
         <div className="mt-[60px]">
           <CardRail label="Destinations">
             {DESTINATIONS.map((d) => (
-              <Card key={d.to} href={d.to} image={d.image} title={d.label} text={d.region} cta={d.label.split(" ·")[0]} />
+              <Card key={d.to} href={localize(d.to, lang)} image={d.image} title={placeLabel(d.label, lang)} text={d.region} cta={placeLabel(d.label.split(" ·")[0], lang)} />
             ))}
           </CardRail>
         </div>
@@ -168,12 +187,14 @@ const Home = () => {
       {/* 3 · The team (production home copy): picture left, text right */}
       <Split id="home-team" image="/images/nsvdb584-golfinmexico-014.webp" alt="Pablo De La Mora and José Islas at Amanali" flip>
         <span className="r-eyebrow text-[var(--r-ink-soft)] flex flex-col gap-1.5">
-          <span>Pablo De La Mora · The Agent</span>
-          <span>José Islas · The Player</span>
+          <span>{es ? "Pablo De La Mora · El Agente" : "Pablo De La Mora · The Agent"}</span>
+          <span>{es ? "José Islas · El Jugador" : "José Islas · The Player"}</span>
         </span>
-        <h2 className="r-title text-[24px] md:text-[28px] text-[var(--r-green)]">An agent and a tour pro behind every itinerary.</h2>
-        <p className="r-body">What began inside professional tours and global fairways has grown into a bridge to Mexico&apos;s finest golf experiences. Today, we combine years of golf insights to bring you the top courses, hidden gems and the hospitality this country is known for.</p>
-        <a href="/about" className="r-link self-start text-[var(--r-green)] mt-2">About</a>
+        <h2 className="r-title text-[24px] md:text-[28px] text-[var(--r-green)]">{es ? "Un agente y un pro de tour detrás de cada itinerario." : "An agent and a tour pro behind every itinerary."}</h2>
+        <p className="r-body">{es
+          ? "Lo que empezó dentro de los tours profesionales y los grandes campos del mundo se convirtió en un puente hacia las mejores experiencias de golf de México. Hoy juntamos años de conocimiento del golf para llevarte a los mejores campos, a joyas escondidas y a la hospitalidad por la que México es conocido."
+          : "What began inside professional tours and global fairways has grown into a bridge to Mexico's finest golf experiences. Today, we combine years of golf insights to bring you the top courses, hidden gems and the hospitality this country is known for."}</p>
+        <a href={localize("/about", lang)} className="r-link self-start text-[var(--r-green)] mt-2">{es ? "Nosotros" : "About"}</a>
       </Split>
 
       {/* The photo the user picked before the production-photo pass (user, 2026-11-05) */}
@@ -181,20 +202,20 @@ const Home = () => {
 
       {/* 4 · Trips from the catalog */}
       <section data-testid="home-trips" className="py-[100px] md:py-[120px]">
-        <SectionIntro title="Explore trips" link={<a href="/trip-builder" className="r-link text-[var(--r-green)]">Plan my trip</a>} />
+        <SectionIntro title={es ? "Explora viajes" : "Explore trips"} link={<a href="/trip-builder" className="r-link text-[var(--r-green)]">{es ? "Planea mi viaje" : "Plan my trip"}</a>} />
         <div className="mt-[60px]">
           <CardRail label="Trips">
-            {TRIPS.map((t) => (
-              <Card key={t.slug} href={`/your-trip/${t.slug}?s=1`} image={t.image} credit={t.credit} eyebrow={t.where} title={t.stay} text={t.line} cta="View trip" />
-            ))}
+            {TRIPS.map((t0) => { const t = es ? { ...t0, credit: cdmx(t0.credit), ...ES_TRIPS[t0.slug] } : t0; return (
+              <Card key={t.slug} href={`/your-trip/${t.slug}?s=1`} image={t.image} credit={t.credit} eyebrow={t.where} title={t.stay} text={t.line} cta={es ? "Ver viaje" : "View trip"} />
+            ); })}
           </CardRail>
         </div>
       </section>
 
       {/* 6 · Closing call: the offer the user approved (option B) */}
-      <SoftenedCall id="home-close" image="/images/mmtjphx0-gim-stills-33.webp" title="Free planning until your golf trip is right.">
-        <p className="r-body text-[14px]">Perks you won&apos;t get booking direct. Planned by a golf agent and a pro golfer from Mexico.</p>
-        <Concierge id="home-close" className="r-btn r-btn-light mt-2" />
+      <SoftenedCall id="home-close" image="/images/mmtjphx0-gim-stills-33.webp" title={es ? "Planeación gratis hasta que tu viaje de golf quede perfecto." : "Free planning until your golf trip is right."}>
+        <p className="r-body text-[14px]">{es ? "Beneficios que no consigues reservando directo. Planeado por un agente de golf y un golfista profesional mexicanos." : "Perks you won't get booking direct. Planned by a golf agent and a pro golfer from Mexico."}</p>
+        <Concierge id="home-close" className="r-btn r-btn-light mt-2" lang={lang} />
       </SoftenedCall>
     </main>
   );

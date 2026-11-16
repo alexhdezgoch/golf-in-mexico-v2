@@ -1,0 +1,468 @@
+[
+  {
+    "slug": "mexico-city-four-seasons-golf",
+    "type": "Corporate",
+    "image": "/images/mexico-city/hero-misty-dawn.webp",
+    "title": "Golf en Ciudad de México: ciudad, comida y golf en clubes privados en un solo viaje",
+    "seoTitle": "Viaje de golf en Four Seasons Ciudad de México",
+    "destination": "Mexico City",
+    "hotels": [
+      "Four Seasons Hotel Mexico City"
+    ],
+    "courses": [
+      {
+        "name": "Coral",
+        "specs": "Robert Hugues, par 72, 6,758 yardas",
+        "description": "Un campo de 18 hoyos, par 72, perfectamente integrado al entorno natural del valle alto",
+        "access": "Público",
+        "href": "/destinations/mexico-city/courses/el-coral",
+        "photo": "/media/courses/el-coral/01.jpg",
+        "credit": null
+      },
+      {
+        "name": "Madeiras",
+        "specs": "Joe Finger, par 72, 6,769 yardas",
+        "description": "Campo arbolado tipo parkland en Cuautitlán Izcalli, al norte de Ciudad de México, restaurado y conocido por sus greens ondulados y suaves; el acceso debe confirmarse con anticipación.",
+        "access": "Semiprivado (visitantes con reservación)",
+        "href": "/destinations/mexico-city/courses/madeiras-country-club",
+        "photo": "/media/courses/madeiras-country-club/01.jpg",
+        "credit": null
+      },
+      {
+        "name": "Bosque Real",
+        "specs": "Robert von Hagge, Smelek & Baril, par 72, 7,552 yardas",
+        "description": "Club de la zona de Ciudad de México cuyo campo de 18 hoyos (Robert von Hagge, Smelek & Baril, 2002) ha recibido torneos de la LPGA; el acceso debe confirmarse.",
+        "access": "Privado: juegas con un socio. Estimado de $500 de green fee + $100 de cuota de socio por persona por ronda; requiere confirmación",
+        "href": "/destinations/mexico-city/courses/bosque-real-country-club",
+        "photo": "/media/courses/bosque-real-country-club/01.jpg",
+        "credit": null
+      }
+    ],
+    "overview": "Una estancia en Four Seasons Hotel Mexico City, sobre Paseo de la Reforma junto a Chapultepec, con una ronda en El Coral, un campo público, y rondas como visitante en Madeiras y Bosque Real organizadas con anticipación. El acceso de visitantes a los clubes privados no está garantizado y suele ser más fácil entre semana, por eso ponemos El Coral en fin de semana. Los green fees se cobran aparte y se confirman en tu itinerario.",
+    "whyWeChoseIt": "Elegimos Four Seasons porque es el hotel de Ciudad de México que los golfistas piden primero, su patio interior hace fácil la ciudad y nos permite sumar una estancia con golf de fin de semana a una región donde nuestros otros viajes son solo entre semana.",
+    "season": "Noviembre a abril",
+    "golfRounds": 3,
+    "included": [
+      "Hospedaje"
+    ],
+    "notIncluded": [
+      "Vuelos internacionales y nacionales",
+      "Impuestos y cargos por servicio del resort",
+      "Propinas",
+      "Renta de palos",
+      "Tarifas de caddie donde el campo lo exige (confirmadas en tu itinerario)",
+      "Seguro de viaje"
+    ],
+    "courseAccess": "El Coral está abierto al público. Madeiras y Bosque Real son clubes donde GOLF° IN MEXICO° organiza el acceso de visitantes con anticipación, y no está garantizado.",
+    "arrivalAirport": "Ciudad de México (MEX)",
+    "airportTransferTime": "30 a 55 min según el tráfico",
+    "typicalDriveToCourses": "Depende del tráfico: considera 40 a 75 min a cada campo (aproximado)",
+    "gimReview": "Nuestros viajes a Ciudad de México se armaron alrededor del acceso entre semana a clubes privados. Este suma el hotel más conocido de la ciudad y El Coral, un campo público que puedes jugar en sábado, con los clubes privados entre semana, cuando aceptan visitantes.",
+    "nonGolferFriendly": "Sí: el Bosque de Chapultepec y Polanco muy cerca, el patio, el spa y el restaurante Zanaya del hotel, y los museos y la oferta gastronómica de la ciudad.",
+    "photo": "/media/stays/four-seasons-mexico-city/01.jpg",
+    "photoCredit": "Four Seasons Hotel Mexico City"
+  },
+  {
+    "slug": "los-cabos-nobu",
+    "type": "Top in Mexico",
+    "image": "/images/los-cabos/hero-dunes-fairway.webp",
+    "title": "Nobu: cómo jugar el campo #1 y un campo del PGA Tour",
+    "seoTitle": "Viaje de golf en Nobu Los Cabos",
+    "destination": "Los Cabos",
+    "hotels": [
+      "Nobu Hotel Los Cabos"
+    ],
+    "courses": [
+      {
+        "name": "Diamante Dunes Course",
+        "specs": "Davis Love III, Mark Love y Paul Cowley, par 72, 7,160 yardas",
+        "description": "El primer links auténtico de México, trazado entre dunas de arena blanca junto al Pacífico. Club privado.",
+        "access": "Privado del resort (huéspedes y socios de Diamante)",
+        "href": "/destinations/los-cabos/courses/diamante-dunes-course",
+        "photo": "/media/courses/diamante-dunes-course/01.jpg",
+        "credit": null
+      },
+      {
+        "name": "Diamante El Cardonal",
+        "specs": "Tiger Woods, par 72, 7,363 yardas",
+        "description": "El primer diseño terminado de Tiger Woods, en las tierras altas del desierto con vista al Pacífico, y sede del World Wide Technology Championship del PGA TOUR.",
+        "access": "Privado del resort (huéspedes y socios de Diamante)",
+        "href": "/destinations/los-cabos/courses/diamante-el-cardonal",
+        "photo": "/media/courses/diamante-el-cardonal/01.jpg",
+        "credit": null
+      },
+      {
+        "name": "Solmar Golf Links",
+        "specs": "Greg Norman, par 72, 7,240 yardas",
+        "description": "Diseño estilo links de Greg Norman, con hoyos de cara al Pacífico y un par 3 en el 17 con green en isla.",
+        "access": "Resort (abierto al público)",
+        "href": "/destinations/los-cabos/courses/solmar-golf-links",
+        "photo": "/media/courses/solmar-golf-links/01.jpg",
+        "credit": null
+      },
+      {
+        "name": "Oleada Golf Links",
+        "specs": "Ernie Els con Greg Letsche, par 72, 7,336 yardas",
+        "description": "Ronda del lado del Pacífico en Los Cabos, sujeta a disponibilidad para jugadores externos.",
+        "access": "Comunidad residencial (juego público limitado en la apertura; se espera que pase a ser privado)",
+        "href": "/destinations/los-cabos/courses/oleada-golf-links",
+        "photo": "/media/course-refs/oleada-golf-links/01.jpg",
+        "credit": "Oleada Los Cabos"
+      }
+    ],
+    "overview": "Una estancia de diseño en Nobu Hotel Los Cabos combinada con golf del lado del Pacífico. Diamante Dunes es un diseño de Davis Love III, Mark Love y Paul Cowley (par 72, 7,160 yardas). El Cardonal es el primer diseño terminado de Tiger Woods y sede del World Wide Technology Championship del PGA TOUR (par 72, 7,363 yardas desde las salidas de atrás). Solmar (Greg Norman, estilo links, inaugurado en 2020, par 72, 7,240 yardas); su par 3 del 17 (unas 191 yardas) se juega a un green en isla. Oleada se suma cuando se confirma la disponibilidad para jugadores externos. Cada tee time en campo privado debe confirmarse antes de vender el viaje. El golf se reserva aparte del hotel.",
+    "whyWeChoseIt": "Elegimos Nobu Hotel Los Cabos para quienes quieren un hotel de lujo contemporáneo cerca del corredor de golf del Pacífico. Dunes y El Cardonal son la razón principal del viaje; Solmar y Oleada suman variedad del lado del Pacífico cuando se confirman el acceso, la operación y los tee times.",
+    "season": "Noviembre a abril",
+    "golfRounds": 2,
+    "included": [
+      "Hospedaje"
+    ],
+    "notIncluded": [
+      "Vuelos internacionales y nacionales",
+      "Impuestos y cargos por servicio del resort",
+      "Propinas",
+      "Renta de palos",
+      "Tarifas de caddie donde el campo lo exige (confirmadas en tu itinerario)",
+      "Seguro de viaje"
+    ],
+    "courseAccess": "Diamante Dunes y El Cardonal son clubes privados; GOLF° IN MEXICO° organiza y confirma los tee times. Solmar está abierto al público. GOLF° IN MEXICO° organiza y confirma los tee times en Oleada.",
+    "arrivalAirport": "Los Cabos (SJD)",
+    "airportTransferTime": "Unos 45 min",
+    "typicalDriveToCourses": "10 a 25 min a Solmar y Oleada (aproximado); los campos de Diamante se confirman en tu itinerario",
+    "gimReview": "Una estancia con estilo que además queda cerca del golf del Pacífico. Nobu Hotel Los Cabos es un hotel de lujo contemporáneo junto al corredor de golf, con los campos de Diamante, Solmar y Oleada a la mano. Lo recomendamos primero por el hotel y después por el golf.",
+    "nonGolferFriendly": "Sí: spa Esencia, alberca solo para adultos, el restaurante Nobu y excursiones. La playa no es ideal para nadar.",
+    "photo": "/media/stays/nobu-hotel-los-cabos/trip-card.jpg",
+    "photoCredit": "Nobu Hotel Los Cabos"
+  },
+  {
+    "slug": "punta-mita-by-golfinmexico",
+    "type": "Luxury",
+    "image": "/images/punta-mita/punta-mita-pacifico-tail-of-the-whale-sunset.webp",
+    "title": "Punta Mita Rentals: villas privadas con servicio completo de resort, de principio a fin",
+    "seoTitle": "Viaje de golf en residencia en Punta Mita para grupos",
+    "destination": "Punta Mita",
+    "hotels": [
+      "Villas privadas de Punta Mita Rentals"
+    ],
+    "courses": [
+      {
+        "name": "Punta Mita Pacífico",
+        "specs": "Jack Nicklaus, par 72, 7,014 yardas",
+        "description": "Diseño de Jack Nicklaus con 19 hoyos, incluido el par 3 opcional 'Tail of the Whale', que se juega al único green en isla natural del mundo.",
+        "access": "Privado (propietarios; huéspedes de Four Seasons y St. Regis)",
+        "href": "/destinations/punta-mita/courses/punta-mita-pacifico",
+        "photo": "/media/courses/punta-mita-pacifico/01.jpg",
+        "credit": null
+      },
+      {
+        "name": "Punta Mita Bahía",
+        "specs": "Jack Nicklaus, par 72, 7,035 yardas",
+        "description": "Diseño costero de Jack Nicklaus con cambios de elevación marcados y cinco hoyos junto al Pacífico.",
+        "access": "Privado (propietarios; huéspedes de Four Seasons y St. Regis)",
+        "href": "/destinations/punta-mita/courses/punta-mita-bahia",
+        "photo": "/media/courses/punta-mita-bahia/01.jpg",
+        "credit": null
+      }
+    ],
+    "overview": "Una experiencia en grupo en residencia privada, centrada en los dos campos Jack Nicklaus Signature de Punta Mita. Pacífico (1999, par 72, 7,014 yardas) tiene el par 3 opcional 3B, 'Tail of the Whale', en un green en isla natural. Bahía (2008, par 72, 7,035 yardas) es #12 y #7, con cinco hoyos junto al Pacífico. Elegimos una residencia que califica porque mantiene al grupo junto y da el acceso que ambos campos requieren. Mandarina (Greg Norman) e Higuera son opciones regionales que requieren confirmación aparte y traslados más largos.",
+    "whyWeChoseIt": "Elegimos una residencia de Punta Mita Rentals porque mantiene juntos a los grupos y da el esquema de acceso necesario para Pacífico y Bahía. Esos dos campos son el ancla del viaje; Mandarina e Higuera son opciones regionales que suman variedad, con traslados más largos.",
+    "season": "Noviembre a abril",
+    "golfRounds": 4,
+    "included": [
+      "Residencia privada en el resort",
+      "Comida y bebida según el plan de servicio confirmado",
+      "Green fees confirmados",
+      "Transporte diario al golf"
+    ],
+    "notIncluded": [
+      "Vuelos internacionales y nacionales",
+      "Impuestos y cargos por servicio del resort",
+      "Propinas",
+      "Renta de palos",
+      "Tarifas de caddie donde el campo lo exige (confirmadas en tu itinerario)",
+      "Seguro de viaje"
+    ],
+    "courseAccess": "Punta Mita Pacífico y Bahía están restringidos a huéspedes del resort y socios; GOLF° IN MEXICO° organiza el acceso a través de una residencia que califica. Mandarina e Higuera están abiertos al público.",
+    "arrivalAirport": "Puerto Vallarta (PVR)",
+    "airportTransferTime": "45 min según el tráfico",
+    "typicalDriveToCourses": "5 a 15 min a Pacífico y Bahía; 15 a 25 min a Higuera; 40 a 60 min a Mandarina (aproximado)",
+    "gimReview": "Punta Mita lleva más de 25 años perfeccionando el viaje de golf. Villas privadas, comidas en casa, transporte al aeropuerto y servicio completo.",
+    "nonGolferFriendly": "Sí: villa privada, comidas en casa y los beach clubs de Punta Mita.",
+    "photo": "/media/stays/punta-mita-rentals/01.jpg",
+    "photoCredit": "Punta Mita Rentals"
+  },
+  {
+    "slug": "playa-del-carmen-alila-mayakoba-golf",
+    "type": "Tour Venue",
+    "image": "/images/cancun/green-flag.webp",
+    "title": "Mayakoba: golf de campeonato en la Riviera Maya",
+    "seoTitle": "Viaje de golf en Alila Mayakoba",
+    "destination": "Riviera Maya",
+    "hotels": [
+      "Alila Mayakoba"
+    ],
+    "courses": [
+      {
+        "name": "El Camaleón Mayakoba",
+        "specs": "Greg Norman, par 72, 7,116 yardas",
+        "description": "Campo de Greg Norman entre selva, cenotes y canales bordeados de manglar; ex sede del PGA TOUR y hoy sede del torneo de LIV Golf en México.",
+        "access": "Resort (tee times para visitantes)",
+        "href": "/destinations/cancun-riviera-maya/courses/el-camaleon-mayakoba",
+        "photo": "/media/courses/el-camaleon-mayakoba/01.jpg",
+        "credit": null
+      },
+      {
+        "name": "Gran Coyote",
+        "specs": "Nick Price, par 71, 7,043 yardas",
+        "description": "Diseño de Nick Price entre selva conservada, con obstáculos de agua y bunkers cerca de los greens.",
+        "access": "Público / resort (Royal Resorts; reserva con anticipación)",
+        "href": "/destinations/cancun-riviera-maya/courses/gran-coyote-golf-club",
+        "photo": "/media/courses/gran-coyote-golf-club/01.jpg",
+        "credit": null
+      },
+      {
+        "name": "PGA Riviera Maya",
+        "specs": "Robert Trent Jones II, par 72, 7,272 yardas",
+        "description": "Diseño de Robert Trent Jones II sobre una antigua cantera de piedra caliza, con cenotes, selva y manglares en juego.",
+        "access": "Resort (propiedad asociada a la PGA)",
+        "href": "/destinations/cancun-riviera-maya/courses/pga-riviera-maya-championship-course",
+        "photo": "/media/courses/pga-riviera-maya-championship-course/01.jpg",
+        "credit": null
+      },
+      {
+        "name": "El Tinto",
+        "specs": "Nick Price, par 72, 7,439 yardas",
+        "description": "Trazado largo de Nick Price en selva conservada, con cinco lagos y 84 bunkers; antes TPC Cancún.",
+        "access": "Semiprivado / resort",
+        "href": "/destinations/cancun-riviera-maya/courses/el-tinto-cancun-country-club",
+        "photo": "/media/courses/el-tinto-cancun-country-club/01.jpg",
+        "credit": null
+      }
+    ],
+    "overview": "Una base refinada en la Riviera Maya en Alila Mayakoba, con El Camaleón como ronda ancla. El campo de Greg Norman (2006, par 72, 7,116 yardas) atraviesa selva, cenotes y canales bordeados de manglar, fue sede del Mayakoba Golf Classic del PGA TOUR de 2007 a 2022 y hoy recibe el torneo de LIV Golf en México. Elegimos Alila porque hospedarte dentro de Mayakoba es la combinación más natural con El Camaleón, con un perfil de lujo discreto y bienestar. Gran Coyote, PGA Riviera Maya (Robert Trent Jones II, par 72, 7,272 yardas) y El Tinto (Nick Price, par 72, 7,439 yardas) completan el itinerario. El golf se reserva aparte, salvo que la oferta diga lo contrario.",
+    "whyWeChoseIt": "Elegimos Alila porque hospedarte dentro de Mayakoba crea la combinación más natural con El Camaleón y ofrece un perfil de lujo discreto y bienestar. El Camaleón es la ronda estrella; Gran Coyote, PGA Riviera Maya y El Tinto amplían el viaje sin cambiar de hotel.",
+    "season": "Noviembre a abril",
+    "golfRounds": 4,
+    "included": [
+      "Hospedaje"
+    ],
+    "notIncluded": [
+      "Vuelos internacionales y nacionales",
+      "Impuestos y cargos por servicio del resort",
+      "Propinas",
+      "Renta de palos",
+      "Tarifas de caddie donde el campo lo exige (confirmadas en tu itinerario)",
+      "Seguro de viaje"
+    ],
+    "courseAccess": "El Camaleón está abierto a huéspedes del resort y al público, con fechas bloqueadas alrededor de los torneos importantes. Gran Coyote y El Tinto están abiertos al público. GOLF° IN MEXICO° confirma el acceso a PGA Riviera Maya.",
+    "arrivalAirport": "Cancún (CUN)",
+    "airportTransferTime": "35 a 45 min",
+    "typicalDriveToCourses": "5 a 15 min a El Camaleón y Gran Coyote; 35 a 60 min a PGA Riviera Maya y El Tinto (aproximado)",
+    "gimReview": "El Camaleón es la razón para hospedarte aquí: selva, cenotes y manglares en el campo, y un resort de lujo discreto en la misma propiedad para el resto del día. El campo fue sede del Mayakoba Golf Classic del PGA TOUR de 2007 a 2022 y hoy recibe el torneo de LIV Golf en México. Gran Coyote, PGA Riviera Maya y El Tinto se pueden sumar sin cambiar de hotel.",
+    "nonGolferFriendly": "Sí: spa con temazcal, beach club, seis restaurantes y bares, y excursiones.",
+    "photo": "/media/stays/alila-mayakoba/01.jpg",
+    "photoCredit": "Alila Mayakoba"
+  },
+  {
+    "slug": "cancun-moon-palace-all-inclusive-golf",
+    "type": "Family",
+    "image": "/images/cancun/putting-green.webp",
+    "title": "The Grand Moon Palace: un paraíso todo incluido",
+    "seoTitle": "Viaje de golf en Moon Palace Cancún",
+    "destination": "Cancún",
+    "hotels": [
+      "The Grand at Moon Palace"
+    ],
+    "courses": [
+      {
+        "name": "Moon Palace Golf Course",
+        "specs": "Jack Nicklaus, 27 hoyos, tres vueltas de nueve par 36",
+        "description": "Complejo de 27 hoyos de Jack Nicklaus con las vueltas de nueve Jungle, Dunes y Lakes.",
+        "access": "Resort (principalmente huéspedes de Palace Resorts)",
+        "href": "/destinations/cancun-riviera-maya/courses/moon-palace-golf-course",
+        "photo": "/media/courses/moon-palace-golf-course/01.jpg",
+        "credit": null
+      },
+      {
+        "name": "Riviera Cancún Golf & Resorts",
+        "specs": "Jack Nicklaus, par 72, 7,060 yardas",
+        "description": "Campo de Jack Nicklaus entre manglares, lagos y canales en la Zona Hotelera de Cancún.",
+        "access": "Público / resort",
+        "href": "/destinations/cancun-riviera-maya/courses/riviera-cancun-golf-resorts",
+        "photo": "/media/course-refs/riviera-cancun-golf-resorts/01.jpg",
+        "credit": "Le Blanc Spa Resorts"
+      },
+      {
+        "name": "El Tinto",
+        "specs": "Nick Price, par 72, 7,439 yardas",
+        "description": "Trazado largo de Nick Price en selva conservada, con cinco lagos y 84 bunkers; antes TPC Cancún.",
+        "access": "Semiprivado / resort",
+        "href": "/destinations/cancun-riviera-maya/courses/el-tinto-cancun-country-club",
+        "photo": "/media/courses/el-tinto-cancun-country-club/01.jpg",
+        "credit": null
+      }
+    ],
+    "overview": "Una estancia todo incluido completa en Cancún, con una ronda en los 27 hoyos de Moon Palace Golf Course incluida con tu hospedaje a través de GOLF° IN MEXICO°. Jack Nicklaus diseñó tres vueltas de nueve par 36 (Jungle, Dunes y Lakes). Dunes es la más difícil, con carries forzados largos, waste areas y un par 3 de 210 yardas en el 3. Elegimos The Grand at Moon Palace porque hospedaje, comida, entretenimiento y golf están en un solo resort. Riviera Cancún (Nicklaus, par 72), El Tinto (Nick Price, par 72, 7,439 yardas) y Playa Mujeres (Greg Norman, par 72, 7,218 yardas) completan el itinerario con más variedad.",
+    "whyWeChoseIt": "Elegimos The Grand at Moon Palace porque hospedaje, comida, entretenimiento y el complejo de golf de 27 hoyos se pueden organizar dentro de un mismo resort. El paquete incluye una ronda en Moon Palace con tu hospedaje a través de GOLF° IN MEXICO°; Riviera Cancún, El Tinto y Playa Mujeres suman variedad de campos al itinerario.",
+    "season": "Noviembre a abril",
+    "golfRounds": 4,
+    "included": [
+      "Hospedaje",
+      "Comidas y bebidas todo incluido en The Grand at Moon Palace",
+      "Una ronda en Moon Palace Golf Course con tu hospedaje a través de GOLF° IN MEXICO°"
+    ],
+    "notIncluded": [
+      "Vuelos internacionales y nacionales",
+      "Impuestos y cargos por servicio del resort",
+      "Propinas",
+      "Renta de palos",
+      "Tarifas de caddie donde el campo lo exige (confirmadas en tu itinerario)",
+      "Seguro de viaje"
+    ],
+    "courseAccess": "Moon Palace, Riviera Cancún, El Tinto y Playa Mujeres son campos de resort abiertos a huéspedes y al público. GOLF° IN MEXICO° organiza los tee times.",
+    "arrivalAirport": "Cancún (CUN)",
+    "airportTransferTime": "15 a 25 min",
+    "typicalDriveToCourses": "5 a 10 min a Moon Palace Golf Course; unos 25 a 65 min a los demás campos (aproximado)",
+    "gimReview": "Todo está en un solo resort: 27 hoyos de Jack Nicklaus a unos minutos de tu habitación, comida y entretenimiento todo incluido, y una ronda en Moon Palace incluida con tu hospedaje. Sumamos Riviera Cancún, El Tinto y Playa Mujeres si quieres más variedad. La semana de golf todo incluido más fácil de Cancún.",
+    "nonGolferFriendly": "Sí: O Spa, nueve albercas, un parque acuático y muchos restaurantes.",
+    "photo": "/media/stays/moon-palace-the-grand/01.jpg",
+    "photoCredit": "Moon Palace The Grand – Cancun"
+  },
+  {
+    "slug": "san-miguel-luxury-hotel-golf",
+    "type": "Couples",
+    "image": "/images/national/region-unique-hill-green.webp",
+    "title": "San Miguel: la ciudad destino #1, golf, vino y arte",
+    "seoTitle": "Viaje de golf en San Miguel de Allende",
+    "destination": "San Miguel de Allende",
+    "hotels": [
+      "Rosewood San Miguel de Allende"
+    ],
+    "courses": [
+      {
+        "name": "Club de Golf Malanquín",
+        "specs": "Steven Newgent, par 72, 7,289 yardas",
+        "description": "Campo arbolado tipo parkland en San Miguel de Allende, con fairways de kikuyo, pequeños lagos y arroyos.",
+        "access": "Público / semiprivado",
+        "href": "/destinations/san-miguel-de-allende/courses/club-de-golf-malanquin",
+        "photo": "/media/course-refs/club-de-golf-malanquin/01.jpg",
+        "credit": "Club de Golf Malanquín"
+      },
+      {
+        "name": "Ventanas de San Miguel",
+        "specs": "Nick Faldo con Schmidt-Curley, par 70, 7,141 yardas",
+        "description": "Diseño de Nick Faldo en lo alto de San Miguel de Allende, con cambios de elevación marcados y hoyos largos de campeonato.",
+        "access": "Resort (abierto a visitantes)",
+        "href": "/destinations/san-miguel-de-allende/courses/ventanas-de-san-miguel",
+        "photo": "/media/course-refs/ventanas-de-san-miguel/01.jpg",
+        "credit": "Ventanas de San Miguel"
+      }
+    ],
+    "overview": "Una escapada de lujo de ciudad y golf que combina la hospitalidad y la cultura de San Miguel de Allende con dos rondas de club. Ventanas de San Miguel (Nick Faldo, par 70, 7,141 yardas) está en altura y tiene un terreno muy movido, y Malanquín (par 72, 7,289 yardas) es un campo arbolado tipo parkland. Elegimos un hotel de lujo céntrico para que disfrutes la comida, la arquitectura y la vida nocturna de la ciudad entre rondas. Como ambos clubes requieren coordinar el acceso con anticipación, el viaje se diseña alrededor de tee times confirmados y no de disponibilidad sin reserva, y los green fees solo se incluyen cuando así lo indica la propuesta final.",
+    "whyWeChoseIt": "Elegimos un hotel de lujo céntrico para que disfrutes la comida, la arquitectura y la vida nocturna de San Miguel entre rondas. Malanquín y Ventanas ofrecen dos experiencias de golf locales distintas, pero ambos requieren coordinar el acceso con anticipación; por eso el viaje se diseña alrededor de tee times confirmados y no de disponibilidad sin reserva.",
+    "season": "Octubre a mayo",
+    "golfRounds": 2,
+    "included": [
+      "Hospedaje"
+    ],
+    "notIncluded": [
+      "Vuelos internacionales y nacionales",
+      "Impuestos y cargos por servicio del resort",
+      "Propinas",
+      "Renta de palos",
+      "Tarifas de caddie donde el campo lo exige (confirmadas en tu itinerario)",
+      "Seguro de viaje"
+    ],
+    "courseAccess": "Malanquín es técnicamente privado pero recibe visitantes, y el caddie es obligatorio. Ventanas de San Miguel está abierto al público, con prioridad para socios en los tee times, y el caddie es obligatorio.",
+    "arrivalAirport": "Querétaro (QRO) o León/Guanajuato (BJX)",
+    "airportTransferTime": "60 a 90 min",
+    "typicalDriveToCourses": "5 a 25 min",
+    "gimReview": "Dos buenos campos y uno de los mejores pueblos de México. Rosewood San Miguel de Allende te deja en el centro para la comida, la arquitectura y la vida nocturna entre rondas, con tee times confirmados en Malanquín y Ventanas organizados por GOLF° IN MEXICO°. Creemos que es la mejor opción para un viaje de golf que es, sobre todo, una escapada cultural.",
+    "nonGolferFriendly": "Sí: el centro histórico de San Miguel es un destino en sí mismo, con galerías, restaurantes y tiendas.",
+    "photo": "/media/stays/rosewood-san-miguel-de-allende/trip-card.jpg",
+    "photoCredit": "Rosewood San Miguel de Allende"
+  },
+  {
+    "slug": "los-cabos-cocobay",
+    "type": "Golf Group",
+    "image": "/images/los-cabos/hero-desert-aerial.webp",
+    "title": "Los Cabos Cocobay: villas para grupos grandes, con servicio",
+    "seoTitle": "Viaje de golf en Cocobay Los Cabos",
+    "destination": "Los Cabos",
+    "hotels": [
+      "Villas privadas Cocobay"
+    ],
+    "courses": [
+      {
+        "name": "Cabo del Sol Golf Course",
+        "specs": "Tom Weiskopf, par 72, 7,008 yardas",
+        "description": "Campo de desierto y cañones de Tom Weiskopf con vista al Mar de Cortés, renovado en 2023 con seis hoyos nuevos de Fry/Straka.",
+        "access": "Resort (tee times para visitantes)",
+        "href": "/destinations/los-cabos/courses/cabo-del-sol-golf-course",
+        "photo": "/media/course-refs/cabo-del-sol-golf-course/01.jpg",
+        "credit": "Cabo del Sol"
+      },
+      {
+        "name": "Solmar Golf Links",
+        "specs": "Greg Norman, par 72, 7,240 yardas",
+        "description": "Diseño estilo links de Greg Norman, con hoyos de cara al Pacífico y un par 3 en el 17 con green en isla.",
+        "access": "Resort (abierto al público)",
+        "href": "/destinations/los-cabos/courses/solmar-golf-links",
+        "photo": "/media/courses/solmar-golf-links/01.jpg",
+        "credit": null
+      },
+      {
+        "name": "Oleada Golf Links",
+        "specs": "Ernie Els con Greg Letsche, par 72, 7,336 yardas",
+        "description": "Ronda del lado del Pacífico en Los Cabos, sujeta a disponibilidad para jugadores externos.",
+        "access": "Comunidad residencial (juego público limitado en la apertura; se espera que pase a ser privado)",
+        "href": "/destinations/los-cabos/courses/oleada-golf-links",
+        "photo": "/media/course-refs/oleada-golf-links/01.jpg",
+        "credit": "Oleada Los Cabos"
+      },
+      {
+        "name": "Club Campestre San José",
+        "specs": "Nicklaus Design, par 71, 6,966 yardas",
+        "description": "Campo de Nicklaus Design en las faldas de la Sierra de la Laguna, con greens contorneados y vista al Mar de Cortés.",
+        "access": "Semiprivado / resort",
+        "href": "/destinations/los-cabos/courses/club-campestre-san-jose",
+        "photo": "/media/course-refs/club-campestre-san-jose/01.jpg",
+        "credit": "Questro Golf"
+      },
+      {
+        "name": "Puerto Los Cabos Golf Club",
+        "specs": "Greg Norman y Jack Nicklaus, 27 hoyos",
+        "description": "27 hoyos sobre el Mar de Cortés: la vuelta de nueve Mission de Greg Norman y las vueltas Ocean y Vista de Jack Nicklaus.",
+        "access": "Resort (tee times para visitantes)",
+        "href": "/destinations/los-cabos/courses/puerto-los-cabos-golf-club",
+        "photo": "/media/course-refs/puerto-los-cabos-golf-club/01.jpg",
+        "credit": "Puerto Los Cabos Golf Club"
+      }
+    ],
+    "overview": "Un viaje a Cabo en villa privada para grupos, gestionado como una sola experiencia: hospedaje, comidas, transporte diario al golf y un plan flexible de varios campos. Cabo del Sol (Tom Weiskopf, par 72, 7,008 yardas) y Cabo Real (Robert Trent Jones II, par 71, 6,848 yardas) son rondas ancla convenientes, con Solmar (Greg Norman) y Oleada disponibles para ampliar el itinerario. Elegimos Cocobay porque su inventario de villas mantiene a los grupos grandes bajo un mismo techo y nos deja coordinar comidas, limpieza, transporte y golf en conjunto. Los green fees no forman parte de la tarifa de la villa: te recomendamos los campos y reservamos cada ronda a su propia tarifa. La propuesta final detalla el servicio de comidas y el transporte.",
+    "whyWeChoseIt": "Elegimos Cocobay porque su inventario de villas permite tener grupos grandes bajo un mismo techo y coordinar comidas, limpieza, transporte y golf como una sola experiencia gestionada. Cabo del Sol y Cabo Real son rondas ancla convenientes, con Solmar y Oleada disponibles para ampliar el itinerario.",
+    "season": "Noviembre a abril",
+    "golfRounds": 4,
+    "included": [
+      "Hospedaje en villa privada",
+      "Comida y bebida según el plan de menú confirmado",
+      "Transporte diario al golf"
+    ],
+    "notIncluded": [
+      "Vuelos internacionales y nacionales",
+      "Impuestos y cargos por servicio del resort",
+      "Propinas",
+      "Renta de palos",
+      "Tarifas de caddie donde el campo lo exige (confirmadas en tu itinerario)",
+      "Seguro de viaje"
+    ],
+    "courseAccess": "Cabo del Sol Course y Solmar están abiertos al público. GOLF° IN MEXICO° organiza y confirma los tee times en Cabo Real. GOLF° IN MEXICO° organiza y confirma los tee times en Oleada.",
+    "arrivalAirport": "Los Cabos (SJD)",
+    "airportTransferTime": "45 a 60 min según la ubicación de la villa (aproximado)",
+    "typicalDriveToCourses": "Depende de la ubicación de la villa; se confirma en tu itinerario",
+    "gimReview": "Hecho para el viaje en grupo: una villa, un itinerario y transporte diario al golf. Cocobay coordina comidas, limpieza, transporte y golf como una sola experiencia gestionada. El precio por persona mejora rápido conforme crece el grupo.",
+    "nonGolferFriendly": "Estancia en villa; actividades fuera del golf organizadas bajo pedido.",
+    "photo": "/media/stays/cocobay-villa/08.jpg",
+    "photoCredit": "Cocobay"
+  }
+]

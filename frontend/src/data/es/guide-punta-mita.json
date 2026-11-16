@@ -1,0 +1,483 @@
+{
+  "slug": "punta-mita",
+  "name": "Punta Mita",
+  "title": "Golf en Punta Mita y Nayarit",
+  "seoTitle": "Golf en Punta Mita: Pacífico, Bahía y la Cola de la Ballena",
+  "seoDescription": "Dos campos de Jack Nicklaus en una península privada y la Cola de la Ballena, el único green en isla natural del golf. Cuatro de los cinco campos te piden estar hospedado.",
+  "answer": "La Riviera Nayarit tiene cinco campos de golf de campeonato en un corredor de 75 kilómetros al norte del Aeropuerto Internacional de Puerto Vallarta (PVR), con la península privada de Punta Mita como eje y extendiéndose hasta Mandarina y Siari. Diseños de Jack Nicklaus, Greg Norman y Tom Fazio.",
+  "byline": "Editorial GOLF° IN MEXICO° · Investigación de campo de Pablo De La Mora y José Islas",
+  "facts": [
+    [
+      "Campos en el corredor",
+      "5"
+    ],
+    [
+      "Green fees",
+      "$280–$750"
+    ],
+    [
+      "Mejores meses",
+      "Nov – May"
+    ]
+  ],
+  "courses": [
+    {
+      "name": "Punta Mita Pacífico",
+      "slug": "punta-mita-pacifico",
+      "page": {
+        "slug": "punta-mita-pacifico",
+        "name": "Punta Mita Pacífico",
+        "region": "punta-mita",
+        "place": "Punta Mita / Nayarit",
+        "href": "/destinations/punta-mita/courses/punta-mita-pacifico",
+        "architect": "Jack Nicklaus",
+        "architects": [
+          "Jack Nicklaus"
+        ],
+        "label": "Bucket List",
+        "greenFee": 388,
+        "guestsOnly": true,
+        "photo": {
+          "src": "/media/courses/punta-mita-pacifico/01.jpg",
+          "credit": ""
+        }
+      },
+      "design": "Jack Nicklaus",
+      "place": "Punta Mita",
+      "tournament": "—",
+      "fee": "$388",
+      "access": "Privado (propietarios; huéspedes de Four Seasons y St. Regis)",
+      "tier": "resort",
+      "note": "380 acres de península. Ocho hoyos frente al Pacífico. El campo tiene un green en isla opcional, la Cola de la Ballena (hoyo 3B), al que se llega por un paso natural de piedra con la marea baja. Es el único green en isla natural del golf. Pregunta en el pro shop la noche anterior por el horario de la marea. Si tu tee time cae dentro, juégalo. Si no, juega el 3A. La ronda vale igual. Caddie incluido desde el shuttle hasta el último putt. Acceso solo para huéspedes: Four Seasons, St. Regis, residencias privadas.",
+      "standout": "El 3B: no hay nada igual en el golf."
+    },
+    {
+      "name": "Punta Mita Bahía",
+      "slug": "punta-mita-bahia",
+      "page": {
+        "slug": "punta-mita-bahia",
+        "name": "Punta Mita Bahía",
+        "region": "punta-mita",
+        "place": "Punta Mita / Nayarit",
+        "href": "/destinations/punta-mita/courses/punta-mita-bahia",
+        "architect": "Jack Nicklaus",
+        "architects": [
+          "Jack Nicklaus"
+        ],
+        "label": "Bucket List",
+        "greenFee": 388,
+        "guestsOnly": true,
+        "photo": {
+          "src": "/media/courses/punta-mita-bahia/01.jpg",
+          "credit": ""
+        }
+      },
+      "design": "Jack Nicklaus",
+      "place": "Punta Mita",
+      "tournament": "—",
+      "fee": "$388",
+      "access": "Privado (propietarios; huéspedes de Four Seasons y St. Regis)",
+      "tier": "resort",
+      "note": "Misma península. Caddie incluido. Más noble desde el tee. Bahía recorre selva tropical antes de encontrarse con el mar en los hoyos de cierre. El último tiro de la ronda es un carry obligado sobre el agua: el único par 5 de México con carry sobre el mar. Decides antes de subir el palo. Acceso solo para huéspedes: Four Seasons, St. Regis, residencias privadas.",
+      "standout": "#18 — commit or lay up. The round ends with a choice."
+    },
+    {
+      "name": "Mandarina Golf Club",
+      "slug": "mandarina-golf-club",
+      "page": {
+        "slug": "mandarina-golf-club",
+        "name": "Mandarina Golf Club",
+        "region": "punta-mita",
+        "place": "Punta Mita / Nayarit",
+        "href": "/destinations/punta-mita/courses/mandarina-golf-club",
+        "architect": "Greg Norman",
+        "architects": [
+          "Greg Norman"
+        ],
+        "label": "Signature Views",
+        "greenFee": 280,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/courses/mandarina-golf-club/01.jpg",
+          "credit": ""
+        }
+      },
+      "design": "Greg Norman",
+      "place": "Punta Mita",
+      "tournament": "—",
+      "fee": "$280",
+      "access": "Semiprivado (residentes, huéspedes de One&Only y juego externo limitado)",
+      "tier": "public",
+      "note": "No son 18 hoyos completos. Nueve par 3, cada uno con nombre y concepto: The Redan, The Devil's Hole, The Queen, The Theater, The Bell. Más un hoyo reto, The Kraken: un green casi en isla con un pot bunker como única salida. Norman: \"El campo de Mandarina no tendrá parangón.\" La tarifa incluye dos rondas de 10 hoyos, carrito con GPS, práctica ilimitada y todos los alimentos y bebidas. No necesitas membresía. Si vienes de fuera de la comunidad de Mandarina, necesitas transporte a la propiedad.",
+      "standout": "The Theater: Norman lo describió como uno de los mejores par 3 de distancia media del mundo."
+    },
+    {
+      "name": "Higuera Golf Club",
+      "slug": "higuera-golf-club",
+      "page": {
+        "slug": "higuera-golf-club",
+        "name": "Higuera Golf Club",
+        "region": "punta-mita",
+        "place": "Punta Mita / Nayarit",
+        "href": "/destinations/punta-mita/courses/higuera-golf-club",
+        "architect": "Greg Norman",
+        "architects": [
+          "Greg Norman"
+        ],
+        "label": "Signature Views",
+        "greenFee": 350,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/course-refs/higuera-golf-club/01.jpg",
+          "credit": "Higuera Golf Club"
+        }
+      },
+      "design": "Greg Norman",
+      "place": "Punta Mita",
+      "tournament": "—",
+      "fee": "$350",
+      "access": "Público / resort",
+      "tier": "public",
+      "note": "El único campo de este corredor que puedes reservar sin estar hospedado. 18 hoyos entre selva virgen y playa del Pacífico. 7 hoyos estilo links junto a la costa, 8 entre la selva y 2 hoyos insignia directamente en la playa. El green del 8 está rodeado de agua por tres lados. Dos snack bars en el campo. Abierto de 7:30 a 15:00. La puerta de entrada honesta al golf de la zona de Punta Mita. Reserva directa en higueragolfclub.com.",
+      "standout": "#8 — peninsula green, water on three sides."
+    },
+    {
+      "name": "Nauka Golf Club",
+      "slug": "nauka-golf-club",
+      "page": {
+        "slug": "nauka-golf-club",
+        "name": "Nauka Golf Club",
+        "region": "punta-mita",
+        "place": "Punta Mita / Nayarit",
+        "href": "/destinations/punta-mita/courses/nauka-golf-club",
+        "architect": "Tom Fazio",
+        "architects": [
+          "Tom Fazio"
+        ],
+        "label": "Bucket List",
+        "greenFee": 750,
+        "guestsOnly": true,
+        "photo": {
+          "src": "/media/course-refs/nauka-golf-club/01.jpg",
+          "credit": "Nauka"
+        }
+      },
+      "design": "Tom Fazio",
+      "place": "Punta Mita",
+      "tournament": "—",
+      "fee": "$750",
+      "access": "Privado (acceso limitado para huéspedes de Siari Ritz-Carlton Reserve)",
+      "tier": "private",
+      "note": "920 acres. 400 membresías. Un campo de Tom Fazio. Rodeado de selva tropical con vista al Pacífico. Greens ondulados, desniveles exigentes, bunkers naturales. Un campo corto de 9 hoyos corre junto al trazado de campeonato para socios de todos los niveles. La comunidad: alberca infinita de 197 pies, mariscos frescos, fogatas, un salón de tequila, una marina y club de yates, un wellness village y un club de raqueta en la playa. Siari, a Ritz-Carlton Reserve: 91 suites, 34 residencias, cinco restaurantes. Sin acceso público. Sin pase de día.",
+      "standout": "Cuatro ecosistemas en 18 hoyos: selva, acantilado, manglar y playa. No hay dos hoyos seguidos con la misma vista."
+    }
+  ],
+  "groups": [
+    [
+      "Abiertos a visitantes",
+      [
+        {
+          "name": "Mandarina Golf Club",
+          "slug": "mandarina-golf-club",
+          "page": {
+            "slug": "mandarina-golf-club",
+            "name": "Mandarina Golf Club",
+            "region": "punta-mita",
+            "place": "Punta Mita / Nayarit",
+            "href": "/destinations/punta-mita/courses/mandarina-golf-club",
+            "architect": "Greg Norman",
+            "architects": [
+              "Greg Norman"
+            ],
+            "label": "Signature Views",
+            "greenFee": 280,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/courses/mandarina-golf-club/01.jpg",
+              "credit": ""
+            }
+          },
+          "design": "Greg Norman",
+          "place": "Punta Mita",
+          "tournament": "—",
+          "fee": "$280",
+          "access": "Semiprivado (residentes, huéspedes de One&Only y juego externo limitado)",
+          "tier": "public",
+          "note": "No son 18 hoyos completos. Nueve par 3, cada uno con nombre y concepto: The Redan, The Devil's Hole, The Queen, The Theater, The Bell. Más un hoyo reto, The Kraken: un green casi en isla con un pot bunker como única salida. Norman: \"El campo de Mandarina no tendrá parangón.\" La tarifa incluye dos rondas de 10 hoyos, carrito con GPS, práctica ilimitada y todos los alimentos y bebidas. No necesitas membresía. Si vienes de fuera de la comunidad de Mandarina, necesitas transporte a la propiedad.",
+          "standout": "The Theater: Norman lo describió como uno de los mejores par 3 de distancia media del mundo."
+        },
+        {
+          "name": "Higuera Golf Club",
+          "slug": "higuera-golf-club",
+          "page": {
+            "slug": "higuera-golf-club",
+            "name": "Higuera Golf Club",
+            "region": "punta-mita",
+            "place": "Punta Mita / Nayarit",
+            "href": "/destinations/punta-mita/courses/higuera-golf-club",
+            "architect": "Greg Norman",
+            "architects": [
+              "Greg Norman"
+            ],
+            "label": "Signature Views",
+            "greenFee": 350,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/course-refs/higuera-golf-club/01.jpg",
+              "credit": "Higuera Golf Club"
+            }
+          },
+          "design": "Greg Norman",
+          "place": "Punta Mita",
+          "tournament": "—",
+          "fee": "$350",
+          "access": "Público / resort",
+          "tier": "public",
+          "note": "El único campo de este corredor que puedes reservar sin estar hospedado. 18 hoyos entre selva virgen y playa del Pacífico. 7 hoyos estilo links junto a la costa, 8 entre la selva y 2 hoyos insignia directamente en la playa. El green del 8 está rodeado de agua por tres lados. Dos snack bars en el campo. Abierto de 7:30 a 15:00. La puerta de entrada honesta al golf de la zona de Punta Mita. Reserva directa en higueragolfclub.com.",
+          "standout": "#8 — peninsula green, water on three sides."
+        }
+      ]
+    ],
+    [
+      "Huéspedes de resort y hotel",
+      [
+        {
+          "name": "Punta Mita Pacífico",
+          "slug": "punta-mita-pacifico",
+          "page": {
+            "slug": "punta-mita-pacifico",
+            "name": "Punta Mita Pacífico",
+            "region": "punta-mita",
+            "place": "Punta Mita / Nayarit",
+            "href": "/destinations/punta-mita/courses/punta-mita-pacifico",
+            "architect": "Jack Nicklaus",
+            "architects": [
+              "Jack Nicklaus"
+            ],
+            "label": "Bucket List",
+            "greenFee": 388,
+            "guestsOnly": true,
+            "photo": {
+              "src": "/media/courses/punta-mita-pacifico/01.jpg",
+              "credit": ""
+            }
+          },
+          "design": "Jack Nicklaus",
+          "place": "Punta Mita",
+          "tournament": "—",
+          "fee": "$388",
+          "access": "Privado (propietarios; huéspedes de Four Seasons y St. Regis)",
+          "tier": "resort",
+          "note": "380 acres de península. Ocho hoyos frente al Pacífico. El campo tiene un green en isla opcional, la Cola de la Ballena (hoyo 3B), al que se llega por un paso natural de piedra con la marea baja. Es el único green en isla natural del golf. Pregunta en el pro shop la noche anterior por el horario de la marea. Si tu tee time cae dentro, juégalo. Si no, juega el 3A. La ronda vale igual. Caddie incluido desde el shuttle hasta el último putt. Acceso solo para huéspedes: Four Seasons, St. Regis, residencias privadas.",
+          "standout": "El 3B: no hay nada igual en el golf."
+        },
+        {
+          "name": "Punta Mita Bahía",
+          "slug": "punta-mita-bahia",
+          "page": {
+            "slug": "punta-mita-bahia",
+            "name": "Punta Mita Bahía",
+            "region": "punta-mita",
+            "place": "Punta Mita / Nayarit",
+            "href": "/destinations/punta-mita/courses/punta-mita-bahia",
+            "architect": "Jack Nicklaus",
+            "architects": [
+              "Jack Nicklaus"
+            ],
+            "label": "Bucket List",
+            "greenFee": 388,
+            "guestsOnly": true,
+            "photo": {
+              "src": "/media/courses/punta-mita-bahia/01.jpg",
+              "credit": ""
+            }
+          },
+          "design": "Jack Nicklaus",
+          "place": "Punta Mita",
+          "tournament": "—",
+          "fee": "$388",
+          "access": "Privado (propietarios; huéspedes de Four Seasons y St. Regis)",
+          "tier": "resort",
+          "note": "Misma península. Caddie incluido. Más noble desde el tee. Bahía recorre selva tropical antes de encontrarse con el mar en los hoyos de cierre. El último tiro de la ronda es un carry obligado sobre el agua: el único par 5 de México con carry sobre el mar. Decides antes de subir el palo. Acceso solo para huéspedes: Four Seasons, St. Regis, residencias privadas.",
+          "standout": "#18 — commit or lay up. The round ends with a choice."
+        }
+      ]
+    ],
+    [
+      "Solo socios",
+      [
+        {
+          "name": "Nauka Golf Club",
+          "slug": "nauka-golf-club",
+          "page": {
+            "slug": "nauka-golf-club",
+            "name": "Nauka Golf Club",
+            "region": "punta-mita",
+            "place": "Punta Mita / Nayarit",
+            "href": "/destinations/punta-mita/courses/nauka-golf-club",
+            "architect": "Tom Fazio",
+            "architects": [
+              "Tom Fazio"
+            ],
+            "label": "Bucket List",
+            "greenFee": 750,
+            "guestsOnly": true,
+            "photo": {
+              "src": "/media/course-refs/nauka-golf-club/01.jpg",
+              "credit": "Nauka"
+            }
+          },
+          "design": "Tom Fazio",
+          "place": "Punta Mita",
+          "tournament": "—",
+          "fee": "$750",
+          "access": "Privado (acceso limitado para huéspedes de Siari Ritz-Carlton Reserve)",
+          "tier": "private",
+          "note": "920 acres. 400 membresías. Un campo de Tom Fazio. Rodeado de selva tropical con vista al Pacífico. Greens ondulados, desniveles exigentes, bunkers naturales. Un campo corto de 9 hoyos corre junto al trazado de campeonato para socios de todos los niveles. La comunidad: alberca infinita de 197 pies, mariscos frescos, fogatas, un salón de tequila, una marina y club de yates, un wellness village y un club de raqueta en la playa. Siari, a Ritz-Carlton Reserve: 91 suites, 34 residencias, cinco restaurantes. Sin acceso público. Sin pase de día.",
+          "standout": "Cuatro ecosistemas en 18 hoyos: selva, acantilado, manglar y playa. No hay dos hoyos seguidos con la misma vista."
+        }
+      ]
+    ]
+  ],
+  "best": null,
+  "hosts": [],
+  "seasons": [
+    [
+      "Temporada alta",
+      "Dic – Mar · 70–85°F · Muy alta · $$$",
+      "La temporada de ballenas y la de golf son la misma. Las ballenas jorobadas entran a la Bahía de Banderas de noviembre a marzo y se ven desde los fairways de Pacífico, Higuera y Mandarina. Los tee times de Pacífico se llenan con 6–9 meses de anticipación. Reserva cuarto y rondas juntos. Nunca por separado."
+    ],
+    [
+      "Temporada intermedia",
+      "Abr – May · 75–88°F · Moderada · $$",
+      "Abril es el mes más subestimado del corredor de Punta Mita. Condiciones casi de temporada alta. Demanda 25–35% por debajo de spring break. Cuartos 20–30% más baratos que en temporada alta. La selva, completamente verde. El mejor ritmo de juego. En mayo empieza el calor, pero el valor se mantiene."
+    ],
+    [
+      "Lluvias / Huracanes",
+      "Jun – Oct · 80–94°F · Baja · $",
+      "Tormentas por la tarde. Las mañanas siguen siendo jugables, sobre todo en Higuera, protegido por la selva. Finales de octubre: la temporada abre cuando cierra la ventana de huracanes. Las mejores tarifas de temporada baja del año."
+    ]
+  ],
+  "faqs": [
+    [
+      "¿Qué campos de golf hay en Punta Mita?",
+      "Dos campos Jack Nicklaus Signature dentro del desarrollo privado (Pacífico y Bahía), un trazado público de Greg Norman a 20 minutos al sur (Higuera Golf Club), un nuevo campo corto público de Greg Norman a 30 minutos al norte (Mandarina Golf Club, abierto en 2025) y Nauka Golf Club (Tom Fazio, exclusivo para huéspedes de Siari Ritz-Carlton Reserve)."
+    ],
+    [
+      "¿Cualquiera puede jugar golf en Punta Mita?",
+      "En Pacífico y Bahía, no. Los dos están reservados para huéspedes de Four Seasons y St. Regis, quienes rentan villas en Punta Mita y propietarios. Higuera Golf Club y Mandarina Golf Club aceptan reservas del público sin necesidad de estar hospedado en un resort."
+    ],
+    [
+      "¿Cuánto cuesta jugar golf en Punta Mita?",
+      "Pacífico y Bahía cuestan $388 USD por ronda para huéspedes del resort. Higuera Golf Club, $350 USD. Mandarina, $280 USD, y Nauka, $750 USD."
+    ],
+    [
+      "¿Cuál es la mejor época del año para jugar golf en la Riviera Nayarit?",
+      "De noviembre a mayo. Las temperaturas se mantienen en 75–85°F, con cielos secos y despejados. La migración de ballenas jorobadas va de diciembre a abril y se ve desde varios hoyos de Pacífico y Bahía. Evita de agosto a octubre."
+    ],
+    [
+      "¿Qué tan lejos está Punta Mita del aeropuerto de Puerto Vallarta?",
+      "28 millas: unos 45 minutos con tráfico normal y hasta 90 minutos en horas pico. Necesitas un traslado privado reservado con anticipación. Uber no puede entrar al desarrollo cerrado de Punta Mita. En la caseta te piden una reservación confirmada en el resort."
+    ],
+    [
+      "¿Punta Mita es el mejor destino de golf de la Riviera Nayarit?",
+      "Sí, por cualquier medida objetiva. Punta Mita tiene dos de los cuatro campos Jack Nicklaus Signature de todo el corredor de la Riviera Nayarit, es el eje del único tramo donde operan juntas Four Seasons, St. Regis y (para 2027) Montage y Pendry, y es el destino de golf premium más cercano al Aeropuerto Internacional de Puerto Vallarta (PVR), a 45 minutos. Mandarina y Nauka extienden el corredor al norte para dar variedad, pero en Punta Mita se concentran el golf de campeonato, el acceso hotelero y la infraestructura. Si es tu primera vez y estás planeando un viaje de golf a la Riviera Nayarit, Punta Mita es la base correcta."
+    ],
+    [
+      "¿Punta Mita es lo mismo que Puerto Vallarta?",
+      "No. Puerto Vallarta es una ciudad. Punta Mita es una península privada de 1,500 acres, 45 minutos al norte, en la Bahía de Banderas. No puedes hospedarte en Puerto Vallarta y manejar a Pacífico o Bahía: el desarrollo cerrado exige una estancia confirmada en el Four Seasons o el St. Regis."
+    ],
+    [
+      "¿Puedo jugar golf en Punta Mita sin hospedarme en Four Seasons o St. Regis?",
+      "Sí. Pacífico y Bahía aceptan jugadores externos a través de la renta de villas en Punta Mita, normalmente coordinada por un golf concierge y no directamente por el resort. Lo que no funciona es llegar sin una estancia confirmada: la caseta de la península la pide."
+    ]
+  ],
+  "access": [
+    "Punta Mita es una península privada y la caseta no se abre por un tee time. Eso es cierto, y por eso la ronda es de verdad tranquila. Lo que no es cierto es que el Four Seasons sea la única forma de entrar.",
+    "Pacífico y Bahía también aceptan jugadores externos a través de la renta de villas en Punta Mita, coordinada por un golf concierge y no por la recepción del resort. Esa es la puerta que tenemos. Somos socios de la agencia oficial de rentas de la península: ellos se encargan de la villa, nosotros del golf.",
+    "Para uno o dos jugadores, el cuarto de hotel suele ser más sencillo. A partir de unos cuatro cuartos u ocho jugadores, la villa empieza a ganar en precio y la diferencia ya no es poca."
+  ],
+  "moved": [
+    {
+      "slug": "punta-mita-pacifico",
+      "q": "¿Qué es la Cola de la Ballena?",
+      "a": "El hoyo 3B de Pacífico: el único green en isla natural del mundo, al que se llega por un camino de piedra sumergido con la marea baja. Con 194 yardas sobre el Pacífico abierto y viento del mar, es uno de los par 3 más fotografiados y memorables del golf. Solo se juega con marea baja. Confirma la marea antes de tu ronda."
+    }
+  ],
+  "overview": {
+    "label": "El corredor",
+    "pre": "Golf en la Riviera Nayarit,",
+    "em": "con Punta Mita como eje.",
+    "paragraphs": [
+      "Punta Mita es un destino de lujo en la costa de la Riviera Nayarit que, además, tiene golf de campeonato. Four Seasons, St. Regis, One&Only, Rosewood y Ritz-Carlton Reserve construyeron aquí por la costa, no por los campos, y ese orden define todo, desde el programa de caddies hasta la calidad de los greens.",
+      "Punta Mita es el eje del corredor. La península privada de 1,500 acres, 45 minutos al norte del Aeropuerto Internacional de Puerto Vallarta (PVR), tiene dos campos Jack Nicklaus Signature, Pacífico y Bahía, ambos reservados para huéspedes de Four Seasons y St. Regis, quienes rentan villas y propietarios. Pacífico tiene un green en isla opcional, la Cola de la Ballena (hoyo 3B), al que se llega por un paso natural de piedra con la marea baja. Es el único green en isla natural del golf y el hoyo más fotografiado de México.",
+      "Punta Mita lleva casi tres décadas perfeccionando la estancia: villas privadas, chef en casa, transporte al aeropuerto, servicio completo, todo dentro de la propiedad. Alrededor de eso está construida realmente la península. Nosotros armamos el viaje para el golfista que nota esos detalles, para que la estancia y el juego lleguen como una sola experiencia y no como dos reservas.",
+      "La reputación tiene pruebas. Las alianzas de Punta Mita incluyen golf.com, American Express y el Punta Mita Invitational, y su lista de embajadores parece un leaderboard: Lorena Ochoa, Carlos Ortiz, Abraham Ancer, Checo Pérez. Ya hemos trabajado con ellos: hace unos años Pablo conectó a Punta Mita con jugadores como Abraham Ancer e Isabella Fierro, hoy en el PGA Tour y la LPGA.",
+      "El servicio lo vimos en persona. Llegamos en una Mercedes Sprinter y ya nos esperaban tres carritos grandes estacionados, y Carl, Stephanie y Vero nos acompañaron durante toda la sesión de fotos. Después vinieron la comida y la cena en un restaurante italiano dentro de la propiedad, con las bebidas por cuenta de la casa. Ese es el estándar en el que viven los campos, y por eso la ronda aquí se siente distinta a un tee time de resort.",
+      "Pasando la caseta de Punta Mita, la Riviera Nayarit se abre. Higuera Golf Club (10 minutos al sur, Greg Norman, 2010) es el único campo del corredor que acepta reservas del público sin estar hospedado en un resort. Mandarina Golf Club, un nuevo campo corto de Greg Norman con nueve par 3 más un hoyo reto, abrió en 2025 en One&Only Mandarina y Rosewood Mandarina (30 minutos al norte de la caseta). Nauka Golf Club (Tom Fazio, comunidad privada de 920 acres a 75 minutos al norte, junto a Siari, a Ritz-Carlton Reserve) abrió el mismo año. Para 2027, Montage y Pendry sumarán dos diseños más de Nicklaus dentro de la península de Punta Mita. Una concentración de inversión de marcas así no existe en ningún otro lugar del golf mexicano."
+    ]
+  },
+  "costs": {
+    "label": "Los números",
+    "pre": "En Punta Mita,",
+    "em": "el costo principal es el hotel, no el golf.",
+    "intro": "En este corredor, el costo principal es el hotel, no el golf. Una noche en Siari Ritz-Carlton Reserve o en One&Only Mandarina cuesta más que tres rondas de green fees juntas. Elige primero el hotel. Después suma los campos.",
+    "callouts": [
+      [
+        "El argumento de la hospitalidad",
+        "Todos los destinos tienen green fees. No todos mantienen sus greens al nivel del spa de al lado. En este corredor, los campos se hicieron para los huéspedes de los hoteles vecinos, no para el volumen ni para quien llega sin reservar. Eso cambia el ritmo de juego, la calidad de los caddies, la comida del hoyo 9 y el estado de los greens un martes de marzo. No son detalles. Son la experiencia."
+      ],
+      [
+        "La Cola de la Ballena",
+        "El 3B opcional de Pacífico solo se juega con marea baja. Llama al pro shop la noche anterior. ¿Marea confirmada? Juégalo. ¿No hay ventana? Juega el 3A. La ronda vale igual."
+      ]
+    ],
+    "packages": "/destinations/punta-mita/golf-packages"
+  },
+  "logistics": {
+    "label": "Sobre el terreno",
+    "pre": "Cómo llegar",
+    "em": "y cómo pasar la caseta.",
+    "items": [
+      [
+        "Aeropuerto + llegadas",
+        "Aeropuerto Internacional de Puerto Vallarta (PVR): vuelos directos desde Dallas, Houston, Los Angeles, Chicago, San Francisco, Phoenix, Seattle y Toronto. Aduana: 30–45 min. Los operadores privados reciben aviones G-IV y menores."
+      ],
+      [
+        "Cómo llegar a la caseta",
+        "PVR → caseta de Punta Mita: 45 minutos por la carretera costera. PVR → Mandarina: 55 minutos al norte. PVR → Nauka: 75 minutos al norte por la costa. Dentro de cada comunidad, los traslados del resort son lo normal. Uber llega hasta afuera de Punta Mita, pero no puede pasar la caseta."
+      ],
+      [
+        "Entre campos",
+        "Pacífico ↔ Bahía: 5 minutos en carrito dentro de la península. Higuera: 10 minutos al norte de la caseta. Mandarina: 40 minutos al norte de Punta Mita por la carretera costera. Nauka: 75 minutos de Punta Mita; planéalo como un día aparte."
+      ],
+      [
+        "Moneda + propinas",
+        "Se aceptan USD en todo el corredor. Propina para el caddie: $40–$60 por ronda es lo normal. Four Seasons incluye caddies; reconoce el servicio. Lleva la confirmación del resort para entrar por la caseta; conviene tener una copia sin conexión."
+      ]
+    ]
+  },
+  "sources": [
+    "Pacifico Golf Course: pro shop y archivos del resort de Punta Mita",
+    "Greg Norman Golf Course Design: notas de diseño de Mandarina Golf Club",
+    "Nauka Golf Club: archivo de diseño de Tom Fazio, registros de apertura 2025",
+    "Higuera Golf Club: reserva directa y tarifario (2026)",
+    "Punta Mita: alianzas y lista de embajadores (golf.com, American Express, Punta Mita Invitational)",
+    "Banco de México: datos del tipo de cambio peso/USD (mayo 2026)"
+  ],
+  "readNext": [
+    [
+      "/destinations/mexico-city",
+      "golf en la Ciudad de México",
+      "Clubes privados históricos a 2,240 m, donde la bola vuela 10–12% más lejos, y cómo entran los golfistas que vienen de visita."
+    ],
+    [
+      "/destinations/los-cabos",
+      "Green fees y acceso en Los Cabos",
+      "18 campos de campeonato en un corredor de 20 millas, de $260 a $700 por ronda."
+    ]
+  ],
+  "newsletter": "Estamos publicando cómo pasar la caseta, qué campo va con tu juego, dónde hospedarte y cuánto cuesta de verdad cada día. Déjanos tu email y te lo mandamos cuando esté listo. Sin spam; te das de baja cuando quieras.",
+  "newsletterTitle": "Entérate de todo sobre el golf en Punta Mita.",
+  "heroPhoto": null
+}

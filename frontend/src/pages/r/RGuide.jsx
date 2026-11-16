@@ -2,7 +2,16 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSeo, breadcrumbSchema, articleSchema, faqSchema } from "@/hooks/useSeo";
 import { GuideVoices, voicesSchema } from "@/components/reverie/GuideVoices";
-import trips from "@/data/rtrips.json";
+import tripsEn from "@/data/rtrips.json";
+import tripsEsRaw from "@/data/es/rtrips.json";
+import esPuntaMita from "@/data/es/guide-punta-mita.json";
+import esMexicoCity from "@/data/es/guide-mexico-city.json";
+import esCancun from "@/data/es/guide-cancun-riviera-maya.json";
+import esVallarta from "@/data/es/guide-puerto-vallarta.json";
+import esUnique from "@/data/es/guide-unique-destinations.json";
+import { useLang, altLinks, localize, tripTypeLabel, esData, MXN_NOTE } from "@/i18n";
+
+const tripsEs = esData(tripsEsRaw);
 import { shortGuide, TRIP_PLACES } from "@/data/rguides";
 import { GUIDE_AUTHORS } from "@/data/authors";
 import { DESTINATIONS } from "@/data/siteNav";
@@ -23,12 +32,15 @@ const GUIDE_PHOTOS = {
   "unique-destinations": ["/images/dhz92vfa-golfinmexico-001-2.webp"],
 };
 
+/* Each guide in Spanish (user, 2026-11-16): shortGuide(slug) translated, same shape (src/data/es). */
+const ES_GUIDES = esData({ "punta-mita": esPuntaMita, "mexico-city": esMexicoCity, "cancun-riviera-maya": esCancun, "puerto-vallarta": esVallarta, "unique-destinations": esUnique });
+
 /* The short destination guide (2026-11-03), the Los Cabos layout for every other guide: the answer with three facts, the
    course table with each name linked to its page, which courses can I play, which is best, when to play, the questions,
    then trips and the call. Data: src/data/rguides.js (the published guide plus the approved rules). Course names are never
    headings here, and "trip" or "packages" never title a section, so the course pages and golf packages pages keep theirs. */
 
-const Newsletter = ({ id, region, title, body }) => {
+const Newsletter = ({ id, region, title, body, es }) => {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
   const { submit, submitting, error, honeypotProps } = useHubspotForm(FORM_KEYS.hub_playbook);
@@ -47,13 +59,13 @@ const Newsletter = ({ id, region, title, body }) => {
         </div>
         <div className="flex flex-col gap-3 md:w-[420px]">
           {sent ? (
-            <p className="r-title text-[16px] text-[var(--r-green)]">You&apos;re on the list.</p>
+            <p className="r-title text-[16px] text-[var(--r-green)]">{es ? "Ya estás en la lista." : "You're on the list."}</p>
           ) : (
             <form onSubmit={onSubmit} className="flex gap-2">
               <input {...honeypotProps} name="company_website" />
-              <label htmlFor={`${id}-email`} className="sr-only">Email</label>
-              <input id={`${id}-email`} type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="your@email.com" className="flex-1 min-w-0 bg-white border border-[rgba(30,57,43,0.25)] focus:border-[var(--r-green)] px-4 py-3 text-[14px] outline-none" />
-              <button type="submit" disabled={submitting} className="r-btn disabled:opacity-60">{submitting ? "…" : "Keep me in the loop"}</button>
+              <label htmlFor={`${id}-email`} className="sr-only">{es ? "Correo" : "Email"}</label>
+              <input id={`${id}-email`} type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder={es ? "tu@correo.com" : "your@email.com"} className="flex-1 min-w-0 bg-white border border-[rgba(30,57,43,0.25)] focus:border-[var(--r-green)] px-4 py-3 text-[14px] outline-none" />
+              <button type="submit" disabled={submitting} className="r-btn disabled:opacity-60">{submitting ? "…" : es ? "Quiero recibirlo" : "Keep me in the loop"}</button>
             </form>
           )}
           {error && !sent && <p className="text-[12px] text-[#a3352b]">{error}</p>}
@@ -67,7 +79,12 @@ const Newsletter = ({ id, region, title, body }) => {
 const RGuide = ({ slug: forced }) => {
   const params = useParams();
   const slug = forced || params.slug;
-  const g = shortGuide(slug);
+  const lang = useLang();
+  const es = lang === "es";
+  const L = (p) => localize(p, lang);
+  const trips = es ? tripsEs : tripsEn;
+  const g = es && ES_GUIDES[slug] ? ES_GUIDES[slug] : shortGuide(slug);
+  const path = `/destinations/${slug}`;
   const photos = GUIDE_PHOTOS[slug] || [];
   const dest = DESTINATIONS.find((d) => d.to === `/destinations/${slug}`);
   useSeo(
@@ -75,11 +92,12 @@ const RGuide = ({ slug: forced }) => {
       ? {
           title: g.seoTitle,
           description: g.seoDescription,
-          canonical: `/destinations/${slug}`,
+          canonical: L(path),
+          alternates: altLinks(path),
           image: `/og/guide-${slug}.jpg`,
           jsonLd: [
-            articleSchema({ headline: g.seoTitle.replace(/ \| GOLF° IN MEXICO°$/, ""), description: g.answer, path: `/destinations/${slug}`, image: g.heroPhoto || dest?.image, authors: GUIDE_AUTHORS, datePublished: "2026-05-01", dateModified: "2026-11-03" }),
-            breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Destinations", path: "/destinations" }, { name: g.name, path: `/destinations/${slug}` }]),
+            articleSchema({ headline: g.seoTitle.replace(/ \| GOLF° IN MEXICO°$/, ""), description: g.answer, path: L(path), image: g.heroPhoto || dest?.image, authors: GUIDE_AUTHORS, datePublished: "2026-05-01", dateModified: "2026-11-03" }),
+            breadcrumbSchema([{ name: es ? "Inicio" : "Home", path: L("/") }, { name: es ? "Destinos" : "Destinations", path: L("/destinations") }, { name: g.name, path: L(path) }]),
             ...(g.faqs.length ? [faqSchema(g.faqs.map(([q, a]) => ({ q, a })))] : []),
             ...voicesSchema(slug),
           ],
@@ -96,12 +114,12 @@ const RGuide = ({ slug: forced }) => {
 
   return (
     <main data-testid="page-guide" className="bg-[var(--r-cream)] text-[var(--r-ink)]">
-      <PhotoHero image={photos[0] || g.heroPhoto || dest?.image} alt={`Golf in ${g.name}`} />
+      <PhotoHero image={photos[0] || g.heroPhoto || dest?.image} alt={es ? `Golf en ${g.name}` : `Golf in ${g.name}`} />
 
       {/* 1 · The answer, with three facts */}
-      <TitleBlock eyebrow={`Destination guide · ${g.name}`} title={g.title} facts={g.facts}>
+      <TitleBlock eyebrow={es ? `Guía de destino · ${g.name}` : `Destination guide · ${g.name}`} title={g.title} facts={g.facts}>
         <p className="r-body text-[16px] max-w-[700px]">{g.answer}</p>
-        {g.byline && <p className="text-[12px] text-[var(--r-ink-soft)]">{g.byline} · Updated November 2026</p>}
+        {g.byline && <p className="text-[12px] text-[var(--r-ink-soft)]">{g.byline} · {es ? "Actualizado en noviembre de 2026" : "Updated November 2026"}</p>}
       </TitleBlock>
 
       {/* 1b · The agent and the player (2026-11-05) */}
@@ -109,15 +127,15 @@ const RGuide = ({ slug: forced }) => {
 
       {/* 2 · The courses: one line each, every name linked to its own page */}
       <section id="courses" data-testid="guide-courses" className="pb-[100px] scroll-mt-24">
-        <SectionIntro title={`${g.name} golf courses, green fees and access`} />
+        <SectionIntro title={es ? `Campos de golf en ${g.name}: green fees y acceso` : `${g.name} golf courses, green fees and access`} />
         <div className="mt-[50px]">
           <Board
-            caption={`${g.name} golf courses: design, who can play, green fee and professional tournaments hosted`}
-            head={unique ? ["Course", "Where", "Design", "Who can play", "Green fee"] : ["Course", "Design", "Who can play", "Green fee", "Tour venue"]}
-            rows={g.courses.map((c) => (unique ? [link(c), c.place, c.design, c.access, c.fee] : [link(c), c.design, c.access, c.fee, c.tournament === "—" ? "—" : "Yes"]))}
+            caption={es ? `Campos de golf en ${g.name}: diseño, quién puede jugar, green fee y torneos profesionales` : `${g.name} golf courses: design, who can play, green fee and professional tournaments hosted`}
+            head={es ? (unique ? ["Campo", "Dónde", "Diseño", "Quién puede jugar", "Green fee"] : ["Campo", "Diseño", "Quién puede jugar", "Green fee", "Sede de tour"]) : unique ? ["Course", "Where", "Design", "Who can play", "Green fee"] : ["Course", "Design", "Who can play", "Green fee", "Tour venue"]}
+            rows={g.courses.map((c) => (unique ? [link(c), c.place, c.design, c.access, c.fee] : [link(c), c.design, c.access, c.fee, c.tournament === "—" ? "—" : es ? "Sí" : "Yes"]))}
             wide
           />
-          <p className="r-body text-[12px] text-center text-[var(--r-ink-soft)] mt-5 px-6">Green fees as of 2026, confirmed in writing before you book.</p>
+          <p className="r-body text-[12px] text-center text-[var(--r-ink-soft)] mt-5 px-6">{es ? `Green fees de 2026, confirmados por escrito antes de reservar. ${MXN_NOTE}` : "Green fees as of 2026, confirmed in writing before you book."}</p>
         </div>
         {unlinked.length > 0 && (
           <div className="mt-12 px-5 md:px-10">
@@ -133,8 +151,8 @@ const RGuide = ({ slug: forced }) => {
         )}
         {linked.length > 0 && (
           <div className="mt-[70px]">
-            <CardRail label={`${g.name} course pages`}>
-              {linked.map((c) => <Card key={c.slug} titleAs="span" href={c.page.href} image={c.page.photo?.src} credit={c.page.photo?.credit} eyebrow={unique ? c.place : c.design} title={c.page.name} cta="View course" />)}
+            <CardRail label={es ? `Campos de ${g.name}` : `${g.name} course pages`}>
+              {linked.map((c) => <Card key={c.slug} titleAs="span" href={c.page.href} image={c.page.photo?.src} credit={c.page.photo?.credit} eyebrow={unique ? c.place : c.design} title={c.page.name} cta={es ? "Ver campo" : "View course"} />)}
             </CardRail>
           </div>
         )}
@@ -143,7 +161,7 @@ const RGuide = ({ slug: forced }) => {
       {/* 3 · Which can I play? */}
       {g.groups.length > 1 && (
         <section data-testid="guide-access" className="py-[100px] bg-[var(--r-cream-2)] px-5 md:px-10">
-          <SectionIntro title="Which courses can I play?">{g.access.length > 0 && g.access.map((p) => <p key={p.slice(0, 20)} className="mt-3 first:mt-0">{p}</p>)}</SectionIntro>
+          <SectionIntro title={es ? "¿Qué campos puedo jugar?" : "Which courses can I play?"}>{g.access.length > 0 && g.access.map((p) => <p key={p.slice(0, 20)} className="mt-3 first:mt-0">{p}</p>)}</SectionIntro>
           <div className={`mt-[50px] mx-auto max-w-[1100px] grid gap-10 ${g.groups.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
             {g.groups.map(([k, list]) => (
               <div key={k} className="flex flex-col gap-3 border-t-2 border-[var(--r-green)] pt-5">
@@ -157,12 +175,12 @@ const RGuide = ({ slug: forced }) => {
 
       {/* 3b · The production guide's overview and what moves the price (2026-11-05) */}
       <GuideOverview {...g.overview} />
-      <GuideCosts {...g.costs} link={g.costs.packages && <a href={g.costs.packages} className="r-link self-start text-[var(--r-green)]">{g.name} golf packages</a>} />
+      <GuideCosts {...g.costs} link={g.costs.packages && <a href={g.costs.packages} className="r-link self-start text-[var(--r-green)]">{es ? `Paquetes de golf en ${g.name}` : `${g.name} golf packages`}</a>} />
 
       {/* 4 · Tournament venues, then the guide's own answer on the best course */}
       {g.hosts.length > 0 && (
-        <Split id="guide-tournaments" image={photos[1] || dest?.image || g.heroPhoto} alt={`A golf course in ${g.name}`} flip>
-          <h2 className="r-title text-[24px] md:text-[28px] text-[var(--r-green)]">Which courses have hosted professional tournaments?</h2>
+        <Split id="guide-tournaments" image={photos[1] || dest?.image || g.heroPhoto} alt={es ? `Un campo de golf en ${g.name}` : `A golf course in ${g.name}`} flip>
+          <h2 className="r-title text-[24px] md:text-[28px] text-[var(--r-green)]">{es ? "¿Qué campos han sido sede de torneos profesionales?" : "Which courses have hosted professional tournaments?"}</h2>
           <ul className="flex flex-col gap-4 border-t border-[rgba(30,57,43,0.2)] pt-4">
             {g.hosts.map((c) => (
               <li key={c.name} className="flex flex-col gap-1">
@@ -176,7 +194,7 @@ const RGuide = ({ slug: forced }) => {
       {g.best && (
         <section data-testid="guide-best" className="px-6 py-[90px] bg-[var(--r-cream-2)]">
           <div className="max-w-[760px] mx-auto flex flex-col items-center text-center gap-5">
-            <h2 className="r-title text-[24px] md:text-[28px] text-[var(--r-green)]">Which is the best course in {g.name}?</h2>
+            <h2 className="r-title text-[24px] md:text-[28px] text-[var(--r-green)]">{es ? `¿Cuál es el mejor campo de ${g.name}?` : `Which is the best course in ${g.name}?`}</h2>
             <p className="r-body text-[16px]">{g.best}</p>
           </div>
         </section>
@@ -185,7 +203,7 @@ const RGuide = ({ slug: forced }) => {
       {/* 5 · When to play */}
       {g.seasons.length > 0 && (
         <section id="season" data-testid="guide-season" className="py-[100px] scroll-mt-24">
-          <SectionIntro title="When to play." />
+          <SectionIntro title={es ? "Cuándo jugar." : "When to play."} />
           <div className="mt-[50px] px-5 md:px-10 mx-auto max-w-[1100px] grid gap-8 md:grid-cols-3">
             {g.seasons.map(([t, sub, b]) => (
               <div key={t} className="flex flex-col gap-2 border-t border-[rgba(30,57,43,0.2)] pt-4">
@@ -205,14 +223,14 @@ const RGuide = ({ slug: forced }) => {
       {g.faqs.length > 0 && (
         <section id="faq" data-testid="guide-faq" className="bg-[var(--r-green)] text-[var(--r-cream)] px-6 py-[90px] md:py-[110px]">
           <div className="max-w-[760px] mx-auto flex flex-col items-center text-center gap-5">
-            <h2 className="r-title text-[26px] md:text-[34px]">Your questions, answered.</h2>
+            <h2 className="r-title text-[26px] md:text-[34px]">{es ? "Tus preguntas, respondidas." : "Your questions, answered."}</h2>
             <div className="w-full mt-6 text-left border-t border-[rgba(251,249,243,0.25)]">
               {g.faqs.map(([q, a, more]) => (
                 <details key={q} className="group border-b border-[rgba(251,249,243,0.25)]">
                   <summary className="cursor-pointer list-none flex justify-between gap-6 py-5 r-title text-[14px]">
                     <h3>{q}</h3><span aria-hidden="true" className="transition-transform group-open:rotate-45">+</span>
                   </summary>
-                  <p className="r-body text-[15px] pb-5 opacity-90">{a}{more && <> Full trip budgets: <a href={more.href} className="underline underline-offset-2">{more.label}</a>.</>}</p>
+                  <p className="r-body text-[15px] pb-5 opacity-90">{a}{more && <> {es ? "Presupuestos completos:" : "Full trip budgets:"} <a href={more.href} className="underline underline-offset-2">{more.label}</a>.</>}</p>
                 </details>
               ))}
             </div>
@@ -223,36 +241,36 @@ const RGuide = ({ slug: forced }) => {
       {/* 7 · Where to go next: links only */}
       {here.length > 0 && (
         <section data-testid="guide-next" className="py-[100px]">
-          <SectionIntro as="p" title="Explore trips" link={<a href="/trips" className="r-link text-[var(--r-green)]">All trips</a>} />
+          <SectionIntro as="p" title={es ? "Explora viajes" : "Explore trips"} link={<a href={L("/trips")} className="r-link text-[var(--r-green)]">{es ? "Todos los viajes" : "All trips"}</a>} />
           <div className="mt-[60px]">
-            <CardRail label={`${g.name} trips`}>
-              {here.map((t) => <Card key={t.slug} titleAs="span" href={`/trips/${t.slug}`} image={t.photo || t.image} credit={t.photo ? t.photoCredit : undefined} eyebrow={t.type} title={t.title} cta="View trip" />)}
+            <CardRail label={es ? `Viajes en ${g.name}` : `${g.name} trips`}>
+              {here.map((t) => <Card key={t.slug} titleAs="span" href={L(`/trips/${t.slug}`)} image={t.photo || t.image} credit={t.photo ? t.photoCredit : undefined} eyebrow={tripTypeLabel(t.type, lang)} title={t.title} cta={es ? "Ver viaje" : "View trip"} />)}
             </CardRail>
           </div>
         </section>
       )}
 
-      {g.newsletter && <Newsletter id="guide-loop" region={slug} title={g.newsletterTitle} body={g.newsletter} />}
+      {g.newsletter && <Newsletter id="guide-loop" region={slug} title={g.newsletterTitle} body={g.newsletter} es={es} />}
 
       {g.readNext.length > 0 && (
         <section className="px-6 py-[70px]">
           <div className="max-w-[760px] mx-auto flex flex-col gap-2 text-center r-body text-[14px]">
             {g.readNext.map(([to, anchor, note]) => (
-              <p key={to}>Read next: <a href={to} className="underline underline-offset-2 text-[var(--r-green)]">{anchor}</a> — {note}</p>
+              <p key={to}>{es ? "Lee también:" : "Read next:"} <a href={L(to)} className="underline underline-offset-2 text-[var(--r-green)]">{anchor}</a> — {note}</p>
             ))}
           </div>
         </section>
       )}
 
-      <SoftenedCall id="guide-close" titleAs="p" image={photos[2] || dest?.image || g.heroPhoto} title="Free planning until your golf trip is right.">
-        <p className="r-body text-[14px]">Perks you won&apos;t get booking direct. Planned by a golf agent and a pro golfer from Mexico.</p>
+      <SoftenedCall id="guide-close" titleAs="p" image={photos[2] || dest?.image || g.heroPhoto} title={es ? "Planeación gratis hasta que tu viaje de golf quede perfecto." : "Free planning until your golf trip is right."}>
+        <p className="r-body text-[14px]">{es ? "Beneficios que no consigues reservando directo. Planeado por un agente de golf y un golfista profesional mexicanos." : "Perks you won't get booking direct. Planned by a golf agent and a pro golfer from Mexico."}</p>
         <Concierge id="guide-close" className="r-btn r-btn-light mt-2" />
       </SoftenedCall>
 
       {g.sources.length > 0 && (
         <section className="px-5 md:px-10 py-16">
           <div className="max-w-[1100px] mx-auto border-t border-[rgba(30,57,43,0.15)] pt-8 flex flex-col gap-2">
-            <span className="r-eyebrow text-[var(--r-ink-soft)]">Sources</span>
+            <span className="r-eyebrow text-[var(--r-ink-soft)]">{es ? "Fuentes" : "Sources"}</span>
             <ul className="flex flex-col gap-1.5">
               {g.sources.map((s) => <li key={s} className="r-body text-[13px]">{s}</li>)}
             </ul>

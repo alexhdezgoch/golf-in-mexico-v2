@@ -106,7 +106,7 @@ export const parseSitemap = (xml) =>
 
 // A deployment's static files never change, so each is read once per instance.
 // Real pages kept out of the sitemap on purpose (noindex): the planning page after a quote request (2026-11-06).
-const PAGES_OUTSIDE_SITEMAP = new Set(["/start-planning"]);
+const PAGES_OUTSIDE_SITEMAP = new Set(["/start-planning", "/es/start-planning"]);
 
 let routesPromise;
 let notFoundHtmlPromise;
@@ -146,6 +146,34 @@ const loadNotFoundHtml = (base) => {
 
 const next = () => new Response(null, { headers: { "x-middleware-next": "1" } });
 
+/**
+ * Spanish first visit (user, 2026-11-16: "idioma + país"). A visitor whose browser is set to Spanish, in any country, is
+ * sent to the Spanish version of the page; with no browser language at all, a visitor in a Spanish-speaking country is.
+ * A browser in English stays in English wherever it is (an American in Cabo). Never for search engines or link previews,
+ * and never once the visitor has picked a language in the menu (the gim_lang cookie, set by src/i18n.js).
+ * Keep ES_PAGES in step with src/i18n.js.
+ */
+const ES_PAGES = new Set(["/", "/start-planning", "/about", "/contact", "/destinations", "/destinations/los-cabos", "/destinations/punta-mita", "/destinations/mexico-city", "/destinations/cancun-riviera-maya", "/destinations/puerto-vallarta", "/destinations/unique-destinations", "/trips", "/trips/mexico-city-four-seasons-golf", "/trips/los-cabos-nobu", "/trips/punta-mita-by-golfinmexico", "/trips/playa-del-carmen-alila-mayakoba-golf", "/trips/cancun-moon-palace-all-inclusive-golf", "/trips/san-miguel-luxury-hotel-golf", "/trips/los-cabos-cocobay"]);
+const ES_COUNTRIES = new Set(["MX", "AR", "BO", "CL", "CO", "CR", "CU", "DO", "EC", "SV", "GT", "HN", "NI", "PA", "PY", "PE", "PR", "ES", "UY", "VE"]);
+const BOT = /bot|crawl|spider|slurp|preview|facebookexternalhit|whatsapp|lighthouse|headless|curl|wget/i;
+
+export const prefersSpanish = ({ acceptLanguage, country, cookie, userAgent }) => {
+  if (/(?:^|;\s*)gim_lang=/.test(cookie || "")) return false;
+  if (BOT.test(userAgent || "")) return false;
+  const first = String(acceptLanguage || "").split(",")[0].trim().toLowerCase();
+  if (first && first !== "*") return first === "es" || first.startsWith("es-");
+  return ES_COUNTRIES.has(String(country || "").toUpperCase());
+};
+
+const spanishRedirect = (request, url) => {
+  const path = normalizePath(url.pathname);
+  if (!ES_PAGES.has(path)) return null;
+  const h = request.headers;
+  if (!prefersSpanish({ acceptLanguage: h.get("accept-language"), country: h.get("x-vercel-ip-country"), cookie: h.get("cookie"), userAgent: h.get("user-agent") })) return null;
+  const to = new URL((path === "/" ? "/es" : `/es${path}`) + url.search, url);
+  return new Response(null, { status: 302, headers: { location: to.toString(), vary: "Accept-Language, Cookie", "cache-control": "private, no-store" } });
+};
+
 const respond = (body, status, type) =>
   new Response(body, {
     status,
@@ -169,6 +197,10 @@ export default async function middleware(request) {
     return new Response(null, { headers: { "x-middleware-rewrite": TRIP_BUILDER + url.pathname + url.search } });
   }
   const markdown = wantsMarkdown(request.headers.get("accept"));
+  if (!markdown && request.method === "GET") {
+    const toSpanish = spanishRedirect(request, url);
+    if (toSpanish) return toSpanish;
+  }
 
   try {
     const routes = await loadRoutes(url);

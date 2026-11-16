@@ -50,6 +50,16 @@ export const CONSENT_NOTICE = Object.freeze({
   linkUrl: "https://golf-in-mexico.com/privacy",
 });
 
+// The same promise in Spanish, shown and recorded on the /es pages (user, 2026-11-16).
+export const CONSENT_NOTICE_ES = Object.freeze({
+  lead: "Al enviar, aceptas recibir correos de GOLF° IN MEXICO°. Puedes darte de baja cuando quieras. Consulta nuestro",
+  linkLabel: "Aviso de Privacidad",
+  linkPath: "/aviso-de-privacidad",
+  linkUrl: "https://golf-in-mexico.com/aviso-de-privacidad",
+});
+export const HUBSPOT_CONSENT_TEXT_ES =
+  `${CONSENT_NOTICE_ES.lead} ${CONSENT_NOTICE_ES.linkLabel} (${CONSENT_NOTICE_ES.linkUrl}).`;
+
 // Recorded with each submission. Required if the HubSpot portal has GDPR
 // features enabled; harmless otherwise.
 export const HUBSPOT_CONSENT_TEXT =
