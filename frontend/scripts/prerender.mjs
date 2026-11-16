@@ -72,7 +72,7 @@ function readRoutes() {
   const elsewhere = (p) => p === "/trip-builder" || p === "/golf-packages" || p === "/courses" || p === "/terms" || p === "/photo-credits" || /^\/destinations\/[^/]+\/(golf-packages|courses\/[^/]+)$/.test(p);
   // De-dupe, ensure "/" is present, keep deterministic order.
   // Pages kept out of the sitemap (noindex ad landings) still need their own HTML, or they would hydrate over the home page's.
-  const NOINDEX = ["/start-planning"];
+  const NOINDEX = ["/start-planning", "/es/start-planning"];
   return [...new Set([...(routes.length ? routes.filter((p) => !elsewhere(p)) : ["/"]), ...NOINDEX])];
 }
 

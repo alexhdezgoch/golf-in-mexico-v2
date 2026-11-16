@@ -110,6 +110,7 @@ const cloneFloorDates = () => {
 // template that renders them, so that's the file whose date matters.
 const ROUTE_SOURCE = {
   "/": "src/pages/Home.jsx",
+  "/es": "src/pages/Home.jsx",
   "/destinations": "src/pages/Destinations.jsx",
   "/journal": "src/pages/Journal.jsx",
   "/courses": "src/pages/Courses.jsx",
@@ -545,6 +546,8 @@ async function main() {
   // ---- sitemap.xml ----
   const staticRoutes = [
     { loc: "/", priority: "1.0", changefreq: "weekly" },
+    // The home in Spanish (src/i18n.js ES_PAGES; user, 2026-11-16).
+    { loc: "/es", priority: "0.8", changefreq: "weekly" },
     { loc: "/destinations", priority: "0.8", changefreq: "weekly" },
     { loc: "/journal", priority: "0.8", changefreq: "weekly" },
     { loc: "/courses", priority: "0.8", changefreq: "weekly" },
@@ -591,7 +594,13 @@ async function main() {
   const coursePages = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/siteCourses.json"), "utf8")).courses;
   const courseLastmod = gitDate("src/data/siteCourses.json");
   const courseRoutes = coursePages.map((c) => ({ loc: c.href, priority: "0.7", changefreq: "monthly", lastmod: courseLastmod }));
-  const urls = [...staticRoutes, ...hubRoutes, ...landingRoutes, ...articleRoutes, ...courseRoutes];
+  // The Spanish versions (src/i18n.js ES_PAGES, user 2026-11-16): each English page that has one, under /es, with its
+  // English twin's dates. /start-planning stays out (noindex). The home's /es entry is in staticRoutes.
+  const ES_EXTRA = ["/about", "/contact", "/destinations", "/trips"];
+  const esRoutes = [...staticRoutes, ...hubRoutes]
+    .filter((r) => ES_EXTRA.includes(r.loc) || r.loc.startsWith("/trips/") || /^\/destinations\/(los-cabos|punta-mita|mexico-city|cancun-riviera-maya|puerto-vallarta|unique-destinations)$/.test(r.loc))
+    .map((r) => ({ ...r, loc: `/es${r.loc}`, priority: "0.5" }));
+  const urls = [...staticRoutes, ...hubRoutes, ...landingRoutes, ...articleRoutes, ...courseRoutes, ...esRoutes];
 
   // Guard 1 — clone floor. On a shallow clone, a date equal to a boundary
   // (graft) commit's date means "the history ran out here", not "the page changed
