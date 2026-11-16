@@ -13,6 +13,7 @@ import {
   HUBSPOT_PORTAL_ID,
   HUBSPOT_ENDPOINT_BASE,
   HUBSPOT_CONSENT_TEXT,
+  HUBSPOT_CONSENT_TEXT_ES,
   HUBSPOT_FORMS,
   getFormConfig,
   isHubspotConfigured,
@@ -82,7 +83,8 @@ export const submitToHubspot = async (formKey, fields = {}) => {
     legalConsentOptions: {
       consent: {
         consentToProcess: true,
-        text: HUBSPOT_CONSENT_TEXT,
+        // The sentence the visitor actually read: the Spanish one on the /es pages.
+        text: typeof window !== "undefined" && /^\/es(\/|$)/.test(window.location.pathname) ? HUBSPOT_CONSENT_TEXT_ES : HUBSPOT_CONSENT_TEXT,
       },
     },
   };
