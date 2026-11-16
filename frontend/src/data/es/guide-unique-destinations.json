@@ -1,0 +1,854 @@
+{
+  "slug": "unique-destinations",
+  "name": "Destinos únicos",
+  "title": "Golf en el México escondido",
+  "seoTitle": "Destinos de golf escondidos en México | San Miguel y Loreto",
+  "seoDescription": "San Miguel colonial, TPC Danzante Bay sobre el Mar de Cortés, El Tamarindo en Costalegre: el golf de México más allá de los corredores famosos y quién puede jugar cada campo.",
+  "answer": "Más allá de los corredores famosos, México esconde otra docena de destinos de golf: San Miguel de Allende, Loreto, Costalegre, Mérida, Valle de Bravo y Mazatlán. Cada uno es un viaje completo por sí solo.",
+  "byline": "Editorial GOLF° IN MEXICO° · Investigación de campo de Pablo De La Mora y José Islas",
+  "facts": [
+    [
+      "Destinos escondidos",
+      "12+"
+    ],
+    [
+      "Green fees",
+      "$110–$595"
+    ]
+  ],
+  "courses": [
+    {
+      "name": "Bajamar Ocean Front Golf Resort",
+      "slug": "bajamar-ocean-front-golf-resort",
+      "page": {
+        "slug": "bajamar-ocean-front-golf-resort",
+        "name": "Bajamar Ocean Front Golf Resort",
+        "region": "ensenada",
+        "place": "Ensenada",
+        "href": "/destinations/ensenada/courses/bajamar-ocean-front-golf-resort",
+        "architect": "Percy Clifford",
+        "architects": [
+          "Percy Clifford",
+          "David Fleming",
+          "Robert von Hagge"
+        ],
+        "label": "Top en México",
+        "greenFee": 180,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/course-refs/bajamar-ocean-front-golf-resort/01.jpg",
+          "credit": "Bajamar Ocean Front Golf Resort"
+        }
+      },
+      "design": "Percy Clifford",
+      "place": "Ensenada",
+      "tournament": "—",
+      "fee": "$180",
+      "access": "Resort (abierto al público con reservación)",
+      "tier": "public",
+      "note": "",
+      "standout": ""
+    },
+    {
+      "name": "Club de Golf Avándaro",
+      "slug": "club-de-golf-avandaro",
+      "page": {
+        "slug": "club-de-golf-avandaro",
+        "name": "Club de Golf Avándaro",
+        "region": "multi-city",
+        "place": "Multi City",
+        "href": "/destinations/multi-city/courses/club-de-golf-avandaro",
+        "architect": "Percy Clifford",
+        "architects": [
+          "Percy Clifford"
+        ],
+        "label": "Jugable y relajado",
+        "greenFee": 276,
+        "guestsOnly": false,
+        "photo": null
+      },
+      "design": "Percy Clifford",
+      "place": "Multi City",
+      "tournament": "—",
+      "fee": "$276",
+      "access": "Semiprivado / resort",
+      "tier": "public",
+      "note": "",
+      "standout": ""
+    },
+    {
+      "name": "Club de Golf Malanquín",
+      "slug": "club-de-golf-malanquin",
+      "page": {
+        "slug": "club-de-golf-malanquin",
+        "name": "Club de Golf Malanquín",
+        "region": "san-miguel-de-allende",
+        "place": "San Miguel de Allende",
+        "href": "/destinations/san-miguel-de-allende/courses/club-de-golf-malanquin",
+        "architect": "Steven Newgent",
+        "architects": [
+          "Steven Newgent"
+        ],
+        "label": "Jugable y relajado",
+        "greenFee": 146,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/course-refs/club-de-golf-malanquin/01.jpg",
+          "credit": "Club de Golf Malanquín"
+        }
+      },
+      "design": "Steven Newgent",
+      "place": "San Miguel de Allende",
+      "tournament": "—",
+      "fee": "$146",
+      "access": "Público / semiprivado",
+      "tier": "public",
+      "note": "",
+      "standout": ""
+    },
+    {
+      "name": "Costa Palmas Golf Club",
+      "slug": "costa-palmas-golf-club",
+      "page": {
+        "slug": "costa-palmas-golf-club",
+        "name": "Costa Palmas Golf Club",
+        "region": "multi-city",
+        "place": "Multi City",
+        "href": "/destinations/multi-city/courses/costa-palmas-golf-club",
+        "architect": "Robert Trent Jones II",
+        "architects": [
+          "Robert Trent Jones II"
+        ],
+        "label": "Top en México",
+        "greenFee": 300,
+        "guestsOnly": true,
+        "photo": {
+          "src": "/media/course-refs/costa-palmas-golf-club/01.jpg",
+          "credit": "Costa Palmas"
+        }
+      },
+      "design": "Robert Trent Jones II",
+      "place": "Multi City",
+      "tournament": "—",
+      "fee": "$300",
+      "access": "Privado (huéspedes de Four Seasons y socios)",
+      "tier": "resort",
+      "note": "",
+      "standout": ""
+    },
+    {
+      "name": "El Cortés Golf Club",
+      "slug": "el-cortes-golf-club",
+      "page": {
+        "slug": "el-cortes-golf-club",
+        "name": "El Cortés Golf Club",
+        "region": "multi-city",
+        "place": "Multi City",
+        "href": "/destinations/multi-city/courses/el-cortes-golf-club",
+        "architect": "Gary Player",
+        "architects": [
+          "Gary Player",
+          "Agustín Pizá"
+        ],
+        "label": "Top en México",
+        "greenFee": 270,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/courses/el-cortes-golf-club/01.jpg",
+          "credit": ""
+        }
+      },
+      "design": "Gary Player",
+      "place": "Multi City",
+      "tournament": "—",
+      "fee": "$270",
+      "access": "Resort / público",
+      "tier": "public",
+      "note": "",
+      "standout": ""
+    },
+    {
+      "name": "El Tamarindo Golf Course",
+      "slug": "el-tamarindo-golf-course",
+      "page": {
+        "slug": "el-tamarindo-golf-course",
+        "name": "El Tamarindo Golf Course",
+        "region": "costalegre",
+        "place": "Costalegre",
+        "href": "/destinations/costalegre/courses/el-tamarindo-golf-course",
+        "architect": "David Fleming",
+        "architects": [
+          "David Fleming"
+        ],
+        "label": "",
+        "greenFee": 165,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/course-refs/el-tamarindo-golf-course/01.jpg",
+          "credit": "Four Seasons Resort Tamarindo"
+        }
+      },
+      "design": "David Fleming",
+      "place": "Costalegre",
+      "tournament": "—",
+      "fee": "$165",
+      "access": "Resort (Four Seasons Resort Tamarindo)",
+      "tier": "public",
+      "note": "",
+      "standout": ""
+    },
+    {
+      "name": "La Ceiba (Club de Golf de Yucatán)",
+      "slug": "la-ceiba-golf-club",
+      "page": {
+        "slug": "la-ceiba-golf-club",
+        "name": "La Ceiba (Club de Golf de Yucatán)",
+        "region": "merida",
+        "place": "Mérida",
+        "href": "/destinations/merida/courses/la-ceiba-golf-club",
+        "architect": "Félix Mier y Terán",
+        "architects": [
+          "Félix Mier y Terán"
+        ],
+        "label": "Joya escondida",
+        "greenFee": 184,
+        "guestsOnly": false,
+        "photo": null
+      },
+      "design": "Félix Mier y Terán",
+      "place": "Mérida",
+      "tournament": "—",
+      "fee": "$184",
+      "access": "Público (visitantes bienvenidos todos los días)",
+      "tier": "public",
+      "note": "",
+      "standout": ""
+    },
+    {
+      "name": "Palma Real Golf Club",
+      "slug": "palma-real-golf-club",
+      "page": {
+        "slug": "palma-real-golf-club",
+        "name": "Palma Real Golf Club",
+        "region": "multi-city",
+        "place": "Multi City",
+        "href": "/destinations/multi-city/courses/palma-real-golf-club",
+        "architect": "Robert Trent Jones II",
+        "architects": [
+          "Robert Trent Jones II"
+        ],
+        "label": "Jugable y relajado",
+        "greenFee": 110,
+        "guestsOnly": false,
+        "photo": null
+      },
+      "design": "Robert Trent Jones II",
+      "place": "Multi City",
+      "tournament": "—",
+      "fee": "$110",
+      "access": "Público / resort (visitantes con reservación)",
+      "tier": "public",
+      "note": "",
+      "standout": ""
+    },
+    {
+      "name": "Rancho Avándaro",
+      "slug": "rancho-avandaro-golf-club",
+      "page": {
+        "slug": "rancho-avandaro-golf-club",
+        "name": "Rancho Avándaro",
+        "region": "multi-city",
+        "place": "Multi City",
+        "href": "/destinations/multi-city/courses/rancho-avandaro-golf-club",
+        "architect": "",
+        "architects": [],
+        "label": "Vistas icónicas",
+        "greenFee": 276,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/course-refs/rancho-avandaro-golf-club/01.jpg",
+          "credit": "Rancho Avándaro"
+        }
+      },
+      "design": "—",
+      "place": "Multi City",
+      "tournament": "—",
+      "fee": "$276",
+      "access": "Semiprivado (fraccionamiento residencial cerrado; acceso por confirmar)",
+      "tier": "public",
+      "note": "",
+      "standout": ""
+    },
+    {
+      "name": "TPC Danzante Bay",
+      "slug": "tpc-danzante-bay",
+      "page": {
+        "slug": "tpc-danzante-bay",
+        "name": "TPC Danzante Bay",
+        "region": "multi-city",
+        "place": "Multi City",
+        "href": "/destinations/multi-city/courses/tpc-danzante-bay",
+        "architect": "Rees Jones",
+        "architects": [
+          "Rees Jones",
+          "Steve Weisser"
+        ],
+        "label": "Bucket list",
+        "greenFee": 595,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/course-refs/tpc-danzante-bay/01.jpg",
+          "credit": "TPC Danzante Bay"
+        }
+      },
+      "design": "Rees Jones",
+      "place": "Multi City",
+      "tournament": "—",
+      "fee": "$595",
+      "access": "Resort (huéspedes y visitantes)",
+      "tier": "public",
+      "note": "",
+      "standout": ""
+    },
+    {
+      "name": "Ventanas de San Miguel",
+      "slug": "ventanas-de-san-miguel",
+      "page": {
+        "slug": "ventanas-de-san-miguel",
+        "name": "Ventanas de San Miguel",
+        "region": "san-miguel-de-allende",
+        "place": "San Miguel de Allende",
+        "href": "/destinations/san-miguel-de-allende/courses/ventanas-de-san-miguel",
+        "architect": "Nick Faldo",
+        "architects": [
+          "Nick Faldo",
+          "Schmidt-Curley"
+        ],
+        "label": "Prueba de campeonato",
+        "greenFee": 204,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/course-refs/ventanas-de-san-miguel/01.jpg",
+          "credit": "Ventanas de San Miguel"
+        }
+      },
+      "design": "Nick Faldo",
+      "place": "San Miguel de Allende",
+      "tournament": "—",
+      "fee": "$204",
+      "access": "Resort (abierto a visitantes)",
+      "tier": "public",
+      "note": "",
+      "standout": ""
+    },
+    {
+      "name": "Vidanta Puerto Peñasco Nicklaus Course",
+      "slug": "vidanta-puerto-penasco-nicklaus-course",
+      "page": {
+        "slug": "vidanta-puerto-penasco-nicklaus-course",
+        "name": "Vidanta Puerto Peñasco Nicklaus Course",
+        "region": "multi-city",
+        "place": "Multi City",
+        "href": "/destinations/multi-city/courses/vidanta-puerto-penasco-nicklaus-course",
+        "architect": "Jack Nicklaus",
+        "architects": [
+          "Jack Nicklaus",
+          "Jack Nicklaus II"
+        ],
+        "label": "Top en México",
+        "greenFee": null,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/course-refs/vidanta-puerto-penasco-nicklaus-course/01.jpg",
+          "credit": "Vidanta"
+        }
+      },
+      "design": "Jack Nicklaus",
+      "place": "Multi City",
+      "tournament": "—",
+      "fee": "Cotización a solicitud",
+      "access": "Resort (abierto al público con reservación)",
+      "tier": "public",
+      "note": "",
+      "standout": ""
+    }
+  ],
+  "groups": [
+    [
+      "Abierto a visitantes",
+      [
+        {
+          "name": "Bajamar Ocean Front Golf Resort",
+          "slug": "bajamar-ocean-front-golf-resort",
+          "page": {
+            "slug": "bajamar-ocean-front-golf-resort",
+            "name": "Bajamar Ocean Front Golf Resort",
+            "region": "ensenada",
+            "place": "Ensenada",
+            "href": "/destinations/ensenada/courses/bajamar-ocean-front-golf-resort",
+            "architect": "Percy Clifford",
+            "architects": [
+              "Percy Clifford",
+              "David Fleming",
+              "Robert von Hagge"
+            ],
+            "label": "Top en México",
+            "greenFee": 180,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/course-refs/bajamar-ocean-front-golf-resort/01.jpg",
+              "credit": "Bajamar Ocean Front Golf Resort"
+            }
+          },
+          "design": "Percy Clifford",
+          "place": "Ensenada",
+          "tournament": "—",
+          "fee": "$180",
+          "access": "Resort (abierto al público con reservación)",
+          "tier": "public",
+          "note": "",
+          "standout": ""
+        },
+        {
+          "name": "Club de Golf Avándaro",
+          "slug": "club-de-golf-avandaro",
+          "page": {
+            "slug": "club-de-golf-avandaro",
+            "name": "Club de Golf Avándaro",
+            "region": "multi-city",
+            "place": "Multi City",
+            "href": "/destinations/multi-city/courses/club-de-golf-avandaro",
+            "architect": "Percy Clifford",
+            "architects": [
+              "Percy Clifford"
+            ],
+            "label": "Jugable y relajado",
+            "greenFee": 276,
+            "guestsOnly": false,
+            "photo": null
+          },
+          "design": "Percy Clifford",
+          "place": "Multi City",
+          "tournament": "—",
+          "fee": "$276",
+          "access": "Semiprivado / resort",
+          "tier": "public",
+          "note": "",
+          "standout": ""
+        },
+        {
+          "name": "Club de Golf Malanquín",
+          "slug": "club-de-golf-malanquin",
+          "page": {
+            "slug": "club-de-golf-malanquin",
+            "name": "Club de Golf Malanquín",
+            "region": "san-miguel-de-allende",
+            "place": "San Miguel de Allende",
+            "href": "/destinations/san-miguel-de-allende/courses/club-de-golf-malanquin",
+            "architect": "Steven Newgent",
+            "architects": [
+              "Steven Newgent"
+            ],
+            "label": "Jugable y relajado",
+            "greenFee": 146,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/course-refs/club-de-golf-malanquin/01.jpg",
+              "credit": "Club de Golf Malanquín"
+            }
+          },
+          "design": "Steven Newgent",
+          "place": "San Miguel de Allende",
+          "tournament": "—",
+          "fee": "$146",
+          "access": "Público / semiprivado",
+          "tier": "public",
+          "note": "",
+          "standout": ""
+        },
+        {
+          "name": "El Cortés Golf Club",
+          "slug": "el-cortes-golf-club",
+          "page": {
+            "slug": "el-cortes-golf-club",
+            "name": "El Cortés Golf Club",
+            "region": "multi-city",
+            "place": "Multi City",
+            "href": "/destinations/multi-city/courses/el-cortes-golf-club",
+            "architect": "Gary Player",
+            "architects": [
+              "Gary Player",
+              "Agustín Pizá"
+            ],
+            "label": "Top en México",
+            "greenFee": 270,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/courses/el-cortes-golf-club/01.jpg",
+              "credit": ""
+            }
+          },
+          "design": "Gary Player",
+          "place": "Multi City",
+          "tournament": "—",
+          "fee": "$270",
+          "access": "Resort / público",
+          "tier": "public",
+          "note": "",
+          "standout": ""
+        },
+        {
+          "name": "El Tamarindo Golf Course",
+          "slug": "el-tamarindo-golf-course",
+          "page": {
+            "slug": "el-tamarindo-golf-course",
+            "name": "El Tamarindo Golf Course",
+            "region": "costalegre",
+            "place": "Costalegre",
+            "href": "/destinations/costalegre/courses/el-tamarindo-golf-course",
+            "architect": "David Fleming",
+            "architects": [
+              "David Fleming"
+            ],
+            "label": "",
+            "greenFee": 165,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/course-refs/el-tamarindo-golf-course/01.jpg",
+              "credit": "Four Seasons Resort Tamarindo"
+            }
+          },
+          "design": "David Fleming",
+          "place": "Costalegre",
+          "tournament": "—",
+          "fee": "$165",
+          "access": "Resort (Four Seasons Resort Tamarindo)",
+          "tier": "public",
+          "note": "",
+          "standout": ""
+        },
+        {
+          "name": "La Ceiba (Club de Golf de Yucatán)",
+          "slug": "la-ceiba-golf-club",
+          "page": {
+            "slug": "la-ceiba-golf-club",
+            "name": "La Ceiba (Club de Golf de Yucatán)",
+            "region": "merida",
+            "place": "Mérida",
+            "href": "/destinations/merida/courses/la-ceiba-golf-club",
+            "architect": "Félix Mier y Terán",
+            "architects": [
+              "Félix Mier y Terán"
+            ],
+            "label": "Joya escondida",
+            "greenFee": 184,
+            "guestsOnly": false,
+            "photo": null
+          },
+          "design": "Félix Mier y Terán",
+          "place": "Mérida",
+          "tournament": "—",
+          "fee": "$184",
+          "access": "Público (visitantes bienvenidos todos los días)",
+          "tier": "public",
+          "note": "",
+          "standout": ""
+        },
+        {
+          "name": "Palma Real Golf Club",
+          "slug": "palma-real-golf-club",
+          "page": {
+            "slug": "palma-real-golf-club",
+            "name": "Palma Real Golf Club",
+            "region": "multi-city",
+            "place": "Multi City",
+            "href": "/destinations/multi-city/courses/palma-real-golf-club",
+            "architect": "Robert Trent Jones II",
+            "architects": [
+              "Robert Trent Jones II"
+            ],
+            "label": "Jugable y relajado",
+            "greenFee": 110,
+            "guestsOnly": false,
+            "photo": null
+          },
+          "design": "Robert Trent Jones II",
+          "place": "Multi City",
+          "tournament": "—",
+          "fee": "$110",
+          "access": "Público / resort (visitantes con reservación)",
+          "tier": "public",
+          "note": "",
+          "standout": ""
+        },
+        {
+          "name": "Rancho Avándaro",
+          "slug": "rancho-avandaro-golf-club",
+          "page": {
+            "slug": "rancho-avandaro-golf-club",
+            "name": "Rancho Avándaro",
+            "region": "multi-city",
+            "place": "Multi City",
+            "href": "/destinations/multi-city/courses/rancho-avandaro-golf-club",
+            "architect": "",
+            "architects": [],
+            "label": "Vistas icónicas",
+            "greenFee": 276,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/course-refs/rancho-avandaro-golf-club/01.jpg",
+              "credit": "Rancho Avándaro"
+            }
+          },
+          "design": "—",
+          "place": "Multi City",
+          "tournament": "—",
+          "fee": "$276",
+          "access": "Semiprivado (fraccionamiento residencial cerrado; acceso por confirmar)",
+          "tier": "public",
+          "note": "",
+          "standout": ""
+        },
+        {
+          "name": "TPC Danzante Bay",
+          "slug": "tpc-danzante-bay",
+          "page": {
+            "slug": "tpc-danzante-bay",
+            "name": "TPC Danzante Bay",
+            "region": "multi-city",
+            "place": "Multi City",
+            "href": "/destinations/multi-city/courses/tpc-danzante-bay",
+            "architect": "Rees Jones",
+            "architects": [
+              "Rees Jones",
+              "Steve Weisser"
+            ],
+            "label": "Bucket list",
+            "greenFee": 595,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/course-refs/tpc-danzante-bay/01.jpg",
+              "credit": "TPC Danzante Bay"
+            }
+          },
+          "design": "Rees Jones",
+          "place": "Multi City",
+          "tournament": "—",
+          "fee": "$595",
+          "access": "Resort (huéspedes y visitantes)",
+          "tier": "public",
+          "note": "",
+          "standout": ""
+        },
+        {
+          "name": "Ventanas de San Miguel",
+          "slug": "ventanas-de-san-miguel",
+          "page": {
+            "slug": "ventanas-de-san-miguel",
+            "name": "Ventanas de San Miguel",
+            "region": "san-miguel-de-allende",
+            "place": "San Miguel de Allende",
+            "href": "/destinations/san-miguel-de-allende/courses/ventanas-de-san-miguel",
+            "architect": "Nick Faldo",
+            "architects": [
+              "Nick Faldo",
+              "Schmidt-Curley"
+            ],
+            "label": "Prueba de campeonato",
+            "greenFee": 204,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/course-refs/ventanas-de-san-miguel/01.jpg",
+              "credit": "Ventanas de San Miguel"
+            }
+          },
+          "design": "Nick Faldo",
+          "place": "San Miguel de Allende",
+          "tournament": "—",
+          "fee": "$204",
+          "access": "Resort (abierto a visitantes)",
+          "tier": "public",
+          "note": "",
+          "standout": ""
+        },
+        {
+          "name": "Vidanta Puerto Peñasco Nicklaus Course",
+          "slug": "vidanta-puerto-penasco-nicklaus-course",
+          "page": {
+            "slug": "vidanta-puerto-penasco-nicklaus-course",
+            "name": "Vidanta Puerto Peñasco Nicklaus Course",
+            "region": "multi-city",
+            "place": "Multi City",
+            "href": "/destinations/multi-city/courses/vidanta-puerto-penasco-nicklaus-course",
+            "architect": "Jack Nicklaus",
+            "architects": [
+              "Jack Nicklaus",
+              "Jack Nicklaus II"
+            ],
+            "label": "Top en México",
+            "greenFee": null,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/course-refs/vidanta-puerto-penasco-nicklaus-course/01.jpg",
+              "credit": "Vidanta"
+            }
+          },
+          "design": "Jack Nicklaus",
+          "place": "Multi City",
+          "tournament": "—",
+          "fee": "Cotización a solicitud",
+          "access": "Resort (abierto al público con reservación)",
+          "tier": "public",
+          "note": "",
+          "standout": ""
+        }
+      ]
+    ],
+    [
+      "Huéspedes de resort y hotel",
+      [
+        {
+          "name": "Costa Palmas Golf Club",
+          "slug": "costa-palmas-golf-club",
+          "page": {
+            "slug": "costa-palmas-golf-club",
+            "name": "Costa Palmas Golf Club",
+            "region": "multi-city",
+            "place": "Multi City",
+            "href": "/destinations/multi-city/courses/costa-palmas-golf-club",
+            "architect": "Robert Trent Jones II",
+            "architects": [
+              "Robert Trent Jones II"
+            ],
+            "label": "Top en México",
+            "greenFee": 300,
+            "guestsOnly": true,
+            "photo": {
+              "src": "/media/course-refs/costa-palmas-golf-club/01.jpg",
+              "credit": "Costa Palmas"
+            }
+          },
+          "design": "Robert Trent Jones II",
+          "place": "Multi City",
+          "tournament": "—",
+          "fee": "$300",
+          "access": "Privado (huéspedes de Four Seasons y socios)",
+          "tier": "resort",
+          "note": "",
+          "standout": ""
+        }
+      ]
+    ]
+  ],
+  "best": null,
+  "hosts": [],
+  "seasons": [
+    [
+      "Altiplano",
+      "Querétaro · San Miguel · Valle · Oct – Abr · $$",
+      "El altiplano central de México está seco de octubre a abril. Febrero es el mejor mes: mañanas despejadas y frescas, tardes cálidas. Evita la temporada de lluvias de junio a septiembre. La altura suma 5–8% de distancia; ajusta tus distancias."
+    ],
+    [
+      "Costa del Pacífico",
+      "Acapulco · Mazatlán · Loreto · Nov – May · $$",
+      "Las rondas en la costa del Pacífico están en su mejor momento de noviembre a mayo: cálido, seco, poca humedad. Loreto tiene la temporada más larga, hasta junio. Los tres evitan el riesgo de huracanes de agosto a octubre. Loreto es el destino de golf con el clima más estable de México."
+    ],
+    [
+      "Huracanes / baja",
+      "Según la región · Jul – Oct · $",
+      "La costa del Pacífico tiene el mayor riesgo de huracanes de agosto a octubre. En el altiplano llegan tormentas todas las tardes. La temporada baja solo conviene si tu agenda aguanta moverse una semana. Un seguro de viaje con cobertura por clima es lo estándar."
+    ]
+  ],
+  "faqs": [
+    [
+      "¿Qué campos cuentan como destinos escondidos de México?",
+      "Seis regiones que valen el desvío: Valle de Bravo (Nicklaus junto al lago), Querétaro (el trío del Bajío en el altiplano), San Miguel de Allende (Faldo en la ladera), Acapulco (Tres Vidas), Mazatlán (Estrella del Mar) y Loreto (Rees Jones sobre el Mar de Cortés)."
+    ],
+    [
+      "¿Cuál es mejor para una primera visita?",
+      "San Miguel de Allende. Solo la ciudad colonial vale el viaje, el golf en Ventanas es excelente sin ser brutal y el aeropuerto BJX está a poco más de una hora de la Ciudad de México."
+    ],
+    [
+      "¿Vale la pena el vuelo más largo a Loreto?",
+      "Sí, sobre todo si ya conoces Cabo. Loreto se siente como Cabo hace 30 años: el terreno espectacular del Mar de Cortés, muy poca gente y vuelos directos desde LAX. Loreto Bay (Rees Jones) es la ronda de campeonato más remota de México."
+    ],
+    [
+      "¿Cómo reservo estos campos?",
+      "La mayoría no está en los canales de reserva normales. Funciona con invitaciones de socios, reservas como amigo de la casa y emails directos. Dinos dónde quieres jugar y te explicamos cómo se accede en ese destino."
+    ],
+    [
+      "¿Puedo combinar varios en un solo viaje?",
+      "No te lo recomendamos. Cada región tiene su propio ritmo y necesita al menos 3 días para sentirla de verdad. Brincar de una a otra suele arruinar la experiencia. Elige una por viaje y regresa por la siguiente."
+    ],
+    [
+      "¿Cuál es la mejor época para jugar golf en el altiplano mexicano?",
+      "De octubre a abril. Febrero es el punto ideal: mañanas despejadas, secas y frescas, tardes templadas. Evita de junio a septiembre (tormentas por la tarde). Arriba de 6,000 pies, cada campo juega medio palo más corto: ajusta tus distancias desde el primer día."
+    ]
+  ],
+  "access": [],
+  "moved": [],
+  "overview": {
+    "label": "Fuera de los reflectores",
+    "pre": "México es más grande que",
+    "em": "sus cinco corredores famosos.",
+    "paragraphs": [
+      "Más allá de los nombres que ya conoces, México esconde decenas de destinos que valen el vuelo: pueblos coloniales, bahías tranquilas del Pacífico, altiplano junto al lago, piedra caliza caribeña. Aquí van algunos ejemplos."
+    ]
+  },
+  "costs": {
+    "label": "Las cuentas",
+    "pre": "Lo que",
+    "em": "cuesta la ronda fuera del mapa.",
+    "intro": "Los destinos únicos son el nivel de precios más variable del golf en México: aeropuertos regionales, resorts más chicos y la cultura de invitado de socio complican las cuentas. Planea un destino por viaje, no un itinerario de varias regiones.",
+    "callouts": [
+      [
+        "La regla de las relaciones",
+        "Estas rondas no se reservan, se arreglan. Invitaciones de socios, reservas como amigo de la casa, correspondencia previa con la secretaría del club. Dinos dónde quieres jugar y te explicamos cómo se accede: la relación correcta importa más que la semana correcta."
+      ],
+      [
+        "La regla de una sola región",
+        "Elige un destino único por viaje. La tentación de encadenar Querétaro + San Miguel + Valle de Bravo en una sola semana destruye la experiencia. Cada región tiene su propio ritmo: dale mínimo tres días para captar qué la hace distinta."
+      ]
+    ],
+    "packages": null
+  },
+  "logistics": {
+    "label": "En el terreno",
+    "pre": "Cómo llegar",
+    "em": "y moverte por las regiones.",
+    "items": [
+      [
+        "Aeropuerto y llegadas",
+        "Aeropuertos regionales: Querétaro (QRO), León/Bajío (BJX) para San Miguel, Acapulco (ACA), Mazatlán (MZT), Loreto (LTO). MEX es la puerta de entrada para Valle de Bravo. La mayoría de los destinos requiere un traslado por tierra de 1-3 horas desde el aeropuerto más cercano."
+      ],
+      [
+        "Cómo llegar a los campos",
+        "Lo normal es una camioneta privada; la calidad de los taxis regionales varía. Valle de Bravo: 2 h desde MEX. San Miguel: 1.5 h desde BJX. Loreto: 30 min desde LTO. Acapulco: 45 min desde ACA. Planea los traslados con anticipación; las apps de transporte no son confiables fuera de las grandes ciudades."
+      ],
+      [
+        "Entre campos",
+        "Aquí lo normal son viajes a un solo destino. Evita itinerarios de varias regiones: el costo de los traslados y el tiempo perdido destruyen la experiencia. Elige un destino, dale tres días y regresa por el siguiente en otro viaje."
+      ],
+      [
+        "Moneda y propinas",
+        "En los clubes regionales mejor pesos; en los resorts grandes aceptan USD (Loreto Bay, Estrella del Mar, Tres Vidas). Propina al caddie: $25–$40 por ronda en USD o su equivalente en pesos. Propina en restaurantes: 10–15%, un poco menos que en los corredores turísticos."
+      ]
+    ]
+  },
+  "sources": [],
+  "readNext": [
+    [
+      "/destinations/mexico-city",
+      "golf en la Ciudad de México",
+      "El circuito de la ciudad detrás de las escapadas: 20+ campos, una altura que suma 10–12% de carry y acceso a través de un socio o un hotel."
+    ],
+    [
+      "/destinations/los-cabos",
+      "Precios de los campos en Los Cabos",
+      "18 campos de campeonato, green fees de $260 a $700 por ronda."
+    ]
+  ],
+  "newsletter": "Estamos publicando los destinos menos conocidos que valen el vuelo, qué hace distinto a cada uno y cómo reservar de verdad la ronda. Déjanos tu email y te lo mandamos cuando esté listo. Sin spam; te das de baja cuando quieras.",
+  "newsletterTitle": "Entérate de todo sobre el México escondido.",
+  "heroPhoto": null
+}

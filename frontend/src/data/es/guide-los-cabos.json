@@ -1,0 +1,361 @@
+{
+  "updated": "noviembre 2026",
+  "byline": "Redacción GOLF° IN MEXICO° · Investigación de campo: Pablo De La Mora y José Islas",
+  "answer": "Los Cabos tiene 18 campos de campeonato en operación —y 5 más en construcción— a lo largo de 20 millas espectaculares donde el desierto de Sonora se encuentra con el Mar de Cortés. Los green fees van de $260 a $700 USD por ronda según el campo y la temporada, y de octubre a mayo las condiciones están en su mejor momento. Es la mayor concentración de diseños de arquitectos de firma en México, y recorrerla bien exige un mapa de quien la conoce por dentro.",
+  "facts": [
+    [
+      "Campos",
+      "18 en operación · 5 en construcción · 23 para 2026"
+    ],
+    [
+      "Diseñadores",
+      "Nicklaus · Woods · Norman · Love III · Weiskopf · Fazio · Couples · Eckenrode · RTJ Jr."
+    ],
+    [
+      "Green fees",
+      "$260 – $700 USD por ronda (según campo y temporada)"
+    ],
+    [
+      "Mejores meses",
+      "Octubre – mayo"
+    ],
+    [
+      "Evita",
+      "Agosto – septiembre (pico de huracanes y lluvias)"
+    ],
+    [
+      "Aeropuerto",
+      "Aeropuerto Internacional de Los Cabos (SJD)"
+    ],
+    [
+      "FBO privado",
+      "Terminal dedicada en SJD · CSL"
+    ],
+    [
+      "Idiomas",
+      "Inglés y español (todo el personal de los campos)"
+    ],
+    [
+      "Caddie",
+      "Obligatorio en los campos de primer nivel · Recomendado en todo el corredor"
+    ],
+    [
+      "USD",
+      "Se aceptan en todo el corredor"
+    ]
+  ],
+  "overview": [
+    "El golf en Los Cabos abarca 18 campos de campeonato en operación —y 5 más en construcción— a lo largo de 20 millas espectaculares donde el desierto de Sonora se encuentra con el Mar de Cortés. Donde la montaña choca directo con la costa, arquitectos de firma han trazado un paraíso con el sello de Nicklaus, Woods, Norman, Love III y Fazio.",
+    "El destino se divide en tres zonas muy distintas. San José del Cabo ofrece un ambiente cultural. Cabo San Lucas gira en torno a la marina y su vida nocturna. Pero el verdadero centro del golf de campeonato es el Corredor Turístico: esta franja exclusiva concentra la gran mayoría de los mejores campos.",
+    "Dieciocho campos recorren el corredor, y abrirán más para 2026. Ocho de los mejores trazados llevan la firma de Nicklaus, Woods, Norman, Love III y Fazio, incluidos tres solo de Nicklaus. El terreno marca la diferencia: hoyos sobre los acantilados del Pacífico en Quivira, dunas estilo links en Diamante, arroyos del desierto en Club Campestre, cierres junto a la costa en Puerto Los Cabos. Ningún otro destino de golf en Los Cabos reúne esta variedad en 20 millas. Con Diamante Dunes (No. 64) y Cove Club (No. 73) en la lista World's 100 Greatest Courses 2026–2027 de Golf Digest, y Diamante Dunes, Cove Club, Twin Dolphin y Quivira en el top 10 de México 2026 de Golf Digest, Los Cabos es la capital indiscutible del golf en Latinoamérica."
+  ],
+  "coursesIntro": "De Nicklaus a Tiger Woods y Fazio: la guía de campo completa de nuestra selección entre los 18 campos en operación de Los Cabos, con notas de acceso.",
+  "courses": [
+    {
+      "name": "Diamante Dunes",
+      "slug": "diamante-dunes-course",
+      "design": "Davis Love III",
+      "rank": "1",
+      "fee": "$500",
+      "access": "Huéspedes y socios de Diamante",
+      "note": "Una auténtica experiencia links, enmarcada por enormes dunas de arena blanca del lado del Pacífico de Cabo San Lucas. Se camina y se juega como un clásico campo británico, pero con 340 días de sol. No. 64 en la lista World's 100 Greatest Courses 2026–2027 de Golf Digest. La vara con la que se miden todos los campos de Cabo."
+    },
+    {
+      "name": "Cove Club",
+      "slug": null,
+      "photo": "/images/thg0cb44-cove-club.webp",
+      "credit": "Kit de prensa de Cove Club",
+      "design": "Jack Nicklaus",
+      "rank": "2",
+      "fee": "Solo socios",
+      "access": "Socios y sus invitados",
+      "note": "El campo que puso a Los Cabos en el mapa mundial del golf. Reabrió en 2019 como Cove Club con hoyos rediseñados por Nicklaus, incluido un nuevo par 3 en el 17 que baja hacia un green con el mar de fondo. No. 73 en la lista World's 100 Greatest Courses 2026–2027 de Golf Digest."
+    },
+    {
+      "name": "Twin Dolphin",
+      "slug": "twin-dolphin-golf-club",
+      "design": "Fred Couples",
+      "rank": "5",
+      "fee": "$700 (incluye caddie)",
+      "access": "Huéspedes de Montage Los Cabos",
+      "note": "Construido en los terrenos históricos del hotel Twin Dolphin original. Cambios de elevación impresionantes y greens de nivel torneo, con el Mar de Cortés a la vista desde casi todas las salidas. Incluye instalaciones de práctica y dos estaciones de servicio en el campo. Acceso para huéspedes de Montage Los Cabos (hotel de 122 habitaciones) y Montage Residences."
+    },
+    {
+      "name": "Quivira",
+      "slug": "quivira-golf-club",
+      "design": "Jack Nicklaus",
+      "rank": "6",
+      "fee": "$360–$465 oct–may · $306–$395 jun–sep",
+      "access": "Huéspedes de Pueblo Bonito",
+      "note": "La joya del corredor. Quivira se juega sobre los acantilados del Pacífico, arriba de Cabo San Lucas: cada hoyo tiene vista al mar, sube desde los cañones del desierto y remata con uno de los cierres más fotografiados de Norteamérica. La tarifa incluye carrito, área de práctica y toda la comida y bebida en cuatro estaciones de servicio. Acceso para huéspedes de Pueblo Bonito Oceanfront Resorts: Pacifica · Sunset Beach · Rosé · Los Cabos."
+    },
+    {
+      "name": "El Cardonal",
+      "slug": "diamante-el-cardonal",
+      "design": "Tiger Woods",
+      "rank": "11",
+      "fee": "$500",
+      "access": "Huéspedes y socios de Diamante",
+      "note": "El primer diseño en solitario de Tiger Woods fuera de Estados Unidos. Fairways amplios y nobles entre arroyos del desierto, muy jugables para grupos con hándicaps mezclados, con vistas panorámicas al Pacífico en todo el recorrido. Sede del World Wide Technology Championship del PGA Tour. Inspirado en los clásicos de la Costa Oeste donde Tiger creció jugando —Riviera, Bel-Air—, con bunkers atrevidos y corredores de fairway amplios."
+    },
+    {
+      "name": "Cabo del Sol Course",
+      "slug": "cabo-del-sol-golf-course",
+      "design": "Tom Weiskopf",
+      "rank": "13",
+      "fee": "$385",
+      "access": "Tee times para visitantes, reservados directamente",
+      "note": "El campo de desierto de Tom Weiskopf, inaugurado en 2001, con seis hoyos nuevos desde noviembre de 2023. Una opción sólida de desierto que no hay que confundir con Cove Club."
+    },
+    {
+      "name": "Palmilla",
+      "slug": "palmilla-golf-club",
+      "design": "Jack Nicklaus",
+      "rank": "17",
+      "fee": "Huéspedes del hotel",
+      "access": "Huéspedes de One&Only Palmilla; los nueve hoyos Arroyo siguen abiertos durante la renovación de 2026",
+      "note": "El campo con el que nació el Corredor Turístico moderno en 1992. Tres vueltas de nueve intercambiables (Mountain, Arroyo, Ocean): el primer Jack Nicklaus Signature Design en Latinoamérica. Los nueve Ocean, añadidos en 1997, tienen una caída de 600 pies del tee al green. El juego para externos depende de la temporada y el horario; tarifas preferentes para huéspedes de One&Only Palmilla."
+    },
+    {
+      "name": "Chileno Bay",
+      "slug": "chileno-bay-golf-club",
+      "design": "Tom Fazio",
+      "rank": "—",
+      "fee": "$518",
+      "access": "Huéspedes de Auberge Chileno Bay",
+      "note": "El único diseño de Tom Fazio en Cabo, trazado sobre formas suaves y ondulantes que imitan el oleaje del mar. Vista al mar desde cada hoyo. Dos par 5 seguidos en el 6 y el 7. Dos par 4 cortos alcanzables desde el tee. El 18, un par 4, baja hacia un green con borde infinito a 512 yardas desde las salidas de atrás. Solo para huéspedes del resort Auberge Chileno Bay."
+    },
+    {
+      "name": "Solmar Golf Links",
+      "slug": "solmar-golf-links",
+      "design": "Greg Norman",
+      "rank": "—",
+      "fee": "$400",
+      "access": "Abierto al público",
+      "note": "Un links auténtico con pot bunkers de paredes de pasto apilado, idénticos a los de los links costeros británicos: los únicos en México. Tres ecosistemas: dunas del Pacífico, bosque de cactus y cierre costero. Varios hoyos se juegan directo hacia la playa. El enfoque de mínima intervención de Greg Norman conservó por completo los contornos naturales. Y sí: Troya se filmó en estos acantilados. Tarifas preferentes para huéspedes de los hoteles de Grupo Solmar; incluyen carrito, agua, área de práctica y dos estaciones de servicio en el campo."
+    },
+    {
+      "name": "Puerto Los Cabos",
+      "slug": "puerto-los-cabos-golf-club",
+      "design": "Greg Norman + Jack Nicklaus",
+      "rank": "—",
+      "fee": "$395",
+      "access": "Abierto a visitantes",
+      "note": "Hoy es un complejo de 27 hoyos con tres combinaciones de 18. Nicklaus volvió en 2017 para construir una segunda vuelta de nueve, inaugurada en 2018. El campo de Norman tiene más de 400 pies de cambio de elevación. La única colaboración Nicklaus + Norman en México. El green fee incluye bolas de práctica, carrito, comida y bebida."
+    },
+    {
+      "name": "Club Campestre San José",
+      "slug": "club-campestre-san-jose",
+      "design": "Nicklaus Design",
+      "rank": "—",
+      "fee": "$260",
+      "access": "Público, sujeto a disponibilidad",
+      "note": "La mejor relación calidad-precio del corredor. Serpentea entre arroyos agrestes del desierto, con la Sierra de la Laguna enmarcando cada golpe. La sensación más fiel del relieve del interior de Baja. Siempre señalado como el de mejor valor del corredor, y constantemente en gran estado. Campo asociado de Puerto Los Cabos y Cabo Real para paquetes combinados. El green fee incluye bolas de práctica, carrito y agua."
+    },
+    {
+      "name": "Cabo Real",
+      "slug": "cabo-real-golf-course",
+      "design": "Robert Trent Jones II",
+      "rank": "—",
+      "fee": "$260",
+      "access": "Abierto a visitantes (The Palace Company)",
+      "note": ""
+    },
+    {
+      "name": "Oleada Golf Links",
+      "slug": "oleada-golf-links",
+      "design": "Ernie Els",
+      "rank": "—",
+      "fee": "$300",
+      "access": "Sujeto a disponibilidad para jugadores externos",
+      "note": "Ronda del lado del Pacífico en Los Cabos, sujeta a disponibilidad para jugadores externos."
+    }
+  ],
+  "partners": [
+    [
+      "Fora Travel",
+      "Somos asesores independientes de Fora: tu hospedaje se reserva a través de Fora"
+    ],
+    [
+      "PGA México",
+      "Con el aval de la asociación de profesionales de golf de México"
+    ],
+    [
+      "Cocobay",
+      "Nuestro socio de villas en Los Cabos, con su propia tarifa directa"
+    ]
+  ],
+  "costsIntro": "Los paquetes de golf típicos en Cabo suelen ocultar el costo real al esconder cargos obligatorios y gastos de costumbre. Así se ve, de forma realista, un viaje de golf de 4 noches y 3 rondas a media temporada, sin sorpresas.",
+  "costs": [
+    [
+      "Vuelos (comerciales)",
+      "$280",
+      "$550",
+      "Directos: LAX · DFW · HOU"
+    ],
+    [
+      "Hospedaje (4 noches)",
+      "$600",
+      "$2,400",
+      "Ocupación doble"
+    ],
+    [
+      "Green fees (3 rondas)",
+      "$650",
+      "$1,200",
+      "Mezcla de acantilados de élite y arroyo"
+    ],
+    [
+      "Propinas de caddie",
+      "$120",
+      "$180",
+      "Sugerimos $40–$60 por bolsa por ronda"
+    ],
+    [
+      "Renta de palos (opcional)",
+      "$0",
+      "$200",
+      "Sets premium en todas las pro shops"
+    ],
+    [
+      "Transporte terrestre",
+      "$80",
+      "$250",
+      "Shuttle vs. SUV privada"
+    ],
+    [
+      "Comida y bebida",
+      "$300",
+      "$800",
+      "Mejores campos: estaciones todo incluido"
+    ],
+    [
+      "Total todo incluido (por persona)",
+      "$2,030",
+      "$5,580",
+      "Estimado a media temporada · 4 noches, 3 rondas"
+    ]
+  ],
+  "feesNote": "Green fees vigentes en 2026, confirmados por escrito antes de que reserves. Los de Quivira son las tarifas de temporada que publica el club.",
+  "luxury": "La elección de tu campamento base define en buena medida el costo total. Campos premium como Quivira y Twin Dolphin cambian por completo la ecuación de valor al incluir en el green fee estaciones con comida gourmet y bebidas de primera.",
+  "twilight": "Los horarios de tarde (normalmente desde la 1:00 o 2:00 PM) dan descuentos de 30–50%. En los meses de transición de primavera, un tee time a primera hora de la tarde te deja terminar los 18 hoyos antes del atardecer sin descuadrar el presupuesto.",
+  "logistics": [
+    [
+      "Aeropuerto y llegadas",
+      "El Aeropuerto Internacional de Los Cabos (SJD) tiene su propia terminal FBO para vuelos privados. Varios resorts del Corredor organizan traslados directos de la pista a la villa."
+    ],
+    [
+      "Cómo llegar a los campos",
+      "El Corredor se extiende 20 millas a lo largo de la Carretera 1. La mayoría de los campos está a 15–30 min de SJD. Lo normal para golfistas de viaje son traslados privados en SUV reservados con anticipación. Uber es legal, pero a menudo no puede pasar los accesos de seguridad de los clubes privados de élite."
+    ],
+    [
+      "Entre campos",
+      "El Corredor concentra la mayoría de los mejores campos. Considera 45 minutos en tu agenda por el tráfico de mediodía. San José del Cabo: ambiente cultural, noches más tranquilas. Cabo San Lucas: marina y vida nocturna."
+    ],
+    [
+      "Moneda y propinas",
+      "Se aceptan USD en todo el corredor de golf. Propinas de caddie: sugerimos $40–$60 por bolsa por ronda; confirma con el club si hay una tarifa de caddie obligatoria. Restaurantes: se espera 15–20%. Hay cajeros para pesos si los prefieres. Los Cabos está entre los destinos turísticos más seguros de México, con excelente seguridad en todo el corredor."
+    ]
+  ],
+  "seasons": [
+    [
+      "Temporada alta",
+      "nov – abr · 72–82°F · Mucha gente · $$$",
+      "La ventana ideal. Cielos despejados, poca humedad, viento manejable. Todos los campos están en sus mejores condiciones; por eso los golfistas serios planean su viaje a Los Cabos en invierno y reservan primero el vuelo y después el tee time."
+    ],
+    [
+      "Temporada de transición",
+      "may – jun · 82–90°F · Moderada · $$",
+      "La jugada de valor. Más calor, pero muy jugable con tee times temprano. Los campos están más tranquilos y muchos resorts incluyen el golf en la tarifa de la habitación. Si aguantas el calor, los números son difíciles de superar."
+    ],
+    [
+      "Verano / huracanes",
+      "jul – oct · 85–95°F · Poca gente · $",
+      "El trato de la temporada baja: descuentos fuertes, pero con humedad, tormentas por la tarde y riesgo ocasional de huracán. Las mañanas todavía pueden ser excelentes. La flexibilidad es el precio de entrada."
+    ]
+  ],
+  "faqs": [
+    [
+      "¿Cuál es la mejor época del año para jugar golf en Los Cabos?",
+      "La temporada alta va de noviembre a abril: seco, cálido (72–82°F) y casi sin lluvia. Para el mejor equilibrio entre clima y precio, finales de octubre y mayo son los mejores meses de transición: gran estado de los campos, menos gente y mejores tarifas. El verano (julio–octubre) trae descuentos fuertes, pero también humedad, tormentas por la tarde y riesgo de huracanes. Agosto y septiembre son los meses que hay que evitar por completo."
+    ],
+    [
+      "¿Cuánto cuesta un viaje de golf a Los Cabos?",
+      "Un viaje realista de 4 noches y 3 rondas va de $2,030 en el rango bajo a $5,580 en el nivel de lujo, por persona. Las variables principales son el hotel y los campos que elijas. Los green fees van de $260 en Cabo Real y Club Campestre San José a $700 en Twin Dolphin, con caddie incluido. Según nuestra investigación editorial, a media temporada 2026."
+    ],
+    [
+      "¿Cuál es el mejor campo de Los Cabos?",
+      "Diamante Dunes está en la lista World's 100 Greatest Courses de Golf Digest: es la referencia del links. Quivira es el más espectacular visualmente. Cove Club tiene peso histórico y es No. 73 en la World's 100 Greatest de Golf Digest. Twin Dolphin tiene los greens de nivel torneo más nuevos. Solmar es el mejor campo que puedes reservar sin llave de habitación. La respuesta correcta depende por completo del tipo de golfista que eres."
+    ],
+    [
+      "¿Tengo que llevar mis propios palos?",
+      "No. Hay sets de renta premium —TaylorMade, Callaway— en todos los campos principales por $50–$80 por ronda. Aun así, los golfistas serios preferirán los suyos. Las aerolíneas suelen cobrar $35–$50 por trayecto por una bolsa de golf. Quivira y Twin Dolphin ofrecen sets del año en sus pro shops. En Los Cabos, la renta de palos nunca es motivo para saltarte un campo."
+    ],
+    [
+      "¿Se pueden caminar los campos?",
+      "La mayoría exige carrito o lo recomienda mucho. El terreno de desierto, los cambios de elevación tan marcados y las distancias entre hoyos hacen poco práctico caminar. Quivira sube 275 pies en los primeros cinco hoyos: no se puede caminar. Club Campestre y Palmilla tienen un terreno más manejable. El caddie camina contigo sin importar la política de carritos: es tu guía en el campo, no compañía opcional."
+    ],
+    [
+      "¿Es seguro viajar a Los Cabos?",
+      "Sí. Los Cabos es uno de los destinos turísticos más seguros de México. El corredor de resorts y los campos tienen una excelente infraestructura de seguridad. El destino ha invertido cerca de $50 millones en mejoras de seguridad y opera una red en tiempo real con los hoteles locales. Aplican las precauciones normales de cualquier destino internacional."
+    ],
+    [
+      "¿Por qué tantos golfistas eligen Los Cabos?",
+      "Dos campos en la lista World's 100 Greatest de Golf Digest. Cuatro de los 10 mejores campos de México. Diseños de campeonato de Nicklaus, Woods, Norman, Love III y Fazio, en un solo corredor de 20 millas. 350 días de sol al año (Los Cabos Tourism Board). Vuelos directos desde más de 30 ciudades de Estados Unidos. El vuelo desde LAX dura menos de tres horas, menos que manejar de Los Ángeles a Palm Springs."
+    ],
+    [
+      "¿Cuáles son los mejores campos de golf en Cabo San Lucas?",
+      "Dentro de Cabo San Lucas, Quivira Golf Club (Jack Nicklaus) es el más espectacular: cada hoyo tiene vista al Pacífico y el par 3 del 13 está 150 pies sobre el mar. Solmar Golf Links (Greg Norman) ofrece una auténtica experiencia links con pot bunkers de paredes de pasto apilado, los únicos en México. El Dunes Course de Diamante (Davis Love III), a 15 minutos al norte del centro de Cabo San Lucas, está en la lista World's 100 Greatest Courses de Golf Digest, y El Cardonal (Tiger Woods) es sede del World Wide Technology Championship del PGA Tour. Juntos, estos cuatro definen el golf de primer nivel en Cabo San Lucas."
+    ],
+    [
+      "¿Cómo consigo acceso a los campos privados de Los Cabos?",
+      "Aquí el acceso privado tiene dos caminos: hospedarte en el hotel correcto o conocer al socio correcto. Cove Club es para socios y sus invitados. Twin Dolphin requiere una reservación en Montage Los Cabos. Chileno Bay es exclusivo para huéspedes de Auberge Chileno Bay. El Dorado es solo para socios e invitados de socios, sin acceso público. Quivira se abre a huéspedes de Pueblo Bonito Oceanfront. La forma más rápida de entrar es reservar el resort que corresponde. GOLF° IN MEXICO° coordina el resort y el tee time como un paquete: ese es todo nuestro modelo."
+    ],
+    [
+      "¿Tengo que dar propina a los caddies?",
+      "Sí: la propina se espera y es una parte importante de su ingreso. Sugerimos $40–$60 por bolsa por ronda; confirma con el club si hay una tarifa de caddie obligatoria. En Twin Dolphin, la tarifa de caddie de $50 es obligatoria y ya viene incluida en el precio de la reservación. En los campos de élite, el caddie es la diferencia entre una buena ronda y una gran ronda: conoce las caídas hacia el mar, los patrones del viento y las posiciones de bandera. Dale propina en consecuencia."
+    ]
+  ],
+  "newsletter": "Vamos publicando notas de campos, precios reales e información de acceso de Los Cabos. Déjanos tu correo y te lo mandamos cuando esté listo. Sin spam; te das de baja cuando quieras.",
+  "moreIntro": "Cabo, Cancún, Vallarta, Punta Mita, CDMX y las rutas escondidas: el resto del país en un solo directorio editorial.",
+  "readNext": [
+    [
+      "/destinations/mexico-city",
+      "golf en Ciudad de México",
+      "Más de 20 campos a menos de 90 minutos del centro, casi todos privados, y el costo total de viaje más bajo de todos nuestros destinos."
+    ],
+    [
+      "/destinations/cancun-riviera-maya",
+      "campos de golf en la Riviera Maya",
+      "Más de 12 campos de campeonato a lo largo de 80 millas de costa caribeña, con green fees desde $190."
+    ]
+  ],
+  "sources": [
+    [
+      "Quivira Golf Club: tarifas de temporada publicadas",
+      "https://www.quiviraloscabos.com/golf"
+    ],
+    [
+      "NOAA / National Hurricane Center: fechas de la temporada",
+      "https://www.nhc.noaa.gov/climo/"
+    ],
+    [
+      "Los Cabos Tourism Board: clima por temporada y 350 días de sol",
+      "https://www.visitloscabos.travel/plan/useful-information/weather/"
+    ],
+    [
+      "Questro: instalaciones, reservaciones, tarifas y rentas",
+      "https://questrogolf.com/"
+    ],
+    [
+      "Solmar Golf Links: tarjeta oficial",
+      "https://solmargolf.com/images/SCORE-CARD-EN.pdf"
+    ]
+  ],
+  "sourceNotes": [
+    "Banco de México: datos del tipo de cambio peso/USD (mayo 2026)",
+    "Mexico News Daily: reportes sobre infraestructura de seguridad",
+    "Tarifarios de resorts: Solmar Group · Pueblo Bonito · Auberge · One&Only · Montage (T1 2026)",
+    "Green fee de Cabo Real: The Palace Company (noviembre 2026)"
+  ]
+}

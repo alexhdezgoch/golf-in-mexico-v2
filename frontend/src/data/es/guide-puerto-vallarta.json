@@ -1,0 +1,592 @@
+{
+  "slug": "puerto-vallarta",
+  "name": "Puerto Vallarta",
+  "title": "Golf en Puerto Vallarta",
+  "seoTitle": "Golf en Puerto Vallarta | Vista Vallarta, Vidanta y El Tigre",
+  "seoDescription": "Nicklaus y Weiskopf en Vista Vallarta, sede de la World Cup 2002, Vidanta junto al río Ameca y El Tigre: el golf de Bahía de Banderas y quién puede jugar cada campo.",
+  "answer": "Puerto Vallarta y Bahía de Banderas tienen ocho campos de golf de campeonato a menos de 45 minutos del aeropuerto, diseñados por Jack Nicklaus, Tom Weiskopf, Greg Norman, Robert von Hagge y Joe Finger. El green fee va de $75 a $319 por ronda.",
+  "byline": "Editorial GOLF° IN MEXICO° · Investigación de campo de Pablo De La Mora y José Islas",
+  "facts": [
+    [
+      "Campos alrededor de la bahía",
+      "8"
+    ],
+    [
+      "Green fees",
+      "$75–$319"
+    ],
+    [
+      "Mejores meses",
+      "Nov – May"
+    ]
+  ],
+  "courses": [
+    {
+      "name": "Vidanta Vallarta Course",
+      "slug": "vidanta-vallarta-course",
+      "page": {
+        "slug": "vidanta-vallarta-course",
+        "name": "Vidanta Vallarta Course",
+        "region": "puerto-vallarta",
+        "place": "Puerto Vallarta",
+        "href": "/destinations/puerto-vallarta/courses/vidanta-vallarta-course",
+        "architect": "Greg Norman",
+        "architects": [
+          "Greg Norman"
+        ],
+        "label": "Sede de Tour",
+        "greenFee": 280,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/courses/vidanta-vallarta-course/01.jpg",
+          "credit": ""
+        }
+      },
+      "design": "Greg Norman",
+      "place": "Puerto Vallarta",
+      "tournament": "PGA TOUR · Mexico Open at VidantaWorld, desde 2022",
+      "fee": "$280",
+      "access": "Resort (tee times de Vidanta sujetos a disponibilidad)",
+      "tier": "public",
+      "note": "La única sede activa del PGA Tour en Puerto Vallarta. Diseño de Greg Norman. Sede del Mexico Open at VidantaWorld desde 2022, torneo oficial del PGA Tour que da 500 puntos de la FedEx Cup al ganador. Jon Rahm ganó en 2022, Tony Finau en 2023 y Jake Knapp en 2024. La edición 2026 se mueve al 29 de octubre–1 de noviembre, con una bolsa de $6 millones. \"Renovación del Año\" de la revista Golf Inc. en 2022. Paspalum de pared a pared; el trazado serpentea junto al río Ameca con vistas a la Sierra Madre. 15 lagos. 49 bunkers. El puente colgante para carritos de golf más largo del mundo, de 560 pies sobre el río Ameca, conecta el clubhouse con el campo. El hoyo 10 fue el más difícil del PGA Tour 2023. Abierto a huéspedes de Vidanta y al público con reserva anticipada. Caddie obligatorio, se paga en efectivo en el campo (individual $28 · pareja $45 · trío $56 · cuarteta $67).",
+      "standout": "#7 — par 4 alcanzable de drive, 297 yardas. Agua a la izquierda, bunkers a la derecha. Uno de los hoyos de riesgo-recompensa más comentados del Mexico Open."
+    },
+    {
+      "name": "Vista Vallarta Nicklaus Course",
+      "slug": "vista-vallarta-nicklaus-course",
+      "page": {
+        "slug": "vista-vallarta-nicklaus-course",
+        "name": "Vista Vallarta Nicklaus Course",
+        "region": "puerto-vallarta",
+        "place": "Puerto Vallarta",
+        "href": "/destinations/puerto-vallarta/courses/vista-vallarta-nicklaus-course",
+        "architect": "Jack Nicklaus",
+        "architects": [
+          "Jack Nicklaus",
+          "Chet Williams"
+        ],
+        "label": "Top en México",
+        "greenFee": 319,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/course-refs/vista-vallarta-nicklaus-course/01.jpg",
+          "credit": "Vista Vallarta Club de Golf"
+        }
+      },
+      "design": "Jack Nicklaus y Chet Williams",
+      "place": "Puerto Vallarta",
+      "tournament": "WGC-World Cup 2002",
+      "fee": "$319",
+      "access": "Público / resort",
+      "tier": "public",
+      "note": "El campo público más prestigioso del corredor de Puerto Vallarta. En la parte más alta de la propiedad, con vistas impresionantes a Puerto Vallarta, la Marina y Bahía de Banderas desde casi cada salida. Laderas de pasto, bosques densos de palmas y ficus gigantes, arroyos y cañadas naturales. Fiel al estilo Nicklaus: greens con mucha ondulación, equilibrados con zonas de drive generosas. Sede de la WGC-World Cup 2002. Récord del campo: 62, Phil Mickelson. Rating: 73.8 · Slope: 144. A 15 min de PVR.",
+      "standout": "#3 — par 5, 550 yardas. Pide tres tiros sólidos. El terreno sube con cada swing. El hoyo más exigente del corredor de Bahía de Banderas."
+    },
+    {
+      "name": "Vista Vallarta Weiskopf Course",
+      "slug": "vista-vallarta-weiskopf-course",
+      "page": {
+        "slug": "vista-vallarta-weiskopf-course",
+        "name": "Vista Vallarta Weiskopf Course",
+        "region": "puerto-vallarta",
+        "place": "Puerto Vallarta",
+        "href": "/destinations/puerto-vallarta/courses/vista-vallarta-weiskopf-course",
+        "architect": "Tom Weiskopf",
+        "architects": [
+          "Tom Weiskopf"
+        ],
+        "label": "Top en México",
+        "greenFee": 299,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/course-refs/vista-vallarta-weiskopf-course/01.jpg",
+          "credit": "Vista Vallarta Club de Golf"
+        }
+      },
+      "design": "Tom Weiskopf",
+      "place": "Puerto Vallarta",
+      "tournament": "—",
+      "fee": "$299",
+      "access": "Público / resort",
+      "tier": "public",
+      "note": "El lado más accesible del doble trazado de Vista Vallarta. Construido en la parte baja y oeste de la propiedad: selva cerrada, barrancas profundas, arroyos rápidos. Un paisaje muy distinto al del campo Nicklaus, aunque comparten clubhouse. Menos tiros ciegos y greens más receptivos lo hacen la ronda favorita para grupos con hándicaps mixtos. Fairways amplios, obstáculos naturales y la finura característica de Weiskopf en los par 3. Rating: 74.7 (gold) · Slope: 138.",
+      "standout": "#15 — par 3 cuesta arriba sobre una barranca. Green de varios niveles, bunkers por todos lados. Exige concentración desde la salida."
+    },
+    {
+      "name": "El Tigre Golf Club",
+      "slug": "el-tigre-golf-club",
+      "page": {
+        "slug": "el-tigre-golf-club",
+        "name": "El Tigre Golf Club",
+        "region": "puerto-vallarta",
+        "place": "Puerto Vallarta",
+        "href": "/destinations/puerto-vallarta/courses/el-tigre-golf-club",
+        "architect": "Robert von Hagge",
+        "architects": [
+          "Robert von Hagge",
+          "Mike Smelek",
+          "Rick Baril"
+        ],
+        "label": "Jugable y relajado",
+        "greenFee": 287,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/course-refs/el-tigre-golf-club/01.jpg",
+          "credit": "El Tigre Golf Club"
+        }
+      },
+      "design": "Robert von Hagge",
+      "place": "Puerto Vallarta",
+      "tournament": "—",
+      "fee": "$287",
+      "access": "Semiprivado / resort (visitantes con reservación)",
+      "tier": "public",
+      "note": "Nueve cuerpos de agua entran en juego en 12 hoyos. El encargo: \"Crear el campo de golf de campeonato más emocionante de México\". Von Hagge convirtió un terreno plano en un trazado de campeonato con desniveles moldeados, 9 cuerpos de agua en 12 hoyos y \"beach bunkers\" acechando en casi cada vuelta. El arco de piedra de la entrada recuerda un templo maya. El campo cierra con dos de sus hoyos más difíciles. Champion Bermuda en los greens, 419 Bermuda en los fairways. Los vientos del mar, sobre todo al final de la tarde, suman una variable que la tarjeta no considera. Top 10 en México 2008 (Golf Guide Magazine + Golf in Mexico Magazine).",
+      "standout": "#16 — par 4, 421 yardas, dogleg largo a la derecha. Approach a un green en península. El hoyo que define el carácter del campo: agua y precisión."
+    },
+    {
+      "name": "Nayar Course",
+      "slug": "vidanta-nayar-course",
+      "page": {
+        "slug": "vidanta-nayar-course",
+        "name": "Nayar Course",
+        "region": "puerto-vallarta",
+        "place": "Puerto Vallarta",
+        "href": "/destinations/puerto-vallarta/courses/vidanta-nayar-course",
+        "architect": "Jack Nicklaus",
+        "architects": [
+          "Jack Nicklaus"
+        ],
+        "label": "27+ hoyos",
+        "greenFee": 249,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/course-refs/vidanta-nayar-course/01.jpg",
+          "credit": "Vidanta"
+        }
+      },
+      "design": "Jack Nicklaus",
+      "place": "Puerto Vallarta",
+      "tournament": "—",
+      "fee": "$249",
+      "access": "Resort (abierto al público con reservación; caddie obligatorio)",
+      "tier": "public",
+      "note": "Campo de campeonato par 70 de Jack Nicklaus con siete lagos, 49 bunkers y viento del mar; el servicio de caddie es parte de la experiencia.",
+      "standout": ""
+    },
+    {
+      "name": "The Lakes Course",
+      "slug": "vidanta-the-lakes-course",
+      "page": {
+        "slug": "vidanta-the-lakes-course",
+        "name": "The Lakes Course",
+        "region": "puerto-vallarta",
+        "place": "Puerto Vallarta",
+        "href": "/destinations/puerto-vallarta/courses/vidanta-the-lakes-course",
+        "architect": "Chet Williams",
+        "architects": [
+          "Chet Williams",
+          "Nicklaus Design"
+        ],
+        "label": "Golf nocturno",
+        "greenFee": 75,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/courses/vidanta-the-lakes-course/01.jpg",
+          "credit": ""
+        }
+      },
+      "design": "Chet Williams (Nicklaus Design)",
+      "place": "Puerto Vallarta",
+      "tournament": "—",
+      "fee": "$75",
+      "access": "Resort (abierto al público y huéspedes con reservación; iluminado para jugar de noche)",
+      "tier": "public",
+      "note": "Campo ejecutivo de diez hoyos par 3, con tiros por encima de lagos y bunkers, iluminado para jugar de noche; una ronda toma unas dos horas.",
+      "standout": ""
+    }
+  ],
+  "groups": [
+    [
+      "Abierto a visitantes",
+      [
+        {
+          "name": "Vidanta Vallarta Course",
+          "slug": "vidanta-vallarta-course",
+          "page": {
+            "slug": "vidanta-vallarta-course",
+            "name": "Vidanta Vallarta Course",
+            "region": "puerto-vallarta",
+            "place": "Puerto Vallarta",
+            "href": "/destinations/puerto-vallarta/courses/vidanta-vallarta-course",
+            "architect": "Greg Norman",
+            "architects": [
+              "Greg Norman"
+            ],
+            "label": "Sede de Tour",
+            "greenFee": 280,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/courses/vidanta-vallarta-course/01.jpg",
+              "credit": ""
+            }
+          },
+          "design": "Greg Norman",
+          "place": "Puerto Vallarta",
+          "tournament": "PGA TOUR · Mexico Open at VidantaWorld, desde 2022",
+          "fee": "$280",
+          "access": "Resort (tee times de Vidanta sujetos a disponibilidad)",
+          "tier": "public",
+          "note": "La única sede activa del PGA Tour en Puerto Vallarta. Diseño de Greg Norman. Sede del Mexico Open at VidantaWorld desde 2022, torneo oficial del PGA Tour que da 500 puntos de la FedEx Cup al ganador. Jon Rahm ganó en 2022, Tony Finau en 2023 y Jake Knapp en 2024. La edición 2026 se mueve al 29 de octubre–1 de noviembre, con una bolsa de $6 millones. \"Renovación del Año\" de la revista Golf Inc. en 2022. Paspalum de pared a pared; el trazado serpentea junto al río Ameca con vistas a la Sierra Madre. 15 lagos. 49 bunkers. El puente colgante para carritos de golf más largo del mundo, de 560 pies sobre el río Ameca, conecta el clubhouse con el campo. El hoyo 10 fue el más difícil del PGA Tour 2023. Abierto a huéspedes de Vidanta y al público con reserva anticipada. Caddie obligatorio, se paga en efectivo en el campo (individual $28 · pareja $45 · trío $56 · cuarteta $67).",
+          "standout": "#7 — par 4 alcanzable de drive, 297 yardas. Agua a la izquierda, bunkers a la derecha. Uno de los hoyos de riesgo-recompensa más comentados del Mexico Open."
+        },
+        {
+          "name": "Vista Vallarta Nicklaus Course",
+          "slug": "vista-vallarta-nicklaus-course",
+          "page": {
+            "slug": "vista-vallarta-nicklaus-course",
+            "name": "Vista Vallarta Nicklaus Course",
+            "region": "puerto-vallarta",
+            "place": "Puerto Vallarta",
+            "href": "/destinations/puerto-vallarta/courses/vista-vallarta-nicklaus-course",
+            "architect": "Jack Nicklaus",
+            "architects": [
+              "Jack Nicklaus",
+              "Chet Williams"
+            ],
+            "label": "Top en México",
+            "greenFee": 319,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/course-refs/vista-vallarta-nicklaus-course/01.jpg",
+              "credit": "Vista Vallarta Club de Golf"
+            }
+          },
+          "design": "Jack Nicklaus y Chet Williams",
+          "place": "Puerto Vallarta",
+          "tournament": "WGC-World Cup 2002",
+          "fee": "$319",
+          "access": "Público / resort",
+          "tier": "public",
+          "note": "El campo público más prestigioso del corredor de Puerto Vallarta. En la parte más alta de la propiedad, con vistas impresionantes a Puerto Vallarta, la Marina y Bahía de Banderas desde casi cada salida. Laderas de pasto, bosques densos de palmas y ficus gigantes, arroyos y cañadas naturales. Fiel al estilo Nicklaus: greens con mucha ondulación, equilibrados con zonas de drive generosas. Sede de la WGC-World Cup 2002. Récord del campo: 62, Phil Mickelson. Rating: 73.8 · Slope: 144. A 15 min de PVR.",
+          "standout": "#3 — par 5, 550 yardas. Pide tres tiros sólidos. El terreno sube con cada swing. El hoyo más exigente del corredor de Bahía de Banderas."
+        },
+        {
+          "name": "Vista Vallarta Weiskopf Course",
+          "slug": "vista-vallarta-weiskopf-course",
+          "page": {
+            "slug": "vista-vallarta-weiskopf-course",
+            "name": "Vista Vallarta Weiskopf Course",
+            "region": "puerto-vallarta",
+            "place": "Puerto Vallarta",
+            "href": "/destinations/puerto-vallarta/courses/vista-vallarta-weiskopf-course",
+            "architect": "Tom Weiskopf",
+            "architects": [
+              "Tom Weiskopf"
+            ],
+            "label": "Top en México",
+            "greenFee": 299,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/course-refs/vista-vallarta-weiskopf-course/01.jpg",
+              "credit": "Vista Vallarta Club de Golf"
+            }
+          },
+          "design": "Tom Weiskopf",
+          "place": "Puerto Vallarta",
+          "tournament": "—",
+          "fee": "$299",
+          "access": "Público / resort",
+          "tier": "public",
+          "note": "El lado más accesible del doble trazado de Vista Vallarta. Construido en la parte baja y oeste de la propiedad: selva cerrada, barrancas profundas, arroyos rápidos. Un paisaje muy distinto al del campo Nicklaus, aunque comparten clubhouse. Menos tiros ciegos y greens más receptivos lo hacen la ronda favorita para grupos con hándicaps mixtos. Fairways amplios, obstáculos naturales y la finura característica de Weiskopf en los par 3. Rating: 74.7 (gold) · Slope: 138.",
+          "standout": "#15 — par 3 cuesta arriba sobre una barranca. Green de varios niveles, bunkers por todos lados. Exige concentración desde la salida."
+        },
+        {
+          "name": "El Tigre Golf Club",
+          "slug": "el-tigre-golf-club",
+          "page": {
+            "slug": "el-tigre-golf-club",
+            "name": "El Tigre Golf Club",
+            "region": "puerto-vallarta",
+            "place": "Puerto Vallarta",
+            "href": "/destinations/puerto-vallarta/courses/el-tigre-golf-club",
+            "architect": "Robert von Hagge",
+            "architects": [
+              "Robert von Hagge",
+              "Mike Smelek",
+              "Rick Baril"
+            ],
+            "label": "Jugable y relajado",
+            "greenFee": 287,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/course-refs/el-tigre-golf-club/01.jpg",
+              "credit": "El Tigre Golf Club"
+            }
+          },
+          "design": "Robert von Hagge",
+          "place": "Puerto Vallarta",
+          "tournament": "—",
+          "fee": "$287",
+          "access": "Semiprivado / resort (visitantes con reservación)",
+          "tier": "public",
+          "note": "Nueve cuerpos de agua entran en juego en 12 hoyos. El encargo: \"Crear el campo de golf de campeonato más emocionante de México\". Von Hagge convirtió un terreno plano en un trazado de campeonato con desniveles moldeados, 9 cuerpos de agua en 12 hoyos y \"beach bunkers\" acechando en casi cada vuelta. El arco de piedra de la entrada recuerda un templo maya. El campo cierra con dos de sus hoyos más difíciles. Champion Bermuda en los greens, 419 Bermuda en los fairways. Los vientos del mar, sobre todo al final de la tarde, suman una variable que la tarjeta no considera. Top 10 en México 2008 (Golf Guide Magazine + Golf in Mexico Magazine).",
+          "standout": "#16 — par 4, 421 yardas, dogleg largo a la derecha. Approach a un green en península. El hoyo que define el carácter del campo: agua y precisión."
+        },
+        {
+          "name": "Nayar Course",
+          "slug": "vidanta-nayar-course",
+          "page": {
+            "slug": "vidanta-nayar-course",
+            "name": "Nayar Course",
+            "region": "puerto-vallarta",
+            "place": "Puerto Vallarta",
+            "href": "/destinations/puerto-vallarta/courses/vidanta-nayar-course",
+            "architect": "Jack Nicklaus",
+            "architects": [
+              "Jack Nicklaus"
+            ],
+            "label": "27+ hoyos",
+            "greenFee": 249,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/course-refs/vidanta-nayar-course/01.jpg",
+              "credit": "Vidanta"
+            }
+          },
+          "design": "Jack Nicklaus",
+          "place": "Puerto Vallarta",
+          "tournament": "—",
+          "fee": "$249",
+          "access": "Resort (abierto al público con reservación; caddie obligatorio)",
+          "tier": "public",
+          "note": "Campo de campeonato par 70 de Jack Nicklaus con siete lagos, 49 bunkers y viento del mar; el servicio de caddie es parte de la experiencia.",
+          "standout": ""
+        },
+        {
+          "name": "The Lakes Course",
+          "slug": "vidanta-the-lakes-course",
+          "page": {
+            "slug": "vidanta-the-lakes-course",
+            "name": "The Lakes Course",
+            "region": "puerto-vallarta",
+            "place": "Puerto Vallarta",
+            "href": "/destinations/puerto-vallarta/courses/vidanta-the-lakes-course",
+            "architect": "Chet Williams",
+            "architects": [
+              "Chet Williams",
+              "Nicklaus Design"
+            ],
+            "label": "Golf nocturno",
+            "greenFee": 75,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/courses/vidanta-the-lakes-course/01.jpg",
+              "credit": ""
+            }
+          },
+          "design": "Chet Williams (Nicklaus Design)",
+          "place": "Puerto Vallarta",
+          "tournament": "—",
+          "fee": "$75",
+          "access": "Resort (abierto al público y huéspedes con reservación; iluminado para jugar de noche)",
+          "tier": "public",
+          "note": "Campo ejecutivo de diez hoyos par 3, con tiros por encima de lagos y bunkers, iluminado para jugar de noche; una ronda toma unas dos horas.",
+          "standout": ""
+        }
+      ]
+    ]
+  ],
+  "best": null,
+  "hosts": [
+    {
+      "name": "Vidanta Vallarta Course",
+      "slug": "vidanta-vallarta-course",
+      "page": {
+        "slug": "vidanta-vallarta-course",
+        "name": "Vidanta Vallarta Course",
+        "region": "puerto-vallarta",
+        "place": "Puerto Vallarta",
+        "href": "/destinations/puerto-vallarta/courses/vidanta-vallarta-course",
+        "architect": "Greg Norman",
+        "architects": [
+          "Greg Norman"
+        ],
+        "label": "Sede de Tour",
+        "greenFee": 280,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/courses/vidanta-vallarta-course/01.jpg",
+          "credit": ""
+        }
+      },
+      "design": "Greg Norman",
+      "place": "Puerto Vallarta",
+      "tournament": "PGA TOUR · Mexico Open at VidantaWorld, desde 2022",
+      "fee": "$280",
+      "access": "Resort (tee times de Vidanta sujetos a disponibilidad)",
+      "tier": "public",
+      "note": "La única sede activa del PGA Tour en Puerto Vallarta. Diseño de Greg Norman. Sede del Mexico Open at VidantaWorld desde 2022, torneo oficial del PGA Tour que da 500 puntos de la FedEx Cup al ganador. Jon Rahm ganó en 2022, Tony Finau en 2023 y Jake Knapp en 2024. La edición 2026 se mueve al 29 de octubre–1 de noviembre, con una bolsa de $6 millones. \"Renovación del Año\" de la revista Golf Inc. en 2022. Paspalum de pared a pared; el trazado serpentea junto al río Ameca con vistas a la Sierra Madre. 15 lagos. 49 bunkers. El puente colgante para carritos de golf más largo del mundo, de 560 pies sobre el río Ameca, conecta el clubhouse con el campo. El hoyo 10 fue el más difícil del PGA Tour 2023. Abierto a huéspedes de Vidanta y al público con reserva anticipada. Caddie obligatorio, se paga en efectivo en el campo (individual $28 · pareja $45 · trío $56 · cuarteta $67).",
+      "standout": "#7 — par 4 alcanzable de drive, 297 yardas. Agua a la izquierda, bunkers a la derecha. Uno de los hoyos de riesgo-recompensa más comentados del Mexico Open."
+    },
+    {
+      "name": "Vista Vallarta Nicklaus Course",
+      "slug": "vista-vallarta-nicklaus-course",
+      "page": {
+        "slug": "vista-vallarta-nicklaus-course",
+        "name": "Vista Vallarta Nicklaus Course",
+        "region": "puerto-vallarta",
+        "place": "Puerto Vallarta",
+        "href": "/destinations/puerto-vallarta/courses/vista-vallarta-nicklaus-course",
+        "architect": "Jack Nicklaus",
+        "architects": [
+          "Jack Nicklaus",
+          "Chet Williams"
+        ],
+        "label": "Top en México",
+        "greenFee": 319,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/course-refs/vista-vallarta-nicklaus-course/01.jpg",
+          "credit": "Vista Vallarta Club de Golf"
+        }
+      },
+      "design": "Jack Nicklaus y Chet Williams",
+      "place": "Puerto Vallarta",
+      "tournament": "WGC-World Cup 2002",
+      "fee": "$319",
+      "access": "Público / resort",
+      "tier": "public",
+      "note": "El campo público más prestigioso del corredor de Puerto Vallarta. En la parte más alta de la propiedad, con vistas impresionantes a Puerto Vallarta, la Marina y Bahía de Banderas desde casi cada salida. Laderas de pasto, bosques densos de palmas y ficus gigantes, arroyos y cañadas naturales. Fiel al estilo Nicklaus: greens con mucha ondulación, equilibrados con zonas de drive generosas. Sede de la WGC-World Cup 2002. Récord del campo: 62, Phil Mickelson. Rating: 73.8 · Slope: 144. A 15 min de PVR.",
+      "standout": "#3 — par 5, 550 yardas. Pide tres tiros sólidos. El terreno sube con cada swing. El hoyo más exigente del corredor de Bahía de Banderas."
+    }
+  ],
+  "seasons": [
+    [
+      "Temporada alta",
+      "Nov – Abr · 72–85°F · Alta · $$$",
+      "Seco, cálido, poca humedad. La ventana que todo golfista visitante debería buscar. Vista Vallarta y El Tigre se llenan con 4–8 semanas de anticipación de Navidad a Semana Santa. Reserva temprano."
+    ],
+    [
+      "Temporada media",
+      "May – Jun · 80–90°F · Moderada · $$",
+      "Más calor y un poco más de humedad. Las habitaciones bajan 25–35% frente a temporada alta. Los campos siguen en muy buenas condiciones durante mayo, antes de las lluvias. La ventana de mejor precio."
+    ],
+    [
+      "Lluvias / huracanes",
+      "Jul – Oct · 82–92°F · Baja · $",
+      "Tormentas tropicales y truenos por la tarde. Las mañanas siguen siendo jugables. Octubre es la ventana de mejor precio, porque la temporada de huracanes cierra a mitad de mes. Mexico Open del PGA Tour 2026: 29 de octubre – 1 de noviembre."
+    ]
+  ],
+  "faqs": [
+    [
+      "¿Cuántos campos de golf hay en Puerto Vallarta?",
+      "Ocho campos de golf de campeonato rodean Bahía de Banderas a menos de 45 minutos del Aeropuerto Internacional de Puerto Vallarta. Se reparten entre el brazo sur (Jalisco: Vista Vallarta Nicklaus, Vista Vallarta Weiskopf, Marina Vallarta) y el brazo norte (Nayarit: El Tigre, Flamingos, Vidanta Norman y los campos de la península de Punta Mita). Los ocho están a menos de 45 minutos en coche de PVR. El green fee va de $75 en The Lakes a $319 en Vista Vallarta Nicklaus."
+    ],
+    [
+      "¿El golf en Puerto Vallarta es más barato que en Los Cabos?",
+      "Sí, de forma constante entre 30 y 40% más barato. Vista Vallarta ofrece diseños de campeonato de Jack Nicklaus y Tom Weiskopf por $299–$319 por ronda. Diseños Nicklaus comparables en Los Cabos cuestan $315–$500. La sede del PGA Tour Vidanta Norman tiene acceso público, con caddie obligatorio de $28–$67 que se paga aparte del green fee."
+    ],
+    [
+      "¿Cuál es la mejor época para jugar golf en Puerto Vallarta?",
+      "De noviembre a abril: seco, 72–85°F, poca humedad. Para el mejor precio, mayo da condiciones casi de temporada alta con habitaciones 25–35% más baratas. Evita de julio a octubre: tormentas tropicales y lluvia por la tarde. Octubre es la ventana de mejor precio de la temporada baja, y el Mexico Open del PGA Tour 2026 en Vidanta se juega del 29 de octubre al 1 de noviembre, así que finales de octubre es ideal para combinar el torneo con tus propias rondas."
+    ],
+    [
+      "¿Se pueden caminar los campos de golf de Puerto Vallarta?",
+      "En la mayoría de los campos el carrito es obligatorio por el terreno: Vista Vallarta sube bastante, El Tigre se extiende en una propiedad con traslados largos entre hoyos y Vidanta Norman incluye un puente colgante para carritos de 560 pies sobre el río Ameca. Marina Vallarta y Flamingos son más planos y, en teoría, caminables, pero caddies y carritos son lo normal aquí y el green fee suele incluir el carrito. Trae zapatos que te sirvan para caminar la ciudad en la tarde y para 18 hoyos en la mañana: en Puerto Vallarta haces las dos cosas el mismo día."
+    ],
+    [
+      "¿Cuánto cuesta un viaje de golf a Puerto Vallarta, México?",
+      "El green fee va de $75 a $319 por ronda, de The Lakes a Vista Vallarta Nicklaus: 30–40% menos que en Cabo o Punta Mita por diseños de nivel comparable. La variable principal es el hospedaje. Green fees vigentes en 2026, confirmados por escrito antes de reservar.",
+      {
+        "href": "/destinations/puerto-vallarta/golf-packages",
+        "label": "Paquetes de golf en Puerto Vallarta"
+      }
+    ]
+  ],
+  "access": [],
+  "moved": [
+    {
+      "slug": "vidanta-vallarta-course",
+      "q": "¿El público puede jugar el campo Vidanta Norman?",
+      "a": "Sí: está abierto a huéspedes de Vidanta y al público con reserva anticipada. El Vidanta Norman Course en VidantaWorld, Nuevo Vallarta, es un trazado de campeonato diseñado por Greg Norman y la única sede activa del PGA Tour en el corredor de Puerto Vallarta. Es sede del Mexico Open at VidantaWorld desde 2022. Entre sus ganadores están Jon Rahm (2022), Tony Finau (2023) y Jake Knapp (2024). Para huéspedes se juega como par 73 y para el torneo del PGA Tour cambia a par 71. El caddie es obligatorio y se paga en efectivo en el campo ($28–$67 según el tamaño del grupo)."
+    },
+    {
+      "slug": "vista-vallarta-nicklaus-course",
+      "q": "¿Vista Vallarta Golf Club está abierto al público?",
+      "a": "Sí: los dos campos de Vista Vallarta son totalmente públicos, con reserva directa. La propiedad de 478 acres en Puerto Vallarta tiene dos campos de campeonato abiertos en 2001: el Jack Nicklaus Signature (par 72, 7,074 yardas, $319) y el diseño de Tom Weiskopf (par 72, 6,993 yardas, $299). No necesitas hospedarte en ningún resort. El campo Nicklaus fue sede de la WGC-World Cup 2002, la competencia internacional de 24 equipos en la que jugaron Tiger Woods y Ernie Els. El récord del campo es 62, de Phil Mickelson. A 15 minutos de PVR."
+    }
+  ],
+  "overview": {
+    "label": "La bahía",
+    "pre": "Golf en Vallarta:",
+    "em": "una geografía que abraza la bahía.",
+    "paragraphs": [
+      "Ocho campos de golf de Puerto Vallarta rodean la bahía, todos a menos de 45 minutos del Aeropuerto Internacional de Puerto Vallarta (PVR). Bahía de Banderas es la bahía más grande del Pacífico mexicano. Puerto Vallarta está en el brazo sur, en Jalisco. La Riviera Nayarit abraza el brazo norte, con Nuevo Vallarta, Bucerías y Punta Mita concentrando los resorts.",
+      "Los dos anclas son Vista Vallarta (Jack Nicklaus + Tom Weiskopf, ambos abiertos entre abril y noviembre de 2001, sede de la World Cup 2002), en las laderas sobre la ciudad, y el Vidanta Norman Course (Greg Norman, sede del Mexico Open del PGA Tour desde 2022), en Nuevo Nayarit, justo al norte del río Ameca. Los dos están a menos de 20 minutos de PVR.",
+      "El corredor de Bahía de Banderas tiene argumentos honestos para ser el mejor valor del golf en México. Los mismos diseñadores, Nicklaus, Norman y Weiskopf, que cobran $400+ en Los Cabos y Punta Mita cuestan $280–$319 en Puerto Vallarta. Vista Vallarta fue sede de la WGC-World Cup 2002 en esos mismos greens de Nicklaus. El Vidanta Norman Course recibe al PGA Tour cada año. El valor es estructural, no de temporada. La ciudad lo amplifica todo: la Zona Romántica del centro histórico, el Malecón, los restaurantes de la bahía. Puerto Vallarta es el destino de golf al que traes a quienes no juegan y ni se dan cuenta de que están en un destino de golf."
+    ]
+  },
+  "costs": {
+    "label": "Las cuentas",
+    "pre": "El mejor valor de México",
+    "em": "en golf de campeonato.",
+    "intro": "Diseños comparables de Nicklaus y Norman cuestan 30–40% menos que en Cabo o Punta Mita. La tarifa de la habitación es la variable principal.",
+    "callouts": [
+      [
+        "La ventaja de la ciudad",
+        "Vallarta es el único destino de golf en México donde la ciudad compite con el golf. La Zona Romántica, el Malecón, los restaurantes de la bahía, el mercado de los sábados en Sayulita. Trae a quienes no juegan: ni van a notar que están en un destino de golf."
+      ],
+      [
+        "La logística de cruzar la bahía",
+        "La mitad de los campos está en el brazo sur (Vista Vallarta, Marina Vallarta) y la otra mitad en el brazo norte (El Tigre, Flamingos, Vidanta). Elige tu hotel según la mitad que vas a jugar más. Cruzar la bahía cada día te come 35–50 minutos ida y vuelta por el libramiento, o 20 minutos por el puente de cuota ($4 USD)."
+      ]
+    ],
+    "packages": "/destinations/puerto-vallarta/golf-packages"
+  },
+  "logistics": {
+    "label": "En el terreno",
+    "pre": "Cómo llegar",
+    "em": "y moverte por la bahía.",
+    "items": [
+      [
+        "Aeropuerto y llegadas",
+        "Aeropuerto Internacional de Puerto Vallarta (PVR): vuelos directos desde 20+ ciudades de EE. UU.: DFW, IAH, LAX, ORD, SFO, PHX, YYZ y más. Aduana de 30–45 min. PVR queda justo entre el golf del brazo sur y el del brazo norte, a la misma distancia de los dos lados de la bahía."
+      ],
+      [
+        "Cómo llegar a los campos",
+        "PVR → Vista Vallarta: 15 min. PVR → Marina Vallarta: 5 min. PVR → El Tigre / Flamingos (Nuevo Vallarta): 15 min. PVR → Vidanta Norman: 20 min. La geografía de golf más compacta de México."
+      ],
+      [
+        "Entre campos",
+        "Del brazo sur (Vista, Marina) al brazo norte (El Tigre, Flamingos, Vidanta) por el libramiento: 35–50 min. Puente de cuota: 20 min ($4 USD por sentido). Cuando se pueda, junta campos del mismo brazo."
+      ],
+      [
+        "Moneda y propinas",
+        "Aceptan USD en todos lados. En taxis mejor pesos. El caddie en Vidanta Norman es obligatorio y se paga en efectivo en el campo: trae billetes en MXN o USD. Uber funciona en toda la ciudad y llega a todos los campos principales."
+      ]
+    ]
+  },
+  "sources": [
+    "PGA Tour: registros oficiales del Mexico Open at VidantaWorld",
+    "Vista Vallarta Golf Club: récords del campo y archivo de la WGC-World Cup 2002",
+    "Golf Advisor: rankings de campos en México 2020–2024",
+    "Resort Vidanta: tarifas de green fee y caddie (T1 2026)",
+    "Banco de México: tipo de cambio peso/USD (mayo 2026)"
+  ],
+  "readNext": [
+    [
+      "/destinations/mexico-city",
+      "golf en la Ciudad de México",
+      "20+ campos a menos de 90 minutos del centro: la historia de torneos de Chapultepec y la ronda semipública que sí puedes reservar."
+    ],
+    [
+      "/destinations/cancun-riviera-maya",
+      "Campos de golf en la Riviera Maya",
+      "12+ campos a lo largo de 80 millas de costa caribeña, green fees de $190 a $375."
+    ]
+  ],
+  "newsletter": "Estamos publicando los campos entre selva y montaña que valen el viaje, cómo combinar PV con Punta Mita y los restaurantes que valen una reservación. Déjanos tu email y te lo mandamos cuando esté listo. Sin spam; te das de baja cuando quieras.",
+  "newsletterTitle": "Entérate de todo sobre el golf en Puerto Vallarta.",
+  "heroPhoto": null
+}

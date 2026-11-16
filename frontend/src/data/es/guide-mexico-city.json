@@ -1,0 +1,612 @@
+{
+  "slug": "mexico-city",
+  "name": "Mexico City",
+  "title": "Golf en la Ciudad de México",
+  "seoTitle": "Campos de golf en la Ciudad de México | Chapultepec y Club de Golf México",
+  "seoDescription": "Golf a 2,240 metros: Chapultepec, casa del Mexico Open, Club de Golf México y Bosque Real. Clubes privados a los que se entra con un socio o una presentación.",
+  "answer": "La Ciudad de México tiene más de 20 campos de golf a menos de 90 minutos del centro, casi todos privados: el acceso llega por un socio, un hotel o coordinación anticipada. Los green fees van de $100 en El Coral, un campo público, a $600 en los clubes privados.",
+  "byline": "Editorial GOLF° IN MEXICO° · Investigación de campo de Pablo De La Mora y José Islas",
+  "facts": [
+    [
+      "Campos en la zona metropolitana",
+      "20+"
+    ],
+    [
+      "Green fees",
+      "$100–$600"
+    ],
+    [
+      "Temporada de juego",
+      "Todo el año"
+    ]
+  ],
+  "courses": [
+    {
+      "name": "Club de Golf México",
+      "slug": "club-de-golf-mexico",
+      "page": {
+        "slug": "club-de-golf-mexico",
+        "name": "Club de Golf México",
+        "region": "mexico-city",
+        "place": "Mexico City",
+        "href": "/destinations/mexico-city/courses/club-de-golf-mexico",
+        "architect": "Lawrence Hughes",
+        "architects": [
+          "Lawrence Hughes",
+          "Percy Clifford"
+        ],
+        "label": "Bucket List",
+        "greenFee": 600,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/courses/club-de-golf-mexico/01.jpg",
+          "credit": ""
+        }
+      },
+      "design": "Lawrence Hughes y Percy Clifford",
+      "place": "Ciudad de México",
+      "tournament": "World Cup of Golf 1967, ganada por Jack Nicklaus y Arnold Palmer",
+      "fee": "Cotización a solicitud",
+      "access": "Privado: juegas con un socio. Estimado de $500 de green fee + $100 de cuota de socio por persona por ronda; requiere confirmación",
+      "tier": "private",
+      "note": "El club privado más prestigioso de México. Fundado en 1947 en el corredor de Tlalpan, al sur de la CDMX, el campo lo diseñó Percy Clifford, el arquitecto que formó a toda una generación del golf mexicano. Fairways estrechos bordeados de árboles a 2,260 metros sobre el nivel del mar, con el centro de la Ciudad de México a la vista desde varios tees elevados. Sede de la World Cup of Golf en 1958 y 1968. Solo con invitación de un socio; no hay tee times públicos. El código de vestimenta, el programa de caddies y el protocolo de la casa club marcan el estándar con el que el resto del país todavía se mide.",
+      "standout": "Tees elevados con el skyline de la CDMX enmarcando el fairway: la vista más fotografiada del golf mexicano."
+    },
+    {
+      "name": "Club de Golf Chapultepec",
+      "slug": "club-de-golf-chapultepec",
+      "page": {
+        "slug": "club-de-golf-chapultepec",
+        "name": "Club de Golf Chapultepec",
+        "region": "mexico-city",
+        "place": "Mexico City",
+        "href": "/destinations/mexico-city/courses/club-de-golf-chapultepec",
+        "architect": "Willie Smith",
+        "architects": [
+          "Willie Smith",
+          "Alex Smith"
+        ],
+        "label": "Tour Venue",
+        "greenFee": 600,
+        "guestsOnly": false,
+        "photo": null
+      },
+      "design": "Willie Smith y Alex Smith",
+      "place": "Ciudad de México",
+      "tournament": "Mexican Open (18 veces) · WGC-Mexico Championship 2017–2020 · LIV Golf Mexico City 2025–2026",
+      "fee": "$600",
+      "access": "Privado: juegas con un socio. Estimado de $500 de green fee + $100 de cuota de socio por persona por ronda; requiere confirmación",
+      "tier": "private",
+      "note": "El campo de golf con más peso histórico en México. Diseñado en 1921 por el campeón del U.S. Open Willie Smith y terminado por su hermano Alex; rediseñado por Percy Clifford en 1972. Sede del Mexican Open 18 veces, del WGC-Mexico Championship 4 veces (2017–2020) y de LIV Golf Mexico City en 2025 y 2026. A 7,800 pies sobre el nivel del mar, los fairways estrechos bordeados de árboles y el terreno ondulado hacen que elegir palo sea una negociación constante. El trío de hoyos cuesta arriba del 15 al 17 está entre los cierres más exigentes del golf mexicano. Greens pequeños, muy rápidos y con pendientes fuertes. Conocer el campo marca la diferencia. Solo con invitación de un socio. No hay tee times públicos.",
+      "standout": "#17 — par 3, 167 yards. Water front and left. A miss left costs a number."
+    },
+    {
+      "name": "Bosque Real",
+      "slug": "bosque-real-country-club",
+      "page": {
+        "slug": "bosque-real-country-club",
+        "name": "Bosque Real",
+        "region": "mexico-city",
+        "place": "Mexico City",
+        "href": "/destinations/mexico-city/courses/bosque-real-country-club",
+        "architect": "Robert von Hagge",
+        "architects": [
+          "Robert von Hagge",
+          "Mike Smelek",
+          "Rick Baril"
+        ],
+        "label": "Tour Venue",
+        "greenFee": 350,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/courses/bosque-real-country-club/01.jpg",
+          "credit": ""
+        }
+      },
+      "design": "Robert von Hagge",
+      "place": "Ciudad de México",
+      "tournament": "LPGA MasterCard Classic 2005–2009",
+      "fee": "$350",
+      "access": "Privado: juegas con un socio. Requiere confirmación",
+      "tier": "private",
+      "note": "Uno de los campos más largos de México, con 7,552 yardas, y en altura cada yarda juega bastante más fácil que en la tarjeta gracias al aire más delgado. Llevado al nivel del mar, sería un trazado de campeonato brutal, más cerca de 8,400 yardas. El diseño de 18 hoyos de Von Hagge recorre terreno de montaña con un río, cañadas, estanques y varios lagos. Fue sede del LPGA MasterCard Classic de 2005 a 2009. Aquí jugó Lorena Ochoa. Louise Friberg tiene el récord femenil del campo con 65. Un campo ejecutivo de 9 hoyos de Gary Nicklaus abrió en 2008 junto al trazado de campeonato. A 15 km al poniente de la CDMX, en Huixquilucan: 20 minutos de Santa Fe con el camino libre. Hay algunas reservas públicas entre semana con coordinación anticipada.",
+      "standout": "#18 — par 5, 624 yards from the tips. The longest hole on the course."
+    },
+    {
+      "name": "Amanali",
+      "slug": "amanali-country-club",
+      "page": {
+        "slug": "amanali-country-club",
+        "name": "Amanali",
+        "region": "mexico-city",
+        "place": "Mexico City",
+        "href": "/destinations/mexico-city/courses/amanali-country-club",
+        "architect": "Schmidt-Curley",
+        "architects": [
+          "Schmidt-Curley"
+        ],
+        "label": "Championship Test",
+        "greenFee": 276,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/courses/amanali-country-club/01.jpg",
+          "credit": ""
+        }
+      },
+      "design": "Schmidt-Curley Golf Design",
+      "place": "Ciudad de México",
+      "tournament": "—",
+      "fee": "$276",
+      "access": "Privado (acceso con arreglo previo)",
+      "tier": "resort",
+      "note": "Considerado uno de los 10 mejores campos de México. Schmidt & Curley trazaron el campo a la orilla de un lago en Tepeji del Río, en zigzag entre cañadas y cactus, con vistas panorámicas al lago desde la mayoría de los hoyos. Fairways de Bermuda, greens de Bent Grass y 7,400 yardas que jugarían más cerca de 8,200 al nivel del mar, sin la ventaja de la altura. Lo rodea un desarrollo turístico, con la casa club diseñada por Legorreta Arquitectos. A 50 minutos de Polanco: el mejor campo para ir y volver en el día desde la CDMX si no tienes membresía local.",
+      "standout": "Recorrido entre cañadas y lago: no hay dos hoyos con el mismo tipo de terreno. La segunda vuelta juega más difícil que la primera."
+    },
+    {
+      "name": "Coral",
+      "slug": "el-coral",
+      "page": {
+        "slug": "el-coral",
+        "name": "Coral",
+        "region": "mexico-city",
+        "place": "Mexico City",
+        "href": "/destinations/mexico-city/courses/el-coral",
+        "architect": "Robert Hugues",
+        "architects": [
+          "Robert Hugues"
+        ],
+        "label": "Playable & Relaxed",
+        "greenFee": 100,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/courses/el-coral/01.jpg",
+          "credit": ""
+        }
+      },
+      "design": "Robert Hugues",
+      "place": "Ciudad de México",
+      "tournament": "—",
+      "fee": "$100",
+      "access": "Público",
+      "tier": "public",
+      "note": "El campo de 18 hoyos y par 72 se integra perfectamente al entorno natural del valle alto",
+      "standout": ""
+    },
+    {
+      "name": "Madeiras",
+      "slug": "madeiras-country-club",
+      "page": {
+        "slug": "madeiras-country-club",
+        "name": "Madeiras",
+        "region": "mexico-city",
+        "place": "Mexico City",
+        "href": "/destinations/mexico-city/courses/madeiras-country-club",
+        "architect": "Joe Finger",
+        "architects": [
+          "Joe Finger"
+        ],
+        "label": "Hidden Gem",
+        "greenFee": 154.49,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/courses/madeiras-country-club/01.jpg",
+          "credit": ""
+        }
+      },
+      "design": "Joe Finger",
+      "place": "Ciudad de México",
+      "tournament": "—",
+      "fee": "$154.49",
+      "access": "Semiprivado (visitantes con reservación)",
+      "tier": "private",
+      "note": "Campo arbolado tipo parkland en Cuautitlán Izcalli, al norte de la Ciudad de México, restaurado y conocido por sus greens ondulados y suaves; el acceso se confirma con anticipación.",
+      "standout": ""
+    }
+  ],
+  "groups": [
+    [
+      "Abiertos a visitantes",
+      [
+        {
+          "name": "Coral",
+          "slug": "el-coral",
+          "page": {
+            "slug": "el-coral",
+            "name": "Coral",
+            "region": "mexico-city",
+            "place": "Mexico City",
+            "href": "/destinations/mexico-city/courses/el-coral",
+            "architect": "Robert Hugues",
+            "architects": [
+              "Robert Hugues"
+            ],
+            "label": "Playable & Relaxed",
+            "greenFee": 100,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/courses/el-coral/01.jpg",
+              "credit": ""
+            }
+          },
+          "design": "Robert Hugues",
+          "place": "Ciudad de México",
+          "tournament": "—",
+          "fee": "$100",
+          "access": "Público",
+          "tier": "public",
+          "note": "El campo de 18 hoyos y par 72 se integra perfectamente al entorno natural del valle alto",
+          "standout": ""
+        }
+      ]
+    ],
+    [
+      "Huéspedes de resort y hotel",
+      [
+        {
+          "name": "Amanali",
+          "slug": "amanali-country-club",
+          "page": {
+            "slug": "amanali-country-club",
+            "name": "Amanali",
+            "region": "mexico-city",
+            "place": "Mexico City",
+            "href": "/destinations/mexico-city/courses/amanali-country-club",
+            "architect": "Schmidt-Curley",
+            "architects": [
+              "Schmidt-Curley"
+            ],
+            "label": "Championship Test",
+            "greenFee": 276,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/courses/amanali-country-club/01.jpg",
+              "credit": ""
+            }
+          },
+          "design": "Schmidt-Curley Golf Design",
+          "place": "Ciudad de México",
+          "tournament": "—",
+          "fee": "$276",
+          "access": "Privado (acceso con arreglo previo)",
+          "tier": "resort",
+          "note": "Considerado uno de los 10 mejores campos de México. Schmidt & Curley trazaron el campo a la orilla de un lago en Tepeji del Río, en zigzag entre cañadas y cactus, con vistas panorámicas al lago desde la mayoría de los hoyos. Fairways de Bermuda, greens de Bent Grass y 7,400 yardas que jugarían más cerca de 8,200 al nivel del mar, sin la ventaja de la altura. Lo rodea un desarrollo turístico, con la casa club diseñada por Legorreta Arquitectos. A 50 minutos de Polanco: el mejor campo para ir y volver en el día desde la CDMX si no tienes membresía local.",
+          "standout": "Recorrido entre cañadas y lago: no hay dos hoyos con el mismo tipo de terreno. La segunda vuelta juega más difícil que la primera."
+        }
+      ]
+    ],
+    [
+      "Solo socios",
+      [
+        {
+          "name": "Club de Golf México",
+          "slug": "club-de-golf-mexico",
+          "page": {
+            "slug": "club-de-golf-mexico",
+            "name": "Club de Golf México",
+            "region": "mexico-city",
+            "place": "Mexico City",
+            "href": "/destinations/mexico-city/courses/club-de-golf-mexico",
+            "architect": "Lawrence Hughes",
+            "architects": [
+              "Lawrence Hughes",
+              "Percy Clifford"
+            ],
+            "label": "Bucket List",
+            "greenFee": 600,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/courses/club-de-golf-mexico/01.jpg",
+              "credit": ""
+            }
+          },
+          "design": "Lawrence Hughes y Percy Clifford",
+          "place": "Ciudad de México",
+          "tournament": "World Cup of Golf 1967, ganada por Jack Nicklaus y Arnold Palmer",
+          "fee": "Cotización a solicitud",
+          "access": "Privado: juegas con un socio. Estimado de $500 de green fee + $100 de cuota de socio por persona por ronda; requiere confirmación",
+          "tier": "private",
+          "note": "El club privado más prestigioso de México. Fundado en 1947 en el corredor de Tlalpan, al sur de la CDMX, el campo lo diseñó Percy Clifford, el arquitecto que formó a toda una generación del golf mexicano. Fairways estrechos bordeados de árboles a 2,260 metros sobre el nivel del mar, con el centro de la Ciudad de México a la vista desde varios tees elevados. Sede de la World Cup of Golf en 1958 y 1968. Solo con invitación de un socio; no hay tee times públicos. El código de vestimenta, el programa de caddies y el protocolo de la casa club marcan el estándar con el que el resto del país todavía se mide.",
+          "standout": "Tees elevados con el skyline de la CDMX enmarcando el fairway: la vista más fotografiada del golf mexicano."
+        },
+        {
+          "name": "Club de Golf Chapultepec",
+          "slug": "club-de-golf-chapultepec",
+          "page": {
+            "slug": "club-de-golf-chapultepec",
+            "name": "Club de Golf Chapultepec",
+            "region": "mexico-city",
+            "place": "Mexico City",
+            "href": "/destinations/mexico-city/courses/club-de-golf-chapultepec",
+            "architect": "Willie Smith",
+            "architects": [
+              "Willie Smith",
+              "Alex Smith"
+            ],
+            "label": "Tour Venue",
+            "greenFee": 600,
+            "guestsOnly": false,
+            "photo": null
+          },
+          "design": "Willie Smith y Alex Smith",
+          "place": "Ciudad de México",
+          "tournament": "Mexican Open (18 veces) · WGC-Mexico Championship 2017–2020 · LIV Golf Mexico City 2025–2026",
+          "fee": "$600",
+          "access": "Privado: juegas con un socio. Estimado de $500 de green fee + $100 de cuota de socio por persona por ronda; requiere confirmación",
+          "tier": "private",
+          "note": "El campo de golf con más peso histórico en México. Diseñado en 1921 por el campeón del U.S. Open Willie Smith y terminado por su hermano Alex; rediseñado por Percy Clifford en 1972. Sede del Mexican Open 18 veces, del WGC-Mexico Championship 4 veces (2017–2020) y de LIV Golf Mexico City en 2025 y 2026. A 7,800 pies sobre el nivel del mar, los fairways estrechos bordeados de árboles y el terreno ondulado hacen que elegir palo sea una negociación constante. El trío de hoyos cuesta arriba del 15 al 17 está entre los cierres más exigentes del golf mexicano. Greens pequeños, muy rápidos y con pendientes fuertes. Conocer el campo marca la diferencia. Solo con invitación de un socio. No hay tee times públicos.",
+          "standout": "#17 — par 3, 167 yards. Water front and left. A miss left costs a number."
+        },
+        {
+          "name": "Bosque Real",
+          "slug": "bosque-real-country-club",
+          "page": {
+            "slug": "bosque-real-country-club",
+            "name": "Bosque Real",
+            "region": "mexico-city",
+            "place": "Mexico City",
+            "href": "/destinations/mexico-city/courses/bosque-real-country-club",
+            "architect": "Robert von Hagge",
+            "architects": [
+              "Robert von Hagge",
+              "Mike Smelek",
+              "Rick Baril"
+            ],
+            "label": "Tour Venue",
+            "greenFee": 350,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/courses/bosque-real-country-club/01.jpg",
+              "credit": ""
+            }
+          },
+          "design": "Robert von Hagge",
+          "place": "Ciudad de México",
+          "tournament": "LPGA MasterCard Classic 2005–2009",
+          "fee": "$350",
+          "access": "Privado: juegas con un socio. Requiere confirmación",
+          "tier": "private",
+          "note": "Uno de los campos más largos de México, con 7,552 yardas, y en altura cada yarda juega bastante más fácil que en la tarjeta gracias al aire más delgado. Llevado al nivel del mar, sería un trazado de campeonato brutal, más cerca de 8,400 yardas. El diseño de 18 hoyos de Von Hagge recorre terreno de montaña con un río, cañadas, estanques y varios lagos. Fue sede del LPGA MasterCard Classic de 2005 a 2009. Aquí jugó Lorena Ochoa. Louise Friberg tiene el récord femenil del campo con 65. Un campo ejecutivo de 9 hoyos de Gary Nicklaus abrió en 2008 junto al trazado de campeonato. A 15 km al poniente de la CDMX, en Huixquilucan: 20 minutos de Santa Fe con el camino libre. Hay algunas reservas públicas entre semana con coordinación anticipada.",
+          "standout": "#18 — par 5, 624 yards from the tips. The longest hole on the course."
+        },
+        {
+          "name": "Madeiras",
+          "slug": "madeiras-country-club",
+          "page": {
+            "slug": "madeiras-country-club",
+            "name": "Madeiras",
+            "region": "mexico-city",
+            "place": "Mexico City",
+            "href": "/destinations/mexico-city/courses/madeiras-country-club",
+            "architect": "Joe Finger",
+            "architects": [
+              "Joe Finger"
+            ],
+            "label": "Hidden Gem",
+            "greenFee": 154.49,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/courses/madeiras-country-club/01.jpg",
+              "credit": ""
+            }
+          },
+          "design": "Joe Finger",
+          "place": "Ciudad de México",
+          "tournament": "—",
+          "fee": "$154.49",
+          "access": "Semiprivado (visitantes con reservación)",
+          "tier": "private",
+          "note": "Campo arbolado tipo parkland en Cuautitlán Izcalli, al norte de la Ciudad de México, restaurado y conocido por sus greens ondulados y suaves; el acceso se confirma con anticipación.",
+          "standout": ""
+        }
+      ]
+    ]
+  ],
+  "best": null,
+  "hosts": [
+    {
+      "name": "Club de Golf México",
+      "slug": "club-de-golf-mexico",
+      "page": {
+        "slug": "club-de-golf-mexico",
+        "name": "Club de Golf México",
+        "region": "mexico-city",
+        "place": "Mexico City",
+        "href": "/destinations/mexico-city/courses/club-de-golf-mexico",
+        "architect": "Lawrence Hughes",
+        "architects": [
+          "Lawrence Hughes",
+          "Percy Clifford"
+        ],
+        "label": "Bucket List",
+        "greenFee": 600,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/courses/club-de-golf-mexico/01.jpg",
+          "credit": ""
+        }
+      },
+      "design": "Lawrence Hughes y Percy Clifford",
+      "place": "Ciudad de México",
+      "tournament": "World Cup of Golf 1967, ganada por Jack Nicklaus y Arnold Palmer",
+      "fee": "Cotización a solicitud",
+      "access": "Privado: juegas con un socio. Estimado de $500 de green fee + $100 de cuota de socio por persona por ronda; requiere confirmación",
+      "tier": "private",
+      "note": "El club privado más prestigioso de México. Fundado en 1947 en el corredor de Tlalpan, al sur de la CDMX, el campo lo diseñó Percy Clifford, el arquitecto que formó a toda una generación del golf mexicano. Fairways estrechos bordeados de árboles a 2,260 metros sobre el nivel del mar, con el centro de la Ciudad de México a la vista desde varios tees elevados. Sede de la World Cup of Golf en 1958 y 1968. Solo con invitación de un socio; no hay tee times públicos. El código de vestimenta, el programa de caddies y el protocolo de la casa club marcan el estándar con el que el resto del país todavía se mide.",
+      "standout": "Tees elevados con el skyline de la CDMX enmarcando el fairway: la vista más fotografiada del golf mexicano."
+    },
+    {
+      "name": "Club de Golf Chapultepec",
+      "slug": "club-de-golf-chapultepec",
+      "page": {
+        "slug": "club-de-golf-chapultepec",
+        "name": "Club de Golf Chapultepec",
+        "region": "mexico-city",
+        "place": "Mexico City",
+        "href": "/destinations/mexico-city/courses/club-de-golf-chapultepec",
+        "architect": "Willie Smith",
+        "architects": [
+          "Willie Smith",
+          "Alex Smith"
+        ],
+        "label": "Tour Venue",
+        "greenFee": 600,
+        "guestsOnly": false,
+        "photo": null
+      },
+      "design": "Willie Smith y Alex Smith",
+      "place": "Ciudad de México",
+      "tournament": "Mexican Open (18 veces) · WGC-Mexico Championship 2017–2020 · LIV Golf Mexico City 2025–2026",
+      "fee": "$600",
+      "access": "Privado: juegas con un socio. Estimado de $500 de green fee + $100 de cuota de socio por persona por ronda; requiere confirmación",
+      "tier": "private",
+      "note": "El campo de golf con más peso histórico en México. Diseñado en 1921 por el campeón del U.S. Open Willie Smith y terminado por su hermano Alex; rediseñado por Percy Clifford en 1972. Sede del Mexican Open 18 veces, del WGC-Mexico Championship 4 veces (2017–2020) y de LIV Golf Mexico City en 2025 y 2026. A 7,800 pies sobre el nivel del mar, los fairways estrechos bordeados de árboles y el terreno ondulado hacen que elegir palo sea una negociación constante. El trío de hoyos cuesta arriba del 15 al 17 está entre los cierres más exigentes del golf mexicano. Greens pequeños, muy rápidos y con pendientes fuertes. Conocer el campo marca la diferencia. Solo con invitación de un socio. No hay tee times públicos.",
+      "standout": "#17 — par 3, 167 yards. Water front and left. A miss left costs a number."
+    },
+    {
+      "name": "Bosque Real",
+      "slug": "bosque-real-country-club",
+      "page": {
+        "slug": "bosque-real-country-club",
+        "name": "Bosque Real",
+        "region": "mexico-city",
+        "place": "Mexico City",
+        "href": "/destinations/mexico-city/courses/bosque-real-country-club",
+        "architect": "Robert von Hagge",
+        "architects": [
+          "Robert von Hagge",
+          "Mike Smelek",
+          "Rick Baril"
+        ],
+        "label": "Tour Venue",
+        "greenFee": 350,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/courses/bosque-real-country-club/01.jpg",
+          "credit": ""
+        }
+      },
+      "design": "Robert von Hagge",
+      "place": "Ciudad de México",
+      "tournament": "LPGA MasterCard Classic 2005–2009",
+      "fee": "$350",
+      "access": "Privado: juegas con un socio. Requiere confirmación",
+      "tier": "private",
+      "note": "Uno de los campos más largos de México, con 7,552 yardas, y en altura cada yarda juega bastante más fácil que en la tarjeta gracias al aire más delgado. Llevado al nivel del mar, sería un trazado de campeonato brutal, más cerca de 8,400 yardas. El diseño de 18 hoyos de Von Hagge recorre terreno de montaña con un río, cañadas, estanques y varios lagos. Fue sede del LPGA MasterCard Classic de 2005 a 2009. Aquí jugó Lorena Ochoa. Louise Friberg tiene el récord femenil del campo con 65. Un campo ejecutivo de 9 hoyos de Gary Nicklaus abrió en 2008 junto al trazado de campeonato. A 15 km al poniente de la CDMX, en Huixquilucan: 20 minutos de Santa Fe con el camino libre. Hay algunas reservas públicas entre semana con coordinación anticipada.",
+      "standout": "#18 — par 5, 624 yards from the tips. The longest hole on the course."
+    }
+  ],
+  "seasons": [
+    [
+      "Todo el año (base en la CDMX)",
+      "14–22°C en promedio · $$",
+      "La Ciudad de México no tiene temporada de huracanes ni una temporada alta de golf marcada solo por el clima. La temporada seca (nov–abr) trae cielos despejados y mañanas más frescas. La temporada de lluvias (may–oct) trae aguaceros por la tarde, normalmente de 1–2 horas, que por lo general no cancelan las rondas de la mañana. Se juega golf los 12 meses."
+    ],
+    [
+      "Temporada de escapadas",
+      "Nov – Abr · Valle de Bravo · $$",
+      "La ciudad está más seca y las escapadas a la montaña son más cómodas. Avandaro en enero es una experiencia completamente distinta a Avandaro en agosto."
+    ],
+    [
+      "Entre semana",
+      "Mar – Jue · mejor acceso",
+      "Chapultepec y Bosque Real dan prioridad a los socios los fines de semana. Coordinar el acceso entre semana te da mejores condiciones y un ritmo de juego más rápido. De martes a jueves es la ventana."
+    ]
+  ],
+  "faqs": [
+    [
+      "¿Cuántos campos de golf hay en la Ciudad de México?",
+      "La Ciudad de México y su zona metropolitana tienen más de 20 campos de golf a menos de 90 minutos del centro. De ellos, ocho se consideran sedes con nivel de torneo. Club de Golf Chapultepec en Naucalpan, a 20 minutos de Polanco, es el de mayor peso histórico: ha sido sede del Mexican Open 18 veces, del WGC-Mexico Championship 4 veces y de LIV Golf Mexico City. Casi todos los campos son privados; para entrar necesitas la invitación de un socio o una reservación de hotel."
+    ],
+    [
+      "¿Pueden los turistas jugar golf en la Ciudad de México?",
+      "Sí, con coordinación anticipada. Chapultepec requiere invitación de un socio y no tiene acceso directo para el público. Bosque Real Country Club ofrece reservas públicas limitadas entre semana con aviso previo. Amanali Country Club en Hidalgo (a 50 minutos de Polanco) recibe a visitantes externos con reservación, para ir y volver en el día."
+    ],
+    [
+      "¿Club de Golf Chapultepec está abierto a visitantes?",
+      "No de forma directa. Club de Golf Chapultepec es un club privado en Naucalpan, Estado de México, a 20 minutos de Polanco, con acceso solo por invitación de un socio: no hay reserva pública, convenio con hoteles ni pase de día. Es el campo de mayor peso histórico en México, diseñado en 1921 por los campeones del U.S. Open Willie y Alex Smith, y rediseñado por Percy Clifford en 1972. Par 71, 7,345 yardas, a 7,800 pies sobre el nivel del mar. Sede del Mexican Open 18 veces, del WGC-Mexico Championship 4 veces y de LIV Golf Mexico City en 2025 y 2026. Los visitantes solo entran a través de un socio. GOLF° IN MEXICO° coordina presentaciones cuando es posible."
+    ],
+    [
+      "¿Qué le hace la altura a tu juego en la Ciudad de México?",
+      "A 2,240 metros (7,350 pies) sobre el nivel del mar, la bola vuela 10–12% más lejos que al nivel del mar porque el aire es mucho más delgado. Un approach de 150 yardas juega como uno de 130 a 135 yardas. La elección de palo cambia uno o dos palos. Los putts ruedan más rápido y quiebran un poco más tarde que a menor altura. La condición física se resiente en la primera ronda: si no estás aclimatado, planea al menos un día de ajuste antes de una ronda competitiva. Nuestra recomendación: llega un día antes."
+    ],
+    [
+      "¿Qué tan lejos está Amanali Country Club de la Ciudad de México?",
+      "Amanali Country Club está en Tepeji del Río, Hidalgo, a unos 50 minutos al norte de Polanco por la Autopista México-Querétaro. Es el mejor campo para ir y volver en el día desde la Ciudad de México si no tienes membresía en un club local. Schmidt & Curley diseñaron el trazado de 18 hoyos y par 72 en 2010. Con 7,400 yardas y vistas a cañadas y al lago en todo el recorrido, se considera uno de los 10 mejores campos de México. Requiere reservación anticipada."
+    ],
+    [
+      "¿Cuál es la mejor época del año para jugar golf cerca de la Ciudad de México?",
+      "En la Ciudad de México se juega golf todo el año: no hay temporada de huracanes ni épocas de clima extremo que evitar. La temporada seca (noviembre a abril) ofrece cielos más despejados y mañanas más frescas, y es la ventana preferida por los visitantes. La temporada de lluvias (mayo a octubre) suele traer aguaceros por la tarde de 1–2 horas que normalmente no cancelan los tee times de la mañana. En la mayoría de los campos, las mañanas de fin de semana son prioridad de los socios. De martes a jueves es la mejor ventana para visitantes externos."
+    ],
+    [
+      "¿Cuánto cuesta un viaje de golf a la Ciudad de México?",
+      "Los green fees en la Ciudad de México van de $100 a $600 por ronda. El límite casi nunca es el green fee. Es el acceso. Coordinar una ronda en Chapultepec requiere un contacto con un socio; una ronda en Amanali o Avandaro requiere una reserva en el resort. Green fees vigentes en 2026, confirmados por escrito antes de que reserves.",
+      {
+        "href": "/golf-packages",
+        "label": "paquetes de golf"
+      }
+    ]
+  ],
+  "access": [],
+  "moved": [],
+  "overview": {
+    "label": "El corredor",
+    "pre": "Golf en la Ciudad de México:",
+    "em": "lo que necesitas entender primero.",
+    "paragraphs": [
+      "La Ciudad de México no es un destino de golf en el sentido convencional. No hay corredor turístico, no hay franja de resorts, no hay Uber al primer tee. Todos los campos importantes son privados. El acceso funciona a través de socios, hoteles y coordinación anticipada. Eso es lo primero que hay que saber. Lo segundo: la altura cambia el juego. A 2,240 metros sobre el nivel del mar, la bola vuela 10–12% más lejos que al nivel del mar. Un hierro 7 aquí es un hierro 6 en cualquier otro lado. Cambia cada elección de palo. Cambia cada cálculo en el campo.",
+      "Lo tercero: la historia es real. Club de Golf Chapultepec ha sido sede del Mexican Open 18 veces, del WGC-Mexico Championship 4 veces (2017–2020) y de LIV Golf Mexico City en 2025 y 2026. Bosque Real fue sede del LPGA MasterCard Classic de 2005 a 2009. Encinos Golf recibió al European Challenge Tour. No son campos municipales. Son sedes de torneos que además son clubes privados.",
+      "El circuito fuera de la ciudad es igual de fuerte. Amanali en Hidalgo (Schmidt & Curley, 7,400 yardas, cañadas y vistas al lago) se considera uno de los 10 mejores campos de México. Avandaro está dentro de un resort en Valle de Bravo, a 90 minutos de la ciudad, donde el bosque de pinos marca la diferencia. Tabachines en Cuernavaca está a 45 minutos de la ciudad, en un microclima que se mantiene verde todo el año. Nuestro enfoque: coordinar el acceso con anticipación, jugar la historia en Chapultepec y escaparte a la montaña para el contraste."
+    ]
+  },
+  "costs": {
+    "label": "Los números",
+    "pre": "En la Ciudad de México,",
+    "em": "la variable es el acceso, no el green fee.",
+    "intro": "Los green fees aquí están entre los más bajos de todos nuestros destinos. Lo que cuesta es hospedarte en el hotel correcto, conocer al socio correcto o reservar el paquete de resort correcto para conseguir el tee time.",
+    "callouts": [
+      [
+        "El efecto de la altura",
+        "A 2,240 metros sobre el nivel del mar, el aire es 20–25% más delgado que al nivel del mar. La bola vuela 10–12% más lejos. Un tiro normal de 150 yardas aquí es uno de 135 yardas en cualquier otro lado. En el approach, la elección de palo cambia uno o dos palos. En los greens, los putts quiebran más tarde y ruedan más rápido. La ventaja es del socio local, siempre. Nuestra recomendación: llega un día antes si vuelas desde un destino de playa. Juega nueve hoyos el primer día. Dieciocho el segundo."
+      ],
+      [
+        "La realidad del acceso",
+        "Casi todos los campos de este corredor son privados. El green fee casi nunca es el problema. Entrar al campo, sí. Nuestro enfoque: coordinar Chapultepec a través de un socio, reservar Amanali o Avandaro a través del resort y usar Tabachines como la opción flexible de acceso público."
+      ]
+    ],
+    "packages": null
+  },
+  "logistics": {
+    "label": "Sobre el terreno",
+    "pre": "Cómo llegar",
+    "em": "y cómo moverte en el tráfico.",
+    "items": [
+      [
+        "Aeropuerto + llegadas",
+        "AICM (Benito Juárez): aeropuerto principal. Vuelos directos desde Los Angeles, Dallas, Miami, Chicago, New York, Houston y la mayoría de las ciudades de entrada de EE. UU. AIFA (Felipe Ángeles): secundario, al norte de la ciudad, lo usan las aerolíneas de bajo costo. Aduana: 30–60 minutos en el AICM según el flujo."
+      ],
+      [
+        "Cómo llegar a los campos",
+        "Chapultepec: 20 min de Polanco. Bosque Real: 20 min de Santa Fe / 30 de Polanco. Encinos: 45 min de Polanco. Amanali: 50 min de Polanco. Avandaro: 90 min (Valle de Bravo). Tabachines: 45 min (Cuernavaca). A todos los campos necesitas ir con chofer privado o auto rentado. Uber llega a la mayoría, pero no puede entrar a fraccionamientos privados sin autorización previa."
+      ],
+      [
+        "Entre campos",
+        "El tráfico es el factor que limita. Planea un campo por día; nunca dos el mismo día en la CDMX. El golf de la ciudad se disfruta más junto con su escena de restaurantes: arma el viaje alrededor de la sobremesa, no de una segunda ronda."
+      ],
+      [
+        "Moneda + propinas",
+        "La mayoría de los green fees se cotizan en MXN. El caddie se paga en efectivo en MXN. Los resorts más grandes aceptan USD. Lleva pesos para el caddie."
+      ]
+    ]
+  },
+  "sources": [
+    "Club de Golf Chapultepec: registros del Mexican Open, WGC-Mexico Championship (2017–2020) y LIV Golf Mexico City (2025, 2026)",
+    "LPGA Tour: registros del MasterCard Classic en Bosque Real (2005–2009)",
+    "European Challenge Tour: registros del Los Encinos Open (2002–2007)",
+    "Schmidt-Curley Design: archivo de diseño de Amanali Country Club",
+    "Banco de México: datos del tipo de cambio peso/USD (mayo 2026)"
+  ],
+  "readNext": [],
+  "newsletter": "Estamos publicando a qué clubes privados te podemos meter, cómo cambia la altura tus distancias y a dónde ir después de la ronda. Déjanos tu email y te lo mandamos cuando esté listo. Sin spam; te das de baja cuando quieras.",
+  "newsletterTitle": "Entérate de todo sobre el golf en la Ciudad de México.",
+  "heroPhoto": null
+}

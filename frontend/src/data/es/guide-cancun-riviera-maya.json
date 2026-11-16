@@ -1,0 +1,720 @@
+{
+  "slug": "cancun-riviera-maya",
+  "name": "Cancun · Riviera Maya",
+  "title": "Golf en Cancún y la Riviera Maya",
+  "seoTitle": "Golf en Cancún y Riviera Maya | El Camaleón y Moon Palace",
+  "seoDescription": "El Camaleón de Greg Norman entre selva, cenotes y manglares, los 27 hoyos de Nicklaus en Moon Palace y los campos del Caribe que puedes jugar sin hospedarte en el resort.",
+  "answer": "Cancún y la Riviera Maya tienen más de 12 campos de golf de campeonato a lo largo de 80 millas de costa caribeña, diseñados por Greg Norman, Jack Nicklaus, Tom Weiskopf, Nick Price y Robert Trent Jones Jr. El green fee va de $190 a $375 por ronda.",
+  "byline": "Editorial GOLF° IN MEXICO° · Investigación de campo de Pablo De La Mora y José Islas",
+  "facts": [
+    [
+      "Campos",
+      "12+"
+    ],
+    [
+      "Green fees",
+      "$190–$375"
+    ],
+    [
+      "Mejores meses",
+      "Dic – Abr"
+    ]
+  ],
+  "courses": [
+    {
+      "name": "Playa Mujeres Golf Club",
+      "slug": "playa-mujeres-golf-club",
+      "page": {
+        "slug": "playa-mujeres-golf-club",
+        "name": "Playa Mujeres Golf Club",
+        "region": "cancun-riviera-maya",
+        "place": "Cancún / Riviera Maya",
+        "href": "/destinations/cancun-riviera-maya/courses/playa-mujeres-golf-club",
+        "architect": "Greg Norman",
+        "architects": [
+          "Greg Norman",
+          "Tad Burnett"
+        ],
+        "label": "Vista al mar",
+        "greenFee": 250,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/courses/playa-mujeres-golf-club/01.jpg",
+          "credit": ""
+        }
+      },
+      "design": "Greg Norman y Tad Burnett",
+      "place": "Cancun · Riviera Maya",
+      "tournament": "—",
+      "fee": "$250",
+      "access": "Resort (tee times para visitantes)",
+      "tier": "public",
+      "note": "Dentro de los 930 acres del Playa Mujeres Resort, entre el mar Caribe y la laguna Chachmuchuc, con vegetación de selva que angosta los fairways en varios puntos. Los vientos alisios de cada día suman un reto estratégico. Un campo corto de nueve hoyos, terminado en 2024 por Greg Norman Golf Course Design, se suma al trazado de campeonato: 27 hoyos en total. El green fee incluye transporte redondo desde el hotel. Pasto Paspalum SeaDwarf. A 20 minutos al norte de CUN.",
+      "standout": "Vistas al Caribe y a la laguna desde varios hoyos; los destellos del mar en los segundos nueve son los más espectaculares del corredor al norte de Mayakoba."
+    },
+    {
+      "name": "El Camaleón Mayakoba",
+      "slug": "el-camaleon-mayakoba",
+      "page": {
+        "slug": "el-camaleon-mayakoba",
+        "name": "El Camaleón Mayakoba",
+        "region": "cancun-riviera-maya",
+        "place": "Cancún / Riviera Maya",
+        "href": "/destinations/cancun-riviera-maya/courses/el-camaleon-mayakoba",
+        "architect": "Greg Norman",
+        "architects": [
+          "Greg Norman"
+        ],
+        "label": "Sede de Tour",
+        "greenFee": 375,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/courses/el-camaleon-mayakoba/01.jpg",
+          "credit": ""
+        }
+      },
+      "design": "Greg Norman",
+      "place": "Cancun · Riviera Maya",
+      "tournament": "PGA TOUR · Mayakoba Golf Classic 2007–2022",
+      "fee": "$375",
+      "access": "Resort (tee times para visitantes; tarifas especiales para huéspedes de Mayakoba)",
+      "tier": "resort",
+      "note": "El campo emblema del golf caribeño en México. Fue sede del Mayakoba Golf Classic del PGA Tour de 2007 a 2022, el único torneo del PGA Tour en México en esos años. El trazado de Norman cruza tres ecosistemas distintos: manglar, selva y playa, con un cenote que se cruza en el par 3 del hoyo 7, distinto a cualquier hoyo del país. Paredes de piedra caliza caen hacia el cenote; el green flota encima. Acceso limitado a huéspedes de los hoteles del resort Mayakoba: Andaz, Banyan Tree, Fairmont y Rosewood Mayakoba. El green fee incluye transporte.",
+      "standout": "#7 — Par 3 sobre un cenote natural, con paredes de piedra caliza y agua caribeña cristalina bajo el green. El hoyo más fotografiado de la Riviera Maya."
+    },
+    {
+      "name": "Riviera Cancún Golf & Resorts",
+      "slug": "riviera-cancun-golf-resorts",
+      "page": {
+        "slug": "riviera-cancun-golf-resorts",
+        "name": "Riviera Cancún Golf & Resorts",
+        "region": "cancun-riviera-maya",
+        "place": "Cancún / Riviera Maya",
+        "href": "/destinations/cancun-riviera-maya/courses/riviera-cancun-golf-resorts",
+        "architect": "Jack Nicklaus",
+        "architects": [
+          "Jack Nicklaus"
+        ],
+        "label": "Jugable y relajado",
+        "greenFee": 249,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/course-refs/riviera-cancun-golf-resorts/01.jpg",
+          "credit": "Le Blanc Spa Resorts"
+        }
+      },
+      "design": "Jack Nicklaus",
+      "place": "Cancun · Riviera Maya",
+      "tournament": "—",
+      "fee": "$249",
+      "access": "Público / resort",
+      "tier": "public",
+      "note": "Un diseño de Jack Nicklaus de 7,060 yardas, trazado sobre los contornos naturales del terreno, con vista al mar todo el recorrido. Está cerca del aeropuerto de Cancún, en la misma propiedad que El Tinto, pero es un trazado de campeonato de Nicklaus independiente. La ronda antes del vuelo en el corredor. Abre de 7:00am a 4:00pm. Hay transporte desde la Zona Hotelera.",
+      "standout": "#14 y #15 — el tramo emblema de Nicklaus. Dos hoyos estratégicos de riesgo-recompensa seguidos, sobre la cresta natural del terreno."
+    },
+    {
+      "name": "El Tinto",
+      "slug": "el-tinto-cancun-country-club",
+      "page": {
+        "slug": "el-tinto-cancun-country-club",
+        "name": "El Tinto",
+        "region": "cancun-riviera-maya",
+        "place": "Cancún / Riviera Maya",
+        "href": "/destinations/cancun-riviera-maya/courses/el-tinto-cancun-country-club",
+        "architect": "Nick Price",
+        "architects": [
+          "Nick Price"
+        ],
+        "label": "Top en México",
+        "greenFee": 190,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/courses/el-tinto-cancun-country-club/01.jpg",
+          "credit": ""
+        }
+      },
+      "design": "Nick Price",
+      "place": "Cancun · Riviera Maya",
+      "tournament": "—",
+      "fee": "$190",
+      "access": "Semiprivado / resort",
+      "tier": "public",
+      "note": "18 hoyos, par 72, 6,791 yardas, diseñado por Nick Price, que aprovechó la riqueza natural de la zona. Está en la misma propiedad que Riviera Cancun Golf Club, pero es un trazado independiente. El desnivel y la roca natural lo vuelven una de las rondas tierra adentro más distintas de la región. Abre de 7:00am a 4:00pm. Hay transporte desde la Zona Hotelera.",
+      "standout": "La roca natural integrada al trazado: afloramientos de piedra caliza que se dejaron en su lugar como parte de la arquitectura del campo, en vez de retirarlos."
+    },
+    {
+      "name": "Moon Palace Golf Course",
+      "slug": "moon-palace-golf-course",
+      "page": {
+        "slug": "moon-palace-golf-course",
+        "name": "Moon Palace Golf Course",
+        "region": "cancun-riviera-maya",
+        "place": "Cancún / Riviera Maya",
+        "href": "/destinations/cancun-riviera-maya/courses/moon-palace-golf-course",
+        "architect": "Jack Nicklaus",
+        "architects": [
+          "Jack Nicklaus"
+        ],
+        "label": "27+ hoyos",
+        "greenFee": 310,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/courses/moon-palace-golf-course/01.jpg",
+          "credit": ""
+        }
+      },
+      "design": "Jack Nicklaus",
+      "place": "Cancun · Riviera Maya",
+      "tournament": "—",
+      "fee": "$310",
+      "access": "Resort (principalmente huéspedes de Palace Resorts)",
+      "tier": "resort",
+      "note": "El primer campo de golf diseñado por Jack Nicklaus en Cancún. 27 hoyos con casi 11,000 yardas de juego en tres combinaciones de 18 hoyos: Dunes & Jungle, Jungle & Lakes y Lakes & Dunes. Formato todo incluido: carritos con GPS, snack bar con aire acondicionado, pro shop y restaurante completo. Tee times desde las 6:00am. Los huéspedes todo incluido juegan pagando solo el carrito ($38 la primera ronda, $19 las siguientes): la mejor relación valor-precio todo incluido del corredor si planeas 3+ rondas.",
+      "standout": "Los nueve de Lakes, los más difíciles de los tres. Humedales nativos, bunkers bien colocados y corredores de selva hacen una prueba mucho más dura de lo que sugiere la tarjeta."
+    },
+    {
+      "name": "PGA Riviera Maya",
+      "slug": "pga-riviera-maya-championship-course",
+      "page": {
+        "slug": "pga-riviera-maya-championship-course",
+        "name": "PGA Riviera Maya",
+        "region": "cancun-riviera-maya",
+        "place": "Cancún / Riviera Maya",
+        "href": "/destinations/cancun-riviera-maya/courses/pga-riviera-maya-championship-course",
+        "architect": "Robert Trent Jones II",
+        "architects": [
+          "Robert Trent Jones II"
+        ],
+        "label": "Sede de Tour",
+        "greenFee": 200,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/courses/pga-riviera-maya-championship-course/01.jpg",
+          "credit": ""
+        }
+      },
+      "design": "Robert Trent Jones II",
+      "place": "Cancun · Riviera Maya",
+      "tournament": "Korn Ferry Tour 2025, su primer torneo en México",
+      "fee": "$200",
+      "access": "Resort (propiedad socia de la PGA)",
+      "tier": "public",
+      "note": "En su primera semana diseñando este campo, RTJ Jr. llegó armado solo con un machete, sus pies y visión de rayos X. Los 290 acres tenían una selva tan cerrada que tuvo que diseñar con las plantas de los pies para saber dónde cortar. 27 hoyos tallados en una cantera de piedra caliza, con fairways que salen de los contornos naturales de una selva densa mezclada con manglares. Agua natural, roca, cenotes y selva nativa son parte del diseño. Primer destino socio de la PGA of America en Latinoamérica (2019). Ganó Mejor Campo de Golf de México en los World Golf Awards 2024. Sede del primer torneo del Korn Ferry Tour en México en 2025. A 90 min de CUN.",
+      "standout": "Cenotes integrados al campo como elementos de arquitectura: no son obstáculos de agua que esquivar, sino parte real del diseño, y hacen de esta la ronda técnicamente más distinta de la región."
+    },
+    {
+      "name": "Puerto Cancún Golf Club",
+      "slug": "puerto-cancun-golf-club",
+      "page": {
+        "slug": "puerto-cancun-golf-club",
+        "name": "Puerto Cancún Golf Club",
+        "region": "cancun-riviera-maya",
+        "place": "Cancún / Riviera Maya",
+        "href": "/destinations/cancun-riviera-maya/courses/puerto-cancun-golf-club",
+        "architect": "Tom Weiskopf",
+        "architects": [
+          "Tom Weiskopf"
+        ],
+        "label": "Jugable y relajado",
+        "greenFee": null,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/course-refs/puerto-cancun-golf-club/01.jpg",
+          "credit": "Puerto Cancún"
+        }
+      },
+      "design": "Tom Weiskopf",
+      "place": "Cancun · Riviera Maya",
+      "tournament": "—",
+      "fee": "$264",
+      "access": "Semiprivado (tee times con reservación)",
+      "tier": "public",
+      "note": "Entre la zona hotelera de Cancún y el centro. El diseño de Tom Weiskopf deja que el paisaje tropical sea el protagonista. Varios hoyos corren junto a la costa y la Marina; casi todos tienen vista al Caribe. Llega a poco más de 7,200 yardas desde las marcas de atrás. El green del 18 está en una isla dentro del canal principal de Puerto Cancún. El par 4 del hoyo 14 corre paralelo a la costa del Caribe por más de 400 yardas. Top 10 de Golf Advisor en México cada año de 2020 a 2024. Toptracer en el driving range.",
+      "standout": "#18 — Green en isla dentro del canal principal de Puerto Cancún. El hoyo de cierre más espectacular de Cancún."
+    },
+    {
+      "name": "Gran Coyote",
+      "slug": "gran-coyote-golf-club",
+      "page": {
+        "slug": "gran-coyote-golf-club",
+        "name": "Gran Coyote",
+        "region": "cancun-riviera-maya",
+        "place": "Cancún / Riviera Maya",
+        "href": "/destinations/cancun-riviera-maya/courses/gran-coyote-golf-club",
+        "architect": "Nick Price",
+        "architects": [
+          "Nick Price"
+        ],
+        "label": "Top en México",
+        "greenFee": 269,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/courses/gran-coyote-golf-club/01.jpg",
+          "credit": ""
+        }
+      },
+      "design": "Nick Price",
+      "place": "Cancun · Riviera Maya",
+      "tournament": "—",
+      "fee": "$269",
+      "access": "Público / resort (Royal Resorts; reserva anticipada)",
+      "tier": "public",
+      "note": "Antes Grand Coral Golf Club. Nick Price puso mucho énfasis en el mínimo impacto ambiental: contrató biólogos y consultores ambientales para reducir el consumo de agua y proteger la fauna nativa. La selva cerrada entra en juego a lo largo de los fairways y exige precisión. Obstáculos de agua en varios hoyos y bunkers bien colocados cerca de los greens. El green fee incluye carrito compartido con GPS, bolas de práctica, instalaciones del club y acceso al beach club. 7 acres de lagos. Pasto Paspalum. A 30 min de CUN.",
+      "standout": "#5, el hoyo emblema · #7, de casi 600 yardas con green en diagonal · los cuatro hoyos de cierre, descritos como el final más difícil de la región."
+    }
+  ],
+  "groups": [
+    [
+      "Abierto a visitantes",
+      [
+        {
+          "name": "Playa Mujeres Golf Club",
+          "slug": "playa-mujeres-golf-club",
+          "page": {
+            "slug": "playa-mujeres-golf-club",
+            "name": "Playa Mujeres Golf Club",
+            "region": "cancun-riviera-maya",
+            "place": "Cancún / Riviera Maya",
+            "href": "/destinations/cancun-riviera-maya/courses/playa-mujeres-golf-club",
+            "architect": "Greg Norman",
+            "architects": [
+              "Greg Norman",
+              "Tad Burnett"
+            ],
+            "label": "Vista al mar",
+            "greenFee": 250,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/courses/playa-mujeres-golf-club/01.jpg",
+              "credit": ""
+            }
+          },
+          "design": "Greg Norman y Tad Burnett",
+          "place": "Cancun · Riviera Maya",
+          "tournament": "—",
+          "fee": "$250",
+          "access": "Resort (tee times para visitantes)",
+          "tier": "public",
+          "note": "Dentro de los 930 acres del Playa Mujeres Resort, entre el mar Caribe y la laguna Chachmuchuc, con vegetación de selva que angosta los fairways en varios puntos. Los vientos alisios de cada día suman un reto estratégico. Un campo corto de nueve hoyos, terminado en 2024 por Greg Norman Golf Course Design, se suma al trazado de campeonato: 27 hoyos en total. El green fee incluye transporte redondo desde el hotel. Pasto Paspalum SeaDwarf. A 20 minutos al norte de CUN.",
+          "standout": "Vistas al Caribe y a la laguna desde varios hoyos; los destellos del mar en los segundos nueve son los más espectaculares del corredor al norte de Mayakoba."
+        },
+        {
+          "name": "Riviera Cancún Golf & Resorts",
+          "slug": "riviera-cancun-golf-resorts",
+          "page": {
+            "slug": "riviera-cancun-golf-resorts",
+            "name": "Riviera Cancún Golf & Resorts",
+            "region": "cancun-riviera-maya",
+            "place": "Cancún / Riviera Maya",
+            "href": "/destinations/cancun-riviera-maya/courses/riviera-cancun-golf-resorts",
+            "architect": "Jack Nicklaus",
+            "architects": [
+              "Jack Nicklaus"
+            ],
+            "label": "Jugable y relajado",
+            "greenFee": 249,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/course-refs/riviera-cancun-golf-resorts/01.jpg",
+              "credit": "Le Blanc Spa Resorts"
+            }
+          },
+          "design": "Jack Nicklaus",
+          "place": "Cancun · Riviera Maya",
+          "tournament": "—",
+          "fee": "$249",
+          "access": "Público / resort",
+          "tier": "public",
+          "note": "Un diseño de Jack Nicklaus de 7,060 yardas, trazado sobre los contornos naturales del terreno, con vista al mar todo el recorrido. Está cerca del aeropuerto de Cancún, en la misma propiedad que El Tinto, pero es un trazado de campeonato de Nicklaus independiente. La ronda antes del vuelo en el corredor. Abre de 7:00am a 4:00pm. Hay transporte desde la Zona Hotelera.",
+          "standout": "#14 y #15 — el tramo emblema de Nicklaus. Dos hoyos estratégicos de riesgo-recompensa seguidos, sobre la cresta natural del terreno."
+        },
+        {
+          "name": "El Tinto",
+          "slug": "el-tinto-cancun-country-club",
+          "page": {
+            "slug": "el-tinto-cancun-country-club",
+            "name": "El Tinto",
+            "region": "cancun-riviera-maya",
+            "place": "Cancún / Riviera Maya",
+            "href": "/destinations/cancun-riviera-maya/courses/el-tinto-cancun-country-club",
+            "architect": "Nick Price",
+            "architects": [
+              "Nick Price"
+            ],
+            "label": "Top en México",
+            "greenFee": 190,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/courses/el-tinto-cancun-country-club/01.jpg",
+              "credit": ""
+            }
+          },
+          "design": "Nick Price",
+          "place": "Cancun · Riviera Maya",
+          "tournament": "—",
+          "fee": "$190",
+          "access": "Semiprivado / resort",
+          "tier": "public",
+          "note": "18 hoyos, par 72, 6,791 yardas, diseñado por Nick Price, que aprovechó la riqueza natural de la zona. Está en la misma propiedad que Riviera Cancun Golf Club, pero es un trazado independiente. El desnivel y la roca natural lo vuelven una de las rondas tierra adentro más distintas de la región. Abre de 7:00am a 4:00pm. Hay transporte desde la Zona Hotelera.",
+          "standout": "La roca natural integrada al trazado: afloramientos de piedra caliza que se dejaron en su lugar como parte de la arquitectura del campo, en vez de retirarlos."
+        },
+        {
+          "name": "PGA Riviera Maya",
+          "slug": "pga-riviera-maya-championship-course",
+          "page": {
+            "slug": "pga-riviera-maya-championship-course",
+            "name": "PGA Riviera Maya",
+            "region": "cancun-riviera-maya",
+            "place": "Cancún / Riviera Maya",
+            "href": "/destinations/cancun-riviera-maya/courses/pga-riviera-maya-championship-course",
+            "architect": "Robert Trent Jones II",
+            "architects": [
+              "Robert Trent Jones II"
+            ],
+            "label": "Sede de Tour",
+            "greenFee": 200,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/courses/pga-riviera-maya-championship-course/01.jpg",
+              "credit": ""
+            }
+          },
+          "design": "Robert Trent Jones II",
+          "place": "Cancun · Riviera Maya",
+          "tournament": "Korn Ferry Tour 2025, su primer torneo en México",
+          "fee": "$200",
+          "access": "Resort (propiedad socia de la PGA)",
+          "tier": "public",
+          "note": "En su primera semana diseñando este campo, RTJ Jr. llegó armado solo con un machete, sus pies y visión de rayos X. Los 290 acres tenían una selva tan cerrada que tuvo que diseñar con las plantas de los pies para saber dónde cortar. 27 hoyos tallados en una cantera de piedra caliza, con fairways que salen de los contornos naturales de una selva densa mezclada con manglares. Agua natural, roca, cenotes y selva nativa son parte del diseño. Primer destino socio de la PGA of America en Latinoamérica (2019). Ganó Mejor Campo de Golf de México en los World Golf Awards 2024. Sede del primer torneo del Korn Ferry Tour en México en 2025. A 90 min de CUN.",
+          "standout": "Cenotes integrados al campo como elementos de arquitectura: no son obstáculos de agua que esquivar, sino parte real del diseño, y hacen de esta la ronda técnicamente más distinta de la región."
+        },
+        {
+          "name": "Puerto Cancún Golf Club",
+          "slug": "puerto-cancun-golf-club",
+          "page": {
+            "slug": "puerto-cancun-golf-club",
+            "name": "Puerto Cancún Golf Club",
+            "region": "cancun-riviera-maya",
+            "place": "Cancún / Riviera Maya",
+            "href": "/destinations/cancun-riviera-maya/courses/puerto-cancun-golf-club",
+            "architect": "Tom Weiskopf",
+            "architects": [
+              "Tom Weiskopf"
+            ],
+            "label": "Jugable y relajado",
+            "greenFee": null,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/course-refs/puerto-cancun-golf-club/01.jpg",
+              "credit": "Puerto Cancún"
+            }
+          },
+          "design": "Tom Weiskopf",
+          "place": "Cancun · Riviera Maya",
+          "tournament": "—",
+          "fee": "$264",
+          "access": "Semiprivado (tee times con reservación)",
+          "tier": "public",
+          "note": "Entre la zona hotelera de Cancún y el centro. El diseño de Tom Weiskopf deja que el paisaje tropical sea el protagonista. Varios hoyos corren junto a la costa y la Marina; casi todos tienen vista al Caribe. Llega a poco más de 7,200 yardas desde las marcas de atrás. El green del 18 está en una isla dentro del canal principal de Puerto Cancún. El par 4 del hoyo 14 corre paralelo a la costa del Caribe por más de 400 yardas. Top 10 de Golf Advisor en México cada año de 2020 a 2024. Toptracer en el driving range.",
+          "standout": "#18 — Green en isla dentro del canal principal de Puerto Cancún. El hoyo de cierre más espectacular de Cancún."
+        },
+        {
+          "name": "Gran Coyote",
+          "slug": "gran-coyote-golf-club",
+          "page": {
+            "slug": "gran-coyote-golf-club",
+            "name": "Gran Coyote",
+            "region": "cancun-riviera-maya",
+            "place": "Cancún / Riviera Maya",
+            "href": "/destinations/cancun-riviera-maya/courses/gran-coyote-golf-club",
+            "architect": "Nick Price",
+            "architects": [
+              "Nick Price"
+            ],
+            "label": "Top en México",
+            "greenFee": 269,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/courses/gran-coyote-golf-club/01.jpg",
+              "credit": ""
+            }
+          },
+          "design": "Nick Price",
+          "place": "Cancun · Riviera Maya",
+          "tournament": "—",
+          "fee": "$269",
+          "access": "Público / resort (Royal Resorts; reserva anticipada)",
+          "tier": "public",
+          "note": "Antes Grand Coral Golf Club. Nick Price puso mucho énfasis en el mínimo impacto ambiental: contrató biólogos y consultores ambientales para reducir el consumo de agua y proteger la fauna nativa. La selva cerrada entra en juego a lo largo de los fairways y exige precisión. Obstáculos de agua en varios hoyos y bunkers bien colocados cerca de los greens. El green fee incluye carrito compartido con GPS, bolas de práctica, instalaciones del club y acceso al beach club. 7 acres de lagos. Pasto Paspalum. A 30 min de CUN.",
+          "standout": "#5, el hoyo emblema · #7, de casi 600 yardas con green en diagonal · los cuatro hoyos de cierre, descritos como el final más difícil de la región."
+        }
+      ]
+    ],
+    [
+      "Huéspedes de resort y hotel",
+      [
+        {
+          "name": "El Camaleón Mayakoba",
+          "slug": "el-camaleon-mayakoba",
+          "page": {
+            "slug": "el-camaleon-mayakoba",
+            "name": "El Camaleón Mayakoba",
+            "region": "cancun-riviera-maya",
+            "place": "Cancún / Riviera Maya",
+            "href": "/destinations/cancun-riviera-maya/courses/el-camaleon-mayakoba",
+            "architect": "Greg Norman",
+            "architects": [
+              "Greg Norman"
+            ],
+            "label": "Sede de Tour",
+            "greenFee": 375,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/courses/el-camaleon-mayakoba/01.jpg",
+              "credit": ""
+            }
+          },
+          "design": "Greg Norman",
+          "place": "Cancun · Riviera Maya",
+          "tournament": "PGA TOUR · Mayakoba Golf Classic 2007–2022",
+          "fee": "$375",
+          "access": "Resort (tee times para visitantes; tarifas especiales para huéspedes de Mayakoba)",
+          "tier": "resort",
+          "note": "El campo emblema del golf caribeño en México. Fue sede del Mayakoba Golf Classic del PGA Tour de 2007 a 2022, el único torneo del PGA Tour en México en esos años. El trazado de Norman cruza tres ecosistemas distintos: manglar, selva y playa, con un cenote que se cruza en el par 3 del hoyo 7, distinto a cualquier hoyo del país. Paredes de piedra caliza caen hacia el cenote; el green flota encima. Acceso limitado a huéspedes de los hoteles del resort Mayakoba: Andaz, Banyan Tree, Fairmont y Rosewood Mayakoba. El green fee incluye transporte.",
+          "standout": "#7 — Par 3 sobre un cenote natural, con paredes de piedra caliza y agua caribeña cristalina bajo el green. El hoyo más fotografiado de la Riviera Maya."
+        },
+        {
+          "name": "Moon Palace Golf Course",
+          "slug": "moon-palace-golf-course",
+          "page": {
+            "slug": "moon-palace-golf-course",
+            "name": "Moon Palace Golf Course",
+            "region": "cancun-riviera-maya",
+            "place": "Cancún / Riviera Maya",
+            "href": "/destinations/cancun-riviera-maya/courses/moon-palace-golf-course",
+            "architect": "Jack Nicklaus",
+            "architects": [
+              "Jack Nicklaus"
+            ],
+            "label": "27+ hoyos",
+            "greenFee": 310,
+            "guestsOnly": false,
+            "photo": {
+              "src": "/media/courses/moon-palace-golf-course/01.jpg",
+              "credit": ""
+            }
+          },
+          "design": "Jack Nicklaus",
+          "place": "Cancun · Riviera Maya",
+          "tournament": "—",
+          "fee": "$310",
+          "access": "Resort (principalmente huéspedes de Palace Resorts)",
+          "tier": "resort",
+          "note": "El primer campo de golf diseñado por Jack Nicklaus en Cancún. 27 hoyos con casi 11,000 yardas de juego en tres combinaciones de 18 hoyos: Dunes & Jungle, Jungle & Lakes y Lakes & Dunes. Formato todo incluido: carritos con GPS, snack bar con aire acondicionado, pro shop y restaurante completo. Tee times desde las 6:00am. Los huéspedes todo incluido juegan pagando solo el carrito ($38 la primera ronda, $19 las siguientes): la mejor relación valor-precio todo incluido del corredor si planeas 3+ rondas.",
+          "standout": "Los nueve de Lakes, los más difíciles de los tres. Humedales nativos, bunkers bien colocados y corredores de selva hacen una prueba mucho más dura de lo que sugiere la tarjeta."
+        }
+      ]
+    ]
+  ],
+  "best": "El Camaleón en Mayakoba es el de mayor peso histórico: sede del PGA Tour durante 15 años. Puerto Cancun Golf Club es el que Golf Advisor rankea con más constancia (#2 en México en 2020, #8 en 2024). Playa Mujeres ofrece la mejor combinación de vista al mar y acceso público. PGA Riviera Maya (cerca de Tulum) ganó Mejor Campo de Golf de México en los World Golf Awards 2024. La respuesta correcta depende de dónde te hospedes y de si priorizas acceso, historial de torneos o paisaje.",
+  "hosts": [
+    {
+      "name": "El Camaleón Mayakoba",
+      "slug": "el-camaleon-mayakoba",
+      "page": {
+        "slug": "el-camaleon-mayakoba",
+        "name": "El Camaleón Mayakoba",
+        "region": "cancun-riviera-maya",
+        "place": "Cancún / Riviera Maya",
+        "href": "/destinations/cancun-riviera-maya/courses/el-camaleon-mayakoba",
+        "architect": "Greg Norman",
+        "architects": [
+          "Greg Norman"
+        ],
+        "label": "Sede de Tour",
+        "greenFee": 375,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/courses/el-camaleon-mayakoba/01.jpg",
+          "credit": ""
+        }
+      },
+      "design": "Greg Norman",
+      "place": "Cancun · Riviera Maya",
+      "tournament": "PGA TOUR · Mayakoba Golf Classic 2007–2022",
+      "fee": "$375",
+      "access": "Resort (tee times para visitantes; tarifas especiales para huéspedes de Mayakoba)",
+      "tier": "resort",
+      "note": "El campo emblema del golf caribeño en México. Fue sede del Mayakoba Golf Classic del PGA Tour de 2007 a 2022, el único torneo del PGA Tour en México en esos años. El trazado de Norman cruza tres ecosistemas distintos: manglar, selva y playa, con un cenote que se cruza en el par 3 del hoyo 7, distinto a cualquier hoyo del país. Paredes de piedra caliza caen hacia el cenote; el green flota encima. Acceso limitado a huéspedes de los hoteles del resort Mayakoba: Andaz, Banyan Tree, Fairmont y Rosewood Mayakoba. El green fee incluye transporte.",
+      "standout": "#7 — Par 3 sobre un cenote natural, con paredes de piedra caliza y agua caribeña cristalina bajo el green. El hoyo más fotografiado de la Riviera Maya."
+    },
+    {
+      "name": "PGA Riviera Maya",
+      "slug": "pga-riviera-maya-championship-course",
+      "page": {
+        "slug": "pga-riviera-maya-championship-course",
+        "name": "PGA Riviera Maya",
+        "region": "cancun-riviera-maya",
+        "place": "Cancún / Riviera Maya",
+        "href": "/destinations/cancun-riviera-maya/courses/pga-riviera-maya-championship-course",
+        "architect": "Robert Trent Jones II",
+        "architects": [
+          "Robert Trent Jones II"
+        ],
+        "label": "Sede de Tour",
+        "greenFee": 200,
+        "guestsOnly": false,
+        "photo": {
+          "src": "/media/courses/pga-riviera-maya-championship-course/01.jpg",
+          "credit": ""
+        }
+      },
+      "design": "Robert Trent Jones II",
+      "place": "Cancun · Riviera Maya",
+      "tournament": "Korn Ferry Tour 2025, su primer torneo en México",
+      "fee": "$200",
+      "access": "Resort (propiedad socia de la PGA)",
+      "tier": "public",
+      "note": "En su primera semana diseñando este campo, RTJ Jr. llegó armado solo con un machete, sus pies y visión de rayos X. Los 290 acres tenían una selva tan cerrada que tuvo que diseñar con las plantas de los pies para saber dónde cortar. 27 hoyos tallados en una cantera de piedra caliza, con fairways que salen de los contornos naturales de una selva densa mezclada con manglares. Agua natural, roca, cenotes y selva nativa son parte del diseño. Primer destino socio de la PGA of America en Latinoamérica (2019). Ganó Mejor Campo de Golf de México en los World Golf Awards 2024. Sede del primer torneo del Korn Ferry Tour en México en 2025. A 90 min de CUN.",
+      "standout": "Cenotes integrados al campo como elementos de arquitectura: no son obstáculos de agua que esquivar, sino parte real del diseño, y hacen de esta la ronda técnicamente más distinta de la región."
+    }
+  ],
+  "seasons": [
+    [
+      "Temporada alta",
+      "Dic – Abr · 75–85°F · Muy alta · $$$",
+      "Poca humedad, casi nada de lluvia, vientos alisios manejables. De Navidad a Semana Santa los todo incluido se agotan con 4–8 meses de anticipación. Reserva temprano o muévete a temporada media."
+    ],
+    [
+      "Temporada media",
+      "May – Jul · 80–90°F · Moderada · $$",
+      "Más calor y más humedad; las habitaciones bajan 25–40% frente a temporada alta. Los tee times de la mañana terminan antes del pico de humedad. La mejor ventana de precio para Mayakoba y Playa Mujeres."
+    ],
+    [
+      "Huracanes / baja",
+      "Ago – Nov · 80–90°F · Baja · $",
+      "La ventana con mayor riesgo de huracanes en México. El seguro no es negociable. A finales de noviembre empieza la transición a temporada alta al cerrar la temporada: las tarifas más agresivas del cierre de temporada baja."
+    ]
+  ],
+  "faqs": [
+    [
+      "¿Cuántos campos de golf hay en Cancún y la Riviera Maya?",
+      "Cancún y la Riviera Maya tienen más de 12 campos de golf de campeonato a lo largo de 80 millas de costa caribeña, desde Playa Mujeres, al norte de Cancún, hasta PGA Riviera Maya, cerca de Tulum. Entre los diseñadores clave están Greg Norman (Playa Mujeres, El Camaleón), Jack Nicklaus (Moon Palace, Riviera Cancun Golf Club), Tom Weiskopf (Puerto Cancún), Nick Price (El Tinto, Gran Coyote) y Robert Trent Jones Jr. (PGA Riviera Maya). La mayoría de los campos están ligados a un resort, pero aceptan público con reserva anticipada."
+    ],
+    [
+      "¿Cuál es el mejor campo de golf de Cancún?",
+      "El Camaleón en Mayakoba es el de mayor peso histórico: sede del PGA Tour durante 15 años. Puerto Cancun Golf Club es el que Golf Advisor rankea con más constancia (#2 en México en 2020, #8 en 2024). Playa Mujeres ofrece la mejor combinación de vista al mar y acceso público. PGA Riviera Maya (cerca de Tulum) ganó Mejor Campo de Golf de México en los World Golf Awards 2024. La respuesta correcta depende de dónde te hospedes y de si priorizas acceso, historial de torneos o paisaje."
+    ],
+    [
+      "¿Cuál es la opción de golf todo incluido en Cancún?",
+      "Moon Palace Golf Club tiene el paquete de golf todo incluido más fuerte de Cancún. Los huéspedes todo incluido pagan solo $38 la primera ronda y $19 las siguientes (más el carrito), en vez del green fee estándar de $310. Hard Rock Riviera Maya también incluye el golf en la tarifa de la habitación. Las cuentas del todo incluido salen si juegas 3+ rondas en tu estancia."
+    ],
+    [
+      "¿Cuál es la mejor época para jugar golf en Cancún?",
+      "De diciembre a abril: seco, 75–85°F, poca humedad y vientos alisios manejables. Para el mejor precio, mayo y principios de julio dan condiciones casi de temporada alta con habitaciones 25–40% más baratas. Evita de agosto a octubre: la ventana con mayor riesgo de huracanes en la costa del Caribe. A finales de noviembre se vuelve a la temporada alta al cerrar la temporada de huracanes, con las tarifas más agresivas del cierre de temporada baja en el corredor. Un seguro de viaje con cobertura de huracanes es lo estándar para cualquier viaje reservado en temporada baja."
+    ],
+    [
+      "¿Cuánto cuesta un viaje de golf a Cancún?",
+      "El green fee va de $190 a $375 por ronda, de El Tinto a El Camaleón en Mayakoba. La jugada del todo incluido es la variable clave: los huéspedes todo incluido de Moon Palace pagan $38 la primera ronda y $19 las siguientes (más el carrito). La otra variable es el hotel, desde un todo incluido con golf incluido hasta un hospedaje nivel Mayakoba más green fees por separado. Green fees vigentes en 2026, confirmados por escrito antes de reservar.",
+      {
+        "href": "/destinations/cancun-riviera-maya/golf-packages",
+        "label": "Paquetes de golf en Cancún · Riviera Maya"
+      }
+    ]
+  ],
+  "access": [],
+  "moved": [
+    {
+      "slug": "el-camaleon-mayakoba",
+      "q": "¿Qué es El Camaleón en Mayakoba?",
+      "a": "El Camaleón en Mayakoba es un campo de campeonato diseñado por Greg Norman en el complejo Mayakoba, en Playa del Carmen, México. Fue sede del Mayakoba Golf Classic del PGA Tour de 2007 a 2022, el único torneo del PGA Tour en México en ese periodo. El trazado cruza tres ecosistemas: manglar, selva y playa, con el famoso par 3 del hoyo 7 que se juega sobre un cenote natural de piedra caliza. El acceso está limitado a huéspedes de los hoteles del resort Mayakoba: Andaz, Banyan Tree, Fairmont y Rosewood."
+    },
+    {
+      "slug": "el-camaleon-mayakoba",
+      "q": "¿Pueden los turistas jugar El Camaleón en Mayakoba?",
+      "a": "Sí. El club recibe golfistas visitantes con su propio formulario de reserva: $375 en horario estelar, con tarifas especiales para huéspedes de los cuatro hoteles de Mayakoba (Andaz, Banyan Tree, Fairmont y Rosewood Mayakoba). Cerca, Playa Mujeres, Puerto Cancún, Gran Coyote y PGA Riviera Maya aceptan reserva directa sin hospedarte en el resort."
+    },
+    {
+      "slug": "puerto-cancun-golf-club",
+      "q": "¿Puerto Cancun Golf Club está abierto al público?",
+      "a": "Sí. Puerto Cancun Golf Club es un campo de acceso público con reserva directa; no necesitas hospedarte en ningún resort. Tom Weiskopf diseñó el trazado de 7,241 yardas y par 72 en 2013, entre la Zona Hotelera de Cancún y el centro. El green fee es de $270 ($165 en twilight). Varios hoyos corren junto a la costa del Caribe y la marina de Puerto Cancún, y el par 4 del 18 cierra en un green en isla dentro del canal principal de la propiedad. Top 10 en México según Golf Advisor cada año de 2020 a 2024."
+    },
+    {
+      "slug": "pga-riviera-maya-championship-course",
+      "q": "¿PGA Riviera Maya está abierto al público?",
+      "a": "Sí. PGA Riviera Maya acepta reserva directa del público sin hospedarte en el resort. Está a 90 minutos al sur de Cancún, en Tulum Country Club; el diseño de Robert Trent Jones Jr. abrió en 2010 y en 2019 se volvió el primer destino socio de la PGA of America en Latinoamérica. Ganó Mejor Campo de Golf de México en los World Golf Awards 2024 y fue sede del primer torneo del Korn Ferry Tour en México en 2025. El trazado cruza cenotes, terreno de piedra caliza y selva cerrada: un campo nivel Korn Ferry abierto a jugadores de fuera."
+    }
+  ],
+  "overview": {
+    "label": "La costa",
+    "pre": "Golf en la Riviera Maya:",
+    "em": "el más fácil de alcanzar en México.",
+    "paragraphs": [
+      "El Aeropuerto Internacional de Cancún es el aeropuerto mexicano con más vuelos de aerolíneas de EE. UU.: vuelos directos desde 25+ ciudades de EE. UU., aduana ágil y la Carretera 307 recorriendo todo el corredor de golf de la Riviera Maya hasta Tulum. Para el golfista que viene de fuera, es el viaje con menos fricción del país.",
+      "El corredor de golf de la Riviera Maya se divide en tres zonas. Al norte de Cancún está Playa Mujeres (Greg Norman, 27 hoyos, vistas al Caribe y a la laguna) y el grupo de la Zona Hotelera: Iberostar, Moon Palace, Puerto Cancún. El polo de Mayakoba, a 50 minutos de CUN, es el destino estrella del corredor: El Camaleón fue sede del Mayakoba Golf Classic del PGA Tour de 2007 a 2022. Al sur del aeropuerto, Riviera Cancun Golf Club (Jack Nicklaus) y El Tinto (Nick Price) comparten propiedad: dos trazados de campeonato distintos. Al sur de Playa del Carmen, Gran Coyote (Nick Price) y PGA Riviera Maya (RTJ Jr., Korn Ferry 2025) anclan el extremo de Tulum.",
+      "El terreno es golf de resort caribeño: ni desierto ni acantilado. Cruces de manglar, cenotes de piedra caliza, corredores de selva y hasta una ruina maya en el hoyo 16 (Iberostar). Lo que lo distingue es la variedad de formas de acceso: paquetes todo incluido en Moon Palace, tee times públicos en Puerto Cancún, la experiencia de torneo en El Camaleón. Tres diseñadores definen el corredor: Greg Norman en Playa Mujeres y El Camaleón. Jack Nicklaus en Moon Palace y Riviera Cancun Golf Club. Nick Price en El Tinto y Gran Coyote."
+    ]
+  },
+  "costs": {
+    "label": "Las cuentas",
+    "pre": "El rango de precios más amplio",
+    "em": "del golf en México.",
+    "intro": "Los resorts todo incluido meten el golf en la tarifa de la habitación. Reservar Mayakoba o Playa Mujeres por separado sale caro. Aquí todo el juego está en aprovechar el todo incluido.",
+    "callouts": [
+      [
+        "La jugada del todo incluido",
+        "Moon Palace, Iberostar y Hard Rock incluyen golf ilimitado en la tarifa de la habitación. Si vas a jugar 4+ rondas, las cuentas del todo incluido le ganan por mucho a una estancia en Mayakoba por separado. Moon Palace: $310 por separado, o $38 la primera ronda / $19 la siguiente para huéspedes todo incluido. El costo es la calidad de la propiedad. En la práctica, las rondas quedan pagadas al hacer check-in."
+      ],
+      [
+        "La ventana de huracanes",
+        "De agosto a octubre es, estadísticamente, la ventana de mayor riesgo en la costa del Caribe. Un seguro de viaje con cobertura de huracanes es lo estándar para cualquier viaje en esas fechas. Los precios de temporada baja reflejan ese riesgo."
+      ]
+    ],
+    "packages": "/destinations/cancun-riviera-maya/golf-packages"
+  },
+  "logistics": {
+    "label": "En el terreno",
+    "pre": "Cómo llegar",
+    "em": "y moverte por la costa.",
+    "items": [
+      [
+        "Aeropuerto y llegadas",
+        "Aeropuerto Internacional de Cancún (CUN): vuelos directos desde 25+ ciudades de EE. UU. La aduana suele tomar 20–45 minutos. Varias opciones de FBO para aviación privada. El Aeropuerto Internacional de Tulum (TQO), abierto en 2023, da servicio al extremo sur del corredor."
+      ],
+      [
+        "Cómo llegar a los campos",
+        "La Carretera 307 recorre toda la Riviera Maya: bien mantenida, con señalización en inglés y casetas de $8–$15 USD por todo el tramo. CUN → Playa Mujeres: 20 min al norte. CUN → El Tinto / Puerto Cancún: 10–20 min. CUN → Moon Palace: 20 min al sur. CUN → Iberostar: 20 min al sur (Zona Hotelera). CUN → Mayakoba / El Camaleón: 50 min al sur. CUN → Gran Coyote: 60 min al sur. CUN → PGA Riviera Maya: 90 min al sur."
+      ],
+      [
+        "Entre campos",
+        "Los campos de Mayakoba comparten una sola propiedad: los clubhouses están a distancia caminable. Moon Palace, Hard Rock e Iberostar están en el grupo de la Zona Hotelera. Puerto Cancún está aparte, entre la Zona Hotelera y el centro. La mayoría de los campos incluyen transporte desde el hotel en el green fee para grupos de 2+."
+      ],
+      [
+        "Moneda y propinas",
+        "Aceptan USD en todos lados. La mayoría de los green fees se cotizan en USD. Propina al caddie: $20–$40 por ronda. Las casetas de la carretera aceptan pesos o USD."
+      ]
+    ]
+  },
+  "sources": [
+    "PGA Tour: registros del Mayakoba Golf Classic (2007–2022)",
+    "Korn Ferry Tour: registros del torneo PGA Riviera Maya 2025",
+    "World Golf Awards: Mejor Campo de Golf de México 2024 (PGA Riviera Maya)",
+    "Tarifarios de resorts: Mayakoba · Moon Palace · Iberostar · Hard Rock (T1 2026)",
+    "Banco de México: tipo de cambio peso/USD (mayo 2026)"
+  ],
+  "readNext": [
+    [
+      "/destinations/mexico-city",
+      "Campos de golf en la Ciudad de México",
+      "El contrapunto tierra adentro: 20+ campos en altura, acceso por invitación, green fees de $100 a $600."
+    ],
+    [
+      "/destinations/los-cabos",
+      "golf en Los Cabos",
+      "18 campos entre Cabo San Lucas y San José del Cabo, de $260 a $700 por ronda."
+    ]
+  ],
+  "newsletter": "Estamos publicando los resorts del Caribe que incluyen bien el golf, el costo real de cada ronda y los campos que valen tu tiempo. Déjanos tu email y te lo mandamos cuando esté listo. Sin spam; te das de baja cuando quieras.",
+  "newsletterTitle": "Entérate de todo sobre el golf en la Riviera Maya.",
+  "heroPhoto": null
+}
