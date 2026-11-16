@@ -1,15 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import { CONCIERGE_CALL_URL, START_PLANNING_URL } from "@/data/siteNav";
+import { useLang, localize } from "@/i18n";
 
 /* The Reverie system, shared by every redesigned page: measurements taken from reveriesafaris.com at 1440px
    (40px margins, 425px text column beside a 900×600 picture, 414×561 cards 30px apart), titles in Inter 800 caps,
    deep green button, the brand's G° as monogram, and the Masters-style board for golf data. */
 
-export const Concierge = ({ id, className = "r-btn" }) => (
-  <a href={START_PLANNING_URL} data-track="landing_explore" data-track-id={`start-planning-${id}`} className={className}>
-    Book with Golf Concierge
-  </a>
-);
+export const Concierge = ({ id, className = "r-btn" }) => {
+  const lang = useLang();
+  return (
+    <a href={localize(START_PLANNING_URL, lang)} data-track="landing_explore" data-track-id={`start-planning-${id}`} className={className}>
+      {lang === "es" ? "Agenda con Golf Concierge" : "Book with Golf Concierge"}
+    </a>
+  );
+};
+
+/** "Photo:" in the reader's language. */
+const PhotoLabel = () => (useLang() === "es" ? "Foto: " : "Photo: ");
 
 export const Monogram = () => (
   <span aria-hidden="true" className="inline-flex w-[58px] h-[58px] rounded-full border border-current items-center justify-center font-extrabold text-[20px] leading-none">
@@ -21,7 +28,7 @@ export const Monogram = () => (
 export const PhotoHero = ({ image, alt = "", testid = "hero-section", credit, children }) => (
   <section data-testid={testid} className="relative h-[100svh] min-h-[560px] overflow-hidden bg-[var(--r-green)]">
     <img src={image} alt={alt} className="absolute inset-0 w-full h-full object-cover" />
-    {credit && <span className="absolute left-3 bottom-3 z-[1] text-[11px] text-white/85 bg-black/30 px-1.5 py-0.5">Photo: {credit}</span>}
+    {credit && <span className="absolute left-3 bottom-3 z-[1] text-[11px] text-white/85 bg-black/30 px-1.5 py-0.5"><PhotoLabel />{credit}</span>}
     {children}
   </section>
 );
@@ -89,7 +96,7 @@ export const Card = ({ href, image, eyebrow, title, text, cta, credit, titleAs: 
   <a role="listitem" href={href || undefined} className="group snap-start shrink-0 w-[78vw] sm:w-[44vw] lg:w-[414px] flex flex-col">
     <div className="relative aspect-[414/561] overflow-hidden bg-[var(--r-cream-2)]">
       {image && <img src={image} alt={typeof title === "string" ? title : ""} loading="lazy" className="w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.04]" />}
-      {credit && <span className="absolute left-2 bottom-2 text-[11px] text-white/85 bg-black/30 px-1.5 py-0.5">Photo: {credit}</span>}
+      {credit && <span className="absolute left-2 bottom-2 text-[11px] text-white/85 bg-black/30 px-1.5 py-0.5"><PhotoLabel />{credit}</span>}
     </div>
     {eyebrow && <span className="r-eyebrow text-[var(--r-ink-soft)] mt-6">{eyebrow}</span>}
     <T className={`r-title text-[19px] text-[var(--r-green)] ${eyebrow ? "mt-3" : "mt-6"}`}>{title}</T>
@@ -104,7 +111,7 @@ export const Split = ({ id, image, alt, flip, credit, position, children }) => {
   const pic = (
     <figure className="md:w-[62.5%]">
       <img src={image} alt={alt} loading="lazy" className="w-full aspect-[3/2] object-cover" style={position ? { objectPosition: position } : undefined} />
-      {credit && <figcaption className="mt-2 text-[11px] text-[var(--r-ink-soft)]">Photo: {credit}</figcaption>}
+      {credit && <figcaption className="mt-2 text-[11px] text-[var(--r-ink-soft)]"><PhotoLabel />{credit}</figcaption>}
     </figure>
   );
   return (
@@ -177,7 +184,7 @@ export const Board = ({ caption, head, rows, wide }) => (
 export const Sources = ({ items, note }) => (
   <section className="px-5 md:px-10 pb-16">
     <div className="max-w-[1100px] mx-auto border-t border-[rgba(30,57,43,0.15)] pt-8 flex flex-col gap-3">
-      <span className="r-eyebrow text-[var(--r-ink-soft)]">Sources</span>
+      <span className="r-eyebrow text-[var(--r-ink-soft)]">{useLang() === "es" ? "Fuentes" : "Sources"}</span>
       {note && <p className="r-body text-[13px]">{note}</p>}
       <ul className="flex flex-col gap-1.5">
         {items.map(([label, href]) => (
