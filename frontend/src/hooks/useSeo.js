@@ -145,6 +145,8 @@ export const orgSchema = () => ({
     "https://www.facebook.com/people/Golf-In-Mexico/61590265455260/",
     "https://www.linkedin.com/company/golfinmexico/",
     "https://www.youtube.com/@golf.inmexico",
+    // The reviews profile (2026-11-22). Its rating stays off this schema: Google does not take third-party reviews marked up on the business's own site.
+    "https://www.trustpilot.com/review/golf-in-mexico.com",
   ],
   contactPoint: {
     "@type": "ContactPoint",
