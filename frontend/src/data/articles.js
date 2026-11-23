@@ -105,8 +105,9 @@ export const ARTICLES = [
     title: "How to Plan a Golf Trip to Mexico: The Complete Guide for US Golfers",
     h1: "How to Plan a Golf Trip to Mexico: The Complete Guide for US Golfers",
     subtitle: "Region first — then budget, season, and access. The planning framework we use on every trip, and the mistakes it saves you from.",
-    metaTitle: "How to Plan a Golf Trip to Mexico | Region, Season & Access",
-    metaDescription: "Region first, then season, budget and access: how to plan a golf trip to Mexico, from Cabo's three corridors to Mexico City's private clubs.",
+    // Cost leads the title (2026-11-23): the searches that show this page ask what the trip costs; CTR was 1.4% at position 7.
+    metaTitle: "Golf Trip to Mexico: Cost, Best Time & How to Plan (2026)",
+    metaDescription: "What a golf trip to Mexico costs per person, when to go by region, and how to get on the courses, from Cabo's three corridors to Mexico City's private clubs.",
     excerpt: "Region first — then budget, season, and access. The planning framework we use on every trip, and the mistakes it saves you from.",
     heroImage: "/images/plan-golf-trip-mexico.webp",
     author: {
@@ -120,9 +121,18 @@ export const ARTICLES = [
     isGIMProperty: false,
     searchVolume: 1600,
     readTimeMinutes: 10,
-    updated: "July 2026",
+    updated: "November 2026",
+    datePublished: "2026-05-01",
+    dateModified: "2026-11-23",
+    sources: [
+      ["NOAA / National Hurricane Center: hurricane season dates for the Atlantic and Eastern Pacific", "https://www.nhc.noaa.gov/climo/"],
+      ["Servicio Meteorológico Nacional (CONAGUA): climate normals by state", "https://smn.conagua.gob.mx/es/climatologia/informacion-climatologica/normales-climatologicas-por-estado"],
+      ["Vidanta: golf courses in Nuevo Vallarta, including The Lakes", "https://www.vidanta.com/golf"],
+    ],
     body: [
-      { type: "lead", text: "Most golf trip planning advice about Mexico gets it backward. People start with the course they want to play and try to build everything else around it — and after planning these trips, we can tell you: it just doesn't work that way. The best planning starts with a different question entirely." },
+      // The direct answer first (2026-11-23): what the trip costs per person, from the price cards further down.
+      { type: "lead", text: "A golf trip to Mexico of 4 nights and 3 rounds runs about $1,170–$9,515 per person, depending on the region: [Mexico City](/destinations/mexico-city) is the most affordable, [Punta Mita](/destinations/punta-mita) the most expensive. The region you pick sets the price, the season and how you get on the courses, so that is where planning starts." },
+      { type: "p", text: "Most golf trip planning advice about Mexico gets it backward. People start with the course they want to play and try to build everything else around it — and after planning these trips, we can tell you: it just doesn't work that way. The best planning starts with a different question entirely." },
       { type: "p", text: "Which Mexico do you want to be inside of for a week? The region, the vibe, the pace. Not all of Mexico is the same." },
       { type: "p", text: "Once that question is answered, everything becomes much simpler. Mexico is more than one golf destination, and understanding that can completely change your trip. Think of this as the Mexico golf trip planning guide we wish had existed when we started. It's built around how good trips come together." },
 
@@ -255,6 +265,8 @@ export const ARTICLES = [
       { type: "divider" },
 
       { type: "h2", text: "Planning Your Trip: Quick Answers" },
+      { type: "faq", q: "Is Mexico a good place for a golf vacation?", a: "Yes, if you pick the region first. Los Cabos and the Riviera Maya each have more than 15 courses, from Jack Nicklaus, Greg Norman and Tiger Woods designs to hidden gems, with resorts built around the traveling golfer. Mexico City adds private-club golf inside a major city, and Mérida, La Paz and Valle de Bravo offer something only those places have. November through April is the usual window, adjusted to each region's season." },
+      { type: "faq", q: "How much does a 4-day golf trip to Mexico cost for 4 guys?", a: "Plan on about $1,170–$9,515 per person for 4 nights and 3 rounds, depending on the region: Mexico City $1,170–$3,500, Los Cabos $2,030–$5,580, Cancún & Riviera Maya $2,200–$6,590 and Punta Mita $3,995–$9,515. For a group of 4, each golfer pays their own share. Add carts where they're not included, caddie tips of 10–20%, and food, which runs much higher in the tourist corridors." },
       { type: "faq", q: "When is the best time for a golf trip to Mexico?", a: "November through April is the common advice, and it's not wrong — but seasonality is regional. The Baja Peninsula runs on a different calendar than the Yucatán, and the Pacific coast can get tropical weather that never touches the Caribbean side. Pick your region first, then narrow the dates around that region's season." },
       { type: "faq", q: "How much do green fees cost in Mexico?", a: "Green fees run from $75 to $750 per round depending on the region and course tier, from The Lakes at Vidanta Vallarta to Nauka in Riviera Nayarit (2026 rates on our course pages). Watch the hidden costs: cart fees are sometimes included and sometimes not, caddie fees vary by course, and food in tourist corridors is heavily inflated — a beer and a sandwich at the turn in Cabo can run $60 USD." },
       { type: "faq", q: "Can visitors play golf in Mexico City?", a: "Mexico City's golf culture is members-only — private clubs where you play by invitation through a network, not a booking engine. Access is the variable, not cost. The right move isn't searching for tee times; it's finding someone who plays there, or working with an operator who already has the relationships." },
