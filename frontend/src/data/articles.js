@@ -102,8 +102,8 @@ export const ARTICLES = [
   // ------- PLANNING · HOW TO PLAN A GOLF TRIP TO MEXICO (STAFF GUIDE) -------
   {
     slug: "how-to-plan-a-golf-trip-to-mexico",
-    title: "How to Plan a Golf Trip to Mexico: The Complete Guide for US Golfers",
-    h1: "How to Plan a Golf Trip to Mexico: The Complete Guide for US Golfers",
+    title: "How to Plan a Golf Trip to Mexico: The Complete Guide for International Golfers",
+    h1: "How to Plan a Golf Trip to Mexico: The Complete Guide for International Golfers",
     subtitle: "Region first — then budget, season, and access. The planning framework we use on every trip, and the mistakes it saves you from.",
     // Cost leads the title (2026-11-23): the searches that show this page ask what the trip costs; CTR was 1.4% at position 7.
     metaTitle: "Golf Trip to Mexico: Cost, Best Time & How to Plan (2026)",
