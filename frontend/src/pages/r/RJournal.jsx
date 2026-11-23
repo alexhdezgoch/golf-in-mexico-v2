@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSeo, breadcrumbSchema, articleSchema, faqSchema, SITE_URL } from "@/hooks/useSeo";
 import { ARTICLES, TYPES, getArticleBySlug, getRelatedArticles } from "@/data/articles";
-import { SectionIntro, CardRail, Card, SoftenedCall, Concierge } from "@/components/reverie/R";
+import { SectionIntro, CardRail, Card, SoftenedCall, Concierge, Sources } from "@/components/reverie/R";
 
 /* Journal (2026-11-03): the index is set like The Golfer's Journal category pages (centred title, a topic filter, a
    three-column grid of square pictures with the topic over a hairline), the article like Reverie's planning guides
@@ -14,12 +14,23 @@ const typeLabel = (a) => (TYPES.find((t) => t.slug === a.articleType || t.slug =
 
 const col = "max-w-[720px]";
 
+/* "[label](/path)" in the article text becomes a link (2026-11-23: the redesign printed the brackets as they were). */
+const inline = (text) =>
+  typeof text === "string" && text.includes("](")
+    ? text.split(/(\[[^\]]+\]\([^)]+\))/g).map((part, i) => {
+        const m = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+        if (!m) return part;
+        const ext = /^https?:/.test(m[2]);
+        return <a key={i} href={m[2]} {...(ext ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="underline underline-offset-4 decoration-1 hover:opacity-70">{m[1]}</a>;
+      })
+    : text;
+
 const Block = ({ b }) => {
   switch (b.type) {
     case "lead":
-      return <p className={`${col} r-body text-[19px] md:text-[21px] leading-[1.6] text-[var(--r-green)] mb-10`}>{b.text}</p>;
+      return <p className={`${col} r-body text-[19px] md:text-[21px] leading-[1.6] text-[var(--r-green)] mb-10`}>{inline(b.text)}</p>;
     case "p":
-      return <p className={`${col} r-body text-[16px] leading-[1.8] mb-6`}>{b.text}</p>;
+      return <p className={`${col} r-body text-[16px] leading-[1.8] mb-6`}>{inline(b.text)}</p>;
     case "h2":
       return <h2 id={slug(b.text)} className={`${col} scroll-mt-28 r-title text-[22px] md:text-[26px] text-[var(--r-green)] mt-16 mb-6`}>{b.text}</h2>;
     case "h3":
@@ -38,7 +49,7 @@ const Block = ({ b }) => {
         <ul className={`${col} flex flex-col gap-4 mb-8`}>
           {b.items.map((x, i) => (
             <li key={i} className="r-body text-[16px] border-l-2 border-[var(--r-green)] pl-4">
-              {x.title && <strong className="font-semibold text-[var(--r-green)]">{x.title}: </strong>}{x.text}
+              {x.title && <strong className="font-semibold text-[var(--r-green)]">{x.title}: </strong>}{inline(x.text)}
             </li>
           ))}
         </ul>
@@ -147,7 +158,7 @@ export const RArticle = () => {
     description: a?.metaDescription || "",
     canonical: `/journal/${s}`,
     image: a?.heroImage,
-    jsonLd: a ? [articleSchema({ headline: a.h1 || a.title, description: a.metaDescription || a.excerpt, path: `/journal/${a.slug}`, image: a.heroImage, author: { type: "Person", name: a.author?.name }, datePublished: a.datePublished || "2026-05-01" }), breadcrumbSchema([{ name: "Journal", path: "/journal" }, { name: a.title, path: `/journal/${a.slug}` }]),
+    jsonLd: a ? [articleSchema({ headline: a.h1 || a.title, description: a.metaDescription || a.excerpt, path: `/journal/${a.slug}`, image: a.heroImage, author: { type: "Person", name: a.author?.name }, datePublished: a.datePublished || "2026-05-01", dateModified: a.dateModified }), breadcrumbSchema([{ name: "Journal", path: "/journal" }, { name: a.title, path: `/journal/${a.slug}` }]),
       // The questions the article answers, as production marks them up (lost in the redesign, back 2026-11-05).
       ...(a.body.some((b) => b.type === "faq") ? [faqSchema(a.body.filter((b) => b.type === "faq").map(({ q, a: ans }) => ({ q, a: ans })))] : [])] : [],
   });
@@ -193,6 +204,8 @@ export const RArticle = () => {
           </aside>
         </div>
       </div>
+
+      {a.sources?.length > 0 && <Sources items={a.sources} note={`Web sources checked on ${a.updated}. Access and rates can change.`} />}
 
       {related.length > 0 && (
         <section className="py-[100px] bg-[var(--r-cream-2)]">
